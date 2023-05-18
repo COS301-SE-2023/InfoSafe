@@ -1,8 +1,10 @@
 @startuml
 left to right direction
-actor "Data Custodian" as ds
-actor "ISO" as iso
-actor "DISO" as diso
+actor "Data Custodian" as ds #green
+actor "Data Custodian" as ds2 #green
+actor "ISO" as iso #blue
+actor "ISO" as iso2 #blue
+actor "DISO" as diso #red
 rectangle Data-Scopes {
   usecase "Create a Data-Scope" as UC1
   usecase "Update a Data-Scope" as UC2
@@ -10,13 +12,14 @@ rectangle Data-Scopes {
   usecase "Action Task to User" as UC4
   usecase "Approve/Reject a Task" as UC5
 }
-ds --> UC1
-ds --> UC2
-ds --> UC3
-iso --> UC2
-iso --> UC3
-iso --> UC5
-UC4 --> "Data Custodian"
-UC4 --> "ISO"
-UC4 --> diso
+ds -[#green]-> UC1
+ds -[#green]-> UC2
+ds -[#green]-> UC3
+iso -[#blue]-> UC2
+iso -[#blue]-> UC3
+iso -[#blue]-> UC5
+UC4 -[#green]-> ds2
+UC4 -[#blue]-> iso2
+UC4 -[#red]-> diso
+UC2 <. UC4 : <<uses>>
 @enduml

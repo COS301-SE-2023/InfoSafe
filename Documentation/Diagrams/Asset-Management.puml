@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 actor "Asset Manager" as am
-actor "ISO" as iso
+actor "ISO" as iso #blue
 actor "All Users" as user
 rectangle Asset-Management {
   usecase "Create an Asset" as UC1
@@ -9,10 +9,10 @@ rectangle Asset-Management {
   usecase "Assign Asset to User" as UC3
   usecase "View all assets" as UC4
   usecase "Request Assest" as UC5
-  usecase "Approve/Deny Request" as UC6
+  usecase "Approve/Reject a Request" as UC6
 }
-iso --> UC1
-iso --> UC2
+iso -[#blue]-> UC1
+iso -[#blue]-> UC2
 am --> UC1
 am --> UC2
 am --> UC3
