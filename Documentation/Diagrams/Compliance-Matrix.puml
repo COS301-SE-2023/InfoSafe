@@ -1,8 +1,9 @@
 @startuml
 left to right direction
-actor "Data-Custodian" as dc
-actor "ISO" as iso
-actor "DISO" as diso
+actor "Data-Custodian" as dc #green
+actor "ISO" as iso #blue
+actor "ISO" as iso2 #blue
+actor "DISO" as diso #red
 rectangle Compliance-Matrix {
   usecase "Create a Compliance-Matrix" as UC1
   usecase "Update a Compliance-Matrix" as UC2
@@ -10,14 +11,14 @@ rectangle Compliance-Matrix {
   usecase "Assign Tasks to Users" as UC4
   usecase "Action Task to User" as UC5
 }
-iso --> UC1
-iso --> UC2
-iso --> UC3
-iso --> UC4
-diso --> UC1
-diso --> UC2
-diso --> UC3
-diso --> UC4
-UC5 --> dc
-UC5 --> "ISO"
+iso -[#blue]-> UC1
+iso -[#blue]-> UC2
+iso -[#blue]-> UC3
+iso -[#blue]-> UC4
+diso -[#red]-> UC1
+diso -[#red]-> UC2
+diso -[#red]-> UC3
+diso -[#red]-> UC4
+UC5 -[#green]-> dc
+UC5 -[#blue]-> iso2
 @enduml
