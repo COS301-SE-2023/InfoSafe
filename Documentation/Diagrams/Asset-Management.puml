@@ -3,9 +3,9 @@ left to right direction
 actor "Asset Manager" as am
 actor "ISO" as iso
 rectangle Asset-Management {
-  usecase "Create a Data-Scope" as UC1
-  usecase "Update a Data-Scope" as UC2
-  usecase "Assign a Data-Scope" as UC3
+  usecase "Create an Asset" as UC1
+  usecase "Update an Asset" as UC2
+  usecase "Action Task to User" as UC3
 }
 iso --> UC1
 iso --> UC2

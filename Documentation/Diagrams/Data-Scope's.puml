@@ -7,7 +7,7 @@ rectangle Data-Scopes {
   usecase "Create a Data-Scope" as UC1
   usecase "Update a Data-Scope" as UC2
   usecase "Revoke a Data-Scope" as UC3
-  usecase "Action Task within Data-Scope" as UC4
+  usecase "Action Task to User" as UC4
   usecase "Approve/Reject a Task" as UC5
 }
 ds --> UC1
