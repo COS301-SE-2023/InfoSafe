@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+actor "Any User" as au #black
+actor "Any User" as au2 #black
+actor "ISO" as iso #blue
+actor "DISO" as diso #red
+actor "DISO" as diso2 #red
+actor "Support Entity" as se #green
+rectangle Support-Requests {
+  usecase "Create a Support Request" as UC1
+  usecase "Update a Support Request" as UC2
+  usecase "Assign Support Request" as UC3
+  usecase "Action Support Request" as UC4
+}
+au -[#black]-> UC1
+UC4 -[#black]-> au2
+iso -[#blue]-> UC2
+iso -[#blue]-> UC3
+diso -[#red]-> UC2
+diso -[#red]-> UC3
+UC4 -[#red]-> diso2
+UC4 -[#green]-> se
+UC3 <. UC4 : <<uses>>
+@enduml
