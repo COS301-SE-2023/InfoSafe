@@ -2,14 +2,23 @@
 left to right direction
 actor "Asset Manager" as am
 actor "ISO" as iso
+actor "All Users" as user
 rectangle Asset-Management {
   usecase "Create an Asset" as UC1
   usecase "Update an Asset" as UC2
-  usecase "Action Task to User" as UC3
+  usecase "Assign Asset to User" as UC3
+  usecase "View all assets" as UC4
+  usecase "Request Assest" as UC5
+  usecase "Approve/Deny Request" as UC6
 }
 iso --> UC1
 iso --> UC2
 am --> UC1
 am --> UC2
 am --> UC3
+am --> UC6
+user --> UC4
+user --> UC5
+UC5 <.. UC3 : <<uses>>
+UC6 ..> UC5 : <<includes>>
 @enduml
