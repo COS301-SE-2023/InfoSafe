@@ -13,10 +13,10 @@ rectangle Data-Scopes {
 ds --> UC1
 ds --> UC2
 ds --> UC3
-ds --> UC4
 iso --> UC2
 iso --> UC3
-iso --> UC4
 iso --> UC5
-diso --> UC4
+UC4 --> "Data Custodian"
+UC4 --> "ISO"
+UC4 --> diso
 @enduml
