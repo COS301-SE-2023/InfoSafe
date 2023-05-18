@@ -19,6 +19,6 @@ am --> UC3
 am --> UC6
 user --> UC4
 user --> UC5
-UC5 <.. UC3 : <<uses>>
+UC5 <. UC3 : <<uses>>
 UC6 ..> UC5 : <<includes>>
 @enduml
