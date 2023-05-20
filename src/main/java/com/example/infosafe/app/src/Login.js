@@ -1,20 +1,19 @@
 import logo from './logo.svg';
 import './Login.css';
-import React, { useState } from 'react';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
 
 function Login() {
   return (
-      <div className="background">
-          <div className="panel">
-              <span className="logo">LOGIN</span>
-              <span className="username">Username</span><br/>
-              <input placeholder="Type in email" className="untxt" type="text" id="username" name="username"></input><br/>
-              <span className="password">Password</span>
-              <input placeholder="Type in password" className="pwtxt" type="text" id="password" name="password"></input><br/>
-              <a className="forgot">Forgot Password?</a>
-              <button className="btnLogin">Login</button>
+      <div className="v138_382">
+          <div className="v139_618">
+              <div className="v139_619"></div>
+              <span className="v139_620">LOGIN</span>
+              <div className="v139_621"></div>
+              <div className="v139_622"></div>
+              <span className="v139_623">Username</span>
+              <span className="v139_624">PASSWORD</span>
+              <div className="name"></div>
+              <span className="v139_626">Forgot Password?</span>
+              <div className="name"></div>
           </div>
       </div>
   );
