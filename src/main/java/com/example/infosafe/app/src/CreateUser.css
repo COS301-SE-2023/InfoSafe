@@ -1,0 +1,182 @@
+.backgrnd
+{
+    background-color: #383838;
+    width: 100%;
+    height: 775px;
+}
+
+.overlay
+{
+    position: absolute;
+    width: 96%;
+    height: 710px;
+    left: 32px;
+    top: 29px;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.page_name
+{
+    margin: 0 auto;
+    top: 64px;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 84px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+}
+
+
+.label_name
+{
+
+    width: 244px;
+    height: 64px;
+    position: relative;
+    left: -8%;
+    top: 7.5%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 257%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 auto;
+}
+
+.name
+{
+    position: relative;
+    left: 678px;
+    top: 0%;
+    width: 400px;
+    height: 40px;
+    color: #000000;
+    margin: 0 auto;
+    background: #edeeee;
+    border: 2px solid #000000;
+
+}
+
+.label_surname
+{
+
+    width: 244px;
+    height: 64px;
+    position: relative;
+    left: -10%;
+    top: 3.5%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 257%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 auto;
+}
+
+.surname
+{
+    position: relative;
+    left: 678px;
+    top: -4%;
+    width: 400px;
+    height: 40px;
+    color: #000000;
+    margin: 0 auto;
+    background: #edeeee;
+    border: 2px solid #000000;
+
+}
+
+.label_email
+{
+
+    width: 244px;
+    height: 64px;
+    position: relative;
+    left: -8%;
+    top: 0%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 257%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 auto;
+}
+
+.email
+{
+    position: relative;
+    left: 678px;
+    top: -8%;
+    width: 400px;
+    height: 40px;
+    color: #000000;
+    margin: 0 auto;
+    background: #edeeee;
+    border: 2px solid #000000;
+
+}
+
+.label_password
+{
+
+    width: 244px;
+    height: 64px;
+    position: relative;
+    left: -11%;
+    top: -4.5%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 257%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 auto;
+}
+
+.password
+{
+    position: relative;
+    left: 678px;
+    top: -12%;
+
+    width: 400px;
+    height: 40px;
+    color: #000000;
+    margin: 0 auto;
+    background: #edeeee;
+    border: 2px solid #000000;
+
+}
