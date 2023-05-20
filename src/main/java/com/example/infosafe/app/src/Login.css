@@ -4,7 +4,7 @@
 body {
   font-size: 14px;
 }
-.v138_382 {
+.background {
   height: 1080px;
   background: url("../../images/Welcome_New.png");
   width: 100%;
@@ -15,7 +15,7 @@ body {
   left: 0px;
   overflow: hidden;
 }
-.v139_618 {
+.panel {
   width: 486px;
   height: 376px;
   background: no-repeat center center fixed;
@@ -24,16 +24,7 @@ body {
   position: relative;
   top: 280px;
   left: 717px;
-  overflow: hidden;
-}
-.v139_619 {
-  width: 486px;
-  height: 376px;
   background: rgba(201,200,197,0.8999999761581421);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
   border: 3px solid rgba(158,0,0,1);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -42,47 +33,33 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.49000000953674316);
   overflow: hidden;
 }
-.v139_620 {
+.btnLogin {
+  color: white;
+  width: 80px;
+  height: 35px;
+  position: absolute;
+  top: 300px;
+  left: 320px;
+  background: rgba(158,0,0,1);
+  border: 1px solid black;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.logo {
   width: 150px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 91px;
   left: 163px;
   font-family: Fira Code;
-  font-weight: normal;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 24px;
   opacity: 1;
   text-align: center;
 }
-.v139_621 {
-  width: 329px;
-  height: 31px;
-  background: rgba(217,217,217,1);
-  opacity: 1;
-  position: absolute;
-  top: 181px;
-  left: 73px;
-  border-top-left-radius: 19px;
-  border-top-right-radius: 19px;
-  border-bottom-left-radius: 19px;
-  border-bottom-right-radius: 19px;
-  overflow: hidden;
-}
-.v139_622 {
-  width: 329px;
-  height: 31px;
-  background: rgba(217,217,217,1);
-  opacity: 1;
-  position: absolute;
-  top: 254px;
-  left: 73px;
-  border-top-left-radius: 19px;
-  border-top-right-radius: 19px;
-  border-bottom-left-radius: 19px;
-  border-bottom-right-radius: 19px;
-  overflow: hidden;
-}
-.v139_623 {
+.username {
   width: 130px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -90,11 +67,28 @@ body {
   left: 173px;
   font-family: Roboto;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 18px;
   opacity: 1;
   text-align: center;
 }
-.v139_624 {
+.untxt {
+  width: 250px;
+  height: 30px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 168px;
+  left: 24%;
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 12px;
+  opacity: 1;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.password {
   width: 130px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -102,22 +96,39 @@ body {
   left: 173px;
   font-family: Roboto;
   font-weight: normal;
+  font-size: 18px;
+  opacity: 1;
+  text-align: center;
+}
+.pwtxt {
+  width: 250px;
+  height: 30px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 240px;
+  left: 24%;
+  font-family: Roboto;
+  font-weight: normal;
   font-size: 12px;
   opacity: 1;
   text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .name {
   color: #fff;
 }
-.v139_626 {
-  width: 249px;
+.forgot {
+  width: 150px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 310px;
   left: 26px;
   font-family: Roboto;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 14px;
   opacity: 1;
   text-align: center;
 }
