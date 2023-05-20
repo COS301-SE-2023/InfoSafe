@@ -2,20 +2,28 @@
 skinparam linetype ortho
 'left to right direction
 'top to bottom direction
-DataScope *-- ComplianceMatrix
+DataScope "1"*--"1" ComplianceMatrix
 Login -- Home
 Home -- DeviceAssetManagement
-Home *-- Users
+Home -- RisksAndFindings
+Home -- SupportRequests
+Home -- Users
 Home -- DataScope
 Users o-- User 
+DeviceAssetManagement .. Device
+
+
 
 class Login{
-    + login(String authName, String password): void
-
+    - authName: String
+    - password: String
+    + Login(authName: String ,password: String)
+    + login(): void
 }
+
 class Home{
     - access: Access
-    + checkAccess(): void
+    + Home(access: Access)
     + setView(): void
     + showDataScopes(): void
     + showAccessRequests(): void
@@ -35,8 +43,25 @@ class Home{
 
 }
 
+class DeviceAssetManagement{
+    + DeviceAssetManagement()
+}
+
 class DataScope{
+    + DataScope()
     + createComplianceMatrix(): void
+}
+
+class RisksAndFindings{
+    + RisksAndFindings()
+}
+
+class SupportRequests{
+    + SupportRequests()
+}
+
+class ComplianceMatrix{
+    + ComplianceMatrix()
 }
 
 class Users{
@@ -49,6 +74,7 @@ class Users{
     + updateAccess(authName: String)
     + revokeAccess(authName: String)
 }
+
 class User{
     - name: String 
     - lname: String 
@@ -66,6 +92,9 @@ class User{
     
 }
 
+Device{
+    - name: String
+}
 enum Access{
     <<enumeration>>
     ISO
