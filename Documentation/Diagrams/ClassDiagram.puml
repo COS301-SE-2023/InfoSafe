@@ -1,0 +1,76 @@
+@startuml ClassDiagram
+skinparam linetype ortho
+'left to right direction
+'top to bottom direction
+DataScope *-- ComplianceMatrix
+Login -- Home
+Home -- DeviceAssetManagement
+Home *-- Users
+Home -- DataScope
+Users o-- User 
+
+class Login{
+    + login(String authName, String password): void
+
+}
+class Home{
+    - access: Access
+    + checkAccess(): void
+    + setView(): void
+    + showDataScopes(): void
+    + showAccessRequests(): void
+    + showRiskAndFindings(): void
+    + showComplianceMatrix(): void
+    + showDevices(): void
+    + showSupportRequests(): void
+    + LogARequest(): void
+    + DeviceRequests(): void
+    + RequestADevice(): void
+    + showStatistics(): void
+    + showRisks(): void
+    + createUser(): void
+    + editUser(): void
+    + deleteUser(): void
+    + createDataScope(): void
+
+}
+
+class DataScope{
+    + createComplianceMatrix(): void
+}
+
+class Users{
+    + createNewUser(name: String, lname: String, email: String, userName: String, phoneNumber: String, password: String, role: String, access: enum): void
+    + getCurrentUser(): void 
+    + getSpecificUser(authName: String)
+    + revokeUser(authName: String)
+    + editUser(authName: String)
+    '+ addAccess()
+    + updateAccess(authName: String)
+    + revokeAccess(authName: String)
+}
+class User{
+    - name: String 
+    - lname: String 
+    - email: String
+    - username: String 
+    - phoneNumber: int 
+    - password: String 
+    - access: Access    
+    + User(name: String, lname: String, email: String, userName: String, phoneNumber: String, password: String, role: String, access: enum)
+    + logout(): void
+    + setRole(role: String): void
+    + getRole(): String
+    + getAccess(): enum
+    + setAccess(access: enum): void
+    
+}
+
+enum Access{
+    <<enumeration>>
+    ISO
+    DISO
+    DataCustodian
+    AssetManager
+    SystemAdminEployee
+}
