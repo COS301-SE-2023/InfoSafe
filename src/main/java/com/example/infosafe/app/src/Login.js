@@ -1,7 +1,7 @@
 import logo from './logo.svg';
-import './App.css';
+import './Login.css';
 
-function App() {
+function Login() {
   return (
       <div className="v138_382">
           <div className="v139_618">
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;

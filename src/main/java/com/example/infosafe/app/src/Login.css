@@ -20,7 +20,7 @@ body {
   height: 376px;
   background: no-repeat center center fixed;
   background-size: cover;
-  opacity: 100%;
+  opacity: 1;
   position: relative;
   top: 280px;
   left: 717px;
