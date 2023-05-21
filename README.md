@@ -50,7 +50,7 @@ I am proficient in:
     - ASP.NET (MVC)
 
   GitHub profile:   https://github.com/ChrisMitt \
-  LinkedIn profile: https://www.linkedin.com/in/christof-steyn-631420218/
+LinkedIn profile: https://www.linkedin.com/in/chris-mittendorf-078542275/
 
 - ### Yane van der Westhuizen
   I am a third year BSc Computer Science student. I have always been very fascinated by technology and how it is ever-evolving. I have experience in full-stack development, with a particular interest in front-end development and web development. I am also well-versed in databases, including SQL and NoSQL databases and various different database management systems. I pride myself in being very organised and diligent.
