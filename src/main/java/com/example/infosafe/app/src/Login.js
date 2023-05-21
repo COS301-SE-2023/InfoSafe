@@ -15,7 +15,7 @@ function Login() {
                 <input  className="untxt" type="text" id="username" name="username"></input>
             </div>
             <div className = "user_password">
-                <p className="password">Password</p>
+                <p className="pass">Password</p>
                 <input className="pwtxt" type="password" id="password" name="password"></input>
             </div>
         

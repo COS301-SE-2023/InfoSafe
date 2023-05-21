@@ -1,12 +1,7 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  font-size: 14px;
-}
-.v138_382 {
-  height: 1080px;
-  background: url("../../images/Welcome_New.png");
+
+.background {
+ 
+  background: url("../../images/Welcome_New.png"); 
   width: 100%;
   height: 100%;
   opacity: 1;
@@ -130,18 +125,23 @@ body {
   margin: 0 auto;
   align-items: center;
 
+
 }
 
-.password {
+.pass {
   width: 20%;
   color: rgb(0, 0, 0);
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
   font-size: 18px;
-  opacity: 1;
+
+  position: relative;
+
   text-transform: uppercase;
   margin: 0 auto;
+ 
 }
+
 .pwtxt {
   width: 60%;
   height: 30%;
