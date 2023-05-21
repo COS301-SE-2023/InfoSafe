@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #1e1e1e
+left to right direction
+actor "Data Custodian" as ds #green;text:white;line:white
+actor "Data Custodian" as ds2 #green;text:white;line:white
+actor "ISO" as iso #blue;text:white;line:white
+actor "ISO" as iso2 #blue;text:white;line:white
+actor "DISO" as diso #red;text:white;line:white
+actor "DISO" as diso2 #red;text:white;line:white
+actor "Administrator" as admin #black;text:white;line:white
+rectangle Access-Requests #text:white;line.bold;line:white {
+  usecase "Create an Access-Request" as UC1 #black;text:white;line.bold;line:white
+  usecase "Update an Access-Request" as UC2 #black;text:white;line.bold;line:white
+  usecase "Revoke an Access-Request" as UC3 #black;text:white;line.bold;line:white
+  usecase "Assign a Request" as UC4 #black;text:white;line.bold;line:white
+  usecase "Action a Request" as UC5 #black;text:white;line.bold;line:white
+  usecase "Approve/Reject a Request" as UC6 #black;text:white;line.bold;line:white
+}
+ds -[#green]-> UC1
+ds -[#green]-> UC2
+ds -[#green]-> UC3
+iso -[#blue]-> UC2
+iso -[#blue]-> UC3
+iso -[#blue]-> UC6
+diso -[#red]-> UC2
+diso -[#red]-> UC3
+diso -[#red]-> UC6
+UC5 -[#green]-> ds2
+UC5 -[#blue]-> iso2
+UC5 -[#red]-> diso2
+UC5 -[#black]-> admin
+UC4 .> (UC5) #line:white;text:white : <<extends>>
+UC4 <. (UC1) #line:white;text:white : <<uses>>
+@enduml
