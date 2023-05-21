@@ -23,5 +23,10 @@
     "lint": "npx eslint",
     "format": "npx eslint --fix",
     "prettier": "npx prettier --write ."
+
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "react-bootstrap": "^2.7.4"
+
   }
 }
