@@ -8,15 +8,23 @@ function Login() {
   return (
       <div className="background">
           <div className="panel">
-              <span className="logo">LOGIN</span>
-              <span className="username">Username</span><br/>
-              <input placeholder="Type in email" className="untxt" type="text" id="username" name="username"></input><br/>
-              <span className="password">Password</span>
-              <input placeholder="Type in password" className="pwtxt" type="text" id="password" name="password"></input><br/>
-              <a className="forgot">Forgot Password?</a>
-              <button className="btnLogin">Login</button>
-          </div>
-      </div>
+
+            <div className="title">
+                <p className="logo">Login</p>
+            </div>
+            <div className="user">
+                <p className="username">Username</p>
+                <input  className="untxt" type="text" id="username" name="username"></input>
+            </div>
+            <div className = "user_password">
+                <p className="password">Password</p>
+                <input className="pwtxt" type="password" id="password" name="password"></input>
+            </div>
+        
+            <a className="forgot">Forgot Password?</a>
+            <button className="btnLogin">Login</button>         
+        </div>
+    </div>
   );
 }
 
