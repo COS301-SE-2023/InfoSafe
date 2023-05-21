@@ -1,23 +1,36 @@
-.backgrnd {
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.backgrnd
+{
     background-color: #383838;
-    width: 100%;
-    height: 775px;
+    height: 100%;
+
 }
 
-.overlay {
-    position: absolute;
-    width: 96%;
-    height: 710px;
-    left: 32px;
-    top: 29px;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
 
-.page_name {
+.overlay
+{
+    position: relative;
+    top: 5%;
+   
+    width: 90%;
+    height: 90%;
     margin: 0 auto;
-    top: 64px;
+    
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.page_name
+{
+    position: relative;
+    margin: 0 auto;
+    top: 3%;
     width: 100%;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -31,18 +44,21 @@
     text-transform: uppercase;
 }
 
-.label_name {
-    width: 244px;
-    height: 64px;
+
+.label_name
+{
+
+    width: 30%;
+    height: 10%;
     position: relative;
-    left: -8%;
-    top: 7.5%;
+  
+    top: 2%;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
     line-height: 257%;
-    display: flex;
+   
     align-items: center;
     text-align: center;
     letter-spacing: 0.84px;
@@ -51,30 +67,34 @@
     margin: 0 auto;
 }
 
-.name {
+.name
+{
     position: relative;
-    left: 678px;
+    left: 37%;
     top: 0%;
-    width: 400px;
-    height: 40px;
+    width: 25%;
+    height: 5%;
     color: #000000;
     margin: 0 auto;
     background: #edeeee;
     border: 2px solid #000000;
+
 }
 
-.label_surname {
-    width: 244px;
-    height: 64px;
+.label_surname
+{
+
+    width: 30%;
+    height: 10%;
     position: relative;
-    left: -10%;
-    top: 3.5%;
+    
+    top: -2%; 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
     line-height: 257%;
-    display: flex;
+   
     align-items: center;
     text-align: center;
     letter-spacing: 0.84px;
@@ -83,30 +103,33 @@
     margin: 0 auto;
 }
 
-.surname {
+.surname
+{
     position: relative;
-    left: 678px;
+    left: 37%;
     top: -4%;
-    width: 400px;
-    height: 40px;
+    width: 25%;
+    height: 5%;
     color: #000000;
     margin: 0 auto;
     background: #edeeee;
     border: 2px solid #000000;
+
 }
 
-.label_email {
-    width: 244px;
-    height: 64px;
+.label_email
+{
+
+    width: 30%;
+    height: 10%;
     position: relative;
-    left: -8%;
-    top: 0%;
+    top: -6%;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
     line-height: 257%;
-    display: flex;
+   
     align-items: center;
     text-align: center;
     letter-spacing: 0.84px;
@@ -115,30 +138,34 @@
     margin: 0 auto;
 }
 
-.email {
+.email
+{
     position: relative;
-    left: 678px;
+    left: 37%;
     top: -8%;
-    width: 400px;
-    height: 40px;
+    width: 25%;
+    height: 5%;
     color: #000000;
     margin: 0 auto;
     background: #edeeee;
     border: 2px solid #000000;
+
 }
 
-.label_password {
-    width: 244px;
-    height: 64px;
+.label_password
+{
+
+    width: 30%;
+    height: 10%;
     position: relative;
-    left: -11%;
-    top: -4.5%;
+
+    top: -10%;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
     line-height: 257%;
-    display: flex;
+   
     align-items: center;
     text-align: center;
     letter-spacing: 0.84px;
@@ -147,15 +174,91 @@
     margin: 0 auto;
 }
 
-.password {
+.password
+{
     position: relative;
-    left: 678px;
+    left: 37%;
     top: -12%;
 
-    width: 400px;
-    height: 40px;
+    width: 25%;
+    height: 5%;
     color: #000000;
     margin: 0 auto;
     background: #edeeee;
     border: 2px solid #000000;
+
 }
+
+.btnGeneratePassword
+{
+    background: #000000;
+    color: #FFFFFF;
+    position: relative;
+    left: 38%;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    height: 4%;
+    top: -1%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    border-color: transparent;
+
+}
+
+.label_role
+{
+
+    width: 30%;
+    height: 10%;
+    position: relative;
+    top: -14%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 257%;
+   
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 auto;
+}
+
+.role
+{
+    position: relative;
+    top: -16%;
+    left: -0.5%;
+    width: 25%;
+    height: 5.4%;
+    color: #000000;
+    margin: 0 auto;
+    background: #edeeee;
+    border: 2px solid #000000;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btnFinish
+{
+    background: #CF0000;
+    color: #FFFFFF;
+    position: relative;
+    bottom: -5%;
+    width: 10%;
+    left: 45%;
+    height: 6%;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    border-color: transparent;
+
+    
+
+}
+
