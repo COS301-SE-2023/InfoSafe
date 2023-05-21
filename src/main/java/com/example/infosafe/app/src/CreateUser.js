@@ -14,8 +14,6 @@ function CreateUser() {
               <input className="email" name="email"/>
               <p className="label_password">Password</p>
               <input className="password" name="password"/>
-
-
           </div>
       </div>
 

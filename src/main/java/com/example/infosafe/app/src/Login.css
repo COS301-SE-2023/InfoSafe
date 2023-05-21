@@ -42,7 +42,6 @@
 }
 
 .btnLogin {
-  
   width: 20%;
   height: 10%;
   position: absolute;
@@ -55,10 +54,7 @@
   border-color: transparent;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
-  border-radius: 8px 
-  
-
-
+  border-radius: 8px
 }
 
 .logo {
