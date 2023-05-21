@@ -6,7 +6,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "devDependencies": {
     "eslint": "^8.41.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -23,10 +22,10 @@
     "lint": "npx eslint",
     "format": "npx eslint --fix",
     "prettier": "npx prettier --write ."
-
+  },
   "dependencies": {
+    "app": "file:src/main/java/com/example/infosafe/app",
     "bootstrap": "^5.2.3",
     "react-bootstrap": "^2.7.4"
-
   }
 }
