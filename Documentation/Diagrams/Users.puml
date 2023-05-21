@@ -1,12 +1,13 @@
 @startuml
+skinparam backgroundColor #1e1e1e
 left to right direction
-actor "ISO" as iso #blue
-actor "DISO" as diso #red
-actor "Sys Admin" as sa #green
-rectangle Users {
-  usecase "Create a User" as UC1
-  usecase "Update a User" as UC2
-  usecase "Revoke a User" as UC3
+actor "ISO" as iso #blue;text:white;line:white
+actor "DISO" as diso #red;text:white;line:white
+actor "Sys Admin" as sa #green;text:white;line:white
+rectangle Users #text:white;line.bold;line:white {
+  usecase "Create a User" as UC1 #black;text:white;line.bold;line:white
+  usecase "Update a User" as UC2 #black;text:white;line.bold;line:white
+  usecase "Revoke a User" as UC3 #black;text:white;line.bold;line:white
 }
 iso -[#blue]-> UC1
 iso -[#blue]-> UC2
