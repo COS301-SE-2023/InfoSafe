@@ -8,7 +8,7 @@ rectangle Asset-Management {
   usecase "Update an Asset" as UC2
   usecase "Assign Asset to User" as UC3
   usecase "View all assets" as UC4
-  usecase "Request Assest" as UC5
+  usecase "Request Asset" as UC5
   usecase "Approve/Deny Request" as UC6
 }
 iso --> UC1
