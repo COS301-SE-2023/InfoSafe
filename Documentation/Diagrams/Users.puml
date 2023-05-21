@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor "ISO" as iso #blue
+actor "DISO" as diso #red
+actor "Sys Admin" as sa #green
+rectangle Users {
+  usecase "Create a User" as UC1
+  usecase "Update a User" as UC2
+  usecase "Revoke a User" as UC3
+}
+iso -[#blue]-> UC1
+iso -[#blue]-> UC2
+iso -[#blue]-> UC3
+diso -[#red]-> UC1
+diso -[#red]-> UC2
+diso -[#red]-> UC3
+sa -[#green]-> UC1
+sa -[#green]-> UC2
+sa -[#green]-> UC3
+@enduml

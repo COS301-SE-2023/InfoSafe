@@ -21,4 +21,5 @@ diso -[#red]-> UC3
 diso -[#red]-> UC4
 UC5 -[#green]-> dc
 UC5 -[#blue]-> iso2
+UC4 <. UC5 : <<uses>>
 @enduml
