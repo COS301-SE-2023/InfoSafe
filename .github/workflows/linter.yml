@@ -24,3 +24,4 @@ jobs:
           VALIDATE_CSS: true
           VALIDATE_JAVA: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
