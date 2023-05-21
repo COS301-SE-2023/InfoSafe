@@ -1,24 +1,25 @@
 @startuml
+skinparam backgroundColor #1e1e1e
 left to right direction
-actor "Asset Manager" as am
-actor "ISO" as iso #blue
-actor "All Users" as user
-rectangle Asset-Management {
-  usecase "Create an Asset" as UC1
-  usecase "Update an Asset" as UC2
-  usecase "Assign Asset to User" as UC3
-  usecase "View all assets" as UC4
-  usecase "Request Asset" as UC5
-  usecase "Approve/Reject a Request" as UC6
+actor "Asset Manager" as am #green;text:white;line:white
+actor "ISO" as iso #blue;text:white;line:white
+actor "All Other Users" as user #red;text:white;line:white
+rectangle Asset-Management #text:white;line.bold;line:white {
+  usecase "Create an Asset" as UC1 #black;text:white;line.bold;line:white
+  usecase "Update an Asset" as UC2 #black;text:white;line.bold;line:white
+  usecase "Assign Asset to User" as UC3 #black;text:white;line.bold;line:white
+  usecase "View all assets" as UC4 #black;text:white;line.bold;line:white
+  usecase "Request Asset" as UC5 #black;text:white;line.bold;line:white
+  usecase "Approve/Reject a Request" as UC6 #black;text:white;line.bold;line:white
 }
 iso -[#blue]-> UC1
 iso -[#blue]-> UC2
-am --> UC1
-am --> UC2
-am --> UC3
-am --> UC6
-user --> UC4
-user --> UC5
-UC5 <. UC3 : <<uses>>
-UC6 ..> UC5 : <<includes>>
+am -[#green]-> UC1
+am -[#green]-> UC2
+am -[#green]-> UC3
+am -[#green]-> UC6
+user -[#red]-> UC4
+user -[#red]-> UC5
+UC5 <. (UC3) #line:white;text:white : <<uses>>
+UC6 ..> (UC5) #line:white;text:white : <<includes>>
 @enduml
