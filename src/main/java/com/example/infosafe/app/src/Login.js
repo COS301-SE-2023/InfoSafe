@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './Login.css';
-import React, { useState } from 'react';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
 
 function Login() {
   return (
+
       <div className="background">
           <div className="panel">
 
@@ -17,7 +15,7 @@ function Login() {
                 <input  className="untxt" type="text" id="username" name="username"></input>
             </div>
             <div className = "user_password">
-                <p className="password">Password</p>
+                <p className="pass">Password</p>
                 <input className="pwtxt" type="password" id="password" name="password"></input>
             </div>
         
@@ -25,6 +23,7 @@ function Login() {
             <button className="btnLogin">Login</button>         
         </div>
     </div>
+
   );
 }
 
