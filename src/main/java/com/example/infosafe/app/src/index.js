@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Home from './Home.js';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -12,6 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Routes>
+            <Route index element={<Home />} />
             <Route index element={<Login />} />
             <Route path="/CreateUser" element={<CreateUser />} />
             <Route path="/EditProfile" element={<EditProfile />} />
