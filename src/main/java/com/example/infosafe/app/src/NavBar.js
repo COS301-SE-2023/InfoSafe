@@ -76,7 +76,7 @@ export default function NavBar(){
         setShowSupport(false);
         const accessItems = [];
         for(var i = 1; i < 30; i++){
-            accessItems.push(<li key={i}>Data access {i}</li>);
+            accessItems.push(<li key={i}>Access Request {i}</li>);
         }
         return <ul>{accessItems}</ul>;
     }
