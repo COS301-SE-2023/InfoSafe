@@ -91,4 +91,4 @@ I am proficient in:
     - SQL
 
   GitHub profile:   https://github.com/AlistairMRoss \
-  LinkedIn profile: https://www.linkedin.com/in/christof-steyn-631420218/
+  LinkedIn profile: https://www.linkedin.com/in/alistair-ross-1b647a204/
