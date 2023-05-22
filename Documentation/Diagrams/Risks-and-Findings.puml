@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #1e1e1e
+left to right direction
+actor "ISO/DISO" as iso #green;text:white;line:white
+actor "Data Custodian" as dc #blue;text:white;line:white
+actor "User" as user #red;text:white;line:white
+rectangle Risks-and-Findings #text:white;line.bold;line:white {
+usecase "Create Risk Task" as UC1 #black;text:white;line.bold;line:white
+usecase "Update Risk Task" as UC2 #black;text:white;line.bold;line:white
+usecase "Approve/Deny Risk Task" as UC3 #black;text:white;line.bold;line:white
+usecase "Review Risk Task" as UC4 #black;text:white;line.bold;line:white
+usecase "Close Risk Task" as UC5 #black;text:white;line.bold;line:white
+usecase "Assign Risk Task to User" as UC6 #black;text:white;line.bold;line:white
+usecase "Submit Risk Task" as UC7 #black;text:white;line.bold;line:white
+}
+UC4 .> (UC5) #line:white;text:white : <<uses>>
+iso -[#green]-> UC1
+dc -[#blue]-> UC1
+iso -[#green]-> UC6
+UC6 -[#red]-> user
+iso -[#green]-> UC2
+dc -[#blue]-> UC2
+iso -[#green]-> UC3
+iso -[#green]-> UC4
+iso -[#green]-> UC5
+UC2 -[#red]-> user #text:white : notify
+user -[#red]-> UC7
+dc -[#blue]-> UC6
+UC7 .> (UC4) #line:white;text:white : <<uses>>
+@enduml
