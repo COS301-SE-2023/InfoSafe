@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cd src/main/java/com/example/infosafe/app/src/Components/__tests__ && react-scripts test",
+    "test": "react-scripts test --env=jsdom --testPathPattern=src/main/java/com/example/infosafe/app/src/Components/__tests__/**/*.test.js",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:8080",
