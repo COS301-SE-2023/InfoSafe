@@ -14,27 +14,28 @@ InfoSafe is an application that is used by the Information Security team, manage
 
 ### FrAgile-Demo1
 
-* "enter video link here"
+-   "enter video link here"
 
 ### Documents
 
-* "will add later"
-* 
+-   "will add later"
+-
+
 #### SRS Document
 
-* "enter link here"
+-   "enter link here"
 
 ### GitHub Project Board
 
-* "enter link here"
+-   "enter link here"
 
 ## Meet the Team
 
-* ### Christof Steyn
-* ### Chris Mittendorf
-* ### Yane van der Westhuizen
-* ### Karel Smit
-* ### Alistair Ross
+-   ### Christof Steyn
+-   ### Chris Mittendorf
+-   ### Yane van der Westhuizen
+-   ### Karel Smit
+-   ### Alistair Ross
 
 ## Individual Professional Profiles
 

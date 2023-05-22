@@ -2,21 +2,26 @@ import logo from './logo.svg';
 import './Login.css';
 
 function Login() {
-  return (
-      <div className="v138_382">
-          <div className="v139_618">
-              <div className="v139_619"></div>
-              <span className="v139_620">LOGIN</span>
-              <div className="v139_621"></div>
-              <div className="v139_622"></div>
-              <span className="v139_623">Username</span>
-              <span className="v139_624">PASSWORD</span>
-              <div className="name"></div>
-              <span className="v139_626">Forgot Password?</span>
-              <div className="name"></div>
-          </div>
-      </div>
-  );
+    return (
+        <div className="background">
+            <div className="panel">
+                <div className="title">
+                    <p className="logo">Login</p>
+                </div>
+                <div className="user">
+                    <p className="username">Username</p>
+                    <input className="untxt" type="text" id="username" name="username"></input>
+                </div>
+                <div className="user_password">
+                    <p className="pass">Password</p>
+                    <input className="pwtxt" type="password" id="password" name="password"></input>
+                </div>
+
+                <a className="forgot">Forgot Password?</a>
+                <button className="btnLogin">Login</button>
+            </div>
+        </div>
+    );
 }
 
 export default Login;
