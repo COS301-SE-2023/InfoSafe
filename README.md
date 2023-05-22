@@ -18,7 +18,7 @@ InfoSafe is an application that is used by the Information Security team, manage
 
 ### SRS Document:
 
--   "will add later"
+-   https://github.com/COS301-SE-2023/InfoSafe/blob/main/Documentation/InfoSafe_SRS.pdf
 
 ### GitHub Project Board:
 
