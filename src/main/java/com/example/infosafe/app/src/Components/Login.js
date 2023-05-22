@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import '../Styling/Login.css';
 
-function Login() {
+function Login({onLogin}) {
+    const handleLogin = () => {
+        onLogin();
+    };
   return (
 
       <div className="background">
@@ -20,7 +23,7 @@ function Login() {
             </div>
             
             <a className="forgot">Forgot Password?</a>
-            <button className="btnLogin">Login</button>         
+            <button data-testid='btnTest' className="btnLogin" onClick={handleLogin}>Login</button>
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 import {render, screen, cleanup, fireEvent} from "@testing-library/react";
-import Login from './Login'
+import Login from '../Login'
 
 describe('login', () =>{
 
@@ -38,5 +38,13 @@ describe('login', () =>{
         // Check if input values are updated correctly
         expect(usernameInput.value).toBe('john_doe');
         expect(passwordInput.value).toBe('password123');
+    });
+
+    test('calls login function on button click', () => {
+        const mockLogin = jest.fn();
+        const { getByTestId } = render(<Login onLogin={mockLogin} />);
+        const loginButton = getByTestId('btnTest', {selector: 'button.btnLogin'});
+        fireEvent.click(loginButton);
+        expect(mockLogin).toHaveBeenCalledTimes(1);
     });
 });
