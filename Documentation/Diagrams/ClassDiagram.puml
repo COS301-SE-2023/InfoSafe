@@ -1,16 +1,17 @@
 @startuml ClassDiagram
+skinparam backgroundColor #1e1e1e
 skinparam linetype ortho
 'left to right direction
 'top to bottom direction
-DataScope "1"*--"1" ComplianceMatrix
-Login -- Home
-Home -- DeviceAssetManagement
-Home -- RisksAndFindings
-Home -- SupportRequests
-Home -- Users
-Home -- DataScope
-Users o-- User 
-DeviceAssetManagement .. Device
+DataScope "1"*--"1" ComplianceMatrix #line:white;text:white
+Login -- Home #line:white;text:white
+Home -- DeviceAssetManagement #line:white;text:white
+Home -- RisksAndFindings #line:white;text:white
+Home -- SupportRequests #line:white;text:white
+Home -- Users #line:white;text:white
+Home -- DataScope #line:white;text:white
+Users o-- User #line:white;text:white
+DeviceAssetManagement .. Device #line:white;text:white
 
 
 
@@ -103,3 +104,4 @@ enum Access{
     AssetManager
     SystemAdminEployee
 }
+@enduml
