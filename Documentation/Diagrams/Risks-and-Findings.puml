@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor #1e1e1e
+left to right direction
+actor "ISO/DISO" as iso #green;text:white;line:white
+actor "Data Custodian" as dc #blue;text:white;line:white
+actor "User" as user #red;text:white;line:white
+rectangle Risks-and-Findings #text:white;line.bold;line:white {
+usecase "Assign Impact Rating" as UC9 #black;text:white;line.bold:white
+usecase "Create Task" as UC1 #black;text:white;line.bold;line:white
+usecase "Update Task" as UC2 #black;text:white;line.bold;line:white
+usecase "Approve/Deny Task" as UC3 #black;text:white;line.bold;line:white
+usecase "Close Task and Update Impact Value" as UC5 #black;text:white;line.bold;line:white
+usecase "Assign Task to User" as UC6 #black;text:white;line.bold;line:white
+usecase "Submit Task" as UC7 #black;text:white;line.bold;line:white
+usecase "Report Risk/Finding" as UC8 #black;text:white;line.bold:white
+usecase "Review Task" as UC4 #black;text:white;line.bold;line:white
+
+}
+UC4 .> (UC5) #line:white;text:white : <<uses>>
+iso -[#green]-> UC1
+dc -[#blue]-> UC1
+iso -[#green]-> UC6
+UC6 ---> user #line:red
+iso -[#green]-> UC2
+dc -[#blue]-> UC2
+iso -[#green]-> UC3
+iso -[#green]-> UC4
+iso -[#green]-> UC5
+UC2 -[#red]-> user #text:white : notify
+user ---> UC7 #line:red
+dc -[#blue]-> UC6
+UC9 .> UC8 #line:white
+UC7 .> (UC4) #line:white;text:white : <<uses>>
+user ---> UC8 #line:red
+UC8 -[#green]-> iso #text:white : notify
+iso -[#green]-> UC9
+@enduml

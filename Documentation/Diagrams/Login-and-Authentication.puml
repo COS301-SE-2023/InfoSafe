@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+actor "user" as user
+rectangle Login {
+usecase "Login" as log
+Usecase "Authentication" as auth
+}
+
+user --> log
+log ..> auth : <<include>>
+@enduml
