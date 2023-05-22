@@ -1,4 +1,4 @@
-import './EditProfile.css';
+import '../Styling/EditProfile.css';
 import * as React from 'react';
 
 function EditProfile() {

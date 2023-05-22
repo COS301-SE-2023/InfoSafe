@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './Home.js';
-import Login from './Login';
-import CreateUser from './CreateUser';
+import Home from './Components/Home.js';
+import Login from './Components/Login';
+import CreateUser from './Components/CreateUser';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import EditProfile from './EditProfile';
+import EditProfile from './Components/EditProfile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route index element={<Home />} />
             <Route index element={<Login />} />
+            <Route path="/Home" element ={<Home />} />
             <Route path="/CreateUser" element={<CreateUser />} />
             <Route path="/EditProfile" element={<EditProfile />} />
         </Routes>

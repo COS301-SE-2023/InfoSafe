@@ -42,7 +42,8 @@
 }
 
 .home {
-    height: 600px;
+    top: 15px;
+    height: 85%;
     width: 80%;
     margin: auto;
     border: 5px solid;
@@ -52,6 +53,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 .nav a {
     color: inherit;

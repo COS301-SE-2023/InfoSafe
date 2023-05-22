@@ -1,4 +1,4 @@
-import './Home.css';
+import '../Styling/Home.css';
 
 import NavBar from './NavBar';
 
