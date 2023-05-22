@@ -65,7 +65,7 @@ I am proficient in:
     - NoSQL
 
   GitHub profile:   https://github.com/yanevdw19021209 \
-  LinkedIn profile: https://discord.com/channels/@me/1097551210157969578/1109890492285591742
+  LinkedIn profile: https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/
 
 - ### Karel Smit
   Karel Smit is an aspiring Software Engineer, who has a keen interest in problem solving and a third year BSc Computer Science student. He is proficient in front-end and back-end development, with a focus on web-based development. He is proficient in various programming languages, and able to use many popular, industry standard development tools. He is adaptable, good at communicating and is a quick learner, which along with his strong work ethic makes him a reliable member of any team.
