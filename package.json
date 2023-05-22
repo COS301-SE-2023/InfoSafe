@@ -7,6 +7,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "eslint": "^8.41.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -16,10 +17,11 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^27.5.1",
     "prettier": "2.8.8"
   },
   "scripts": {
-    "test": "react-scripts test --env=jsdom --testPathPattern=src/main/java/com/example/infosafe/app/src",
+    "test": "react-scripts test",
     "lint": "npx eslint",
     "format": "npx eslint --fix",
     "prettier": "npx prettier --write ."
