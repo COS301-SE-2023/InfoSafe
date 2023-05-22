@@ -12,11 +12,11 @@ function Login() {
             </div>
             <div className="user">
                 <p className="username">Username</p>
-                <input  className="untxt" type="text" id="username" name="username"></input>
+                <input data-testid="userIn" className="untxt" type="text" id="username" name="username"></input>
             </div>
             <div className = "user_password">
                 <p className="pass">Password</p>
-                <input className="pwtxt" type="password" id="password" name="password"></input>
+                <input data-testid="passIn" className="pwtxt" type="password" id="password" name="password"></input>
             </div>
             
             <a className="forgot">Forgot Password?</a>
