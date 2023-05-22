@@ -3,63 +3,130 @@ import React, { useState } from "react";
 
 export default function NavBar(){
     const [content, setContent] = useState("");
+    const [showUser, setShowUser] = useState(false);
+    const [showDevice, setShowDevice] = useState(false);
+    const [showSupport, setShowSupport] = useState(false);
+    const [showDisplay, setShowDisplay] = useState(false);
+    const [showSupportDisplay, setSupportDisplay] = useState(false);
     const handleClick = (content) => {
         // eslint-disable-next-line default-case
         switch(content){
             case "users":
                 setContent(users());
+                setShowDisplay(true);
+                setSupportDisplay(false);
                 break;
             case "data":
                 setContent(data());
+                setShowDisplay(true);
                 break;
             case "access":
                 setContent(access());
+                setShowDisplay(true);
+                setSupportDisplay(false);
                 break;
             case "compliance":
                 setContent(compliance());
+                setShowDisplay(true);
+                setSupportDisplay(false);
                 break;
             case "devices":
                 setContent(devices());
+                setShowDisplay(true);
+                setSupportDisplay(false);
                 break;
             case "support":
                 setContent(support());
+                setShowDisplay(false);
+                setSupportDisplay(true);
                 break;
             case "risks":
                 setContent(risks());
+                setShowDisplay(true);
+                setSupportDisplay(false);
                 break;
         }
     };
 
     const users = () =>{
-        return "<body>Users</body>";
+        setShowUser(true);
+        setShowDevice(false);
+        setShowSupport(false);
+        const userItems = [];
+        for(var i = 1; i < 30; i++){
+            userItems.push(<li key={i}>User {i}</li>);
+        }
+        return <ul>{userItems}</ul>;
     }
     
     const data = () =>{
-        return "<body>data</body>";
+        setShowUser(false);
+        setShowDevice(false);
+        setShowSupport(false);
+        const dataItems = [];
+        for(var i = 1; i < 30; i++){
+            dataItems.push(<li key={i}>Data access {i}</li>);
+        }
+        return <ul>{dataItems}</ul>;
     }
 
     const access = () =>{
-        return "<body>access</body>";
+        setShowUser(false);
+        setShowDevice(false);
+        setShowSupport(false);
+        const accessItems = [];
+        for(var i = 1; i < 30; i++){
+            accessItems.push(<li key={i}>Data access {i}</li>);
+        }
+        return <ul>{accessItems}</ul>;
     }
 
     const compliance = () =>{
-        return "<body>compliance</body>";
+        setShowUser(false);
+        setShowDevice(false);
+        setShowSupport(false);
+        const complianceItems = [];
+        for(var i = 1; i < 30; i++){
+            complianceItems.push(<li key={i}>Compliance Matrix{i}</li>);
+        }
+        return <ul>{complianceItems}</ul>;   
     }
 
     const devices = () =>{
-        return "<body>devices</body>";
+        setShowUser(false);
+        setShowDevice(true);
+        setShowSupport(false);
+        const deviceItems = [];
+        for(var i = 1; i < 30; i++){
+            deviceItems.push(<li key={i}>Device {i}</li>);
+        }
+        return <ul>{deviceItems}</ul>;   
     }
 
     const support = () =>{
-        return "<body>support</body>";
+        setShowUser(false);
+        setShowDevice(false);
+        setShowSupport(true);
+        const supportItem = [];
+        for(var k = 1; k < 21; k++){
+            supportItem.push(<li key={k}>Support Request {k}</li>)
+        }
+        return <ul>{supportItem}</ul>; 
     }
 
     const risks = () =>{
-        return "<body>risks</body>";
+        setShowUser(false);
+        setShowDevice(true);
+        setShowSupport(false);
+        const riskItems = [];
+        for(var i = 1; i < 30; i++){
+            riskItems.push(<li key={i}>Risk {i}</li>);
+        }
+        return <ul>{riskItems}</ul>;   
     }
 
 
-    return<div className="home">
+    return (<div className="home">
         <nav className="nav">
         <ul>
             <li><button onClick={() => handleClick("users")}>Users</button></li>
@@ -71,9 +138,12 @@ export default function NavBar(){
             <li><button onClick={() => handleClick("risks")}>Risks</button></li>
         </ul>
     </nav>
-    <div className="display" id="display" dangerouslySetInnerHTML={{ __html: content }}></div>
-    </div>
-    
+    {showDisplay && (<div className="display" id="display">{content}</div>)}
+    {showSupportDisplay && (<div className="contain"><div className="supp1" title="Active System Requests">{content}</div><div className="supp2" title="My Requests">{content}</div></div>)}
+    {showUser && (<button id='newUser'  onClick={() => console.log("Created new User")}>Create New User</button>)}
+    {showDevice && (<button id='newDevice'  onClick={() => console.log("Created new Device")}>Add Device</button>)}
+    {showSupport && (<button id='newDevice'  onClick={() => console.log("New Request made")}>Create New Request</button>)}
+    </div>) 
 }
 
 
