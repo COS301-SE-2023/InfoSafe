@@ -14,7 +14,7 @@ InfoSafe is an application that is used by the Information Security team, manage
 
 ### FrAgile-Demo1:
 
--   "enter video link here"
+-   https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=sharing
 
 ### SRS Document:
 
