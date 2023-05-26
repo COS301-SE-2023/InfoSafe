@@ -1,0 +1,19 @@
+name: React Front-End Unit Testing
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # Install required deps for action
+      - name: Install Dependencies
+        run: npm install
+
+      # Finally, run our tests
+      - name: run Tests
+        run: npm run test

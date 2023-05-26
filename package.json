@@ -7,6 +7,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "eslint": "^8.41.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
@@ -15,22 +17,20 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^27.5.1",
     "prettier": "2.8.8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "react-scripts test",
     "lint": "npx eslint",
     "format": "npx eslint --fix",
     "prettier": "npx prettier --write ."
   },
   "dependencies": {
-
     "app": "file:src/main/java/com/example/infosafe/app",
     "bootstrap": "^5.2.3",
     "react-bootstrap": "^2.7.4",
-
     "react-router": "^6.11.2",
     "react-router-dom": "^6.11.2"
-
   }
 }
