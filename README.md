@@ -1,10 +1,32 @@
+<hr>
+<h3>Repository Information</h3>
+
+[![Contributors](https://img.shields.io/github/contributors/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/network/members)
+[![Stars](https://img.shields.io/github/stars/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/stargazers)
+[![Closed Issues](https://img.shields.io/github/issues-closed/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/issues?q=is%3Aissue+is%3Aclosed)
+[![Issues](https://img.shields.io/github/issues/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/issues)
+[![Commit Activity](https://img.shields.io/github/commit-activity/y/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/graphs/commit-activity)
+
+[![Languages](https://img.shields.io/github/languages/count/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe)
+
+[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2046.6%25)](https://www.javascript.com)
+[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2045.7%25)](https://www.css3.com)
+[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%205.7%25)](https://www.html5.org)
+[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%202.0%25)](https://www.java.com)
+<hr>
+
 # Team Name
 
 FrAgile
 
+<hr>
+
 # Project Name
 
 InfoSafe
+
+<hr>
 
 ## Project Description
 
@@ -14,6 +36,7 @@ The vision for this project is to create an easy-to-use application with a user-
 
 Users will be assigned certain roles when their profile has been created on the application. These roles are defined by a set of permissions within the application, this is to manage data access as well as to assign administrative rights to certain users.
 
+<hr> 
 
 ## Resources
 
@@ -34,6 +57,8 @@ Users will be assigned certain roles when their profile has been created on the 
 
 - [Project Board](https://github.com/orgs/COS301-SE-2023/projects/17/views/1)
 
+<hr>
+
 ## Meet the Team
 
 - ### Christof Steyn
@@ -53,6 +78,8 @@ I am proficient in:
 #### Profiles:
 [GitHub profile](https://github.com/P3TROOS) | [LinkedIn profile](https://www.linkedin.com/in/christof-steyn-631420218/)
 
+<hr>
+
 - ### Chris Mittendorf
 <img src="https://media.licdn.com/dms/image/D4E03AQFSkj8GapYPUw/profile-displayphoto-shrink_800_800/0/1683400924640?e=1691625600&v=beta&t=hLkiOZ15V7tKsKeiSzKOQKyTUweiLDNrfuZ6KfwxBQc" alt="Chris Mittendorf Profile Image" width="250" height="250">
 
@@ -68,6 +95,8 @@ I am proficient in:
 
 #### Profiles:
 [GitHub profile](https://github.com/ChrisMitt) | [LinkedIn profile](https://www.linkedin.com/in/chris-mittendorf-078542275/)
+
+<hr>
 
 - ### Yané van der Westhuizen
 <img src="https://media.licdn.com/dms/image/D4D03AQHSS6zHo0Ky7Q/profile-displayphoto-shrink_800_800/0/1683385602245?e=1691625600&v=beta&t=qdPfvUw5_r_RG8rk8Y9sV6yo00Ej2df1N3cwa5WJS1Q" alt="Yané van der Westhuizen Profile Image" width="250" height="250">
@@ -87,6 +116,8 @@ I am proficient in:
 #### Profiles:
 [GitHub profile](https://github.com/yanevdw19021209) | [LinkedIn profile](https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/)
 
+<hr>
+
 - ### Karel Smit
 <img src="https://media.licdn.com/dms/image/D5603AQHxHV-T81QDVA/profile-displayphoto-shrink_800_800/0/1683460016768?e=1691625600&v=beta&t=gEmqC8fRVJdFnZ0b58m2IcV_y4sj-549eaeAHDr8DM4" alt="Karel Smit Profile Image" width="250" height="250">
 
@@ -102,6 +133,8 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 
 #### Profiles:
 [GitHub profile](https://github.com/KarelSmit) | [LinkedIn profile](https://www.linkedin.com/in/karel-smit-9a7929275/)
+
+<hr>
 
 - ### Alistair Ross
 <img src="https://media.licdn.com/dms/image/D4D03AQGi1YjpFqNmyA/profile-displayphoto-shrink_800_800/0/1679551842570?e=1691625600&v=beta&t=ycWVM9ce85zRdr8zGZY0FZwaFosFyc1celrZVQq9cVQ" alt="Alistair Ross Profile Image" width="250" height="250">
