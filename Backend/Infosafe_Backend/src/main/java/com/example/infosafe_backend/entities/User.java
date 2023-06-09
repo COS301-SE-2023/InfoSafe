@@ -1,12 +1,17 @@
 package com.example.infosafe_backend.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="users")
 public class User {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
+    private String role;
     public Long getId() {
         return id;
     }
@@ -54,12 +59,4 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
-    @Id
-    private Long id;
-    private String name;
-    private String surname;
-    private String email;
-    private String password;
-    private String role;
 }
