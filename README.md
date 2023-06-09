@@ -28,6 +28,7 @@ Users will be assigned certain roles when their profile has been created on the 
 - User Manual: https://docs.google.com/document/d/1K6INf8V2FX3ImG4edp1WG0pjeYeFxge5NXnCOik0XuI/edit?usp=sharing
 - System Architecture: https://docs.google.com/document/d/1UpT43Da21H5IaD1Iv_tf4yb09eTM6zguwjmgXQzieIY/edit?usp=sharing
 - Coding Standards: https://docs.google.com/document/d/1b56tirbEMl0m3AtQuOi0RwT0JF7N7EahnafryZlER2A/edit?usp=sharing
+- Team Contributions: https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing
 
 ### GitHub Project Board:
 
@@ -61,7 +62,7 @@ Users will be assigned certain roles when their profile has been created on the 
   GitHub profile:   https://github.com/ChrisMitt \
   LinkedIn profile: https://www.linkedin.com/in/chris-mittendorf-078542275/
 
-- ### Yane van der Westhuizen
+- ### Yané van der Westhuizen
   I am a third year BSc Computer Science student. I have always been very fascinated by technology and how it is ever-evolving. I have experience in full-stack development, with a particular interest in front-end development and web development. I am also well-versed in databases, including SQL and NoSQL databases and various different database management systems. I pride myself in being very organised and diligent.
   I am proficient in:
   - C++
