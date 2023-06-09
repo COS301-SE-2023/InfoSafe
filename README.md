@@ -24,6 +24,11 @@ Users will be assigned certain roles when their profile has been created on the 
 - Version 1: https://docs.google.com/document/d/1vryDJChlEdov88GEosChoTtcOP07sz62hRiUPI8SsH4/edit?usp=sharing
 - Version 2: https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing
 
+### Supporting Documentation:
+- User Manual: https://docs.google.com/document/d/1K6INf8V2FX3ImG4edp1WG0pjeYeFxge5NXnCOik0XuI/edit?usp=sharing
+- System Architecture: https://docs.google.com/document/d/1UpT43Da21H5IaD1Iv_tf4yb09eTM6zguwjmgXQzieIY/edit?usp=sharing
+- Coding Standards: https://docs.google.com/document/d/1b56tirbEMl0m3AtQuOi0RwT0JF7N7EahnafryZlER2A/edit?usp=sharing
+
 ### GitHub Project Board:
 
 -   https://github.com/orgs/COS301-SE-2023/projects/17/views/1
