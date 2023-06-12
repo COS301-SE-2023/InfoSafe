@@ -1,6 +1,6 @@
-package com.alibou.security.token;
+package com.example.infosafe_backend.token;
 
-import com.alibou.security.user.User;
+import com.example.infosafe_backend.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
