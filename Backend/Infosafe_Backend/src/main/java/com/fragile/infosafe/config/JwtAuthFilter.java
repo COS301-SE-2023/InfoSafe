@@ -1,6 +1,6 @@
 package com.fragile.infosafe.config;
 
-import com.alibou.security.token.TokenRepository;
+import com.fragile.infosafe.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
