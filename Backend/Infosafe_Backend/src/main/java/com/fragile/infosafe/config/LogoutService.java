@@ -1,6 +1,6 @@
 package com.fragile.infosafe.config;
 
-import com.alibou.security.token.TokenRepository;
+import com.fragile.infosafe.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

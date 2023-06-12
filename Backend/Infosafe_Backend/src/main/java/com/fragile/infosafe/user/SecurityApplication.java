@@ -1,4 +1,4 @@
-package com.fragile.infosafe;
+package com.fragile.infosafe.user;
 
 import com.fragile.infosafe.auth.AuthenticationService;
 import com.fragile.infosafe.auth.RegisterRequest;
