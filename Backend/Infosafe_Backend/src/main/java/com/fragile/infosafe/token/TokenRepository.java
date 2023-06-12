@@ -1,4 +1,4 @@
-package com.example.infosafe_backend.token;
+package com.fragile.infosafe.token;
 
 import java.util.List;
 import java.util.Optional;
