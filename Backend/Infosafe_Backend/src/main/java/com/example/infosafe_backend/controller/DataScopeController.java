@@ -17,7 +17,7 @@ public class DataScopeController {
     @PostMapping("/add")
     public String add(@RequestBody DataScope datascope){
         datascopeService.saveDataScope(datascope);
-        return "New user is added";
+        return "New datascope is added";
     }
 
 }
