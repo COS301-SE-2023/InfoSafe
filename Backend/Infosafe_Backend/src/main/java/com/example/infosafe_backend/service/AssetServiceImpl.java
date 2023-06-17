@@ -11,7 +11,7 @@ public class AssetServiceImpl implements AssetService {
     private AssetRepository assetRepository;
 
     @Override
-    public Assset saveAsset(Asset asset) {
+    public Asset saveAsset(Asset asset) {
         return assetRepository.save(asset);
     }
 }
