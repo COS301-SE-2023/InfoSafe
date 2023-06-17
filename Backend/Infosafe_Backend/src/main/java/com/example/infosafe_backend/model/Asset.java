@@ -1,6 +1,7 @@
 package com.example.infosafe_backend.model;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="assets")
@@ -10,7 +11,7 @@ public class Asset {
     private String assetName;
     private String assignee;
     private String status;
-    private String dateAcquired;
+    private Date dateAcquired;
 
     public Long getId() {
         return id;
@@ -44,11 +45,11 @@ public class Asset {
         this.status = status;
     }
 
-    public String getDateAcquired() {
+    public Date getDateAcquired() {
         return dateAcquired;
     }
 
-    public void setDateAcquired(String dateAcquired) {
+    public void setDateAcquired(Date dateAcquired) {
         this.dateAcquired = dateAcquired;
     }
 }
