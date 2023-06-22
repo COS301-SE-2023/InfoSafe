@@ -1,18 +1,12 @@
 # Team Name
 
-![Fragile](/Documentation/Images/Picture1.png)
+FrAgile
 
 # Project Name
 
 InfoSafe
 
-<<<<<<< Updated upstream
 ## Project Description
-=======
-<hr>
-
-## FrAgile-Infosafe-Project Description
->>>>>>> Stashed changes
 
 InfoSafe is an application that is used by the Information Security team, managers, and other employees to automate, monitor and manage a company’s processes and procedures in its Information Security Management System (ISMS).
 
@@ -22,35 +16,12 @@ InfoSafe is an application that is used by the Information Security team, manage
 - Demo 1: https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=sharing
 
 ### SRS Documentation:
-<<<<<<< Updated upstream
 - Version 1: https://docs.google.com/document/d/1vryDJChlEdov88GEosChoTtcOP07sz62hRiUPI8SsH4/edit?usp=sharing
 - Version 2: https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing
 
 ### GitHub Project Board:
 
 -   https://github.com/orgs/COS301-SE-2023/projects/17/views/1
-=======
-- [Version 1](https://docs.google.com/document/d/1vryDJChlEdov88GEosChoTtcOP07sz62hRiUPI8SsH4/edit?usp=sharing)
-- [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
-
-### Supporting Documentation:
-- [User Manual](https://docs.google.com/document/d/1K6INf8V2FX3ImG4edp1WG0pjeYeFxge5NXnCOik0XuI/edit?usp=sharing)
-- [System Architecture](https://docs.google.com/document/d/1UpT43Da21H5IaD1Iv_tf4yb09eTM6zguwjmgXQzieIY/edit?usp=sharing)
-- [Database Design](https://docs.google.com/document/d/1-pOzjPiqHTREVt65XhrZSk8-05vk5wouDt2ZB_YQQuA/edit?usp=sharing)
-- [Coding Standards](https://docs.google.com/document/d/1b56tirbEMl0m3AtQuOi0RwT0JF7N7EahnafryZlER2A/edit?usp=sharing)
-- [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
-
-### GitHub Project Board:
-- [Project Board](https://github.com/orgs/COS301-SE-2023/projects/17/views/1)
-
-### GitHub Wiki Page:
-- [Wiki Home Page](https://github.com/COS301-SE-2023/InfoSafe/wiki)
-- [Workflow and Branching Strategy](https://github.com/COS301-SE-2023/InfoSafe/wiki/Workflow-and-Branching-Strategy)
-- [Linting](https://github.com/COS301-SE-2023/InfoSafe/wiki/Linting)
-- [Using GitHub](https://github.com/COS301-SE-2023/InfoSafe/wiki/Using-GitHub)
-
-<hr>
->>>>>>> Stashed changes
 
 ## Meet the Team
 
