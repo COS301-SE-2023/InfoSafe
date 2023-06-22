@@ -18,7 +18,7 @@
 
 # Team Name
 
-FrAgile
+![FrAgile](Documentation/Images/FrAgile.png)
 
 <hr>
 
@@ -50,6 +50,7 @@ Users will be assigned certain roles when their profile has been created on the 
 ### Supporting Documentation:
 - [User Manual](https://docs.google.com/document/d/1K6INf8V2FX3ImG4edp1WG0pjeYeFxge5NXnCOik0XuI/edit?usp=sharing)
 - [System Architecture](https://docs.google.com/document/d/1UpT43Da21H5IaD1Iv_tf4yb09eTM6zguwjmgXQzieIY/edit?usp=sharing)
+- [Database Design](https://docs.google.com/document/d/1-pOzjPiqHTREVt65XhrZSk8-05vk5wouDt2ZB_YQQuA/edit?usp=sharing)
 - [Coding Standards](https://docs.google.com/document/d/1b56tirbEMl0m3AtQuOi0RwT0JF7N7EahnafryZlER2A/edit?usp=sharing)
 - [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
 
