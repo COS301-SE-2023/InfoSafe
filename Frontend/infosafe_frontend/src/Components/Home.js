@@ -5,8 +5,13 @@ import NavBar from './NavBar';
 //import various things to be displayed
 function Home() {
     return (
-        <div className="background">
-            <NavBar />
+        
+        <div className="backdrop">
+            
+            <div className="tabs">
+                <NavBar />
+            </div>
+            
         </div>
     );
 }

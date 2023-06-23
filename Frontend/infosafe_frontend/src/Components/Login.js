@@ -7,8 +7,8 @@ function Login({onLogin}) {
     };
   return (
 
-      <div className="background">
-          <div className="panel">
+    <div className="background">
+        <div className="panel">
 
             <div className="title">
                 <p className="logo">Login</p>
