@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 
 export default function NavBar() {
     const [content, setContent] = useState('');
-    const [showUser, setShowUser] = useState(false);
+    const [showUser, setShowUser] = useState([]);
     const [showDevice, setShowDevice] = useState(false);
     const [showSupport, setShowSupport] = useState(false);
     const [showDisplay, setShowDisplay] = useState(false);
@@ -66,13 +66,18 @@ export default function NavBar() {
         //     userItems.push(<li key={i}>User {i}</li>);
         // }
         // return <ul>{userItems}</ul>;
-        const userItems = [];
-        {
-            users.map(user=>(
-                userItems.push(user.name)
-            ))
-        }
-        return <ul>{userItems}</ul>
+        return (
+            <ul>
+                {
+                    showUser.map(user=>(
+                        <li>
+                            {user.name}
+                            {user.surname}
+                        </li>
+                    ))
+                }
+            </ul>
+        );
     };
 
     const data = () => {
