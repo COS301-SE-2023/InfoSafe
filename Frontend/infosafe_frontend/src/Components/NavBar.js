@@ -1,6 +1,6 @@
 import '../Styling/NavBar.css';
 import React, { useState } from 'react';
-
+import {FaRegEdit} from 'react-icons/fa';
 const NavBar = ({systemRole}) => {
     const [activeNavTab, activate] = useState(0);
 
@@ -16,7 +16,7 @@ const NavBar = ({systemRole}) => {
                 case 0:
                     const userItems = [];
                     for (let i = 1; i < 30; i++) {
-                        userItems.push(<li key={i}>User {i}</li>);
+                        userItems.push(<li key={i}>User {i} <FaRegEdit className="EditIcon" /></li>);
                     }
 
                     return (
