@@ -1,4 +1,4 @@
-package com.fragile.infosafe;
+package com.example.infosafe_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
