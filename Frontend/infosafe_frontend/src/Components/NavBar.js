@@ -1,5 +1,5 @@
 import '../Styling/NavBar.css';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 export default function NavBar() {
     const [content, setContent] = useState('');
@@ -8,6 +8,15 @@ export default function NavBar() {
     const [showSupport, setShowSupport] = useState(false);
     const [showDisplay, setShowDisplay] = useState(false);
     const [showSupportDisplay, setSupportDisplay] = useState(false);
+
+    useEffect(()=>{
+        fetch("http://localhost:8080/user/getAll")
+            .then(res=>res.json())
+            .then((result)=>{
+                setShowUser(result);
+            })
+    },[])
+
     const handleClick = (content) => {
         // eslint-disable-next-line default-case
         switch (content) {
@@ -49,14 +58,22 @@ export default function NavBar() {
     };
 
     const users = () => {
-        setShowUser(true);
-        setShowDevice(false);
-        setShowSupport(false);
-        const userItems = [];
-        for (var i = 1; i < 30; i++) {
-            userItems.push(<li key={i}>User {i}</li>);
+        // setShowUser(true);
+        // setShowDevice(false);
+        // setShowSupport(false);
+        // const userItems = [];
+        // for (var i = 1; i < 30; i++) {
+        //     userItems.push(<li key={i}>User {i}</li>);
+        // }
+        // return <ul>{userItems}</ul>;
+        {
+            showUser.map()
         }
-        return <ul>{userItems}</ul>;
+        return (
+            const userItems = [];
+
+            userItems.push
+        )
     };
 
     const data = () => {
