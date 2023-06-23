@@ -1,5 +1,4 @@
 package com.example.infosafe_backend.controller;
-
 import com.example.infosafe_backend.model.User;
 import com.example.infosafe_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
