@@ -66,14 +66,13 @@ export default function NavBar() {
         //     userItems.push(<li key={i}>User {i}</li>);
         // }
         // return <ul>{userItems}</ul>;
+        const userItems = [];
         {
-            showUser.map()
+            users.map(user=>(
+                userItems.push(user.name)
+            ))
         }
-        return (
-            const userItems = [];
-
-            userItems.push
-        )
+        return <ul>{userItems}</ul>
     };
 
     const data = () => {

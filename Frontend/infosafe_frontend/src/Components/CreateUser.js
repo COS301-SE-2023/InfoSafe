@@ -10,6 +10,7 @@ export default function CreateUser() {
     const[email,setEmail]=useState('')
     const[role,setRole]=useState('EMPLOYEE')
     const[password,setPassword]=useState('')
+    const[users,setUsers]=useState([])
 
     const handleClick=(e)=> {
         e.preventDefault()
