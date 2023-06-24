@@ -84,11 +84,14 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     color: #ffffff;
-    position: relative;
+
     margin: 0 auto;
-    bottom: -10%;
     padding: 0.4%;
     width: 15%;
+}
+.CreateUserButtonDiv {
+    position: relative;
+    bottom: -10%;
 }
 .datascopes {
     background-color: #ffffff;

@@ -5,6 +5,7 @@ import { RiDeleteBin6Fill } from 'react-icons/ri';
 import ViewUser from './ViewUser';
 import EditUser from './EditUser';
 
+
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
@@ -163,17 +164,25 @@ const NavBar = ({ systemRole }) => {
         }
     };
 
+    const [createUserOpen, setCreateUserOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0:
                     return (
-                        <button
-                            className="CreateUserButton"
-                            onClick={() => console.log('Created new User')}
-                        >
-                            Create New User
-                        </button>
+                        <div className="CreateUserButtonDiv">
+                            <button
+                                className="CreateUserButton"
+                                onClick={() => setCreateUserOpen(true)}
+                            >
+                                Create New User
+                            </button>
+                            {createUserOpen ? (
+                                <CreateUserPopup
+                                    closeCreateUserOpen={() => setCreateUserOpen(false)}
+                                />
+                            ) : null}
+                        </div>
                     );
                 case 3:
                     return (
