@@ -2,6 +2,7 @@ import '../Styling/NavBar.css';
 import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
+import ViewUser from './ViewUser';
 import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
 
@@ -9,6 +10,7 @@ import Dropdown from 'react-dropdown';
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     const [id, setUserID] = useState(null);
+    const [viewUserOpen, setViewUserOpen] = useState(false);
     const role_options = [
         'EMPLOYEE',
         'ISO',
@@ -96,7 +98,7 @@ const NavBar = ({ systemRole }) => {
                     const userItems = [];
                     for (let i = 1; i < 30; i++) {
                         userItems.push(
-                            <li key={i}>
+                            <li key={i} onClick={() => setViewUserOpen(true)}>
                                 User {i}{' '}
                                 <FaRegEdit className="EditIcon" onClick={() => displayPopup(i)} />
                                 {editUserPopup(i)} <RiDeleteBin6Fill className="DeleteIcon" />
@@ -107,6 +109,9 @@ const NavBar = ({ systemRole }) => {
                     return (
                         <div className="users">
                             <ul className="userList">{userItems}</ul>
+                            {viewUserOpen ? (
+                                <ViewUser closeViewUser={() => setViewUserOpen(false)} />
+                            ) : null}
                         </div>
                     );
                 }
