@@ -18,27 +18,29 @@ export const CreateUserPopup = ({ closeCreateUserOpen }) => {
     const[email,setEmail]=useState('')
     const[role,setRole]=useState('ISO')
     const[password,setPassword]=useState('')
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleClick=(e)=> {
         e.preventDefault()
         const user = {name, surname, email, password, role}
         console.log(user)
+        setIsOpen(false);
     }
 
     return (
-        <Popup open={true} onClose={closeCreateUserOpen} position="center center">
+        <Popup open={isOpen} position="center center">
             <div className="createUserOverlay">
                 <div className="border">
                     <form>
                         <p className="pageLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
-                        <input className="nameInput" name="name" />
+                        <input className="nameInput" name="name" value={name} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" name="surname" />
+                        <input className="surnameInput" name="surname" value={surname} onChange={(e)=>setSurname(e.target.value)}/>
                         <p className="emailLabel">Email</p>
-                        <input className="emailInput" name="email" />
+                        <input className="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" name="password" />
+                        <input className="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         <button className="genPassword">Generate Password</button>
                         <p className="label_role">System role</p>
                         <Dropdown
@@ -47,7 +49,7 @@ export const CreateUserPopup = ({ closeCreateUserOpen }) => {
                             className="role_dropdown"
                             name="role"
                         />
-                        <button className="btn_finish" onClick={closeCreateUserOpen}>
+                        <button className="btn_finish" onClick={handleClick}>
                             Submit
                         </button>
                     </form>
