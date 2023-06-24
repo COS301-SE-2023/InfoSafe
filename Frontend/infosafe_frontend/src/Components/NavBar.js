@@ -12,6 +12,7 @@ const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     //const [id, setUserID] = useState(null);
     const [viewUserOpen, setViewUserOpen] = useState(false);
+
     const [editUserOpen, setEditUserOpen] = useState(false);
 
     const handleClick = (NavTabIndex) => {
