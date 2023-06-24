@@ -1,24 +1,107 @@
 import '../Styling/NavBar.css';
 import React, { useState } from 'react';
-import {FaRegEdit} from 'react-icons/fa';
-import {RiDeleteBin6Fill} from 'react-icons/ri';
-/* eslint-disable react/prop-types */
-const NavBar = ({systemRole}) => {
-    const [activeNavTab, activate] = useState(0);
+import { FaRegEdit } from 'react-icons/fa';
+import { RiDeleteBin6Fill } from 'react-icons/ri';
+import Popup from 'reactjs-popup';
+import Dropdown from 'react-dropdown';
 
+/* eslint-disable react/prop-types */
+const NavBar = ({ systemRole }) => {
+    const [activeNavTab, activate] = useState(0);
+    const [id, setUserID] = useState(null);
+    const role_options = [
+        'EMPLOYEE',
+        'ISO',
+        'DISO',
+        'DATA CUSTODIAN',
+        'SYSTEM ADMINISTRATOR',
+        'ASSET MANAGER'
+    ];
+    const displayPopup = (userID) => {
+        setUserID(userID);
+    };
+
+    const hidePopup = () => {
+        setUserID(null);
+    };
+
+    const editUserPopup = (userID) => {
+        if (id === userID) {
+            return (
+                <Popup open={true} onClose={hidePopup} position="center center">
+                    <div className="editUserOverlay">
+                        <div className="border">
+                            <p className="editUserTitle">Edit User</p>
+                            <div className="nameEdit">
+                                <p className="nameTitle">Name</p>
+                                <input
+                                    className="editNameInput"
+                                    type="text"
+                                    id="editusername"
+                                    name="editusername"
+                                    defaultValue="Jane"
+                                />
+                            </div>
+                            <div className="surnameEdit">
+                                <p className="surnameTitle">Surname</p>
+                                <input
+                                    className="editSurnameInput"
+                                    type="text"
+                                    id="editusersurname"
+                                    name="editusersurname"
+                                    defaultValue="Doe"
+                                />
+                            </div>
+                            <div className="emailEdit">
+                                <p className="emailTitle">Email</p>
+                                <input
+                                    className="editEmailInput"
+                                    type="text"
+                                    id="edituseremail"
+                                    name="edituseremail"
+                                    defaultValue="jane.doe@example.com"
+                                />
+                            </div>
+                            <div className="roleEdit">
+                                <p className="roleTitle">System Role</p>
+                                <Dropdown
+                                    options={role_options}
+                                    value={role_options[0]}
+                                    className="roleDropdown"
+                                    name="role"
+                                />
+                            </div>
+                            <button className="ChangePasswordButton">Change Password</button>
+                            <button
+                                className="FinishButton"
+                                onClick={() => console.log('Finish editing')}
+                            >
+                                Finish
+                            </button>
+                        </div>
+                    </div>
+                </Popup>
+            );
+        }
+        return null;
+    };
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
 
     const displayInfo = () => {
-
-        if (systemRole === 'ISO')
-        {
+        if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0: {
                     const userItems = [];
                     for (let i = 1; i < 30; i++) {
-                        userItems.push(<li key={i}>User {i} <FaRegEdit className="EditIcon" /> <RiDeleteBin6Fill className="DeleteIcon" /></li>);
+                        userItems.push(
+                            <li key={i}>
+                                User {i}{' '}
+                                <FaRegEdit className="EditIcon" onClick={() => displayPopup(i)} />
+                                {editUserPopup(i)} <RiDeleteBin6Fill className="DeleteIcon" />
+                            </li>
+                        );
                     }
 
                     return (
@@ -101,7 +184,6 @@ const NavBar = ({systemRole}) => {
                                     <ul className="myRequestsList">{my_requests}</ul>
                                 </div>
                             </div>
-
                         </div>
                     );
                 }
@@ -111,46 +193,59 @@ const NavBar = ({systemRole}) => {
                 default:
                     return null;
             }
-
-
         }
     };
 
     const displayButtons = () => {
-
-        if (systemRole === 'ISO')
-        {
+        if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0:
                     return (
-
-                        <button className='CreateUserButton' onClick={() => console.log('Created new User')}>
+                        <button
+                            className="CreateUserButton"
+                            onClick={() => console.log('Created new User')}
+                        >
                             Create New User
                         </button>
                     );
                 case 3:
                     return (
                         <div className="buttons">
-                            <button className='CreateTaskButton' onClick={() => console.log('Created new task')}>
+                            <button
+                                className="CreateTaskButton"
+                                onClick={() => console.log('Created new task')}
+                            >
                                 Create New User
                             </button>
-                            <button className='UpdateTaskButton' onClick={() => console.log('Updated task.')}>
+                            <button
+                                className="UpdateTaskButton"
+                                onClick={() => console.log('Updated task.')}
+                            >
                                 Update Task
                             </button>
-                            <button className='RevokeTaskButton' onClick={() => console.log('Revoked task.')}>
+                            <button
+                                className="RevokeTaskButton"
+                                onClick={() => console.log('Revoked task.')}
+                            >
                                 Revoke Task
                             </button>
                         </div>
                     );
                 case 4:
                     return (
-                        <button className='AddDeviceButton' onClick={() => console.log('Added new device')}>
+                        <button
+                            className="AddDeviceButton"
+                            onClick={() => console.log('Added new device')}
+                        >
                             Add Device
                         </button>
                     );
                 case 5:
                     return (
-                        <button className='CreateSupportRequestButton' onClick={() => console.log('Create new support request.')}>
+                        <button
+                            className="CreateSupportRequestButton"
+                            onClick={() => console.log('Create new support request.')}
+                        >
                             Create New Request
                         </button>
                     );
@@ -158,19 +253,32 @@ const NavBar = ({systemRole}) => {
                     return null;
             }
         }
-
     };
 
     return (
-        <div className='navbar'>
-            <ul className = "tabs">
-                <li className={activeNavTab === 0 ? 'active' : ''} onClick={() => handleClick(0) }>Users</li>
-                <li className={activeNavTab === 1 ? 'active' : ''} onClick={() => handleClick(1) }>Data Scopes</li>
-                <li className={activeNavTab === 2 ? 'active' : ''} onClick={() => handleClick(2) }>Access Requests</li>
-                <li className={activeNavTab === 3 ? 'active' : ''} onClick={() => handleClick(3) }>Compliance Matrix</li>
-                <li className={activeNavTab === 4 ? 'active' : ''} onClick={() => handleClick(4) }>Devices</li>
-                <li className={activeNavTab === 5 ? 'active' : ''} onClick={() => handleClick(5) }>Support Requests</li>
-                <li className={activeNavTab === 6 ? 'active' : ''} onClick={() => handleClick(6) }>Risks</li>
+        <div className="navbar">
+            <ul className="tabs">
+                <li className={activeNavTab === 0 ? 'active' : ''} onClick={() => handleClick(0)}>
+                    Users
+                </li>
+                <li className={activeNavTab === 1 ? 'active' : ''} onClick={() => handleClick(1)}>
+                    Data Scopes
+                </li>
+                <li className={activeNavTab === 2 ? 'active' : ''} onClick={() => handleClick(2)}>
+                    Access Requests
+                </li>
+                <li className={activeNavTab === 3 ? 'active' : ''} onClick={() => handleClick(3)}>
+                    Compliance Matrix
+                </li>
+                <li className={activeNavTab === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
+                    Devices
+                </li>
+                <li className={activeNavTab === 5 ? 'active' : ''} onClick={() => handleClick(5)}>
+                    Support Requests
+                </li>
+                <li className={activeNavTab === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
+                    Risks
+                </li>
             </ul>
 
             <div className="display">
