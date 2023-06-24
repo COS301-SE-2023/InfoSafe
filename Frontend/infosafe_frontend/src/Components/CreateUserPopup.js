@@ -15,9 +15,9 @@ export const CreateUserPopup = ({ popupOpen,popupClose }) => {
     return (
         <Popup open={popupOpen} onClose={popupClose} position="center center">
             <div className="createUserOverlay">
-                <div className="border">
+                <div className="createuserBorder">
                     <form>
-                        <p className="pageLabel">User Creation</p>
+                        <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" name="name" />
                         <p className="surnameLabel">Surname</p>
@@ -34,7 +34,7 @@ export const CreateUserPopup = ({ popupOpen,popupClose }) => {
                             className="role_dropdown"
                             name="role"
                         />
-                        <button className="btn_finish" onClick={popupClose}>
+                        <button className="createuser_finish" onClick={popupClose}>
                             Submit
                         </button>
                     </form>
