@@ -3,6 +3,7 @@ import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
 
+/* eslint-disable react/prop-types */
 const role_options = [
     'EMPLOYEE',
     'ISO',
