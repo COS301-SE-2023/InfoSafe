@@ -12,23 +12,24 @@ const role_options = [
     'SYSTEM ADMINISTRATOR',
     'ASSET MANAGER'
 ];
-export const CreateUserPopup = ({ closeCreateUserOpen }) => {
+export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[name,setName]=useState('')
     const[surname,setSurname]=useState('')
     const[email,setEmail]=useState('')
     const[role,setRole]=useState('ISO')
     const[password,setPassword]=useState('')
-    const [isOpen, setIsOpen] = useState(false);
+    //const [isOpen, setIsOpen] = useState(false);
 
     const handleClick=(e)=> {
         e.preventDefault()
         const user = {name, surname, email, password, role}
         console.log(user)
-        setIsOpen(false);
+        //setIsOpen(false);
+        popupClose
     }
 
     return (
-        <Popup open={isOpen} position="center center">
+        <Popup open={popupOpen} onClose={popupClose} position="center center">
             <div className="createUserOverlay">
                 <div className="border">
                     <form>
@@ -49,7 +50,7 @@ export const CreateUserPopup = ({ closeCreateUserOpen }) => {
                             className="role_dropdown"
                             name="role"
                         />
-                        <button className="btn_finish" onClick={handleClick}>
+                        <button className="createuser_finish" onClick={popupClose}>
                             Submit
                         </button>
                     </form>
