@@ -6,6 +6,9 @@ import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
 import { CreateUserPopup } from './CreateUserPopup';
 import { CreateDataScopePopup } from './CreateDataScopePopup';
+import  ViewUser  from './ViewUser';
+import EditUser from "./EditUser";
+
 
 
 /* eslint-disable react/prop-types */
