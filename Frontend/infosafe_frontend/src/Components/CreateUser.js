@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css';
 import {useState} from "react";
 
-const role_options = [ "EMPLOYEE", "ISO", "DISO", "DATA CUSTODIAN", "SYSTEM ADMINISTRATOR", "ASSET MANAGER"];
+const role_options = ["EMPLOYEE", "ISO", "DISO", "DATA CUSTODIAN", "SYSTEM ADMINISTRATOR", "ASSET MANAGER"];
 export default function CreateUser() {
     const[name,setName]=useState('')
     const[surname,setSurname]=useState('')
