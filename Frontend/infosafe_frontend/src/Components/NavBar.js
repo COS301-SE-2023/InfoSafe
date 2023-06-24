@@ -237,7 +237,8 @@ const NavBar = ({ systemRole }) => {
                             </button>
                             {createUserOpen ? (
                                 <CreateUserPopup
-                                    closeCreateUser={() => setCreateUserOpen(false)}
+                                    popupClose={() => setCreateUserOpen(false)}
+                                    popupOpen={createUserOpen}
                                 />
                             ) : null}
                         </div>
@@ -253,7 +254,8 @@ const NavBar = ({ systemRole }) => {
                           </button>
                           {createDataScopeOpen ? (
                             <CreateDataScopePopup
-                              closeCreateDataScope={() => setCreateDataScopeOpen(false)}
+                              popupClose={() => setCreateDataScopeOpen(false)}
+                              popupOpen={createDataScopeOpen}
                             />
                           ) : null}
                       </div>

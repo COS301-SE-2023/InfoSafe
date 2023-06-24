@@ -11,9 +11,9 @@ const role_options = [
     'SYSTEM ADMINISTRATOR',
     'ASSET MANAGER'
 ];
-export const CreateUserPopup = ({ closeCreateUserOpen }) => {
+export const CreateUserPopup = ({ popupOpen,popupClose }) => {
     return (
-        <Popup open={true} onClose={closeCreateUserOpen} position="center center">
+        <Popup open={popupOpen} onClose={popupClose} position="center center">
             <div className="createUserOverlay">
                 <div className="border">
                     <form>
@@ -34,7 +34,7 @@ export const CreateUserPopup = ({ closeCreateUserOpen }) => {
                             className="role_dropdown"
                             name="role"
                         />
-                        <button className="btn_finish" onClick={closeCreateUserOpen}>
+                        <button className="btn_finish" onClick={popupClose}>
                             Submit
                         </button>
                     </form>
