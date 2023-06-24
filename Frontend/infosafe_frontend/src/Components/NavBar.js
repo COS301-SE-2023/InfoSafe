@@ -5,6 +5,7 @@ import { RiDeleteBin6Fill } from 'react-icons/ri';
 import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
 import { CreateUserPopup } from './CreateUserPopup';
+import { CreateDataScopePopup } from "./CreateDataScopePopup";
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -221,6 +222,7 @@ const NavBar = ({ systemRole }) => {
     };
 
     const [createUserOpen, setCreateUserOpen] = useState(false);
+    const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
@@ -235,10 +237,26 @@ const NavBar = ({ systemRole }) => {
                             </button>
                             {createUserOpen ? (
                                 <CreateUserPopup
-                                    closeCreateUserOpen={() => setCreateUserOpen(false)}
+                                    closeCreateUser={() => setCreateUserOpen(false)}
                                 />
                             ) : null}
                         </div>
+                    );
+                case 1:
+                    return (
+                      <div className="CreateDataScopeDiv">
+                          <button
+                            className="CreateDataScopeButton"
+                            onClick={() => setCreateDataScopeOpen(true)}
+                          >
+                              Create Data Scope
+                          </button>
+                          {createDataScopeOpen ? (
+                            <CreateDataScopePopup
+                              closeCreateDataScope={() => setCreateDataScopeOpen(false)}
+                            />
+                          ) : null}
+                      </div>
                     );
                 case 3:
                     return (
