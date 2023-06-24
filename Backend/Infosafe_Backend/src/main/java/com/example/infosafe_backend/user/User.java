@@ -1,5 +1,6 @@
-package com.example.infosafe_backend.entities;
+package com.example.infosafe_backend.user;
 
+import com.example.infosafe_backend.user.Role;
 import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
@@ -22,17 +23,18 @@ import java.util.List;
 public class User implements UserDetails{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String name;
     private String surname;
     private String email;
     private String password;
-
-    public Long getId() {
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,8 +62,7 @@ public class User implements UserDetails{
         this.email = email;
     }
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -109,3 +110,4 @@ public class User implements UserDetails{
         this.role = role;
     }
 }
+
