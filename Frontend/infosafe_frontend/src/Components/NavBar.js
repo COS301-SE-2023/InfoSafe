@@ -3,90 +3,15 @@ import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import ViewUser from './ViewUser';
-import Popup from 'reactjs-popup';
-import Dropdown from 'react-dropdown';
+import EditUser from './EditUser';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
-    const [id, setUserID] = useState(null);
+    //const [id, setUserID] = useState(null);
     const [viewUserOpen, setViewUserOpen] = useState(false);
-    const role_options = [
-        'EMPLOYEE',
-        'ISO',
-        'DISO',
-        'DATA CUSTODIAN',
-        'SYSTEM ADMINISTRATOR',
-        'ASSET MANAGER'
-    ];
-    const displayPopup = (userID) => {
-        setUserID(userID);
-    };
+    const [editUserOpen, setEditUserOpen] = useState(false);
 
-    const hidePopup = () => {
-        setUserID(null);
-    };
-
-    const editUserPopup = (userID) => {
-        if (id === userID) {
-            return (
-                <Popup open={true} onClose={hidePopup} position="center center">
-                    <div className="editUserOverlay">
-                        <div className="border">
-                            <p className="editUserTitle">Edit User</p>
-                            <div className="nameEdit">
-                                <p className="nameTitle">Name</p>
-                                <input
-                                    className="editNameInput"
-                                    type="text"
-                                    id="editusername"
-                                    name="editusername"
-                                    defaultValue="Jane"
-                                />
-                            </div>
-                            <div className="surnameEdit">
-                                <p className="surnameTitle">Surname</p>
-                                <input
-                                    className="editSurnameInput"
-                                    type="text"
-                                    id="editusersurname"
-                                    name="editusersurname"
-                                    defaultValue="Doe"
-                                />
-                            </div>
-                            <div className="emailEdit">
-                                <p className="emailTitle">Email</p>
-                                <input
-                                    className="editEmailInput"
-                                    type="text"
-                                    id="edituseremail"
-                                    name="edituseremail"
-                                    defaultValue="jane.doe@example.com"
-                                />
-                            </div>
-                            <div className="roleEdit">
-                                <p className="roleTitle">System Role</p>
-                                <Dropdown
-                                    options={role_options}
-                                    value={role_options[0]}
-                                    className="roleDropdown"
-                                    name="role"
-                                />
-                            </div>
-                            <button className="ChangePasswordButton">Change Password</button>
-                            <button
-                                className="FinishButton"
-                                onClick={() => console.log('Finish editing')}
-                            >
-                                Finish
-                            </button>
-                        </div>
-                    </div>
-                </Popup>
-            );
-        }
-        return null;
-    };
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -98,10 +23,27 @@ const NavBar = ({ systemRole }) => {
                     const userItems = [];
                     for (let i = 1; i < 30; i++) {
                         userItems.push(
-                            <li key={i} onClick={() => setViewUserOpen(true)}>
-                                User {i}{' '}
-                                <FaRegEdit className="EditIcon" onClick={() => displayPopup(i)} />
-                                {editUserPopup(i)} <RiDeleteBin6Fill className="DeleteIcon" />
+                            <li key={i}>
+                                <p onClick={() => setViewUserOpen(true)}>
+                                    User {i}
+                                    {viewUserOpen ? (
+                                        <ViewUser
+                                            closeViewUser={() => setViewUserOpen(false)}
+                                            openViewUser={viewUserOpen}
+                                        />
+                                    ) : null}
+                                </p>
+                                <FaRegEdit
+                                    className="EditIcon"
+                                    onClick={() => setEditUserOpen(true)}
+                                />
+                                {editUserOpen ? (
+                                    <EditUser
+                                        closeEditUser={() => setEditUserOpen(false)}
+                                        openEditUser={editUserOpen}
+                                    />
+                                ) : null}{' '}
+                                <RiDeleteBin6Fill className="DeleteIcon" />
                             </li>
                         );
                     }
@@ -109,9 +51,6 @@ const NavBar = ({ systemRole }) => {
                     return (
                         <div className="users">
                             <ul className="userList">{userItems}</ul>
-                            {viewUserOpen ? (
-                                <ViewUser closeViewUser={() => setViewUserOpen(false)} />
-                            ) : null}
                         </div>
                     );
                 }
