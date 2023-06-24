@@ -7,7 +7,7 @@
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.border {
+.createuserBorder {
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
@@ -15,7 +15,7 @@
     position: relative;
     top: 4vh;
 }
-.pageLabel {
+.createuserLabel {
     width: 100%;
     justify-content: center;
     color: #000000;
@@ -161,18 +161,20 @@
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
-    margin: 0 auto;
+    margin-top: 2vh;
     text-align: center;
     border: none;
     text-align: center;
     align-content: center;
     height: 10%;
+    left: 25%;
+    position: relative;
 }
 .role_dropdown:after {
     transform: translateY(50%);
 }
 
-.btn_finish {
+.createuser_finish {
     width: 15%;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);

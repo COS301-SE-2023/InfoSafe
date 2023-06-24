@@ -167,6 +167,7 @@ const NavBar = ({ systemRole }) => {
     };
 
     const [createUserOpen, setCreateUserOpen] = useState(false);
+    const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
@@ -181,7 +182,25 @@ const NavBar = ({ systemRole }) => {
                             </button>
                             {createUserOpen ? (
                                 <CreateUserPopup
-                                    closeCreateUserOpen={() => setCreateUserOpen(false)}
+                                    popupClose={() => setCreateUserOpen(false)}
+                                    popupOpen={createUserOpen}
+                                />
+                            ) : null}
+                        </div>
+                    );
+                case 1:
+                    return (
+                        <div className="CreateDataScopeDiv">
+                            <button
+                                className="CreateDataScopeButton"
+                                onClick={() => setCreateDataScopeOpen(true)}
+                            >
+                                Create Data Scope
+                            </button>
+                            {createDataScopeOpen ? (
+                                <CreateDataScopePopup
+                                    popupClose={() => setCreateDataScopeOpen(false)}
+                                    popupOpen={createDataScopeOpen}
                                 />
                             ) : null}
                         </div>

@@ -25,7 +25,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         const user = {name, surname, email, password, role}
         console.log(user)
         //setIsOpen(false);
-        popupClose
+        popupClose()
     }
 
     return (
@@ -33,7 +33,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             <div className="createUserOverlay">
                 <div className="border">
                     <form>
-                        <p className="pageLabel">User Creation</p>
+                        <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" name="name" value={name} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
@@ -50,7 +50,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                             className="role_dropdown"
                             name="role"
                         />
-                        <button className="createuser_finish" onClick={popupClose}>
+                        <button className="createuser_finish" onClick={handleClick}>
                             Submit
                         </button>
                     </form>
