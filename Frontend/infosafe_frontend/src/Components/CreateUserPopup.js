@@ -18,13 +18,11 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[email,setEmail]=useState('')
     const[role,setRole]=useState('ISO')
     const[password,setPassword]=useState('')
-    //const [isOpen, setIsOpen] = useState(false);
 
     const handleClick=(e)=> {
         e.preventDefault()
         const user = {name, surname, email, password, role}
         console.log(user)
-        //setIsOpen(false);
         popupClose()
     }
 
