@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
@@ -13,6 +13,18 @@ const role_options = [
     'ASSET MANAGER'
 ];
 export const CreateUserPopup = ({ closeCreateUserOpen }) => {
+    const[name,setName]=useState('')
+    const[surname,setSurname]=useState('')
+    const[email,setEmail]=useState('')
+    const[role,setRole]=useState('ISO')
+    const[password,setPassword]=useState('')
+
+    const handleClick=(e)=> {
+        e.preventDefault()
+        const user = {name, surname, email, password, role}
+        console.log(user)
+    }
+
     return (
         <Popup open={true} onClose={closeCreateUserOpen} position="center center">
             <div className="createUserOverlay">
@@ -39,6 +51,11 @@ export const CreateUserPopup = ({ closeCreateUserOpen }) => {
                             Submit
                         </button>
                     </form>
+                    {/*{name}*/}
+                    {/*{surname}*/}
+                    {/*{email}*/}
+                    {/*{password}*/}
+                    {/*{role}*/}
                 </div>
             </div>
         </Popup>
