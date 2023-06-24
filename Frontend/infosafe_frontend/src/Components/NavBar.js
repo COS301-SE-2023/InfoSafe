@@ -2,10 +2,89 @@ import '../Styling/NavBar.css';
 import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
+import Popup from 'reactjs-popup';
+import Dropdown from 'react-dropdown';
+
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
+    const [id, setUserID] = useState(null);
+    const role_options = [
+        'EMPLOYEE',
+        'ISO',
+        'DISO',
+        'DATA CUSTODIAN',
+        'SYSTEM ADMINISTRATOR',
+        'ASSET MANAGER'
+    ];
+    const displayPopup = (userID) => {
+        setUserID(userID);
+    };
 
+    const hidePopup = () => {
+        setUserID(null);
+    };
+
+    const editUserPopup = (userID) => {
+        if (id === userID) {
+            return (
+                <Popup open={true} onClose={hidePopup} position="center center">
+                    <div className="editUserOverlay">
+                        <div className="border">
+                            <p className="editUserTitle">Edit User</p>
+                            <div className="nameEdit">
+                                <p className="nameTitle">Name</p>
+                                <input
+                                    className="editNameInput"
+                                    type="text"
+                                    id="editusername"
+                                    name="editusername"
+                                    defaultValue="Jane"
+                                />
+                            </div>
+                            <div className="surnameEdit">
+                                <p className="surnameTitle">Surname</p>
+                                <input
+                                    className="editSurnameInput"
+                                    type="text"
+                                    id="editusersurname"
+                                    name="editusersurname"
+                                    defaultValue="Doe"
+                                />
+                            </div>
+                            <div className="emailEdit">
+                                <p className="emailTitle">Email</p>
+                                <input
+                                    className="editEmailInput"
+                                    type="text"
+                                    id="edituseremail"
+                                    name="edituseremail"
+                                    defaultValue="jane.doe@example.com"
+                                />
+                            </div>
+                            <div className="roleEdit">
+                                <p className="roleTitle">System Role</p>
+                                <Dropdown
+                                    options={role_options}
+                                    value={role_options[0]}
+                                    className="roleDropdown"
+                                    name="role"
+                                />
+                            </div>
+                            <button className="ChangePasswordButton">Change Password</button>
+                            <button
+                                className="FinishButton"
+                                onClick={() => console.log('Finish editing')}
+                            >
+                                Finish
+                            </button>
+                        </div>
+                    </div>
+                </Popup>
+            );
+        }
+        return null;
+    };
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -18,8 +97,9 @@ const NavBar = ({ systemRole }) => {
                     for (let i = 1; i < 30; i++) {
                         userItems.push(
                             <li key={i}>
-                                User {i} <FaRegEdit className="EditIcon" />{' '}
-                                <RiDeleteBin6Fill className="DeleteIcon" />
+                                User {i}{' '}
+                                <FaRegEdit className="EditIcon" onClick={() => displayPopup(i)} />
+                                {editUserPopup(i)} <RiDeleteBin6Fill className="DeleteIcon" />
                             </li>
                         );
                     }
