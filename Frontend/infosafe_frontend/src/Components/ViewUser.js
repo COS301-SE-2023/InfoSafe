@@ -2,9 +2,9 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/ViewUser.css';
 /* eslint-disable react/prop-types */
-const ViewUser = ({ closeViewUser }) => {
+const ViewUser = ({ closeViewUser, openViewUser }) => {
     return (
-        <Popup open={true} onClose={closeViewUser} position="center center">
+        <Popup open={openViewUser} onClose={closeViewUser} position="center center">
             <div className="viewUserOverlay">
                 <div className="borderView">
                     <p className="viewUserTitle">View User</p>
