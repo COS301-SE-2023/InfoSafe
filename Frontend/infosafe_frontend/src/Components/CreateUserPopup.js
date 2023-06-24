@@ -12,13 +12,13 @@ const role_options = [
     'SYSTEM ADMINISTRATOR',
     'ASSET MANAGER'
 ];
-export const CreateUserPopup = ({ closeCreateUserOpen }) => {
+export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
-        <Popup open={true} onClose={closeCreateUserOpen} position="center center">
+        <Popup open={popupOpen} onClose={popupClose} position="center center">
             <div className="createUserOverlay">
-                <div className="border">
+                <div className="createuserBorder">
                     <form>
-                        <p className="pageLabel">User Creation</p>
+                        <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" name="name" />
                         <p className="surnameLabel">Surname</p>
@@ -28,14 +28,14 @@ export const CreateUserPopup = ({ closeCreateUserOpen }) => {
                         <p className="passwordLabel">Password</p>
                         <input className="passwordInput" name="password" />
                         <button className="genPassword">Generate Password</button>
-                        <p className="label_role">System role</p>
+                        <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
                             value={role_options[0]}
                             className="role_dropdown"
                             name="role"
                         />
-                        <button className="btn_finish" onClick={closeCreateUserOpen}>
+                        <button className="createuser_finish" onClick={popupClose}>
                             Submit
                         </button>
                     </form>
