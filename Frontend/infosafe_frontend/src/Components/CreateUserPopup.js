@@ -23,6 +23,13 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const user = {name, surname, email, password, role}
         console.log(user)
+        fetch("http://localhost:8080/user/add", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(user)
+        }).then(()=>{
+            console.log("New User added")
+        })
         popupClose()
     }
 
