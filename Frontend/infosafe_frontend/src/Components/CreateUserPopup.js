@@ -11,7 +11,7 @@ const role_options = [
     'SYSTEM ADMINISTRATOR',
     'ASSET MANAGER'
 ];
-export const CreateUserPopup = ({ popupOpen,popupClose }) => {
+export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} onClose={popupClose} position="center center">
             <div className="createUserOverlay">
