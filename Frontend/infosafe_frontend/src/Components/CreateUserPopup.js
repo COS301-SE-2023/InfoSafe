@@ -27,7 +27,7 @@ export const CreateUserPopup = ({ popupOpen,popupClose }) => {
                         <p className="passwordLabel">Password</p>
                         <input className="passwordInput" name="password" />
                         <button className="genPassword">Generate Password</button>
-                        <p className="label_role">System role</p>
+                        <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
                             value={role_options[0]}
