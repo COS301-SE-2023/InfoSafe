@@ -4,6 +4,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import ViewUser from './ViewUser';
 import EditUser from './EditUser';
+import {CreateUserPopup}  from './CreateUserPopup';
 
 
 /* eslint-disable react/prop-types */
