@@ -5,6 +5,8 @@ import com.example.infosafe_backend.repository.AssetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AssetServiceImpl implements AssetService {
     @Autowired
@@ -13,5 +15,10 @@ public class AssetServiceImpl implements AssetService {
     @Override
     public Asset saveAsset(Asset asset) {
         return assetRepository.save(asset);
+    }
+
+    @Override
+    public List<Asset> getAllAssets() {
+        return assetRepository.findAll();
     }
 }
