@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/asset")
+@CrossOrigin
 public class AssetController {
     @Autowired
     private AssetService assetService;
