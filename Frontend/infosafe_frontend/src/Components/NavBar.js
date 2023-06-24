@@ -1,6 +1,8 @@
 import '../Styling/NavBar.css';
 import React, { useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
+import {RiDeleteBin6Fill} from 'react-icons/ri';
+/* eslint-disable react/prop-types */
 const NavBar = ({systemRole}) => {
     const [activeNavTab, activate] = useState(0);
 
@@ -13,10 +15,10 @@ const NavBar = ({systemRole}) => {
         if (systemRole === 'ISO')
         {
             switch (activeNavTab) {
-                case 0:
+                case 0: {
                     const userItems = [];
                     for (let i = 1; i < 30; i++) {
-                        userItems.push(<li key={i}>User {i} <FaRegEdit className="EditIcon" /></li>);
+                        userItems.push(<li key={i}>User {i} <FaRegEdit className="EditIcon" /> <RiDeleteBin6Fill className="DeleteIcon" /></li>);
                     }
 
                     return (
@@ -24,7 +26,8 @@ const NavBar = ({systemRole}) => {
                             <ul className="userList">{userItems}</ul>
                         </div>
                     );
-                case 1:
+                }
+                case 1: {
                     const dataItems = [];
                     for (let j = 1; j < 30; j++) {
                         dataItems.push(<li key={j}>Data Scope {j}</li>);
@@ -35,7 +38,8 @@ const NavBar = ({systemRole}) => {
                             <ul className="datascopesList">{dataItems}</ul>
                         </div>
                     );
-                case 2:
+                }
+                case 2: {
                     const accessRequests = [];
                     for (let k = 1; k < 30; k++) {
                         accessRequests.push(<li key={k}>Access Request {k}</li>);
@@ -45,7 +49,8 @@ const NavBar = ({systemRole}) => {
                             <ul className="accessrequestsList">{accessRequests}</ul>
                         </div>
                     );
-                case 3:
+                }
+                case 3: {
                     const complianceItems = [];
                     for (let l = 1; l < 30; l++) {
                         complianceItems.push(<li key={l}>Task {l}</li>);
@@ -55,7 +60,8 @@ const NavBar = ({systemRole}) => {
                             <ul className="taskList">{complianceItems}</ul>
                         </div>
                     );
-                case 4:
+                }
+                case 4: {
                     const devices = [];
                     for (let m = 0; m < 26; m++) {
                         devices.push(<li key={m}>Device {String.fromCharCode(m + 65)}</li>);
@@ -65,7 +71,8 @@ const NavBar = ({systemRole}) => {
                             <ul className="deviceList">{devices}</ul>
                         </div>
                     );
-                case 5:
+                }
+                case 5: {
                     const active_requests = [];
                     for (let a = 1; a < 15; a++) {
                         active_requests.push(<li key={a}>Support Request {a}</li>);
@@ -97,6 +104,7 @@ const NavBar = ({systemRole}) => {
 
                         </div>
                     );
+                }
                 case 6:
                     //Add risks info here
                     return null;

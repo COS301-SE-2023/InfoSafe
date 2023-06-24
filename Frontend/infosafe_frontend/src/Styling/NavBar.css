@@ -429,4 +429,20 @@ background: #444040;
     padding: 0.4%;
     width: 15%;
 }
+.EditIcon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 3%;
+    height: 100%;
+}
+.DeleteIcon {
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    right: 1%;
+    height: 100%;
+    fill: #CF0000;
+}
+
 
