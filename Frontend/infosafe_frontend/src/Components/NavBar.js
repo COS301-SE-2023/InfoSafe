@@ -4,7 +4,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
-import { CreateUserPopup } from "./CreateUserPopup";
+import { CreateUserPopup } from './CreateUserPopup';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -89,7 +89,6 @@ const NavBar = ({ systemRole }) => {
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
-
 
     const displayInfo = () => {
         if (systemRole === 'ISO') {
@@ -203,17 +202,20 @@ const NavBar = ({ systemRole }) => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0:
-
                     return (
-                      <div className="CreateUserButtonDiv">
-                        <button
-                            className="CreateUserButton"
-                            onClick={() => setCreateUserOpen(true)}
-                        >
-                            Create New User
-                        </button>
-                          {createUserOpen ? <CreateUserPopup closeCreateUserOpen={() => setCreateUserOpen(false)} /> : null }
-                      </div>
+                        <div className="CreateUserButtonDiv">
+                            <button
+                                className="CreateUserButton"
+                                onClick={() => setCreateUserOpen(true)}
+                            >
+                                Create New User
+                            </button>
+                            {createUserOpen ? (
+                                <CreateUserPopup
+                                    closeCreateUserOpen={() => setCreateUserOpen(false)}
+                                />
+                            ) : null}
+                        </div>
                     );
                 case 3:
                     return (
