@@ -66,7 +66,7 @@
     padding: 0;
     position: relative;
     top: 0.4vh;
-
+    left: -0.4vw;
     height: 2.1vh;
 }
 .userList li:first-child {
