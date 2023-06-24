@@ -113,7 +113,12 @@ const NavBar = ({ systemRole }) => {
                 case 1: {
                     const dataItems = [];
                     for (let j = 1; j < 30; j++) {
-                        dataItems.push(<li key={j}>Data Scope {j}</li>);
+                        dataItems.push(
+                            <li key={j}>
+                                Data Scope {j} <FaRegEdit className="EditIcon" />{' '}
+                                <RiDeleteBin6Fill className="DeleteIcon" />
+                            </li>
+                        );
                     }
 
                     return (
@@ -125,7 +130,12 @@ const NavBar = ({ systemRole }) => {
                 case 2: {
                     const accessRequests = [];
                     for (let k = 1; k < 30; k++) {
-                        accessRequests.push(<li key={k}>Access Request {k}</li>);
+                        accessRequests.push(
+                            <li key={k}>
+                                Access Request {k} <FaRegEdit className="EditIcon" />{' '}
+                                <RiDeleteBin6Fill className="DeleteIcon" />
+                            </li>
+                        );
                     }
                     return (
                         <div className="accessRequests">
@@ -147,7 +157,12 @@ const NavBar = ({ systemRole }) => {
                 case 4: {
                     const devices = [];
                     for (let m = 0; m < 26; m++) {
-                        devices.push(<li key={m}>Device {String.fromCharCode(m + 65)}</li>);
+                        devices.push(
+                            <li key={m}>
+                                Device {String.fromCharCode(m + 65)}{' '}
+                                <FaRegEdit className="EditIcon" />
+                            </li>
+                        );
                     }
                     return (
                         <div className="devices">
@@ -158,11 +173,19 @@ const NavBar = ({ systemRole }) => {
                 case 5: {
                     const active_requests = [];
                     for (let a = 1; a < 15; a++) {
-                        active_requests.push(<li key={a}>Support Request {a}</li>);
+                        active_requests.push(
+                            <li key={a}>
+                                Support Request {a} <FaRegEdit className="EditIcon" />
+                            </li>
+                        );
                     }
                     const my_requests = [];
                     for (let b = 1; b < 15; b++) {
-                        my_requests.push(<li key={b}>Support Request {b}</li>);
+                        my_requests.push(
+                            <li key={b}>
+                                Support Request {b} <FaRegEdit className="EditIcon" />
+                            </li>
+                        );
                     }
 
                     return (
