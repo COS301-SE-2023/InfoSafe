@@ -25,7 +25,7 @@ public class PasswordEncryptionImpl implements PasswordEncryption{
         //Creates a secret key using the variables passed in anf the password
         SecretKeySpec secretKey = secretKeyMaker.generateSecretKey(charPassword, salt, iterations, keyLength);
 
-        //creates the encrypted password using the password and the secret key 
+        //creates the encrypted password using the password and the secret key
         String encryptedPassword = secretKeyMaker.encrypt(password, secretKey);
 
         return encryptedPassword;
