@@ -1,6 +1,6 @@
 .editDeviceOverlay {
     width: 60vw;
-    height: 90vh;
+    height: 85vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,7 +11,7 @@
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
-    height: 82vh;
+    height: 77vh;
     position: relative;
     top: 4vh;
 }

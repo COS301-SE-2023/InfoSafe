@@ -15,6 +15,24 @@
     position: relative;
     top: 4vh;
 }
+.backButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.backIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
 .ViewDataScopeTitle {
     width: 100%;
     justify-content: center;
@@ -204,22 +222,4 @@
 .usr_role {
     margin-top: -1vh;
     width: 50%;
-}
-.ExitViewButton {
-    width: 15%;
-    height: 4%;
-    background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
-    top: -1.5vh;
-    left: 42.5%;
-    border: none;
 }

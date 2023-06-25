@@ -23,7 +23,7 @@ const NavBar = ({ systemRole }) => {
     const [editUserOpen, setEditUserOpen] = useState(false);
     const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
     const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-
+    const [editDeviceOpen, setEditDeviceOpen] = useState(false);
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -38,8 +38,8 @@ const NavBar = ({ systemRole }) => {
                     Data Scope {j}
                     {viewDataScopeOpen && (
                         <ViewDataScope
-                            closeViewDataScope={() => setViewDataScopeOpen(false)}
-                            openViewDataScope={viewDataScopeOpen}
+                            popupClose={() => setViewDataScopeOpen(false)}
+                            popupOpen={viewDataScopeOpen}
                             id={idValue}
                         />
                     )}
@@ -68,8 +68,8 @@ const NavBar = ({ systemRole }) => {
                                     User {i}
                                     {viewUserOpen ? (
                                         <ViewUser
-                                            closeViewUser={() => setViewUserOpen(false)}
-                                            openViewUser={viewUserOpen}
+                                            popupClose={() => setViewUserOpen(false)}
+                                            popupOpen={viewUserOpen}
                                         />
                                     ) : null}
                                 </p>
@@ -79,8 +79,8 @@ const NavBar = ({ systemRole }) => {
                                 />
                                 {editUserOpen ? (
                                     <EditUser
-                                        closeEditUser={() => setEditUserOpen(false)}
-                                        openEditUser={editUserOpen}
+                                        popupClose={() => setEditUserOpen(false)}
+                                        popupOpen={editUserOpen}
                                     />
                                 ) : null}{' '}
                                 <RiDeleteBin6Fill className="DeleteIcon" />
@@ -218,7 +218,6 @@ const NavBar = ({ systemRole }) => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const [editDeviceOpen, setEditDeviceOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
