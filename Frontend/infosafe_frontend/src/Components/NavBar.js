@@ -9,6 +9,8 @@ import { CreateDataScopePopup } from './CreateDataScopePopup';
 import { EditDataScopePopup } from "./EditDataScopePopup";
 import EditUser from "./EditUser";
 import ViewUser from "./ViewUser";
+import { CreateDevicePopup } from "./CreateDevicePopup";
+import { ViewDevice } from "./ViewDevice";
 
 
 /* eslint-disable react/prop-types */
@@ -19,6 +21,8 @@ const NavBar = ({ systemRole }) => {
 
     const [editUserOpen, setEditUserOpen] = useState(false);
     const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
+    const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
+
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -112,7 +116,13 @@ const NavBar = ({ systemRole }) => {
                     for (let m = 0; m < 26; m++) {
                         devices.push(
                             <li key={m}>
-                                Device {String.fromCharCode(m + 65)}{' '}
+                              <p onClick={() => setViewDeviceOpen(true)}>Device {String.fromCharCode(m + 65)}{' '}</p>
+                              {viewDeviceOpen ? (
+                                <ViewDevice
+                                  popupClose={() => setViewDeviceOpen(false)}
+                                  popupOpen={viewDeviceOpen}
+                                />
+                              ) : null}
                                 <FaRegEdit className="EditIcon" />
                             </li>
                         );
@@ -174,6 +184,7 @@ const NavBar = ({ systemRole }) => {
 
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
+    const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
@@ -236,12 +247,20 @@ const NavBar = ({ systemRole }) => {
                     );
                 case 4:
                     return (
+                      <div className="AddDeviceDiv">
                         <button
                             className="AddDeviceButton"
-                            onClick={() => console.log('Added new device')}
+                            onClick={() => setCreateDeviceOpen(true)}
                         >
                             Add Device
                         </button>
+                        {createDeviceOpen ? (
+                          <CreateDevicePopup
+                            popupClose={() => setCreateDeviceOpen(false)}
+                            popupOpen={createDeviceOpen}
+                          />
+                        ) : null}
+                      </div>
                     );
                 case 5:
                     return (
