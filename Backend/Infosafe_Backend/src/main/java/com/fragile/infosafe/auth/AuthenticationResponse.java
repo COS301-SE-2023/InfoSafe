@@ -16,4 +16,12 @@ public class AuthenticationResponse {
     private String accessToken;
     @JsonProperty("refresh_token")
     private String refreshToken;
+    private boolean error = false;
+
+    public void setError(){
+        error = true;
+    }
+    public boolean getError(){
+        return error;
+    }
 }
