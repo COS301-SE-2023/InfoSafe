@@ -1,12 +1,16 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/ViewUser.css';
+import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 const ViewUser = ({ closeViewUser, openViewUser }) => {
     return (
-        <Popup open={openViewUser} onClose={closeViewUser} position="center center">
+        <Popup open={openViewUser}  position="center center">
             <div className="viewUserOverlay">
                 <div className="borderView">
+                    <button className="backButton" onClick={closeViewUser}>
+                        <IoArrowBackOutline className="backIcon" />
+                    </button>
                     <p className="viewUserTitle">View User</p>
                     <div className="view_name">
                         <p className="nameDisplay">Name</p>
