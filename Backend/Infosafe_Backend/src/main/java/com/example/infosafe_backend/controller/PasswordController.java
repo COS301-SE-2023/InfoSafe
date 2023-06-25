@@ -27,6 +27,7 @@ public class PasswordController {
 
         Map<String, String> response = new HashMap<>();
         response.put("message", random);
+        response.put("password", randomPassword);
 
         return ResponseEntity.ok(response);
     }
