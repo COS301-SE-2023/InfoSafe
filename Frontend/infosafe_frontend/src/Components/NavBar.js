@@ -6,16 +6,12 @@ import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
 import { CreateUserPopup } from './CreateUserPopup';
 import { CreateDataScopePopup } from './CreateDataScopePopup';
-
+import ViewUser from './ViewUser';
+import EditUser from './EditUser';
+import EditDevice from './EditDevice';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
-    const [activeNavTab, activate] = useState(0);
-    //const [id, setUserID] = useState(null);
-    const [viewUserOpen, setViewUserOpen] = useState(false);
-
-    const [editUserOpen, setEditUserOpen] = useState(false);
-
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -108,7 +104,16 @@ const NavBar = ({ systemRole }) => {
                         devices.push(
                             <li key={m}>
                                 Device {String.fromCharCode(m + 65)}{' '}
-                                <FaRegEdit className="EditIcon" />
+                                <FaRegEdit
+                                    className="EditIcon"
+                                    onClick={() => setEditDeviceOpen(true)}
+                                />
+                                {editDeviceOpen ? (
+                                    <EditDevice
+                                        closeEditDevice={() => setEditDeviceOpen(false)}
+                                        openEditDevice={editDeviceOpen}
+                                    />
+                                ) : null}{' '}
                             </li>
                         );
                     }
@@ -168,6 +173,14 @@ const NavBar = ({ systemRole }) => {
     };
 
     const [createUserOpen, setCreateUserOpen] = useState(false);
+    const [activeNavTab, activate] = useState(0);
+    //const [id, setUserID] = useState(null);
+    const [viewUserOpen, setViewUserOpen] = useState(false);
+
+    const [editUserOpen, setEditUserOpen] = useState(false);
+
+    const [editDeviceOpen, setEditDeviceOpen] = useState(false);
+
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
