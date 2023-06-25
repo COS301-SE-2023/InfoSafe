@@ -2,10 +2,17 @@ import '../Styling/NavBar.css';
 import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import ViewUser from './ViewUser';
+import Popup from 'reactjs-popup';
+import Dropdown from 'react-dropdown';
+import { CreateUserPopup } from './CreateUserPopup';
+import { CreateDataScopePopup } from './CreateDataScopePopup';
+import { EditDataScopePopup } from './EditDataScopePopup';
 import EditUser from './EditUser';
-import {CreateUserPopup}  from './CreateUserPopup';
 import ViewDataScope from './ViewDataScope';
+import ViewUser from './ViewUser';
+import { CreateDevicePopup } from './CreateDevicePopup';
+import { ViewDevice } from './ViewDevice';
+import EditDevice from './EditDevice';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -14,6 +21,8 @@ const NavBar = ({ systemRole }) => {
     const [viewUserOpen, setViewUserOpen] = useState(false);
 
     const [editUserOpen, setEditUserOpen] = useState(false);
+    const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
+    const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -123,8 +132,25 @@ const NavBar = ({ systemRole }) => {
                     for (let m = 0; m < 26; m++) {
                         devices.push(
                             <li key={m}>
-                                Device {String.fromCharCode(m + 65)}{' '}
-                                <FaRegEdit className="EditIcon" />
+                                <p onClick={() => setViewDeviceOpen(true)}>
+                                    Device {String.fromCharCode(m + 65)}{' '}
+                                </p>
+                                {viewDeviceOpen ? (
+                                    <ViewDevice
+                                        popupClose={() => setViewDeviceOpen(false)}
+                                        popupOpen={viewDeviceOpen}
+                                    />
+                                ) : null}
+                                <FaRegEdit
+                                    className="EditIcon"
+                                    onClick={() => setEditDeviceOpen(true)}
+                                />
+                                {editDeviceOpen ? (
+                                    <EditDevice
+                                        closeEditDevice={() => setEditDeviceOpen(false)}
+                                        openEditDevice={editDeviceOpen}
+                                    />
+                                ) : null}{' '}
                             </li>
                         );
                     }
@@ -184,6 +210,9 @@ const NavBar = ({ systemRole }) => {
     };
 
     const [createUserOpen, setCreateUserOpen] = useState(false);
+    const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
+    const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
+    const [editDeviceOpen, setEditDeviceOpen] = useState(false);
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
@@ -198,7 +227,25 @@ const NavBar = ({ systemRole }) => {
                             </button>
                             {createUserOpen ? (
                                 <CreateUserPopup
-                                    closeCreateUserOpen={() => setCreateUserOpen(false)}
+                                    popupClose={() => setCreateUserOpen(false)}
+                                    popupOpen={createUserOpen}
+                                />
+                            ) : null}
+                        </div>
+                    );
+                case 1:
+                    return (
+                        <div className="CreateDataScopeDiv">
+                            <button
+                                className="CreateDataScopeButton"
+                                onClick={() => setCreateDataScopeOpen(true)}
+                            >
+                                Create Data Scope
+                            </button>
+                            {createDataScopeOpen ? (
+                                <CreateDataScopePopup
+                                    popupClose={() => setCreateDataScopeOpen(false)}
+                                    popupOpen={createDataScopeOpen}
                                 />
                             ) : null}
                         </div>
@@ -228,12 +275,20 @@ const NavBar = ({ systemRole }) => {
                     );
                 case 4:
                     return (
-                        <button
-                            className="AddDeviceButton"
-                            onClick={() => console.log('Added new device')}
-                        >
-                            Add Device
-                        </button>
+                        <div className="AddDeviceDiv">
+                            <button
+                                className="AddDeviceButton"
+                                onClick={() => setCreateDeviceOpen(true)}
+                            >
+                                Add Device
+                            </button>
+                            {createDeviceOpen ? (
+                                <CreateDevicePopup
+                                    popupClose={() => setCreateDeviceOpen(false)}
+                                    popupOpen={createDeviceOpen}
+                                />
+                            ) : null}
+                        </div>
                     );
                 case 5:
                     return (

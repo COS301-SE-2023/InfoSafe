@@ -1,21 +1,21 @@
-.createUserOverlay {
-    width: 60vw;
-    height: 90vh;
+.viewDeviceOverlay {
+    width: 50vw;
+    height: 80vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.createuserBorder {
+.viewDeviceBorder {
     border: 1px solid #ffffff;
-    width: 56vw;
+    width: 46vw;
     margin: 0 auto;
-    height: 82vh;
+    height: 75vh;
     position: relative;
-    top: 4vh;
+    top: 2.5vh;
 }
-.createuserLabel {
+.viewDeviceTitle {
     width: 100%;
     justify-content: center;
     color: #000000;
@@ -27,8 +27,7 @@
     position: relative;
     top: 1.5vh;
 }
-
-.nameLabel {
+.viewDeviceTypeDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -38,22 +37,28 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    top: 1vh;
+    margin-top: 3vh;
 }
-
-.nameInput {
+.deviceTypeLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.deviceType {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     text-align: center;
     border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
     margin-top: 2vh;
-    left: 25%;
-    position: relative;
 }
-
-.surnameLabel {
+.viewDeviceDescriptionDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -63,22 +68,27 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    margin-top: 3vh;
 }
-
-.surnameInput {
+.deviceDescriptionLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
+    margin: 0 auto;
     text-align: center;
     border: none;
-    margin-top: 2vh;
-    left: 25%;
-    position: relative;
 }
-
-.emailLabel {
+.viewDescription {
+    font-size: 15px;
+    width: 50%;
+    height: 10vh;
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 2vh;
+}
+.viewDeviceStatusDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -88,22 +98,27 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    margin-top: 3vh;
 }
-
-.emailInput {
+.statusLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.viewStatus {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     text-align: center;
     border: none;
-    margin-top: 2vh;
-    left: 25%;
-    position: relative;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1vh;
 }
-
-.passwordLabel {
+.viewDeviceAssignedDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -113,68 +128,27 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    margin-top: 3vh;
 }
-
-.passwordInput {
+.assignedLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
-    text-align: center;
-    border: none;
-    margin-top: 2vh;
-    left: 25%;
-    position: relative;
-}
-
-.genPassword {
-    background: #000000;
-    color: #ffffff;
-    position: relative;
-    left: 27%;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    height: 4%;
-    top: -12.5%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-    border-color: transparent;
-}
-
-.roleLabel {
     margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
     text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    border: none;
 }
-
-.role_dropdown {
+.viewAssigned {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
-    margin-top: 2vh;
     text-align: center;
     border: none;
-    text-align: center;
-    align-content: center;
-    height: 10%;
-    left: 25%;
-    position: relative;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1vh;
 }
-.role_dropdown:after {
-    transform: translateY(50%);
-}
-
-.createuser_finish {
+.viewDevice_finish {
     width: 15%;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);
@@ -187,7 +161,8 @@
     position: relative;
     align-self: center;
     justify-self: center;
+    margin: 0 auto;
+    top: 5vh;
     left: 42.5%;
     border: none;
-    margin: 5% auto 0;
 }
