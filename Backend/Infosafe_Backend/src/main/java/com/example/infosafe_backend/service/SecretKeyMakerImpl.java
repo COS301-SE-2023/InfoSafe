@@ -17,7 +17,7 @@ public class SecretKeyMakerImpl implements SecretKeyMaker{
     public SecretKeySpec generateSecretKey(char[] password, byte[] salt, int iterations, int keyLength) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         //Secret key factory
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512"); //Returns a Secret Key Factory object that converts secret keys of the specified algorithm, in this case we use PBKDF2(Password-based key derivation function 2) and the hash function HMAC-SHA512
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256"); //Returns a Secret Key Factory object that converts secret keys of the specified algorithm, in this case we use PBKDF2(Password-based key derivation function 2) and the hash function HMAC-SHA512
 
         //Password based key specification
         PBEKeySpec keySpec = new PBEKeySpec(password, salt, iterations,keyLength); //Returns a new key specification based on the password, salt, number of iterations and key length provided
