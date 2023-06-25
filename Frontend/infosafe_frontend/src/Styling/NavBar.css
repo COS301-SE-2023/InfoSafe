@@ -124,7 +124,7 @@
     /*padding: 0.5%;*/
     border: 1px solid #000000;
 }
-.datascopesList li p{
+.datascopesList li p {
     font-family: 'Roboto', sans-serif;
     height: 10%;
     transform: translateY(-50%);

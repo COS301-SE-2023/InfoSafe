@@ -44,10 +44,7 @@ const NavBar = ({ systemRole }) => {
                         />
                     )}
                 </p>
-                <FaRegEdit
-                    className="EditIcon"
-                    onClick={() => setEditDataScopeOpen(true)}
-                />
+                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
                 {editDataScopeOpen ? (
                     <EditDataScopePopup
                         popupClose={() => setEditDataScopeOpen(false)}
