@@ -1,12 +1,11 @@
-package com.example.infosafe_backend.auth;
+package com.fragile.infosafe.auth;
 
-import com.example.infosafe_backend.config.JwtService;
-import com.example.infosafe_backend.token.Token;
-import com.example.infosafe_backend.token.TokenRepository;
-import com.example.infosafe_backend.token.TokenType;
-import com.example.infosafe_backend.user.Role;
-import com.example.infosafe_backend.user.User;
-import com.example.infosafe_backend.user.UserRepository;
+import com.fragile.infosafe.config.JwtService;
+import com.fragile.infosafe.token.Token;
+import com.fragile.infosafe.token.TokenRepository;
+import com.fragile.infosafe.token.TokenType;
+import com.fragile.infosafe.user.User;
+import com.fragile.infosafe.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,10 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -33,8 +29,8 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
-                .name(request.getFirstname())
-                .surname(request.getLastname())
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole())

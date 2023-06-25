@@ -1,8 +1,7 @@
-package com.example.infosafe_backend.config;
+package com.fragile.infosafe.config;
 
-import com.example.infosafe_backend.repository.UserRepository;
+import com.fragile.infosafe.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

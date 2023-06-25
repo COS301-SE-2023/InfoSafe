@@ -1,6 +1,6 @@
-package com.example.infosafe_backend.auth;
+package com.fragile.infosafe.auth;
 
-import com.example.infosafe_backend.user.Role;
+import com.fragile.infosafe.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
-
     private String firstname;
     private String lastname;
     private String email;

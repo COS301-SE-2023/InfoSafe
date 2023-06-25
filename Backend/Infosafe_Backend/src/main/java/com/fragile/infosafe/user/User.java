@@ -1,8 +1,6 @@
-package com.example.infosafe_backend.user;
+package com.fragile.infosafe.user;
 
-import com.example.infosafe_backend.user.Role;
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,58 +22,23 @@ public class User implements UserDetails{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String surname;
+    private String firstname;
+    private String lastname;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    @Override
+    public String getUsername() {return email;}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
-
     @Override
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
     }
 
     @Override

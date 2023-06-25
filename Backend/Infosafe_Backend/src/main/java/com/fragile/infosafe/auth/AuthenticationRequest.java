@@ -1,4 +1,4 @@
-package com.example.infosafe_backend.auth;
+package com.fragile.infosafe.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

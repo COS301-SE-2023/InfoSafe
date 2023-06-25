@@ -1,4 +1,4 @@
-package com.example.infosafe_backend.config;
+package com.fragile.infosafe.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ClaimsMutator;

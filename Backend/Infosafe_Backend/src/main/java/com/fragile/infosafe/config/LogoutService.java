@@ -1,6 +1,6 @@
-package com.example.infosafe_backend.config;
+package com.fragile.infosafe.config;
 
-import com.example.infosafe_backend.token.TokenRepository;
+import com.fragile.infosafe.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

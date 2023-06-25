@@ -1,4 +1,4 @@
-package com.example.infosafe_backend.user;
+package com.fragile.infosafe.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.example.infosafe_backend.user.Permission.*;
+import static com.fragile.infosafe.user.Permission.*;
 
 
 @RequiredArgsConstructor
@@ -41,8 +41,7 @@ public enum Role {
             Set.of(
                     DISO_READ,
                     DISO_UPDATE,
-                    DISO_DELETE,
-                    DISO_UPDATE
+                    DISO_DELETE
             )
     ),
 

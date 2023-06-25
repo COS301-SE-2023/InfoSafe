@@ -1,4 +1,4 @@
-package com.example.infosafe_backend.auth;
+package com.fragile.infosafe.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
