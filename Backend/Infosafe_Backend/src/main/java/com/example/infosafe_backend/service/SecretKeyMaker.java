@@ -11,5 +11,5 @@ public interface SecretKeyMaker {
 
     public String base64Encoder(byte[] bytes);
 
-    public String encrypt(String dataToEncrypt) throws GeneralSecurityException, UnsupportedEncodingException;
+    public String encrypt(String dataToEncrypt, SecretKeySpec key) throws GeneralSecurityException, UnsupportedEncodingException;
 }
