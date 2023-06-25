@@ -48,6 +48,24 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
                                 defaultValue="jane.doe@example.com"
                             />
                         </div>
+                        <div className="newPassword">
+                            <p className="newPasswordTitle">New Password</p>
+                            <input
+                                className="newPasswordInput"
+                                type="text"
+                                id="newpassword"
+                                name="newpassword"
+                            />
+                        </div>
+                        <div className="confirmPassword">
+                            <p className="confirmPasswordTitle">Confirm Password</p>
+                            <input
+                                className="confirmPasswordInput"
+                                type="text"
+                                id="confirmpassword"
+                                name="confirmpassword"
+                            />
+                        </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
                             <Dropdown
@@ -57,7 +75,6 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
                                 name="role"
                             />
                         </div>
-                        <button className="ChangePasswordButton">Change Password</button>
                         <button className="FinishButton" onClick={closeEditUser}>
                             Finish
                         </button>
