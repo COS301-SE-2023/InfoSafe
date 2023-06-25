@@ -79,9 +79,7 @@ const EditUser = ({ popupClose, popupOpen }) => {
                                 name="role"
                             />
                         </div>
-                        <button className="ChangePasswordButton">Change Password</button>
                         <button className="FinishButton" onClick={popupClose}>
-                        <button className="FinishButton" onClick={closeEditUser}>
                             Finish
                         </button>
                     </form>
