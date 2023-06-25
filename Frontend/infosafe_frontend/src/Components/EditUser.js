@@ -4,7 +4,7 @@ import '../Styling/EditUser.css';
 import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
-const EditUser = ({ popupClose, popupOpen }) => {
+const EditUser = ({ id, popupClose, popupOpen }) => {
     const role_options = [
         'EMPLOYEE',
         'ISO',

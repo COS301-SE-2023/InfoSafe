@@ -3,7 +3,7 @@ import '../Styling/ViewDevice.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-export const ViewDevice = ({ popupOpen, popupClose }) => {
+export const ViewDevice = ({ id, popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewDeviceOverlay">

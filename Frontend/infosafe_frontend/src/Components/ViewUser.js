@@ -3,7 +3,7 @@ import React from 'react';
 import '../Styling/ViewUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const ViewUser = ({ popupClose, popupOpen }) => {
+const ViewUser = ({ id, popupClose, popupOpen }) => {
     return (
         <Popup
             open={popupOpen}

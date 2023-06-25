@@ -4,14 +4,14 @@ import '../Styling/EditDevice.css';
 import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const EditDevice = ({ closeEditDevice, openEditDevice }) => {
+const EditDevice = ({ id, popupClose, popupOpen}) => {
     const status_options = ['CLEAN', 'FULL', 'BROKEN'];
 
     return (
-        <Popup open={openEditDevice} closeOnDocumentClick={false}>
+        <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="editDeviceOverlay">
                 <div className="borderEditDevice">
-                    <button className="backButton" onClick={closeEditDevice}>
+                    <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <form>
@@ -55,7 +55,7 @@ const EditDevice = ({ closeEditDevice, openEditDevice }) => {
                         <button
                             className="EditDeviceButton"
                             type="submit"
-                            onClick={closeEditDevice}
+                            onClick={popupClose}
                         >
                             Submit
                         </button>
