@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
@@ -12,19 +12,18 @@ const role_options = [
     'SYSTEM ADMINISTRATOR',
     'ASSET MANAGER'
 ];
+
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
-    const[name,setName]=useState('')
-    const[surname,setSurname]=useState('')
-    const[email,setEmail]=useState('')
-    const[role,setRole]=useState('ISO')
-    const[password,setPassword]=useState('')
+    const[name,setName]=useState('');
+    const[surname,setSurname]=useState('');
+    const[email,setEmail]=useState('');
+    const[role,setRole]=useState('ISO');
+    const[password,setPassword]=useState('');
+    const [randomPassword, setRandomPassword] = useState('');
 
     const handleClick = async (e) => {
         e.preventDefault();
         const user = {name, surname, email, password, role};
-        let newPassword = await generatePassword();
-        user.password = newPassword;
-        console.log(user);
 
         fetch("http://localhost:8080/user/add", {
             method:"POST",
@@ -33,7 +32,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         }).then(()=>{
             console.log("New User added");
         });
-        //popupClose()
+        popupClose()
     }
 
     const generatePassword = async () => {
@@ -43,14 +42,19 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             const data = await response.json();
 
             generatedPassword = data.message.toString();
+            let randomP = data.password.toString();
+            setRandomPassword(randomP);
+            setPassword(generatedPassword);
             console.log("Password fetched from the server: ", generatedPassword);
 
         } else {
             console.error('Error fetching string from the server.');
         }
-
-        return generatedPassword;
     };
+
+    useEffect(() => {
+        generatePassword();
+    }, []);
 
     return (
         <Popup open={popupOpen} onClose={popupClose} position="center center">
@@ -65,8 +69,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <p className="emailLabel">Email</p>
                         <input className="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                        <button className="genPassword">Generate Password</button>
+                        <input className="passwordInput" name="password" placeholder={randomPassword} readOnly/>
                         <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
