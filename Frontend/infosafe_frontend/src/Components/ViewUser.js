@@ -5,7 +5,12 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 const ViewUser = ({ closeViewUser, openViewUser }) => {
     return (
-        <Popup open={openViewUser} onClose={closeViewUser} closeOnDocumentClick={false}  position="center center">
+        <Popup
+            open={openViewUser}
+            onClose={closeViewUser}
+            closeOnDocumentClick={false}
+            position="center center"
+        >
             <div className="viewUserOverlay">
                 <div className="borderView">
                     <p className="viewUserTitle">View User</p>
@@ -25,10 +30,7 @@ const ViewUser = ({ closeViewUser, openViewUser }) => {
                         <p className="roleDisplay">System Role</p>
                         <p className="viewRole">Employee</p>
                     </div>
-                    <button
-                        className="FinishViewButton"
-                        onClick={closeViewUser}
-                    >
+                    <button className="FinishViewButton" onClick={closeViewUser}>
                         Finish
                     </button>
                 </div>

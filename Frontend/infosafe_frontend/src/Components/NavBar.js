@@ -6,11 +6,11 @@ import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
 import { CreateUserPopup } from './CreateUserPopup';
 import { CreateDataScopePopup } from './CreateDataScopePopup';
-import { EditDataScopePopup } from "./EditDataScopePopup";
-import EditUser from "./EditUser";
-import ViewUser from "./ViewUser";
-import { CreateDevicePopup } from "./CreateDevicePopup";
-import { ViewDevice } from "./ViewDevice";
+import { EditDataScopePopup } from './EditDataScopePopup';
+import EditUser from './EditUser';
+import ViewUser from './ViewUser';
+import { CreateDevicePopup } from './CreateDevicePopup';
+import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
 
 /* eslint-disable react/prop-types */
@@ -22,7 +22,6 @@ const NavBar = ({ systemRole }) => {
     const [editUserOpen, setEditUserOpen] = useState(false);
     const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
     const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -71,8 +70,17 @@ const NavBar = ({ systemRole }) => {
                     for (let j = 1; j < 30; j++) {
                         dataItems.push(
                             <li key={j}>
-                                Data Scope {j} <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)}/>
-                                { editDataScopeOpen ? (<EditDataScopePopup popupOpen={editDataScopeOpen} popupClose={() => setEditDataScopeOpen(false)}/>) : null }{' '}
+                                Data Scope {j}{' '}
+                                <FaRegEdit
+                                    className="EditIcon"
+                                    onClick={() => setEditDataScopeOpen(true)}
+                                />
+                                {editDataScopeOpen ? (
+                                    <EditDataScopePopup
+                                        popupOpen={editDataScopeOpen}
+                                        popupClose={() => setEditDataScopeOpen(false)}
+                                    />
+                                ) : null}{' '}
                                 <RiDeleteBin6Fill className="DeleteIcon" />
                             </li>
                         );
@@ -116,13 +124,15 @@ const NavBar = ({ systemRole }) => {
                     for (let m = 0; m < 26; m++) {
                         devices.push(
                             <li key={m}>
-                              <p onClick={() => setViewDeviceOpen(true)}>Device {String.fromCharCode(m + 65)}{' '}</p>
-                              {viewDeviceOpen ? (
-                                <ViewDevice
-                                  popupClose={() => setViewDeviceOpen(false)}
-                                  popupOpen={viewDeviceOpen}
-                                />
-                              ) : null}
+                                <p onClick={() => setViewDeviceOpen(true)}>
+                                    Device {String.fromCharCode(m + 65)}{' '}
+                                </p>
+                                {viewDeviceOpen ? (
+                                    <ViewDevice
+                                        popupClose={() => setViewDeviceOpen(false)}
+                                        popupOpen={viewDeviceOpen}
+                                    />
+                                ) : null}
                                 <FaRegEdit
                                     className="EditIcon"
                                     onClick={() => setEditDeviceOpen(true)}
@@ -133,7 +143,6 @@ const NavBar = ({ systemRole }) => {
                                         openEditDevice={editDeviceOpen}
                                     />
                                 ) : null}{' '}
-
                             </li>
                         );
                     }
@@ -258,20 +267,20 @@ const NavBar = ({ systemRole }) => {
                     );
                 case 4:
                     return (
-                      <div className="AddDeviceDiv">
-                        <button
-                            className="AddDeviceButton"
-                            onClick={() => setCreateDeviceOpen(true)}
-                        >
-                            Add Device
-                        </button>
-                        {createDeviceOpen ? (
-                          <CreateDevicePopup
-                            popupClose={() => setCreateDeviceOpen(false)}
-                            popupOpen={createDeviceOpen}
-                          />
-                        ) : null}
-                      </div>
+                        <div className="AddDeviceDiv">
+                            <button
+                                className="AddDeviceButton"
+                                onClick={() => setCreateDeviceOpen(true)}
+                            >
+                                Add Device
+                            </button>
+                            {createDeviceOpen ? (
+                                <CreateDevicePopup
+                                    popupClose={() => setCreateDeviceOpen(false)}
+                                    popupOpen={createDeviceOpen}
+                                />
+                            ) : null}
+                        </div>
                     );
                 case 5:
                     return (

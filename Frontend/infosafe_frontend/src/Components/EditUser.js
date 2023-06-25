@@ -62,7 +62,6 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
                             Finish
                         </button>
                     </form>
-
                 </div>
             </div>
         </Popup>

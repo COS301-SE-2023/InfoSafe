@@ -8,11 +8,8 @@ const EditDevice = ({ closeEditDevice, openEditDevice }) => {
     const status_options = ['AVAILABLE', 'CLEAN', 'UNAVAILABLE', 'BROKEN'];
 
     return (
-        <Popup
-            open={openEditDevice}
-            closeOnDocumentClick={false}
-        >
-            <div className="editDeviceOverlay" >
+        <Popup open={openEditDevice} closeOnDocumentClick={false}>
+            <div className="editDeviceOverlay">
                 <div className="borderEditDevice">
                     <button className="backButton" onClick={closeEditDevice}>
                         <IoArrowBackOutline className="backIcon" />
@@ -59,7 +56,11 @@ const EditDevice = ({ closeEditDevice, openEditDevice }) => {
                                 defaultValue="Employee123"
                             />
                         </div>
-                        <button className="EditDeviceButton" type="submit" onClick={closeEditDevice}>
+                        <button
+                            className="EditDeviceButton"
+                            type="submit"
+                            onClick={closeEditDevice}
+                        >
                             Submit
                         </button>
                     </form>
