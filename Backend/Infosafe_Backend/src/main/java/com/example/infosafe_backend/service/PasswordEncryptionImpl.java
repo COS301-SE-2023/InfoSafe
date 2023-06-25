@@ -13,14 +13,19 @@ public class PasswordEncryptionImpl implements PasswordEncryption{
     @Override
     public String encryptPassword(String password) throws GeneralSecurityException, UnsupportedEncodingException {
 
-        byte[] salt = new String("175927404").getBytes();
+        //Set variables
+        byte[] salt = new String("enAN?=0+8Pk9").getBytes();
         int iterations = 18000;
         int keyLength = 128;
         char[] charPassword = password.toCharArray();
 
+        //Creates instance of the secret key factory
         SecretKeyMaker secretKeyMaker = new SecretKeyMakerImpl();
+
+        //Creates a secret key using the variables passed in anf the password
         SecretKeySpec secretKey = secretKeyMaker.generateSecretKey(charPassword, salt, iterations, keyLength);
 
+        //creates the encrypted password using the password and the secret key 
         String encryptedPassword = secretKeyMaker.encrypt(password, secretKey);
 
         return encryptedPassword;
