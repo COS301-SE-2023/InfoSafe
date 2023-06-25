@@ -5,7 +5,7 @@ import { RiDeleteBin6Fill } from 'react-icons/ri';
 import ViewUser from './ViewUser';
 import EditUser from './EditUser';
 import {CreateUserPopup}  from './CreateUserPopup';
-
+import ViewDataScope from './ViewDataScope';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -17,6 +17,28 @@ const NavBar = ({ systemRole }) => {
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
+    };
+
+    const ViewDataScopeItem = ({ j }) => {
+        const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
+        const idValue = `Data Scope ${j}`;
+
+        return (
+            <li key={j}>
+                <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
+                    Data Scope {j}
+                    {viewDataScopeOpen && (
+                        <ViewDataScope
+                            closeViewDataScope={() => setViewDataScopeOpen(false)}
+                            openViewDataScope={viewDataScopeOpen}
+                            id={idValue}
+                        />
+                    )}
+                </p>
+                <FaRegEdit className="EditIcon" />
+                <RiDeleteBin6Fill className="DeleteIcon" />
+            </li>
+        );
     };
 
     const displayInfo = () => {
@@ -60,12 +82,7 @@ const NavBar = ({ systemRole }) => {
                 case 1: {
                     const dataItems = [];
                     for (let j = 1; j < 30; j++) {
-                        dataItems.push(
-                            <li key={j}>
-                                Data Scope {j} <FaRegEdit className="EditIcon" />{' '}
-                                <RiDeleteBin6Fill className="DeleteIcon" />
-                            </li>
-                        );
+                        dataItems.push(<ViewDataScopeItem key={j} j={j} />);
                     }
 
                     return (

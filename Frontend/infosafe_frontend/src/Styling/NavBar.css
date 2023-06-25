@@ -65,7 +65,7 @@
     margin: 0;
     padding: 0;
     position: relative;
-    top: 0.4vh;
+    top: 0.6vh;
     left: -0.4vw;
     height: 2.1vh;
 }
@@ -118,13 +118,23 @@
     left: 3%;
     margin: 0;
     color: #000000;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
+
     width: 96%;
-    font-size: 18px;
+
     text-transform: none;
-    padding: 0.5%;
+    /*padding: 0.5%;*/
     border: 1px solid #000000;
+}
+.datascopesList li p{
+    font-family: 'Roboto', sans-serif;
+    height: 10%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0.6vh;
+    left: -0.4vw;
+    height: 2vh;
 }
 
 .datascopesList li:first-child {

@@ -1,0 +1,229 @@
+.viewDataScopeOverlay {
+    width: 60vw;
+    height: 90vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    backdrop-filter: blur(10px);
+    margin: 0 auto;
+}
+.borderDataScopeView {
+    border: 1px solid #ffffff;
+    width: 56vw;
+    margin: 0 auto;
+    height: 82vh;
+    position: relative;
+    top: 4vh;
+}
+.ViewDataScopeTitle {
+    width: 100%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: 1.5vh;
+}
+.view_datascope_name {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1vh;
+    margin-top: 2vh;
+}
+.datascopeName {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.viewDataScopeName {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1.5vh;
+}
+.view_datascope_description {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1vh;
+    margin-top: 2vh;
+}
+.datascopeDescription {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.viewDSDescription {
+    font-size: 16px;
+    width: 50%;
+    height: 6vh;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1.5vh;
+    text-transform: none;
+    text-align: left;
+    overflow-y: scroll;
+}
+.view_datascope_date {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 0.5vh;
+    margin-top: 2vh;
+}
+.datascopeDate {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.viewDataScopeDate {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1.5vh;
+}
+.view_datascope_status {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1vh;
+    margin-top: 2vh;
+}
+.datascopeStatus {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.viewDataScopeStatus {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1.5vh;
+}
+.view_datascope_roles {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1vh;
+    margin-top: 2vh;
+}
+.datascopeRoles{
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.roleView
+{
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 1.5vh;
+    overflow-y: scroll;
+    font-size: 18px;
+    text-transform:none;
+    height: 10vh;
+
+}
+.headers
+{
+    display: flex;
+    justify-content: space-around;
+    text-transform: uppercase;
+}
+.role_info{
+    display: flex;
+    justify-content: space-around;
+}
+.usr{
+    margin-top: -1vh;
+    width: 50%;
+}
+.usr_role{
+    margin-top: -1vh;
+    width:50%;
+}
+.ExitViewButton {
+    width: 15%;
+    height: 4%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto;
+    top: -1.5vh;
+    left: 42.5%;
+    border: none;
+}
+
