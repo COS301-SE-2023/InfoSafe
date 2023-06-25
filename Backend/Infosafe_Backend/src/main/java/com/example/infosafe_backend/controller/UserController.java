@@ -14,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public String add(@RequestBody User user){
+    public String add(@RequestBody User user) {
         userService.saveUser(user);
         return "New user is added";
     }
