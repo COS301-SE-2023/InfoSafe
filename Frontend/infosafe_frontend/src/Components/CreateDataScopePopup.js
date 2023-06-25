@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     return (

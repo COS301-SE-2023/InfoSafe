@@ -2,7 +2,7 @@ import React from 'react';
 import '../Styling/EditDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 const status = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
 export const EditDataScopePopup = ({ popupOpen, popupClose }) => {

@@ -2,7 +2,7 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/ViewDataScope.css';
 import { FaRegEdit } from 'react-icons/fa';
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 
 const ViewDataScope = ({ id, popupClose, popupOpen }) => {

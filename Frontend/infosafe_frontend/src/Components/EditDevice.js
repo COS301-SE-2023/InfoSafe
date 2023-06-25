@@ -5,7 +5,7 @@ import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const EditDevice = ({ closeEditDevice, openEditDevice }) => {
-    const status_options = ['AVAILABLE', 'CLEAN', 'UNAVAILABLE', 'BROKEN'];
+    const status_options = ['CLEAN', 'FULL', 'BROKEN'];
 
     return (
         <Popup open={openEditDevice} closeOnDocumentClick={false}>

@@ -1,6 +1,6 @@
 .createDeviceOverlay {
     width: 50vw;
-    height: 60vh;
+    height: 75vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,7 +11,7 @@
     border: 1px solid #ffffff;
     width: 46vw;
     margin: 0 auto;
-    height: 52vh;
+    height: 67vh;
     position: relative;
     top: 4vh;
 }
@@ -106,4 +106,16 @@
     border: none;
     left: 42.5%;
     margin: 5% auto 0;
+}
+.deviceStatusLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin-top: 1.5vh;
 }

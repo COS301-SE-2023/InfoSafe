@@ -2,7 +2,7 @@ import React from 'react';
 import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 /* eslint-disable react/prop-types */
 const role_options = [
