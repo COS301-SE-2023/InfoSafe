@@ -9,7 +9,7 @@ function Login(){
         e.preventDefault()
         const login = {email, password}
         console.log(login)
-        fetch("http://localhost:8080/user/login", {
+        fetch("http://localhost:8080/api/auth/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)
