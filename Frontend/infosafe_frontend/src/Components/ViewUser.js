@@ -3,16 +3,19 @@ import React from 'react';
 import '../Styling/ViewUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const ViewUser = ({ closeViewUser, openViewUser }) => {
+const ViewUser = ({ popupClose, popupOpen }) => {
     return (
         <Popup
-            open={openViewUser}
-            onClose={closeViewUser}
+            open={popupOpen}
+            onClose={popupClose}
             closeOnDocumentClick={false}
             position="center center"
         >
             <div className="viewUserOverlay">
                 <div className="borderView">
+                    <button className="backButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="backIcon" />
+                    </button>
                     <p className="viewUserTitle">View User</p>
                     <div className="view_name">
                         <p className="nameDisplay">Name</p>
@@ -30,9 +33,6 @@ const ViewUser = ({ closeViewUser, openViewUser }) => {
                         <p className="roleDisplay">System Role</p>
                         <p className="viewRole">Employee</p>
                     </div>
-                    <button className="FinishViewButton" onClick={closeViewUser}>
-                        Finish
-                    </button>
                 </div>
             </div>
         </Popup>

@@ -2,8 +2,9 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/EditUser.css';
 import Dropdown from 'react-dropdown';
+import { IoArrowBackOutline } from "react-icons/io5";
 /* eslint-disable react/prop-types */
-const EditUser = ({ closeEditUser, openEditUser }) => {
+const EditUser = ({ popupClose, popupOpen }) => {
     const role_options = [
         'EMPLOYEE',
         'ISO',
@@ -13,9 +14,12 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
         'ASSET MANAGER'
     ];
     return (
-        <Popup open={openEditUser} closeOnDocumentClick={false} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editUserOverlay">
                 <div className="border">
+                    <button className="backButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="backIcon" />
+                    </button>
                     <p className="editUserTitle">Edit User</p>
                     <form>
                         <div className="nameEdit">
@@ -58,7 +62,7 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
                             />
                         </div>
                         <button className="ChangePasswordButton">Change Password</button>
-                        <button className="FinishButton" onClick={closeEditUser}>
+                        <button className="FinishButton" onClick={popupClose}>
                             Finish
                         </button>
                     </form>
