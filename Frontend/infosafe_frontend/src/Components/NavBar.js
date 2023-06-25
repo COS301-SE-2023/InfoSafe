@@ -2,9 +2,13 @@ import '../Styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import ViewUser from './ViewUser';
-import EditUser from './EditUser';
-import {CreateUserPopup}  from './CreateUserPopup';
+import Popup from 'reactjs-popup';
+import Dropdown from 'react-dropdown';
+import { CreateUserPopup } from './CreateUserPopup';
+import { CreateDataScopePopup } from './CreateDataScopePopup';
+import  ViewUser  from './ViewUser';
+import EditUser from "./EditUser";
+
 
 
 /* eslint-disable react/prop-types */

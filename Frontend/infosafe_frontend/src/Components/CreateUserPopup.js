@@ -36,7 +36,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} onClose={popupClose} position="center center">
             <div className="createUserOverlay">
-                <div className="border">
+                <div className="createuserBorder">
                     <form>
                         <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
@@ -48,7 +48,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <p className="passwordLabel">Password</p>
                         <input className="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         <button className="genPassword">Generate Password</button>
-                        <p className="label_role">System role</p>
+                        <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
                             value={role_options[0]}
