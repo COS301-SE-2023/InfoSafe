@@ -13,7 +13,7 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
         'ASSET MANAGER'
     ];
     return (
-        <Popup open={openEditUser} onClose={closeEditUser} position="center center">
+        <Popup open={openEditUser} closeOnDocumentClick={false} position="center center">
             <div className="editUserOverlay">
                 <div className="border">
                     <p className="editUserTitle">Edit User</p>
@@ -58,7 +58,7 @@ const EditUser = ({ closeEditUser, openEditUser }) => {
                             />
                         </div>
                         <button className="ChangePasswordButton">Change Password</button>
-                        <button className="FinishButton" onClick={() => console.log('Finish editing')}>
+                        <button className="FinishButton" onClick={closeEditUser}>
                             Finish
                         </button>
                     </form>

@@ -14,7 +14,7 @@ const role_options = [
 ];
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
-        <Popup open={popupOpen} onClose={popupClose} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
                 <div className="createuserBorder">
                     <form>

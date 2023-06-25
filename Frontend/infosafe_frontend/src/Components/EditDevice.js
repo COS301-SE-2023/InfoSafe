@@ -1,43 +1,23 @@
 import Popup from 'reactjs-popup';
-import React, { useRef } from 'react';
+import React from 'react';
 import '../Styling/EditDevice.css';
 import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const EditDevice = ({ closeEditDevice, openEditDevice }) => {
     const status_options = ['AVAILABLE', 'CLEAN', 'UNAVAILABLE', 'BROKEN'];
-    const formRef = useRef(null);
-
-    const handleClickOverlay = (event) => {
-        if (
-            event.target.classList.contains('popup-overlay') ||
-            event.target.classList.contains('editDeviceOverlay')
-        ) {
-            event.stopPropagation();
-        }
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        closeEditDevice();
-    };
-
-    const handleBackButtonClick = () => {
-        closeEditDevice();
-    };
 
     return (
         <Popup
             open={openEditDevice}
-            onClose={closeEditDevice}
             closeOnDocumentClick={false}
         >
-            <div className="editDeviceOverlay" onClick={handleClickOverlay}>
+            <div className="editDeviceOverlay" >
                 <div className="borderEditDevice">
-                    <button className="backButton" onClick={handleBackButtonClick}>
+                    <button className="backButton" onClick={closeEditDevice}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>
-                    <form ref={formRef} onSubmit={handleSubmit}>
+                    <form>
                         <p className="editDeviceTitle">Edit Device</p>
                         <div className="devicetypeEdit">
                             <p className="devicetypeTitle">Type</p>
@@ -79,7 +59,7 @@ const EditDevice = ({ closeEditDevice, openEditDevice }) => {
                                 defaultValue="Employee123"
                             />
                         </div>
-                        <button className="EditDeviceButton" type="submit">
+                        <button className="EditDeviceButton" type="submit" onClick={closeEditDevice}>
                             Submit
                         </button>
                     </form>

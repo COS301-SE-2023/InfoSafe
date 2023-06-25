@@ -11,7 +11,7 @@ const status = [
 ];
 export const EditDataScopePopup = ({ popupOpen, popupClose }) => {
   return (
-    <Popup open={popupOpen} onClose={popupClose} position="center center">
+    <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
       <div className="editDataScopeOverlay">
         <div className="editdatascopeBorder">
           <form>

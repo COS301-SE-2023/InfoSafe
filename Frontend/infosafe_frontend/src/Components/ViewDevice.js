@@ -1,10 +1,11 @@
 import React from 'react';
 import '../Styling/ViewDevice.css';
 import Popup from 'reactjs-popup';
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 export const ViewDevice = ({ popupOpen, popupClose }) => {
   return (
-    <Popup open={popupOpen} onClose={popupClose} position="center center">
+    <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
       <div className="viewDeviceOverlay">
         <div className="viewDeviceBorder">
           <p className="viewDeviceTitle">View Device</p>
@@ -26,7 +27,7 @@ export const ViewDevice = ({ popupOpen, popupClose }) => {
           </div>
           <button
             className="viewDevice_finish"
-            onClick={() => console.log('Finish editing')}
+            onClick={popupClose}
           >
             Finish
           </button>

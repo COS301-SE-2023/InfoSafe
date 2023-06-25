@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     return (
-        <Popup open={popupOpen} onClose={popupClose} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
                 <div className="createdatascopeBorder">
                     <form>

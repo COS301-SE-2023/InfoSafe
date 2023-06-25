@@ -5,7 +5,7 @@ import Dropdown from "react-dropdown";
 
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
   return (
-    <Popup open={popupOpen} onClose={popupClose} position="center center">
+    <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
       <div className="createDeviceOverlay">
         <div className="createDeviceBorder">
           <form>
