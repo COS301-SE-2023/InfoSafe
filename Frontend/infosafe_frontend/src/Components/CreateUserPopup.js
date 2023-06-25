@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 /* eslint-disable react/prop-types */
 const role_options = [
@@ -34,10 +35,13 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     }
 
     return (
-        <Popup open={popupOpen} onClose={popupClose} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
                 <div className="createuserBorder">
                     <form>
+                        <button className="backButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="backIcon" />
+                        </button>
                         <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" name="name" value={name} onChange={(e)=>setName(e.target.value)}/>

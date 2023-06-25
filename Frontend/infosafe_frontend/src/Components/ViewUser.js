@@ -1,12 +1,21 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/ViewUser.css';
-/* eslint-disable react/prop-types */
-const ViewUser = ({ closeViewUser, openViewUser }) => {
+import { IoArrowBackOutline } from 'react-icons/io5';
+
+const ViewUser = ({ id, popupClose, popupOpen }) => {
     return (
-        <Popup open={openViewUser} onClose={closeViewUser} position="center center">
+        <Popup
+            open={popupOpen}
+            onClose={popupClose}
+            closeOnDocumentClick={false}
+            position="center center"
+        >
             <div className="viewUserOverlay">
                 <div className="borderView">
+                    <button className="backButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="backIcon" />
+                    </button>
                     <p className="viewUserTitle">View User</p>
                     <div className="view_name">
                         <p className="nameDisplay">Name</p>
@@ -24,12 +33,6 @@ const ViewUser = ({ closeViewUser, openViewUser }) => {
                         <p className="roleDisplay">System Role</p>
                         <p className="viewRole">Employee</p>
                     </div>
-                    <button
-                        className="FinishViewButton"
-                        onClick={() => console.log('Finish editing')}
-                    >
-                        Finish
-                    </button>
                 </div>
             </div>
         </Popup>

@@ -1,5 +1,5 @@
-.viewUserOverlay {
-    width: 60vw;
+.viewDeviceOverlay {
+    width: 50vw;
     height: 75vh;
     flex-shrink: 0;
     border-radius: 30px;
@@ -7,13 +7,13 @@
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.borderView {
+.viewDeviceBorder {
     border: 1px solid #ffffff;
-    width: 56vw;
+    width: 46vw;
     margin: 0 auto;
-    height: 67vh;
+    height: 70vh;
     position: relative;
-    top: 4vh;
+    top: 2.5vh;
 }
 .backButton {
     background-color: rgba(233, 0, 0, 1);
@@ -33,7 +33,7 @@
     height: 3vh;
     width: 1.3vw;
 }
-.viewUserTitle {
+.viewDeviceTitle {
     width: 100%;
     justify-content: center;
     color: #000000;
@@ -45,7 +45,7 @@
     position: relative;
     top: 1.5vh;
 }
-.view_name {
+.viewDeviceTypeDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -55,10 +55,10 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 4vh;
+    top: 1vh;
+    margin-top: 3vh;
 }
-.nameDisplay {
+.deviceTypeLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -66,7 +66,7 @@
     text-align: center;
     border: none;
 }
-.viewName {
+.deviceType {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -76,7 +76,7 @@
     background-color: #ffffff;
     margin-top: 2vh;
 }
-.view_surname {
+.viewDeviceDescriptionDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -86,29 +86,27 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
-.surnameDisplay {
+.deviceDescriptionLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
-    margin-top: 2vh;
 }
-.viewSurname {
-    text-transform: uppercase;
-    font-size: 22px;
+.viewDescription {
+    font-size: 15px;
     width: 50%;
+    height: 10vh;
     text-align: center;
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
     margin-top: 2vh;
 }
-.view_email {
+.viewDeviceStatusDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -118,18 +116,17 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
+    margin-top: 3vh;
 }
-.emailDisplay {
+.statusLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
-    margin-top: 2vh;
 }
-.viewEmail {
+.viewStatus {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -137,9 +134,9 @@
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
-.view_role {
+.viewDeviceAssignedDiv {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
@@ -149,10 +146,9 @@
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
-.roleDisplay {
+.assignedLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -160,7 +156,7 @@
     text-align: center;
     border: none;
 }
-.viewRole {
+.viewAssigned {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -168,5 +164,5 @@
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
+    margin-top: 1vh;
 }

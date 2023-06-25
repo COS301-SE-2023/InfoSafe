@@ -1,13 +1,16 @@
 import React from 'react';
-import Dropdown from 'react-dropdown';
 import '../Styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     return (
-        <Popup open={popupOpen} onClose={popupClose} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
                 <div className="createdatascopeBorder">
+                    <button className="backButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="backIcon" />
+                    </button>
                     <form>
                         <p className="datascopeLabel">Data Scope Creation</p>
                         <p className="datascopeNameLabel">Name</p>
