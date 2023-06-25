@@ -19,19 +19,38 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[role,setRole]=useState('ISO')
     const[password,setPassword]=useState('')
 
-    const handleClick=(e)=> {
-        e.preventDefault()
-        const user = {name, surname, email, password, role}
-        console.log(user)
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const user = {name, surname, email, password, role};
+        let newPassword = await generatePassword();
+        user.password = newPassword;
+        console.log(user);
+
         fetch("http://localhost:8080/user/add", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
         }).then(()=>{
-            console.log("New User added")
-        })
-        popupClose()
+            console.log("New User added");
+        });
+        //popupClose()
     }
+
+    const generatePassword = async () => {
+        const response = await fetch("http://localhost:8080/password/generate");
+        let generatedPassword = "";
+        if (response.ok) {
+            const data = await response.json();
+
+            generatedPassword = data.message.toString();
+            console.log("Password fetched from the server: ", generatedPassword);
+
+        } else {
+            console.error('Error fetching string from the server.');
+        }
+
+        return generatedPassword;
+    };
 
     return (
         <Popup open={popupOpen} onClose={popupClose} position="center center">
