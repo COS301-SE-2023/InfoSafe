@@ -8,6 +8,7 @@ import { CreateUserPopup } from './CreateUserPopup';
 import { CreateDataScopePopup } from './CreateDataScopePopup';
 import { EditDataScopePopup } from './EditDataScopePopup';
 import EditUser from './EditUser';
+import ViewDataScope from './ViewDataScope';
 import ViewUser from './ViewUser';
 import { CreateDevicePopup } from './CreateDevicePopup';
 import { ViewDevice } from './ViewDevice';
@@ -25,6 +26,28 @@ const NavBar = ({ systemRole }) => {
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
+    };
+
+    const ViewDataScopeItem = ({ j }) => {
+        const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
+        const idValue = `Data Scope ${j}`;
+
+        return (
+            <li key={j}>
+                <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
+                    Data Scope {j}
+                    {viewDataScopeOpen && (
+                        <ViewDataScope
+                            closeViewDataScope={() => setViewDataScopeOpen(false)}
+                            openViewDataScope={viewDataScopeOpen}
+                            id={idValue}
+                        />
+                    )}
+                </p>
+                <FaRegEdit className="EditIcon" />
+                <RiDeleteBin6Fill className="DeleteIcon" />
+            </li>
+        );
     };
 
     const displayInfo = () => {
@@ -68,22 +91,7 @@ const NavBar = ({ systemRole }) => {
                 case 1: {
                     const dataItems = [];
                     for (let j = 1; j < 30; j++) {
-                        dataItems.push(
-                            <li key={j}>
-                                Data Scope {j}{' '}
-                                <FaRegEdit
-                                    className="EditIcon"
-                                    onClick={() => setEditDataScopeOpen(true)}
-                                />
-                                {editDataScopeOpen ? (
-                                    <EditDataScopePopup
-                                        popupOpen={editDataScopeOpen}
-                                        popupClose={() => setEditDataScopeOpen(false)}
-                                    />
-                                ) : null}{' '}
-                                <RiDeleteBin6Fill className="DeleteIcon" />
-                            </li>
-                        );
+                        dataItems.push(<ViewDataScopeItem key={j} j={j} />);
                     }
 
                     return (
