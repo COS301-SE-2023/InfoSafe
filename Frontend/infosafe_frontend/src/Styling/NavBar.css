@@ -306,23 +306,28 @@
     padding-right: 20px;
     box-sizing: content-box;
 }
-.deviceList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 .deviceList li {
     position: relative;
-    left: 3%;
+    left: 2%;
     margin: 0;
     color: #000000;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
+
     width: 96%;
-    font-size: 18px;
+
     text-transform: none;
-    padding: 0.5%;
+    /*padding: 0.5%;*/
     border: 1px solid #000000;
+}
+.deviceList li p {
+    font-family: 'Roboto', sans-serif;
+    height: 10%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0.6vh;
+    left: -0.4vw;
+    height: 2vh;
 }
 .deviceList li:first-child {
     margin-top: 4%;
