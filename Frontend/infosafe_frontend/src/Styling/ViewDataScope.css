@@ -166,7 +166,7 @@
     top: 1vh;
     margin-top: 2vh;
 }
-.datascopeRoles{
+.datascopeRoles {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -174,8 +174,7 @@
     text-align: center;
     border: none;
 }
-.roleView
-{
+.roleView {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -186,27 +185,25 @@
     margin-top: 1.5vh;
     overflow-y: scroll;
     font-size: 18px;
-    text-transform:none;
+    text-transform: none;
     height: 10vh;
-
 }
-.headers
-{
+.headers {
     display: flex;
     justify-content: space-around;
     text-transform: uppercase;
 }
-.role_info{
+.role_info {
     display: flex;
     justify-content: space-around;
 }
-.usr{
+.usr {
     margin-top: -1vh;
     width: 50%;
 }
-.usr_role{
+.usr_role {
     margin-top: -1vh;
-    width:50%;
+    width: 50%;
 }
 .ExitViewButton {
     width: 15%;
@@ -226,4 +223,3 @@
     left: 42.5%;
     border: none;
 }
-
