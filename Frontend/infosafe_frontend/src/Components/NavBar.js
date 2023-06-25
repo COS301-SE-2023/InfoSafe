@@ -69,35 +69,37 @@ const NavBar = ({ systemRole }) => {
                     //     </div>
                     // );
                     return (
-                        <ul className="userList">
-                            {
-                                showUser.map(user=>(
-                                    <li key={user.id}>
-                                        <p onClick={() => setViewUserOpen(true)}>
-                                            {user.name}
-                                            {user.surname}
-                                            {viewUserOpen ? (
-                                                <ViewUser
-                                                    closeViewUser={() => setViewUserOpen(false)}
-                                                    openViewUser={viewUserOpen}
-                                                />
-                                            ) : null}
-                                        </p>
-                                        <FaRegEdit
-                                            className="EditIcon"
-                                            onClick={() => setEditUserOpen(true)}
-                                        />
-                                        {editUserOpen ? (
-                                            <EditUser
-                                                closeEditUser={() => setEditUserOpen(false)}
-                                                openEditUser={editUserOpen}
+                        <div className="users">
+                            <ul className="userList">
+                                {
+                                    showUser.map(user=>(
+                                        <li key={user.id}>
+                                            <p onClick={() => setViewUserOpen(true)}>
+                                                {user.name}
+                                                {user.surname}
+                                                {viewUserOpen ? (
+                                                    <ViewUser
+                                                        closeViewUser={() => setViewUserOpen(false)}
+                                                        openViewUser={viewUserOpen}
+                                                    />
+                                                ) : null}
+                                            </p>
+                                            <FaRegEdit
+                                                className="EditIcon"
+                                                onClick={() => setEditUserOpen(true)}
                                             />
-                                        ) : null}{' '}
-                                        <RiDeleteBin6Fill className="DeleteIcon" />
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                                            {editUserOpen ? (
+                                                <EditUser
+                                                    closeEditUser={() => setEditUserOpen(false)}
+                                                    openEditUser={editUserOpen}
+                                                />
+                                            ) : null}{' '}
+                                            <RiDeleteBin6Fill className="DeleteIcon" />
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
                     );
                 }
                 case 1: {
