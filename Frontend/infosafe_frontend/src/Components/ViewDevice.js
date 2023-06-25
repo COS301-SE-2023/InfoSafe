@@ -8,6 +8,9 @@ export const ViewDevice = ({ popupOpen, popupClose }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewDeviceOverlay">
                 <div className="viewDeviceBorder">
+                    <button className="backButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="backIcon" />
+                    </button>
                     <p className="viewDeviceTitle">View Device</p>
                     <div className="viewDeviceTypeDiv">
                         <p className="deviceTypeLabel">Device Type</p>
@@ -29,9 +32,6 @@ export const ViewDevice = ({ popupOpen, popupClose }) => {
                         <p className="assignedLabel">Assigned User</p>
                         <p className="viewAssigned">Employee123</p>
                     </div>
-                    <button className="viewDevice_finish" onClick={popupClose}>
-                        Finish
-                    </button>
                 </div>
             </div>
         </Popup>
