@@ -30,12 +30,8 @@ const EditDevice = ({ closeEditDevice, openEditDevice }) => {
                             <p className="devicedescriptionTitle">Description</p>
                             <textarea
                                 className="editdeviceDescriptionInput"
-                                type="text"
-                                id="editdevicedescr"
-                                name="editdevicedescr"
-                            >
-                                Description here.
-                            </textarea>
+                                defaultValue="Description here."
+                            />
                         </div>
                         <div className="devicestatusEdit">
                             <p className="devicestatusTitle">Status</p>

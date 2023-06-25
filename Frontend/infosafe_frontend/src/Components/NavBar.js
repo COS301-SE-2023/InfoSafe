@@ -44,7 +44,16 @@ const NavBar = ({ systemRole }) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" />
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditDataScopeOpen(true)}
+                />
+                {editDataScopeOpen ? (
+                    <EditDataScopePopup
+                        popupClose={() => setEditDataScopeOpen(false)}
+                        popupOpen={editDataScopeOpen}
+                    />
+                ) : null}{' '}
                 <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
