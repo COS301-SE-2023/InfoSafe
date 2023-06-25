@@ -1,5 +1,4 @@
 import React from 'react';
-import Dropdown from 'react-dropdown';
 import '../Styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 

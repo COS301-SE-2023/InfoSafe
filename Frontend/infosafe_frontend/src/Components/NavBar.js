@@ -6,6 +6,9 @@ import Popup from 'reactjs-popup';
 import Dropdown from 'react-dropdown';
 import { CreateUserPopup } from './CreateUserPopup';
 import { CreateDataScopePopup } from './CreateDataScopePopup';
+import { EditDataScopePopup } from "./EditDataScopePopup";
+import EditUser from "./EditUser";
+import ViewUser from "./ViewUser";
 
 
 /* eslint-disable react/prop-types */
@@ -15,6 +18,7 @@ const NavBar = ({ systemRole }) => {
     const [viewUserOpen, setViewUserOpen] = useState(false);
 
     const [editUserOpen, setEditUserOpen] = useState(false);
+    const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -63,7 +67,8 @@ const NavBar = ({ systemRole }) => {
                     for (let j = 1; j < 30; j++) {
                         dataItems.push(
                             <li key={j}>
-                                Data Scope {j} <FaRegEdit className="EditIcon" />{' '}
+                                Data Scope {j} <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)}/>
+                                { editDataScopeOpen ? (<EditDataScopePopup popupOpen={editDataScopeOpen} popupClose={() => setEditDataScopeOpen(false)}/>) : null }{' '}
                                 <RiDeleteBin6Fill className="DeleteIcon" />
                             </li>
                         );
