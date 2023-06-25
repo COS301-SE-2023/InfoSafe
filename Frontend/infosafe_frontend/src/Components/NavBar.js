@@ -1,5 +1,5 @@
 import '../Styling/NavBar.css';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import Popup from 'reactjs-popup';
@@ -16,49 +16,88 @@ const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     //const [id, setUserID] = useState(null);
     const [viewUserOpen, setViewUserOpen] = useState(false);
-
+    const [showUser, setShowUser] = useState([]);
     const [editUserOpen, setEditUserOpen] = useState(false);
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
 
+    useEffect(()=>{
+        fetch("http://localhost:8080/user/getAll")
+            .then(res=>res.json())
+            .then((result)=>{
+                setShowUser(result);
+            })
+    },[])
+
     const displayInfo = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0: {
-                    const userItems = [];
-                    for (let i = 1; i < 30; i++) {
-                        userItems.push(
-                            <li key={i}>
-                                <p onClick={() => setViewUserOpen(true)}>
-                                    User {i}
-                                    {viewUserOpen ? (
-                                        <ViewUser
-                                            closeViewUser={() => setViewUserOpen(false)}
-                                            openViewUser={viewUserOpen}
-                                        />
-                                    ) : null}
-                                </p>
-                                <FaRegEdit
-                                    className="EditIcon"
-                                    onClick={() => setEditUserOpen(true)}
-                                />
-                                {editUserOpen ? (
-                                    <EditUser
-                                        closeEditUser={() => setEditUserOpen(false)}
-                                        openEditUser={editUserOpen}
-                                    />
-                                ) : null}{' '}
-                                <RiDeleteBin6Fill className="DeleteIcon" />
-                            </li>
-                        );
-                    }
+                    // const userItems = [];
+                    // for (let i = 1; i < 30; i++) {
+                    //     userItems.push(
+                    //         <li key={i}>
+                    //             <p onClick={() => setViewUserOpen(true)}>
+                    //                 User {i}
+                    //                 {viewUserOpen ? (
+                    //                     <ViewUser
+                    //                         closeViewUser={() => setViewUserOpen(false)}
+                    //                         openViewUser={viewUserOpen}
+                    //                     />
+                    //                 ) : null}
+                    //             </p>
+                    //             <FaRegEdit
+                    //                 className="EditIcon"
+                    //                 onClick={() => setEditUserOpen(true)}
+                    //             />
+                    //             {editUserOpen ? (
+                    //                 <EditUser
+                    //                     closeEditUser={() => setEditUserOpen(false)}
+                    //                     openEditUser={editUserOpen}
+                    //                 />
+                    //             ) : null}{' '}
+                    //             <RiDeleteBin6Fill className="DeleteIcon" />
+                    //         </li>
+                    //     );
+                    // }
 
+                    // return (
+                    //     <div className="users">
+                    //         <ul className="userList">{userItems}</ul>
+                    //     </div>
+                    // );
                     return (
-                        <div className="users">
-                            <ul className="userList">{userItems}</ul>
-                        </div>
+                        <ul className="userList">
+                            {
+                                showUser.map(user=>(
+                                    <li key={user.id}>
+                                        <p onClick={() => setViewUserOpen(true)}>
+                                            {user.name}
+                                            {user.surname}
+                                            {viewUserOpen ? (
+                                                <ViewUser
+                                                    closeViewUser={() => setViewUserOpen(false)}
+                                                    openViewUser={viewUserOpen}
+                                                />
+                                            ) : null}
+                                        </p>
+                                        <FaRegEdit
+                                            className="EditIcon"
+                                            onClick={() => setEditUserOpen(true)}
+                                        />
+                                        {editUserOpen ? (
+                                            <EditUser
+                                                closeEditUser={() => setEditUserOpen(false)}
+                                                openEditUser={editUserOpen}
+                                            />
+                                        ) : null}{' '}
+                                        <RiDeleteBin6Fill className="DeleteIcon" />
+                                    </li>
+                                ))
+                            }
+                        </ul>
                     );
                 }
                 case 1: {
