@@ -18,12 +18,10 @@ function EditProfile() {
                     <p className="label_email">Email</p>
                     <input className="email" name="email" />
                 </div>
-              
-                    <button className="btnPassword">Change Password</button>
-               
-                
+
+                <button className="btnPassword">Change Password</button>
+
                 <button className="btnFinish">FINISH</button>
-                
             </div>
         </div>
     );
