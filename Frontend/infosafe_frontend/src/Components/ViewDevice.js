@@ -18,10 +18,10 @@ export const ViewDevice = ({ id, popupOpen, popupClose }) => {
                     </div>
                     <div className="viewDeviceDescriptionDiv">
                         <p className="deviceDescriptionLabel">Device Description</p>
-                        <textarea readOnly={true} className="viewDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet dolorem
-                            dolores est fuga iste iure libero nam nemo nihil non officiis optio,
-                            placeat quos ratione, saepe temporibus tenetur, ullam ut.
+                        <textarea readOnly={true} className="viewDescription" defaultValue="Lenovo Ideapad 330
+                            RAM: 16GB
+                            SDD: 1TB
+                            Windows 10 Home">
                         </textarea>
                     </div>
                     <div className="viewDeviceStatusDiv">
