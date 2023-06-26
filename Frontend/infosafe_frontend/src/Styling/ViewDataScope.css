@@ -44,6 +44,7 @@
     position: relative;
     top: -2vh;
     left: 20%;
+    text-transform: uppercase;
 }
 .view_datascope_name {
     margin: 0 auto;
@@ -183,6 +184,7 @@
     margin: 0 auto;
     text-align: center;
     border: none;
+    text-transform: uppercase;
 }
 .roleView {
     font-size: 22px;
