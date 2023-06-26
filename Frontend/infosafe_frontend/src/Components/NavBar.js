@@ -37,8 +37,10 @@ const NavBar = ({ systemRole }) => {
             .then(result => {
                 setShowUser(result);
             });
+    }, []);
 
-        fetch("http://localhost:8080/api/datascope/getAll", {
+    useEffect(() => {
+        fetch("http://localhost:8080/api/auth/datascope/getAll", {
             headers: {
                 Authorization: sessionStorage.getItem('accessToken')
             }
@@ -47,7 +49,7 @@ const NavBar = ({ systemRole }) => {
             .then(result => {
                 setShowDatascope(result);
             });
-    }, []);
+    }, [])
 
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
@@ -152,7 +154,7 @@ const NavBar = ({ systemRole }) => {
                 case 1: {
                     const dataItems = [];
                     showDatascope.map(datascope=>(
-                        userItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id}/>)
+                        dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id}/>)
                     ))
 
                     return (

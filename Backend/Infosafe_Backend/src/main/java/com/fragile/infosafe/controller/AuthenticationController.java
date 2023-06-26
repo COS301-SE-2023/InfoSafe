@@ -1,9 +1,16 @@
-package com.fragile.infosafe.auth;
+package com.fragile.infosafe.controller;
 
+import com.fragile.infosafe.auth.AuthenticationRequest;
+import com.fragile.infosafe.auth.AuthenticationResponse;
+import com.fragile.infosafe.auth.AuthenticationService;
+import com.fragile.infosafe.auth.RegisterRequest;
+import com.fragile.infosafe.model.DataScope;
 import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.service.DataScopeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +55,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(response);
     }
     @GetMapping("/getAll")
-    public List<User> list() { return service.getAllUsers(); }
+    public List<User> userlist() { return service.getAllUsers(); }
+
 
 }
