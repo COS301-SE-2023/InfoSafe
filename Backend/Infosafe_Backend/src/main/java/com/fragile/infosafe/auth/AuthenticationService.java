@@ -1,9 +1,13 @@
 package com.fragile.infosafe.auth;
 
 import com.fragile.infosafe.config.JwtService;
+import com.fragile.infosafe.model.Asset;
 import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.repository.AssetRepository;
 import com.fragile.infosafe.repository.DataScopeRepository;
+import com.fragile.infosafe.requests.AssetRequest;
 import com.fragile.infosafe.requests.DataScopeRequest;
+import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.token.Token;
 import com.fragile.infosafe.token.TokenRepository;
 import com.fragile.infosafe.token.TokenType;
@@ -14,6 +18,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,15 +27,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.AuthenticationException;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository repository;
     private final DataScopeRepository dataScopeRepository;
+    private final AssetRepository assetRepository;
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -53,7 +58,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    public String makeDs(DataScopeRequest request){
+    public ResponseEntity<String> makeDs(DataScopeRequest request){
         var datascope = DataScope.builder()
                 .ds_name(request.getDs_name())
                 .description(request.getDescription())
@@ -65,7 +70,18 @@ public class AuthenticationService {
                 .status(request.getStatus())
                 .build();
         dataScopeRepository.save(datascope);
-        return "added";
+        return ResponseEntity.status(HttpStatus.OK).body("added");
+    }
+
+    public ResponseEntity<String>  makeAsset(AssetRequest request){
+        var asset = Asset.builder()
+                .asset_name(request.getAsset_name())
+                .asset_description(request.getAsset_description())
+                .status(request.getStatus())
+                .date_acquired(request.getDate_acquired())
+                .build();
+        assetRepository.save(asset);
+        return ResponseEntity.status(HttpStatus.OK).body("added");
     }
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         try {
@@ -147,5 +163,8 @@ public class AuthenticationService {
     }
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
 
+    public List<Asset> getAllAssets() {
+        return assetRepository.findAll();
+    }
 
 }

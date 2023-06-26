@@ -1,4 +1,4 @@
-package com.fragile.infosafe.auth;
+package com.fragile.infosafe.requests;
 
 import com.fragile.infosafe.model.Role;
 import lombok.AllArgsConstructor;

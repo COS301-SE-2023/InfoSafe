@@ -3,7 +3,9 @@ package com.fragile.infosafe.controller;
 import com.fragile.infosafe.auth.AuthenticationRequest;
 import com.fragile.infosafe.auth.AuthenticationResponse;
 import com.fragile.infosafe.auth.AuthenticationService;
-import com.fragile.infosafe.auth.RegisterRequest;
+import com.fragile.infosafe.model.Asset;
+import com.fragile.infosafe.requests.AssetRequest;
+import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.model.DataScope;
 import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.requests.DataScopeRequest;
@@ -57,15 +59,19 @@ public class AuthenticationController {
     public List<User> userlist() { return service.getAllUsers(); }
 
     @PostMapping("/addDs")
-    public ResponseEntity addDs(
-            @RequestBody DataScopeRequest datascope) {
+    public ResponseEntity addDs(@RequestBody DataScopeRequest datascope) {
         return ResponseEntity.ok(service.makeDs(datascope));
     }
-
 
     @GetMapping("/getDs")
     public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
 
+    @PostMapping("/addAsset")
+    public ResponseEntity addAsset(@RequestBody AssetRequest asset){
+        return ResponseEntity.ok(service.makeAsset(asset));
+    }
 
+    @GetMapping("/getAsset")
+    public List<Asset> list() { return service.getAllAssets(); }
 
 }
