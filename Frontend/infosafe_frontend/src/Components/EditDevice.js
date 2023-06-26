@@ -30,7 +30,10 @@ const EditDevice = ({ id, popupClose, popupOpen}) => {
                             <p className="devicedescriptionTitle">Description</p>
                             <textarea
                                 className="editdeviceDescriptionInput"
-                                defaultValue="Description here."
+                                defaultValue="Lenovo Ideapad 330
+                            RAM: 16GB
+                            SDD: 1TB
+                            Windows 10 Home"
                             />
                         </div>
                         <div className="devicestatusEdit">
