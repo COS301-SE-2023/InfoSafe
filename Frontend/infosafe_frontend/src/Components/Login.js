@@ -20,7 +20,8 @@ function Login(){
                     window.location.href = '/home';
                 });
             } else {
-                throw new Error('Login failed');
+                //throw new Error('Login failed');
+                console.log("Login failed");
             }
         })
     };

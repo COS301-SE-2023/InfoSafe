@@ -259,6 +259,7 @@ const NavBar = ({ systemRole }) => {
                         <div className="CreateUserButtonDiv">
                             <button
                                 className="CreateUserButton"
+                                data-testid="CreateUserButton"
                                 onClick={() => setCreateUserOpen(true)}
                             >
                                 Create New User

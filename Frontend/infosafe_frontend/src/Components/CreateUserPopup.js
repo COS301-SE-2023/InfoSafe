@@ -45,23 +45,24 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         </button>
                         <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
-                        <input className="nameInput" name="name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
+                        <input className="nameInput" data-testid="nameInput" name="name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" name="surname" value={lastname} onChange={(e)=>setSurname(e.target.value)}/>
+                        <input className="surnameInput" data-testid="surnameInput" name="surname" value={lastname} onChange={(e)=>setSurname(e.target.value)}/>
                         <p className="emailLabel">Email</p>
-                        <input className="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                        <input className="passwordInput" data-testid="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         <button className="genPassword">Generate Password</button>
                         <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
                             value={role_options[0]}
                             className="role_dropdown"
+                            data-testid="role_dropdown"
                             name="role"
                             onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
-                        <button className="createuser_finish" onClick={handleClick}>
+                        <button className="createuser_finish" data-testid="createuser_finish"  onClick={handleClick}>
                             Submit
                         </button>
                     </form>
