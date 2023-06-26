@@ -11,13 +11,16 @@ rectangle Asset-Management #text:white;line.bold;line:white {
   usecase "View Available Assets" as UC4 #black;text:white;line.bold;line:white
   usecase "Request Available Asset" as UC5 #black;text:white;line.bold;line:white
   usecase "Approve/Reject a Request" as UC6 #black;text:white;line.bold;line:white
+  usecase "View Selected Asset Details" as UC7 #black;text:white;line.bold;line:white
 }
 iso -[#blue]-> UC1
 iso -[#blue]-> UC2
+iso -[#blue]-> UC7
 am -[#green]-> UC1
 am -[#green]-> UC2
 am -[#green]-> UC3
 am -[#green]-> UC6
+am -[#green]-> UC7
 user -[#red]-> UC4
 user -[#red]-> UC5
 UC5 <. (UC3) #line:white;text:white : <<uses>>
