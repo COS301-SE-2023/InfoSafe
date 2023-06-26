@@ -59,24 +59,6 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 defaultValue="jane.doe@example.com"
                             />
                         </div>
-                        <div className="newPassword">
-                            <p className="newPasswordTitle">New Password</p>
-                            <input
-                                className="newPasswordInput"
-                                type="password"
-                                id="newpassword"
-                                name="newpassword"
-                            />
-                        </div>
-                        <div className="confirmPassword">
-                            <p className="confirmPasswordTitle">Confirm Password</p>
-                            <input
-                                className="confirmPasswordInput"
-                                type="password"
-                                id="confirmpassword"
-                                name="confirmpassword"
-                            />
-                        </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
                             <select
