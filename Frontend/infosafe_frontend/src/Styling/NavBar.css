@@ -43,7 +43,7 @@
     overflow-y: scroll;
     padding-right: 20px;
     box-sizing: content-box;
-    border-radius: 20px;
+    border-radius: 35px;
     scrollbar-width: none;
 }
 .users::-webkit-scrollbar{
