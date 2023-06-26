@@ -30,7 +30,7 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
                     </div>
                     <div className="viewDeviceAssignedDiv">
                         <p className="assignedLabel">Assigned User</p>
-                        <p className="viewAssigned">User123</p>
+                        <p className="viewAssigned">{asset.assignee}</p>
                     </div>
                 </div>
             </div>

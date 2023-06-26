@@ -17,7 +17,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const asset = {asset_name, asset_description, date_acquired, status}
+        const asset = {asset_name, asset_description, assignee, date_acquired, status}
         console.log(asset)
         fetch("http://localhost:8080/api/auth/addAsset", {
             method:"POST",
