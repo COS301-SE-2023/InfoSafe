@@ -92,6 +92,28 @@
     text-wrap: initial;
     resize: none;
 }
+.assignedUserLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1.5vh;
+    margin-top: 1.5vh;
+}
+.assignedUserInput {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-top: 2vh;
+    left: 25%;
+    position: relative;
+}
 .createDevice_finish {
     width: 15%;
     height: 5%;
@@ -118,4 +140,17 @@
     font-family: 'Roboto', sans-serif;
     position: relative;
     margin-top: 1.5vh;
+}
+.statusDropdown {
+    text-transform: uppercase;
+    font-size: 20px;
+    width: 50%;
+    margin-top: 1vh;
+    text-align: center;
+    border: none;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    left: 25%;
+    position: relative;
 }

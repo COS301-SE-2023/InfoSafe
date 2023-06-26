@@ -1,13 +1,11 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/EditUser.css';
-import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
-const EditUser = ({ id, popupClose, popupOpen }) => {
-
-    const makeOptions = () =>{
-        var options = []
+const EditUser = ({ user, popupClose, popupOpen }) => {
+    const makeOptions = () => {
+        var options = [];
         const role_options = [
             'EMPLOYEE',
             'ISO',
@@ -16,9 +14,9 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
             'SYSTEM ADMINISTRATOR',
             'ASSET MANAGER'
         ];
-        role_options.map(opt => options.push(<option>{opt}</option>));
-        return(options);
-    }
+        role_options.map((opt) => options.push(<option>{opt}</option>));
+        return options;
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -36,7 +34,7 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusername"
                                 name="editusername"
-                                defaultValue="Jane"
+                                defaultValue={user.firstname}
                             />
                         </div>
                         <div className="surnameEdit">
@@ -46,7 +44,7 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusersurname"
                                 name="editusersurname"
-                                defaultValue="Doe"
+                                defaultValue={user.lastname}
                             />
                         </div>
                         <div className="emailEdit">
@@ -56,15 +54,30 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="edituseremail"
                                 name="edituseremail"
-                                defaultValue="jane.doe@example.com"
+                                defaultValue={user.email}
+                            />
+                        </div>
+                        <div className="newPassword">
+                            <p className="newPasswordTitle">New Password</p>
+                            <input
+                                className="newPasswordInput"
+                                type="password"
+                                id="newpassword"
+                                name="newpassword"
+                            />
+                        </div>
+                        <div className="confirmPassword">
+                            <p className="confirmPasswordTitle">Confirm Password</p>
+                            <input
+                                className="confirmPasswordInput"
+                                type="password"
+                                id="confirmpassword"
+                                name="confirmpassword"
                             />
                         </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
-                            <select
-                                className="roleDropdown"
-                                name="role"
-                            >
+                            <select className="roleDropdown" name="role">
                                 {makeOptions()}
                             </select>
                         </div>

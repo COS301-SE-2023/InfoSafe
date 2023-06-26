@@ -1,10 +1,31 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import '../Styling/Login.css';
+import React, {useState} from 'react';
 
-function Login({ onLogin }) {
-    const handleLogin = () => {
-        onLogin();
+function Login(){
+    const[email,setEmail]=useState('')
+    const[password,setPassword]=useState('')
+    const handleLogin = (e) => {
+        e.preventDefault()
+        const login = {email, password}
+        fetch("http://localhost:8080/api/auth/login", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(login)
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then((data) => {
+                    const { access_token } = data;
+                    sessionStorage.setItem('accessToken', access_token);
+                    console.log("Login successful!");
+                    window.location.href = '/home';
+                });
+            } else {
+                //throw new Error('Login failed');
+                console.log("Login failed");
+            }
+        })
     };
+
     return (
         <div className="background">
             <div className="panel">
@@ -18,7 +39,9 @@ function Login({ onLogin }) {
                         className="untxt"
                         type="text"
                         id="username"
-                        name="username"
+                        name="email"
+                        value={email}
+                        onChange={(e)=>setEmail(e.target.value)}
                     ></input>
                 </div>
                 <div className="user_password">
@@ -29,6 +52,8 @@ function Login({ onLogin }) {
                         type="password"
                         id="password"
                         name="password"
+                        value={password}
+                        onChange={(e)=>setPassword(e.target.value)}
                     ></input>
                 </div>
 
