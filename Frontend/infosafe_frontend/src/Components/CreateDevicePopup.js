@@ -3,13 +3,9 @@ import '../Styling/CreateDevicePopup.css';
 import Popup from 'reactjs-popup';
 
 import { IoArrowBackOutline } from 'react-icons/io5';
+import Dropdown from "react-dropdown";
 
-const makeOptions = () => {
-    var options = [];
-    const status_options = ['CLEAN', 'FULL', 'BROKEN'];
-    status_options.map((opt) => options.push(<option>{opt}</option>));
-    return options;
-};
+const status_options = ['CLEAN', 'FULL', 'BROKEN'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
@@ -48,9 +44,12 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <p className="assignedUserLabel">Assigned User</p>
                         <input className="assignedUserInput" value={assignee} onChange={(e)=>setAssignee(e.target.value)}/>
                         <p className="deviceStatusLabel">Status</p>
-                        <select className="statusDropdown" name="statusDropdown">
-                            {makeOptions()}
-                        </select>
+                        <Dropdown
+                          options={status_options}
+                          value={status_options[0]}
+                          className="statusDropdown"
+                          name="status"
+                        />
                         <br />
                         <button className="createDevice_finish" onClick={handleClick}>
                             Submit
