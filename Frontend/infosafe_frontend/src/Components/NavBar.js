@@ -17,6 +17,7 @@ const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     const [showUser, setShowUser] = useState([]);
     const [showDatascope, setShowDatascope] = useState([]);
+    const [showAsset, setShowAsset] = useState([]);
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
@@ -49,7 +50,17 @@ const NavBar = ({ systemRole }) => {
             });
     }, [])
 
-    //Add devices useEffect
+    useEffect(() => {
+        fetch("http://localhost:8080/api/auth/getAsset", {
+            headers: {
+                Authorization: sessionStorage.getItem('accessToken')
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                setShowAsset(result);
+            });
+    }, [])
 
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
@@ -91,7 +102,7 @@ const NavBar = ({ systemRole }) => {
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
                             popupOpen={viewDataScopeOpen}
-                            id={datascope}
+                            datascope={datascope}
                         />
                     )}
                 </p>
@@ -100,7 +111,7 @@ const NavBar = ({ systemRole }) => {
                     <EditDataScopePopup
                         popupClose={() => setEditDataScopeOpen(false)}
                         popupOpen={editDataScopeOpen}
-                        id={datascope}
+                        datascope={datascope}
                     />
                 ) : null}{' '}
                 <RiDeleteBin6Fill className="DeleteIcon" />
@@ -119,7 +130,7 @@ const NavBar = ({ systemRole }) => {
                       <ViewDevice
                           popupClose={() => setViewDeviceOpen(false)}
                           popupOpen={viewDeviceOpen}
-                          id={asset}
+                          asset={asset}
                       />
                   )}
               </p>
@@ -128,7 +139,7 @@ const NavBar = ({ systemRole }) => {
                   <EditDevice
                       popupClose={() => setEditDeviceOpen(false)}
                       popupOpen={editDeviceOpen}
-                      id={asset}
+                      asset={asset}
                   />
               ) : null}{' '}
               <RiDeleteBin6Fill className="DeleteIcon" />
@@ -192,8 +203,8 @@ const NavBar = ({ systemRole }) => {
                 }
                 case 4: {
                     const devices = [];
-                    showDevices.map(device=>(
-                        devices.push(<ViewDataScopeItem datascope={device} key={device.id}/>)
+                    showAsset.map(device=>(
+                        devices.push(<ViewDeviceItem asset={device} key={device.id}/>)
                     ))
                     return (
                         <div className="devices">

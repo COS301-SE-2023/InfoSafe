@@ -5,7 +5,7 @@ import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const status = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
-export const EditDataScopePopup = ({ id, popupOpen, popupClose }) => {
+export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editDataScopeOverlay">
@@ -16,9 +16,9 @@ export const EditDataScopePopup = ({ id, popupOpen, popupClose }) => {
                         </button>
                         <p className="editDatascopeLabel">Edit Data Scope</p>
                         <p className="editDatasscopeNameLabel">Name</p>
-                        <input className="editDatascopeNameInput" />
+                        <input className="editDatascopeNameInput" defaultValue={datascope.ds_name}/>
                         <p className="editDescriptionLabel">Description</p>
-                        <textarea className="editDescriptionInput" />
+                        <textarea className="editDescriptionInput" defaultValue={datascope.description}/>
                         <br />
                         <p className="editStatusLabel">Status</p>
                         <Dropdown

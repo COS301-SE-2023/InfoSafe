@@ -205,3 +205,17 @@
     border: none;
     margin: 5% auto 0;
 }
+
+.role_dropdown_1 {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin-top: 2vh;
+    text-align: center;
+    border: none;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    left: 25%;
+    position: relative;
+}

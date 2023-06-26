@@ -18,7 +18,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const asset = {asset_name, asset_description, date_acquired, status}
         console.log(asset)
-        fetch("http://localhost:8080/api/asset/add", {
+        fetch("http://localhost:8080/api/auth/addAsset", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(asset)
@@ -47,6 +47,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                             value={status_options[0]}
                             className="statusDropdown"
                             name="status"
+                            onChange={(selectedOption) => setStatus(selectedOption.value)}
                         />
                         <br />
                         <button className="createDevice_finish" onClick={handleClick}>

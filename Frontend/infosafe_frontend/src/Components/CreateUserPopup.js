@@ -57,7 +57,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <Dropdown
                             options={role_options}
                             value={role_options[0]}
-                            className="role_dropdown"
+                            className="role_dropdown_1"
                             name="role"
                             onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
