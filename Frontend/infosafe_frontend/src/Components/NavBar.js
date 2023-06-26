@@ -24,9 +24,10 @@ const NavBar = ({ systemRole }) => {
     };
 
     useEffect(()=>{
-        fetch("http://localhost:8080/user/getAll")
+        fetch("http://localhost:8080/api/auth/getAll")
             .then(res=>res.json())
             .then((result)=>{
+                console.log(result);
                 setShowUser(result);
             })
     },[])
