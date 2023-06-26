@@ -16,7 +16,7 @@ import EditDevice from './EditDevice';
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
 
-    const [showUser, setShowUser] = useState([]);
+    //const [showUser, setShowUser] = useState([]);
 
     const [editUserOpen, setEditUserOpen] = useState(false);
     const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
@@ -25,14 +25,6 @@ const NavBar = ({ systemRole }) => {
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
-
-    /*  useEffect(()=>{
-        fetch("http://localhost:8080/user/getAll")
-            .then(res=>res.json())
-            .then((result)=>{
-                setShowUser(result);
-            })
-    },[])*/
 
     const ViewDataScopeItem = ({ id }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
@@ -134,37 +126,6 @@ const NavBar = ({ systemRole }) => {
                         <div className="users">
                             <ul className="userList">{userItems}</ul>
                         </div>
-                        /*<div className="users">
-                            <ul className="userList">
-                                {
-                                    showUser.map(user=>(
-                                        <li key={user.id}>
-                                            <p onClick={() => setViewUserOpen(true)}>
-                                                {/!*{user.name}*!/}
-                                                {/!*{user.surname}*!/}
-                                                {viewUserOpen ? (
-                                                    <ViewUser
-                                                        closeViewUser={() => setViewUserOpen(false)}
-                                                        openViewUser={viewUserOpen}
-                                                    />
-                                                ) : null}
-                                            </p>
-                                            <FaRegEdit
-                                                className="EditIcon"
-                                                onClick={() => setEditUserOpen(true)}
-                                            />
-                                            {editUserOpen ? (
-                                                <EditUser
-                                                    closeEditUser={() => setEditUserOpen(false)}
-                                                    openEditUser={editUserOpen}
-                                                />
-                                            ) : null}{' '}
-                                            <RiDeleteBin6Fill className="DeleteIcon" />
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        </div>*/
                     );
                 }
                 case 1: {
