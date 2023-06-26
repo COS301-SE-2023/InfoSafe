@@ -34,24 +34,16 @@ const ViewDataScope = ({ id, popupClose, popupOpen }) => {
                         <p className="datascopeRoles">Roles</p>
                         <div className="roleView">
                             <div className="headers">
-                                <p className="header_1">User</p>
-                                <p className="header_2">Role</p>
+                                <p className="header_1">Role</p>
+                                <p className="header_2">Role Description</p>
                             </div>
                             <div className="role_info">
-                                <p className="usr">John Doe</p>
-                                <p className="usr_role">Data Custodian</p>
+                                <p className="role_name">Administrator</p>
+                                <p className="role_descr">Manage users, manage data scope, edit permissions.</p>
                             </div>
                             <div className="role_info">
-                                <p className="usr">Jane Doe</p>
-                                <p className="usr_role">ISO</p>
-                            </div>
-                            <div className="role_info">
-                                <p className="usr">Mike Ross</p>
-                                <p className="usr_role">DISO</p>
-                            </div>
-                            <div className="role_info">
-                                <p className="usr">Rick Grimes</p>
-                                <p className="usr_role">Employee</p>
+                                <p className="role_name">General User</p>
+                                <p className="role_name">Access data scope, complete tasks within data scopes.</p>
                             </div>
                         </div>
                     </div>
