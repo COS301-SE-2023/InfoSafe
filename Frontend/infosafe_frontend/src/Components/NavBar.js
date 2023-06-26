@@ -43,18 +43,16 @@ const NavBar = ({ systemRole }) => {
             });
     }, []);
 
-    const ViewUserItem = ({ id }) => {
-        const idValue = `User ${id}`;
-
+    const ViewUserItem = ({ user }) => {
         return (
-            <li key={id}>
+            <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {id}
+                    User {user.id}: {user.firstname} {user.lastname}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
                             popupOpen={viewUserOpen}
-                            id={idValue}
+                            user={user}
                         />
                     )}
                 </p>
@@ -63,13 +61,14 @@ const NavBar = ({ systemRole }) => {
                     <EditUser
                         popupClose={() => setEditUserOpen(false)}
                         popupOpen={editUserOpen}
-                        id={idValue}
+                        user={user}
                     />
                 ) : null}{' '}
                 <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };
+
     const ViewDataScopeItem = ({ id }) => {
         const idValue = `Data Scope ${id}`;
         return (
@@ -96,8 +95,6 @@ const NavBar = ({ systemRole }) => {
             </li>
         );
     };
-
-
 
   const ViewDeviceItem = ({ id }) => {
     const idValue = `Device ${id}`;
@@ -131,38 +128,14 @@ const NavBar = ({ systemRole }) => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0: {
+                    const userItems = [];
+                    showUser.map(user=>(
+                        userItems.push(<ViewUserItem user={user} />)
+                    ))
 
                     return (
                         <div className="users">
-                            <ul className="userList">
-                                {
-                                    showUser.map(user=>(
-                                        <li key={user.id}>
-                                            <p onClick={() => setViewUserOpen(true)}>
-                                                {user.firstname}
-                                                {user.lastname}
-                                                {viewUserOpen ? (
-                                                    <ViewUser
-                                                        closeViewUser={() => setViewUserOpen(false)}
-                                                        openViewUser={viewUserOpen}
-                                                    />
-                                                ) : null}
-                                            </p>
-                                            <FaRegEdit
-                                                className="EditIcon"
-                                                onClick={() => setEditUserOpen(true)}
-                                            />
-                                            {editUserOpen ? (
-                                                <EditUser
-                                                    closeEditUser={() => setEditUserOpen(false)}
-                                                    openEditUser={editUserOpen}
-                                                />
-                                            ) : null}{' '}
-                                            <RiDeleteBin6Fill className="DeleteIcon" />
-                                        </li>
-                                    ))
-                                }
-                            </ul>
+                            <ul className="userList">{userItems}</ul>
                         </div>
                     );
                 }

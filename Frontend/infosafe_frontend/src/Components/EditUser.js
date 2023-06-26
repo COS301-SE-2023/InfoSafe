@@ -4,7 +4,7 @@ import '../Styling/EditUser.css';
 import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
-const EditUser = ({ id, popupClose, popupOpen }) => {
+const EditUser = ({ user, popupClose, popupOpen }) => {
     const role_options = [
         'EMPLOYEE',
         'ISO',
@@ -29,7 +29,7 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusername"
                                 name="editusername"
-                                defaultValue="Jane"
+                                defaultValue={user.firstname}
                             />
                         </div>
                         <div className="surnameEdit">
@@ -39,7 +39,7 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusersurname"
                                 name="editusersurname"
-                                defaultValue="Doe"
+                                defaultValue={user.lastname}
                             />
                         </div>
                         <div className="emailEdit">
@@ -49,7 +49,7 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="edituseremail"
                                 name="edituseremail"
-                                defaultValue="jane.doe@example.com"
+                                defaultValue={user.email}
                             />
                         </div>
                         <div className="newPassword">
@@ -77,6 +77,7 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                                 value={role_options[0]}
                                 className="roleDropdown"
                                 name="role"
+                                defaultValue={user.role}
                             />
                         </div>
                         <button className="FinishButton" onClick={popupClose}>
