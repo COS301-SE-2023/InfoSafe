@@ -71,11 +71,6 @@ export default function CreateUser() {
                             Submit
                         </button>
                     </form>
-                    {/*{name}*/}
-                    {/*{surname}*/}
-                    {/*{email}*/}
-                    {/*{password}*/}
-                    {/*{role}*/}
                 </div>
             </div>
         </body>

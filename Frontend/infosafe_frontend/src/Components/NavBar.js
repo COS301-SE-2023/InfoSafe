@@ -16,9 +16,8 @@ import EditDevice from './EditDevice';
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     const [showUser, setShowUser] = useState([]);
-    const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
+    const [showDatascope, setShowDatascope] = useState([]);
     const [editDeviceOpen, setEditDeviceOpen] = useState(false);
-    const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
     const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
@@ -37,6 +36,16 @@ const NavBar = ({ systemRole }) => {
             .then(res => res.json())
             .then(result => {
                 setShowUser(result);
+            });
+
+        fetch("http://localhost:8080/api/datascope/getAll", {
+            headers: {
+                Authorization: sessionStorage.getItem('accessToken')
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                setShowDatascope(result);
             });
     }, []);
 
@@ -69,17 +78,18 @@ const NavBar = ({ systemRole }) => {
         );
     };
 
-    const ViewDataScopeItem = ({ id }) => {
-        const idValue = `Data Scope ${id}`;
+    const ViewDataScopeItem = ({ datascope }) => {
+        const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
+        const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
-            <li key={id}>
+            <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {id}
+                    Data Scope {datascope.id}: {datascope.ds_name} {datascope.description} {datascope.data_custodian}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
                             popupOpen={viewDataScopeOpen}
-                            id={idValue}
+                            id={datascope}
                         />
                     )}
                 </p>
@@ -88,7 +98,7 @@ const NavBar = ({ systemRole }) => {
                     <EditDataScopePopup
                         popupClose={() => setEditDataScopeOpen(false)}
                         popupOpen={editDataScopeOpen}
-                        id={idValue}
+                        id={datascope}
                     />
                 ) : null}{' '}
                 <RiDeleteBin6Fill className="DeleteIcon" />
@@ -141,9 +151,9 @@ const NavBar = ({ systemRole }) => {
                 }
                 case 1: {
                     const dataItems = [];
-                    for (let j = 1; j < 30; j++) {
-                        dataItems.push(<ViewDataScopeItem id={j} />);
-                    }
+                    showDatascope.map(datascope=>(
+                        userItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id}/>)
+                    ))
 
                     return (
                         <div className="datascopes">
