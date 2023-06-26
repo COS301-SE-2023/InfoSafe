@@ -1,27 +1,26 @@
-import {render, screen, cleanup, fireEvent} from "@testing-library/react";
+import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Login from '../Login'
+import Login from '../Login';
 
-describe('login', () =>{
-
+describe('login', () => {
     afterEach(cleanup);
     test('renders the login page', () => {
-        const { getByText} = render(<Login />);
+        const { getByText } = render(<Login />);
 
         //Check for elements being rendered
-        const loginFrom1 = getByText('Login', {selector: 'p.logo'});
+        const loginFrom1 = getByText('Login', { selector: 'p.logo' });
         expect(loginFrom1).toBeInTheDocument();
-        const loginFrom2 = getByText('Username', {selector: 'p.username'});
+        const loginFrom2 = getByText('Username', { selector: 'p.username' });
         expect(loginFrom2).toBeInTheDocument();
-        const loginFrom3 = getByText('', {selector: 'input.untxt'});
+        const loginFrom3 = getByText('', { selector: 'input.untxt' });
         expect(loginFrom3).toBeInTheDocument();
-        const loginFrom4 = getByText('Password', {selector: 'p.pass'});
+        const loginFrom4 = getByText('Password', { selector: 'p.pass' });
         expect(loginFrom4).toBeInTheDocument();
-        const loginFrom5 = getByText('', {selector: 'input.pwtxt'});
+        const loginFrom5 = getByText('', { selector: 'input.pwtxt' });
         expect(loginFrom5).toBeInTheDocument();
-        const loginFrom6 = getByText('Forgot Password?', {selector: 'a.forgot'});
+        const loginFrom6 = getByText('Forgot Password?', { selector: 'a.forgot' });
         expect(loginFrom6).toBeInTheDocument();
-        const loginFrom7 = getByText('Login', {selector: 'button.btnLogin'});
+        const loginFrom7 = getByText('Login', { selector: 'button.btnLogin' });
         expect(loginFrom7).toBeInTheDocument();
     });
 
@@ -44,7 +43,7 @@ describe('login', () =>{
     test('calls login function on button click', () => {
         const mockLogin = jest.fn();
         const { getByTestId } = render(<Login onLogin={mockLogin} />);
-        const loginButton = getByTestId('btnTest', {selector: 'button.btnLogin'});
+        const loginButton = getByTestId('btnTest', { selector: 'button.btnLogin' });
         fireEvent.click(loginButton);
         expect(mockLogin).toHaveBeenCalledTimes(1);
     });
