@@ -5,14 +5,21 @@ import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 const EditUser = ({ id, popupClose, popupOpen }) => {
-    const role_options = [
-        'EMPLOYEE',
-        'ISO',
-        'DISO',
-        'DATA CUSTODIAN',
-        'SYSTEM ADMINISTRATOR',
-        'ASSET MANAGER'
-    ];
+
+    const makeOptions = () =>{
+        var options = []
+        const role_options = [
+            'EMPLOYEE',
+            'ISO',
+            'DISO',
+            'DATA CUSTODIAN',
+            'SYSTEM ADMINISTRATOR',
+            'ASSET MANAGER'
+        ];
+        role_options.map(opt => options.push(<option>{opt}</option>));
+        return(options);
+    }
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editUserOverlay">
@@ -72,12 +79,12 @@ const EditUser = ({ id, popupClose, popupOpen }) => {
                         </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
-                            <Dropdown
-                                options={role_options}
-                                value={role_options[0]}
+                            <select
                                 className="roleDropdown"
                                 name="role"
-                            />
+                            >
+                                {makeOptions()}
+                            </select>
                         </div>
                         <button className="FinishButton" onClick={popupClose}>
                             Finish

@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 /* eslint-disable react/prop-types */
-const role_options = [
-    'EMPLOYEE',
-    'ISO',
-    'DISO',
-    'DATA CUSTODIAN',
-    'SYSTEM ADMINISTRATOR',
-    'ASSET MANAGER'
-];
+
+
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -33,6 +26,20 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         });
         popupClose();
     };
+
+    const makeOptions = () =>{
+        var options = []
+        const role_options = [
+            'EMPLOYEE',
+            'ISO',
+            'DISO',
+            'DATA CUSTODIAN',
+            'SYSTEM ADMINISTRATOR',
+            'ASSET MANAGER'
+        ];
+        role_options.map(opt => options.push(<option>{opt}</option>));
+        return(options);
+    }
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -73,12 +80,13 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         />
                         <button className="genPassword">Generate Password</button>
                         <p className="roleLabel">System role</p>
-                        <Dropdown
-                            options={role_options}
-                            value={role_options[0]}
+                        <select
                             className="role_dropdown"
                             name="role"
-                        />
+                        >
+                            {makeOptions()}
+                        </select>
+                        <br/>
                         <button className="createuser_finish" onClick={handleClick}>
                             Submit
                         </button>
