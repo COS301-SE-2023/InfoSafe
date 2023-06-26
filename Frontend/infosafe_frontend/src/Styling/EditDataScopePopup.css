@@ -1,6 +1,6 @@
 .editDataScopeOverlay {
     width: 50vw;
-    height: 100vh;
+    height: 80vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -12,7 +12,7 @@
     border: 1px solid #ffffff;
     width: 47vw;
     margin: 0 auto;
-    height: 95vh;
+    height: 75vh;
     position: relative;
     top: 2.5vh;
 }
