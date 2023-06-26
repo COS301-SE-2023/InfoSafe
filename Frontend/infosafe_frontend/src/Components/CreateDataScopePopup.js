@@ -20,7 +20,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const datascope = {ds_name, ds_description, role_name, role_description, date_captured, data_custodian, administrator, status}
         console.log(datascope)
-        fetch("http://localhost:8080/api/auth/datascope/add", {
+        fetch("http://localhost:8080/api/datascope/add", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(datascope)
@@ -40,9 +40,9 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                     <form>
                         <p className="datascopeLabel">Data Scope Creation</p>
                         <p className="datascopeNameLabel">Name</p>
-                        <input className="datascopeNameInput" />
+                        <input className="datascopeNameInput" value={ds_name} onChange={(e)=>setDsName(e.target.value)}/>
                         <p className="descriptionLabel">Description</p>
-                        <textarea className="descriptionInput" />
+                        <textarea className="descriptionInput" value={ds_description} onChange={(e)=>setDsDesc(e.target.value)}/>
                         <br />
                         <button className="datascope_finish" onClick={handleClick}>
                             Submit
