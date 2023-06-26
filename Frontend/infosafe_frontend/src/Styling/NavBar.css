@@ -28,6 +28,7 @@
     width: 96.6vw;
     height: 90vh;
     background: #444040;
+    overflow: hidden;
 }
 .listItem:hover {
     font-weight: bold;
@@ -39,10 +40,14 @@
     height: 80%;
     position: relative;
     top: 5%;
-    border-radius: 35px;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 20px;
     box-sizing: content-box;
+    border-radius: 20px;
+    scrollbar-width: none;
+}
+.users::-webkit-scrollbar{
+    display: none;
 }
 .userList {
     list-style: none;
@@ -73,7 +78,10 @@
     height: 2.1vh;
 }
 .userList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.userList li:last-child {
+    margin-bottom: 1%;
 }
 .CreateUserButton {
     background: #373737;
@@ -109,6 +117,10 @@
     overflow-y: auto;
     padding-right: 20px;
     box-sizing: content-box;
+    scrollbar-width: none;
+}
+.datascopes::-webkit-scrollbar{
+    display: none;
 }
 .datascopesList {
     list-style: none;
@@ -140,7 +152,10 @@
 }
 
 .datascopesList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.datascopesList li:last-child {
+    margin-bottom: 1%;
 }
 .CreateDataScopeDiv {
     position: relative;
@@ -308,6 +323,10 @@
     overflow-y: auto;
     padding-right: 20px;
     box-sizing: content-box;
+    scrollbar-width: none;
+}
+.devices::-webkit-scrollbar{
+    display: none;
 }
 .deviceList li {
     position: relative;
@@ -333,7 +352,10 @@
     height: 2vh;
 }
 .deviceList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.deviceList li:last-child {
+    margin-bottom: 1%;
 }
 .AddDeviceButton {
     background: #373737;
