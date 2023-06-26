@@ -30,14 +30,6 @@ export const EditDataScopePopup = ({ id, popupOpen, popupClose }) => {
                         <button className="editdatascope_finish" onClick={popupClose}>
                             Submit
                         </button>
-                        <p className="addRoleNameLabel">Role Name</p>
-                        <input className="addRoleNameInput" />
-                        <p className="roleDescriptionLabel">Role Description</p>
-                        <textarea className="roleDescriptionInput" />
-                        <br />
-                        <button className="addRole_finish" onClick={popupClose}>
-                            Add Role
-                        </button>
                     </form>
                 </div>
             </div>

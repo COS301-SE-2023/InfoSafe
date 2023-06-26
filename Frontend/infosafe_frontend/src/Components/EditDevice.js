@@ -4,7 +4,7 @@ import '../Styling/EditDevice.css';
 import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const EditDevice = ({ id, popupClose, popupOpen}) => {
+const EditDevice = ({ id, popupClose, popupOpen }) => {
     const status_options = ['CLEAN', 'FULL', 'BROKEN'];
 
     return (
@@ -30,7 +30,10 @@ const EditDevice = ({ id, popupClose, popupOpen}) => {
                             <p className="devicedescriptionTitle">Description</p>
                             <textarea
                                 className="editdeviceDescriptionInput"
-                                defaultValue="Description here."
+                                defaultValue="Lenovo Ideapad 330
+                            RAM: 16GB
+                            SDD: 1TB
+                            Windows 10 Home"
                             />
                         </div>
                         <div className="devicestatusEdit">
@@ -52,11 +55,7 @@ const EditDevice = ({ id, popupClose, popupOpen}) => {
                                 defaultValue="Employee123"
                             />
                         </div>
-                        <button
-                            className="EditDeviceButton"
-                            type="submit"
-                            onClick={popupClose}
-                        >
+                        <button className="EditDeviceButton" type="submit" onClick={popupClose}>
                             Submit
                         </button>
                     </form>

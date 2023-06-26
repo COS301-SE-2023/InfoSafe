@@ -82,7 +82,7 @@
     width: 50%;
     border: none;
     height: 10vh;
-    text-align: left;
+    text-align: center;
     overflow-y: scroll;
 }
 .devicestatusEdit {

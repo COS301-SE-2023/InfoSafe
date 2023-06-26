@@ -1,36 +1,35 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../Styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
-    const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-
-    const[ds_name,setDsName]=useState('')
-    const[ds_description,setDsDesc]=useState('')
-    const[role_name,setRoleName]=useState('General User')
-    const[role_description,setRoleDesc]=useState('Can use basic functionality of the product')
-    const[date_captured,setDateCaptured]=useState(date)
-    const[data_custodian,setDataCustodian]=useState('Alistair Ross')
-    const[administrator,setAdmin]=useState('Admin1')
-    const[status,setStatus]=useState('Pending Approval')
-
-    const handleClick=(e)=> {
-        e.preventDefault()
-        const datascope = {ds_name, ds_description, role_name, role_description, date_captured, data_custodian, administrator, status}
-        console.log(datascope)
-        fetch("http://localhost:8080/api/auth/addDs", {
-            method:"POST",
-            headers:{"Content-Type":"application/json",
-                Authorization: sessionStorage.getItem('accessToken')
-            },
-            body:JSON.stringify(datascope)
-        }).then(()=>{
-            console.log("New Data-Scope added")
-        })
-        popupClose()
+const data = [
+    {
+        role: 'Administrator',
+        roledescription: 'Manage users, manage data scope, edit permissions.'
+    },
+    {
+        role: 'General User',
+        roledescription: 'Access data scope, complete tasks within data scopes.'
     }
+];
+
+export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
+    const [roles, setRoles] = useState(data);
+    const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewRole((prevRole) => ({ ...prevRole, [name]: value }));
+    };
+
+    const handleAddRole = (e) => {
+        e.preventDefault();
+        if (newRole.role && newRole.roledescription) {
+            setRoles((prevRoles) => [...prevRoles, newRole]);
+            setNewRole({ role: '', roledescription: '' });
+        }
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -39,14 +38,72 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                     <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>
+                    <p className="datascopeLabel">Data Scope Creation</p>
                     <form>
-                        <p className="datascopeLabel">Data Scope Creation</p>
-                        <p className="datascopeNameLabel">Name</p>
-                        <input className="datascopeNameInput" />
-                        <p className="descriptionLabel">Description</p>
-                        <textarea className="descriptionInput" />
-                        <br />
-                        <button className="datascope_finish" onClick={handleClick}>
+                        <div className="CreateDataScopeForm">
+                            <div className="datascope_info">
+                                <div className="datascope_name">
+                                    <p className="datascopeNameLabel">Name</p>
+                                    <input className="datascopeNameInput" />
+                                </div>
+                                <div className="datascope_description">
+                                    <p className="descriptionLabel">Description</p>
+                                    <textarea className="descriptionInput" />
+                                </div>
+                                <div className="datascope_roles">
+                                    <p className="roleLabel">Data Scope Roles</p>
+                                    <div className="table">
+                                        <table className="roles_tbl">
+                                            <thead>
+                                                <tr>
+                                                    <th className="role_Header">Role</th>
+                                                    <th className="role_descrHeader">
+                                                        Role Description
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {roles.map((role, key) => {
+                                                    return (
+                                                        <tr key={key}>
+                                                            <td>{role.role}</td>
+                                                            <td className="roledescription_Table">
+                                                                {role.roledescription}
+                                                            </td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="datascope_addrole">
+                                <p className="addrolenameLabel">Role</p>
+                                <input
+                                    className="addrolenameInput"
+                                    name="role"
+                                    value={newRole.role}
+                                    onChange={handleInputChange}
+                                />
+                                <p className="addroledescriptionLabel">Role Description</p>
+                                <textarea
+                                    className="addroledescriptionInput"
+                                    name="roledescription"
+                                    value={newRole.roledescription}
+                                    onChange={handleInputChange}
+                                />
+                                <button
+                                    className="AddRoleButton"
+                                    onClick={handleAddRole}
+                                    type="button"
+                                >
+                                    Add Role
+                                </button>
+                            </div>
+                        </div>
+                        <button className="datascope_finish" onClick={popupClose}>
                             Submit
                         </button>
                     </form>
