@@ -130,7 +130,7 @@ const NavBar = ({ systemRole }) => {
                 case 0: {
                     const userItems = [];
                     showUser.map(user=>(
-                        userItems.push(<ViewUserItem user={user} />)
+                        userItems.push(<ViewUserItem user={user} key={user.id}/>)
                     ))
 
                     return (

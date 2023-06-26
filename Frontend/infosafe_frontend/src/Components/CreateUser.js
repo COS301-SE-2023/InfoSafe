@@ -53,6 +53,7 @@ export default function CreateUser() {
                         />
                         <p className="label_password">Password</p>
                         <input
+                            type="password"
                             className="password"
                             name="password"
                             value={password}
