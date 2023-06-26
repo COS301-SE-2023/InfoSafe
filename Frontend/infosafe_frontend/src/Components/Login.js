@@ -13,17 +13,16 @@ function Login(){
             body:JSON.stringify(login)
         }).then((response) => {
             if (response.ok) {
-                return response.json();
+                response.json().then((data) => {
+                    const { access_token } = data;
+                    sessionStorage.setItem('accessToken', access_token);
+                    console.log("Login successful!");
+                    window.location.href = '/home';
+                });
             } else {
                 throw new Error('Login failed');
             }
         })
-            .then(() => {
-                console.log("Login successful!");
-            })
-            .catch((error) => {
-                console.error("Login error:", error.message);
-            });
     };
 
     return (

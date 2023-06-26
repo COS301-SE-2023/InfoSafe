@@ -22,7 +22,6 @@ const NavBar = ({ systemRole }) => {
     const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
     const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
     const [viewUserOpen, setViewUserOpen] = useState(false);
-    const [assets, setAssets] = useState([]);
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
@@ -34,7 +33,7 @@ const NavBar = ({ systemRole }) => {
     useEffect(() => {
         fetch("http://localhost:8080/api/auth/getAll", {
             headers: {
-                Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzdGFpcm1pa2Vyb3NzQGdtYWlsLmNvbSIsImlhdCI6MTY4Nzc3NDM0NywiZXhwIjoxNjg3Nzg4NzQ3fQ.f1J6_SxcptUOn_Frq9LGbihmrTLR0Mye8JZK3DD9llc"
+                Authorization: sessionStorage.getItem('accessToken')
             }
         })
             .then(res => res.json())
