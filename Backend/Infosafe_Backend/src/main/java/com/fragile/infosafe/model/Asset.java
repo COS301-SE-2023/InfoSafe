@@ -8,10 +8,10 @@ import java.util.Date;
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String assetName;
-    private String assignee;
+    private String asset_name;
+    private String asset_description;
     private String status;
-    private Date dateAcquired;
+    private String date_acquired;
 
     public Long getId() {
         return id;
@@ -21,20 +21,20 @@ public class Asset {
         this.id = id;
     }
 
-    public String getAssetName() {
-        return assetName;
+    public String getAsset_name() {
+        return asset_name;
     }
 
-    public void setAssetName(String assetName) {
-        this.assetName = assetName;
+    public void setAsset_name(String asset_name) {
+        this.asset_name = asset_name;
     }
 
-    public String getAssignee() {
-        return assignee;
+    public String getAsset_description() {
+        return asset_description;
     }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
+    public void setAsset_description(String asset_description) {
+        this.asset_description = asset_description;
     }
 
     public String getStatus() {
@@ -45,11 +45,11 @@ public class Asset {
         this.status = status;
     }
 
-    public Date getDateAcquired() {
-        return dateAcquired;
+    public String getDate_acquired() {
+        return date_acquired;
     }
 
-    public void setDateAcquired(Date dateAcquired) {
-        this.dateAcquired = dateAcquired;
+    public void setDate_acquired(String date_acquired) {
+        this.date_acquired = date_acquired;
     }
 }
