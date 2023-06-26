@@ -34,7 +34,7 @@
     width: 1.3vw;
 }
 .createDeviceLabel {
-    width: 100%;
+    width: 60%;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -43,7 +43,8 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: 1.5vh;
+    top: -2vh;
+    left: 20%;
 }
 .deviceTypeLabel {
     margin: 0 auto;
