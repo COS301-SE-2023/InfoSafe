@@ -34,16 +34,17 @@
     width: 1.3vw;
 }
 .ViewDataScopeTitle {
-    width: 100%;
+    width: 60%;
     justify-content: center;
     color: #000000;
     text-align: center;
     text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
     position: relative;
-    top: 1.5vh;
+    top: -2vh;
+    left: 20%;
+    text-transform: uppercase;
 }
 .view_datascope_name {
     margin: 0 auto;
@@ -52,7 +53,6 @@
     color: #000;
     text-align: center;
     font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 1vh;
@@ -67,7 +67,6 @@
     border: none;
 }
 .viewDataScopeName {
-    text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     text-align: center;
@@ -83,7 +82,6 @@
     color: #000;
     text-align: center;
     font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 1vh;
@@ -116,7 +114,6 @@
     color: #000;
     text-align: center;
     font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 0.5vh;
@@ -131,7 +128,6 @@
     border: none;
 }
 .viewDataScopeDate {
-    text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     text-align: center;
@@ -147,7 +143,6 @@
     color: #000;
     text-align: center;
     font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 1vh;
@@ -162,7 +157,6 @@
     border: none;
 }
 .viewDataScopeStatus {
-    text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     text-align: center;
@@ -171,55 +165,47 @@
     background-color: #ffffff;
     margin-top: 1.5vh;
 }
-.view_datascope_roles {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 1vh;
-    margin-top: 2vh;
-}
+
 .datascopeRoles {
-    text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
+    text-transform: uppercase;
+    position: relative;
+    top: 2.5vh;
 }
-.roleView {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
+.table {
+    position: relative;
+    height: 30%;
     margin: 0 auto;
-    background-color: #ffffff;
-    margin-top: 1.5vh;
+    align-self: center;
+    top: 1vh;
+    left: 25%;
+    margin-top: 2.5%;
+}
+.rolesTable {
+    width: 50%;
+    height: 30%;
     overflow-y: scroll;
-    font-size: 18px;
-    text-transform: none;
-    height: 10vh;
 }
-.headers {
-    display: flex;
-    justify-content: space-around;
+.roleHeader {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
     text-transform: uppercase;
+    width: 40%;
 }
-.role_info {
-    display: flex;
-    justify-content: space-around;
+.roledescrHeader {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    width: 60%;
 }
-.usr {
-    margin-top: -1vh;
+.rolesTable td {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
     width: 50%;
-}
-.usr_role {
-    margin-top: -1vh;
-    width: 50%;
+    font-size: 14px;
+    height: 3%;
 }
