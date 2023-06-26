@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/matrix")
+@RequestMapping("api/matrix")
 @CrossOrigin
 public class MatrixController {
     @Autowired

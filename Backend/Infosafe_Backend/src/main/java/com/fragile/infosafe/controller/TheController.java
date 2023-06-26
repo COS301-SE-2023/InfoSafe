@@ -1,5 +1,5 @@
 package com.fragile.infosafe.controller;
-
+//this is for testing purposes
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

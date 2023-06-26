@@ -17,7 +17,9 @@ public enum Permission {
     DISO_UPDATE("diso:update"),
     DISO_CREATE("diso:create"),
     DISO_DELETE("diso:delete"),
-    USERs_READ("users:read");
+    DATA_CUSTODIAN_READ("datacustodian:read"),
+    ASSET_MANAGER_READ("assentmanager:read");
+
 
     @Getter
     private final String permission;

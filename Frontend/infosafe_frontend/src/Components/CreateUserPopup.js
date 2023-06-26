@@ -14,17 +14,18 @@ const role_options = [
     'ASSET MANAGER'
 ];
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
-    const[name,setName]=useState('')
-    const[surname,setSurname]=useState('')
+    const[firstname,setName]=useState('')
+    const[lastname,setSurname]=useState('')
     const[email,setEmail]=useState('')
-    const[role,setRole]=useState('ISO')
+    let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const user = {name, surname, email, password, role}
+
+        const user = {firstname, lastname, email, password, role}
         console.log(user)
-        fetch("http://localhost:8080/user/add", {
+        fetch("http://localhost:8080/api/auth/add", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
@@ -44,9 +45,9 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         </button>
                         <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
-                        <input className="nameInput" name="name" value={name} onChange={(e)=>setName(e.target.value)}/>
+                        <input className="nameInput" name="name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" name="surname" value={surname} onChange={(e)=>setSurname(e.target.value)}/>
+                        <input className="surnameInput" name="surname" value={lastname} onChange={(e)=>setSurname(e.target.value)}/>
                         <p className="emailLabel">Email</p>
                         <input className="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
@@ -58,16 +59,12 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                             value={role_options[0]}
                             className="role_dropdown"
                             name="role"
+                            onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
                         <button className="createuser_finish" onClick={handleClick}>
                             Submit
                         </button>
                     </form>
-                    {/*{name}*/}
-                    {/*{surname}*/}
-                    {/*{email}*/}
-                    {/*{password}*/}
-                    {/*{role}*/}
                 </div>
             </div>
         </Popup>

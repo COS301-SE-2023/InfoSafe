@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import '../Styling/Login.css';
 import React, {useState} from 'react';
 
@@ -8,19 +7,26 @@ function Login(){
     const handleLogin = (e) => {
         e.preventDefault()
         const login = {email, password}
-        console.log(login)
         fetch("http://localhost:8080/api/auth/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)
-        }).then(()=>{
-            console.log("User logged in")
-        }).catch(() =>{
-            console.log("User not logged in")
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Login failed');
+            }
         })
+            .then(() => {
+                console.log("Login successful!");
+            })
+            .catch((error) => {
+                console.error("Login error:", error.message);
+            });
     };
-    return (
 
+    return (
         <div className="background">
             <div className="panel">
                 <div className="title">

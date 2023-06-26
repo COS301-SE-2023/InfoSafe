@@ -16,7 +16,7 @@ import static com.fragile.infosafe.model.Permission.*;
 @RequiredArgsConstructor
 public enum Role {
 
-    USER(Collections.emptySet()),
+    EMPLOYEE(Collections.emptySet()),
     ADMIN(
             Set.of(
                     ADMIN_READ,
@@ -45,13 +45,17 @@ public enum Role {
                     DISO_DELETE
             )
     ),
+    DATA_CUSTODIAN(
+            Set.of(
+                    DATA_CUSTODIAN_READ
+            )
+    ),
 
-    USERs(
-        Set.of(
-                USERs_READ
+    ASSET_MANAGER(
+            Set.of(
+                    ASSET_MANAGER_READ
         )
     )
-
     ;
 
     @Getter

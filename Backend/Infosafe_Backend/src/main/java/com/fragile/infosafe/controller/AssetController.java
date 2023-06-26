@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/asset")
-@CrossOrigin
+@RequestMapping("/api/asset")
 public class AssetController {
     @Autowired
     private AssetService assetService;
