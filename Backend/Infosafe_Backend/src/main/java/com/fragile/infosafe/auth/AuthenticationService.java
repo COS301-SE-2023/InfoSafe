@@ -79,6 +79,7 @@ public class AuthenticationService {
                 .asset_description(request.getAsset_description())
                 .status(request.getStatus())
                 .date_acquired(request.getDate_acquired())
+                .assignee(request.getAssignee())
                 .build();
         assetRepository.save(asset);
         return ResponseEntity.status(HttpStatus.OK).body("added");

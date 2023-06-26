@@ -15,4 +15,5 @@ public class AssetRequest {
     private String asset_description;
     private String status;
     private String date_acquired;
+    private String assignee;
 }
