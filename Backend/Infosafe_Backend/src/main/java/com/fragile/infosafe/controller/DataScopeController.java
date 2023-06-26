@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/auth/datascope")
+@RequestMapping("/api/datascope")
 @RequiredArgsConstructor
 @CrossOrigin
 public class DataScopeController {
@@ -20,7 +20,6 @@ public class DataScopeController {
         datascopeService.saveDataScope(datascope);
         return "New data-scope is added";
     }
-
     @GetMapping("/getAll")
     public List<DataScope> datascopelist() { return datascopeService.getAllDatascopes(); }
 }

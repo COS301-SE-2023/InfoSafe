@@ -40,9 +40,10 @@ const NavBar = ({ systemRole }) => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/auth/datascope/getAll", {
+        fetch("http://localhost:8080/api/datascope/getAll", {
             headers: {
                 Authorization: sessionStorage.getItem('accessToken')
+                //Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzdGFpcm1pa2Vyb3NzQGdtYWlsLmNvbSIsImlhdCI6MTY4Nzc5MTg2MiwiZXhwIjoxNjg3ODA2MjYyfQ.iEetq_PpTEnnjM8Z2LDlz3U9myxz9fBBPzupUKxJgFM"
             }
         })
             .then(res => res.json())
