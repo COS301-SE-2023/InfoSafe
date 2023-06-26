@@ -58,7 +58,6 @@
     top: 1vh;
 }
 .editNameInput {
-    text-transform: uppercase;
     font-size: 20px;
     width: 50%;
     text-align: center;
@@ -79,7 +78,6 @@
     margin-top: 1vh;
 }
 .editSurnameInput {
-    text-transform: uppercase;
     font-size: 20px;
     width: 50%;
     text-align: center;
@@ -100,7 +98,6 @@
     margin-top: 1vh;
 }
 .editEmailInput {
-    text-transform: uppercase;
     font-size: 20px;
     width: 50%;
     text-align: center;
@@ -148,7 +145,6 @@
     margin-top: 1vh;
 }
 .newPasswordInput {
-    text-transform: uppercase;
     font-size: 20px;
     width: 50%;
     text-align: center;
@@ -169,12 +165,12 @@
     margin-top: 1vh;
 }
 .confirmPasswordInput {
-    text-transform: uppercase;
     font-size: 20px;
     width: 50%;
     text-align: center;
     height: 4vh;
     border: none;
+
 }
 .FinishButton {
     width: 15%;

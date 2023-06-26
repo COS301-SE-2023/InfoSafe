@@ -56,7 +56,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                             <p className="newPasswordTitle">New Password</p>
                             <input
                                 className="newPasswordInput"
-                                type="text"
+                                type="password"
                                 id="newpassword"
                                 name="newpassword"
                             />
@@ -65,7 +65,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                             <p className="confirmPasswordTitle">Confirm Password</p>
                             <input
                                 className="confirmPasswordInput"
-                                type="text"
+                                type="password"
                                 id="confirmpassword"
                                 name="confirmpassword"
                             />
