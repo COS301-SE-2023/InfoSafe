@@ -1,9 +1,17 @@
 package com.fragile.infosafe.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="datascopes")
 public class DataScope {
@@ -13,7 +21,7 @@ public class DataScope {
     private String description;
     private String role_name;
     private String role_description;
-    private Date date_captured;
+    private String date_captured;
     private String data_custodian;
     private String administrator;
     private String status;
@@ -58,11 +66,11 @@ public class DataScope {
         this.role_description = role_description;
     }
 
-    public Date getDate_captured() {
+    public String getDate_captured() {
         return date_captured;
     }
 
-    public void setDate_captured(Date date_captured) {
+    public void setDate_captured(String date_captured) {
         this.date_captured = date_captured;
     }
 

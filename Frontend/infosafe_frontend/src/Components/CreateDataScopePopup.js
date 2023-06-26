@@ -20,9 +20,11 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const datascope = {ds_name, ds_description, role_name, role_description, date_captured, data_custodian, administrator, status}
         console.log(datascope)
-        fetch("http://localhost:8080/api/auth/datascope/add", {
+        fetch("http://localhost:8080/api/auth/addDs", {
             method:"POST",
-            headers:{"Content-Type":"application/json"},
+            headers:{"Content-Type":"application/json",
+                Authorization: sessionStorage.getItem('accessToken')
+            },
             body:JSON.stringify(datascope)
         }).then(()=>{
             console.log("New Data-Scope added")

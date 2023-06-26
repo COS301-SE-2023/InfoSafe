@@ -12,13 +12,5 @@ public class DataScopeServiceImpl implements DataScopeService {
     @Autowired
     private DataScopeRepository datascopeRepository;
 
-    @Override
-    public DataScope saveDataScope(DataScope datascope) {
-        return datascopeRepository.save(datascope);
-    }
 
-    @Override
-    public List<DataScope> getAllDatascopes() {
-        return datascopeRepository.findAll();
-    }
 }

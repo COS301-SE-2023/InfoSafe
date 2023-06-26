@@ -1,6 +1,9 @@
 package com.fragile.infosafe.auth;
 
 import com.fragile.infosafe.config.JwtService;
+import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.repository.DataScopeRepository;
+import com.fragile.infosafe.requests.DataScopeRequest;
 import com.fragile.infosafe.token.Token;
 import com.fragile.infosafe.token.TokenRepository;
 import com.fragile.infosafe.token.TokenType;
@@ -18,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.AuthenticationException;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -25,6 +29,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository repository;
+    private final DataScopeRepository dataScopeRepository;
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -48,6 +53,20 @@ public class AuthenticationService {
                 .build();
     }
 
+    public String makeDs(DataScopeRequest request){
+        var datascope = DataScope.builder()
+                .ds_name(request.getDs_name())
+                .description(request.getDescription())
+                .role_name(request.getRole_name())
+                .role_description(request.getRole_description())
+                .date_captured(request.getDate_captured())
+                .data_custodian(request.getData_custodian())
+                .administrator(request.getAdministrator())
+                .status(request.getStatus())
+                .build();
+        dataScopeRepository.save(datascope);
+        return "added";
+    }
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         try {
             authenticationManager.authenticate(
@@ -126,5 +145,7 @@ public class AuthenticationService {
     public List<User> getAllUsers() {
         return repository.findAll();
     }
+    public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
+
 
 }

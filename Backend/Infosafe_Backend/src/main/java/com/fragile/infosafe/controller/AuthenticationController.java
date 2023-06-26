@@ -6,11 +6,10 @@ import com.fragile.infosafe.auth.AuthenticationService;
 import com.fragile.infosafe.auth.RegisterRequest;
 import com.fragile.infosafe.model.DataScope;
 import com.fragile.infosafe.model.User;
-import com.fragile.infosafe.service.DataScopeService;
+import com.fragile.infosafe.requests.DataScopeRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +56,15 @@ public class AuthenticationController {
     @GetMapping("/getAll")
     public List<User> userlist() { return service.getAllUsers(); }
 
+    @PostMapping("/addDs")
+    public ResponseEntity addDs(
+            @RequestBody DataScopeRequest datascope) {
+        return ResponseEntity.ok(service.makeDs(datascope));
+    }
+
+
+    @GetMapping("/getDs")
+    public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
 
 
 
