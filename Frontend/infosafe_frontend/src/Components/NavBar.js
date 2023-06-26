@@ -1,5 +1,5 @@
 import '../Styling/NavBar.css';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { CreateUserPopup } from './CreateUserPopup';
@@ -17,7 +17,7 @@ const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
 
     const [showUser, setShowUser] = useState([]);
-  
+
     const [editUserOpen, setEditUserOpen] = useState(false);
     const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
     const [editDeviceOpen, setEditDeviceOpen] = useState(false);
@@ -26,7 +26,7 @@ const NavBar = ({ systemRole }) => {
         activate(NavTabIndex);
     };
 
-/*  useEffect(()=>{
+    /*  useEffect(()=>{
         fetch("http://localhost:8080/user/getAll")
             .then(res=>res.json())
             .then((result)=>{
@@ -63,63 +63,63 @@ const NavBar = ({ systemRole }) => {
         );
     };
 
-  const ViewUserItem = ({ id }) => {
-    const [viewUserOpen, setViewUserOpen] = useState(false);
-    const idValue = `User ${id}`;
+    const ViewUserItem = ({ id }) => {
+        const [viewUserOpen, setViewUserOpen] = useState(false);
+        const idValue = `User ${id}`;
 
-    return (
-      <li key={id}>
-        <p className="listItem" onClick={() => setViewUserOpen(!viewUserOpen)}>
-          User {id}
-          {viewUserOpen && (
-            <ViewUser
-              popupClose={() => setViewUserOpen(false)}
-              popupOpen={viewUserOpen}
-              id={idValue}
-            />
-          )}
-        </p>
-        <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
-        {editUserOpen ? (
-          <EditUser
-            popupClose={() => setEditUserOpen(false)}
-            popupOpen={editUserOpen}
-            id={idValue}
-          />
-        ) : null}{' '}
-        <RiDeleteBin6Fill className="DeleteIcon" />
-      </li>
-    );
-  };
+        return (
+            <li key={id}>
+                <p className="listItem" onClick={() => setViewUserOpen(!viewUserOpen)}>
+                    User {id}
+                    {viewUserOpen && (
+                        <ViewUser
+                            popupClose={() => setViewUserOpen(false)}
+                            popupOpen={viewUserOpen}
+                            id={idValue}
+                        />
+                    )}
+                </p>
+                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
+                {editUserOpen ? (
+                    <EditUser
+                        popupClose={() => setEditUserOpen(false)}
+                        popupOpen={editUserOpen}
+                        id={idValue}
+                    />
+                ) : null}{' '}
+                <RiDeleteBin6Fill className="DeleteIcon" />
+            </li>
+        );
+    };
 
-  const ViewDeviceItem = ({ id }) => {
-    const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-    const idValue = `Device ${id}`;
+    const ViewDeviceItem = ({ id }) => {
+        const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
+        const idValue = `Device ${id}`;
 
-    return (
-      <li key={id}>
-        <p className="listItem" onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-          Device {id}
-          {viewDeviceOpen && (
-            <ViewDevice
-              popupClose={() => setViewDeviceOpen(false)}
-              popupOpen={viewDeviceOpen}
-              id={idValue}
-            />
-          )}
-        </p>
-        <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
-        {editDeviceOpen ? (
-          <EditDevice
-            popupClose={() => setEditDeviceOpen(false)}
-            popupOpen={editDeviceOpen}
-            id={idValue}
-          />
-        ) : null}{' '}
-        <RiDeleteBin6Fill className="DeleteIcon" />
-      </li>
-    );
-  };
+        return (
+            <li key={id}>
+                <p className="listItem" onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
+                    Device {id}
+                    {viewDeviceOpen && (
+                        <ViewDevice
+                            popupClose={() => setViewDeviceOpen(false)}
+                            popupOpen={viewDeviceOpen}
+                            id={idValue}
+                        />
+                    )}
+                </p>
+                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                {editDeviceOpen ? (
+                    <EditDevice
+                        popupClose={() => setEditDeviceOpen(false)}
+                        popupOpen={editDeviceOpen}
+                        id={idValue}
+                    />
+                ) : null}{' '}
+                <RiDeleteBin6Fill className="DeleteIcon" />
+            </li>
+        );
+    };
 
     const displayInfo = () => {
         if (systemRole === 'ISO') {
@@ -127,13 +127,13 @@ const NavBar = ({ systemRole }) => {
                 case 0: {
                     const userItems = [];
                     for (let i = 1; i < 30; i++) {
-                        userItems.push(<ViewUserItem id={i}/>);
+                        userItems.push(<ViewUserItem id={i} />);
                     }
 
                     return (
-                      <div className="users">
-                        <ul className="userList">{userItems}</ul>
-                      </div>
+                        <div className="users">
+                            <ul className="userList">{userItems}</ul>
+                        </div>
                         /*<div className="users">
                             <ul className="userList">
                                 {
