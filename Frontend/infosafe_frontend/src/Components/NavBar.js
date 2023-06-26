@@ -17,8 +17,6 @@ const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     const [showUser, setShowUser] = useState([]);
     const [showDatascope, setShowDatascope] = useState([]);
-    const [editDeviceOpen, setEditDeviceOpen] = useState(false);
-    const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
@@ -50,6 +48,8 @@ const NavBar = ({ systemRole }) => {
                 setShowDatascope(result);
             });
     }, [])
+
+    //Add devices useEffect
 
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
@@ -86,7 +86,7 @@ const NavBar = ({ systemRole }) => {
         return (
             <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.id}: {datascope.ds_name} {datascope.description} {datascope.data_custodian}
+                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description} ------ {datascope.data_custodian}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -108,32 +108,32 @@ const NavBar = ({ systemRole }) => {
         );
     };
 
-  const ViewDeviceItem = ({ id }) => {
-    const idValue = `Device ${id}`;
-
-    return (
-      <li key={id}>
-        <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-          Device {id}
-          {viewDeviceOpen && (
-            <ViewDevice
-              popupClose={() => setViewDeviceOpen(false)}
-              popupOpen={viewDeviceOpen}
-              id={idValue}
-            />
-          )}
-        </p>
-        <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
-        {editDeviceOpen ? (
-          <EditDevice
-            popupClose={() => setEditDeviceOpen(false)}
-            popupOpen={editDeviceOpen}
-            id={idValue}
-          />
-        ) : null}{' '}
-        <RiDeleteBin6Fill className="DeleteIcon" />
-      </li>
-    );
+  const ViewDeviceItem = ({ asset }) => {
+      const [editDeviceOpen, setEditDeviceOpen] = useState(false);
+      const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
+      return (
+          <li key={asset.id}>
+              <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
+                  Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
+                  {viewDeviceOpen && (
+                      <ViewDevice
+                          popupClose={() => setViewDeviceOpen(false)}
+                          popupOpen={viewDeviceOpen}
+                          id={asset}
+                      />
+                  )}
+              </p>
+              <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+              {editDeviceOpen ? (
+                  <EditDevice
+                      popupClose={() => setEditDeviceOpen(false)}
+                      popupOpen={editDeviceOpen}
+                      id={asset}
+                  />
+              ) : null}{' '}
+              <RiDeleteBin6Fill className="DeleteIcon" />
+          </li>
+      );
   };
 
     const displayInfo = () => {
@@ -192,9 +192,9 @@ const NavBar = ({ systemRole }) => {
                 }
                 case 4: {
                     const devices = [];
-                    for (let m = 0; m < 26; m++) {
-                        devices.push(<ViewDeviceItem id={m} />);
-                    }
+                    showDevices.map(device=>(
+                        devices.push(<ViewDataScopeItem datascope={device} key={device.id}/>)
+                    ))
                     return (
                         <div className="devices">
                             <ul className="deviceList">{devices}</ul>
