@@ -141,3 +141,16 @@
     position: relative;
     margin-top: 1.5vh;
 }
+.statusDropdown {
+    text-transform: uppercase;
+    font-size: 20px;
+    width: 50%;
+    margin-top: 1vh;
+    text-align: center;
+    border: none;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    left: 25%;
+    position: relative;
+}

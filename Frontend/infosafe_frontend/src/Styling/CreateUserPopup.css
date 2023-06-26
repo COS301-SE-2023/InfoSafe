@@ -201,7 +201,8 @@
     position: relative;
     align-self: center;
     justify-self: center;
-    left: 42.5%;
+    top: 6vh;
+    left: -7%;
     border: none;
     margin: 5% auto 0;
 }

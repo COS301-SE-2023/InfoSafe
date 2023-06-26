@@ -35,6 +35,21 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         popupClose()
     }
 
+    const makeOptions = () =>{
+        var options = []
+        const role_options = [
+            'EMPLOYEE',
+            'ISO',
+            'DISO',
+            'DATA CUSTODIAN',
+            'SYSTEM ADMINISTRATOR',
+            'ASSET MANAGER'
+        ];
+        role_options.map(opt => options.push(<option>{opt}</option>));
+        return(options);
+    }
+
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
@@ -54,13 +69,12 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <input className="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         <button className="genPassword">Generate Password</button>
                         <p className="roleLabel">System role</p>
-                        <Dropdown
-                            options={role_options}
-                            value={role_options[0]}
+                        <select
                             className="role_dropdown_1"
                             name="role"
-                            onChange={(selectedOption) => setRole(selectedOption.value)}
-                        />
+                        >
+                            {makeOptions()}
+                        </select>
                         <button className="createuser_finish" onClick={handleClick}>
                             Submit
                         </button>

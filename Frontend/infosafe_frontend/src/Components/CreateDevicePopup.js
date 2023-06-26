@@ -1,14 +1,18 @@
 import React, {useState} from 'react';
 import '../Styling/CreateDevicePopup.css';
 import Popup from 'reactjs-popup';
-import Dropdown from 'react-dropdown';
+
 import { IoArrowBackOutline } from 'react-icons/io5';
 
+const makeOptions = () => {
+    var options = [];
+    const status_options = ['CLEAN', 'FULL', 'BROKEN'];
+    status_options.map((opt) => options.push(<option>{opt}</option>));
+    return options;
+};
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-
-    const status_options = ['CLEAN', 'FULL', 'BROKEN'];
     const[asset_name,setAssetName]=useState('')
     const[asset_description,setAssetDesc]=useState('')
     const[assignee,setAssignee]=useState('')
@@ -17,7 +21,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const asset = {asset_name, asset_description, date_acquired, status}
+        const asset = {asset_name, asset_description, assignee, date_acquired, status}
         console.log(asset)
         fetch("http://localhost:8080/api/auth/addAsset", {
             method:"POST",
@@ -28,7 +32,6 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
         })
         popupClose()
     }
-
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDeviceOverlay">
@@ -45,13 +48,9 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <p className="assignedUserLabel">Assigned User</p>
                         <input className="assignedUserInput" value={assignee} onChange={(e)=>setAssignee(e.target.value)}/>
                         <p className="deviceStatusLabel">Status</p>
-                        <Dropdown
-                            options={status_options}
-                            value={status_options[0]}
-                            className="statusDropdown"
-                            name="status"
-                            onChange={(selectedOption) => setStatus(selectedOption.value)}
-                        />
+                        <select className="statusDropdown" name="statusDropdown">
+                            {makeOptions()}
+                        </select>
                         <br />
                         <button className="createDevice_finish" onClick={handleClick}>
                             Submit

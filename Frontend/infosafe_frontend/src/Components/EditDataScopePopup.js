@@ -1,10 +1,15 @@
 import React from 'react';
 import '../Styling/EditDataScopePopup.css';
 import Popup from 'reactjs-popup';
-import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const status = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
+const makeOptions = () => {
+    var options = [];
+    const status = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
+    status.map((opt) => options.push(<option>{opt}</option>));
+    return options;
+};
+
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -21,12 +26,9 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                         <textarea className="editDescriptionInput" defaultValue={datascope.description}/>
                         <br />
                         <p className="editStatusLabel">Status</p>
-                        <Dropdown
-                            options={status}
-                            value={status[0]}
-                            className="status"
-                            name="status"
-                        />
+                        <select className="status_dropdown" name="status_dropdwon">
+                            {makeOptions()}
+                        </select>
                         <button className="editdatascope_finish" onClick={popupClose}>
                             Submit
                         </button>
