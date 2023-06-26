@@ -2,8 +2,6 @@ import '../Styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import Popup from 'reactjs-popup';
-import Dropdown from 'react-dropdown';
 import { CreateUserPopup } from './CreateUserPopup';
 import { CreateDataScopePopup } from './CreateDataScopePopup';
 import { EditDataScopePopup } from './EditDataScopePopup';
@@ -28,13 +26,13 @@ const NavBar = ({ systemRole }) => {
         activate(NavTabIndex);
     };
 
-  useEffect(()=>{
+/*  useEffect(()=>{
         fetch("http://localhost:8080/user/getAll")
             .then(res=>res.json())
             .then((result)=>{
                 setShowUser(result);
             })
-    },[])
+    },[])*/
 
     const ViewDataScopeItem = ({ id }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
@@ -133,14 +131,17 @@ const NavBar = ({ systemRole }) => {
                     }
 
                     return (
-                        <div className="users">
+                      <div className="users">
+                        <ul className="userList">{userItems}</ul>
+                      </div>
+                        /*<div className="users">
                             <ul className="userList">
                                 {
                                     showUser.map(user=>(
                                         <li key={user.id}>
                                             <p onClick={() => setViewUserOpen(true)}>
-                                                {user.name}
-                                                {user.surname}
+                                                {/!*{user.name}*!/}
+                                                {/!*{user.surname}*!/}
                                                 {viewUserOpen ? (
                                                     <ViewUser
                                                         closeViewUser={() => setViewUserOpen(false)}
@@ -163,7 +164,7 @@ const NavBar = ({ systemRole }) => {
                                     ))
                                 }
                             </ul>
-                        </div>
+                        </div>*/
                     );
                 }
                 case 1: {
