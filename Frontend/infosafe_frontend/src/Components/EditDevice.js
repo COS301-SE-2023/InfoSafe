@@ -49,7 +49,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editdeviceuser"
                                 name="editdeviceuser"
-                                defaultValue="User123"
+                                defaultValue={asset.assignee}
                             />
                         </div>
                         <button className="EditDeviceButton" type="submit" onClick={popupClose}>

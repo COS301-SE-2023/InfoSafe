@@ -11,6 +11,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     const status_options = ['CLEAN', 'FULL', 'BROKEN'];
     const[asset_name,setAssetName]=useState('')
     const[asset_description,setAssetDesc]=useState('')
+    const[assignee,setAssignee]=useState('')
     const[date_acquired,setDate]=useState(date)
     const[status,setStatus]=useState('CLEAN')
 
@@ -41,6 +42,8 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <input className="deviceTypeInput" value={asset_name} onChange={(e)=>setAssetName(e.target.value)}/>
                         <p className="deviceDescriptionLabel">Device Description</p>
                         <textarea className="deviceDescriptionInput" value={asset_description} onChange={(e)=>setAssetDesc(e.target.value)}/>
+                        <p className="assignedUserLabel">Assigned User</p>
+                        <input className="assignedUserInput" value={assignee} onChange={(e)=>setAssignee(e.target.value)}/>
                         <p className="deviceStatusLabel">Status</p>
                         <Dropdown
                             options={status_options}
