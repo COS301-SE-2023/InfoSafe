@@ -20,6 +20,7 @@ public class Asset {
     private String asset_description;
     private String status;
     private String date_acquired;
+    private String assignee;
 
     public Long getId() {
         return id;
@@ -59,5 +60,13 @@ public class Asset {
 
     public void setDate_acquired(String date_acquired) {
         this.date_acquired = date_acquired;
+    }
+
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 }

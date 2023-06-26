@@ -46,7 +46,7 @@
     border-radius: 35px;
     scrollbar-width: none;
 }
-.users::-webkit-scrollbar{
+.users::-webkit-scrollbar {
     display: none;
 }
 .userList {
@@ -119,7 +119,7 @@
     box-sizing: content-box;
     scrollbar-width: none;
 }
-.datascopes::-webkit-scrollbar{
+.datascopes::-webkit-scrollbar {
     display: none;
 }
 .datascopesList {
@@ -325,7 +325,7 @@
     box-sizing: content-box;
     scrollbar-width: none;
 }
-.devices::-webkit-scrollbar{
+.devices::-webkit-scrollbar {
     display: none;
 }
 .deviceList li {
