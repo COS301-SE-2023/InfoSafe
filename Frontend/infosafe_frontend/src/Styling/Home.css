@@ -1,12 +1,11 @@
-.backdrop{
+.backdrop {
     background-color: #383838;
     height: 100vh;
 }
 
-.tabs{
+.tabs {
     width: 100%;
     display: flex;
     position: relative;
     top: 2%;
-
 }

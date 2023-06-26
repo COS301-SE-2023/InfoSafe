@@ -4,23 +4,18 @@ import NavBar from './NavBar';
 
 //import various things to be displayed
 
-const Home = () =>
-{
+const Home = () => {
     const [systemRole, setRole] = useState('ISO');
 
-    const handleRole = (RoleIndex) =>
-    {
+    const handleRole = (RoleIndex) => {
         setRole(RoleIndex);
     };
 
     return (
-
         <div className="backdrop">
-
             <div className="tabs">
-                <NavBar systemRole = {systemRole}/>
+                <NavBar systemRole={systemRole} />
             </div>
-
         </div>
     );
 };

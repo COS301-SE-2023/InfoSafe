@@ -1,0 +1,147 @@
+.editDeviceOverlay {
+    width: 60vw;
+    height: 85vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+}
+.borderEditDevice {
+    border: 1px solid #ffffff;
+    width: 56vw;
+    margin: 0 auto;
+    height: 77vh;
+    position: relative;
+    top: 4vh;
+}
+.backButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.backIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
+.editDeviceTitle {
+    width: 80%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: -2.5vh;
+    left: 10%;
+}
+.devicetypeEdit {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 0.5vh;
+    margin-top: 1vh;
+}
+.editdeviceTypeInput {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+}
+.devicedescriptionEdit {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 0.5vh;
+    margin-top: 1vh;
+}
+.editdeviceDescriptionInput {
+    font-size: 16px;
+    width: 50%;
+    border: none;
+    height: 10vh;
+    text-align: center;
+    overflow-y: scroll;
+}
+.devicestatusEdit {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 0.5vh;
+    margin-top: 1vh;
+}
+.statusDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+}
+.deviceuserEdit {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 0.5vh;
+    margin-top: 1vh;
+}
+.editdeviceUserInput {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+}
+.EditDeviceButton {
+    width: 15%;
+    height: 5%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+
+    align-self: center;
+    justify-self: center;
+    left: 42.5%;
+    border: none;
+    margin: 5% auto 0;
+}
