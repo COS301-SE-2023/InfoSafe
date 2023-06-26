@@ -16,12 +16,10 @@ import EditDevice from './EditDevice';
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     const [showUser, setShowUser] = useState([]);
-    const [editUserOpen, setEditUserOpen] = useState(false);
     const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
     const [editDeviceOpen, setEditDeviceOpen] = useState(false);
     const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
     const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-    const [viewUserOpen, setViewUserOpen] = useState(false);
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
@@ -43,6 +41,9 @@ const NavBar = ({ systemRole }) => {
     }, []);
 
     const ViewUserItem = ({ user }) => {
+        //const CURRENT = user;
+        const [viewUserOpen, setViewUserOpen] = useState(false);
+        const [editUserOpen, setEditUserOpen] = useState(false);
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
