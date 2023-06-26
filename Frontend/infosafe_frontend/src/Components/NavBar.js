@@ -40,7 +40,7 @@ const NavBar = ({ systemRole }) => {
 
         return (
             <li key={id}>
-                <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
+                <p className="listItem" onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
                     Data Scope {id}
                     {viewDataScopeOpen && (
                         <ViewDataScope
@@ -69,7 +69,7 @@ const NavBar = ({ systemRole }) => {
 
     return (
       <li key={id}>
-        <p onClick={() => setViewUserOpen(!viewUserOpen)}>
+        <p className="listItem" onClick={() => setViewUserOpen(!viewUserOpen)}>
           User {id}
           {viewUserOpen && (
             <ViewUser
@@ -98,7 +98,7 @@ const NavBar = ({ systemRole }) => {
 
     return (
       <li key={id}>
-        <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
+        <p className="listItem" onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
           Device {id}
           {viewDeviceOpen && (
             <ViewDevice

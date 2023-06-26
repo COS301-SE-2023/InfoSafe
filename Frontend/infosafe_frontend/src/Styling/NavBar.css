@@ -29,6 +29,9 @@
     height: 90vh;
     background: #444040;
 }
+.listItem:hover{
+    font-weight: bold;
+}
 .users {
     background-color: #ffffff;
     width: 90%;
