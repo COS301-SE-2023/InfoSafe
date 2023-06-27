@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "FrAgile",
   "scripts": {
-    "e2e": "cypress open"
+    "cyp": "cypress open"
   },
   "author": "",
   "license": "ISC",
