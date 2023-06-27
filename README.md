@@ -47,10 +47,10 @@ Users will be assigned certain roles when their profile has been created on the 
 - :book: [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
 
 ### Supporting Documentation:
-- :scroll: [User Manual](https://drive.google.com/file/d/1gDxqbHPMJB3a3y8XUHzy-4HNOlPXmymn/view?usp=drive_link)
-- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1S0mGHt8ZIjlSPgX3K2ws8O7yeKicE-uF/view?usp=drive_link)
-- :floppy_disk: [Database Design](https://drive.google.com/file/d/1wLhaxQcDk7H47ZPhy5M8mURu7Pa_XOzU/view?usp=drive_link)
-- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1s2VclLfleFBSqWgZaj6-1Xf9GMnbOW2W/view?usp=drive_link)
+- :scroll: [User Manual](https://drive.google.com/file/d/1UGFbRx9jv2wEPF8c5vDLa8opcpLbMMuT/view?usp=drive_link)
+- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1-BukXmQoBycnfdHfgT3bYeZvsEBKU2If/view?usp=drive_link)
+- :floppy_disk: [Database Design](https://drive.google.com/file/d/1jmDdcqMQNKTxnzcmZqjmHiOqmZezccIu/view?usp=drive_link)
+- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1CiCvP40ajMf0DKHhpi9_RqCcEpczQgzU/view?usp=drive_link)
 - :memo: [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
 
 ### GitHub Links:
