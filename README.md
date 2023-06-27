@@ -10,10 +10,11 @@
 
 [![Languages](https://img.shields.io/github/languages/count/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe)
 
-[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2046.6%25)](https://www.javascript.com)
-[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2045.7%25)](https://www.css3.com)
-[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%205.7%25)](https://www.html5.org)
-[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%202.0%25)](https://www.java.com)
+[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2039.4%25)](https://www.javascript.com)
+[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2029.8%25)](https://www.css3.com)
+[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%2029.7%25)](https://www.java.com)
+[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%201.1%25)](https://www.html5.org)
+
 <hr>
 
 # Team Name
@@ -24,7 +25,7 @@
 
 # Project Name
 
-InfoSafe
+![InfoSafe](Documentation/Images/Infosafe.png)
 
 <hr>
 
@@ -41,22 +42,24 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Demo Videos:
-- [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=sharing)
+- :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
+- :vhs: [Demo 2]()
 
 ### SRS Documentation:
-- [Version 1](https://docs.google.com/document/d/1vryDJChlEdov88GEosChoTtcOP07sz62hRiUPI8SsH4/edit?usp=sharing)
-- [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
+- :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
+- :book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
 
 ### Supporting Documentation:
-- [User Manual](https://docs.google.com/document/d/1K6INf8V2FX3ImG4edp1WG0pjeYeFxge5NXnCOik0XuI/edit?usp=sharing)
-- [System Architecture](https://docs.google.com/document/d/1UpT43Da21H5IaD1Iv_tf4yb09eTM6zguwjmgXQzieIY/edit?usp=sharing)
-- [Database Design](https://docs.google.com/document/d/1-pOzjPiqHTREVt65XhrZSk8-05vk5wouDt2ZB_YQQuA/edit?usp=sharing)
-- [Coding Standards](https://docs.google.com/document/d/1b56tirbEMl0m3AtQuOi0RwT0JF7N7EahnafryZlER2A/edit?usp=sharing)
-- [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
+- :scroll: [User Manual](https://drive.google.com/file/d/1UGFbRx9jv2wEPF8c5vDLa8opcpLbMMuT/view?usp=drive_link)
+- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1-BukXmQoBycnfdHfgT3bYeZvsEBKU2If/view?usp=drive_link)
+- :floppy_disk: [Database Design](https://drive.google.com/file/d/1jmDdcqMQNKTxnzcmZqjmHiOqmZezccIu/view?usp=drive_link)
+- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1uisC4rYVyJA9h_B28YXDp-48hcoo9YHu/view?usp=drive_link)
+- :memo: [Team Contributions](https://drive.google.com/file/d/1e4K9b0Qx87gXIi5e1EzQ2h_oSsMhzXMF/view?usp=drive_link)
 
-### GitHub Project Board:
-
-- [Project Board](https://github.com/orgs/COS301-SE-2023/projects/17/views/1)
+### GitHub Links:
+- :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
+- :dart: [Project Board](https://github.com/orgs/COS301-SE-2023/projects/17/views/1)
+- :computer: [Wiki](https://github.com/COS301-SE-2023/InfoSafe/wiki)
 
 <hr>
 
@@ -77,7 +80,7 @@ I am proficient in:
 
 
 #### Profiles:
-[GitHub profile](https://github.com/P3TROOS) | [LinkedIn profile](https://www.linkedin.com/in/christof-steyn-631420218/)
+<a href="https://github.com/P3TROOS"><img src="Documentation/Images/github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -95,7 +98,7 @@ I am proficient in:
 - [![ASP.Net (MVC)](https://img.shields.io/badge/ASP.Net-lightblue.svg)](https://en.wikipedia.org/wiki/ASP.NET)
 
 #### Profiles:
-[GitHub profile](https://github.com/ChrisMitt) | [LinkedIn profile](https://www.linkedin.com/in/chris-mittendorf-078542275/)
+<a href="https://github.com/ChrisMitt"><img src="Documentation/Images/github.jpeg" alt="chris github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="Documentation/Images/linkedin.png" alt="chris linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -115,7 +118,7 @@ I am proficient in:
 - [![NoSQL](https://img.shields.io/badge/NoSQL-8f2c3e.svg)](https://en.wikipedia.org/wiki/NoSQL)
 
 #### Profiles:
-[GitHub profile](https://github.com/yanevdw19021209) | [LinkedIn profile](https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/)
+<a href="https://github.com/yanevdw19021209"><img src="Documentation/Images/github.jpeg" alt="yane github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/"><img src="Documentation/Images/linkedin.png" alt="yane linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -133,7 +136,7 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 - [![PHP](https://img.shields.io/badge/PHP-purple.svg)](https://en.wikipedia.org/wiki/PHP)
 
 #### Profiles:
-[GitHub profile](https://github.com/KarelSmit) | [LinkedIn profile](https://www.linkedin.com/in/karel-smit-9a7929275/)
+<a href="https://github.com/KarelSmit"><img src="Documentation/Images/github.jpeg" alt="karel github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="Documentation/Images/linkedin.png" alt="karel linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -150,4 +153,4 @@ I am proficient in:
 - [![SQL](https://img.shields.io/badge/SQL-a7f77e.svg)](https://en.wikipedia.org/wiki/SQL)
 
 #### Profiles:
-[GitHub profile](https://github.com/AlistairMRoss) | [LinkedIn profile](https://www.linkedin.com/in/alistair-ross-1b647a204/)
+<a href="https://github.com/AlistairMRoss"><img src="Documentation/Images/github.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="Documentation/Images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>

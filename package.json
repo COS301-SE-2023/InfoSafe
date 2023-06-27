@@ -1,0 +1,13 @@
+{
+  "name": "infosafe",
+  "version": "1.0.0",
+  "description": "FrAgile",
+  "scripts": {
+    "cyp": "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.15.0"
+  }
+}

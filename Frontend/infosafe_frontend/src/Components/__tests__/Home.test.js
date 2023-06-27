@@ -1,6 +1,18 @@
-import Home from './../Home.js'
-import { render, screen, cleanup } from '@testing-library/react'
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Home from '../Home.js';
+import '@testing-library/jest-dom';
 
-test('should render Home component', () => {
-    render(<Home/>);
-})
+describe('Home', () => {
+    test('should render NavBar component with the correct systemRole prop', () => {
+        const systemRole = 'ISO';
+
+        render(<Home />);
+
+        const navBarElement = screen.getByTestId('nav-bar');
+
+        expect(navBarElement).toBeInTheDocument();
+        expect(navBarElement).toHaveAttribute('systemRole', systemRole);
+    });
+});
+

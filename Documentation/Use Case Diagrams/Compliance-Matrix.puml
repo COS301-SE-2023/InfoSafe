@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #1e1e1e
+left to right direction
+actor "ISO" as iso #blue;text:white;line:white
+actor "DISO" as diso #red;text:white;line:white
+actor "All Users" as all #green;text:white;line:white
+rectangle Compliance-Matrix #text:white;line.bold;line:white {
+  usecase "Create a Task" as UC1 #black;text:white;line.bold;line:white
+  usecase "Update a Task" as UC2 #black;text:white;line.bold;line:white
+  usecase "Revoke a Task" as UC3 #black;text:white;line.bold;line:white
+  usecase "Assign Tasks to Users" as UC4 #black;text:white;line.bold;line:white
+  usecase "View Tasks" as UC6 #black;text:white;line.bold;line:white
+  usecase "Approve/Reject Completed Task" as UC7 #black;text:white;line.bold;line:white
+}
+iso -[#blue]-> UC1
+iso -[#blue]-> UC2
+iso -[#blue]-> UC3
+iso -[#blue]-> UC4
+iso -[#blue]-> UC6
+iso -[#blue]-> UC7
+diso -[#red]-> UC1
+diso -[#red]-> UC2
+diso -[#red]-> UC3
+diso -[#red]-> UC4
+diso -[#red]-> UC6
+diso -[#red]-> UC7
+UC4 <. (UC1) #line:white;text:white : <<uses>>
+all -[#green]-> UC6
+all -[#green]-> UC2
+UC4 -[#green]-> all
+@enduml
