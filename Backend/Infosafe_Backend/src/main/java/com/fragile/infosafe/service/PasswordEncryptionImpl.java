@@ -26,6 +26,13 @@ public class PasswordEncryptionImpl implements PasswordEncryption{
         //creates the encrypted password using the password and the secret key
         String encryptedPassword = secretKeyMaker.encrypt(password, secretKey);
 
+        String p = "";
+        for(int i=encryptedPassword.length()-1; i>=0; i--){
+            p += encryptedPassword.charAt(i);
+        }
+
+        encryptedPassword = p;
+
         return encryptedPassword;
     }
 }

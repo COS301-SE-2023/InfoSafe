@@ -1,10 +1,11 @@
 package com.fragile.infosafe.service;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class RandomPasswordGeneratorImpl implements RandomPasswordGenerator {
-    @Override
+@RequiredArgsConstructor
+public class RandomPasswordGeneratorImpl{
     public String generateRandomPassword() {
 
         Random rnd = new Random();

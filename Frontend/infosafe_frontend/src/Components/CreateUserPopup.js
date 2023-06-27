@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
@@ -35,6 +35,30 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         popupClose()
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/api/auth/generate", {
+                    headers: {
+                        Authorization: sessionStorage.getItem('accessToken')
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const randomP = data.password.toString();
+                    setPassword(randomP);
+                } else {
+                    console.error('Error fetching string from the server.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
@@ -51,8 +75,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <p className="emailLabel">Email</p>
                         <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" data-testid="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                        <button className="genPassword">Generate Password</button>
+                        <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
                         <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
