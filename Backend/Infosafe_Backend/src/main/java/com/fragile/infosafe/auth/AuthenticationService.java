@@ -163,7 +163,6 @@ public class AuthenticationService {
         return repository.findAll();
     }
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
-
     public List<Asset> getAllAssets() {
         return assetRepository.findAll();
     }
