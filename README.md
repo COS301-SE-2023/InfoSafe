@@ -43,7 +43,7 @@ Users will be assigned certain roles when their profile has been created on the 
 
 ### Demo Videos:
 - :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
-- :vhs: [Demo 2]()
+- :vhs: [Demo 2](https://drive.google.com/file/d/1ZGrzbsJevsbJFgryFvfZMmA00x-Y2ty9/view?usp=drive_link)
 
 ### SRS Documentation:
 - :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
