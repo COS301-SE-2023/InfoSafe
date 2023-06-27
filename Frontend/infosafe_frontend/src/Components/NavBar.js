@@ -11,6 +11,7 @@ import ViewUser from './ViewUser';
 import { CreateDevicePopup } from './CreateDevicePopup';
 import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
+import '../Styling/Dropdown.css'
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {

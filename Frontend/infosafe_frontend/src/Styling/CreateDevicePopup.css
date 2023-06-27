@@ -1,6 +1,6 @@
 .createDeviceOverlay {
     width: 50vw;
-    height: 75vh;
+    height: 80vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,7 +11,7 @@
     border: 1px solid #ffffff;
     width: 46vw;
     margin: 0 auto;
-    height: 67vh;
+    height: 72vh;
     position: relative;
     top: 4vh;
 }
@@ -127,7 +127,7 @@
     position: relative;
     border: none;
     left: 42.5%;
-    margin: 5% auto 0;
+    margin-top: 1vh;
 }
 .deviceStatusLabel {
     margin: 0 auto;
@@ -140,17 +140,4 @@
     font-family: 'Roboto', sans-serif;
     position: relative;
     margin-top: 1.5vh;
-}
-.statusDropdown {
-    text-transform: uppercase;
-    font-size: 20px;
-    width: 50%;
-    margin-top: 1vh;
-    text-align: center;
-    border: none;
-    text-align: center;
-    align-content: center;
-    height: 10%;
-    left: 25%;
-    position: relative;
 }

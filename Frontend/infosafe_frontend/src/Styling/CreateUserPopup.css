@@ -180,14 +180,14 @@
     border: none;
     text-align: center;
     align-content: center;
-    height: 10%;
+    height: 5%;
     left: 25%;
     position: relative;
+
 }
 .role_dropdown:after {
     transform: translateY(50%);
 }
-
 .createuser_finish {
     width: 15%;
     height: 5%;
@@ -201,8 +201,8 @@
     position: relative;
     align-self: center;
     justify-self: center;
-    top: 6vh;
-    left: -7%;
+    top: 2vh;
+    left: 42.5%;
     border: none;
     margin: 5% auto 0;
 }

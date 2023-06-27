@@ -1,6 +1,6 @@
 .editUserOverlay {
     width: 60vw;
-    height: 70vh;
+    height: 65vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,7 +11,7 @@
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
-    height: 62vh;
+    height: 57vh;
     position: relative;
     top: 4vh;
 }
@@ -160,11 +160,5 @@
     margin-bottom: 0.5vh;
 }
 .roleTitle {
-    margin-bottom: 0.5vh;
-}
-.newPasswordTitle {
-    margin-bottom: 0.5vh;
-}
-.confirmPasswordTitle {
     margin-bottom: 0.5vh;
 }
