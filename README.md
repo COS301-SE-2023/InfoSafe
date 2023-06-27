@@ -150,4 +150,4 @@ I am proficient in:
 - [![SQL](https://img.shields.io/badge/SQL-a7f77e.svg)](https://en.wikipedia.org/wiki/SQL)
 
 #### Profiles:
-<a href="https://github.com/AlistairMRoss"><img src="Documentation/Images/github.jpeg" alt="alistair github" width="30" height="30"></a><inline style="visibility:hidden">pr</inline><a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="Documentation/Images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
+<a href="https://github.com/AlistairMRoss"><img src="Documentation/Images/github.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="Documentation/Images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
