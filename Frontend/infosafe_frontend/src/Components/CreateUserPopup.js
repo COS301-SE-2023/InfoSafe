@@ -45,6 +45,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             generatedPassword = data.message.toString();
             let randomP = data.password.toString();
             setRandomPassword(randomP);
+            setPassword(randomP);
             //setPassword(generatedPassword);
             console.log("Password fetched from the server: ", generatedPassword);
 
