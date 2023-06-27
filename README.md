@@ -10,10 +10,11 @@
 
 [![Languages](https://img.shields.io/github/languages/count/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe)
 
-[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2046.6%25)](https://www.javascript.com)
-[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2045.7%25)](https://www.css3.com)
-[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%205.7%25)](https://www.html5.org)
-[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%202.0%25)](https://www.java.com)
+[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2039.4%25)](https://www.javascript.com)
+[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2029.8%25)](https://www.css3.com)
+[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%2029.7%25)](https://www.java.com)
+[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%201.1%25)](https://www.html5.org)
+
 <hr>
 
 # Team Name
@@ -24,7 +25,7 @@
 
 # Project Name
 
-InfoSafe
+![InfoSafe](Documentation/Images/Infosafe.png)
 
 <hr>
 
@@ -41,17 +42,19 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Demo Videos:
+- :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
 - :vhs: [Demo 2]()
 
 ### SRS Documentation:
-- :book: [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
+- :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
+- :book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
 
 ### Supporting Documentation:
 - :scroll: [User Manual](https://drive.google.com/file/d/1UGFbRx9jv2wEPF8c5vDLa8opcpLbMMuT/view?usp=drive_link)
 - :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1-BukXmQoBycnfdHfgT3bYeZvsEBKU2If/view?usp=drive_link)
 - :floppy_disk: [Database Design](https://drive.google.com/file/d/1jmDdcqMQNKTxnzcmZqjmHiOqmZezccIu/view?usp=drive_link)
-- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1CiCvP40ajMf0DKHhpi9_RqCcEpczQgzU/view?usp=drive_link)
-- :memo: [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
+- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1uisC4rYVyJA9h_B28YXDp-48hcoo9YHu/view?usp=drive_link)
+- :memo: [Team Contributions](https://drive.google.com/file/d/1e4K9b0Qx87gXIi5e1EzQ2h_oSsMhzXMF/view?usp=drive_link)
 
 ### GitHub Links:
 - :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
