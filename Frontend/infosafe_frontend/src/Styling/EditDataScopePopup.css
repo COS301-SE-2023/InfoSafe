@@ -1,0 +1,196 @@
+.editDataScopeOverlay {
+    width: 50vw;
+    height: 80vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+    scroll-behavior: auto;
+}
+.editdatascopeBorder {
+    border: 1px solid #ffffff;
+    width: 47vw;
+    margin: 0 auto;
+    height: 75vh;
+    position: relative;
+    top: 2.5vh;
+}
+.backButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.backIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
+.editDatascopeLabel {
+    width: 60%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: -2vh;
+    left: 20%;
+}
+.editDatasscopeNameLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1.5vh;
+    margin-top: 1.5vh;
+}
+.editDatascopeNameInput {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-top: 2vh;
+    left: 25%;
+    position: relative;
+}
+.editDescriptionLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1.5vh;
+    margin-top: 1.5vh;
+}
+.editDescriptionInput {
+    font-size: 22px;
+    width: 50%;
+    height: 12vh;
+    border: none;
+    margin-top: 2vh;
+    left: 25%;
+    position: relative;
+    text-wrap: initial;
+    resize: none;
+}
+.editStatusLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin-top: 1.5vh;
+}
+.status {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin-top: 1vh;
+    text-align: center;
+    border: none;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    left: 25%;
+    position: relative;
+}
+.editdatascope_finish {
+    width: 15%;
+    height: 5%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    border: none;
+    left: 42.5%;
+    margin-top: 2vh;
+}
+.addRoleNameLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1.5vh;
+    margin-top: 1.5vh;
+}
+.addRoleNameInput {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-top: 2vh;
+    left: 25%;
+    position: relative;
+}
+.roleDescriptionLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1.5vh;
+    margin-top: 1.5vh;
+}
+.roleDescriptionInput {
+    font-size: 22px;
+    width: 50%;
+    height: 8vh;
+    border: none;
+    margin-top: 2vh;
+    left: 25%;
+    position: relative;
+    text-wrap: initial;
+    resize: none;
+}
+.addRole_finish {
+    width: 15%;
+    height: 5%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    border: none;
+    left: 42.5%;
+    margin-top: 2vh;
+}

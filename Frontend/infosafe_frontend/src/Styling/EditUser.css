@@ -1,6 +1,6 @@
 .editUserOverlay {
     width: 60vw;
-    height: 90vh;
+    height: 65vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,12 +11,30 @@
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
-    height: 82vh;
+    height: 57vh;
     position: relative;
     top: 4vh;
 }
+.backButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.backIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
 .editUserTitle {
-    width: 100%;
+    width: 60%;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -25,7 +43,8 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: 1.5vh;
+    top: -2vh;
+    left: 20%;
 }
 .nameEdit {
     margin: 0 auto;
@@ -33,18 +52,18 @@
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 21px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
+    top: 1vh;
 }
 .editNameInput {
-    text-transform: uppercase;
-    font-size: 22px;
+    font-size: 20px;
     width: 50%;
     text-align: center;
     border: none;
+    height: 4vh;
 }
 .surnameEdit {
     margin: 0 auto;
@@ -52,19 +71,19 @@
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 21px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    top: 0.5vh;
+    margin-top: 1vh;
 }
 .editSurnameInput {
-    text-transform: uppercase;
-    font-size: 22px;
+    font-size: 20px;
     width: 50%;
     text-align: center;
     border: none;
+    height: 4vh;
 }
 .emailEdit {
     margin: 0 auto;
@@ -72,19 +91,19 @@
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 21px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    top: 0.5vh;
+    margin-top: 1vh;
 }
 .editEmailInput {
-    text-transform: uppercase;
-    font-size: 22px;
+    font-size: 20px;
     width: 50%;
     text-align: center;
     border: none;
+    height: 4vh;
 }
 .roleEdit {
     margin: 0 auto;
@@ -92,44 +111,26 @@
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 21px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    top: 0.5vh;
+    margin-top: 1vh;
 }
 .roleDropdown {
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 18px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
     text-align: center;
     align-content: center;
-    height: 10%;
+    height: 4vh;
 }
 .roleDropdown:after {
     transform: translateY(50%);
-}
-.ChangePasswordButton {
-    width: 25%;
-    height: 5%;
-    background-color: rgba(55, 55, 55, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
-    top: 6vh;
-    left: 37.5%;
-    border: none;
 }
 .FinishButton {
     width: 15%;
@@ -145,7 +146,19 @@
     align-self: center;
     justify-self: center;
     margin: 0 auto;
-    top: 14vh;
-    left: 17.5%;
+    top: 5vh;
+    left: 42.5%;
     border: none;
+}
+.nameTitle {
+    margin-bottom: 0.5vh;
+}
+.surnameTitle {
+    margin-bottom: 0.5vh;
+}
+.emailTitle {
+    margin-bottom: 0.5vh;
+}
+.roleTitle {
+    margin-bottom: 0.5vh;
 }

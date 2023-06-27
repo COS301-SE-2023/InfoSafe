@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../Styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 /* eslint-disable react/prop-types */
 const role_options = [
@@ -12,80 +13,59 @@ const role_options = [
     'SYSTEM ADMINISTRATOR',
     'ASSET MANAGER'
 ];
-
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
-    const[name,setName]=useState('');
-    const[surname,setSurname]=useState('');
-    const[email,setEmail]=useState('');
-    const[role,setRole]=useState('ISO');
-    const[password,setPassword]=useState('');
-    const [randomPassword, setRandomPassword] = useState('');
+    const[firstname,setName]=useState('')
+    const[lastname,setSurname]=useState('')
+    const[email,setEmail]=useState('')
+    let [role,setRole]=useState('')
+    const[password,setPassword]=useState('')
 
-    const handleClick = async (e) => {
-        e.preventDefault();
-        const user = {name, surname, email, password, role};
+    const handleClick=(e)=> {
+        e.preventDefault()
 
-        fetch("http://localhost:8080/user/add", {
+        const user = {firstname, lastname, email, password, role}
+        console.log(user)
+        fetch("http://localhost:8080/api/auth/add", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
         }).then(()=>{
-            console.log("New User added");
-        });
+            console.log("New User added")
+        })
         popupClose()
     }
 
-    const generatePassword = async () => {
-        const response = await fetch("http://localhost:8080/password/generate");
-        let generatedPassword = "";
-        if (response.ok) {
-            const data = await response.json();
-
-            generatedPassword = data.message.toString();
-            let randomP = data.password.toString();
-            setRandomPassword(randomP);
-            setPassword(generatedPassword);
-            console.log("Password fetched from the server: ", generatedPassword);
-
-        } else {
-            console.error('Error fetching string from the server.');
-        }
-    };
-
-    useEffect(() => {
-        generatePassword();
-    }, []);
-
     return (
-        <Popup open={popupOpen} onClose={popupClose} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
                 <div className="createuserBorder">
                     <form>
+                        <button className="backButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="backIcon" />
+                        </button>
                         <p className="createuserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
-                        <input className="nameInput" name="name" value={name} onChange={(e)=>setName(e.target.value)}/>
+                        <input className="nameInput" data-testid="nameInput" name="name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" name="surname" value={surname} onChange={(e)=>setSurname(e.target.value)}/>
+                        <input className="surnameInput" data-testid="surnameInput" name="surname" value={lastname} onChange={(e)=>setSurname(e.target.value)}/>
                         <p className="emailLabel">Email</p>
-                        <input className="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" name="password" placeholder={randomPassword} readOnly/>
+                        <input className="passwordInput" data-testid="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                        <button className="genPassword">Generate Password</button>
                         <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
                             value={role_options[0]}
                             className="role_dropdown"
+                            data-testid="role_dropdown"
                             name="role"
+                            onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
-                        <button className="createuser_finish" onClick={handleClick}>
+                        <button className="createuser_finish" data-testid="createuser_finish"  onClick={handleClick}>
                             Submit
                         </button>
                     </form>
-                    {/*{name}*/}
-                    {/*{surname}*/}
-                    {/*{email}*/}
-                    {/*{password}*/}
-                    {/*{role}*/}
                 </div>
             </div>
         </Popup>
