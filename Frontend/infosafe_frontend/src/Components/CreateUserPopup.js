@@ -19,6 +19,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[email,setEmail]=useState('')
     let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
+    const [randomPassword, setRandomPassword] = useState('');
 
     const handleClick=(e)=> {
         e.preventDefault()
@@ -34,6 +35,28 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         })
         popupClose()
     }
+
+    const generatePassword = async () => {
+        const response = await fetch("http://localhost:8080/password/generate");
+        let generatedPassword = "";
+        if (response.ok) {
+            const data = await response.json();
+
+            generatedPassword = data.message.toString();
+            let randomP = data.password.toString();
+            setRandomPassword(randomP);
+            //setPassword(generatedPassword);
+            console.log("Password fetched from the server: ", generatedPassword);
+
+        } else {
+            console.error('Error fetching string from the server.');
+        }
+    };
+
+    useEffect(() => {
+        generatePassword();
+    }, []);
+
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -51,8 +74,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <p className="emailLabel">Email</p>
                         <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" data-testid="passwordInput" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                        <button className="genPassword">Generate Password</button>
+                        <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={randomPassword} readOnly/>
                         <p className="roleLabel">System role</p>
                         <Dropdown
                             options={role_options}
