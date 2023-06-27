@@ -44,19 +44,19 @@ Users will be assigned certain roles when their profile has been created on the 
 - :vhs: [Demo 2]()
 
 ### SRS Documentation:
-- [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
+- :book: [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
 
 ### Supporting Documentation:
-- [User Manual](https://drive.google.com/file/d/1gDxqbHPMJB3a3y8XUHzy-4HNOlPXmymn/view?usp=drive_link)
-- [System Architecture](https://drive.google.com/file/d/1S0mGHt8ZIjlSPgX3K2ws8O7yeKicE-uF/view?usp=drive_link)
-- [Database Design](https://drive.google.com/file/d/1wLhaxQcDk7H47ZPhy5M8mURu7Pa_XOzU/view?usp=drive_link)
-- [Coding Standards](https://drive.google.com/file/d/1s2VclLfleFBSqWgZaj6-1Xf9GMnbOW2W/view?usp=drive_link)
-- [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
+- :scroll: [User Manual](https://drive.google.com/file/d/1gDxqbHPMJB3a3y8XUHzy-4HNOlPXmymn/view?usp=drive_link)
+- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1S0mGHt8ZIjlSPgX3K2ws8O7yeKicE-uF/view?usp=drive_link)
+- :floppy_disk: [Database Design](https://drive.google.com/file/d/1wLhaxQcDk7H47ZPhy5M8mURu7Pa_XOzU/view?usp=drive_link)
+- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1s2VclLfleFBSqWgZaj6-1Xf9GMnbOW2W/view?usp=drive_link)
+- :memo: [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
 
 ### GitHub Links:
-- [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
-- [Project Board](https://github.com/orgs/COS301-SE-2023/projects/17/views/1)
-- [Wiki](https://github.com/COS301-SE-2023/InfoSafe/wiki)
+- :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
+- :dart: [Project Board](https://github.com/orgs/COS301-SE-2023/projects/17/views/1)
+- :computer: [Wiki](https://github.com/COS301-SE-2023/InfoSafe/wiki)
 
 <hr>
 
@@ -77,7 +77,7 @@ I am proficient in:
 
 
 #### Profiles:
-[GitHub profile](https://github.com/P3TROOS) | [LinkedIn profile](https://www.linkedin.com/in/christof-steyn-631420218/)
+<a href="https://github.com/P3TROOS"><img src="Documentation/Images/github.jpeg" alt="christof github" width="30" height="30"></a><span style="visibility:hidden">pr</span><a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -95,7 +95,7 @@ I am proficient in:
 - [![ASP.Net (MVC)](https://img.shields.io/badge/ASP.Net-lightblue.svg)](https://en.wikipedia.org/wiki/ASP.NET)
 
 #### Profiles:
-[GitHub profile](https://github.com/ChrisMitt) | [LinkedIn profile](https://www.linkedin.com/in/chris-mittendorf-078542275/)
+<a href="https://github.com/ChrisMitt"><img src="Documentation/Images/github.jpeg" alt="chris github" width="30" height="30"></a><span style="visibility:hidden">pr</span><a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="Documentation/Images/linkedin.png" alt="chris linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -115,7 +115,7 @@ I am proficient in:
 - [![NoSQL](https://img.shields.io/badge/NoSQL-8f2c3e.svg)](https://en.wikipedia.org/wiki/NoSQL)
 
 #### Profiles:
-[GitHub profile](https://github.com/yanevdw19021209) | [LinkedIn profile](https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/)
+<a href="https://github.com/yanevdw19021209"><img src="Documentation/Images/github.jpeg" alt="yane github" width="30" height="30"></a><span style="visibility:hidden">pr</span><a href="https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/"><img src="Documentation/Images/linkedin.png" alt="yane linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -133,7 +133,7 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 - [![PHP](https://img.shields.io/badge/PHP-purple.svg)](https://en.wikipedia.org/wiki/PHP)
 
 #### Profiles:
-[GitHub profile](https://github.com/KarelSmit) | [LinkedIn profile](https://www.linkedin.com/in/karel-smit-9a7929275/)
+<a href="https://github.com/KarelSmit"><img src="Documentation/Images/github.jpeg" alt="karel github" width="30" height="30"></a><span style="visibility:hidden">pr</span><a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="Documentation/Images/linkedin.png" alt="karel linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -150,4 +150,4 @@ I am proficient in:
 - [![SQL](https://img.shields.io/badge/SQL-a7f77e.svg)](https://en.wikipedia.org/wiki/SQL)
 
 #### Profiles:
-[GitHub profile](https://github.com/AlistairMRoss) | [LinkedIn profile](https://www.linkedin.com/in/alistair-ross-1b647a204/)
+<a href="https://github.com/AlistairMRoss"><img src="Documentation/Images/github.jpeg" alt="alistair github" width="30" height="30"></a><span style="visibility:hidden">pr</span><a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="Documentation/Images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
