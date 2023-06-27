@@ -1,11 +1,17 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
 import '../Styling/EditDevice.css';
-import Dropdown from 'react-dropdown';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import Dropdown from "react-dropdown";
 
-const EditDevice = ({ id, popupClose, popupOpen }) => {
-    const status_options = ['CLEAN', 'FULL', 'BROKEN'];
+const status_options = ['CLEAN', 'FULL', 'BROKEN'];
+
+const EditDevice = ({ asset, popupClose, popupOpen }) => {
+    const makeOptions = () => {
+        var options = [];
+        status_options.map((opt) => options.push(<option>{opt}</option>));
+        return options;
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -23,26 +29,24 @@ const EditDevice = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editdevicetype"
                                 name="editdevicetype"
-                                defaultValue="Tablet"
+                                defaultValue={asset.asset_name}
                             />
                         </div>
                         <div className="devicedescriptionEdit">
                             <p className="devicedescriptionTitle">Description</p>
                             <textarea
                                 className="editdeviceDescriptionInput"
-                                defaultValue="Lenovo Ideapad 330
-                            RAM: 16GB
-                            SDD: 1TB
-                            Windows 10 Home"
+                                defaultValue={asset.asset_description}
                             />
                         </div>
                         <div className="devicestatusEdit">
                             <p className="devicestatusTitle">Status</p>
                             <Dropdown
                                 options={status_options}
-                                value={status_options[0]}
+                                value={asset.status}
                                 className="statusDropdown"
-                                name="status"
+                                name="statusDropdown"
+
                             />
                         </div>
                         <div className="deviceuserEdit">
@@ -52,7 +56,7 @@ const EditDevice = ({ id, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editdeviceuser"
                                 name="editdeviceuser"
-                                defaultValue="Employee123"
+                                defaultValue={asset.assignee}
                             />
                         </div>
                         <button className="EditDeviceButton" type="submit" onClick={popupClose}>
