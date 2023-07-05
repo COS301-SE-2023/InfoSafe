@@ -60,12 +60,12 @@ public class AuthenticationService {
 
     public ResponseEntity<String> makeDs(DataScopeRequest request){
         var datascope = DataScope.builder()
-                .ds_name(request.getDs_name())
+                .dsName(request.getDsName())
                 .description(request.getDescription())
-                .role_name(request.getRole_name())
-                .role_description(request.getRole_description())
-                .date_captured(request.getDate_captured())
-                .data_custodian(request.getData_custodian())
+                .roleName(request.getRoleName())
+                .roleDescription(request.getRoleDescription())
+                .dateCaptured(request.getDateCaptured())
+                .dataCustodian(request.getDataCustodian())
                 .administrator(request.getAdministrator())
                 .status(request.getStatus())
                 .build();
@@ -75,10 +75,10 @@ public class AuthenticationService {
 
     public ResponseEntity<String>  makeAsset(AssetRequest request){
         var asset = Asset.builder()
-                .asset_name(request.getAsset_name())
-                .asset_description(request.getAsset_description())
+                .assetName(request.getAssetName())
+                .assetDescription(request.getAssetDescription())
                 .status(request.getStatus())
-                .date_acquired(request.getDate_acquired())
+                .dateAcquired(request.getDateAcquired())
                 .assignee(request.getAssignee())
                 .build();
         assetRepository.save(asset);
