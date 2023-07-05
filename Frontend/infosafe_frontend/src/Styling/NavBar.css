@@ -1,34 +1,49 @@
-.tabs {
-    margin: 0 auto;
+.navbar {
+    height: 100%;
 }
+.tabs {
+    display: flex;
+    margin-bottom: 2%;
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    height: 5%;
+    padding: 0;
+    width: 50vw;
+    z-index: 1;
+}
+
 .tabs li {
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.84px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     border: 1px solid #9e0000;
-    width: fit-content;
-    padding: 0.9%;
     white-space: nowrap;
+    padding-left: 0.8%;
+    padding-right: 0.8%;
+    width: fit-content;
 }
 .tabs li.active {
-    background-color: #444040;
+    background-color: #4b4a4a;
     border: 1px solid #ffffff;
-    border-bottom: 1px solid #444040;
+    border-bottom: 1px solid #4b4a4a;
 }
 .display {
     position: absolute;
-    top: calc(88%);
-    left: 3.1%;
-    width: 96.6vw;
+    top: 8%;
+    left: 1%;
+    width: 98%;
     height: 90vh;
-    background: #444040;
+    background: #4b4a4a;
     overflow: hidden;
+    z-index: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .listItem:hover {
     font-weight: bold;
@@ -45,6 +60,7 @@
     box-sizing: content-box;
     border-radius: 35px;
     scrollbar-width: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .users::-webkit-scrollbar {
     display: none;
@@ -56,26 +72,25 @@
 }
 .userList li {
     position: relative;
-    left: 3%;
+    left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-
     width: 96%;
-
     text-transform: none;
-    /*padding: 0.5%;*/
     border: 1px solid #000000;
 }
 .userList li p {
     font-family: 'Roboto', sans-serif;
-    height: 10%;
     transform: translateY(-50%);
     margin: 0;
     padding: 0;
     position: relative;
-    top: 0.6vh;
-    left: -0.4vw;
-    height: 2.1vh;
+    top: 50%;
+    left: 1%;
+}
+.userList li p:hover {
+    font-weight: bold;
 }
 .userList li:first-child {
     margin-top: 1%;
@@ -86,7 +101,7 @@
 .CreateUserButton {
     background: #373737;
     border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 16px;
@@ -94,13 +109,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    letter-spacing: 0.84px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: #ffffff;
-
     margin: 0 auto;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .CreateUserButtonDiv {
     position: relative;
@@ -113,11 +127,12 @@
     height: 80%;
     position: relative;
     top: 5%;
-    border-radius: 35px;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 20px;
     box-sizing: content-box;
+    border-radius: 35px;
     scrollbar-width: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .datascopes::-webkit-scrollbar {
     display: none;
@@ -129,33 +144,31 @@
 }
 .datascopesList li {
     position: relative;
-    left: 3%;
+    left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-
     width: 96%;
-
     text-transform: none;
-    /*padding: 0.5%;*/
     border: 1px solid #000000;
 }
 .datascopesList li p {
     font-family: 'Roboto', sans-serif;
-    height: 10%;
     transform: translateY(-50%);
     margin: 0;
     padding: 0;
     position: relative;
-    top: 0.6vh;
-    left: -0.4vw;
-    height: 2vh;
+    top: 50%;
+    left: 1%;
 }
-
 .datascopesList li:first-child {
     margin-top: 1%;
 }
 .datascopesList li:last-child {
     margin-bottom: 1%;
+}
+.datascopesList li:hover {
+    font-weight: bold;
 }
 .CreateDataScopeDiv {
     position: relative;
@@ -175,10 +188,9 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     color: #ffffff;
-
     margin: 0 auto;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .accessRequests {
     background-color: #ffffff;
@@ -187,10 +199,12 @@
     height: 80%;
     position: relative;
     top: 5%;
-    border-radius: 35px;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 20px;
     box-sizing: content-box;
+    border-radius: 35px;
+    scrollbar-width: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .accessrequestsList {
     list-style: none;
@@ -199,19 +213,31 @@
 }
 .accessrequestsList li {
     position: relative;
-    left: 3%;
+    left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
     width: 96%;
-    font-size: 18px;
     text-transform: none;
-    padding: 0.5%;
     border: 1px solid #000000;
 }
+.accessrequestsList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 1%;
+}
+.accessrequestsList li:hover {
+    font-weight: bold;
+}
 .accessrequestsList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.accessrequestsList li:last-child {
+    margin-bottom: 1%;
 }
 .tasks {
     background-color: #ffffff;
@@ -220,10 +246,12 @@
     height: 80%;
     position: relative;
     top: 5%;
-    border-radius: 35px;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 20px;
     box-sizing: content-box;
+    border-radius: 35px;
+    scrollbar-width: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .taskList {
     list-style: none;
@@ -232,19 +260,31 @@
 }
 .taskList li {
     position: relative;
-    left: 3%;
+    left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
     width: 96%;
-    font-size: 18px;
     text-transform: none;
-    padding: 0.5%;
     border: 1px solid #000000;
 }
+.taskList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 1%;
+}
+.taskList li:hover {
+    font-weight: bold;
+}
 .taskList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.taskList li:last-child {
+    margin-bottom: 1%;
 }
 .buttons {
     position: relative;
@@ -269,8 +309,8 @@
     position: relative;
     margin: 0 auto;
     left: 0%;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .UpdateTaskButton {
     background: #373737;
@@ -289,8 +329,8 @@
     position: relative;
     margin: 0 auto;
     left: 0%;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .RevokeTaskButton {
     background: #373737;
@@ -309,8 +349,8 @@
     position: relative;
     margin: 0 auto;
     left: 0%;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .devices {
     background-color: #ffffff;
@@ -319,43 +359,48 @@
     height: 80%;
     position: relative;
     top: 5%;
-    border-radius: 35px;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 20px;
     box-sizing: content-box;
+    border-radius: 35px;
     scrollbar-width: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .devices::-webkit-scrollbar {
     display: none;
 }
+.deviceList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .deviceList li {
     position: relative;
     left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-
     width: 96%;
-
     text-transform: none;
-    /*padding: 0.5%;*/
     border: 1px solid #000000;
 }
 .deviceList li p {
     font-family: 'Roboto', sans-serif;
-    height: 10%;
     transform: translateY(-50%);
     margin: 0;
     padding: 0;
     position: relative;
-    top: 0.6vh;
-    left: -0.4vw;
-    height: 2vh;
+    top: 50%;
+    left: 1%;
 }
 .deviceList li:first-child {
     margin-top: 1%;
 }
 .deviceList li:last-child {
     margin-bottom: 1%;
+}
+.deviceList li p:hover {
+    font-weight: bold;
 }
 .AddDeviceButton {
     background: #373737;
@@ -374,8 +419,8 @@
     position: relative;
     margin: 0 auto;
     bottom: -10%;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .AddDeviceDiv {
     position: relative;
@@ -424,19 +469,31 @@
 }
 .activeRequestsList li {
     position: relative;
-    left: 3.5%;
+    left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
-    width: 96%;
-    font-size: 18px;
+    width: 98%;
     text-transform: none;
-    padding: 0.5%;
     border: 1px solid #000000;
 }
+.activeRequestsList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 1%;
+}
+.activeRequestsList li p:hover {
+    font-weight: bold;
+}
 .activeRequestsList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.activeRequestsList li:last-child {
+    margin-bottom: 1%;
 }
 .myHeader {
     font-family: 'Roboto', sans-serif;
@@ -468,19 +525,28 @@
 }
 .myRequestsList li {
     position: relative;
-    left: 3.5%;
+    left: 2%;
+    height: 4vh;
     margin: 0;
     color: #000000;
-    font-family: 'Roboto', sans-serif;
-
-    width: 96%;
-    font-size: 18px;
+    width: 98%;
     text-transform: none;
-    padding: 0.5%;
     border: 1px solid #000000;
 }
+.myRequestsList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 1%;
+}
 .myRequestsList li:first-child {
-    margin-top: 4%;
+    margin-top: 1%;
+}
+.myRequestsList li:last-child {
+    margin-bottom: 1%;
 }
 .CreateSupportRequestButton {
     background: #373737;
@@ -499,8 +565,8 @@
     position: relative;
     margin: 0 auto;
     bottom: -10%;
-    padding: 0.4%;
-    width: 15%;
+    padding: 0.5% 2%;
+    width: fit-content;
 }
 .EditIcon {
     position: absolute;
