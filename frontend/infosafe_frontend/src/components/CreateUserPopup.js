@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
-import '../Styling/CreateUserPopup.css';
+import '../styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 /* eslint-disable react/prop-types */
-const role_options = [
+const ROLE_OPTIONS = [
     'EMPLOYEE',
     'ISO',
     'DISO',
@@ -78,8 +78,8 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
                         <p className="roleLabel">System role</p>
                         <Dropdown
-                            options={role_options}
-                            value={role_options[0]}
+                            options={ROLE_OPTIONS}
+                            value={ROLE_OPTIONS[0]}
                             className="role_dropdown"
                             data-testid="role_dropdown"
                             name="role"

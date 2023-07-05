@@ -1,11 +1,11 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import '../Styling/ViewDataScope.css';
+import '../styling/ViewDataScope.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 
 const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
-    const roles = [
+    const ROLES = [
         {
             role: 'Administrator',
             roledescription: 'Manage users, manage data scope, edit permissions.'
@@ -51,7 +51,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {roles.map((roles, key) => {
+                                    {ROLES.map((roles, key) => {
                                         return (
                                             <tr key={key}>
                                                 <td>{roles.role}</td>

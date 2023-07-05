@@ -1,15 +1,15 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import '../Styling/EditDevice.css';
+import '../styling/EditDevice.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
 
-const status_options = ['CLEAN', 'FULL', 'BROKEN'];
+const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const makeOptions = () => {
         var options = [];
-        status_options.map((opt) => options.push(<option>{opt}</option>));
+        STATUS_OPTIONS.map((opt) => options.push(<option>{opt}</option>));
         return options;
     };
 
@@ -42,7 +42,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                         <div className="devicestatusEdit">
                             <p className="devicestatusTitle">Status</p>
                             <Dropdown
-                                options={status_options}
+                                options={STATUS_OPTIONS}
                                 value={asset.status}
                                 className="statusDropdown"
                                 name="statusDropdown"

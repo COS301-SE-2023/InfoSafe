@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styling/ViewDevice.css';
+import '../styling/ViewDevice.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 

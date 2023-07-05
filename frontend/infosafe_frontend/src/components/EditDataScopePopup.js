@@ -1,12 +1,12 @@
 import React from 'react';
-import '../Styling/EditDataScopePopup.css';
+import '../styling/EditDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const makeOptions = () => {
     var options = [];
-    const status = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
-    status.map((opt) => options.push(<option>{opt}</option>));
+    const STATUS = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
+    STATUS.map((opt) => options.push(<option>{opt}</option>));
     return options;
 };
 

@@ -1,4 +1,4 @@
-import '../Styling/Login.css';
+import '../styling/Login.css';
 import React, {useState} from 'react';
 
 function Login(){

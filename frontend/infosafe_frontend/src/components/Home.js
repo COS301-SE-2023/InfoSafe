@@ -1,4 +1,4 @@
-import '../Styling/Home.css';
+import '../styling/Home.css';
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 

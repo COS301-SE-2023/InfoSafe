@@ -1,4 +1,4 @@
-import '../Styling/NavBar.css';
+import '../styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
@@ -11,7 +11,7 @@ import ViewUser from './ViewUser';
 import { CreateDevicePopup } from './CreateDevicePopup';
 import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
-import '../Styling/Dropdown.css'
+import '../styling/Dropdown.css'
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {

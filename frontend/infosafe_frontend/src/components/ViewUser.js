@@ -1,6 +1,6 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import '../Styling/ViewUser.css';
+import '../styling/ViewUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const ViewUser = ({ user, popupClose, popupOpen }) => {

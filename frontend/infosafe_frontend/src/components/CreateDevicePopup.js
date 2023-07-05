@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import '../Styling/CreateDevicePopup.css';
+import '../styling/CreateDevicePopup.css';
 import Popup from 'reactjs-popup';
 
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
 
-const status_options = ['CLEAN', 'FULL', 'BROKEN'];
+const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
@@ -45,8 +45,8 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <input className="assignedUserInput" value={assignee} onChange={(e)=>setAssignee(e.target.value)}/>
                         <p className="deviceStatusLabel">Status</p>
                         <Dropdown
-                          options={status_options}
-                          value={status_options[0]}
+                          options={STATUS_OPTIONS}
+                          value={STATUS_OPTIONS[0]}
                           className="statusDropdown"
                           name="status"
                           onChange={(selectedOption) => setStatus(selectedOption.value)}
