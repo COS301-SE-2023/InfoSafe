@@ -8,18 +8,18 @@ import java.util.Date;
 @Table(name="matrices")
 public class Matrix {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long task_id;
+    private Long taskId;
     private String description;
     private String status;
-    private Date due_date;
-    private Date date_completed;
+    private Date dueDate;
+    private Date dateCompleted;
 
-    public Long getTask_id() {
-        return task_id;
+    public Long getTaskId() {
+        return taskId;
     }
 
-    public void setTask_id(Long task_id) {
-        this.task_id = task_id;
+    public void setTaskId(Long task_id) {
+        this.taskId = task_id;
     }
 
     public String getDescription() {
@@ -38,19 +38,19 @@ public class Matrix {
         this.status = status;
     }
 
-    public Date getDue_date() {
-        return due_date;
+    public Date getDueDate() {
+        return dueDate;
     }
 
-    public void setDue_date(Date due_date) {
-        this.due_date = due_date;
+    public void setDueDate(Date due_date) {
+        this.dueDate = due_date;
     }
 
-    public Date getDate_completed() {
-        return date_completed;
+    public Date getDateCompleted() {
+        return dateCompleted;
     }
 
-    public void setDate_completed(Date date_completed) {
-        this.date_completed = date_completed;
+    public void setDateCompleted(Date date_completed) {
+        this.dateCompleted = date_completed;
     }
 }

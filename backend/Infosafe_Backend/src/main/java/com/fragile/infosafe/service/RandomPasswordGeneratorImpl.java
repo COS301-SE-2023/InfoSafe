@@ -5,7 +5,8 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class RandomPasswordGeneratorImpl{
+public class RandomPasswordGeneratorImpl implements RandomPasswordGenerator{
+    @Override
     public String generateRandomPassword() {
 
         Random rnd = new Random();

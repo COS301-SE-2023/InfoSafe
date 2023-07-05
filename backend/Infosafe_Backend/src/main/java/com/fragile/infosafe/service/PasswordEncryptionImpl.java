@@ -12,7 +12,7 @@ public class PasswordEncryptionImpl implements PasswordEncryption{
     public String encryptPassword(String password) throws GeneralSecurityException, UnsupportedEncodingException {
 
         //Set variables
-        byte[] salt = new String("enAN?=0+8Pk9").getBytes();
+        byte[] salt = new String("erAN?=0+8Pk9").getBytes();
         int iterations = 18000;
         int keyLength = 128;
         char[] charPassword = password.toCharArray();
@@ -26,12 +26,12 @@ public class PasswordEncryptionImpl implements PasswordEncryption{
         //creates the encrypted password using the password and the secret key
         String encryptedPassword = secretKeyMaker.encrypt(password, secretKey);
 
-        String p = "";
+        String newEncryptedPassword = "";
         for(int i=encryptedPassword.length()-1; i>=0; i--){
-            p += encryptedPassword.charAt(i);
+            newEncryptedPassword += encryptedPassword.charAt(i);
         }
 
-        encryptedPassword = p;
+        encryptedPassword = newEncryptedPassword;
 
         return encryptedPassword;
     }

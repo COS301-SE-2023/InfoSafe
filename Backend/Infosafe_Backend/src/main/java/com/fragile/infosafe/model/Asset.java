@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 @Data
 @Builder
 @NoArgsConstructor
@@ -16,10 +15,10 @@ import java.util.Date;
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String asset_name;
-    private String asset_description;
+    private String assetName;
+    private String assetDescription;
     private String status;
-    private String date_acquired;
+    private String dateAcquired;
     private String assignee;
 
     public Long getId() {
@@ -30,20 +29,20 @@ public class Asset {
         this.id = id;
     }
 
-    public String getAsset_name() {
-        return asset_name;
+    public String getAssetName() {
+        return assetName;
     }
 
-    public void setAsset_name(String asset_name) {
-        this.asset_name = asset_name;
+    public void setAssetName(String asset_name) {
+        this.assetName = asset_name;
     }
 
-    public String getAsset_description() {
-        return asset_description;
+    public String getAssetDescription() {
+        return assetDescription;
     }
 
-    public void setAsset_description(String asset_description) {
-        this.asset_description = asset_description;
+    public void setAssetDescription(String asset_description) {
+        this.assetDescription = asset_description;
     }
 
     public String getStatus() {
@@ -54,12 +53,12 @@ public class Asset {
         this.status = status;
     }
 
-    public String getDate_acquired() {
-        return date_acquired;
+    public String getDateAcquired() {
+        return dateAcquired;
     }
 
-    public void setDate_acquired(String date_acquired) {
-        this.date_acquired = date_acquired;
+    public void setDateAcquired(String date_acquired) {
+        this.dateAcquired = date_acquired;
     }
 
     public String getAssignee() {

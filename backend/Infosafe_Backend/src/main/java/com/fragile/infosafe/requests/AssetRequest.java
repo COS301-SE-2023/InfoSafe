@@ -11,9 +11,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AssetRequest {
-    private String asset_name;
-    private String asset_description;
+    private String assetName;
+    private String assetDescription;
     private String status;
-    private String date_acquired;
+    private String dateAcquired;
     private String assignee;
 }

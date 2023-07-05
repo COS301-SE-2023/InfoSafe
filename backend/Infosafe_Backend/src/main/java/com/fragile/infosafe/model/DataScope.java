@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -17,12 +15,12 @@ import java.util.Date;
 public class DataScope {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String ds_name;
+    private String dsName;
     private String description;
-    private String role_name;
-    private String role_description;
-    private String date_captured;
-    private String data_custodian;
+    private String roleName;
+    private String roleDescription;
+    private String dateCaptured;
+    private String dataCustodian;
     private String administrator;
     private String status;
 
@@ -34,12 +32,12 @@ public class DataScope {
         this.id = id;
     }
 
-    public String getDs_name() {
-        return ds_name;
+    public String getDsName() {
+        return dsName;
     }
 
-    public void setDs_name(String ds_name) {
-        this.ds_name = ds_name;
+    public void setDsName(String ds_name) {
+        this.dsName = ds_name;
     }
 
     public String getDescription() {
@@ -50,36 +48,36 @@ public class DataScope {
         this.description = description;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
+    public void setRoleName(String role_name) {
+        this.roleName = role_name;
     }
 
-    public String getRole_description() {
-        return role_description;
+    public String getRoleDescription() {
+        return roleDescription;
     }
 
-    public void setRole_description(String role_description) {
-        this.role_description = role_description;
+    public void setRoleDescription(String role_description) {
+        this.roleDescription = role_description;
     }
 
-    public String getDate_captured() {
-        return date_captured;
+    public String getDateCaptured() {
+        return dateCaptured;
     }
 
-    public void setDate_captured(String date_captured) {
-        this.date_captured = date_captured;
+    public void setDateCaptured(String date_captured) {
+        this.dateCaptured = date_captured;
     }
 
-    public String getData_custodian() {
-        return data_custodian;
+    public String getDataCustodian() {
+        return dataCustodian;
     }
 
-    public void setData_custodian(String data_custodian) {
-        this.data_custodian = data_custodian;
+    public void setDataCustodian(String data_custodian) {
+        this.dataCustodian = data_custodian;
     }
 
     public String getAdministrator() {
