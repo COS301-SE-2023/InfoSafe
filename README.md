@@ -19,13 +19,13 @@
 
 # Team Name
 
-![FrAgile](Documentation/Images/FrAgile.png)
+![FrAgile](documentation/images/FrAgile.png)
 
 <hr>
 
 # Project Name
 
-![InfoSafe](Documentation/Images/Infosafe.png)
+![InfoSafe](documentation/images/Infosafe.png)
 
 <hr>
 
@@ -42,19 +42,19 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Demo Videos:
-- :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
+- :vhs: [Demo 1]()
 - :vhs: [Demo 2]()
 
 ### SRS Documentation:
-- :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
-- :book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
+- :book: [version 1]()
+- :book: [Version 2]()
 
 ### Supporting Documentation:
-- :scroll: [User Manual](https://drive.google.com/file/d/1UGFbRx9jv2wEPF8c5vDLa8opcpLbMMuT/view?usp=drive_link)
-- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1-BukXmQoBycnfdHfgT3bYeZvsEBKU2If/view?usp=drive_link)
-- :floppy_disk: [Database Design](https://drive.google.com/file/d/1jmDdcqMQNKTxnzcmZqjmHiOqmZezccIu/view?usp=drive_link)
-- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1uisC4rYVyJA9h_B28YXDp-48hcoo9YHu/view?usp=drive_link)
-- :memo: [Team Contributions](https://drive.google.com/file/d/1e4K9b0Qx87gXIi5e1EzQ2h_oSsMhzXMF/view?usp=drive_link)
+- :scroll: [User Manual]()
+- :triangular_ruler: [System Architecture]()
+- :floppy_disk: [Database Design]()
+- :chart_with_upwards_trend: [Coding Standards]()
+- :memo: [Team Contributions]()
 
 ### GitHub Links:
 - :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
@@ -80,7 +80,7 @@ I am proficient in:
 
 
 #### Profiles:
-<a href="https://github.com/P3TROOS"><img src="Documentation/Images/github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
+<a href="https://github.com/P3TROOS"><img src="Documentation/Images/Github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
 <hr>
 
