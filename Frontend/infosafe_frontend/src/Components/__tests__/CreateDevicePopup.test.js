@@ -8,9 +8,7 @@ describe('CreateDevicePopup', () => {
         const popupOpen = true;
         const popupClose = jest.fn();
 
-        render(
-            <CreateDevicePopup popupOpen={popupOpen} popupClose={popupClose} />
-        );
+        render(<CreateDevicePopup popupOpen={popupOpen} popupClose={popupClose} />);
 
         const assetNameInput = screen.getByLabelText('Device Type');
         const assetDescriptionInput = screen.getByLabelText('Device Description');

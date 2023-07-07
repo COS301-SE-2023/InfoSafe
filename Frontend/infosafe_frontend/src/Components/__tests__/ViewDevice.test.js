@@ -14,9 +14,7 @@ describe('ViewDevice', () => {
         const popupOpen = true;
         const popupClose = jest.fn();
 
-        render(
-            <ViewDevice asset={asset} popupClose={popupClose} popupOpen={popupOpen} />
-        );
+        render(<ViewDevice asset={asset} popupClose={popupClose} popupOpen={popupOpen} />);
 
         const deviceTypeLabel = screen.getByText('Device Type');
         const deviceDescriptionLabel = screen.getByText('Device Description');

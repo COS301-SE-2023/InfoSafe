@@ -28,7 +28,7 @@ describe('NavBar', () => {
             'Compliance Matrix',
             'Devices',
             'Support Requests',
-            'Risks',
+            'Risks'
         ]);
     });
 
@@ -47,4 +47,3 @@ describe('NavBar', () => {
 
     // Add more tests for other tabs and functionality as needed
 });
-

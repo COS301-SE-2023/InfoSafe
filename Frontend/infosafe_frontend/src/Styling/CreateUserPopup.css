@@ -183,7 +183,6 @@
     height: 5%;
     left: 25%;
     position: relative;
-
 }
 .role_dropdown:after {
     transform: translateY(50%);
