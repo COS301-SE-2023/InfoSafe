@@ -14,36 +14,36 @@ import NavBar from '../NavBar.js';
 import '@testing-library/jest-dom';
 
 describe('NavBar', () => {
-    test('renders the navbar tabs', () => {
-        render(<NavBar systemRole="ISO" />);
+  test('renders the navbar tabs', () => {
+    render(<NavBar systemRole="ISO" />);
 
-        const tabs = screen.getAllByRole('listitem');
-        expect(tabs).toHaveLength(7);
+    const tabs = screen.getAllByRole('listitem');
+    expect(tabs).toHaveLength(7);
 
-        const tabLabels = tabs.map((tab) => tab.textContent);
-        expect(tabLabels).toEqual([
-            'Users',
-            'Data Scopes',
-            'Access Requests',
-            'Compliance Matrix',
-            'Devices',
-            'Support Requests',
-            'Risks'
-        ]);
-    });
+    const tabLabels = tabs.map((tab) => tab.textContent);
+    expect(tabLabels).toEqual([
+      'Users',
+      'Data Scopes',
+      'Access Requests',
+      'Compliance Matrix',
+      'Devices',
+      'Support Requests',
+      'Risks'
+    ]);
+  });
 
-    test('renders user list when Users tab is active', () => {
-        render(<NavBar systemRole="ISO" />);
+  test('renders user list when Users tab is active', () => {
+    render(<NavBar systemRole="ISO" />);
 
-        const usersTab = screen.getByText('Users');
-        userEvent.click(usersTab);
+    const usersTab = screen.getByText('Users');
+    userEvent.click(usersTab);
 
-        // Assert that the user list is rendered
-        const userList = screen.getByRole('list', { name: 'User List' });
-        expect(userList).toBeInTheDocument();
+    // Assert that the user list is rendered
+    const userList = screen.getByRole('list', { name: 'User List' });
+    expect(userList).toBeInTheDocument();
 
-        // You can add additional assertions for the user list content if needed
-    });
+    // You can add additional assertions for the user list content if needed
+  });
 
-    // Add more tests for other tabs and functionality as needed
+  // Add more tests for other tabs and functionality as needed
 });

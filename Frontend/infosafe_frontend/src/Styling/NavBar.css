@@ -1,589 +1,589 @@
 .navbar {
-    height: 100%;
+  height: 100%;
 }
 .tabs {
-    display: flex;
-    margin-bottom: 2%;
-    position: absolute;
-    top: 3%;
-    left: 1%;
-    height: 5%;
-    padding: 0;
-    width: 50vw;
-    z-index: 2;
+  display: flex;
+  margin-bottom: 2%;
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  height: 5%;
+  padding: 0;
+  width: 50vw;
+  z-index: 2;
 }
 .tabs li {
-    color: #ffffff;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-bottom: none;
-    white-space: nowrap;
-    padding-left: 0.8%;
-    padding-right: 0.8%;
-    width: fit-content;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: none;
+  white-space: nowrap;
+  padding-left: 0.8%;
+  padding-right: 0.8%;
+  width: fit-content;
 }
 .tabs li:not(.active) {
-    border: 1px solid #9e0000;
-    border-bottom: none;
-    margin-left: 0px;
-    margin-right: 0px;
+  border: 1px solid #9e0000;
+  border-bottom: none;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .tabs li.active {
-    background-color: #4b4a4a;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    border-top: 1px solid #ffffff;
-    z-index: 3;
-    position: relative;
-    margin-top: 1px;
+  background-color: #4b4a4a;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  z-index: 3;
+  position: relative;
+  margin-top: 1px;
 }
 .display {
-    position: absolute;
-    top: 8%;
-    left: 1%;
-    width: 98%;
-    height: 90vh;
-    background: #4b4a4a;
-    overflow: hidden;
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    border: 1px solid #ffffff;
-    margin-top: -1px;
+  position: absolute;
+  top: 8%;
+  left: 1%;
+  width: 98%;
+  height: 90vh;
+  background: #4b4a4a;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  border: 1px solid #ffffff;
+  margin-top: -1px;
 }
 .users {
-    background-color: transparent;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    box-sizing: content-box;
-    scrollbar-width: none;
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
+  background-color: transparent;
+  width: 90%;
+  margin: 0 auto;
+  height: 80%;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  box-sizing: content-box;
+  scrollbar-width: none;
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
 }
 .users::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .userList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .userList li {
-    position: relative;
-    height: 4vh;
-    color: #000000;
-    width: 100%;
-    text-transform: none;
-    background-color: #f2f2f2;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: 1px;
+  position: relative;
+  height: 4vh;
+  color: #000000;
+  width: 100%;
+  text-transform: none;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1px;
 }
 .userList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .userList li:hover {
-    z-index: 4;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+  z-index: 4;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
 .CreateUserButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin: 0 auto;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 auto;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .CreateUserButtonDiv {
-    position: relative;
-    bottom: -10%;
+  position: relative;
+  bottom: -10%;
 }
 .datascopes {
-    background-color: #ffffff;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    padding-right: 20px;
-    box-sizing: content-box;
-    border-radius: 35px;
-    scrollbar-width: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background-color: #ffffff;
+  width: 90%;
+  margin: 0 auto;
+  height: 80%;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  padding-right: 20px;
+  box-sizing: content-box;
+  border-radius: 35px;
+  scrollbar-width: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .datascopes::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .datascopesList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .datascopesList li {
-    position: relative;
-    left: 2%;
-    height: 4vh;
-    margin: 0;
-    color: #000000;
-    width: 96%;
-    text-transform: none;
-    border: 1px solid #000000;
+  position: relative;
+  left: 2%;
+  height: 4vh;
+  margin: 0;
+  color: #000000;
+  width: 96%;
+  text-transform: none;
+  border: 1px solid #000000;
 }
 .datascopesList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .datascopesList li:first-child {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 .datascopesList li:last-child {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .datascopesList li:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 .CreateDataScopeDiv {
-    position: relative;
-    bottom: -10%;
+  position: relative;
+  bottom: -10%;
 }
 .CreateDataScopeButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin: 0 auto;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 auto;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .accessRequests {
-    background-color: #ffffff;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    padding-right: 20px;
-    box-sizing: content-box;
-    border-radius: 35px;
-    scrollbar-width: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background-color: #ffffff;
+  width: 90%;
+  margin: 0 auto;
+  height: 80%;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  padding-right: 20px;
+  box-sizing: content-box;
+  border-radius: 35px;
+  scrollbar-width: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .accessrequestsList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .accessrequestsList li {
-    position: relative;
-    left: 2%;
-    height: 4vh;
-    margin: 0;
-    color: #000000;
-    width: 96%;
-    text-transform: none;
-    border: 1px solid #000000;
+  position: relative;
+  left: 2%;
+  height: 4vh;
+  margin: 0;
+  color: #000000;
+  width: 96%;
+  text-transform: none;
+  border: 1px solid #000000;
 }
 .accessrequestsList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .accessrequestsList li:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 .accessrequestsList li:first-child {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 .accessrequestsList li:last-child {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .tasks {
-    background-color: #ffffff;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    padding-right: 20px;
-    box-sizing: content-box;
-    border-radius: 35px;
-    scrollbar-width: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background-color: #ffffff;
+  width: 90%;
+  margin: 0 auto;
+  height: 80%;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  padding-right: 20px;
+  box-sizing: content-box;
+  border-radius: 35px;
+  scrollbar-width: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .taskList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .taskList li {
-    position: relative;
-    left: 2%;
-    height: 4vh;
-    margin: 0;
-    color: #000000;
-    width: 96%;
-    text-transform: none;
-    border: 1px solid #000000;
+  position: relative;
+  left: 2%;
+  height: 4vh;
+  margin: 0;
+  color: #000000;
+  width: 96%;
+  text-transform: none;
+  border: 1px solid #000000;
 }
 .taskList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .taskList li:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 .taskList li:first-child {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 .taskList li:last-child {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .buttons {
-    position: relative;
-    bottom: -10%;
-    justify-content: center;
-    display: flex;
+  position: relative;
+  bottom: -10%;
+  justify-content: center;
+  display: flex;
 }
 .CreateTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  left: 0%;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .UpdateTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  left: 0%;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .RevokeTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  left: 0%;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .devices {
-    background-color: #ffffff;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    padding-right: 20px;
-    box-sizing: content-box;
-    border-radius: 35px;
-    scrollbar-width: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background-color: #ffffff;
+  width: 90%;
+  margin: 0 auto;
+  height: 80%;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  padding-right: 20px;
+  box-sizing: content-box;
+  border-radius: 35px;
+  scrollbar-width: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .devices::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .deviceList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .deviceList li {
-    position: relative;
-    left: 2%;
-    height: 4vh;
-    margin: 0;
-    color: #000000;
-    width: 96%;
-    text-transform: none;
-    border: 1px solid #000000;
+  position: relative;
+  left: 2%;
+  height: 4vh;
+  margin: 0;
+  color: #000000;
+  width: 96%;
+  text-transform: none;
+  border: 1px solid #000000;
 }
 .deviceList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .deviceList li:first-child {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 .deviceList li:last-child {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .deviceList li p:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 .AddDeviceButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    bottom: -10%;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  bottom: -10%;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .AddDeviceDiv {
-    position: relative;
-    bottom: -10%;
+  position: relative;
+  bottom: -10%;
 }
 .titles {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    margin-top: 3%;
-    margin-bottom: 3%;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .tables {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 .activeHeader {
-    font-family: 'Roboto', sans-serif;
-    color: #ffffff;
-    font-style: normal;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    width: 40%;
-    height: 20%;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  font-style: normal;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  width: 40%;
+  height: 20%;
 }
 .active_support_requests {
-    background-color: #ffffff;
-    width: 40%;
-    height: 60%;
-    border-radius: 35px;
-    overflow-y: auto;
-    padding-right: 20px;
-    box-sizing: content-box;
+  background-color: #ffffff;
+  width: 40%;
+  height: 60%;
+  border-radius: 35px;
+  overflow-y: auto;
+  padding-right: 20px;
+  box-sizing: content-box;
 }
 .activeRequestsList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .activeRequestsList li {
-    position: relative;
-    left: 2%;
-    height: 4vh;
-    margin: 0;
-    color: #000000;
-    width: 98%;
-    text-transform: none;
-    border: 1px solid #000000;
+  position: relative;
+  left: 2%;
+  height: 4vh;
+  margin: 0;
+  color: #000000;
+  width: 98%;
+  text-transform: none;
+  border: 1px solid #000000;
 }
 .activeRequestsList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .activeRequestsList li p:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 .activeRequestsList li:first-child {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 .activeRequestsList li:last-child {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .myHeader {
-    font-family: 'Roboto', sans-serif;
-    color: #ffffff;
-    font-style: normal;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    width: 40%;
-    height: 20%;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  font-style: normal;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  width: 40%;
+  height: 20%;
 }
 .my_support_requests {
-    background-color: #ffffff;
-    width: 40%;
-    height: 60%;
-    border-radius: 35px;
-    overflow-y: auto;
-    padding-right: 20px;
-    box-sizing: content-box;
+  background-color: #ffffff;
+  width: 40%;
+  height: 60%;
+  border-radius: 35px;
+  overflow-y: auto;
+  padding-right: 20px;
+  box-sizing: content-box;
 }
 .myRequestsList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .myRequestsList li {
-    position: relative;
-    left: 2%;
-    height: 4vh;
-    margin: 0;
-    color: #000000;
-    width: 98%;
-    text-transform: none;
-    border: 1px solid #000000;
+  position: relative;
+  left: 2%;
+  height: 4vh;
+  margin: 0;
+  color: #000000;
+  width: 98%;
+  text-transform: none;
+  border: 1px solid #000000;
 }
 .myRequestsList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 1%;
 }
 .myRequestsList li:first-child {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 .myRequestsList li:last-child {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .CreateSupportRequestButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    bottom: -10%;
-    padding: 0.5% 2%;
-    width: fit-content;
+  background: #373737;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  bottom: -10%;
+  padding: 0.5% 2%;
+  width: fit-content;
 }
 .EditIcon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 2.5vw;
-    height: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2.5vw;
+  height: 100%;
 }
 .DeleteIcon {
-    position: absolute;
-    top: 52%;
-    transform: translateY(-50%);
-    right: 1vw;
-    height: 100%;
-    fill: #cf0000;
+  position: absolute;
+  top: 52%;
+  transform: translateY(-50%);
+  right: 1vw;
+  height: 100%;
+  fill: #cf0000;
 }
