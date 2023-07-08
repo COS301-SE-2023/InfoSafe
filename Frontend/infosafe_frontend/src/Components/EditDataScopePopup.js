@@ -2,7 +2,6 @@ import React from 'react';
 import '../Styling/EditDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-
 const makeOptions = () => {
   var options = [];
   const status = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
@@ -29,9 +28,12 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
             <select className="status_dropdown" name="status_dropdwon">
               {makeOptions()}
             </select>
-            <button className="editdatascope_finish" onClick={popupClose}>
-              Submit
-            </button>
+            <div className="overlayBottom">
+              <button className="editdatascope_finish" onClick={popupClose}>
+                Submit
+              </button>
+            </div>
+
           </form>
         </div>
       </div>

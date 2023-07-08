@@ -83,7 +83,7 @@
   margin-top: 1.5vh;
 }
 .editDescriptionInput {
-  font-size: 22px;
+  font-size: 16px;
   width: 50%;
   height: 12vh;
   border: none;
@@ -105,22 +105,26 @@
   position: relative;
   margin-top: 1.5vh;
 }
-.status {
+.status_dropdown {
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 20px;
   width: 50%;
   margin-top: 1vh;
   text-align: center;
   border: none;
-  text-align: center;
   align-content: center;
   height: 10%;
   left: 25%;
   position: relative;
 }
+.overlayBottom
+{
+  width: 100%;
+  margin: 0 auto;
+}
 .editdatascope_finish {
-  width: 15%;
-  height: 5%;
+  width: fit-content;
+  height: fit-content;
   background-color: rgba(233, 0, 0, 1);
   color: #ffffff;
   text-align: center;
@@ -130,8 +134,9 @@
   text-transform: uppercase;
   position: relative;
   border: none;
-  left: 42.5%;
+  top: 40%;
   margin-top: 2vh;
+  left:45%;
 }
 .addRoleNameLabel {
   margin: 0 auto;
