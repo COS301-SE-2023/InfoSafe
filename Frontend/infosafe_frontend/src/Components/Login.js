@@ -35,29 +35,31 @@ function Login() {
             <div className="title">
               <p className="loginTitle">Login</p>
             </div>
-            <div className="user">
-              <p className="username">Username</p>
-              <input
-                data-testid="userIn"
-                className="untxt"
-                type="text"
-                id="username"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></input>
-            </div>
-            <div className="user_password">
-              <p className="pass">Password</p>
-              <input
-                data-testid="passIn"
-                className="pwtxt"
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
+            <div className="credentials">
+              <div className="user">
+                <p className="username">Username</p>
+                <input
+                  data-testid="userIn"
+                  className="untxt"
+                  type="text"
+                  id="username"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></input>
+              </div>
+              <div className="user_password">
+                <p className="pass">Password</p>
+                <input
+                  data-testid="passIn"
+                  className="pwtxt"
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
+              </div>
             </div>
 
             <a className="forgot">Forgot Password?</a>
