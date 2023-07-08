@@ -192,18 +192,15 @@
   width: fit-content;
 }
 .accessRequests {
-  background-color: #ffffff;
+  background-color: transparent;
   width: 90%;
   margin: 0 auto;
   height: 80%;
   position: relative;
   top: 5%;
   overflow-y: scroll;
-  padding-right: 20px;
   box-sizing: content-box;
-  border-radius: 35px;
   scrollbar-width: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .accessrequestsList {
   list-style: none;
@@ -212,13 +209,16 @@
 }
 .accessrequestsList li {
   position: relative;
-  left: 2%;
   height: 4vh;
-  margin: 0;
   color: #000000;
-  width: 96%;
+  width: 100%;
   text-transform: none;
-  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1px;
 }
 .accessrequestsList li p {
   font-family: 'Roboto', sans-serif;
@@ -230,27 +230,22 @@
   left: 1%;
 }
 .accessrequestsList li:hover {
-  font-weight: bold;
+  z-index: 4;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.accessrequestsList li:first-child {
-  margin-top: 1%;
-}
-.accessrequestsList li:last-child {
-  margin-bottom: 1%;
+.accessRequests::-webkit-scrollbar {
+  display: none;
 }
 .tasks {
-  background-color: #ffffff;
+  background-color: transparent;
   width: 90%;
   margin: 0 auto;
   height: 80%;
   position: relative;
   top: 5%;
   overflow-y: scroll;
-  padding-right: 20px;
   box-sizing: content-box;
-  border-radius: 35px;
   scrollbar-width: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .taskList {
   list-style: none;
@@ -259,13 +254,16 @@
 }
 .taskList li {
   position: relative;
-  left: 2%;
   height: 4vh;
-  margin: 0;
   color: #000000;
-  width: 96%;
+  width: 100%;
   text-transform: none;
-  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1px;
 }
 .taskList li p {
   font-family: 'Roboto', sans-serif;
@@ -277,13 +275,11 @@
   left: 1%;
 }
 .taskList li:hover {
-  font-weight: bold;
+  z-index: 4;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.taskList li:first-child {
-  margin-top: 1%;
-}
-.taskList li:last-child {
-  margin-bottom: 1%;
+.tasks::-webkit-scrollbar {
+  display: none;
 }
 .buttons {
   position: relative;
@@ -352,18 +348,15 @@
   width: fit-content;
 }
 .devices {
-  background-color: #ffffff;
+  background-color: transparent;
   width: 90%;
   margin: 0 auto;
   height: 80%;
   position: relative;
   top: 5%;
   overflow-y: scroll;
-  padding-right: 20px;
   box-sizing: content-box;
-  border-radius: 35px;
   scrollbar-width: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .devices::-webkit-scrollbar {
   display: none;
@@ -375,13 +368,16 @@
 }
 .deviceList li {
   position: relative;
-  left: 2%;
   height: 4vh;
-  margin: 0;
   color: #000000;
-  width: 96%;
+  width: 100%;
   text-transform: none;
-  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1px;
 }
 .deviceList li p {
   font-family: 'Roboto', sans-serif;
@@ -392,14 +388,9 @@
   top: 50%;
   left: 1%;
 }
-.deviceList li:first-child {
-  margin-top: 1%;
-}
-.deviceList li:last-child {
-  margin-bottom: 1%;
-}
-.deviceList li p:hover {
-  font-weight: bold;
+.deviceList li:hover {
+  z-index: 4;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
 .AddDeviceButton {
   background: #373737;
@@ -453,13 +444,16 @@
   height: 20%;
 }
 .active_support_requests {
-  background-color: #ffffff;
+  background-color: transparent;
   width: 40%;
+  margin: 0 auto;
   height: 60%;
-  border-radius: 35px;
-  overflow-y: auto;
-  padding-right: 20px;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
   box-sizing: content-box;
+  scrollbar-width: none;
+  padding-right: 20px;
 }
 .activeRequestsList {
   list-style: none;
@@ -468,13 +462,16 @@
 }
 .activeRequestsList li {
   position: relative;
-  left: 2%;
   height: 4vh;
-  margin: 0;
   color: #000000;
-  width: 98%;
+  width: 100%;
   text-transform: none;
-  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1px;
 }
 .activeRequestsList li p {
   font-family: 'Roboto', sans-serif;
@@ -485,14 +482,16 @@
   top: 50%;
   left: 1%;
 }
-.activeRequestsList li p:hover {
-  font-weight: bold;
+.activeRequestsList li .EditIcon {
+  position: absolute;
+  right: 2%;
 }
-.activeRequestsList li:first-child {
-  margin-top: 1%;
+.activeRequestsList li:hover {
+  z-index: 4;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.activeRequestsList li:last-child {
-  margin-bottom: 1%;
+.active_support_requests::-webkit-scrollbar {
+  display: none;
 }
 .myHeader {
   font-family: 'Roboto', sans-serif;
@@ -509,13 +508,16 @@
   height: 20%;
 }
 .my_support_requests {
-  background-color: #ffffff;
+  background-color: transparent;
   width: 40%;
+  margin: 0 auto;
   height: 60%;
-  border-radius: 35px;
-  overflow-y: auto;
-  padding-right: 20px;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
   box-sizing: content-box;
+  scrollbar-width: none;
+  padding-right: 20px;
 }
 .myRequestsList {
   list-style: none;
@@ -524,13 +526,16 @@
 }
 .myRequestsList li {
   position: relative;
-  left: 2%;
   height: 4vh;
-  margin: 0;
   color: #000000;
-  width: 98%;
+  width: 100%;
   text-transform: none;
-  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin-top: 1px;
 }
 .myRequestsList li p {
   font-family: 'Roboto', sans-serif;
@@ -541,11 +546,16 @@
   top: 50%;
   left: 1%;
 }
-.myRequestsList li:first-child {
-  margin-top: 1%;
+.myRequestsList li .EditIcon {
+  position: absolute;
+  right: 2%;
 }
-.myRequestsList li:last-child {
-  margin-bottom: 1%;
+.myRequestsList li:hover {
+  z-index: 4;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+.my_support_requests::-webkit-scrollbar {
+  display: none;
 }
 .CreateSupportRequestButton {
   background: #373737;
