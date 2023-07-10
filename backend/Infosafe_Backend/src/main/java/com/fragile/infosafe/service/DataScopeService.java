@@ -17,12 +17,12 @@ public class DataScopeService {
 
     public ResponseEntity<String> makeDs(DataScopeRequest request){
         var datascope = DataScope.builder()
-                .ds_name(request.getDs_name())
+                .dsName(request.getDsName())
                 .description(request.getDescription())
-                .role_name(request.getRole_name())
-                .role_description(request.getRole_description())
-                .date_captured(request.getDate_captured())
-                .data_custodian(request.getData_custodian())
+                .roleName(request.getRoleName())
+                .roleDescription(request.getRoleDescription())
+                .dateCaptured(request.getDateCaptured())
+                .dataCustodian(request.getDataCustodian())
                 .administrator(request.getAdministrator())
                 .status(request.getStatus())
                 .build();

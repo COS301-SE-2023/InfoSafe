@@ -21,10 +21,10 @@ public class AssetService {
 
     public ResponseEntity<String> makeAsset(AssetRequest request){
         var asset = Asset.builder()
-                .asset_name(request.getAsset_name())
-                .asset_description(request.getAsset_description())
+                .assetName(request.getAssetName())
+                .assetDescription(request.getAssetDescription())
                 .status(request.getStatus())
-                .date_acquired(request.getDate_acquired())
+                .dateAcquired(request.getDateAcquired())
                 .assignee(request.getAssignee())
                 .build();
         assetRepository.save(asset);

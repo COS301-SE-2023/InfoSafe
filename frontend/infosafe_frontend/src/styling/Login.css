@@ -4,7 +4,7 @@ body {
 
 .background {
     height: 1080px;
-    background: url('src/images/Welcome_New.png');
+    background: url('../images/Welcome_New.png');
     width: 100%;
     height: 100%;
     opacity: 1;
