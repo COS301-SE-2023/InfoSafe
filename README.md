@@ -10,21 +10,22 @@
 
 [![Languages](https://img.shields.io/github/languages/count/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe)
 
-[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2046.6%25)](https://www.javascript.com)
-[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2045.7%25)](https://www.css3.com)
-[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%205.7%25)](https://www.html5.org)
-[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%202.0%25)](https://www.java.com)
+[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2039.4%25)](https://www.javascript.com)
+[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2029.8%25)](https://www.css3.com)
+[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%2029.7%25)](https://www.java.com)
+[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%201.1%25)](https://www.html5.org)
+
 <hr>
 
 # Team Name
 
-![FrAgile](Documentation/Images/FrAgile.png)
+![FrAgile](documentation/images/FrAgile.png)
 
 <hr>
 
 # Project Name
 
-InfoSafe
+![InfoSafe](documentation/images/Infosafe.png)
 
 <hr>
 
@@ -41,17 +42,19 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Demo Videos:
+- :vhs: [Demo 1]()
 - :vhs: [Demo 2]()
 
 ### SRS Documentation:
-- :book: [Version 2](https://docs.google.com/document/d/16uhZg_-0qsDlF-o9xPruBn22p0mQ7OqyMtrF65FTj00/edit?usp=sharing)
+- :book: [version 1]()
+- :book: [Version 2]()
 
 ### Supporting Documentation:
-- :scroll: [User Manual](https://drive.google.com/file/d/1UGFbRx9jv2wEPF8c5vDLa8opcpLbMMuT/view?usp=drive_link)
-- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1-BukXmQoBycnfdHfgT3bYeZvsEBKU2If/view?usp=drive_link)
-- :floppy_disk: [Database Design](https://drive.google.com/file/d/1jmDdcqMQNKTxnzcmZqjmHiOqmZezccIu/view?usp=drive_link)
-- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1CiCvP40ajMf0DKHhpi9_RqCcEpczQgzU/view?usp=drive_link)
-- :memo: [Team Contributions](https://docs.google.com/document/d/1-FQTryDwhqQlVkEfN7dMWkiOofU8-AN3xKbZw4B0PEE/edit?usp=sharing)
+- :scroll: [User Manual]()
+- :triangular_ruler: [System Architecture]()
+- :floppy_disk: [Database Design]()
+- :chart_with_upwards_trend: [Coding Standards]()
+- :memo: [Team Contributions]()
 
 ### GitHub Links:
 - :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
@@ -77,7 +80,7 @@ I am proficient in:
 
 
 #### Profiles:
-<a href="https://github.com/P3TROOS"><img src="Documentation/Images/github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
+<a href="https://github.com/P3TROOS"><img src="Documentation/Images/Github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
 <hr>
 
