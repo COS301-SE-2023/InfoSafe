@@ -46,7 +46,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const datascope = {ds_name, description, role_name, role_description, date_captured, data_custodian, administrator, status}
         console.log(datascope)
-        fetch("http://localhost:8080/api/auth/addDs", {
+        fetch("http://localhost:8080/api/datascope/addDs", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(datascope)

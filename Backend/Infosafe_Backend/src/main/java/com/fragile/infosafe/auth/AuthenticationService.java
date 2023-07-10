@@ -33,8 +33,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository repository;
-    private final DataScopeRepository dataScopeRepository;
-    private final AssetRepository assetRepository;
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -58,32 +56,9 @@ public class AuthenticationService {
                 .build();
     }
 
-    public ResponseEntity<String> makeDs(DataScopeRequest request){
-        var datascope = DataScope.builder()
-                .ds_name(request.getDs_name())
-                .description(request.getDescription())
-                .role_name(request.getRole_name())
-                .role_description(request.getRole_description())
-                .date_captured(request.getDate_captured())
-                .data_custodian(request.getData_custodian())
-                .administrator(request.getAdministrator())
-                .status(request.getStatus())
-                .build();
-        dataScopeRepository.save(datascope);
-        return ResponseEntity.status(HttpStatus.OK).body("added");
-    }
 
-    public ResponseEntity<String>  makeAsset(AssetRequest request){
-        var asset = Asset.builder()
-                .asset_name(request.getAsset_name())
-                .asset_description(request.getAsset_description())
-                .status(request.getStatus())
-                .date_acquired(request.getDate_acquired())
-                .assignee(request.getAssignee())
-                .build();
-        assetRepository.save(asset);
-        return ResponseEntity.status(HttpStatus.OK).body("added");
-    }
+
+
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         try {
             authenticationManager.authenticate(
@@ -158,14 +133,6 @@ public class AuthenticationService {
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
-    }
-    public List<User> getAllUsers() {
-        return repository.findAll();
-    }
-    public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
-
-    public List<Asset> getAllAssets() {
-        return assetRepository.findAll();
     }
 
 }

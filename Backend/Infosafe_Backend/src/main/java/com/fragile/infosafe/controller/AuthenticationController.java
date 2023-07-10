@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin
+//@CrossOrigin
 public class AuthenticationController {
 
     private final AuthenticationService service;
@@ -55,23 +55,7 @@ public class AuthenticationController {
         }
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/getAll")
-    public List<User> userlist() { return service.getAllUsers(); }
 
-    @PostMapping("/addDs")
-    public ResponseEntity addDs(@RequestBody DataScopeRequest datascope) {
-        return ResponseEntity.ok(service.makeDs(datascope));
-    }
 
-    @GetMapping("/getDs")
-    public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
-
-    @PostMapping("/addAsset")
-    public ResponseEntity addAsset(@RequestBody AssetRequest asset){
-        return ResponseEntity.ok(service.makeAsset(asset));
-    }
-
-    @GetMapping("/getAsset")
-    public List<Asset> list() { return service.getAllAssets(); }
 
 }

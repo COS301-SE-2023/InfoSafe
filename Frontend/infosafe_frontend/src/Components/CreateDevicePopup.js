@@ -19,7 +19,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const asset = {asset_name, asset_description, assignee, date_acquired, status}
         console.log(asset)
-        fetch("http://localhost:8080/api/auth/addAsset", {
+        fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(asset)
