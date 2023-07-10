@@ -3,7 +3,7 @@ import '../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const DATA = [
+const data = [
     {
         role: 'Administrator',
         roledescription: 'Manage users, manage data scope, edit permissions.'
@@ -15,7 +15,7 @@ const DATA = [
 ];
 
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
-    const [roles, setRoles] = useState(DATA);
+    const [roles, setRoles] = useState(data);
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
@@ -44,12 +44,12 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const DATASCOPE = {ds_name, description, role_name, role_description, date_captured, data_custodian, administrator, status}
-        console.log(DATASCOPE)
-        fetch("http://localhost:8080/api/auth/addDs", {
+        const datascope = {ds_name, description, role_name, role_description, date_captured, data_custodian, administrator, status}
+        console.log(datascope)
+        fetch("http://localhost:8080/api/datascope/addDs", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(DATASCOPE)
+            body:JSON.stringify(datascope)
         }).then(()=>{
             console.log("New DataScope added")
         })

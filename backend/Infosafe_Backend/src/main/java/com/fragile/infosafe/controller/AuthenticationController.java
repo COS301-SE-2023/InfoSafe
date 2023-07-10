@@ -9,8 +9,6 @@ import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.model.DataScope;
 import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.requests.DataScopeRequest;
-import com.fragile.infosafe.service.PasswordEncryptionImpl;
-import com.fragile.infosafe.service.RandomPasswordGeneratorImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,21 +17,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.GeneralSecurityException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin
+//@CrossOrigin
 public class AuthenticationController {
 
     private final AuthenticationService service;
-    private final RandomPasswordGeneratorImpl randomPasswordGenerator;
     @PostMapping("/add")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
@@ -62,34 +55,7 @@ public class AuthenticationController {
         }
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/getAll")
-    public List<User> userlist() { return service.getAllUsers(); }
 
-    @PostMapping("/addDs")
-    public ResponseEntity addDs(@RequestBody DataScopeRequest datascope) {
-        return ResponseEntity.ok(service.makeDs(datascope));
-    }
 
-    @GetMapping("/getDs")
-    public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
-
-    @PostMapping("/addAsset")
-    public ResponseEntity addAsset(@RequestBody AssetRequest asset){
-        return ResponseEntity.ok(service.makeAsset(asset));
-    }
-    @GetMapping("/getAsset")
-    public List<Asset> list() { return service.getAllAssets(); }
-
-    @GetMapping("/generate")
-    public ResponseEntity<Map<String, String>> generate() throws GeneralSecurityException, UnsupportedEncodingException {
-        String randomPassword = randomPasswordGenerator.generateRandomPassword();
-        PasswordEncryptionImpl passwordEncryption = new PasswordEncryptionImpl();
-        String random = passwordEncryption.encryptPassword(randomPassword);
-
-        Map<String, String> response = new HashMap<>();
-        response.put("message", random);
-        response.put("password", randomPassword);
-        return ResponseEntity.ok(response);
-    }
 
 }

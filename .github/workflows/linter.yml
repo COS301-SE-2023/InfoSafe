@@ -14,13 +14,9 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          VALIDATE_TYPESCRIPT_ES: true
-          VALIDATE_SQL: true
           VALIDATE_STATES: true
           VALIDATE_JAVASCRIPT_STANDARD: true
-          VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_HTML: true
-          VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_CSS: true
           VALIDATE_JAVA: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

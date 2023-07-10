@@ -12,6 +12,7 @@ function Login(){
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)
         }).then((response) => {
+            //console.log(response);
             if (response.ok) {
                 response.json().then((data) => {
                     const { access_token } = data;
