@@ -2,10 +2,11 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../styling/EditDevice.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from "react-dropdown";
+import Dropdown from 'react-dropdown';
 
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const makeOptions = () => {
         var options = [];
@@ -46,7 +47,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 value={asset.status}
                                 className="statusDropdown"
                                 name="statusDropdown"
-
                             />
                         </div>
                         <div className="deviceuserEdit">

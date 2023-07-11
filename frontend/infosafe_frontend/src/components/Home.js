@@ -1,7 +1,8 @@
 import '../styling/Home.css';
 import React, { useState } from 'react';
 import NavBar from './NavBar';
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 //import various things to be displayed
 
 const Home = () => {
@@ -13,9 +14,7 @@ const Home = () => {
 
     return (
         <div className="backdrop">
-            <div className="tabs">
-                <NavBar systemRole={systemRole} />
-            </div>
+            <NavBar systemRole={systemRole} />
         </div>
     );
 };

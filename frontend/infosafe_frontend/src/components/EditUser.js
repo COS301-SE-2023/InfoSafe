@@ -3,6 +3,7 @@ import React from 'react';
 import '../styling/EditUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const EditUser = ({ user, popupClose, popupOpen }) => {
     const makeOptions = () => {
         var options = [];
