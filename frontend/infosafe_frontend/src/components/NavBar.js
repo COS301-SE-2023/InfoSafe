@@ -579,7 +579,7 @@ const NavBar = ({systemRole}) => {
     }
 
     return(
-        {displayPage}
+        displayPage()
     );
     /*return (
         <div className="navbar">
