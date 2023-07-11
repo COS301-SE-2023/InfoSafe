@@ -1,6 +1,6 @@
 .createDeviceOverlay {
     width: 50vw;
-    height: 80vh;
+    height: 95vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,7 +11,7 @@
     border: 1px solid #ffffff;
     width: 46vw;
     margin: 0 auto;
-    height: 72vh;
+    height: 89vh;
     position: relative;
     top: 4vh;
 }
@@ -46,21 +46,41 @@
     top: -2vh;
     left: 20%;
 }
-.deviceTypeLabel {
-    margin: 0 auto;
+.deviceNameLabel {
     justify-content: center;
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 23px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
+    top: -2vh;
+    margin: 0;
+}
+.deviceNameInput {
+    font-size: 18px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-top: -5vh;
+    left: 25%;
+    position: relative;
+}
+.deviceTypeLabel {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1vh;
     margin-top: 1.5vh;
 }
 .deviceTypeInput {
-    font-size: 22px;
+    font-size: 18px;
     width: 50%;
     text-align: center;
     border: none;
@@ -69,12 +89,11 @@
     position: relative;
 }
 .deviceDescriptionLabel {
-    margin: 0 auto;
     justify-content: center;
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 23px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
@@ -82,37 +101,128 @@
     margin-top: 1.5vh;
 }
 .deviceDescriptionInput {
-    font-size: 22px;
+    font-size: 16px;
     width: 50%;
-    height: 12vh;
+    height: 5vh;
     border: none;
     margin-top: 2vh;
     left: 25%;
     position: relative;
     text-wrap: initial;
     resize: none;
+    overflow-y: scroll;
 }
-.assignedUserLabel {
-    margin: 0 auto;
+.deviceNewLabel{
     justify-content: center;
     align-content: center;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 23px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    top: 1vh;
+    margin-top: -1vh;
 }
-.assignedUserInput {
-    font-size: 22px;
+.newDropdown {
+    font-size: 18px;
     width: 50%;
     text-align: center;
     border: none;
     margin-top: 2vh;
     left: 25%;
     position: relative;
+    top: -0.5vh;
+    align-content: center;
+}
+.deviceAvailabilityLabel{
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 0vh;
+    margin-top: 0vh;
+}
+.availableDropdown {
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-top: 2vh;
+    left: 25%;
+    position: relative;
+    top: -1vh;
+    align-content: center;
+}
+.deviceStatusLabel{
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -0.5vh;
+}
+.statusDropdown {
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-top: -1vh;
+    left: 0%;
+    position: relative;
+    top: -2vh;
+    align-content: center;
+    height: 1vh;
+}
+.currentCustodianLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -4vh;
+}
+.currentCustodianInput {
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    top: -3.5vh;
+    margin: 0;
+}
+.previousCustodianLabel {
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -3vh;
+}
+.previousCustodianInput {
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    top: -2.5vh;
 }
 .createDevice_finish {
     width: 15%;
@@ -124,20 +234,9 @@
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.84px;
     text-transform: uppercase;
-    position: relative;
+    position: absolute;
     border: none;
     left: 42.5%;
-    margin-top: 1vh;
+    bottom: 2%;
 }
-.deviceStatusLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    margin-top: 1.5vh;
-}
+
