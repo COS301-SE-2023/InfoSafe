@@ -1,20 +1,20 @@
 import '../styling/NavBar.css';
-import React, { useEffect, useState } from 'react';
-import { FaRegEdit } from 'react-icons/fa';
-import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { CreateUserPopup } from './CreateUserPopup';
-import { CreateDataScopePopup } from './CreateDataScopePopup';
-import { EditDataScopePopup } from './EditDataScopePopup';
+import React, {useEffect, useState} from 'react';
+import {FaRegEdit} from 'react-icons/fa';
+import {RiDeleteBin6Fill} from 'react-icons/ri';
+import {CreateUserPopup} from './CreateUserPopup';
+import {CreateDataScopePopup} from './CreateDataScopePopup';
+import {EditDataScopePopup} from './EditDataScopePopup';
 import EditUser from './EditUser';
 import ViewDataScope from './ViewDataScope';
 import ViewUser from './ViewUser';
-import { CreateDevicePopup } from './CreateDevicePopup';
-import { ViewDevice } from './ViewDevice';
+import {CreateDevicePopup} from './CreateDevicePopup';
+import {ViewDevice} from './ViewDevice';
 import EditDevice from './EditDevice';
 import '../styling/Dropdown.css';
 
 /* eslint-disable react/prop-types */
-const NavBar = ({ systemRole }) => {
+const NavBar = ({systemRole}) => {
     const [activeNavTab, activate] = useState(0);
     const [showUser, setShowUser] = useState([]);
     const [showDatascope, setShowDatascope] = useState([]);
@@ -63,7 +63,7 @@ const NavBar = ({ systemRole }) => {
             });
     }, []);
 
-    const ViewUserItem = ({ user }) => {
+    const ViewUserItem = ({user}) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
         const [editUserOpen, setEditUserOpen] = useState(false);
@@ -79,7 +79,7 @@ const NavBar = ({ systemRole }) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
+                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)}/>
                 {editUserOpen ? (
                     <EditUser
                         popupClose={() => setEditUserOpen(false)}
@@ -87,12 +87,12 @@ const NavBar = ({ systemRole }) => {
                         user={user}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
+                <RiDeleteBin6Fill className="DeleteIcon"/>
             </li>
         );
     };
 
-    const ViewDataScopeItem = ({ datascope }) => {
+    const ViewDataScopeItem = ({datascope}) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
@@ -108,7 +108,7 @@ const NavBar = ({ systemRole }) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
+                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)}/>
                 {editDataScopeOpen ? (
                     <EditDataScopePopup
                         popupClose={() => setEditDataScopeOpen(false)}
@@ -116,12 +116,12 @@ const NavBar = ({ systemRole }) => {
                         datascope={datascope}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
+                <RiDeleteBin6Fill className="DeleteIcon"/>
             </li>
         );
     };
 
-    const ViewDeviceItem = ({ asset }) => {
+    const ViewDeviceItem = ({asset}) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
@@ -136,7 +136,7 @@ const NavBar = ({ systemRole }) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)}/>
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
@@ -144,18 +144,29 @@ const NavBar = ({ systemRole }) => {
                         asset={asset}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
+                <RiDeleteBin6Fill className="DeleteIcon"/>
             </li>
         );
     };
 
-    const displayInfo = () => {
+    const displayPage = () => {
+        if (systemRole === 'ISO') {
+            return(
+                <div className="navbar">
+                    {displayISOTabs()}
+                    {displayISOPage()}
+                </div>
+            )
+        }
+    }
+
+/*    const displayInfo = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0: {
                     const userItems = [];
                     showUser.map((user) =>
-                        userItems.push(<ViewUserItem user={user} key={user.id} />)
+                        userItems.push(<ViewUserItem user={user} key={user.id}/>)
                     );
 
                     return (
@@ -168,7 +179,7 @@ const NavBar = ({ systemRole }) => {
                     const dataItems = [];
                     showDatascope.map((datascope) =>
                         dataItems.push(
-                            <ViewDataScopeItem datascope={datascope} key={datascope.id} />
+                            <ViewDataScopeItem datascope={datascope} key={datascope.id}/>
                         )
                     );
 
@@ -183,8 +194,8 @@ const NavBar = ({ systemRole }) => {
                     for (let k = 1; k < 30; k++) {
                         accessRequests.push(
                             <li key={k}>
-                                Access Request {k} <FaRegEdit className="EditIcon" />{' '}
-                                <RiDeleteBin6Fill className="DeleteIcon" />
+                                Access Request {k} <FaRegEdit className="EditIcon"/>{' '}
+                                <RiDeleteBin6Fill className="DeleteIcon"/>
                             </li>
                         );
                     }
@@ -208,7 +219,7 @@ const NavBar = ({ systemRole }) => {
                 case 4: {
                     const devices = [];
                     showAsset.map((device) =>
-                        devices.push(<ViewDeviceItem asset={device} key={device.id} />)
+                        devices.push(<ViewDeviceItem asset={device} key={device.id}/>)
                     );
                     return (
                         <div className="devices">
@@ -221,7 +232,7 @@ const NavBar = ({ systemRole }) => {
                     for (let a = 1; a < 15; a++) {
                         active_requests.push(
                             <li key={a}>
-                                Support Request {a} <FaRegEdit className="EditIcon" />
+                                Support Request {a} <FaRegEdit className="EditIcon"/>
                             </li>
                         );
                     }
@@ -229,7 +240,7 @@ const NavBar = ({ systemRole }) => {
                     for (let b = 1; b < 15; b++) {
                         my_requests.push(
                             <li key={b}>
-                                Support Request {b} <FaRegEdit className="EditIcon" />
+                                Support Request {b} <FaRegEdit className="EditIcon"/>
                             </li>
                         );
                     }
@@ -349,9 +360,228 @@ const NavBar = ({ systemRole }) => {
                     return null;
             }
         }
-    };
+    };*/
 
-    return (
+    const displayISOTabs = () => {
+        return (
+            <ul className="tabs">
+                <li className={activeNavTab === 0 ? 'active' : ''} onClick={() => handleClick(0)}>
+                    Users
+                </li>
+                <li className={activeNavTab === 1 ? 'active' : ''} onClick={() => handleClick(1)}>
+                    Data Scopes
+                </li>
+                <li className={activeNavTab === 2 ? 'active' : ''} onClick={() => handleClick(2)}>
+                    Access Requests
+                </li>
+                <li className={activeNavTab === 3 ? 'active' : ''} onClick={() => handleClick(3)}>
+                    Compliance Matrix
+                </li>
+                <li className={activeNavTab === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
+                    Devices
+                </li>
+                <li className={activeNavTab === 5 ? 'active' : ''} onClick={() => handleClick(5)}>
+                    Support Requests
+                </li>
+                <li className={activeNavTab === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
+                    Risks
+                </li>
+            </ul>
+        )
+    }
+    const displayISOPage = () => {
+        switch (activeNavTab) {
+            case 0: {
+                const userItems = [];
+                showUser.map((user) =>
+                    userItems.push(<ViewUserItem user={user} key={user.id}/>)
+                );
+
+                return (
+                    <div className="display">
+                        <div className="users">
+                            <ul className="userList">{userItems}</ul>
+                        </div>
+                        <div className="CreateUserButtonDiv">
+                            <button
+                                className="CreateUserButton"
+                                data-testid="CreateUserButton"
+                                onClick={() => setCreateUserOpen(true)}
+                            >
+                                Create New User
+                            </button>
+                            {createUserOpen ? (
+                                <CreateUserPopup
+                                    popupClose={() => setCreateUserOpen(false)}
+                                    popupOpen={createUserOpen}
+                                />
+                            ) : null}
+                        </div>
+                    </div>
+                );
+            }
+            case 1: {
+                const dataItems = [];
+                showDatascope.map((datascope) =>
+                    dataItems.push(
+                        <ViewDataScopeItem datascope={datascope} key={datascope.id}/>
+                    )
+                );
+
+                return (
+                    <div className="display">
+                        <div className="datascopes">
+                            <ul className="datascopesList">{dataItems}</ul>
+                        </div>
+                        <div className="CreateDataScopeDiv">
+                            <button
+                                className="CreateDataScopeButton"
+                                onClick={() => setCreateDataScopeOpen(true)}
+                            >
+                                Create Data Scope
+                            </button>
+                            {createDataScopeOpen ? (
+                                <CreateDataScopePopup
+                                    popupClose={() => setCreateDataScopeOpen(false)}
+                                    popupOpen={createDataScopeOpen}
+                                />
+                            ) : null}
+                        </div>
+                    </div>
+                );
+            }
+            case 2: {
+                const accessRequests = [];
+                for (let k = 1; k < 30; k++) {
+                    accessRequests.push(
+                        <li key={k}>
+                            Access Request {k} <FaRegEdit className="EditIcon"/>{' '}
+                            <RiDeleteBin6Fill className="DeleteIcon"/>
+                        </li>
+                    );
+                }
+                return (
+                    <div className="display">
+                        <div className="accessRequests">
+                            <ul className="accessrequestsList">{accessRequests}</ul>
+                        </div>
+                    </div>
+                );
+            }
+            case 3: {
+                const complianceItems = [];
+                for (let l = 1; l < 30; l++) {
+                    complianceItems.push(<li key={l}>Task {l}</li>);
+                }
+                return (
+                    <div className="display">
+                        <div className="tasks">
+                            <ul className="taskList">{complianceItems}</ul>
+                        </div>
+                        <div className="buttons">
+                            <button
+                                className="CreateTaskButton"
+                                onClick={() => console.log('Created new task')}
+                            >
+                                Create New Task
+                            </button>
+                            <button
+                                className="UpdateTaskButton"
+                                onClick={() => console.log('Updated task.')}
+                            >
+                                Update Task
+                            </button>
+                            <button
+                                className="RevokeTaskButton"
+                                onClick={() => console.log('Revoked task.')}
+                            >
+                                Revoke Task
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+            case 4: {
+                const devices = [];
+                showAsset.map((device) =>
+                    devices.push(<ViewDeviceItem asset={device} key={device.id}/>)
+                );
+                return (
+                    <div className="display">
+                        <div className="devices">
+                            <ul className="deviceList">{devices}</ul>
+                        </div>
+                        <div className="AddDeviceDiv">
+                            <button
+                                className="AddDeviceButton"
+                                onClick={() => setCreateDeviceOpen(true)}
+                            >
+                                Add Device
+                            </button>
+                            {createDeviceOpen ? (
+                                <CreateDevicePopup
+                                    popupClose={() => setCreateDeviceOpen(false)}
+                                    popupOpen={createDeviceOpen}
+                                />
+                            ) : null}
+                        </div>
+                    </div>
+                );
+            }
+            case 5: {
+                const active_requests = [];
+                for (let a = 1; a < 15; a++) {
+                    active_requests.push(
+                        <li key={a}>
+                            Support Request {a} <FaRegEdit className="EditIcon"/>
+                        </li>
+                    );
+                }
+                const my_requests = [];
+                for (let b = 1; b < 15; b++) {
+                    my_requests.push(
+                        <li key={b}>
+                            Support Request {b} <FaRegEdit className="EditIcon"/>
+                        </li>
+                    );
+                }
+
+                return (
+                    <div className="display">
+                        <div>
+                            <div className="titles">
+                                <div className="activeHeader">
+                                    <p>Active System Requests</p>
+                                </div>
+                                <div className="myHeader">
+                                    <p>My Requests</p>
+                                </div>
+                            </div>
+
+                            <div className="tables">
+                                <div className="active_support_requests">
+                                    <ul className="activeRequestsList">{active_requests}</ul>
+                                </div>
+                                <div className="my_support_requests">
+                                    <ul className="myRequestsList">{my_requests}</ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+            case 6:
+                //Add risks info here
+                return null;
+            default:
+                return null;
+        }
+    }
+
+    return(
+        {displayPage}
+    );
+    /*return (
         <div className="navbar">
             <ul className="tabs">
                 <li className={activeNavTab === 0 ? 'active' : ''} onClick={() => handleClick(0)}>
@@ -382,7 +612,7 @@ const NavBar = ({ systemRole }) => {
                 {displayButtons()}
             </div>
         </div>
-    );
+    );*/
 };
 
 export default NavBar;
