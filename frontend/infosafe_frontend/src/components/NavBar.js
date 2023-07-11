@@ -1,5 +1,5 @@
 import '../styling/NavBar.css';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { CreateUserPopup } from './CreateUserPopup';
@@ -11,7 +11,7 @@ import ViewUser from './ViewUser';
 import { CreateDevicePopup } from './CreateDevicePopup';
 import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
-import '../styling/Dropdown.css'
+import '../styling/Dropdown.css';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -28,40 +28,40 @@ const NavBar = ({ systemRole }) => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
+        fetch('http://localhost:8080/api/auth/getAll', {
             headers: {
-                Authorization: "Bearer " +  sessionStorage.getItem('accessToken')
+                Authorization: sessionStorage.getItem('accessToken')
             }
         })
-            .then(res => res.json())
-            .then(result => {
+            .then((res) => res.json())
+            .then((result) => {
                 setShowUser(result);
             });
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/datascope/getDs", {
+        fetch('http://localhost:8080/api/auth/getDs', {
             headers: {
-                Authorization:  "Bearer " +  sessionStorage.getItem('accessToken')
+                Authorization: sessionStorage.getItem('accessToken')
             }
         })
-            .then(res => res.json())
-            .then(result => {
+            .then((res) => res.json())
+            .then((result) => {
                 setShowDatascope(result);
             });
-    }, [])
+    }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/asset/getAsset", {
+        fetch('http://localhost:8080/api/auth/getAsset', {
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: sessionStorage.getItem('accessToken')
             }
         })
-            .then(res => res.json())
-            .then(result => {
+            .then((res) => res.json())
+            .then((result) => {
                 setShowAsset(result);
             });
-    }, [])
+    }, []);
 
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
@@ -70,7 +70,7 @@ const NavBar = ({ systemRole }) => {
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.id}: {user.firstname} {user.lastname}
+                    User {user.id}: {user.name} {user.surname}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
@@ -98,7 +98,8 @@ const NavBar = ({ systemRole }) => {
         return (
             <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description} ------ {datascope.data_custodian}
+                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description}{' '}
+                    ------ {datascope.data_custodian}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -120,42 +121,42 @@ const NavBar = ({ systemRole }) => {
         );
     };
 
-  const ViewDeviceItem = ({ asset }) => {
-      const [editDeviceOpen, setEditDeviceOpen] = useState(false);
-      const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-      return (
-          <li key={asset.id}>
-              <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                  Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
-                  {viewDeviceOpen && (
-                      <ViewDevice
-                          popupClose={() => setViewDeviceOpen(false)}
-                          popupOpen={viewDeviceOpen}
-                          asset={asset}
-                      />
-                  )}
-              </p>
-              <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
-              {editDeviceOpen ? (
-                  <EditDevice
-                      popupClose={() => setEditDeviceOpen(false)}
-                      popupOpen={editDeviceOpen}
-                      asset={asset}
-                  />
-              ) : null}{' '}
-              <RiDeleteBin6Fill className="DeleteIcon" />
-          </li>
-      );
-  };
+    const ViewDeviceItem = ({ asset }) => {
+        const [editDeviceOpen, setEditDeviceOpen] = useState(false);
+        const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
+        return (
+            <li key={asset.id}>
+                <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
+                    Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
+                    {viewDeviceOpen && (
+                        <ViewDevice
+                            popupClose={() => setViewDeviceOpen(false)}
+                            popupOpen={viewDeviceOpen}
+                            asset={asset}
+                        />
+                    )}
+                </p>
+                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                {editDeviceOpen ? (
+                    <EditDevice
+                        popupClose={() => setEditDeviceOpen(false)}
+                        popupOpen={editDeviceOpen}
+                        asset={asset}
+                    />
+                ) : null}{' '}
+                <RiDeleteBin6Fill className="DeleteIcon" />
+            </li>
+        );
+    };
 
     const displayInfo = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0: {
                     const userItems = [];
-                    showUser.map(user=>(
-                        userItems.push(<ViewUserItem user={user} key={user.id}/>)
-                    ))
+                    showUser.map((user) =>
+                        userItems.push(<ViewUserItem user={user} key={user.id} />)
+                    );
 
                     return (
                         <div className="users">
@@ -165,9 +166,11 @@ const NavBar = ({ systemRole }) => {
                 }
                 case 1: {
                     const dataItems = [];
-                    showDatascope.map(datascope=>(
-                        dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id}/>)
-                    ))
+                    showDatascope.map((datascope) =>
+                        dataItems.push(
+                            <ViewDataScopeItem datascope={datascope} key={datascope.id} />
+                        )
+                    );
 
                     return (
                         <div className="datascopes">
@@ -204,9 +207,9 @@ const NavBar = ({ systemRole }) => {
                 }
                 case 4: {
                     const devices = [];
-                    showAsset.map(device=>(
-                        devices.push(<ViewDeviceItem asset={device} key={device.id}/>)
-                    ))
+                    showAsset.map((device) =>
+                        devices.push(<ViewDeviceItem asset={device} key={device.id} />)
+                    );
                     return (
                         <div className="devices">
                             <ul className="deviceList">{devices}</ul>
@@ -262,7 +265,6 @@ const NavBar = ({ systemRole }) => {
         }
     };
 
-
     const displayButtons = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
@@ -308,7 +310,7 @@ const NavBar = ({ systemRole }) => {
                                 className="CreateTaskButton"
                                 onClick={() => console.log('Created new task')}
                             >
-                                Create New User
+                                Create New Task
                             </button>
                             <button
                                 className="UpdateTaskButton"
@@ -342,14 +344,7 @@ const NavBar = ({ systemRole }) => {
                         </div>
                     );
                 case 5:
-                    return (
-                        <button
-                            className="CreateSupportRequestButton"
-                            onClick={() => console.log('Create new support request.')}
-                        >
-                            Create New Request
-                        </button>
-                    );
+                    return null;
                 default:
                     return null;
             }
