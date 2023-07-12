@@ -74,7 +74,6 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                             // name="status"
                             // onChange={(selectedOption) => setStatus(selectedOption.value)}
                         />
-
                         <p className="deviceStatusLabel">Status</p>
                         <Dropdown
                             options={STATUS_OPTIONS}
@@ -96,7 +95,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                             // value={assignee}
                             // onChange={(e) => setAssignee(e.target.value)}
                         />
-                        <button className="createDevice_finish" onClick={handleClick}>
+                        <button className="createDeviceFinish" onClick={handleClick}>
                             Submit
                         </button>
                     </form>
