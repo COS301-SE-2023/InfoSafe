@@ -566,9 +566,30 @@ const NavBar = ({ systemRole }) => {
                     </div>
                 );
             }
-            case 6:
-                //Add risks info here
-                return null;
+            case 6: {
+
+                const risks = [];
+                for (let y = 1; y < 30; y++) {
+                    risks.push(
+                        <li key={y}>
+                            Risk {y}
+                            <button
+                                className="reviewRiskButton"
+                                onClick={() => console.log("Review Risk")}
+                            >
+                            Review
+                            </button>
+                        </li>
+                    );
+                }
+                return (
+                    <div className="display">
+                        <div className="risks">
+                            <ul className="risksList">{risks}</ul>
+                        </div>
+                    </div>
+                );
+            }
             default:
                 return null;
         }
