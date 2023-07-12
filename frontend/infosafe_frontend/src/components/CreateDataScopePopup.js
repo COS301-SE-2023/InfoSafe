@@ -69,7 +69,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
-                <div className="createdatascopeBorder">
+                <div className="createDatascopeBorder">
                     <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>
@@ -85,7 +85,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                                         onChange={(e) => setDsName(e.target.value)}
                                     />
                                 </div>
-                                <div className="datascope_description">
+                                <div className="datascopeDescription">
                                     <p className="descriptionLabel">Description</p>
                                     <textarea
                                         className="descriptionInput"
@@ -123,16 +123,16 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             </div>
 
                             <div className="datascope_addrole">
-                                <p className="addrolenameLabel">Role</p>
+                                <p className="AddRoleNameLabel">Role</p>
                                 <input
-                                    className="addrolenameInput"
+                                    className="AddRoleNameInput"
                                     name="role"
                                     value={newRole.role}
                                     onChange={handleInputChange}
                                 />
-                                <p className="addroledescriptionLabel">Role Description</p>
+                                <p className="AddRoleDescriptionLabel">Role Description</p>
                                 <textarea
-                                    className="addroledescriptionInput"
+                                    className="AddRoleDescriptionInput"
                                     name="roledescription"
                                     value={newRole.roledescription}
                                     onChange={handleInputChange}
