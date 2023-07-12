@@ -1,6 +1,6 @@
 .createDeviceOverlay {
-    width: 50vw;
-    height: 95vh;
+    width: 60vw;
+    height: 90vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -9,223 +9,223 @@
 }
 .createDeviceBorder {
     border: 1px solid #ffffff;
-    width: 46vw;
+    width: 56vw;
     margin: 0 auto;
-    height: 89vh;
+    height: 82vh;
     position: relative;
     top: 4vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
-.backButton {
+.createDeviceBorder::-webkit-scrollbar{
+    display: none;
+}
+.backButton{
     background-color: rgba(233, 0, 0, 1);
     border: none;
     position: relative;
-    height: 4vh;
-    width: 2.5vw;
+    height: 5vh;
+    width: 3vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
 }
-.backIcon {
+.backIcon{
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
-    width: 1.3vw;
+    width: 2vw;
+    position: relative;
+    padding: 0.5%;
 }
-.createDeviceLabel {
+.createDeviceLabel{
     width: 60%;
     justify-content: center;
     color: #000000;
     text-align: center;
-    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -2vh;
-    left: 20%;
-}
-.deviceNameLabel {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: -2vh;
     margin: 0;
+    padding: 0;
+    left: 20%;
+    top: -2vh;
 }
-.deviceNameInput {
-    font-size: 18px;
-    width: 50%;
+.deviceNameLabel
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1.5%;
+    margin-top: 1.5%;
+}
+.deviceNameInput{
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
     text-align: center;
     border: none;
-    margin-top: -5vh;
     left: 25%;
     position: relative;
+    width: 50%;
 }
-.deviceTypeLabel {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
+.deviceTypeLabel
+{
     font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
     position: relative;
     top: 1vh;
-    margin-top: 1.5vh;
 }
-.deviceTypeInput {
-    font-size: 18px;
-    width: 50%;
+.deviceTypeInput{
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
     text-align: center;
     border: none;
-    margin-top: 2vh;
     left: 25%;
     position: relative;
-}
-.deviceDescriptionLabel {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
-}
-.deviceDescriptionInput {
-    font-size: 16px;
     width: 50%;
-    height: 5vh;
-    border: none;
-    margin-top: 2vh;
-    left: 25%;
-    position: relative;
-    text-wrap: initial;
-    resize: none;
-    overflow-y: scroll;
+    margin-top: 1.5%;
 }
-.deviceNewLabel{
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
+.deviceDescriptionLabel
+{
     font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
     position: relative;
     top: 1vh;
-    margin-top: -1vh;
 }
-.newDropdown {
+.deviceDescriptionInput{
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    width: 50%;
-    text-align: center;
+    text-align: left;
     border: none;
-    margin-top: 2vh;
     left: 25%;
     position: relative;
-    top: -0.5vh;
-    align-content: center;
-}
-.deviceAvailabilityLabel{
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 0vh;
-    margin-top: 0vh;
-}
-.availableDropdown {
-    font-size: 20px;
     width: 50%;
+    margin-top: 1.5%;
+}
+.deviceNewLabel
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.newDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     text-align: center;
     border: none;
-    margin-top: 2vh;
     left: 25%;
     position: relative;
-    top: -1vh;
-    align-content: center;
-}
-.deviceStatusLabel{
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: -0.5vh;
-}
-.statusDropdown {
-    font-size: 20px;
     width: 50%;
+    margin-top: 1.5%;
+}
+.deviceAvailabilityLabel
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.availableDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     text-align: center;
     border: none;
-    margin-top: -1vh;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 1.5%;
+}
+.deviceStatusLabel
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.statusDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border: none;
     left: 0%;
     position: relative;
-    top: -2vh;
-    align-content: center;
-    height: 1vh;
-}
-.currentCustodianLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: -4vh;
-}
-.currentCustodianInput {
-    font-size: 20px;
     width: 50%;
+    margin-top: 1.5%;
+}
+.currentCustodianLabel
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: -2vh;
+}
+.currentCustodianInput{
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
     text-align: center;
     border: none;
     left: 25%;
     position: relative;
-    top: -3.5vh;
-    margin: 0;
-}
-.previousCustodianLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
+    width: 50%;
     top: -3vh;
 }
-.previousCustodianInput {
-    font-size: 20px;
-    width: 50%;
+.previousCustodianLabel
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: -2vh;
+}
+.previousCustodianInput{
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
     text-align: center;
     border: none;
     left: 25%;
     position: relative;
-    top: -2.5vh;
+    width: 50%;
+    top: -3vh;
 }
-.createDevice_finish {
-    width: 15%;
+.createDeviceFinish {
+    width: 20%;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);
     color: #ffffff;
@@ -234,9 +234,9 @@
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.84px;
     text-transform: uppercase;
-    position: absolute;
+    position: relative;
     border: none;
-    left: 42.5%;
-    bottom: 2%;
+    bottom: 1vh;
+    margin-left: 40%;
+    margin-right: 40%;
 }
-
