@@ -58,7 +58,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                             value={asset_description}
                             onChange={(e) => setAssetDesc(e.target.value)}
                         />
-                        <p className = "deviceNewLabel">New</p>
+                        <p className="deviceNewLabel">New</p>
                         <Dropdown
                             options={NEW_OPTIONS}
                             value={NEW_OPTIONS[0]}
@@ -66,7 +66,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                             // name="status"
                             // onChange={(selectedOption) => setStatus(selectedOption.value)}
                         />
-                        <p className = "deviceAvailabilityLabel">Available</p>
+                        <p className="deviceAvailabilityLabel">Available</p>
                         <Dropdown
                             options={AVAILABILITY_OPTIONS}
                             value={AVAILABILITY_OPTIONS[0]}

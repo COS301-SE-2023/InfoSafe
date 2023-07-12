@@ -1,20 +1,20 @@
 import '../styling/NavBar.css';
-import React, {useEffect, useState} from 'react';
-import {FaRegEdit} from 'react-icons/fa';
-import {RiDeleteBin6Fill} from 'react-icons/ri';
-import {CreateUserPopup} from './CreateUserPopup';
-import {CreateDataScopePopup} from './CreateDataScopePopup';
-import {EditDataScopePopup} from './EditDataScopePopup';
+import React, { useEffect, useState } from 'react';
+import { FaRegEdit } from 'react-icons/fa';
+import { RiDeleteBin6Fill } from 'react-icons/ri';
+import { CreateUserPopup } from './CreateUserPopup';
+import { CreateDataScopePopup } from './CreateDataScopePopup';
+import { EditDataScopePopup } from './EditDataScopePopup';
 import EditUser from './EditUser';
 import ViewDataScope from './ViewDataScope';
 import ViewUser from './ViewUser';
-import {CreateDevicePopup} from './CreateDevicePopup';
-import {ViewDevice} from './ViewDevice';
+import { CreateDevicePopup } from './CreateDevicePopup';
+import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
 import '../styling/Dropdown.css';
 
 /* eslint-disable react/prop-types */
-const NavBar = ({systemRole}) => {
+const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
     const [showUser, setShowUser] = useState([]);
     const [showDatascope, setShowDatascope] = useState([]);
@@ -63,7 +63,7 @@ const NavBar = ({systemRole}) => {
             });
     }, []);
 
-    const ViewUserItem = ({user}) => {
+    const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
         const [editUserOpen, setEditUserOpen] = useState(false);
@@ -79,7 +79,7 @@ const NavBar = ({systemRole}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)}/>
+                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
                 {editUserOpen ? (
                     <EditUser
                         popupClose={() => setEditUserOpen(false)}
@@ -87,12 +87,12 @@ const NavBar = ({systemRole}) => {
                         user={user}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon"/>
+                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };
 
-    const ViewDataScopeItem = ({datascope}) => {
+    const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
@@ -108,7 +108,7 @@ const NavBar = ({systemRole}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)}/>
+                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
                 {editDataScopeOpen ? (
                     <EditDataScopePopup
                         popupClose={() => setEditDataScopeOpen(false)}
@@ -116,12 +116,12 @@ const NavBar = ({systemRole}) => {
                         datascope={datascope}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon"/>
+                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };
 
-    const ViewDeviceItem = ({asset}) => {
+    const ViewDeviceItem = ({ asset }) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
@@ -136,7 +136,7 @@ const NavBar = ({systemRole}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)}/>
+                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
@@ -144,23 +144,23 @@ const NavBar = ({systemRole}) => {
                         asset={asset}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon"/>
+                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };
 
     const displayPage = () => {
         if (systemRole === 'ISO') {
-            return(
+            return (
                 <div className="navbar">
                     {displayISOTabs()}
                     {displayISOPage()}
                 </div>
-            )
+            );
         }
-    }
+    };
 
-/*    const displayInfo = () => {
+    /*    const displayInfo = () => {
         if (systemRole === 'ISO') {
             switch (activeNavTab) {
                 case 0: {
@@ -387,15 +387,13 @@ const NavBar = ({systemRole}) => {
                     Risks
                 </li>
             </ul>
-        )
-    }
+        );
+    };
     const displayISOPage = () => {
         switch (activeNavTab) {
             case 0: {
                 const userItems = [];
-                showUser.map((user) =>
-                    userItems.push(<ViewUserItem user={user} key={user.id}/>)
-                );
+                showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.id} />));
 
                 return (
                     <div className="display">
@@ -423,9 +421,7 @@ const NavBar = ({systemRole}) => {
             case 1: {
                 const dataItems = [];
                 showDatascope.map((datascope) =>
-                    dataItems.push(
-                        <ViewDataScopeItem datascope={datascope} key={datascope.id}/>
-                    )
+                    dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id} />)
                 );
 
                 return (
@@ -455,8 +451,8 @@ const NavBar = ({systemRole}) => {
                 for (let k = 1; k < 30; k++) {
                     accessRequests.push(
                         <li key={k}>
-                            Access Request {k} <FaRegEdit className="EditIcon"/>{' '}
-                            <RiDeleteBin6Fill className="DeleteIcon"/>
+                            Access Request {k} <FaRegEdit className="EditIcon" />{' '}
+                            <RiDeleteBin6Fill className="DeleteIcon" />
                         </li>
                     );
                 }
@@ -504,7 +500,7 @@ const NavBar = ({systemRole}) => {
             case 4: {
                 const devices = [];
                 showAsset.map((device) =>
-                    devices.push(<ViewDeviceItem asset={device} key={device.id}/>)
+                    devices.push(<ViewDeviceItem asset={device} key={device.id} />)
                 );
                 return (
                     <div className="display">
@@ -533,7 +529,7 @@ const NavBar = ({systemRole}) => {
                 for (let a = 1; a < 15; a++) {
                     active_requests.push(
                         <li key={a}>
-                            Support Request {a} <FaRegEdit className="EditIcon"/>
+                            Support Request {a} <FaRegEdit className="EditIcon" />
                         </li>
                     );
                 }
@@ -541,7 +537,7 @@ const NavBar = ({systemRole}) => {
                 for (let b = 1; b < 15; b++) {
                     my_requests.push(
                         <li key={b}>
-                            Support Request {b} <FaRegEdit className="EditIcon"/>
+                            Support Request {b} <FaRegEdit className="EditIcon" />
                         </li>
                     );
                 }
@@ -576,11 +572,9 @@ const NavBar = ({systemRole}) => {
             default:
                 return null;
         }
-    }
+    };
 
-    return(
-        displayPage()
-    );
+    return displayPage();
     /*return (
         <div className="navbar">
             <ul className="tabs">

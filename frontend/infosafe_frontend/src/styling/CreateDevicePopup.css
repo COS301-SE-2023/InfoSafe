@@ -18,10 +18,10 @@
     overflow-x: hidden;
     scrollbar-width: none;
 }
-.createDeviceBorder::-webkit-scrollbar{
+.createDeviceBorder::-webkit-scrollbar {
     display: none;
 }
-.backButton{
+.backButton {
     background-color: rgba(233, 0, 0, 1);
     border: none;
     position: relative;
@@ -33,7 +33,7 @@
     left: 1vw;
     color: #ffffff;
 }
-.backIcon{
+.backIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
@@ -41,7 +41,7 @@
     position: relative;
     padding: 0.5%;
 }
-.createDeviceLabel{
+.createDeviceLabel {
     width: 60%;
     justify-content: center;
     color: #000000;
@@ -54,31 +54,9 @@
     margin: 0;
     padding: 0;
     left: 20%;
-    top: -2vh;
+    top: -3vh;
 }
-.deviceNameLabel
-{
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    position: relative;
-    top: 1.5%;
-    margin-top: 1.5%;
-}
-.deviceNameInput{
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
-    border: none;
-    left: 25%;
-    position: relative;
-    width: 50%;
-}
-.deviceTypeLabel
-{
+.deviceNameLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -88,7 +66,7 @@
     position: relative;
     top: 1vh;
 }
-.deviceTypeInput{
+.deviceNameInput {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: center;
@@ -96,10 +74,8 @@
     left: 25%;
     position: relative;
     width: 50%;
-    margin-top: 1.5%;
 }
-.deviceDescriptionLabel
-{
+.deviceTypeLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -109,7 +85,27 @@
     position: relative;
     top: 1vh;
 }
-.deviceDescriptionInput{
+.deviceTypeInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 1.5%;
+}
+.deviceDescriptionLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.deviceDescriptionInput {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     text-align: left;
@@ -119,8 +115,7 @@
     width: 50%;
     margin-top: 1.5%;
 }
-.deviceNewLabel
-{
+.deviceNewLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -130,7 +125,7 @@
     position: relative;
     top: 1vh;
 }
-.newDropdown{
+.newDropdown {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     text-align: center;
@@ -140,8 +135,7 @@
     width: 50%;
     margin-top: 1.5%;
 }
-.deviceAvailabilityLabel
-{
+.deviceAvailabilityLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -151,7 +145,7 @@
     position: relative;
     top: 1vh;
 }
-.availableDropdown{
+.availableDropdown {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     text-align: center;
@@ -161,8 +155,7 @@
     width: 50%;
     margin-top: 1.5%;
 }
-.deviceStatusLabel
-{
+.deviceStatusLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -172,7 +165,7 @@
     position: relative;
     top: 1vh;
 }
-.statusDropdown{
+.statusDropdown {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     text-align: center;
@@ -182,8 +175,7 @@
     width: 50%;
     margin-top: 1.5%;
 }
-.currentCustodianLabel
-{
+.currentCustodianLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -193,7 +185,7 @@
     position: relative;
     top: -2vh;
 }
-.currentCustodianInput{
+.currentCustodianInput {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: center;
@@ -203,8 +195,7 @@
     width: 50%;
     top: -3vh;
 }
-.previousCustodianLabel
-{
+.previousCustodianLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -214,7 +205,7 @@
     position: relative;
     top: -2vh;
 }
-.previousCustodianInput{
+.previousCustodianInput {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: center;
