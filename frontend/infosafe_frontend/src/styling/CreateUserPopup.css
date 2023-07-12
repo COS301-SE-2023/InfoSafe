@@ -156,7 +156,7 @@
     transform: translateY(50%);
 }
 .createUserFinish {
-    width: 15%;
+    width: 20%;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);
     color: #ffffff;
@@ -169,7 +169,7 @@
     align-self: center;
     justify-self: center;
     bottom: 2vh;
-    left: 42.5%;
+    left: 40%;
     border: none;
     margin: 5% auto 0;
 }
