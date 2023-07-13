@@ -287,6 +287,16 @@
     justify-content: center;
     display: flex;
 }
+.CreateTaskDiv{
+    position: relative;
+    margin: 0 auto;
+    left: 0%;
+}
+.UpdateTaskDiv{
+    position: relative;
+    margin: 0 auto;
+    left: 0%;
+}
 .CreateTaskButton {
     background: #373737;
     border: 1px solid #3a3a3a;
@@ -294,18 +304,12 @@
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     letter-spacing: 0.84px;
     text-transform: uppercase;
     color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-    padding: 0.5% 2%;
     width: fit-content;
+    padding: 0.5% 2%;
 }
 .UpdateTaskButton {
     background: #373737;
@@ -321,9 +325,6 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
     padding: 0.5% 2%;
     width: fit-content;
 }
