@@ -17,7 +17,7 @@
     overflow-y: scroll;
     scrollbar-width: none;
 }
-.createDatascopeBorder::-webkit-scrollbar{
+.createDatascopeBorder::-webkit-scrollbar {
     display: none;
 }
 .backButton {

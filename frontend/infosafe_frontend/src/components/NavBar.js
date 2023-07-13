@@ -12,8 +12,9 @@ import { CreateDevicePopup } from './CreateDevicePopup';
 import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
 import '../styling/Dropdown.css';
-import {CreateTask} from "./CreateTaskPopup";
-import {UpdateTask} from "./UpdateTaskPopup";
+import { CreateTask } from './CreateTaskPopup';
+import { UpdateTask } from './UpdateTaskPopup';
+import ViewAccessRequest from './ViewAccessRequest';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -26,6 +27,7 @@ const NavBar = ({ systemRole }) => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
+    const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -455,7 +457,16 @@ const NavBar = ({ systemRole }) => {
                 for (let k = 1; k < 30; k++) {
                     accessRequests.push(
                         <li key={k}>
-                            Access Request {k} <FaRegEdit className="EditIcon" />{' '}
+                            <p onClick={() => setViewAccessRequestOpen(true)}>
+                                Access Request {k}
+                                {viewAccessRequestOpen ? (
+                                    <ViewAccessRequest
+                                        popupClose={() => setViewAccessRequestOpen(false)}
+                                        popupOpen={viewAccessRequestOpen}
+                                    />
+                                ) : null}
+                            </p>
+                            <FaRegEdit className="EditIcon" />{' '}
                             <RiDeleteBin6Fill className="DeleteIcon" />
                         </li>
                     );
@@ -480,12 +491,12 @@ const NavBar = ({ systemRole }) => {
                         </div>
                         <div className="buttons">
                             <div className="CreateTaskDiv">
-                            <button
-                                className="CreateTaskButton"
-                                onClick={() => setCreateTaskOpen(true)}
-                            >
-                                Create New Task
-                            </button>
+                                <button
+                                    className="CreateTaskButton"
+                                    onClick={() => setCreateTaskOpen(true)}
+                                >
+                                    Create New Task
+                                </button>
                                 {createTaskOpen ? (
                                     <CreateTask
                                         popupClose={() => setCreateTaskOpen(false)}
@@ -494,12 +505,12 @@ const NavBar = ({ systemRole }) => {
                                 ) : null}
                             </div>
                             <div className="UpdateTaskDiv">
-                            <button
-                                className="UpdateTaskButton"
-                                onClick={() => setUpdateTaskOpen(true)}
-                            >
-                                Update Task
-                            </button>
+                                <button
+                                    className="UpdateTaskButton"
+                                    onClick={() => setUpdateTaskOpen(true)}
+                                >
+                                    Update Task
+                                </button>
                                 {updateTaskOpen ? (
                                     <UpdateTask
                                         popupClose={() => setUpdateTaskOpen(false)}
@@ -587,7 +598,6 @@ const NavBar = ({ systemRole }) => {
                 );
             }
             case 6: {
-
                 const risks = [];
                 for (let y = 1; y < 30; y++) {
                     risks.push(
@@ -595,9 +605,9 @@ const NavBar = ({ systemRole }) => {
                             Risk {y}
                             <button
                                 className="reviewRiskButton"
-                                onClick={() => console.log("Review Risk")}
+                                onClick={() => console.log('Review Risk')}
                             >
-                            Review
+                                Review
                             </button>
                         </li>
                     );

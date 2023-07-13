@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import '../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 const data = [
     {
         role: 'Administrator',
@@ -14,7 +12,8 @@ const data = [
         roledescription: 'Access data scope, complete tasks within data scopes.'
     }
 ];
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     const [roles, setRoles] = useState(data);
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });

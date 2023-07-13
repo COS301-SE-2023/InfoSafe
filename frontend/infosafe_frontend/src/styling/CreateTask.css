@@ -1,4 +1,4 @@
-.createTaskOverlay{
+.createTaskOverlay {
     width: 60vw;
     height: 90vh;
     flex-shrink: 0;
@@ -7,7 +7,7 @@
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.borderCreateTask{
+.borderCreateTask {
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
@@ -18,7 +18,7 @@
     overflow-x: hidden;
     scrollbar-width: none;
 }
-.backButton{
+.backButton {
     background-color: rgba(233, 0, 0, 1);
     border: none;
     position: relative;
@@ -30,13 +30,13 @@
     left: 1vw;
     color: #ffffff;
 }
-.backIcon{
+.backIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
     width: 1.3vw;
 }
-.pageTitle{
+.pageTitle {
     width: 60%;
     justify-content: center;
     color: #000000;
@@ -49,7 +49,7 @@
     top: -3vh;
     left: 20%;
 }
-.inputTitle{
+.inputTitle {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -59,7 +59,7 @@
     position: relative;
     top: 1vh;
 }
-.inputTextArea{
+.inputTextArea {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: left;
@@ -69,7 +69,7 @@
     width: 50%;
     margin-top: 0;
 }
-.textboxInput{
+.textboxInput {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: center;
@@ -79,7 +79,7 @@
     width: 50%;
     margin-top: 0;
 }
-.submitButton{
+.submitButton {
     width: 20%;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);

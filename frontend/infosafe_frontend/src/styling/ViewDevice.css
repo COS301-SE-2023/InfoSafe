@@ -4,7 +4,6 @@
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(20px);
     margin: 0 auto;
 }
 .viewDeviceBorder {

@@ -287,12 +287,12 @@
     justify-content: center;
     display: flex;
 }
-.CreateTaskDiv{
+.CreateTaskDiv {
     position: relative;
     margin: 0 auto;
     left: 0%;
 }
-.UpdateTaskDiv{
+.UpdateTaskDiv {
     position: relative;
     margin: 0 auto;
     left: 0%;
@@ -638,7 +638,7 @@
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.reviewRiskButton{
+.reviewRiskButton {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
