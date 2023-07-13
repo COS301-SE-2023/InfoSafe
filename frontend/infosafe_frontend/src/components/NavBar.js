@@ -518,12 +518,14 @@ const NavBar = ({ systemRole }) => {
                                     />
                                 ) : null}
                             </div>
-                            <button
-                                className="RevokeTaskButton"
-                                onClick={() => console.log('Revoked task.')}
-                            >
-                                Revoke Task
-                            </button>
+                            <div className="RevokeTaskDiv">
+                                <button
+                                    className="RevokeTaskButton"
+                                    onClick={() => console.log('Revoked task.')}
+                                >
+                                    Revoke Task
+                                </button>
+                            </div>
                         </div>
                     </div>
                 );

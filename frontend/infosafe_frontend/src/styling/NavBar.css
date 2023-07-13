@@ -297,6 +297,11 @@
     margin: 0 auto;
     left: 0%;
 }
+.RevokeTaskDiv {
+    position: relative;
+    margin: 0 auto;
+    left: 0%;
+}
 .CreateTaskButton {
     background: #373737;
     border: 1px solid #3a3a3a;
@@ -308,8 +313,9 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     color: #ffffff;
-    width: fit-content;
-    padding: 0.5% 2%;
+    width: 120%;
+    padding: 3% 3%;
+    text-wrap: none;
 }
 .UpdateTaskButton {
     background: #373737;
@@ -325,8 +331,8 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     color: #ffffff;
-    padding: 0.5% 2%;
-    width: fit-content;
+    padding: 3% 3%;
+    width: 120%;
 }
 .RevokeTaskButton {
     background: #373737;
@@ -345,8 +351,8 @@
     position: relative;
     margin: 0 auto;
     left: 0%;
-    padding: 0.5% 2%;
-    width: fit-content;
+    padding: 3% 3%;
+    width: 120%;
 }
 .devices {
     background-color: transparent;
