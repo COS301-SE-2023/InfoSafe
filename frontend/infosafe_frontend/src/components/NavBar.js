@@ -13,6 +13,7 @@ import { ViewDevice } from './ViewDevice';
 import EditDevice from './EditDevice';
 import '../styling/Dropdown.css';
 import {CreateTask} from "./CreateTaskPopup";
+import {UpdateTask} from "./UpdateTaskPopup";
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -24,6 +25,7 @@ const NavBar = ({ systemRole }) => {
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
+    const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
 
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -491,12 +493,20 @@ const NavBar = ({ systemRole }) => {
                                     />
                                 ) : null}
                             </div>
+                            <div className="UpdateTaskDiv">
                             <button
                                 className="UpdateTaskButton"
-                                onClick={() => console.log('Updated task.')}
+                                onClick={() => setUpdateTaskOpen(true)}
                             >
                                 Update Task
                             </button>
+                                {updateTaskOpen ? (
+                                    <UpdateTask
+                                        popupClose={() => setUpdateTaskOpen(false)}
+                                        popupOpen={updateTaskOpen}
+                                    />
+                                ) : null}
+                            </div>
                             <button
                                 className="RevokeTaskButton"
                                 onClick={() => console.log('Revoked task.')}
