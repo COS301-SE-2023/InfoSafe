@@ -15,6 +15,7 @@ import '../styling/Dropdown.css';
 import { CreateTask } from './CreateTaskPopup';
 import { UpdateTask } from './UpdateTaskPopup';
 import ViewAccessRequest from './ViewAccessRequest';
+import EditAccessRequest from './EditAccessRequest';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -28,7 +29,7 @@ const NavBar = ({ systemRole }) => {
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
     const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
-
+    const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -466,7 +467,16 @@ const NavBar = ({ systemRole }) => {
                                     />
                                 ) : null}
                             </p>
-                            <FaRegEdit className="EditIcon" />{' '}
+                            <FaRegEdit
+                                className="EditIcon"
+                                onClick={() => setEditAccessRequestOpen(true)}
+                            />
+                            {editAccessRequestOpen ? (
+                                <EditAccessRequest
+                                    popupClose={() => setEditAccessRequestOpen(false)}
+                                    popupOpen={editAccessRequestOpen}
+                                />
+                            ) : null}
                             <RiDeleteBin6Fill className="DeleteIcon" />
                         </li>
                     );
