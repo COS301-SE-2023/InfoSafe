@@ -7,7 +7,7 @@
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.accessRequestPopupBorder {
+.viewAccessRequestPopupBorder {
     border: 1px solid #ffffff;
     width: 46vw;
     margin: 0 auto;

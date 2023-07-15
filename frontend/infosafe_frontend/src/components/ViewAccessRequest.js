@@ -9,7 +9,7 @@ const ViewAccessRequest = ({ popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewAccessRequestPopup">
-                <div className="accessRequestPopupBorder">
+                <div className="viewAccessRequestPopupBorder">
                     <button className="viewAccessRequestBackButton" onClick={popupClose}>
                         <IoArrowBackOutline className="accessRequestBackIcon" />
                     </button>
