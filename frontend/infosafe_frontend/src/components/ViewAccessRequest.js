@@ -11,7 +11,7 @@ const ViewAccessRequest = ({ popupClose, popupOpen }) => {
             <div className="viewAccessRequestPopup">
                 <div className="viewAccessRequestPopupBorder">
                     <button className="viewAccessRequestBackButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="accessRequestBackIcon" />
+                        <IoArrowBackOutline className="viewAccessRequestBackIcon" />
                     </button>
                     <p className="viewAccessRequestTitle">View Access Request</p>
                     <div className="viewAccessRequestDatascopeDiv">
