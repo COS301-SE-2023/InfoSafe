@@ -30,6 +30,10 @@ const ViewAccessRequest = ({ popupClose, popupOpen }) => {
                             defaultValue="Insert reason here."
                         ></textarea>
                     </div>
+                    <div className="viewAccessRequestStatusDiv">
+                        <p className="viewAccessRequestStatusLabel">Status</p>
+                        <p className="viewAccessRequestStatusDisplay">Approved</p>
+                    </div>
                 </div>
             </div>
         </Popup>
