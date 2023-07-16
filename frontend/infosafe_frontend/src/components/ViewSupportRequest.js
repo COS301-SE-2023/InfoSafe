@@ -18,6 +18,10 @@ const ViewSupportRequest = ({popupOpen, popupClose}) => {
                       <p className="viewSupportRequestTypeLabel">Type of Support Request</p>
                       <p className="viewSupportRequestTypeDisplay">Microsoft Account</p>
                   </div>
+                  <div className="viewSupportRequestUserDiv">
+                      <p className="viewSupportRequestUserLabel">User</p>
+                      <p className="viewSupportRequestTypeDisplay">User A</p>
+                  </div>
                   <div className="viewSupportRequestDescriptionDiv">
                       <p className="viewSupportRequestDescriptionLabel">Description</p>
                       <textarea className="viewSupportRequestDescriptionDisplay" readOnly={true} defaultValue={"Insert description here"}></textarea>
