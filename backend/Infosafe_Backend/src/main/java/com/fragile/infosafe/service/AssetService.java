@@ -21,12 +21,12 @@ public class AssetService {
 
     public ResponseEntity<String> makeAsset(AssetRequest request){
         var asset = Asset.builder()
-                .serialNumber(request.getSerialNumber())
-                .typeID(request.getTypeID())
-                .assetDescription(request.getAssetDescription())
-                .cleanStatus(request.getCleanStatus())
+                .serial_number(request.getSerial_number())
+                .type_id(request.getType_id())
+                .asset_description(request.getAsset_description())
+                .clean_status(request.getClean_status())
                 .availability(request.getAvailability())
-                .newDevice(request.getNewDevice())
+                .new_device(request.getNew_device())
                 .build();
         assetRepository.save(asset);
         return ResponseEntity.status(HttpStatus.OK).body("added");

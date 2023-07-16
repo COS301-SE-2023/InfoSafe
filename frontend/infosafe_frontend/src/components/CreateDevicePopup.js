@@ -7,17 +7,18 @@ import Dropdown from "react-dropdown";
 
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
-    const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-    const[asset_name,setAssetName]=useState('')
-    const[asset_description,setAssetDesc]=useState('')
-    const[assignee,setAssignee]=useState('')
-    const[date_acquired,setDate]=useState(date)
-    const[status,setStatus]=useState('CLEAN')
+    // const current = new Date();
+    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const[serialNumber,setSerialNumber]=useState('')
+    const[typeID,setTypeID]=useState('')
+    const[assetDescription,setAssetDescription]=useState('')
+    const[availability,setAvailability]=useState('1')
+    const[cleanStatus,setCleanStatus]=useState('CLEAN')
+    const[newDevice,setNewDevice]=useState('1')
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const asset = {asset_name, asset_description, assignee, date_acquired, status}
+        const asset = {serialNumber, typeID, assetDescription, availability, cleanStatus, newDevice}
         console.log(asset)
         fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",

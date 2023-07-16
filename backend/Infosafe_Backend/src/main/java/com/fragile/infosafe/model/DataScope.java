@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Data_Scopes")
+@Table(name="data_scopes")
 public class DataScope {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dataScopeID;

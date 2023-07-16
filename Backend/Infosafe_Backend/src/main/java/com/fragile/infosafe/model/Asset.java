@@ -11,46 +11,46 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Assets")
+@Table(name="assets")
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String serialNumber;
-    private int typeID;
-    private String assetDescription;
-    private String cleanStatus;
+    private int serial_number;
+    private int type_id;
+    private String asset_description;
+    private String clean_status;
     private Boolean availability;
-    private Boolean newDevice;
+    private Boolean new_device;
 
-    public String getSerialNumber() {
-        return serialNumber;
+    public int getSerialNumber() {
+        return serial_number;
     }
 
-    public void setSerialNumber(String serial) {
-        this.serialNumber = serial;
+    public void setSerialNumber(int serial) {
+        this.serial_number = serial;
     }
 
     public int getTypeID() {
-        return typeID;
+        return type_id;
     }
 
     public void setTypeID(int typeID) {
-        this.typeID = typeID;
+        this.type_id = typeID;
     }
 
     public String getAssetDescription() {
-        return assetDescription;
+        return asset_description;
     }
 
     public void setAssetDescription(String asset_description) {
-        this.assetDescription = asset_description;
+        this.asset_description = asset_description;
     }
 
     public String getCleanStatus() {
-        return cleanStatus;
+        return clean_status;
     }
 
     public void setCleanStatus(String status) {
-        this.cleanStatus = status;
+        this.clean_status = status;
     }
 
     public Boolean getAvailability() { return availability; }
@@ -58,10 +58,10 @@ public class Asset {
     public void setAvailability(Boolean availability) { this.availability = availability; }
 
     public Boolean getNewDevice() {
-        return newDevice;
+        return new_device;
     }
 
     public void setNewDevice(Boolean newDevice) {
-        this.newDevice = newDevice;
+        this.new_device = newDevice;
     }
 }
