@@ -5,18 +5,18 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 const data = [
     {
-        role: 'Administrator',
+        systemRole: 'Administrator',
         roledescription: 'Manage users, manage data scope, edit permissions.'
     },
     {
-        role: 'General User',
+        systemRole: 'General User',
         roledescription: 'Access data scope, complete tasks within data scopes.'
     }
 ];
 
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     const [roles, setRoles] = useState(data);
-    const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
+    const [newRole, setNewRole] = useState({ systemRole: '', roledescription: '' });
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
 
@@ -36,9 +36,9 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
 
     const handleAddRole = (e) => {
         e.preventDefault();
-        if (newRole.role && newRole.roledescription) {
+        if (newRole.systemRole && newRole.roledescription) {
             setRoles((prevRoles) => [...prevRoles, newRole]);
-            setNewRole({ role: '', roledescription: '' });
+            setNewRole({ systemRole: '', roledescription: '' });
         }
     };
 
@@ -88,12 +88,12 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {roles.map((role, key) => {
+                                                {roles.map((systemRole, key) => {
                                                     return (
                                                         <tr key={key}>
-                                                            <td>{role.role}</td>
+                                                            <td>{systemRole.systemRole}</td>
                                                             <td className="roledescription_Table">
-                                                                {role.roledescription}
+                                                                {systemRole.roledescription}
                                                             </td>
                                                         </tr>
                                                     );
@@ -108,8 +108,8 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                                 <p className="addrolenameLabel">Role</p>
                                 <input
                                     className="addrolenameInput"
-                                    name="role"
-                                    value={newRole.role}
+                                    name="systemRole"
+                                    value={newRole.systemRole}
                                     onChange={handleInputChange}
                                 />
                                 <p className="addroledescriptionLabel">Role Description</p>
