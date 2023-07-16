@@ -142,7 +142,7 @@
     top: 8%;
     position: relative;
 }
-1 .viewAccessRequestStatusDiv {
+.viewAccessRequestStatusDiv {
     justify-content: center;
     align-content: center;
     color: #000;
