@@ -1,6 +1,6 @@
 package com.fragile.infosafe.requests;
 
-import com.fragile.infosafe.model.Role;
+import com.fragile.infosafe.model.SystemRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String firstname;
-    private String lastname;
-    private String email;
+public class UserRequest {
+    private String first_name;
+    private String last_name;
+    private String email_address;
     private String password;
-    private Role role;
+    private SystemRole system_System_role_id;
 }
