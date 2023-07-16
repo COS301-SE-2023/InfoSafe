@@ -18,6 +18,7 @@ import ViewAccessRequest from './ViewAccessRequest';
 import EditAccessRequest from './EditAccessRequest';
 import Requests from './Requests';
 import {ViewTask} from "./ViewTaskPopup";
+import ViewSupportRequest from './ViewSupportRequest';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -33,6 +34,7 @@ const NavBar = ({ systemRole }) => {
     const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
     const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
     const [viewTaskOpen, setViewTaskOpen] = useState(false);
+    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -403,7 +405,15 @@ const NavBar = ({ systemRole }) => {
                 for (let a = 1; a < 15; a++) {
                     active_requests.push(
                         <li key={a}>
-                            Support Request {a} <FaRegEdit className="EditIcon" />
+                            <p onClick={() => setViewSupportRequestOpen(true)}>
+                                Support Request {a}
+                                {viewSupportRequestOpen ? (
+                                    <ViewSupportRequest
+                                        popupClose={() => setViewSupportRequestOpen(false)}
+                                        popupOpen={viewSupportRequestOpen}
+                                    />
+                                ) : null}
+                            </p> <FaRegEdit className="EditIcon" />
                         </li>
                     );
                 }
@@ -411,7 +421,15 @@ const NavBar = ({ systemRole }) => {
                 for (let b = 1; b < 15; b++) {
                     my_requests.push(
                         <li key={b}>
-                            Support Request {b} <FaRegEdit className="EditIcon" />
+                            <p onClick={() => setViewSupportRequestOpen(true)}>
+                                Support Request {b}
+                                {viewSupportRequestOpen ? (
+                                    <ViewSupportRequest
+                                        popupClose={() => setViewSupportRequestOpen(false)}
+                                        popupOpen={viewSupportRequestOpen}
+                                    />
+                                ) : null}
+                            </p> <FaRegEdit className="EditIcon" />
                         </li>
                     );
                 }
