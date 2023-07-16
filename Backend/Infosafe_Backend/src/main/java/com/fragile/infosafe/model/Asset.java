@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Primary;
 
 @Data
 @Builder
@@ -13,19 +14,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="assets")
 public class Asset {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int serial_number;
+    @Id
+    private String serial_number;
     private int type_id;
     private String asset_description;
     private String clean_status;
     private Boolean availability;
     private Boolean new_device;
 
-    public int getSerialNumber() {
+    public String getSerialNumber() {
         return serial_number;
     }
 
-    public void setSerialNumber(int serial) {
+    public void setSerialNumber(String serial) {
         this.serial_number = serial;
     }
 

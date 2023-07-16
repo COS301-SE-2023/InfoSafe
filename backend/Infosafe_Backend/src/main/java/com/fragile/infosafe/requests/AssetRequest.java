@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AssetRequest {
-    private int serial_number;
+    private String serial_number;
     private int type_id;
     private String asset_description;
     private String clean_status;
