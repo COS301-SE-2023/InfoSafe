@@ -18,7 +18,7 @@
     overflow-x: hidden;
     scrollbar-width: none;
 }
-.accessRequestPopupBorder::-webkit-scrollbar {
+.viewAccessRequestPopupBorder::-webkit-scrollbar {
     display: none;
 }
 .viewAccessRequestBackButton {
