@@ -11,9 +11,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AssetRequest {
-    private String assetName;
+    private String serialNumber;
+    private int typeID;
     private String assetDescription;
-    private String status;
-    private String dateAcquired;
-    private String assignee;
+    private String cleanStatus;
+    private Boolean availability;
+    private Boolean newDevice;
 }
