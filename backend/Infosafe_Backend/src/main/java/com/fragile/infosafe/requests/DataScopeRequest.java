@@ -13,13 +13,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DataScopeRequest {
+    private int dataScopeID;
     private String dsName;
-    private String description;
-    private String roleName;
-    private String roleDescription;
+    private String dsDescription;
     private String dateCaptured;
-    private String dataCustodian;
-    private String administrator;
-    private String status;
+    private String dsStatus;
 }
 
