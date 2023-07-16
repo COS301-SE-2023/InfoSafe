@@ -1,4 +1,4 @@
-.viewSupportRequestPopup {
+.editSupportRequestPopup {
     width: 50vw;
     height: 75vh;
     flex-shrink: 0;
@@ -7,7 +7,7 @@
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.viewSupportRequestPopupBorder {
+.editSupportRequestPopupBorder {
     border: 1px solid #ffffff;
     width: 46vw;
     margin: 0 auto;
@@ -18,10 +18,10 @@
     overflow-x: hidden;
     scrollbar-width: none;
 }
-.viewSupportRequestPopupBorder::-webkit-scrollbar {
+.editSupportRequestPopupBorder::-webkit-scrollbar {
     display: none;
 }
-.viewSupportRequestBackButton {
+.editSupportRequestBackButton {
     background-color: rgba(233, 0, 0, 1);
     border: none;
     position: relative;
@@ -33,13 +33,13 @@
     left: 1vw;
     color: #ffffff;
 }
-.viewSupportRequestBackIcon {
+.editSupportRequestBackIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
     width: 1.3vw;
 }
-.viewSupportRequestTitle {
+.editSupportRequestTitle {
     width: 60%;
     justify-content: center;
     color: #000000;
@@ -52,7 +52,7 @@
     top: -3vh;
     left: 20%;
 }
-.viewSupportRequestTypeDiv {
+.editSupportRequestTypeDiv {
     justify-content: center;
     align-content: center;
     color: #000;
@@ -61,9 +61,9 @@
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 3%;
-    margin-top: 6vh;
+    margin-top: 2vh;
 }
-.viewSupportRequestTypeLabel {
+.editSupportRequestTypeLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -73,7 +73,7 @@
     left: 25%;
     margin-bottom: 1vh;
 }
-.viewSupportRequestTypeDisplay {
+.editSupportRequestTypeDisplay {
     font-size: 22px;
     width: 50%;
     text-align: center;
@@ -83,7 +83,7 @@
     left: 25%;
     top: 8%;
 }
-.viewSupportRequestUserDiv {
+.editSupportRequestUserDiv {
     justify-content: center;
     align-content: center;
     color: #000;
@@ -94,7 +94,7 @@
     top: 1%;
     margin-top: 2vh;
 }
-.viewSupportRequestUserLabel {
+.editSupportRequestUserLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -104,7 +104,7 @@
     left: 25%;
     margin-bottom: 1vh;
 }
-.viewSupportRequestUserDisplay {
+.editSupportRequestUserDisplay {
     font-size: 22px;
     width: 50%;
     text-align: center;
@@ -114,7 +114,7 @@
     left: 25%;
     top: 8%;
 }
-.viewSupportRequestDescriptionDiv {
+.editSupportRequestDescriptionDiv {
     justify-content: center;
     align-content: center;
     color: #000;
@@ -125,7 +125,7 @@
     margin: 0 auto;
     top: 0;
 }
-.viewSupportRequestDescriptionLabel {
+.editSupportRequestDescriptionLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -135,7 +135,7 @@
     position: relative;
     left: 25%;
 }
-.viewSupportRequestDescriptionDisplay {
+.editSupportRequestDescriptionDisplay {
     font-size: 16px;
     width: 50%;
     height: 15vh;
@@ -145,4 +145,34 @@
     top: 8%;
     position: relative;
     left: 0;
+}
+.editSupportRequestStatusDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1%;
+}
+.editSupportRequestStatusLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    position: relative;
+    left: 25%;
+    margin-bottom: 1vh;
+}
+.editSupportRequestStatusDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    position: relative;
+    left: 25%;
+    top: 8%;
 }

@@ -1,4 +1,4 @@
-.viewTaskOverlay{
+.viewTaskOverlay {
     width: 60vw;
     height: 75vh;
     flex-shrink: 0;
@@ -8,7 +8,7 @@
     margin: 0 auto;
 }
 
-.borderViewTask{
+.borderViewTask {
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
@@ -20,7 +20,7 @@
     scrollbar-width: none;
 }
 
-.backButton{
+.backButton {
     background-color: rgba(233, 0, 0, 1);
     border: none;
     position: relative;
@@ -33,14 +33,14 @@
     color: #ffffff;
 }
 
-.backIcon{
+.backIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
     width: 1.3vw;
 }
 
-.pageTitle{
+.pageTitle {
     width: 60%;
     justify-content: center;
     color: #000000;
@@ -54,7 +54,7 @@
     left: 20%;
 }
 
-.displayTitle{
+.displayTitle {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     color: #000000;
@@ -65,7 +65,7 @@
     top: 1vh;
 }
 
-.displayData{
+.displayData {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: center;
@@ -77,7 +77,7 @@
     background-color: white;
 }
 
-.viewTextArea{
+.viewTextArea {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: left;

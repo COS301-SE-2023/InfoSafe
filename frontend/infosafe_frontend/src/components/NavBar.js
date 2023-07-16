@@ -17,8 +17,9 @@ import { UpdateTask } from './UpdateTaskPopup';
 import ViewAccessRequest from './ViewAccessRequest';
 import EditAccessRequest from './EditAccessRequest';
 import Requests from './Requests';
-import {ViewTask} from "./ViewTaskPopup";
+import { ViewTask } from './ViewTaskPopup';
 import ViewSupportRequest from './ViewSupportRequest';
+import EditSupportRequest from './EditSupportRequest';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -35,6 +36,7 @@ const NavBar = ({ systemRole }) => {
     const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
     const [viewTaskOpen, setViewTaskOpen] = useState(false);
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
+    const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -161,7 +163,7 @@ const NavBar = ({ systemRole }) => {
         );
     };
 
-/*    const ViewTaskItem = ( l ) => {
+    /*    const ViewTaskItem = ( l ) => {
         const [viewTaskOpen, setViewTaskOpen] = useState(false);
         return (
             <li key={l}>
@@ -315,17 +317,19 @@ const NavBar = ({ systemRole }) => {
             case 3: {
                 const complianceItems = [];
                 for (let l = 1; l < 30; l++) {
-                    complianceItems.push( <li key={l}>
-                        <p onClick={() => setViewTaskOpen(true)}>
-                            Task {l}
-                            {viewTaskOpen ? (
-                                <ViewTask
-                                    popupClose={() => setViewTaskOpen(false)}
-                                    popupOpen={viewTaskOpen}
-                                />
-                            ) : null}
-                        </p>
-                    </li>);
+                    complianceItems.push(
+                        <li key={l}>
+                            <p onClick={() => setViewTaskOpen(true)}>
+                                Task {l}
+                                {viewTaskOpen ? (
+                                    <ViewTask
+                                        popupClose={() => setViewTaskOpen(false)}
+                                        popupOpen={viewTaskOpen}
+                                    />
+                                ) : null}
+                            </p>
+                        </li>
+                    );
                 }
                 return (
                     <div className="display">
@@ -413,7 +417,17 @@ const NavBar = ({ systemRole }) => {
                                         popupOpen={viewSupportRequestOpen}
                                     />
                                 ) : null}
-                            </p> <FaRegEdit className="EditIcon" />
+                            </p>
+                            <FaRegEdit
+                                className="EditIcon"
+                                onClick={() => setEditSupportRequestOpen(true)}
+                            />
+                            {editSupportRequestOpen ? (
+                                <EditSupportRequest
+                                    popupClose={() => setEditSupportRequestOpen(false)}
+                                    popupOpen={editSupportRequestOpen}
+                                />
+                            ) : null}
                         </li>
                     );
                 }
@@ -429,7 +443,17 @@ const NavBar = ({ systemRole }) => {
                                         popupOpen={viewSupportRequestOpen}
                                     />
                                 ) : null}
-                            </p> <FaRegEdit className="EditIcon" />
+                            </p>{' '}
+                            <FaRegEdit
+                                className="EditIcon"
+                                onClick={() => setEditSupportRequestOpen(true)}
+                            />
+                            {editSupportRequestOpen ? (
+                                <EditSupportRequest
+                                    popupClose={() => setEditSupportRequestOpen(false)}
+                                    popupOpen={editSupportRequestOpen}
+                                />
+                            ) : null}
                         </li>
                     );
                 }
