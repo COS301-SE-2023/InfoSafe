@@ -16,6 +16,7 @@ import { CreateTask } from './CreateTaskPopup';
 import { UpdateTask } from './UpdateTaskPopup';
 import ViewAccessRequest from './ViewAccessRequest';
 import EditAccessRequest from './EditAccessRequest';
+import Requests from './Requests';
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -393,6 +394,9 @@ const NavBar = ({ systemRole }) => {
                 <li className={activeNavTab === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
                     Risks
                 </li>
+                <li className={activeNavTab === 7 ? 'active' : ''} onClick={() => handleClick(7)}>
+                    Requests
+                </li>
             </ul>
         );
     };
@@ -631,6 +635,9 @@ const NavBar = ({ systemRole }) => {
                         </div>
                     </div>
                 );
+            }
+            case 7: {
+                return <Requests userRole="ISO" />;
             }
             default:
                 return null;

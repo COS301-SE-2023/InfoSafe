@@ -1,0 +1,457 @@
+.selectRequestDiv {
+    border: 1px solid #ffffffff;
+    width: 94%;
+    height: 30%;
+    position: relative;
+    top: 4%;
+    left: 3%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.49);
+    background-color: #545454;
+}
+.selectRequest {
+    width: 40%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    left: 30%;
+}
+.selectRequestLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 16%;
+}
+.selectRequestDropdown {
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 20%;
+    font-size: 16px;
+}
+.requestDiv {
+    border: 1px solid #ffffffff;
+    width: 94%;
+    height: 60%;
+    position: relative;
+    top: 6%;
+    left: 3%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.49);
+    background-color: #545454;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.requestDiv::-webkit-scrollbar {
+    display: none;
+}
+.createSupportRequestDiv {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    top: 25%;
+}
+.supportRequestTypeLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 6%;
+}
+.supportRequestTypeDropdown {
+    width: 40%;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 7%;
+    left: 30%;
+    font-size: 16px;
+}
+.supportRequestDescriptionLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 2%;
+}
+.supportRequestDescription {
+    width: 40%;
+    height: 10vh;
+    position: relative;
+    top: 3%;
+    left: 30%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+.createSupportRequestButtonDiv {
+    position: relative;
+    margin-top: 2%;
+    width: 100%;
+    height: 10%;
+}
+.createSupportRequestButton {
+    width: fit-content;
+
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+    justify-self: center;
+    border: none;
+    margin: 0 auto;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.createAssetRequestDiv {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    top: 15%;
+}
+.createAssetRequestDeviceNameLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 2%;
+}
+.createAssetRequestDeviceNameInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 3%;
+    left: 30%;
+    height: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+}
+.createAssetRequestUserLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 3%;
+}
+.createAssetRequestUserInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 5%;
+    left: 30%;
+    height: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+}
+.createAssetRequestReasonLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 7%;
+}
+.createAssetRequestReasonInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 9%;
+    left: 30%;
+    height: 9vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    text-align: left;
+}
+.createAssetRequestDateLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 7%;
+}
+.createAssetRequestDateInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 9%;
+    left: 30%;
+    height: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+}
+.createAssetRequestButtonDiv {
+    position: relative;
+    margin-top: 2%;
+    width: 100%;
+    height: 10%;
+}
+.createAssetRequestButton {
+    width: fit-content;
+
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+    justify-self: center;
+    border: none;
+    margin: 0 auto;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.onlySupportRequestDiv {
+    border: 1px solid #ffffffff;
+    width: 60%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    left: 20%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.49);
+    background-color: #545454;
+}
+.createSupportRequestContentDiv {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.createSupportRequestContentDiv::-webkit-scrollbar {
+    display: none;
+}
+.createSupportRequestLabel {
+    width: 60%;
+    justify-content: center;
+    color: #ffffffff;
+    text-align: center;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: 2%;
+    left: 20%;
+}
+.createSupportRequestTypeLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 20%;
+}
+.createSupportRequestTypeDropdown {
+    width: 40%;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 22%;
+    left: 30%;
+    font-size: 16px;
+}
+.createSupportRequestDescriptionLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 24%;
+}
+.createSupportRequestDescription {
+    width: 40%;
+    height: 10vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 20px;
+    position: relative;
+    top: 26%;
+    left: 30%;
+}
+.supportRequestButtonDiv {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+.supportRequestButton {
+    width: fit-content;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: none;
+}
+.createAccessRequestDiv {
+    width: 100%;
+    height: 90%;
+    position: relative;
+    top: 15%;
+}
+.createAccessRequestDataScopeLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 2%;
+}
+.createAccessRequestDataScopeInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 3%;
+    left: 30%;
+    height: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+}
+.createAccessRequestUserLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 3%;
+}
+.createAccessRequestUserInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 5%;
+    left: 30%;
+    height: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+}
+.createAccessRequestReasonLabel {
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 7%;
+}
+.createAccessRequestReasonInput {
+    background-color: #ffffffff;
+    width: 40%;
+    position: relative;
+    top: 9%;
+    left: 30%;
+    height: 9vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    text-align: left;
+}
+.createAccessRequestButtonDiv {
+    position: relative;
+    margin-top: 2%;
+    width: 100%;
+    height: 10%;
+}
+.createAccessRequestButton {
+    width: fit-content;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+    justify-self: center;
+    border: none;
+    margin: 0 auto;
+    padding-left: 1%;
+    padding-right: 1%;
+}
