@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class UserRequest {
     private String first_name;
     private String last_name;
-    private String email_address;
+    private String email;
     private String password;
-    private SystemRole system_System_role_id;
+    private SystemRole system_role_id;
 }
