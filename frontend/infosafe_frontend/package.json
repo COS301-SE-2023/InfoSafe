@@ -23,8 +23,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "format": "npx eslint .",
-        "fix": "npx eslint fix",
-        "prettier": "prettier --write ."
+        "fix": "npx eslint fix"
     },
     "eslintConfig": {
         "extends": [

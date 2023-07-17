@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
+
 const data = [
     {
         role: 'Administrator',
@@ -12,22 +13,21 @@ const data = [
         roledescription: 'Access data scope, complete tasks within data scopes.'
     }
 ];
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
+
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     const [roles, setRoles] = useState(data);
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
     const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
 
-    const [ds_name, setDsName] = useState('');
-    const [description, setDsDesc] = useState('');
-    const [role_name, setRoleName] = useState('General User');
-    const [role_description, setRoleDesc] = useState('Can use basic functionality of the product');
-    const [date_captured, setDateCaptured] = useState(date);
-    const [data_custodian, setDataCustodian] = useState('LoggedIn User');
-    const [administrator, setAdmin] = useState('Admin1');
-    const [status, setStatus] = useState('Pending Approval');
+    const[ds_name,setDsName]=useState('')
+    const[description,setDsDesc]=useState('')
+    const[role_name,setRoleName]=useState('General User')
+    const[role_description,setRoleDesc]=useState('Can use basic functionality of the product')
+    const[date_captured,setDateCaptured]=useState(date)
+    const[data_custodian,setDataCustodian]=useState('LoggedIn User')
+    const[administrator,setAdmin]=useState('Admin1')
+    const[status,setStatus]=useState('Pending Approval')
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -42,33 +42,26 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
         }
     };
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        const datascope = {
-            ds_name,
-            description,
-            role_name,
-            role_description,
-            date_captured,
-            data_custodian,
-            administrator,
-            status
-        };
-        console.log(datascope);
-        fetch('http://localhost:8080/api/datascope/addDs', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datascope)
-        }).then(() => {
-            console.log('New DataScope added');
-        });
-        popupClose();
+    const handleClick=(e)=> {
+        e.preventDefault()
+        const datascope = {ds_name, description, role_name, role_description, date_captured, data_custodian, administrator, status}
+        console.log(datascope)
+        fetch("http://localhost:8080/api/datascope/addDs", {
+            method:"POST",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(datascope)
+        }).then(()=>{
+            console.log("New DataScope added")
+        })
+        popupClose()
     };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
-                <div className="createDatascopeBorder">
+                <div className="createdatascopeBorder">
                     <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>
@@ -78,19 +71,11 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             <div className="datascope_info">
                                 <div className="datascope_name">
                                     <p className="datascopeNameLabel">Name</p>
-                                    <input
-                                        className="datascopeNameInput"
-                                        value={ds_name}
-                                        onChange={(e) => setDsName(e.target.value)}
-                                    />
+                                    <input className="datascopeNameInput" value={ds_name} onChange={(e)=>setDsName(e.target.value)}/>
                                 </div>
-                                <div className="datascopeDescription">
+                                <div className="datascope_description">
                                     <p className="descriptionLabel">Description</p>
-                                    <textarea
-                                        className="descriptionInput"
-                                        value={description}
-                                        onChange={(e) => setDsDesc(e.target.value)}
-                                    />
+                                    <textarea className="descriptionInput" value={description} onChange={(e)=>setDsDesc(e.target.value)}/>
                                 </div>
                                 <div className="datascope_roles">
                                     <p className="roleLabel">Data Scope Roles</p>
@@ -122,16 +107,16 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             </div>
 
                             <div className="datascope_addrole">
-                                <p className="AddRoleNameLabel">Role</p>
+                                <p className="addrolenameLabel">Role</p>
                                 <input
-                                    className="AddRoleNameInput"
+                                    className="addrolenameInput"
                                     name="role"
                                     value={newRole.role}
                                     onChange={handleInputChange}
                                 />
-                                <p className="AddRoleDescriptionLabel">Role Description</p>
+                                <p className="addroledescriptionLabel">Role Description</p>
                                 <textarea
-                                    className="AddRoleDescriptionInput"
+                                    className="addroledescriptionInput"
                                     name="roledescription"
                                     value={newRole.roledescription}
                                     onChange={handleInputChange}
