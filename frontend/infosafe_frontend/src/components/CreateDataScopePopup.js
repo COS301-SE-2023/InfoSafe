@@ -48,7 +48,9 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
         console.log(datascope)
         fetch("http://localhost:8080/api/datascope/addDs", {
             method:"POST",
-            headers:{"Content-Type":"application/json"},
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
             body:JSON.stringify(datascope)
         }).then(()=>{
             console.log("New DataScope added")

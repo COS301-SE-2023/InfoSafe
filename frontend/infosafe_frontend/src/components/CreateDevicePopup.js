@@ -21,7 +21,9 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
         console.log(asset)
         fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",
-            headers:{"Content-Type":"application/json"},
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
             body:JSON.stringify(asset)
         }).then(()=>{
             console.log("New Asset added")

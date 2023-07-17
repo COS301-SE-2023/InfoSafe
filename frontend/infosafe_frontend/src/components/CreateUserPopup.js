@@ -27,7 +27,9 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         console.log(user)
         fetch("http://localhost:8080/api/auth/add", {
             method:"POST",
-            headers:{"Content-Type":"application/json"},
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
             body:JSON.stringify(user)
         }).then(()=>{
             console.log("New User added")
