@@ -31,39 +31,45 @@ function Login(){
 
     return (
         <div className="background">
-            <div className="panel">
-                <div className="title">
-                    <p className="logo">Login</p>
+            <div className="flipPanel">
+                <div className="panel">
+                    <div className="panelFront"></div>
+                    <div className="panelBack">
+                        <div className="title">
+                            <p className="loginTitle">Login</p>
+                        </div>
+                        <div className="credentials">
+                            <div className="user">
+                                <p className="username">Username</p>
+                                <input
+                                    data-testid="userIn"
+                                    className="untxt"
+                                    type="text"
+                                    id="username"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                ></input>
+                            </div>
+                            <div className="user_password">
+                                <p className="pass">Password</p>
+                                <input
+                                    data-testid="passIn"
+                                    className="pwtxt"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                ></input>
+                            </div>
+                        </div>
+                        <a className="forgot">Forgot Password?</a>
+                        <button data-testid="btnTest" className="btnLogin" onClick={handleLogin}>
+                            Login
+                        </button>
+                    </div>
                 </div>
-                <div className="user">
-                    <p className="username">Username</p>
-                    <input
-                        data-testid="userIn"
-                        className="untxt"
-                        type="text"
-                        id="username"
-                        name="email"
-                        value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
-                    ></input>
-                </div>
-                <div className="user_password">
-                    <p className="pass">Password</p>
-                    <input
-                        data-testid="passIn"
-                        className="pwtxt"
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
-                    ></input>
-                </div>
-
-                <a className="forgot">Forgot Password?</a>
-                <button data-testid="btnTest" className="btnLogin" onClick={handleLogin}>
-                    Login
-                </button>
             </div>
         </div>
     );
