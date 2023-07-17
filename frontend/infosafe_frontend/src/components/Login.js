@@ -9,9 +9,7 @@ function Login(){
         const login = {email, password}
         fetch("http://localhost:8080/api/auth/login", {
             method:"POST",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            },
+            headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)
         }).then((response) => {
             //console.log(response);
