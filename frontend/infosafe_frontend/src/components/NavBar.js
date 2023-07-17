@@ -42,7 +42,7 @@ const NavBar = ({ systemRole }) => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/auth/getAll', {
+        fetch('http://localhost:8080/api/user/getAll', {
             headers: {
                 Authorization: sessionStorage.getItem('accessToken')
             }
@@ -54,7 +54,7 @@ const NavBar = ({ systemRole }) => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/auth/getDs', {
+        fetch('http://localhost:8080/api/datascope/getDs', {
             headers: {
                 Authorization: sessionStorage.getItem('accessToken')
             }
@@ -66,7 +66,7 @@ const NavBar = ({ systemRole }) => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/auth/getAsset', {
+        fetch('http://localhost:8080/api/asset/getAsset', {
             headers: {
                 Authorization: sessionStorage.getItem('accessToken')
             }
