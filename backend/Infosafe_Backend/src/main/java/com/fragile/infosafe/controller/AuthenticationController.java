@@ -3,12 +3,7 @@ package com.fragile.infosafe.controller;
 import com.fragile.infosafe.auth.AuthenticationRequest;
 import com.fragile.infosafe.auth.AuthenticationResponse;
 import com.fragile.infosafe.auth.AuthenticationService;
-import com.fragile.infosafe.model.Asset;
-import com.fragile.infosafe.requests.AssetRequest;
-import com.fragile.infosafe.requests.RegisterRequest;
-import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.model.User;
-import com.fragile.infosafe.requests.DataScopeRequest;
+import com.fragile.infosafe.requests.UserRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
 
 
 @RestController
@@ -29,7 +23,7 @@ public class AuthenticationController {
     private final AuthenticationService service;
     @PostMapping("/add")
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
+            @RequestBody UserRequest request
     ) {
         return ResponseEntity.ok(service.register(request));
     }

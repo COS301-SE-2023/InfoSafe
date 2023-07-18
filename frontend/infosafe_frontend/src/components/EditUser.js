@@ -59,7 +59,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                         </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
-                            <select className="roleDropdown" name="role">
+                            <select className="roleDropdown" name="systemRole">
                                 {makeOptions()}
                             </select>
                         </div>

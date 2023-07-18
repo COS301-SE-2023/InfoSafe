@@ -7,17 +7,18 @@ import Dropdown from "react-dropdown";
 
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
-    const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-    const[asset_name,setAssetName]=useState('')
-    const[asset_description,setAssetDesc]=useState('')
-    const[assignee,setAssignee]=useState('')
-    const[date_acquired,setDate]=useState(date)
-    const[status,setStatus]=useState('CLEAN')
+    // const current = new Date();
+    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const[serial_number,setSerial_number]=useState('')
+    const[type_id,setType_id]=useState('')
+    const[asset_description,setAsset_description]=useState('')
+    const[availability]=useState('1')
+    const[clean_status,setClean_status]=useState('CLEAN')
+    const[new_device]=useState('1')
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const asset = {asset_name, asset_description, assignee, date_acquired, status}
+        const asset = {serial_number, type_id, asset_description, availability, clean_status, new_device}
         console.log(asset)
         fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",
@@ -40,18 +41,18 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                     <form>
                         <p className="createDeviceLabel">Add Device</p>
                         <p className="deviceTypeLabel">Device Type</p>
-                        <input className="deviceTypeInput" value={asset_name} onChange={(e)=>setAssetName(e.target.value)}/>
+                        <input className="deviceTypeInput" value={type_id} onChange={(e)=>setType_id(e.target.value)}/>
                         <p className="deviceDescriptionLabel">Device Description</p>
-                        <textarea className="deviceDescriptionInput" value={asset_description} onChange={(e)=>setAssetDesc(e.target.value)}/>
+                        <textarea className="deviceDescriptionInput" value={asset_description} onChange={(e)=>setAsset_description(e.target.value)}/>
                         <p className="assignedUserLabel">Assigned User</p>
-                        <input className="assignedUserInput" value={assignee} onChange={(e)=>setAssignee(e.target.value)}/>
+                        <input className="assignedUserInput" value={serial_number} onChange={(e)=>setSerial_number(e.target.value)}/>
                         <p className="deviceStatusLabel">Status</p>
                         <Dropdown
                           options={STATUS_OPTIONS}
                           value={STATUS_OPTIONS[0]}
                           className="statusDropdown"
                           name="status"
-                          onChange={(selectedOption) => setStatus(selectedOption.value)}
+                          onChange={(selectedOption) => setClean_status(selectedOption.value)}
                         />
                         <br />
                         <button className="createDevice_finish" onClick={handleClick}>

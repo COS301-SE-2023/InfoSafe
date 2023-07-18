@@ -1,13 +1,7 @@
 package com.fragile.infosafe.auth;
 
 import com.fragile.infosafe.config.JwtService;
-import com.fragile.infosafe.model.Asset;
-import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.repository.AssetRepository;
-import com.fragile.infosafe.repository.DataScopeRepository;
-import com.fragile.infosafe.requests.AssetRequest;
-import com.fragile.infosafe.requests.DataScopeRequest;
-import com.fragile.infosafe.requests.RegisterRequest;
+import com.fragile.infosafe.requests.UserRequest;
 import com.fragile.infosafe.token.Token;
 import com.fragile.infosafe.token.TokenRepository;
 import com.fragile.infosafe.token.TokenType;
@@ -18,8 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.AuthenticationException;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -38,13 +29,13 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(UserRequest request) {
         var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .first_name(request.getFirst_name())
+                .last_name(request.getLast_name())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .system_role_id(request.getSystem_role_id())
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
@@ -63,11 +54,11 @@ public class AuthenticationService {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
+                            request.getEmail_address(),
                             request.getPassword()
                     )
             );
-            var user = repository.findByEmail(request.getEmail())
+            var user = repository.findByEmail(request.getEmail_address())
                     .orElseThrow();
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
@@ -89,7 +80,7 @@ public class AuthenticationService {
         var token = Token.builder()
                 .user(user)
                 .token(jwtToken)
-                .tokenType(TokenType.BEARER)
+                .token_type(TokenType.BEARER)
                 .expired(false)
                 .revoked(false)
                 .build();
@@ -97,7 +88,7 @@ public class AuthenticationService {
     }
 
     private void revokeAllUserTokens(User user) {
-        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUser_id());
         if (validUserTokens.isEmpty())
             return;
         validUserTokens.forEach(token -> {
