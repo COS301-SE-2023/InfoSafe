@@ -11,6 +11,8 @@ jobs:
           fetch-depth: 0
       - name: Run Linter
         uses: github/super-linter@v4
+        with:
+          eslint: ../../
         env:
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false

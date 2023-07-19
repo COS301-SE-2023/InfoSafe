@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "FrAgile",
   "scripts": {
-    "cyp": "cypress open"
+    "cyp": "cypress open",
+    "format": "eslint frontend/**/*.js backend/**/*.java",
+    "fix": "eslint frontend/**/*.js backend/**/*.java --fix"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.15.0"
+    "cypress": "^12.15.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2"
   }
 }
