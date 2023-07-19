@@ -6,6 +6,10 @@ import ISO from './ISO';
 /* eslint-disable  no-unused-vars */
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(0);
+    const ISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
+    const DISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
+    const DataCustodianTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
+    const TabNames = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests'];
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -33,47 +37,48 @@ const NavBar = ({ systemRole }) => {
         if (systemRole === 'ISO') {
             return (
                 <div className="navbar">
-                    {displayISOTabs()}
-                    {displayISOPage()}
+                    {displayTabs({viewTabs: ISOTabs})}
+                    <ISO currentTab={activeNavTab} />;
+                </div>
+            );
+        }
+
+        if (systemRole === 'DISO') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: DISOTabs})}
+                    <ISO currentTab={activeNavTab} />;
+                </div>
+            );
+        }
+
+        if (systemRole === 'Data Custodian') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: DataCustodianTabs})}
+                    <ISO currentTab={activeNavTab} />;
                 </div>
             );
         }
     };
 
-    const displayISOTabs = () => {
+    const displayTabs = ({viewTabs}) => {
         return (
             <ul className="tabs">
-                <li className={activeNavTab === 0 ? 'active' : ''} onClick={() => handleClick(0)}>
-                    Users
-                </li>
-                <li className={activeNavTab === 1 ? 'active' : ''} onClick={() => handleClick(1)}>
-                    Data Scopes
-                </li>
-                <li className={activeNavTab === 2 ? 'active' : ''} onClick={() => handleClick(2)}>
-                    Access Requests
-                </li>
-                <li className={activeNavTab === 3 ? 'active' : ''} onClick={() => handleClick(3)}>
-                    Compliance Matrix
-                </li>
-                <li className={activeNavTab === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
-                    Devices
-                </li>
-                <li className={activeNavTab === 5 ? 'active' : ''} onClick={() => handleClick(5)}>
-                    Support Requests
-                </li>
-                <li className={activeNavTab === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
-                    Risks
-                </li>
-                <li className={activeNavTab === 7 ? 'active' : ''} onClick={() => handleClick(7)}>
-                    Requests
-                </li>
+                {viewTabs.map((i) => (
+                    <li
+                        key={i}
+                        className={activeNavTab === i ? 'active' : ''}
+                        onClick={() => handleClick(i)}
+                    >
+                        {TabNames[i]}
+                    </li>
+                ))}
             </ul>
         );
     };
-    const displayISOPage = () => {
-        return <ISO currentTab={activeNavTab} />;
-    };
 
     return displayPage();
+
 };
 export default NavBar;
