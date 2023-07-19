@@ -1,4 +1,4 @@
-import '../styling/ISO.css';
+import '../styling/DISO.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
