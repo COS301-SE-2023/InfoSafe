@@ -76,7 +76,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                                 </div>
                                 <div className="datascope_description">
                                     <p className="descriptionLabel">Description</p>
-                                    <textarea className="descriptionInput" value={description} onChange={(e)=>setDsDesc(e.target.value)}/>
+                                    <textarea className="createDataScopeDescriptionInput" value={description} onChange={(e)=>setDsDesc(e.target.value)}/>
                                 </div>
                                 <div className="datascope_roles">
                                     <p className="roleLabel">Data Scope Roles</p>
@@ -108,16 +108,16 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             </div>
 
                             <div className="datascope_addrole">
-                                <p className="addrolenameLabel">Role</p>
+                                <p className="AddRoleNameLabel">Role</p>
                                 <input
-                                    className="addrolenameInput"
+                                    className="AddRoleNameInput"
                                     name="role"
                                     value={newRole.role}
                                     onChange={handleInputChange}
                                 />
-                                <p className="addroledescriptionLabel">Role Description</p>
+                                <p className="AddRoleDescriptionLabel">Role Description</p>
                                 <textarea
-                                    className="addroledescriptionInput"
+                                    className="AddRoleDescriptionInput"
                                     name="roledescription"
                                     value={newRole.roledescription}
                                     onChange={handleInputChange}

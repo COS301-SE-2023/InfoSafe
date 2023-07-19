@@ -80,14 +80,14 @@
     position: relative;
     top: 1vh;
 }
-.descriptionInput {
+.createDataScopeDescriptionInput {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     text-align: left;
     border: none;
-    left: 0;
+    left: 25%;
     position: relative;
-    width: 100%;
+    width: 50%;
     margin-top: 0;
 }
 .roleLabel {
