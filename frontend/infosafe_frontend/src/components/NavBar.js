@@ -20,6 +20,8 @@ import Requests from './Requests';
 import { ViewTask } from './ViewTaskPopup';
 import ViewSupportRequest from './ViewSupportRequest';
 import EditSupportRequest from './EditSupportRequest';
+import {ReviewRisk} from "./ReviewRiskPopup";
+import {CreateRisk} from "./CreateRiskPopup";
 
 /* eslint-disable react/prop-types */
 const NavBar = ({ systemRole }) => {
@@ -31,12 +33,14 @@ const NavBar = ({ systemRole }) => {
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
+    const [createRiskOpen, setCreateRiskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
     const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
     const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
     const [viewTaskOpen, setViewTaskOpen] = useState(false);
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
     const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
+    const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
@@ -490,10 +494,16 @@ const NavBar = ({ systemRole }) => {
                             Risk {y}
                             <button
                                 className="reviewRiskButton"
-                                onClick={() => console.log('Review Risk')}
+                                onClick={() => setReviewRiskOpen(true)}
                             >
                                 Review
                             </button>
+                            {reviewRiskOpen ? (
+                                <ReviewRisk
+                                    popupClose={() => setReviewRiskOpen(false)}
+                                    popupOpen={reviewRiskOpen}
+                                />
+                            ) : null}
                         </li>
                     );
                 }
@@ -506,16 +516,16 @@ const NavBar = ({ systemRole }) => {
                             <button
                                 className="CreateRiskButton"
                                 data-testid="CreateRiskButton"
-                                // onClick={() => setCreateRiskOpen(true)}
+                                onClick={() => setCreateRiskOpen(true)}
                             >
                                 Create Risk
                             </button>
-                            {/*{createRiskOpen ? (*/}
-                            {/*    <CreateRiskPopup*/}
-                            {/*        popupClose={() => setCreateRiskOpen(false)}*/}
-                            {/*        popupOpen={createRiskOpen}*/}
-                            {/*    />*/}
-                            {/*) : null}*/}
+                            {createRiskOpen ? (
+                                <CreateRisk
+                                    popupClose={() => setCreateRiskOpen(false)}
+                                    popupOpen={createRiskOpen}
+                                />
+                            ) : null}
                         </div>
                     </div>
                 );
