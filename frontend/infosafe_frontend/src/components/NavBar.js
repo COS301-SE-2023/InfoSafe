@@ -1,15 +1,18 @@
 import '../styling/NavBar.css';
-import React, {useState } from 'react';
+import React, {useState} from 'react';
 import ISO from './ISO';
 import DISO from './DISO';
+import DataCustodian from './DataCustodian';
 
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 const NavBar = ({ systemRole }) => {
-    const [activeNavTab, activate] = useState(0);
+    const [activeNavTab, activate] = useState(
+        systemRole === 'ISO' || systemRole === 'DISO' || systemRole === 'System Administrator' ? 0 : 1
+    );
     const ISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
     const DISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
-    const DataCustodianTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
+    const DataCustodianTabs = [ 1, 2, 3, 4, 5, 6, 7];
     const TabNames = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests'];
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -57,7 +60,7 @@ const NavBar = ({ systemRole }) => {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: DataCustodianTabs})}
-                    <ISO currentTab={activeNavTab} />;
+                    <DataCustodian currentTab={activeNavTab} />;
                 </div>
             );
         }
