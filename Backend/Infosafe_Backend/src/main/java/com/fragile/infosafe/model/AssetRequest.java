@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 import org.springframework.context.annotation.Primary;
 
 @Data
@@ -18,7 +19,7 @@ public class AssetRequest {
     private int asset_request_id;
     private int user_id;
     private String reason;
-    private String desired_date;
+    private Date desired_date;
     private String request_status;
 
     public int getAsset_request_id() { return asset_request_id; }
@@ -33,9 +34,9 @@ public class AssetRequest {
 
     public void setReason(String reason) { this.reason = reason; }
 
-    public String getDesired_date() { return desired_date; }
+    public Date getDesired_date() { return desired_date; }
 
-    public void setDesired_date(String desired_date) { this.desired_date = desired_date; }
+    public void setDesired_date(Date desired_date) { this.desired_date = desired_date; }
 
     public String getRequest_status() { return request_status; }
 
