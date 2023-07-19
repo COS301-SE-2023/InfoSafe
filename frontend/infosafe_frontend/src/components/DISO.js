@@ -21,7 +21,7 @@ import Requests from './Requests';
 import '../styling/Dropdown.css';
 /* eslint-disable react/prop-types */
 
-const ISO = ({currentTab}) => {
+const DISO = ({currentTab}) => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const [showUser, setShowUser] = useState([]);
     const [showDatascope, setShowDatascope] = useState([]);
@@ -450,4 +450,4 @@ const ISO = ({currentTab}) => {
 
 };
 
-export default ISO;
+export default DISO;
