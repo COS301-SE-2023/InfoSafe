@@ -502,6 +502,21 @@ const NavBar = ({ systemRole }) => {
                         <div className="risks">
                             <ul className="risksList">{risks}</ul>
                         </div>
+                        <div className="CreateRiskButtonDiv">
+                            <button
+                                className="CreateRiskButton"
+                                data-testid="CreateRiskButton"
+                                // onClick={() => setCreateRiskOpen(true)}
+                            >
+                                Create Risk
+                            </button>
+                            {/*{createRiskOpen ? (*/}
+                            {/*    <CreateRiskPopup*/}
+                            {/*        popupClose={() => setCreateRiskOpen(false)}*/}
+                            {/*        popupOpen={createRiskOpen}*/}
+                            {/*    />*/}
+                            {/*) : null}*/}
+                        </div>
                     </div>
                 );
             }
