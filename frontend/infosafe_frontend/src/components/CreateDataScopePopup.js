@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const data = [
     {
         role: 'Administrator',
@@ -61,7 +62,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
-                <div className="createdatascopeBorder">
+                <div className="createDataScopeBorder">
                     <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>

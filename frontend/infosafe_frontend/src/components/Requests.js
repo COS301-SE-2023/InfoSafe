@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown';
 import '../styling/Requests.css';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-
+/*eslint-disable react-hooks/rules-of-hooks */
 const displayISORequests = () => {
     const REQUESTTYPES = ['Support Request', 'Asset Request'];
     const SUPPORTOPTIONS = [

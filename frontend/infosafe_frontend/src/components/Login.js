@@ -62,7 +62,7 @@ function Login(){
                                 ></input>
                             </div>
                         </div>
-                        <a className="forgot">Forgot Password?</a>
+                        <a className="forgot" href="www.youtube.com/watch?v=dQw4w9WgXcQ">Forgot Password?</a>
                         <button data-testid="btnTest" className="btnLogin" onClick={handleLogin}>
                             Login
                         </button>

@@ -4,7 +4,8 @@ import Popup from 'reactjs-popup';
 
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     const current = new Date();

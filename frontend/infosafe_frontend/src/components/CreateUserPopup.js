@@ -64,12 +64,12 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
-                <div className="createuserBorder">
+                <div className="createUserBorder">
                     <form>
                         <button className="backButton" onClick={popupClose}>
                             <IoArrowBackOutline className="backIcon" />
                         </button>
-                        <p className="createuserLabel">User Creation</p>
+                        <p className="createUserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" data-testid="nameInput" name="name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
@@ -87,7 +87,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                             name="role"
                             onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
-                        <button className="createuser_finish" data-testid="createuser_finish"  onClick={handleClick}>
+                        <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
                             Submit
                         </button>
                     </form>
