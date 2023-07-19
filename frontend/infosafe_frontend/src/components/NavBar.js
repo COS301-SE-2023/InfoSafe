@@ -1,6 +1,7 @@
 import '../styling/NavBar.css';
 import React, {useState } from 'react';
 import ISO from './ISO';
+import DISO from './DISO';
 
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
@@ -47,7 +48,7 @@ const NavBar = ({ systemRole }) => {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: DISOTabs})}
-                    <ISO currentTab={activeNavTab} />;
+                    <DISO currentTab={activeNavTab} />;
                 </div>
             );
         }
