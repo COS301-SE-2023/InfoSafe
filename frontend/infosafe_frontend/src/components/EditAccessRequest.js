@@ -9,7 +9,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 const EditAccessRequest = ({ popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
     return (
-        <Popup open={popupOpen} closeOnDocumentPopup={false} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editAccessRequestPopup">
                 <div className="editAccessRequestPopupBorder">
                     <button className="editAccessRequestBackButton" onClick={popupClose}>
