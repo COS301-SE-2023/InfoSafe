@@ -42,8 +42,8 @@ export const ReviewRisk = ({ popupClose, popupOpen }) => {
                         <Dropdown
                             options={STATUS}
                             value={STATUS[0]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className="reviewRiskStatusDropdown"
+                            name="reviewRiskStatusDropdown"
                         />
                         <div>
                             <button className="submitButton" type="submit" onClick={popupClose}>
