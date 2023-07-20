@@ -4,12 +4,9 @@ import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-const makeOptions = () => {
-    var options = [];
-    const STATUS = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
-    STATUS.map((opt) => options.push(<option>{opt}</option>));
-    return options;
-};
+import Dropdown from 'react-dropdown';
+const STATUS = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
+
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     return (
@@ -33,9 +30,14 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                         />
                         <br />
                         <p className="editStatusLabel">Status</p>
-                        <select className="status_dropdown" name="status_dropdwon">
-                            {makeOptions()}
-                        </select>
+                        <Dropdown
+                            options={STATUS}
+                            value={STATUS[0]}
+                            className="editDSStatusDropdown"
+                            data-testid="editDSStatusDropdown"
+
+                            //onChange={(selectedOption) => setRole(selectedOption.value)}
+                        />
                         <button className="editdatascope_finish" onClick={popupClose}>
                             Submit
                         </button>
