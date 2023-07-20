@@ -13,6 +13,12 @@
     height: 70vh;
     position: relative;
     top: 2.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.viewDeviceBorder::-webkit-scrollbar{
+    display: none;
 }
 .backButton {
     background-color: rgba(233, 0, 0, 1);
@@ -32,7 +38,7 @@
     height: 3vh;
     width: 1.3vw;
 }
-.viewDeviceTitle {
+.viewDeviceLabel {
     width: 60%;
     justify-content: center;
     color: #000000;
@@ -45,19 +51,7 @@
     top: -2vh;
     left: 20%;
 }
-.viewDeviceTypeDiv {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 1vh;
-    margin-top: 3vh;
-}
-.deviceTypeLabel {
+.viewDeviceNameLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -65,101 +59,175 @@
     text-align: center;
     border: none;
 }
-.deviceType {
+.viewDeviceName{
     font-size: 22px;
     width: 50%;
     text-align: center;
     border: none;
-    margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
-}
-.viewDeviceDescriptionDiv {
     margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Roboto', sans-serif;
     position: relative;
-    margin-top: 3vh;
+    top: 1%;
 }
-.deviceDescriptionLabel {
+.viewDeviceTypeLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
-}
-.viewDescription {
-    font-size: 15px;
-    width: 50%;
-    height: 10vh;
-    text-align: center;
-    border: none;
-    margin: 0 auto;
-    background-color: #ffffff;
-    margin-top: 2vh;
-}
-.viewDeviceStatusDiv {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
     position: relative;
-    margin-top: 3vh;
+    top: 2%;
 }
-.statusLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    border: none;
-}
-.viewStatus {
-    text-transform: uppercase;
+.viewDeviceType{
     font-size: 22px;
     width: 50%;
     text-align: center;
     border: none;
-    margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 1vh;
-}
-.viewDeviceAssignedDiv {
     margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
     position: relative;
-    margin-top: 3vh;
+    top: 3%;
 }
-.assignedLabel {
+.viewDeviceDescriptionLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
+    position: relative;
+    top: 4%;
 }
-.viewAssigned {
-    text-transform: uppercase;
-    font-size: 22px;
+.viewDeviceDescription{
+    font-size: 16px;
     width: 50%;
-    text-align: center;
+    height: 8vh;
+    text-align: left;
     border: none;
-    margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 1vh;
+    margin: 0 auto;
+    position: relative;
+    top: 5%;
+    left: 25%;
+}
+.viewDeviceNewLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 5%;
+}
+.viewDeviceNew{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 6%;
+}
+.viewDeviceNewLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 5%;
+}
+.viewDeviceNew{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 6%;
+}
+.viewDeviceAvailabilityLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 6%;
+}
+.viewDeviceAvailability{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 7%;
+}
+.viewDeviceStatusLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 8%;
+}
+.viewDeviceStatus{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 9%;
+}
+.viewDeviceCurrentCustodianLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 10%;
+}
+.viewDeviceCurrentCustodian{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 11%;
+}
+.viewDevicePreviousCustodianLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 12%;
+}
+.viewDevicePreviousCustodian{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 13%;
 }
