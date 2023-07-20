@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import ISO from './ISO';
 import DISO from './DISO';
 import DataCustodian from './DataCustodian';
+import AssetManager from "./AssetManager";
 
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
@@ -13,6 +14,7 @@ const NavBar = ({ systemRole }) => {
     const ISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
     const DISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
     const DataCustodianTabs = [ 1, 2, 3, 4, 5, 6, 7];
+    const AssetManagerTabs = [ 1, 3, 4, 5, 7];
     const TabNames = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests'];
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
@@ -61,6 +63,15 @@ const NavBar = ({ systemRole }) => {
                 <div className="navbar">
                     {displayTabs({viewTabs: DataCustodianTabs})}
                     <DataCustodian currentTab={activeNavTab} />;
+                </div>
+            );
+        }
+
+        if (systemRole === 'Asset Manager') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: AssetManagerTabs})}
+                    <AssetManager currentTab={activeNavTab} />;
                 </div>
             );
         }
