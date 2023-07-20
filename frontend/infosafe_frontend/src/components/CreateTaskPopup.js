@@ -22,22 +22,22 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                         <Dropdown
                             options={TASK_TYPES}
                             value={TASK_TYPES[1]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className="createTaskTypeDropdown"
+                            name="createTaskTypeDropdown"
                         />
                         <p className="inputTitle">Data Scope</p>
                         <Dropdown
                             options={DATA_SCOPES}
                             value={DATA_SCOPES[1]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className="createTaskDataScopeDropdown"
+                            name="createTaskDataScopeDropdown"
                         />
                         <p className="inputTitle">Assignee</p>
                         <Dropdown
                             options={USER_LIST}
                             value={USER_LIST[1]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className="createTaskAssigneeDropdown"
+                            name="createTaskAssigneeDropdown"
                         />
                         <p className="inputTitle">Task Description</p>
                         <textarea className="inputTextArea" />

@@ -97,3 +97,32 @@
     border: none;
     margin: 5% auto 0;
 }
+.createTaskTypeDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    align-content: center;
+    height: 4vh;
+}
+.createTaskDataScopeDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    align-content: center;
+    height: 4vh;
+}.createTaskAssigneeDropdown {
+     text-transform: uppercase;
+     font-size: 18px;
+     width: 50%;
+     margin: 0 auto;
+     text-align: center;
+     border: none;
+     align-content: center;
+     height: 4vh;
+ }
