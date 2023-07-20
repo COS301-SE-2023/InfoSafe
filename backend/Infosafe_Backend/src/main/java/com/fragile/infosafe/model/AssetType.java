@@ -18,12 +18,8 @@ public class AssetType {
 
     @Id
     private int asset_type_id;
-
     private String type_name;
-
     public int getAssetTypeID() { return this.asset_type_id; }
-
     public String getTypeName() { return this.type_name; }
-
     public void setTypeName(String name)  {this.type_name = name;}
 }
