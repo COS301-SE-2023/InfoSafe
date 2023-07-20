@@ -165,12 +165,12 @@
     position: relative;
     top: 1vh;
 }
-.statusDropdown {
+.createDeviceStatusDropdown {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     text-align: center;
     border: none;
-    left: 0%;
+    left: 25%;
     position: relative;
     width: 50%;
     margin-top: 1.5%;

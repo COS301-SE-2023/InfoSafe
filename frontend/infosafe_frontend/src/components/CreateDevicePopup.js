@@ -72,7 +72,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <Dropdown
                           options={STATUS_OPTIONS}
                           value={STATUS_OPTIONS[0]}
-                          className="statusDropdown"
+                          className="createDeviceStatusDropdown"
                           name="status"
                           onChange={(selectedOption) => setStatus(selectedOption.value)}
                         />
