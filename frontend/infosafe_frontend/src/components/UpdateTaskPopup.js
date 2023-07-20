@@ -21,15 +21,15 @@ export const UpdateTask = ({ popupClose, popupOpen }) => {
                         <Dropdown
                             options={TASK_ID}
                             value={TASK_ID[0]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className="updateTaskIDDropdown"
+                            name="updateTaskIDDropdown"
                         />
                         <p className="inputTitle">Assignee</p>
                         <Dropdown
                             options={USER_LIST}
                             value={USER_LIST[0]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className="updateTaskAssigneeDropdown"
+                            name="updateTaskAssigneeDropdown"
                         />
                         <p className="inputTitle">Task Description</p>
                         <textarea className="inputTextArea" />

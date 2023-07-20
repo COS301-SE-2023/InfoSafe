@@ -97,3 +97,23 @@
     border: none;
     margin: 5% auto 0;
 }
+.updateTaskIDDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    align-content: center;
+    height: 4vh;
+}
+.updateTaskAssigneeDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    align-content: center;
+    height: 4vh;
+}
