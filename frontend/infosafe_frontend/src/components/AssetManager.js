@@ -219,6 +219,34 @@ const AssetManager = ({currentTab}) => {
     {
         return <Requests userRole="Asset Manager" />;
     }
+    if (currentTab === 8)
+    {
+        const assetRequests = [];
+        for (let i = 1; i < 30; i++) {
+            assetRequests.push(
+                <li key={i}>
+                    <p>
+                        Asset Request {i}
+                        <button
+                            className="reviewAssetRequestButton"
+                            // onClick={() => setAssetRequestOpen(true)}
+                        >
+                            Review
+                        </button>
+
+                    </p>
+                </li>
+            );
+        }
+
+        return (
+            <div className="display">
+                <div className="assetRequests">
+                    <ul className="assetRequestsList">{assetRequests}</ul>
+                </div>
+            </div>
+        );
+    }
 
 
 };
