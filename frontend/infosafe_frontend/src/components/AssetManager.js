@@ -11,6 +11,7 @@ import Requests from './Requests';
 import '../styling/Dropdown.css';
 import ViewDataScope from "./ViewDataScope";
 import {EditDataScopePopup} from "./EditDataScopePopup";
+import ViewAssetRequest from './ViewAssetRequest';
 /* eslint-disable react/prop-types */
 
 const AssetManager = ({currentTab}) => {
@@ -19,6 +20,7 @@ const AssetManager = ({currentTab}) => {
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
     const [showDatascope, setShowDatascope] = useState([]);
+    const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
@@ -225,8 +227,14 @@ const AssetManager = ({currentTab}) => {
         for (let i = 1; i < 30; i++) {
             assetRequests.push(
                 <li key={i}>
-                    <p>
+                    <p onClick={() => setViewAssetRequestOpen(true)}>
                         Asset Request {i}
+                        {viewAssetRequestOpen ? (
+                        <ViewAssetRequest
+                                popupClose={() => setViewAssetRequestOpen(false)}
+                                popupOpen={viewAssetRequestOpen}
+                            />
+                        ) : null}
                         <button
                             className="reviewAssetRequestButton"
                             // onClick={() => setAssetRequestOpen(true)}
