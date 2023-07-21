@@ -20,7 +20,7 @@ public class AssignedAsset {
     private int asset_id;
 
     private int user_id;
-    
+
     public int getAssetID() { return this.asset_id; }
 
     public int getUserID() { return this.user_id; }
