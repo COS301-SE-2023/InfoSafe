@@ -1,11 +1,13 @@
 package com.fragile.infosafe.controller;
 
+import com.fragile.infosafe.auth.AuthenticationResponse;
+import com.fragile.infosafe.auth.AuthenticationService;
 import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,9 +15,17 @@ import java.util.List;
 @RequestMapping("api/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService service;
-    @GetMapping("/getAll")
-    public List<User> userlist() { return service.getAllUsers(); }
+    private final UserService userService;
+    private final AuthenticationService authService;
 
+    @GetMapping("/getAll")
+    public List<User> userlist() { return userService.getAllUsers(); }
+
+    @PostMapping("/add")
+    public ResponseEntity<AuthenticationResponse> register(
+            @RequestBody RegisterRequest request
+    ) {
+        return ResponseEntity.ok(authService.register(request));
+    }
 
 }
