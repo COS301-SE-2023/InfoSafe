@@ -6,7 +6,8 @@
     "cyp": "cypress open",
     "format": "eslint frontend/**/*.js backend/**/*.java",
     "fix": "eslint frontend/**/*.js backend/**/*.java --fix",
-    "frontend": "cd frontend/infosafe_frontend && npm start"
+    "frontend": "cd frontend/infosafe_frontend && npm start",
+    "frontend_tests": "cd frontend/infosafe_frontend && react-scripts test"
   },
   "author": "",
   "license": "ISC",
