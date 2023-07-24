@@ -5,7 +5,8 @@
   "scripts": {
     "cyp": "cypress open",
     "format": "eslint frontend/**/*.js backend/**/*.java",
-    "fix": "eslint frontend/**/*.js backend/**/*.java --fix"
+    "fix": "eslint frontend/**/*.js backend/**/*.java --fix",
+    "frontend": "cd frontend/infosafe_frontend && npm start"
   },
   "author": "",
   "license": "ISC",
