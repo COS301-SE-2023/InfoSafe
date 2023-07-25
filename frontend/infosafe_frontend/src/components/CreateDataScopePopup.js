@@ -6,29 +6,25 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable  no-unused-vars */
 const data = [
     {
-        role: 'Administrator',
+        systemRole: 'Administrator',
         roledescription: 'Manage users, manage data scope, edit permissions.'
     },
     {
-        role: 'General User',
+        systemRole: 'General User',
         roledescription: 'Access data scope, complete tasks within data scopes.'
     }
 ];
 
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     const [roles, setRoles] = useState(data);
-    const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
+    const [newRole, setNewRole] = useState({ systemRole: '', roledescription: '' });
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
 
-    const[ds_name,setDsName]=useState('')
-    const[description,setDsDesc]=useState('')
-    const[role_name,setRoleName]=useState('General User')
-    const[role_description,setRoleDesc]=useState('Can use basic functionality of the product')
-    const[date_captured,setDateCaptured]=useState(date)
-    const[data_custodian,setDataCustodian]=useState('LoggedIn User')
-    const[administrator,setAdmin]=useState('Admin1')
-    const[status,setStatus]=useState('Pending Approval')
+    const[ds_name,setDs_name]=useState('')
+    const[ds_description,setDs_description]=useState('')
+    const[date_captured]=useState(date)
+    const[ds_status]=useState('Pending Approval')
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -37,15 +33,15 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
 
     const handleAddRole = (e) => {
         e.preventDefault();
-        if (newRole.role && newRole.roledescription) {
+        if (newRole.systemRole && newRole.roledescription) {
             setRoles((prevRoles) => [...prevRoles, newRole]);
-            setNewRole({ role: '', roledescription: '' });
+            setNewRole({ systemRole: '', roledescription: '' });
         }
     };
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const datascope = {ds_name, description, role_name, role_description, date_captured, data_custodian, administrator, status}
+        const datascope = {ds_name, ds_description, date_captured, ds_status}
         console.log(datascope)
         fetch("http://localhost:8080/api/datascope/addDs", {
             method:"POST",
@@ -72,7 +68,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             <div className="datascope_info">
                                 <div className="datascope_name">
                                     <p className="datascopeNameLabel">Name</p>
-                                    <input className="datascopeNameInput" value={ds_name} onChange={(e)=>setDsName(e.target.value)}/>
+                                    <input className="datascopeNameInput" value={ds_name} onChange={(e)=>setDs_name(e.target.value)}/>
                                 </div>
                                 <div className="datascope_description">
                                     <p className="descriptionLabel">Description</p>
@@ -91,12 +87,12 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {roles.map((role, key) => {
+                                                {roles.map((systemRole, key) => {
                                                     return (
                                                         <tr key={key}>
-                                                            <td>{role.role}</td>
+                                                            <td>{systemRole.systemRole}</td>
                                                             <td className="roledescription_Table">
-                                                                {role.roledescription}
+                                                                {systemRole.roledescription}
                                                             </td>
                                                         </tr>
                                                     );

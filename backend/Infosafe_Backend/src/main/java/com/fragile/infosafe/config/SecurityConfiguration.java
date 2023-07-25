@@ -57,10 +57,6 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/api/**", configuration);
         return source;
     }
-
-
-
-
 }
 
 
