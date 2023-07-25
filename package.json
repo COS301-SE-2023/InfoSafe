@@ -4,8 +4,8 @@
   "description": "FrAgile",
   "scripts": {
     "cyp": "cypress open",
-    "format": "eslint frontend/**/*.js backend/**/*.java",
-    "fix": "eslint frontend/**/*.js backend/**/*.java --fix",
+    "format": "eslint frontend/**/*.js",
+    "fix": "eslint --fix frontend/**/*.js",
     "frontend": "cd frontend/infosafe_frontend && npm start",
     "frontend_tests": "cd frontend/infosafe_frontend && react-scripts test"
   },

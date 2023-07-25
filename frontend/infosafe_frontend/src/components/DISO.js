@@ -11,7 +11,7 @@ import EditAccessRequest from './EditAccessRequest';
 import {CreateTask} from './CreateTaskPopup';
 import {UpdateTask} from './UpdateTaskPopup';
 import {ViewTask} from './ViewTaskPopup';
-import {CreateDevicePopup} from './CreateDevicePopup';
+// import {CreateDevicePopup} from './CreateDevicePopup';
 import {ViewDevice} from './ViewDevice';
 import ViewSupportRequest from './ViewSupportRequest';
 import EditSupportRequest from './EditSupportRequest';
@@ -30,7 +30,7 @@ const DISO = ({currentTab}) => {
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
     const [viewTaskOpen, setViewTaskOpen] = useState(false);
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
-    const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
+    // const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
     const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
     const [createRiskOpen, setCreateRiskOpen] = useState(false);

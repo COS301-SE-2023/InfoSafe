@@ -20,6 +20,7 @@ module.exports = {
         // Example rule: Enforce using double quotes for strings
         quotes: ["error", "double"],
     },
+    ignorePatterns: ["**/*.java"],
     overrides: [
         {
             // Frontend (React) code in frontend/ directory
@@ -28,31 +29,18 @@ module.exports = {
                 browser: true,
             },
             extends: [
-                "plugin:react/recommended", // React-specific rules
-                // Add any other frontend-specific plugins and configurations here
+                "plugin:react/recommended"
             ],
             rules: {
-                // Add frontend-specific rules here
-                // ...
-
-                // Example rule: Enforce using single quotes for JSX attributes
+                'react/jsx-uses-react': 'error',
+                'react/jsx-uses-vars': 'error',
+                'react/prop-types': 'off',
+                'react/react-in-jsx-scope': 'error',
+                'react/jsx-curly-brace-presence': ['error', 'never'],
                 "jsx-quotes": ["error", "prefer-single"],
             },
         },
-        {
-            // Backend (Spring Boot) code in backend/ directory
-            files: ["backend/**/*.java"],
-            env: {
-                node: true,
-            },
-            // Add any backend-specific plugins and configurations here
-            // ...
 
-            rules: {
-                // Add backend-specific rules here
-                // ...
-            },
-        },
     ],
 };
 
