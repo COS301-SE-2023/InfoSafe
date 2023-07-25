@@ -14,7 +14,7 @@ import static com.fragile.infosafe.model.Permission.*;
 
 
 @RequiredArgsConstructor
-public enum SystemRole {
+public enum Role {
 
     EMPLOYEE(Collections.emptySet()),
     ADMIN(

@@ -11,52 +11,88 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="data_scopes")
+@Table(name="datascopes")
 public class DataScope {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int data_scope_id;
-    private String ds_name;
-    private String ds_description;
-    private String date_captured;
-    private String ds_status;
+    private Long id;
+    private String dsName;
+    private String description;
+    private String roleName;
+    private String roleDescription;
+    private String dateCaptured;
+    private String dataCustodian;
+    private String administrator;
+    private String status;
 
-    public int getData_scope_id() {
-        return data_scope_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setData_scope_id(int id) {
-        this.data_scope_id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getDs_name() {
-        return ds_name;
+    public String getDsName() {
+        return dsName;
     }
 
-    public void setDs_name(String ds_name) {
-        this.ds_name = ds_name;
+    public void setDsName(String ds_name) {
+        this.dsName = ds_name;
     }
 
-    public String getDs_description() {
-        return ds_description;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDs_description(String description) {
-        this.ds_description = description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDate_captured() {
-        return date_captured;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setDate_captured(String date_captured) {
-        this.date_captured = date_captured;
+    public void setRoleName(String role_name) {
+        this.roleName = role_name;
     }
 
-    public String getDs_status() {
-        return ds_status;
+    public String getRoleDescription() {
+        return roleDescription;
     }
 
-    public void setDs_status(String status) {
-        this.ds_status = status;
+    public void setRoleDescription(String role_description) {
+        this.roleDescription = role_description;
+    }
+
+    public String getDateCaptured() {
+        return dateCaptured;
+    }
+
+    public void setDateCaptured(String date_captured) {
+        this.dateCaptured = date_captured;
+    }
+
+    public String getDataCustodian() {
+        return dataCustodian;
+    }
+
+    public void setDataCustodian(String data_custodian) {
+        this.dataCustodian = data_custodian;
+    }
+
+    public String getAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(String administrator) {
+        this.administrator = administrator;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
