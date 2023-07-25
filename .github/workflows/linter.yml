@@ -14,5 +14,5 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          JAVASCRIPT_ES_CONFIG_FILE: ../../.eslint.js
+          JAVASCRIPT_ES_CONFIG_FILE: ${{ env.GITHUB_WORKSPACE }}/.eslint.js
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
