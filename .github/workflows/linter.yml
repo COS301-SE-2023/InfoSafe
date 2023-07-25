@@ -15,7 +15,5 @@ jobs:
           node-version: 14
       - name: Install Modules
         run: npm install
-      - name: Add node_modules/.bin to PATH
-        run: echo $HOME'/npm/bin' >> $GITHUB_PATH
       - name: Run eslint
         run: npx eslint . --ext .js
