@@ -11,10 +11,8 @@ jobs:
           fetch-depth: 0
       - name: Run Linter
         uses: github/super-linter@v4
-        with:
-          eslint-args: .eslint.js
         env:
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          JAVASCRIPT_ES_CONFIG_FILE: true
+          JAVASCRIPT_ES_CONFIG_FILE: .eslint.js
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
