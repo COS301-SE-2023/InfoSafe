@@ -1,0 +1,128 @@
+.createTaskOverlay {
+    width: 60vw;
+    height: 90vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+}
+.borderCreateTask {
+    border: 1px solid #ffffff;
+    width: 56vw;
+    margin: 0 auto;
+    height: 82vh;
+    position: relative;
+    top: 4vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.backButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.backIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
+.pageTitle {
+    width: 60%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: -3vh;
+    left: 20%;
+}
+.inputTitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.inputTextArea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: left;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
+}
+.textboxInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
+}
+.submitButton {
+    width: 20%;
+    height: 5%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    bottom: 2vh;
+    left: 40%;
+    border: none;
+    margin: 5% auto 0;
+}
+.createTaskTypeDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    align-content: center;
+    height: 4vh;
+}
+.createTaskDataScopeDropdown {
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    align-content: center;
+    height: 4vh;
+}.createTaskAssigneeDropdown {
+     text-transform: uppercase;
+     font-size: 18px;
+     width: 50%;
+     margin: 0 auto;
+     text-align: center;
+     border: none;
+     align-content: center;
+     height: 4vh;
+ }

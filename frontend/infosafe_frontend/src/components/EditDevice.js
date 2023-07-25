@@ -2,16 +2,17 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../styling/EditDevice.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from "react-dropdown";
+import Dropdown from 'react-dropdown';
 
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
-
+// const NEW_OPTIONS = ['YES', 'NO'];
+const AVAILABILITY_OPTIONS = ['YES', 'NO'];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
-    const makeOptions = () => {
-        var options = [];
-        STATUS_OPTIONS.map((opt) => options.push(<option>{opt}</option>));
-        return options;
-    };
+    // const makeOptions = () => {
+    //     var options = [];
+    //     STATUS_OPTIONS.map((opt) => options.push(<option>{opt}</option>));
+    //     return options;
+    // };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -22,43 +23,43 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="editDeviceTitle">Edit Device</p>
-                        <div className="devicetypeEdit">
-                            <p className="devicetypeTitle">Type</p>
-                            <input
-                                className="editdeviceTypeInput"
-                                type="text"
-                                id="editdevicetype"
-                                name="editdevicetype"
-                                defaultValue={asset.asset_name}
-                            />
-                        </div>
-                        <div className="devicedescriptionEdit">
-                            <p className="devicedescriptionTitle">Description</p>
+
+                        <div className="editDeviceDescriptionDiv">
+                            <p className="editDeviceDescriptionLabel">Description</p>
                             <textarea
-                                className="editdeviceDescriptionInput"
+                                className="editDeviceDescriptionInput"
                                 defaultValue={asset.asset_description}
                             />
                         </div>
-                        <div className="devicestatusEdit">
-                            <p className="devicestatusTitle">Status</p>
+                        <p className = "editDeviceAvailabilityLabel">Available</p>
+                        <Dropdown
+                            options={AVAILABILITY_OPTIONS}
+                            value={AVAILABILITY_OPTIONS[0]}
+                            className="editDeviceAvailableDropdown"
+                            // name="status"
+                            // onChange={(selectedOption) => setStatus(selectedOption.value)}
+                        />
+                        <div className="editDeviceStatusDiv">
+                            <p className="editDevicestatusTitle">Status</p>
                             <Dropdown
                                 options={STATUS_OPTIONS}
                                 value={asset.status}
-                                className="statusDropdown"
-                                name="statusDropdown"
-
+                                className="editDeviceStatusDropdown"
+                                name="editDeviceStatusDropdown"
                             />
                         </div>
-                        <div className="deviceuserEdit">
-                            <p className="deviceuserTitle">Assigned User</p>
-                            <input
-                                className="editdeviceUserInput"
-                                type="text"
-                                id="editdeviceuser"
-                                name="editdeviceuser"
-                                defaultValue={asset.assignee}
-                            />
-                        </div>
+                        <p className="editDeviceCurrentCustodianLabel">Current Custodian</p>
+                        <input
+                            className="editDeviceCurrentCustodianInput"
+                            // value={assignee}
+                            // onChange={(e) => setAssignee(e.target.value)}
+                        />
+                        <p className="editDevicePreviousCustodianLabel">Previous Custodian</p>
+                        <input
+                            className="editDevicePreviousCustodianInput"
+                            // value={assignee}
+                            // onChange={(e) => setAssignee(e.target.value)}
+                        />
                         <button className="EditDeviceButton" type="submit" onClick={popupClose}>
                             Submit
                         </button>

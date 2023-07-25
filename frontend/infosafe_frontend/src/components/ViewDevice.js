@@ -2,7 +2,8 @@ import React from 'react';
 import '../styling/ViewDevice.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -11,27 +12,24 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
                     <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
                     </button>
-                    <p className="viewDeviceTitle">View Device</p>
-                    <div className="viewDeviceTypeDiv">
-                        <p className="deviceTypeLabel">Device Type</p>
-                        <p className="deviceType">{asset.asset_name}</p>
-                    </div>
-                    <div className="viewDeviceDescriptionDiv">
-                        <p className="deviceDescriptionLabel">Device Description</p>
-                        <textarea
-                            readOnly={true}
-                            className="viewDescription"
-                            defaultValue={asset.asset_description}
-                        ></textarea>
-                    </div>
-                    <div className="viewDeviceStatusDiv">
-                        <p className="statusLabel">Status</p>
-                        <p className="viewStatus">{asset.status}</p>
-                    </div>
-                    <div className="viewDeviceAssignedDiv">
-                        <p className="assignedLabel">Assigned User</p>
-                        <p className="viewAssigned">{asset.assignee}</p>
-                    </div>
+                    <p className="viewDeviceLabel">View Device</p>
+                    <p className="viewDeviceNameLabel">Device Name</p>
+                    <p className="viewDeviceName">Device A</p>
+                    <p className="viewDeviceTypeLabel">Device Type</p>
+                    <p className="viewDeviceType">Laptop</p>
+                    <p className="viewDeviceDescriptionLabel">Device Description</p>
+                    <textarea className="viewDeviceDescription" readOnly={'true'} defaultValue={"Device description here"}/>
+                    <p className = "viewDeviceNewLabel">New</p>
+                    <p className = "viewDeviceNew">No</p>
+                    <p className = "viewDeviceAvailabilityLabel">Available</p>
+                    <p className = "viewDeviceAvailability">No</p>
+                    <p className="viewDeviceStatusLabel">Status</p>
+                    <p className="viewDeviceStatus">Full</p>
+                    <p className="viewDeviceCurrentCustodianLabel">Current Custodian</p>
+                    <p className="viewDeviceCurrentCustodian">User 5</p>
+                    <p className="viewDevicePreviousCustodianLabel">Current Custodian</p>
+                    <p className="viewDevicePreviousCustodian">Storage</p>
+
                 </div>
             </div>
         </Popup>

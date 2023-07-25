@@ -14,6 +14,12 @@
     height: 82vh;
     position: relative;
     top: 4vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.borderDataScopeView::-webkit-scrollbar{
+    display: none;
 }
 .backButton {
     background-color: rgba(233, 0, 0, 1);
@@ -181,14 +187,15 @@
     height: 30%;
     margin: 0 auto;
     align-self: center;
-    top: 1vh;
+    top: 4vh;
     left: 25%;
-    margin-top: 2.5%;
+    font-size: 16px;
 }
-.rolesTable {
+.viewRolesTable {
     width: 50%;
     height: 30%;
     overflow-y: scroll;
+    font-size: 18px;
 }
 .roleHeader {
     font-family: 'Roboto', sans-serif;
@@ -201,6 +208,7 @@
     text-align: center;
     text-transform: uppercase;
     width: 60%;
+    font-size: 22px;
 }
 .rolesTable td {
     font-family: 'Roboto', sans-serif;

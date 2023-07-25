@@ -4,8 +4,11 @@ import Popup from 'reactjs-popup';
 
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
+const NEW_OPTIONS = ['YES', 'NO'];
+const AVAILABILITY_OPTIONS = ['YES', 'NO'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     // const current = new Date();
     // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
@@ -40,22 +43,54 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                     </button>
                     <form>
                         <p className="createDeviceLabel">Add Device</p>
+                        <p className="deviceNameLabel">Device Name</p>
+                        <input className="deviceNameInput" value={asset_name} onChange={(e)=>setAssetName(e.target.value)}/>
                         <p className="deviceTypeLabel">Device Type</p>
-                        <input className="deviceTypeInput" value={type_id} onChange={(e)=>setType_id(e.target.value)}/>
+                        <input
+                            className="deviceTypeInput"
+                            // value=
+                            // onChange={(e) => setAssetType(e.target.value)}
+                        />
                         <p className="deviceDescriptionLabel">Device Description</p>
-                        <textarea className="deviceDescriptionInput" value={asset_description} onChange={(e)=>setAsset_description(e.target.value)}/>
-                        <p className="assignedUserLabel">Assigned User</p>
-                        <input className="assignedUserInput" value={serial_number} onChange={(e)=>setSerial_number(e.target.value)}/>
+                        <textarea className="deviceDescriptionInput" value={asset_description} onChange={(e)=>setAssetDesc(e.target.value)}/>
+                        <p className = "deviceNewLabel">New</p>
+                        <Dropdown
+                            options={NEW_OPTIONS}
+                            value={NEW_OPTIONS[0]}
+                            className="newDropdown"
+                            // name="status"
+                            // onChange={(selectedOption) => setStatus(selectedOption.value)}
+                        />
+                        <p className = "deviceAvailabilityLabel">Available</p>
+                        <Dropdown
+                            options={AVAILABILITY_OPTIONS}
+                            value={AVAILABILITY_OPTIONS[0]}
+                            className="availableDropdown"
+                            // name="status"
+                            // onChange={(selectedOption) => setStatus(selectedOption.value)}
+                        />
                         <p className="deviceStatusLabel">Status</p>
                         <Dropdown
                           options={STATUS_OPTIONS}
                           value={STATUS_OPTIONS[0]}
-                          className="statusDropdown"
+                          className="createDeviceStatusDropdown"
                           name="status"
                           onChange={(selectedOption) => setClean_status(selectedOption.value)}
                         />
                         <br />
-                        <button className="createDevice_finish" onClick={handleClick}>
+                        <p className="currentCustodianLabel">Current Custodian</p>
+                        <input
+                            className="currentCustodianInput"
+                            // value={assignee}
+                            // onChange={(e) => setAssignee(e.target.value)}
+                        />
+                        <p className="previousCustodianLabel">Previous Custodian</p>
+                        <input
+                            className="previousCustodianInput"
+                            // value={assignee}
+                            // onChange={(e) => setAssignee(e.target.value)}
+                        />
+                        <button className="createDeviceFinish" onClick={handleClick}>
                             Submit
                         </button>
                     </form>

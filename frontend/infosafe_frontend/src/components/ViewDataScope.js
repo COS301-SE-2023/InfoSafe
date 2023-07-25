@@ -26,7 +26,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                     <p className="ViewDataScopeTitle">View Data Scope</p>
                     <div className="view_datascope_name">
                         <p className="datascopeName">Name</p>
-                        <p className="viewDataScopeName">{datascope.ds_name}</p>
+                        <p className="viewDataScopeName">{/*{datascope.ds_name}*/}Data Scope 1</p>
                     </div>
                     <div className="view_datascope_description">
                         <p className="datascopeDescription">Description</p>
@@ -34,7 +34,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                     </div>
                     <div className="view_datascope_date">
                         <p className="datascopeDate">Date Captured</p>
-                        <p className="viewDataScopeDate">{datascope.date_captured}</p>
+                        <p className="viewDataScopeDate">{/*{datascope.date_captured}*/}2023-07-01</p>
                     </div>
                     <div className="view_datascope_status">
                         <p className="datascopeStatus">Status</p>
@@ -43,7 +43,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                     <div className="view_datascope_roles">
                         <p className="datascopeRoles">Roles</p>
                         <div className="table">
-                            <table className="rolesTable">
+                            <table className="viewRolesTable">
                                 <thead>
                                     <tr>
                                         <th className="roleHeader">Role</th>

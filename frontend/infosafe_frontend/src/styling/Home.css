@@ -1,11 +1,7 @@
 .backdrop {
-    background-color: #383838;
-    height: 100vh;
-}
-
-.tabs {
+    background: url('../images/HomeBackground.png');
     width: 100%;
-    display: flex;
-    position: relative;
-    top: 2%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
 }

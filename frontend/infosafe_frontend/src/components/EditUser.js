@@ -2,10 +2,11 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../styling/EditUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import Dropdown from 'react-dropdown';
 /* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const EditUser = ({ user, popupClose, popupOpen }) => {
-    const makeOptions = () => {
-        var options = [];
+
         const ROLE_OPTIONS = [
             'EMPLOYEE',
             'ISO',
@@ -14,9 +15,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
             'SYSTEM ADMINISTRATOR',
             'ASSET MANAGER'
         ];
-        ROLE_OPTIONS.map((opt) => options.push(<option>{opt}</option>));
-        return options;
-    };
+
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -59,9 +58,14 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                         </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
-                            <select className="roleDropdown" name="systemRole">
-                                {makeOptions()}
-                            </select>
+                            <Dropdown
+                                options={ROLE_OPTIONS}
+                                value={ROLE_OPTIONS[0]}
+                                className="role_dropdown"
+                                data-testid="role_dropdown"
+                                name="role"
+                                //onChange={(selectedOption) => setRole(selectedOption.value)}
+                            />
                         </div>
                         <button className="FinishButton" onClick={popupClose}>
                             Finish

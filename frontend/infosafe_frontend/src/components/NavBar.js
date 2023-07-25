@@ -1,393 +1,99 @@
 import '../styling/NavBar.css';
-import React, {useEffect, useState} from 'react';
-import { FaRegEdit } from 'react-icons/fa';
-import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { CreateUserPopup } from './CreateUserPopup';
-import { CreateDataScopePopup } from './CreateDataScopePopup';
-import { EditDataScopePopup } from './EditDataScopePopup';
-import EditUser from './EditUser';
-import ViewDataScope from './ViewDataScope';
-import ViewUser from './ViewUser';
-import { CreateDevicePopup } from './CreateDevicePopup';
-import { ViewDevice } from './ViewDevice';
-import EditDevice from './EditDevice';
-import '../styling/Dropdown.css'
+import React, {useState} from 'react';
+import ISO from './ISO';
+import DISO from './DISO';
+import DataCustodian from './DataCustodian';
+import AssetManager from "./AssetManager";
 
 /* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const NavBar = ({ systemRole }) => {
-    const [activeNavTab, activate] = useState(0);
-    const [showUser, setShowUser] = useState([]);
-    const [showDatascope, setShowDatascope] = useState([]);
-    const [showAsset, setShowAsset] = useState([]);
-    const [createUserOpen, setCreateUserOpen] = useState(false);
-    const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
-    const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-
+    const [activeNavTab, activate] = useState(
+        systemRole === 'ISO' || systemRole === 'DISO' || systemRole === 'System Administrator' ? 0 : 1
+    );
+    const ISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
+    const DISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
+    const DataCustodianTabs = [ 1, 2, 3, 4, 5, 6, 7];
+    const AssetManagerTabs = [ 1, 3, 4, 5, 8, 7];
+    const TabNames = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
-            headers: {
-                Authorization: "Bearer " +  sessionStorage.getItem('accessToken')
-            }
-        })
-            .then(res => res.json())
-            .then(result => {
-                setShowUser(result);
-            });
-    }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/datascope/getDs", {
-            headers: {
-                Authorization:  "Bearer " +  sessionStorage.getItem('accessToken')
-            }
-        })
-            .then(res => res.json())
-            .then(result => {
-                setShowDatascope(result);
-            });
-    }, [])
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/asset/getAsset", {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then(res => res.json())
-            .then(result => {
-                setShowAsset(result);
-            });
-    }, [])
-
-    const ViewUserItem = ({ user }) => {
-        //const CURRENT = user;
-        const [viewUserOpen, setViewUserOpen] = useState(false);
-        const [editUserOpen, setEditUserOpen] = useState(false);
+    /*    const ViewTaskItem = ( l ) => {
+        const [viewTaskOpen, setViewTaskOpen] = useState(false);
         return (
-            <li key={user.id}>
-                <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.id}: {user.firstname} {user.lastname}
-                    {viewUserOpen && (
-                        <ViewUser
-                            popupClose={() => setViewUserOpen(false)}
-                            popupOpen={viewUserOpen}
-                            user={user}
+            <li key={l}>
+                <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
+                    Task {l}
+                    {viewTaskOpen && (
+                        <ViewTask
+                            popupClose={() => setViewTaskOpen(false)}
+                            popupOpen={viewTaskOpen}
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
-                {editUserOpen ? (
-                    <EditUser
-                        popupClose={() => setEditUserOpen(false)}
-                        popupOpen={editUserOpen}
-                        user={user}
-                    />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
+    };*/
+
+    const displayPage = () => {
+        if (systemRole === 'ISO') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: ISOTabs})}
+                    <ISO currentTab={activeNavTab} />;
+                </div>
+            );
+        }
+
+        if (systemRole === 'DISO') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: DISOTabs})}
+                    <DISO currentTab={activeNavTab} />;
+                </div>
+            );
+        }
+
+        if (systemRole === 'Data Custodian') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: DataCustodianTabs})}
+                    <DataCustodian currentTab={activeNavTab} />;
+                </div>
+            );
+        }
+
+        if (systemRole === 'Asset Manager') {
+            return (
+                <div className="navbar">
+                    {displayTabs({viewTabs: AssetManagerTabs})}
+                    <AssetManager currentTab={activeNavTab} />;
+                </div>
+            );
+        }
     };
 
-    const ViewDataScopeItem = ({ datascope }) => {
-        const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-        const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
+    const displayTabs = ({viewTabs}) => {
         return (
-            <li key={datascope.id}>
-                <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description} ------ {datascope.data_custodian}
-                    {viewDataScopeOpen && (
-                        <ViewDataScope
-                            popupClose={() => setViewDataScopeOpen(false)}
-                            popupOpen={viewDataScopeOpen}
-                            datascope={datascope}
-                        />
-                    )}
-                </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
-                {editDataScopeOpen ? (
-                    <EditDataScopePopup
-                        popupClose={() => setEditDataScopeOpen(false)}
-                        popupOpen={editDataScopeOpen}
-                        datascope={datascope}
-                    />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
-            </li>
-        );
-    };
-
-  const ViewDeviceItem = ({ asset }) => {
-      const [editDeviceOpen, setEditDeviceOpen] = useState(false);
-      const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-      return (
-          <li key={asset.id}>
-              <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                  Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
-                  {viewDeviceOpen && (
-                      <ViewDevice
-                          popupClose={() => setViewDeviceOpen(false)}
-                          popupOpen={viewDeviceOpen}
-                          asset={asset}
-                      />
-                  )}
-              </p>
-              <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
-              {editDeviceOpen ? (
-                  <EditDevice
-                      popupClose={() => setEditDeviceOpen(false)}
-                      popupOpen={editDeviceOpen}
-                      asset={asset}
-                  />
-              ) : null}{' '}
-              <RiDeleteBin6Fill className="DeleteIcon" />
-          </li>
-      );
-  };
-
-    const displayInfo = () => {
-        if (systemRole === 'ISO') {
-            switch (activeNavTab) {
-                case 0: {
-                    const userItems = [];
-                    showUser.map(user=>(
-                        userItems.push(<ViewUserItem user={user} key={user.id}/>)
-                    ))
-
-                    return (
-                        <div className="users">
-                            <ul className="userList">{userItems}</ul>
-                        </div>
-                    );
-                }
-                case 1: {
-                    const dataItems = [];
-                    showDatascope.map(datascope=>(
-                        dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id}/>)
-                    ))
-
-                    return (
-                        <div className="datascopes">
-                            <ul className="datascopesList">{dataItems}</ul>
-                        </div>
-                    );
-                }
-                case 2: {
-                    const accessRequests = [];
-                    for (let k = 1; k < 30; k++) {
-                        accessRequests.push(
-                            <li key={k}>
-                                Access Request {k} <FaRegEdit className="EditIcon" />{' '}
-                                <RiDeleteBin6Fill className="DeleteIcon" />
-                            </li>
-                        );
-                    }
-                    return (
-                        <div className="accessRequests">
-                            <ul className="accessrequestsList">{accessRequests}</ul>
-                        </div>
-                    );
-                }
-                case 3: {
-                    const complianceItems = [];
-                    for (let l = 1; l < 30; l++) {
-                        complianceItems.push(<li key={l}>Task {l}</li>);
-                    }
-                    return (
-                        <div className="tasks">
-                            <ul className="taskList">{complianceItems}</ul>
-                        </div>
-                    );
-                }
-                case 4: {
-                    const devices = [];
-                    showAsset.map(device=>(
-                        devices.push(<ViewDeviceItem asset={device} key={device.id}/>)
-                    ))
-                    return (
-                        <div className="devices">
-                            <ul className="deviceList">{devices}</ul>
-                        </div>
-                    );
-                }
-                case 5: {
-                    const active_requests = [];
-                    for (let a = 1; a < 15; a++) {
-                        active_requests.push(
-                            <li key={a}>
-                                Support Request {a} <FaRegEdit className="EditIcon" />
-                            </li>
-                        );
-                    }
-                    const my_requests = [];
-                    for (let b = 1; b < 15; b++) {
-                        my_requests.push(
-                            <li key={b}>
-                                Support Request {b} <FaRegEdit className="EditIcon" />
-                            </li>
-                        );
-                    }
-
-                    return (
-                        <div>
-                            <div className="titles">
-                                <div className="activeHeader">
-                                    <p>Active System Requests</p>
-                                </div>
-                                <div className="myHeader">
-                                    <p>My Requests</p>
-                                </div>
-                            </div>
-
-                            <div className="tables">
-                                <div className="active_support_requests">
-                                    <ul className="activeRequestsList">{active_requests}</ul>
-                                </div>
-                                <div className="my_support_requests">
-                                    <ul className="myRequestsList">{my_requests}</ul>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                }
-                case 6:
-                    //Add risks info here
-                    return null;
-                default:
-                    return null;
-            }
-        }
-    };
-
-
-    const displayButtons = () => {
-        if (systemRole === 'ISO') {
-            switch (activeNavTab) {
-                case 0:
-                    return (
-                        <div className="CreateUserButtonDiv">
-                            <button
-                                className="CreateUserButton"
-                                data-testid="CreateUserButton"
-                                onClick={() => setCreateUserOpen(true)}
-                            >
-                                Create New User
-                            </button>
-                            {createUserOpen ? (
-                                <CreateUserPopup
-                                    popupClose={() => setCreateUserOpen(false)}
-                                    popupOpen={createUserOpen}
-                                />
-                            ) : null}
-                        </div>
-                    );
-                case 1:
-                    return (
-                        <div className="CreateDataScopeDiv">
-                            <button
-                                className="CreateDataScopeButton"
-                                onClick={() => setCreateDataScopeOpen(true)}
-                            >
-                                Create Data Scope
-                            </button>
-                            {createDataScopeOpen ? (
-                                <CreateDataScopePopup
-                                    popupClose={() => setCreateDataScopeOpen(false)}
-                                    popupOpen={createDataScopeOpen}
-                                />
-                            ) : null}
-                        </div>
-                    );
-                case 3:
-                    return (
-                        <div className="buttons">
-                            <button
-                                className="CreateTaskButton"
-                                onClick={() => console.log('Created new task')}
-                            >
-                                Create New User
-                            </button>
-                            <button
-                                className="UpdateTaskButton"
-                                onClick={() => console.log('Updated task.')}
-                            >
-                                Update Task
-                            </button>
-                            <button
-                                className="RevokeTaskButton"
-                                onClick={() => console.log('Revoked task.')}
-                            >
-                                Revoke Task
-                            </button>
-                        </div>
-                    );
-                case 4:
-                    return (
-                        <div className="AddDeviceDiv">
-                            <button
-                                className="AddDeviceButton"
-                                onClick={() => setCreateDeviceOpen(true)}
-                            >
-                                Add Device
-                            </button>
-                            {createDeviceOpen ? (
-                                <CreateDevicePopup
-                                    popupClose={() => setCreateDeviceOpen(false)}
-                                    popupOpen={createDeviceOpen}
-                                />
-                            ) : null}
-                        </div>
-                    );
-                case 5:
-                    return (
-                        <button
-                            className="CreateSupportRequestButton"
-                            onClick={() => console.log('Create new support request.')}
-                        >
-                            Create New Request
-                        </button>
-                    );
-                default:
-                    return null;
-            }
-        }
-    };
-
-    return (
-        <div className="navbar">
             <ul className="tabs">
-                <li className={activeNavTab === 0 ? 'active' : ''} onClick={() => handleClick(0)}>
-                    Users
-                </li>
-                <li className={activeNavTab === 1 ? 'active' : ''} onClick={() => handleClick(1)}>
-                    Data Scopes
-                </li>
-                <li className={activeNavTab === 2 ? 'active' : ''} onClick={() => handleClick(2)}>
-                    Access Requests
-                </li>
-                <li className={activeNavTab === 3 ? 'active' : ''} onClick={() => handleClick(3)}>
-                    Compliance Matrix
-                </li>
-                <li className={activeNavTab === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
-                    Devices
-                </li>
-                <li className={activeNavTab === 5 ? 'active' : ''} onClick={() => handleClick(5)}>
-                    Support Requests
-                </li>
-                <li className={activeNavTab === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
-                    Risks
-                </li>
+                {viewTabs.map((i) => (
+                    <li
+                        key={i}
+                        className={activeNavTab === i ? 'active' : ''}
+                        onClick={() => handleClick(i)}
+                    >
+                        {TabNames[i]}
+                    </li>
+                ))}
             </ul>
+        );
+    };
 
-            <div className="display">
-                {displayInfo()}
-                {displayButtons()}
-            </div>
-        </div>
-    );
+    return displayPage();
+
 };
-
 export default NavBar;

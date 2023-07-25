@@ -1,23 +1,24 @@
 import '../styling/Home.css';
 import React, { useState } from 'react';
 import NavBar from './NavBar';
-
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 //import various things to be displayed
 
 const Home = () => {
-    const [systemRole, setRole] = useState('ISO');
+    if(sessionStorage.getItem('accessToken') == null)
+        window.location.href = "/";
 
-    const handleRole = (RoleIndex) => {
-        setRole(RoleIndex);
-    };
+        const [systemRole, setRole] = useState('ISO');
+        const handleRole = (RoleIndex) => {
+            setRole(RoleIndex);
+        };
 
-    return (
-        <div className="backdrop">
-            <div className="tabs">
-                <NavBar systemRole={systemRole} />
+        return (
+            <div className="backdrop">
+                <NavBar systemRole={systemRole}/>
             </div>
-        </div>
-    );
+        );
 };
 
 export default Home;
