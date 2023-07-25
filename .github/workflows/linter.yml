@@ -12,4 +12,4 @@ jobs:
       - name: Install Modules
         run: npm install
       - name: Run eslint
-        run: eslint frontend/**/*.js
+        run: eslint . --ext .js
