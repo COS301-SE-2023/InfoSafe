@@ -12,4 +12,6 @@ import java.util.List;
 public class UserService {
     private final UserRepository repository;
     public List<User> getAllUsers() {return repository.findAll();}
+
+    public User updateUser(User user) {return repository.save(user);}
 }

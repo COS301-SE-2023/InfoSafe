@@ -16,7 +16,7 @@ public class InfosafeBackendApplication {
         SpringApplication.run(InfosafeBackendApplication.class, args);
     }
 
-    /*@Bean
+    @Bean
     public CommandLineRunner commandLineRunner(AuthenticationService service) {
         return args -> {
             var admin =  RegisterRequest.builder()
@@ -28,6 +28,6 @@ public class InfosafeBackendApplication {
                     .build();
             System.out.println("Admin token: " + service.register(admin).getAccessToken());
         };
-    }*/
+    }
 
 }
