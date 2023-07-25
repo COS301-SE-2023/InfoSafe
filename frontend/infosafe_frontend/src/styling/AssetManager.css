@@ -564,13 +564,16 @@
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
+.assetRequestsList li p {
+    width: 80%;
+}
 .reviewAssetRequestButton {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #000000;
     text-transform: uppercase;
-    height: 100%;
+    height: fit-content;
     width: fit-content;
     position: absolute;
     top: 50%;
