@@ -4,8 +4,8 @@
   "description": "FrAgile",
   "scripts": {
     "cyp": "cypress open",
-    "format": "eslint frontend/**/*.js",
-    "fix": "eslint --fix frontend/**/*.js",
+    "format": "eslint . --ext .js",
+    "fix": "eslint --fix . --ext .js",
     "frontend": "cd frontend/infosafe_frontend && npm start",
     "frontend_tests": "cd frontend/infosafe_frontend && react-scripts test"
   },
@@ -14,6 +14,7 @@
   "devDependencies": {
     "cypress": "^12.15.0",
     "eslint": "^8.45.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.32.2"
   }
 }

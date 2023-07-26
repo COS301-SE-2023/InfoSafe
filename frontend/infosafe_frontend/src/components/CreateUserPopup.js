@@ -17,13 +17,13 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[firstname,setName]=useState('')
     const[lastname,setSurname]=useState('')
     const[email,setEmail]=useState('')
-    let [systemRole,setRole]=useState('')
+    let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
 
     const handleClick=(e)=> {
         e.preventDefault()
 
-        const user = {firstname, lastname, email, password, systemRole}
+        const user = {firstname, lastname, email, password, role}
         console.log(user)
         fetch("http://localhost:8080/api/auth/add", {
             method:"POST",
@@ -78,13 +78,13 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
                         <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
-                        <p className="roleLabel">System systemRole</p>
+                        <p className="roleLabel">System role</p>
                         <Dropdown
                             options={ROLE_OPTIONS}
                             value={ROLE_OPTIONS[0]}
                             className="role_dropdown"
                             data-testid="role_dropdown"
-                            name="systemRole"
+                            name="role"
                             onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
                         <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
