@@ -1,5 +1,6 @@
 .Dropdown-root {
     position: relative;
+
 }
 
 .Dropdown-control {
@@ -12,7 +13,6 @@
     color: #333;
     cursor: default;
     outline: none;
-    padding: 8px 52px 8px 10px;
     transition: all 200ms ease;
 }
 
@@ -30,7 +30,7 @@
     margin-top: -ceil(2.5);
     position: absolute;
     right: 10px;
-    top: 14px;
+    top: 12px;
     width: 0;
 }
 
