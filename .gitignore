@@ -56,4 +56,4 @@ yarn-debug.log*
 yarn-error.log*
 
 ## secrets ##
-.properties
+application.properties
