@@ -32,7 +32,7 @@ public class User implements UserDetails{
     @Override
     public String getUsername() {return this.email;}
 
-    public int getUserID() { return this.user_id; }
+    public int getUserID() { return this.id; }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
