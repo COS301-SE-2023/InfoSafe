@@ -23,7 +23,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-//@CrossOrigin
 public class AuthenticationController {
 
     private final AuthenticationService service;
@@ -40,7 +39,7 @@ public class AuthenticationController {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws IOException {
-        //service.refreshToken(request, response);
+        service.refreshToken(request, response);
     }
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request) {
