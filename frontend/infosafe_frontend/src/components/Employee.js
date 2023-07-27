@@ -1,7 +1,5 @@
 import '../styling/Employee.css';
 import React, { useEffect, useState } from 'react';
-import {FaRegEdit} from 'react-icons/fa';
-import {RiDeleteBin6Fill} from 'react-icons/ri';
 import {ViewTask} from './ViewTaskPopup';
 import {ViewDevice} from './ViewDevice';
 import ViewSupportRequest from './ViewSupportRequest';
