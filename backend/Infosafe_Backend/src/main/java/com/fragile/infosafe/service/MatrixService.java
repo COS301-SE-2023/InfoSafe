@@ -1,10 +1,21 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.Matrix;
+import com.fragile.infosafe.repository.MatrixRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface MatrixService {
-    public Matrix saveMatrix(Matrix matrix);
-    public List<Matrix> getAllMatrices();
+@Service
+@RequiredArgsConstructor
+public class MatrixService {
+    private MatrixRepository matrixRepository;
+    public Matrix saveMatrix(Matrix matrix) {
+        return matrixRepository.save(matrix);
+    }
+
+    public List<Matrix> getAllMatrices() {
+        return matrixRepository.findAll();
+    }
 }

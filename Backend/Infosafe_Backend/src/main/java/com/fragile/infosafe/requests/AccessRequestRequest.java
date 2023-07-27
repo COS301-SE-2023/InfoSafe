@@ -1,4 +1,5 @@
 package com.fragile.infosafe.requests;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +11,8 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssetRequest {
-    private String assetName;
-    private String assetDescription;
-    private String status;
-    private String dateAcquired;
-    private String assignee;
+public class AccessRequestRequest {
+    private int request_id;
+    private int user_id;
+    private int ds_id;
 }
