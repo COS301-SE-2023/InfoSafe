@@ -1,0 +1,134 @@
+.viewAssetRequestOverlay {
+    width: 50vw;
+    height: 75vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    margin: 0 auto;
+}
+.viewAssetRequestBorder {
+    border: 1px solid #ffffff;
+    width: 46vw;
+    margin: 0 auto;
+    height: 70vh;
+    position: relative;
+    top: 2.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.viewAssetRequestBorder::-webkit-scrollbar{
+    display: none;
+}
+.viewAssetRequestBackButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.viewAssetRequestBackIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
+.viewAssetRequestLabel {
+    width: 60%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: -3vh;
+    left: 20%;
+}
+.viewAssetRequestDeviceNameLabel{
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+}
+.viewAssetRequestDeviceName{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 1%;
+}
+.viewAssetRequestUserLabel{
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 1%;
+}
+.viewAssetRequestUser{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 1%;
+}
+.viewAssetRequestReasonLabel{
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 1%;
+}
+.viewAssetRequestReason{
+    font-size: 16px;
+    width: 50%;
+    text-align: left;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 1%;
+    left: 25%;
+    height: 10vh;
+}
+.viewAssetRequestDateRequiredLabel{
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: 1%;
+}
+.viewAssetRequestDateRequired{
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: 1%;
+
+}

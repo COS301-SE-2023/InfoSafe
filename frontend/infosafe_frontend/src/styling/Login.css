@@ -1,52 +1,79 @@
-body {
+.body {
     font-size: 14px;
 }
-
 .background {
-    height: 1080px;
     background: url('../images/Welcome_New.png');
     width: 100%;
     height: 100%;
-    opacity: 1;
     position: absolute;
-    top: 0px;
-    left: 0px;
     overflow: hidden;
-}
-
-.panel {
-    width: 30%;
-    height: 50%;
-
-    background: no-repeat center center fixed;
+    zoom: normal;
     background-size: cover;
-    opacity: 1;
-    position: relative;
-
-    top: 25%;
-    left: 35%;
-    background: rgba(201, 200, 197, 0.8999999761581421);
-    border: 1px solid #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.49);
-
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    overflow: hidden;
 }
-
+.flipPanel {
+    width: 25%;
+    height: 40%;
+    background-size: cover;
+    position: relative;
+    top: 30%;
+    left: 37.5%;
+    background: transparent;
+    border-radius: 8px;
+    align-content: center;
+    overflow: hidden;
+    perspective: 1000px;
+}
+.panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    /*box-shadow: 0 4px 4px rgba(0, 0, 0, 0.49);*/
+}
+.background:hover .panel {
+    transform: rotateY(180deg);
+}
+.panelFront,
+.panelBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.panelFront {
+    display: none;
+    background: transparent;
+}
+.panelBack {
+    transform: rotateY(180deg);
+    background-color: rgba(201, 200, 197, 0.8999999761581421);
+    border: 1px solid #ffffff;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
 .title {
     width: 100%;
     margin: 0 auto;
 }
-
+.loginTitle {
+    color: rgba(56, 56, 56, 1);
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    height: 10%;
+    position: relative;
+}
 .btnLogin {
-    width: 20%;
+    width: fit-content;
     height: 10%;
     position: absolute;
-    bottom: 5%;
-    right: 4%;
+    bottom: 2%;
+    right: 2%;
     background: #cf0000;
     color: #ffffff;
     font-style: normal;
@@ -56,31 +83,21 @@ body {
     font-family: 'Roboto', sans-serif;
     border-radius: 8px;
 }
-
-.logo {
-    color: rgba(0, 0, 0, 1);
+.credentials {
+    width: 100%;
+    height: 80%;
     position: relative;
-    top: 5.5rem;
-    width: 17%;
-    margin: 0 auto;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    align-content: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 30px;
-
-    opacity: 1;
-    text-transform: uppercase;
+    top: 10%;
 }
-
 .user {
     position: relative;
-    top: 30%;
     width: 100%;
     margin: 0 auto;
     align-items: center;
+    top: 2%;
 }
 .username {
-    width: 20%;
+    width: fit-content;
     color: rgb(0, 0, 0);
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
@@ -89,35 +106,29 @@ body {
     text-transform: uppercase;
     margin: 0 auto;
 }
-
 .untxt {
     width: 60%;
     height: 30%;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 6%;
     left: 20%;
     font-family: 'Roboto', sans-serif;
-
     font-weight: normal;
     font-size: 16px;
     opacity: 1;
     text-align: center;
-
-    border: 1px solid #000000;
+    border: 1px solid #414141;
     border-radius: 19px;
 }
-
 .user_password {
     position: relative;
-    top: 32%;
     width: 100%;
     margin: 0 auto;
     align-items: center;
+    top: 6%;
 }
-
 .pass {
-    width: 20%;
+    width: fit-content;
     color: rgb(0, 0, 0);
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
@@ -131,38 +142,35 @@ body {
     height: 30%;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 6%;
+    top: 10%;
     left: 20%;
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     font-size: 16px;
     opacity: 1;
     text-align: center;
-
-    border: 1px solid #000000;
+    border: 1px solid #414141;
     border-radius: 19px;
 }
-
 .name {
     color: #fff;
 }
-
 .forgot {
-    width: 50%;
+    width: fit-content;
     color: rgba(0, 0, 0, 1);
     position: absolute;
-    bottom: 6%;
-    left: -3%;
+    bottom: 2%;
+    left: 2%;
+    height: 10%;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 14px;
-
     opacity: 1;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+    padding: 1% 2%;
 }
-
-.name {
-    color: #fff;
+.forgot:hover {
+    color: #ffffff;
 }

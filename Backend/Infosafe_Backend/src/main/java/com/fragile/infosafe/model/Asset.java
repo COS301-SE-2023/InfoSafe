@@ -13,55 +13,59 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="assets")
 public class Asset {
-    @Id
-    private String serial_number;
-    private int type_id;
-    private String asset_description;
-    private String clean_status;
-    private Boolean availability;
-    private Boolean new_device;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String assetName;
+    private String assetDescription;
+    private String status;
+    private String dateAcquired;
+    private String assignee;
 
-    public String getSerialNumber() {
-        return serial_number;
+    public Long getId() {
+        return id;
     }
 
-    public void setSerialNumber(String serial) {
-        this.serial_number = serial;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getTypeID() {
-        return type_id;
+    public String getAssetName() {
+        return assetName;
     }
 
-    public void setTypeID(int typeID) {
-        this.type_id = typeID;
+    public void setAssetName(String asset_name) {
+        this.assetName = asset_name;
     }
 
     public String getAssetDescription() {
-        return asset_description;
+        return assetDescription;
     }
 
     public void setAssetDescription(String asset_description) {
-        this.asset_description = asset_description;
+        this.assetDescription = asset_description;
     }
 
-    public String getCleanStatus() {
-        return clean_status;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCleanStatus(String status) {
-        this.clean_status = status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Boolean getAvailability() { return availability; }
-
-    public void setAvailability(Boolean availability) { this.availability = availability; }
-
-    public Boolean getNewDevice() {
-        return new_device;
+    public String getDateAcquired() {
+        return dateAcquired;
     }
 
-    public void setNewDevice(Boolean newDevice) {
-        this.new_device = newDevice;
+    public void setDateAcquired(String date_acquired) {
+        this.dateAcquired = date_acquired;
+    }
+
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 }

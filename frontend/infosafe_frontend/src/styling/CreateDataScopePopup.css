@@ -1,19 +1,24 @@
 .createDataScopeOverlay {
-    width: 80vw;
-    height: 85vh;
+    width: 60vw;
+    height: 90vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
     backdrop-filter: blur(20px);
     margin: 0 auto;
 }
-.createdatascopeBorder {
+.createDataScopeBorder {
     border: 1px solid #ffffff;
-    width: 76vw;
+    width: 56vw;
     margin: 0 auto;
-    height: 77vh;
+    height: 82vh;
     position: relative;
     top: 4vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.createDataScopeBorder::-webkit-scrollbar {
+    display: none;
 }
 .backButton {
     background-color: rgba(233, 0, 0, 1);
@@ -27,25 +32,6 @@
     left: 1vw;
     color: #ffffff;
 }
-.CreateDataScopeForm {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    top: 5vh;
-}
-.datascope_info {
-    width: 100%;
-    position: relative;
-    left: 0%;
-    top: 20%;
-}
-.datascope_addrole {
-    width: 100%;
-    height: 60vh;
-    position: relative;
-    left: 0%;
-}
-
 .backIcon {
     color: #ffffff;
     margin: 0 auto;
@@ -62,86 +48,81 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -2vh;
+    top: -3vh;
     left: 20%;
 }
 .datascopeNameLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
-    position: relative;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
     width: 100%;
+    position: relative;
+    top: 1vh;
 }
 .datascopeNameInput {
+    font-family: 'Roboto', sans-serif;
     font-size: 22px;
-    width: 70%;
     text-align: center;
     border: none;
-    margin-top: 2vh;
-    left: 15%;
+    left: 25%;
     position: relative;
+    width: 50%;
 }
 .descriptionLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
-    position: relative;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
     width: 100%;
-    margin-top: 2.5%;
-}
-
-.descriptionInput {
-    font-size: 16px;
-    width: 70%;
-    height: 8vh;
-    border: none;
-    margin-top: 2vh;
-    left: 15%;
     position: relative;
-    text-wrap: initial;
-    resize: none;
+    top: 1vh;
+}
+.createDataScopeDescriptionInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: left;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
 }
 .roleLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
-    position: relative;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
     width: 100%;
+    position: relative;
+    top: 1vh;
 }
 .table {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
     position: relative;
-    height: 30%;
-    margin: 0 auto;
-    align-self: center;
-    top: 1vh;
-    margin-top: 2.5%;
+    width: 50%;
+    margin-top: 0;
 }
 .roles_tbl {
-    width: 70%;
+    width: 50%;
     height: 30%;
     overflow-y: scroll;
     position: relative;
-    left: -10%;
+    left: 0;
+    top: -2vh;
 }
 .role_Header {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     text-transform: uppercase;
+    font-size: 20px;
     width: 40%;
 }
 .role_descrHeader {
@@ -149,6 +130,7 @@
     text-align: center;
     text-transform: uppercase;
     width: 60%;
+    font-size: 20px;
 }
 .roles_tbl td {
     font-family: 'Roboto', sans-serif;
@@ -157,64 +139,48 @@
     font-size: 14px;
     height: 3%;
 }
-.addrolenameLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
+.AddRoleNameLabel {
     font-family: 'Roboto', sans-serif;
-    position: relative;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
     width: 100%;
+    position: relative;
+    top: -2vh;
 }
-.addrolenameInput {
+.AddRoleNameInput {
+    font-family: 'Roboto', sans-serif;
     font-size: 22px;
-    width: 70%;
     text-align: center;
     border: none;
-    margin-top: 2vh;
-    left: 15%;
+    left: 25%;
     position: relative;
+    width: 50%;
+    margin-top: 0;
+    top: -3vh;
 }
-.addroledescriptionLabel {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
+.AddRoleDescriptionLabel {
     font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
     position: relative;
-    margin-top: 2.5%;
+    top: -2vh;
 }
 
-.addroledescriptionInput {
-    font-size: 16px;
-    width: 70%;
-    height: 8vh;
-    border: none;
-    left: 15%;
-    position: relative;
-    text-wrap: initial;
-    resize: none;
-}
-.datascope_finish {
-    width: 15%;
-    height: 5%;
-    background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+.AddRoleDescriptionInput {
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    position: relative;
+    font-size: 22px;
+    text-align: left;
     border: none;
-    top: -7vh;
-    left: 42.5%;
-    margin: 5% auto 0;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
+    top: -3vh;
 }
 .AddRoleButton {
     width: 20%;
@@ -227,7 +193,24 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     position: relative;
-    top: 12vh;
-    left: -10vw;
     border: none;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+.datascope_finish {
+    width: 20%;
+    height: 5%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    border: none;
+    top: 1.5vh;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-bottom: 1vh;
 }

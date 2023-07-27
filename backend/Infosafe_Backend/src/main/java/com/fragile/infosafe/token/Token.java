@@ -24,13 +24,13 @@ public class Token {
 
     @Id
     @GeneratedValue
-    public Integer token_id;
+    public Integer id;
 
     @Column(unique = true)
     public String token;
 
     @Enumerated(EnumType.STRING)
-    public TokenType token_type = TokenType.BEARER;
+    public TokenType tokenType = TokenType.BEARER;
 
     public boolean revoked;
 

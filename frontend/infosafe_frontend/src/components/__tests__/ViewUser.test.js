@@ -14,9 +14,7 @@ describe('ViewUser', () => {
         const popupOpen = true;
         const popupClose = jest.fn();
 
-        render(
-            <ViewUser user={user} popupClose={popupClose} popupOpen={popupOpen} />
-        );
+        render(<ViewUser user={user} popupClose={popupClose} popupOpen={popupOpen} />);
 
         const nameDisplay = screen.getByText('Name');
         const surnameDisplay = screen.getByText('Surname');

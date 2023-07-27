@@ -15,4 +15,3 @@ describe('Home', () => {
         expect(navBarElement).toHaveAttribute('systemRole', systemRole);
     });
 });
-

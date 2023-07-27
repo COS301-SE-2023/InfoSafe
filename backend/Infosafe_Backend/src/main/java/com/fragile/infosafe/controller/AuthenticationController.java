@@ -3,7 +3,12 @@ package com.fragile.infosafe.controller;
 import com.fragile.infosafe.auth.AuthenticationRequest;
 import com.fragile.infosafe.auth.AuthenticationResponse;
 import com.fragile.infosafe.auth.AuthenticationService;
-import com.fragile.infosafe.requests.UserRequest;
+import com.fragile.infosafe.model.Asset;
+import com.fragile.infosafe.requests.AssetRequest;
+import com.fragile.infosafe.requests.RegisterRequest;
+import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.requests.DataScopeRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -21,12 +27,7 @@ import java.io.IOException;
 public class AuthenticationController {
 
     private final AuthenticationService service;
-    @PostMapping("/add")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody UserRequest request
-    ) {
-        return ResponseEntity.ok(service.register(request));
-    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
@@ -39,7 +40,7 @@ public class AuthenticationController {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws IOException {
-        service.refreshToken(request, response);
+        //service.refreshToken(request, response);
     }
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request) {

@@ -22,7 +22,6 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
 
     const handleClick=(e)=> {
         e.preventDefault()
-
         const user = {first_name, last_name, email, password, system_role_id}
         console.log(user)
         fetch("http://localhost:8080/api/auth/add", {
@@ -64,30 +63,30 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
-                <div className="createuserBorder">
+                <div className="createUserBorder">
                     <form>
                         <button className="backButton" onClick={popupClose}>
                             <IoArrowBackOutline className="backIcon" />
                         </button>
-                        <p className="createuserLabel">User Creation</p>
+                        <p className="createUserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
                         <input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
                         <p className="emailLabel">Email</p>
                         <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                        <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password}/>
+                        <p className="passwordLabel">Password</p>                        <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password}/>
                         <p className="roleLabel">System Role</p>
+
                         <Dropdown
                             options={ROLE_OPTIONS}
                             value={ROLE_OPTIONS[0]}
                             className="role_dropdown"
                             data-testid="role_dropdown"
-                            name="systemRole"
+                            name="role"
                             onChange={(selectedOption) => setRole(selectedOption.value)}
                         />
-                        <button className="createuser_finish" data-testid="createuser_finish"  onClick={handleClick}>
+                        <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
                             Submit
                         </button>
                     </form>

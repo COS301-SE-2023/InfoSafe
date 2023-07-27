@@ -21,14 +21,13 @@ import java.util.List;
 public class User implements UserDetails{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
-
-    private String first_name;
-    private String last_name;
+    private int id;
+    private String firstname;
+    private String lastname;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private SystemRole system_role_id;
+    private Role role;
 
     @Override
     public String getUsername() {return this.email;}
@@ -37,7 +36,7 @@ public class User implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(system_role_id.name()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
     @Override
     public String getPassword() {
@@ -68,12 +67,12 @@ public class User implements UserDetails{
         this.password = password;
     }
 
-    public SystemRole getSystem_role_id() {
-        return system_role_id;
+    public Role getRole() {
+        return role;
     }
 
-    public void setSystem_role_id(SystemRole systemRole) {
-        this.system_role_id = systemRole;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
 
