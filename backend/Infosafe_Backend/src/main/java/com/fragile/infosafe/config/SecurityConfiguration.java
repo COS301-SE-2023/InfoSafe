@@ -18,9 +18,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Arrays;
 
-import static com.fragile.infosafe.model.Permission.ADMIN_READ;
-import static com.fragile.infosafe.model.Permission.ISO_READ;
+import static com.fragile.infosafe.model.Permission.*;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @EnableWebSecurity
@@ -37,7 +37,8 @@ public class SecurityConfiguration {
                 .cors(cfg -> cfg.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
-                        //.requestMatchers(GET, "/api/auth/**").hasAnyAuthority()
+                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(ADMIN_CREATE.name())
+                        .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN_READ.name())
                 .anyRequest()
                 .authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

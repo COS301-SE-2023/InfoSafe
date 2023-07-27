@@ -22,11 +22,7 @@ public enum Role {
                     ADMIN_READ,
                     ADMIN_UPDATE,
                     ADMIN_DELETE,
-                    ADMIN_CREATE,
-                    ISO_READ,
-                    ISO_UPDATE,
-                    ISO_DELETE,
-                    ISO_CREATE
+                    ADMIN_CREATE
             )
     ),
     ISO(
