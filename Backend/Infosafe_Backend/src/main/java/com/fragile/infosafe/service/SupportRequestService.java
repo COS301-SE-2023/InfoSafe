@@ -1,5 +1,6 @@
 package com.fragile.infosafe.service;
 
+import com.fragile.infosafe.model.Risk;
 import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.repository.SupportRequestRepository;
 import com.fragile.infosafe.requests.SupportRequestRequest;
@@ -29,4 +30,6 @@ public class SupportRequestService {
     }
 
     public List<SupportRequest> getAllSupportRequests() {return supportRequestRepository.findAll();}
+
+    public SupportRequest updateSupportRequest(SupportRequest supportRequest) {return supportRequestRepository.save(supportRequest);}
 }

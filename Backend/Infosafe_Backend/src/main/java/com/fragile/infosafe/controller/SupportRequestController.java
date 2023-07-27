@@ -1,5 +1,6 @@
 package com.fragile.infosafe.controller;
 
+import com.fragile.infosafe.model.Risk;
 import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.requests.SupportRequestRequest;
 import com.fragile.infosafe.service.SupportRequestService;
@@ -24,4 +25,10 @@ public class SupportRequestController {
 
     @GetMapping("/getSr")
     public List<SupportRequest> supportrequestlist() { return service.getAllSupportRequests(); }
+
+    @PutMapping("/update/{id}")
+    public SupportRequest updateSupportRequest (@PathVariable("id") int support_id, @RequestBody SupportRequest supportRequest) {
+        supportRequest.setSupport_id(support_id);
+        return service.updateSupportRequest(supportRequest);
+    }
 }
