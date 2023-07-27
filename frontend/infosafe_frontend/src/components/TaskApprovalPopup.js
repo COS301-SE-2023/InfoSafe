@@ -25,6 +25,8 @@ export const TaskApproval = ({ popupClose, popupOpen }) => {
                         />
                         <p className="displayTitle">Data Scope</p>
                         <p className="displayData">Data Scope A</p>
+                        <p className="displayTitle">Assigned User</p>
+                        <p className="displayData">User 12</p>
                         <p className="displayTitle">Task Description</p>
                         <textarea className="viewTextArea" readOnly={true} value="Example of a task description."/>
                         <div>

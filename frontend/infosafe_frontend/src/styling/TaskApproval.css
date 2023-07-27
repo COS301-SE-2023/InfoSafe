@@ -1,6 +1,6 @@
 .taskApprovalOverlay {
     width: 60vw;
-    height: 90vh;
+    height: 80vh;
     flex-shrink: 0;
     border-radius: 30px;
     background: rgba(173, 173, 173, 0.69);
@@ -11,7 +11,7 @@
     border: 1px solid #ffffff;
     width: 56vw;
     margin: 0 auto;
-    height: 82vh;
+    height: 72vh;
     position: relative;
     top: 4vh;
     overflow-y: scroll;
@@ -103,8 +103,9 @@
 .approveButton {
     width: 20%;
     height: 5%;
+    color: #ffffff;
     background-color: rgba(233, 0, 0, 1);
-    color: green;
+    background: green;
     text-align: center;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
@@ -114,9 +115,10 @@
     align-self: center;
     justify-self: center;
     bottom: 2vh;
-    left: 40%;
+    left: 25%;
     border: none;
     margin: 5% auto 0;
+    margin-right: 25%;
 }
 .rejectButton {
     width: 20%;
@@ -132,7 +134,7 @@
     align-self: center;
     justify-self: center;
     bottom: 2vh;
-    left: 40%;
+    left: 10%;
     border: none;
     margin: 5% auto 0;
 }

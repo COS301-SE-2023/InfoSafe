@@ -2,7 +2,7 @@ name: Codecov
 on: [push, pull_request]
 jobs:
   steps:
-    - name: Codecov
-      uses: codecov/codecov-action@v3.1.0
-      with:
-        token: ${{ secrets.CODECOV }}
+    name: Codecov
+    uses: codecov/codecov-action@v3.1.0
+    with:
+      token: ${{ secrets.CODECOV }}
