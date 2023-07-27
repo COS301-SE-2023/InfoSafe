@@ -1,6 +1,7 @@
 package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.requests.DataScopeRequest;
 import com.fragile.infosafe.service.DataScopeService;
 import lombok.RequiredArgsConstructor;
@@ -24,4 +25,11 @@ public class DataScopeController {
 
     @GetMapping("/getDs")
     public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
+
+    @PutMapping("/update/{id}")
+    public DataScope updateDataScope (@PathVariable("id") int ds_id, @RequestBody DataScope datascope) {
+        datascope.setDs_id(ds_id);
+        return service.updateSupportRequest(supportRequest);
+    }
+
 }
