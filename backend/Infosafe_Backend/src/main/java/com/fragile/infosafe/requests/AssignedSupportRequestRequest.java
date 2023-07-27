@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssetRequest {
-    private String assetName;
-    private String assetDescription;
-    private String status;
-    private String dateAcquired;
-    private String assignee;
+public class AssignedSupportRequestRequest {
+    private int support_request_id;
+    private int user_id;
 }

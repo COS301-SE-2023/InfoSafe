@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssetRequest {
-    private String assetName;
-    private String assetDescription;
-    private String status;
-    private String dateAcquired;
-    private String assignee;
+public class DataScopeRoleRequest {
+    private int user_id;
+    private String role_type;
+    private String role_description;
 }
