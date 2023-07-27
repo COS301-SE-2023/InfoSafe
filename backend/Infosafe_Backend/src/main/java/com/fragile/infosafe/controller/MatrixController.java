@@ -11,7 +11,6 @@ import java.util.List;
 @RequestMapping("api/matrix")
 @CrossOrigin
 public class MatrixController {
-    @Autowired
     private MatrixService matrixService;
 
     @PostMapping("/add")
