@@ -70,6 +70,7 @@
     left: 25%;
     position: relative;
     width: 50%;
+    height: 4vh;
 }
 .surnameLabel {
     font-family: 'Roboto', sans-serif;
@@ -90,6 +91,7 @@
     position: relative;
     width: 50%;
     margin-top: 0;
+    height: 4vh;
 }
 .emailLabel {
     font-family: 'Roboto', sans-serif;
@@ -110,6 +112,7 @@
     position: relative;
     width: 50%;
     margin-top: 0;
+    height: 4vh;
 }
 .passwordLabel {
     font-family: 'Roboto', sans-serif;
@@ -130,6 +133,7 @@
     position: relative;
     width: 50%;
     margin-top: 0;
+    height: 4vh;
 }
 .roleLabel {
     font-family: 'Roboto', sans-serif;
