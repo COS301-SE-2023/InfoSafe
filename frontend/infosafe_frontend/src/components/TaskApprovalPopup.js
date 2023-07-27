@@ -29,9 +29,9 @@ export const TaskApproval = ({ popupClose, popupOpen }) => {
                         <p className="displayData">User 12</p>
                         <p className="displayTitle">Task Description</p>
                         <textarea className="viewTextArea" readOnly={true} value="Example of a task description."/>
-                        <div>
+                        <div className="taskApprovalButtonsDiv">
                             <button className="approveButton" type="submit" onClick={popupClose}>
-                                Approve
+                                Accept
                             </button>
                             <button className="rejectButton" type="submit" onClick={popupClose}>
                                 Reject
