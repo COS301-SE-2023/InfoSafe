@@ -19,8 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import java.util.Arrays;
 
 import static com.fragile.infosafe.model.Permission.*;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
@@ -39,6 +38,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(POST, "/api/user/add").hasAnyAuthority(ADMIN_CREATE.name())
                         .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN_READ.name())
+                        .requestMatchers(PUT, "/api/user/getAll").hasAnyAuthority(ADMIN_UPDATE.name())
                 .anyRequest()
                 .authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
