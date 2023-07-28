@@ -22,6 +22,8 @@ import {CreateRisk} from "./CreateRiskPopup";
 import Requests from './Requests';
 import '../styling/Dropdown.css';
 import {TaskApproval} from "./TaskApprovalPopup";
+import {ViewRisk} from "./ViewRisk";
+import {EditRisk} from "./EditRisk";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
@@ -40,6 +42,8 @@ const ISO = ({currentTab}) => {
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
+    const [viewRiskOpen, setViewRiskOpen] = useState(false);
+    const [editRiskOpen, setEditRiskOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
@@ -445,9 +449,27 @@ const ISO = ({currentTab}) => {
         for (let y = 1; y < 30; y++) {
             risks.push(
                 <li key={y}>
-                    Risk {y}
+                    <p onClick={() => setViewRiskOpen(true)}>
+                        Risk {y}
+                        {viewRiskOpen ? (
+                            <ViewRisk
+                                popupClose={() => setViewRiskOpen(false)}
+                                popupOpen={viewRiskOpen}
+                            />
+                        ) : null}
+                    </p>
+                    <FaRegEdit
+                        className="ISOEditIcon"
+                        onClick={() => setEditRiskOpen(true)}
+                    />
+                    {editRiskOpen ? (
+                        <EditRisk
+                            popupClose={() => setEditRiskOpen(false)}
+                            popupOpen={editRiskOpen}
+                        />
+                    ) : null}
                     <button
-                        className="reviewRiskButton"
+                        className="ISOReviewRiskButton"
                         onClick={() => setReviewRiskOpen(true)}
                     >
                         Review
