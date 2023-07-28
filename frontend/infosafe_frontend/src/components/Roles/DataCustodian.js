@@ -1,37 +1,36 @@
-import '../../styling/DataCustodian.css';
+import '../styling/DataCustodian.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import ViewDataScope from '../View/ViewDataScope';
-import {EditDataScopePopup} from '../Edit/EditDataScopePopup';
-import {CreateDataScopePopup} from '../Create/CreateDataScopePopup';
-import ViewAccessRequest from '../View/ViewAccessRequest';
-import EditAccessRequest from '../Edit/EditAccessRequest';
-import {ViewTask} from '../View/ViewTaskPopup';
-import {ViewDevice} from '../View/ViewDevice';
-import ViewSupportRequest from '../View/ViewSupportRequest';
-import {ReviewRisk} from "../ReviewRiskPopup";
-import {CreateRisk} from "../Create/CreateRiskPopup";
-import Requests from '../Requests';
-import '../../styling/Dropdown.css';
+import ViewDataScope from './ViewDataScope';
+import {EditDataScopePopup} from './EditDataScopePopup';
+import {CreateDataScopePopup} from './CreateDataScopePopup';
+import ViewAccessRequest from './ViewAccessRequest';
+import EditAccessRequest from './EditAccessRequest';
+import {ViewTask} from './ViewTaskPopup';
+import {ViewDevice} from './ViewDevice';
+import ViewSupportRequest from './ViewSupportRequest';
+import {CreateRisk} from "./CreateRiskPopup";
+import Requests from './Requests';
+import '../styling/Dropdown.css';
+import {ViewRisk} from "./ViewRisk";
+import {EditRisk} from "./EditRisk";
 /* eslint-disable react/prop-types */
 
 const DataCustodian = ({currentTab}) => {
     const [showDatascope, setShowDatascope] = useState([]);
-    const [showRisk, setShowRisk] = useState([]);
-    const [showAccessRequest, setShowAccessRequest] = useState([]);
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
     const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
-    const [viewMatrixOpen, setViewMatrixOpen] = useState(false);
+    const [viewTaskOpen, setViewTaskOpen] = useState(false);
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
+    const [viewRiskOpen, setViewRiskOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
+    const [editRiskOpen, setEditRiskOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
-            method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }
@@ -44,7 +43,6 @@ const DataCustodian = ({currentTab}) => {
 
     useEffect(() => {
         fetch('http://localhost:8080/api/asset/getAsset', {
-            method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }
@@ -54,20 +52,6 @@ const DataCustodian = ({currentTab}) => {
                 setShowAsset(result);
             });
     }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/risk/getRisk', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowRisk(result);
-            });
-    }, []);
-
 
 
     const ViewDataScopeItem = ({ datascope }) => {
@@ -99,69 +83,6 @@ const DataCustodian = ({currentTab}) => {
         );
     };
 
-    const ViewRiskItem = ({risk}) => {
-        const [createRiskOpen, setCreateRiskOpen] = useState(false);
-        const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
-        return(
-            <li key={risk.id}>
-                <p onClick={() => setReviewRiskOpen(!reviewRiskOpen)}>
-                    Risk {risk.risk_id}: {risk.risk_status}
-                    {reviewRiskOpen && (
-                        <ReviewRisk
-                            popupClose={() => setReviewRiskOpen(false)}
-                            risk={risk}
-                        />
-                    )}
-                </p>
-            </li>
-        );
-    };
-
-    const ViewCompliance = ({compliance}) => {
-        const [viewMatrixOpen, setViewMatrixOpen] = useState(false);
-        return(
-            <li key={compliance.id}>
-                <p onClick={() => setViewTaskOpen(true)}>
-                    {viewTaskOpen && (
-                        <ViewTask
-                            popupClose={() => setViewTaskOpen(false)}
-                            popupOpen={viewTaskOpen}
-                        />
-                    )}
-                </p>
-            </li>
-        )
-    };
-
-    const viewAccessItem = ({access}) => {
-        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
-        const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
-        return(
-            <li key={access.id}>
-                <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
-                    AccessRequest {access.request_id}
-                    {reviewRiskOpen && (
-                        <ViewAccessRequest
-                            popupClose={() => setReviewRiskOpen(false)}
-                            access={access}
-                        />
-                    )}
-                </p>
-                <FaRegEdit
-                    className="EditIcon"
-                    onClick={() => setEditAccessRequestOpen(true)}
-                />
-                {editAccessRequestOpen ? (
-                    <EditAccessRequest
-                        popupClose={() => setEditAccessRequestOpen(false)}
-                        popupOpen={editAccessRequestOpen}
-                    />
-                ) : null}
-                <RiDeleteBin6Fill className="DeleteIcon" />
-            </li>
-        );
-    };
-
     const ViewDeviceItem = ({ asset }) => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
@@ -184,7 +105,7 @@ const DataCustodian = ({currentTab}) => {
     {
         const dataItems = [];
         showDatascope.map((datascope) =>
-            dataItems.push(<ViewDataScope datascope={datascope} key={datascope.id} />)
+            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id} />)
         );
 
         return (
@@ -213,9 +134,32 @@ const DataCustodian = ({currentTab}) => {
     if (currentTab === 2)
     {
         const accessRequests = [];
-        showAccessRequest.map((accessRequest) =>
-            accessRequests.push(<ViewAccessRequest asset={accessRequest} key={accessRequest.request_id} />)
-        );
+        for (let k = 1; k < 30; k++) {
+            accessRequests.push(
+                <li key={k}>
+                    <p onClick={() => setViewAccessRequestOpen(true)}>
+                        Access Request {k}
+                        {viewAccessRequestOpen ? (
+                            <ViewAccessRequest
+                                popupClose={() => setViewAccessRequestOpen(false)}
+                                popupOpen={viewAccessRequestOpen}
+                            />
+                        ) : null}
+                    </p>
+                    <FaRegEdit
+                        className="EditIcon"
+                        onClick={() => setEditAccessRequestOpen(true)}
+                    />
+                    {editAccessRequestOpen ? (
+                        <EditAccessRequest
+                            popupClose={() => setEditAccessRequestOpen(false)}
+                            popupOpen={editAccessRequestOpen}
+                        />
+                    ) : null}
+                    <RiDeleteBin6Fill className="DeleteIcon" />
+                </li>
+            );
+        }
         return (
             <div className="display">
                 <div className="accessRequests">
@@ -230,7 +174,15 @@ const DataCustodian = ({currentTab}) => {
         const complianceItems = [];
         for (let l = 1; l < 30; l++) {
             complianceItems.push(
-
+                <li key={l}>
+                    <p onClick={() => setViewTaskOpen(true)}>
+                        Task {l}
+                        {viewTaskOpen ? (
+                            <ViewTask
+                                popupClose={() => setViewTaskOpen(false)}
+                                popupOpen={viewTaskOpen}
+                            />
+                        ) : null}
                     </p>
                 </li>
             );
@@ -289,13 +241,50 @@ const DataCustodian = ({currentTab}) => {
 
     if (currentTab === 6)
     {
-        const riskItems = [];
-        showRisk.map((risks) => riskItems.push(<ViewRiskItem risk={risks} key={risks.risk_id}/>));
+        const risks = [];
+        for (let y = 1; y < 30; y++) {
+            risks.push(
+                <li key={y}>
+                    <p onClick={() => setViewRiskOpen(true)}>
+                        Risk {y}
+                        {viewRiskOpen ? (
+                            <ViewRisk
+                                popupClose={() => setViewRiskOpen(false)}
+                                popupOpen={viewRiskOpen}
+                            />
+                        ) : null}
+                    </p>{' '}
+                    <FaRegEdit
+                        className="EditIcon"
+                        onClick={() => setEditRiskOpen(true)}
+                    />
+                    {editRiskOpen ? (
+                        <EditRisk
+                            popupClose={() => setEditRiskOpen(false)}
+                            popupOpen={editRiskOpen}
+                        />
+                    ) : null}
 
+
+                    {/*<button*/}
+                    {/*    className="reviewRiskButton"*/}
+                    {/*    onClick={() => setReviewRiskOpen(true)}*/}
+                    {/*>*/}
+                    {/*    Review*/}
+                    {/*</button>*/}
+                    {/*{reviewRiskOpen ? (*/}
+                    {/*    <ReviewRisk*/}
+                    {/*        popupClose={() => setReviewRiskOpen(false)}*/}
+                    {/*        popupOpen={reviewRiskOpen}*/}
+                    {/*    />*/}
+                    {/*) : null}*/}
+                </li>
+            );
+        }
         return (
             <div className="display">
                 <div className="risks">
-                    <ul className="risksList">{riskItems}</ul>
+                    <ul className="risksList">{risks}</ul>
                 </div>
                 <div className="CreateRiskButtonDiv">
                     <button

@@ -1,24 +1,26 @@
-import '../../styling/DISO.css';
+import '../styling/DISO.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import {CreateUserPopup} from '../Create/CreateUserPopup';
-import ViewUser from '../View/ViewUser';
-import EditUser from '../Edit/EditUser';
-import ViewDataScope from '../View/ViewDataScope';
-import ViewAccessRequest from '../View/ViewAccessRequest';
-import EditAccessRequest from '../Edit/EditAccessRequest';
-import {CreateTask} from '../Create/CreateTaskPopup';
-import {UpdateTask} from '../UpdateTaskPopup';
-import {ViewTask} from '../View/ViewTaskPopup';
+import {CreateUserPopup} from './CreateUserPopup';
+import ViewUser from './ViewUser';
+import EditUser from './EditUser';
+import ViewDataScope from './ViewDataScope';
+import ViewAccessRequest from './ViewAccessRequest';
+import EditAccessRequest from './EditAccessRequest';
+import {CreateTask} from './CreateTaskPopup';
+import {UpdateTask} from './UpdateTaskPopup';
+import {ViewTask} from './ViewTaskPopup';
 // import {CreateDevicePopup} from './CreateDevicePopup';
-import {ViewDevice} from '../View/ViewDevice';
-import ViewSupportRequest from '../View/ViewSupportRequest';
-import EditSupportRequest from '../Edit/EditSupportRequest';
-import {ReviewRisk} from "../ReviewRiskPopup";
-import {CreateRisk} from "../Create/CreateRiskPopup";
-import Requests from '../Requests';
-import '../../styling/Dropdown.css';
+import {ViewDevice} from './ViewDevice';
+import ViewSupportRequest from './ViewSupportRequest';
+import EditSupportRequest from './EditSupportRequest';
+import {ReviewRisk} from "./ReviewRiskPopup";
+import {CreateRisk} from "./CreateRiskPopup";
+import Requests from './Requests';
+import '../styling/Dropdown.css';
+import {ViewRisk} from "./ViewRisk";
+import {EditRisk} from "./EditRisk";
 /* eslint-disable react/prop-types */
 
 const DISO = ({currentTab}) => {
@@ -36,6 +38,8 @@ const DISO = ({currentTab}) => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
+    const [viewRiskOpen, setViewRiskOpen] = useState(false);
+    const [editRiskOpen, setEditRiskOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
@@ -72,19 +76,6 @@ const DISO = ({currentTab}) => {
                 setShowAsset(result);
             });
     }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/risk/getRisk', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setReviewRiskOpen(result);
-            });
-    }, []);
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
@@ -92,7 +83,7 @@ const DISO = ({currentTab}) => {
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.user_id}: {user.first_name} {user.last_surname}
+                    User {user.id}: {user.name} {user.surname}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
@@ -411,14 +402,31 @@ const DISO = ({currentTab}) => {
 
     if (currentTab === 6)
     {
-
         const risks = [];
         for (let y = 1; y < 30; y++) {
             risks.push(
                 <li key={y}>
-                    Risk {y}
+                    <p onClick={() => setViewRiskOpen(true)}>
+                        Risk {y}
+                        {viewRiskOpen ? (
+                            <ViewRisk
+                                popupClose={() => setViewRiskOpen(false)}
+                                popupOpen={viewRiskOpen}
+                            />
+                        ) : null}
+                    </p>{' '}
+                    <FaRegEdit
+                        className="DISOEditIcon"
+                        onClick={() => setEditRiskOpen(true)}
+                    />
+                    {editRiskOpen ? (
+                        <EditRisk
+                            popupClose={() => setEditRiskOpen(false)}
+                            popupOpen={editRiskOpen}
+                        />
+                    ) : null}
                     <button
-                        className="reviewRiskButton"
+                        className="DISOReviewRiskButton"
                         onClick={() => setReviewRiskOpen(true)}
                     >
                         Review
