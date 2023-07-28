@@ -43,6 +43,7 @@ const ISO = ({currentTab}) => {
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
+            method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }
@@ -55,6 +56,7 @@ const ISO = ({currentTab}) => {
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
+            method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }
@@ -67,6 +69,7 @@ const ISO = ({currentTab}) => {
 
     useEffect(() => {
         fetch('http://localhost:8080/api/asset/getAsset', {
+            method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }
@@ -76,6 +79,7 @@ const ISO = ({currentTab}) => {
                 setShowAsset(result);
             });
     }, []);
+
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
@@ -83,7 +87,7 @@ const ISO = ({currentTab}) => {
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.id}: {user.name} {user.surname}
+                    User {user.user_id}: {user.first_name} {user.last_surname}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
