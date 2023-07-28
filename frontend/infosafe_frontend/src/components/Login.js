@@ -27,6 +27,15 @@ function Login(){
         })
     };
 
+    const submitLogin = e => {
+        if (e.key === 'Enter')
+        {
+            console.log("here");
+            document.getElementById("btnLogin").click();
+        }
+
+    };
+
     return (
         <div className="background">
             <div className="flipPanel">
@@ -59,11 +68,12 @@ function Login(){
                                     name="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    onKeyPress={submitLogin}
                                 ></input>
                             </div>
                         </div>
                         <a className="forgot" href="www.youtube.com/watch?v=dQw4w9WgXcQ">Forgot Password?</a>
-                        <button data-testid="btnTest" className="btnLogin" onClick={handleLogin}>
+                        <button data-testid="btnTest"  id="btnLogin" className="btnLogin" onClick={handleLogin}>
                             Login
                         </button>
                     </div>

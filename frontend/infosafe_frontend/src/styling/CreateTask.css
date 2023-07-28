@@ -58,6 +58,7 @@
     width: 100%;
     position: relative;
     top: 1vh;
+
 }
 .inputTextArea {
     font-family: 'Roboto', sans-serif;
@@ -78,9 +79,19 @@
     position: relative;
     width: 50%;
     margin-top: 0;
+    height: 4vh;
 }
-.submitButton {
-    width: 20%;
+.createTaskButtonDiv {
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    top: 4%;
+}
+.createTaskSubmitButton {
+    width: fit-content;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);
     color: #ffffff;
@@ -93,9 +104,10 @@
     align-self: center;
     justify-self: center;
     bottom: 2vh;
-    left: 40%;
     border: none;
     margin: 5% auto 0;
+    padding: 0.5% 1%;
+
 }
 .createTaskTypeDropdown {
     text-transform: uppercase;

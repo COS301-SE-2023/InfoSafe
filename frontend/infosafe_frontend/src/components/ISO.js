@@ -21,6 +21,8 @@ import {ReviewRisk} from "./ReviewRiskPopup";
 import {CreateRisk} from "./CreateRiskPopup";
 import Requests from './Requests';
 import '../styling/Dropdown.css';
+import {TaskApproval} from "./TaskApprovalPopup";
+/* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
@@ -37,6 +39,7 @@ const ISO = ({currentTab}) => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
+    const [approveTaskOpen, setApproveTaskOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
@@ -80,7 +83,7 @@ const ISO = ({currentTab}) => {
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.user_id}: {user.first_name} {user.last_name}
+                    User {user.id}: {user.name} {user.surname}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
@@ -308,13 +311,19 @@ const ISO = ({currentTab}) => {
                             />
                         ) : null}
                     </div>
-                    <div className="RevokeTaskDiv">
+                    <div className="ApproveTaskDiv">
                         <button
-                            className="RevokeTaskButton"
-                            onClick={() => console.log('Revoked task.')}
+                            className="ApproveTaskButton"
+                            onClick={() => setApproveTaskOpen(true)}
                         >
-                            Revoke Task
+                            Task Approval
                         </button>
+                        {approveTaskOpen ? (
+                            <TaskApproval
+                                popupClose={() => setApproveTaskOpen(false)}
+                                popupOpen={approveTaskOpen}
+                            />
+                        ) : null}
                     </div>
                 </div>
             </div>
