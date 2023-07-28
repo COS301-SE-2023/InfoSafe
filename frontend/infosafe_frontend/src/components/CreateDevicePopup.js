@@ -10,18 +10,17 @@ const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 const NEW_OPTIONS = ['YES', 'NO'];
 const AVAILABILITY_OPTIONS = ['YES', 'NO'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
-    // const current = new Date();
-    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-    const[serial_number,setSerial_number]=useState('')
-    const[type_id,setType_id]=useState('')
-    const[asset_description,setAsset_description]=useState('')
-    const[availability]=useState('1')
-    const[clean_status,setClean_status]=useState('CLEAN')
-    const[new_device]=useState('1')
+    const current = new Date();
+    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const[asset_name,setAssetName]=useState('')
+    const[asset_description,setAssetDesc]=useState('')
+    const[assignee,setAssignee]=useState('')
+    const[date_acquired,setDate]=useState(date)
+    const[status,setStatus]=useState('CLEAN')
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const asset = {serial_number, type_id, asset_description, availability, clean_status, new_device}
+        const asset = {asset_name, asset_description, assignee, date_acquired, status}
         console.log(asset)
         fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",
@@ -75,7 +74,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                           value={STATUS_OPTIONS[0]}
                           className="createDeviceStatusDropdown"
                           name="status"
-                          onChange={(selectedOption) => setClean_status(selectedOption.value)}
+                          onChange={(selectedOption) => setStatus(selectedOption.value)}
                         />
                         <br />
                         <p className="currentCustodianLabel">Current Custodian</p>

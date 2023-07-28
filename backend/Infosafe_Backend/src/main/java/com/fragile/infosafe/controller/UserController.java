@@ -28,4 +28,10 @@ public class UserController {
         return ResponseEntity.ok(authService.register(request));
     }
 
+    @PutMapping("/{id}")
+    public User updateUser (@PathVariable("id") int user_id, @RequestBody User user) {
+        user.setUser_id(user_id);
+        return userService.updateUser(user);
+    }
+
 }

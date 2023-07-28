@@ -20,7 +20,7 @@ module.exports = {
         // Example rule: Enforce using double quotes for strings
         quotes: ["error", "double"],
     },
-    ignorePatterns: ["**/*.java"],
+    ignorePatterns: ["**/*.java", "**/*.cy.js"],
     overrides: [
         {
             // Frontend (React) code in frontend/ directory
@@ -32,11 +32,11 @@ module.exports = {
                 "plugin:react/recommended"
             ],
             rules: {
-                'react/jsx-uses-react': 'error',
-                'react/jsx-uses-vars': 'error',
-                'react/prop-types': 'off',
-                'react/react-in-jsx-scope': 'error',
-                'react/jsx-curly-brace-presence': ['error', 'never'],
+                "react/jsx-uses-react": "error",
+                "react/jsx-uses-vars": "error",
+                "react/prop-types": "off",
+                "react/react-in-jsx-scope": "error",
+                "react/jsx-curly-brace-presence": ["error", "never"],
                 "jsx-quotes": ["error", "prefer-single"],
             },
         },
