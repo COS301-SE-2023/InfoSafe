@@ -9,8 +9,7 @@ const Home = () => {
     if(sessionStorage.getItem('accessToken') == null)
         window.location.href = "/";
 
-
-        const [systemRole, setRole] = useState('Data Custodian'); // intergrate this
+        const [systemRole, setRole] = useState('Data Custodian');
         const handleRole = (RoleIndex) => {
             setRole(RoleIndex);
         };

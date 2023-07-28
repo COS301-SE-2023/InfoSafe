@@ -1,7 +1,6 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.repository.DataScopeRepository;
 import com.fragile.infosafe.requests.DataScopeRequest;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +19,8 @@ public class DataScopeService {
         var datascope = DataScope.builder()
                 .ds_name(request.getDs_name())
                 .ds_description(request.getDs_description())
-                .role_name(request.getRole_name())
-                .role_description(request.getRole_description())
                 .date_captured(request.getDate_captured())
                 .data_custodian(request.getData_custodian())
-                .administrator(request.getAdministrator())
                 .ds_status(request.getDs_status())
                 .build();
         dataScopeRepository.save(datascope);
@@ -32,7 +28,5 @@ public class DataScopeService {
     }
 
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
-
-    public DataScope updateDataScope(DataScope datascope) {return dataScopeRepository.save(datascope);}
 
 }
