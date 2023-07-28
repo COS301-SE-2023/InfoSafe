@@ -26,8 +26,8 @@ public class AssetController {
     public List<Asset> assetlist() { return service.getAllAssets(); }
 
     @PutMapping("/update/{id}")
-    public Asset updateAsset (@PathVariable("id") String serial_number, @RequestBody Asset asset) {
-        asset.setSerial_number(serial_number);
+    public Asset updateAsset (@PathVariable("id") Long serial_number, @RequestBody Asset asset) {
+        asset.setId(serial_number);
         return service.updateAsset(asset);
     }
 }
