@@ -19,6 +19,8 @@ import {ReviewRisk} from "./ReviewRiskPopup";
 import {CreateRisk} from "./CreateRiskPopup";
 import Requests from './Requests';
 import '../styling/Dropdown.css';
+import {ViewRisk} from "./ViewRisk";
+import {EditRisk} from "./EditRisk";
 /* eslint-disable react/prop-types */
 
 const DISO = ({currentTab}) => {
@@ -36,6 +38,8 @@ const DISO = ({currentTab}) => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
+    const [viewRiskOpen, setViewRiskOpen] = useState(false);
+    const [editRiskOpen, setEditRiskOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
@@ -402,9 +406,27 @@ const DISO = ({currentTab}) => {
         for (let y = 1; y < 30; y++) {
             risks.push(
                 <li key={y}>
-                    Risk {y}
+                    <p onClick={() => setViewRiskOpen(true)}>
+                        Risk {y}
+                        {viewRiskOpen ? (
+                            <ViewRisk
+                                popupClose={() => setViewRiskOpen(false)}
+                                popupOpen={viewRiskOpen}
+                            />
+                        ) : null}
+                    </p>{' '}
+                    <FaRegEdit
+                        className="DISOEditIcon"
+                        onClick={() => setEditRiskOpen(true)}
+                    />
+                    {editRiskOpen ? (
+                        <EditRisk
+                            popupClose={() => setEditRiskOpen(false)}
+                            popupOpen={editRiskOpen}
+                        />
+                    ) : null}
                     <button
-                        className="reviewRiskButton"
+                        className="DISOReviewRiskButton"
                         onClick={() => setReviewRiskOpen(true)}
                     >
                         Review

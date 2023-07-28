@@ -504,11 +504,11 @@
     padding: 0.5% 2%;
     width: fit-content;
 }
-.EditIcon {
+.DISOEditIcon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 2.5vw;
+    right: 1vw;
     height: 100%;
 }
 .DeleteIcon {
@@ -564,7 +564,7 @@
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.reviewRiskButton {
+.DISOReviewRiskButton {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -574,7 +574,7 @@
     width: fit-content;
     position: absolute;
     top: 50%;
-    right: 1%;
+    right: 2.5vw;
     transform: translateY(-50%);
     background-color: #bbbbbb;
     border: 1px solid #000000;
