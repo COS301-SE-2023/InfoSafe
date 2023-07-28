@@ -21,7 +21,6 @@ import {ReviewRisk} from "./ReviewRiskPopup";
 import {CreateRisk} from "./CreateRiskPopup";
 import Requests from './Requests';
 import '../styling/Dropdown.css';
-/* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
