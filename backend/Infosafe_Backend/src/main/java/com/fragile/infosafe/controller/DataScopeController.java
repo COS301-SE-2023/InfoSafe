@@ -28,8 +28,8 @@ public class DataScopeController {
 
     @PutMapping("/update/{id}")
     public DataScope updateDataScope (@PathVariable("id") int ds_id, @RequestBody DataScope datascope) {
-        datascope.setDs_id(ds_id);
-        return service.updateSupportRequest(supportRequest);
+        datascope.setData_scope_id(ds_id);
+        return service.updateDataScope(datascope);
     }
 
 }
