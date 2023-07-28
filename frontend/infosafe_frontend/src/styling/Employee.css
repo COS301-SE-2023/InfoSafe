@@ -1,71 +1,3 @@
-.users {
-    background-color: transparent;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    box-sizing: content-box;
-    scrollbar-width: none;
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
-}
-.users::-webkit-scrollbar {
-    display: none;
-}
-.userList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.userList li {
-    position: relative;
-    height: 4vh;
-    color: #000000;
-    width: 100%;
-    text-transform: none;
-    background-color: #f2f2f2;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: 1px;
-}
-.userList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
-}
-.userList li:hover {
-    z-index: 4;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-.CreateUserButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin: 0 auto;
-    padding: 0.5% 2%;
-    width: fit-content;
-}
-.CreateUserButtonDiv {
-    position: relative;
-    bottom: -10%;
-}
 .datascopes {
     background-color: transparent;
     width: 90%;
@@ -110,51 +42,6 @@
 .datascopesList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-.accessRequests {
-    background-color: transparent;
-    width: 90%;
-    margin: 0 auto;
-    height: 80%;
-    position: relative;
-    top: 5%;
-    overflow-y: scroll;
-    box-sizing: content-box;
-    scrollbar-width: none;
-}
-.accessrequestsList {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.accessrequestsList li {
-    position: relative;
-    height: 4vh;
-    color: #000000;
-    width: 100%;
-    text-transform: none;
-    background-color: #f2f2f2;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: 1px;
-}
-.accessrequestsList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 1%;
-}
-.accessrequestsList li:hover {
-    z-index: 4;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-.accessRequests::-webkit-scrollbar {
-    display: none;
 }
 .tasks {
     background-color: transparent;
@@ -207,73 +94,6 @@
     justify-content: center;
     display: flex;
 }
-.CreateTaskDiv {
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-}
-.UpdateTaskDiv {
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-}
-.ApproveTaskDiv {
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-}
-.CreateTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    width: 120%;
-    padding: 3% 3%;
-    text-wrap: none;
-}
-.UpdateTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    padding: 3% 3%;
-    width: 120%;
-}
-.ApproveTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-    padding: 3% 3%;
-    width: 120%;
-}
 .devices {
     background-color: transparent;
     width: 90%;
@@ -318,30 +138,6 @@
 .deviceList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-.AddDeviceButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    color: #ffffff;
-    position: relative;
-    margin: 0 auto;
-    bottom: -10%;
-    padding: 0.5% 2%;
-    width: fit-content;
-}
-.AddDeviceDiv {
-    position: relative;
-    bottom: -10%;
 }
 .titles {
     display: flex;
@@ -519,7 +315,7 @@
     height: 100%;
     fill: #cf0000;
 }
-.risks {
+.assetRequests {
     background-color: transparent;
     width: 90%;
     margin: 0 auto;
@@ -530,15 +326,15 @@
     box-sizing: content-box;
     scrollbar-width: none;
 }
-.risks::-webkit-scrollbar {
+.assetRequests::-webkit-scrollbar {
     display: none;
 }
-.risksList {
+.assetRequestsList {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.risksList li {
+.assetRequestsList li {
     position: relative;
     height: 4vh;
     color: #000000;
@@ -551,7 +347,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     margin-top: 1px;
 }
-.risksList li p {
+.assetRequestsList li p {
     font-family: 'Roboto', sans-serif;
     transform: translateY(-50%);
     margin: 0;
@@ -560,17 +356,20 @@
     top: 50%;
     left: 1%;
 }
-.risksList li:hover {
+.assetRequestsList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.reviewRiskButton {
+.assetRequestsList li p {
+    width: 80%;
+}
+.reviewAssetRequestButton {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #000000;
     text-transform: uppercase;
-    height: 80%;
+    height: fit-content;
     width: fit-content;
     position: absolute;
     top: 50%;
@@ -578,26 +377,4 @@
     transform: translateY(-50%);
     background-color: #bbbbbb;
     border: 1px solid #000000;
-}
-.CreateRiskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin: 0 auto;
-    padding: 0.5% 2%;
-    width: fit-content;
-}
-.CreateRiskButtonDiv {
-    position: relative;
-    bottom: -10%;
 }

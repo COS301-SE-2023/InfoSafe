@@ -1,6 +1,5 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import Dropdown from 'react-dropdown';
 import '../styling/EditAccessRequest.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
@@ -17,23 +16,30 @@ const EditAccessRequest = ({ popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="editAccessRequestTitle">Edit Access Request</p>
+                        <div className="editAccessRequestDatascopeDiv">
+                            <p className="editAccessRequestDatascopeLabel">Data Scope</p>
+                            <p className="editAccessRequestDatascopeNameDisplay">Data Scope 9</p>
+                        </div>
+                        <div className="editAccessRequestRoleDiv">
+                            <p className="editAccessRequestRoleLabel">Role</p>
+                            <p className="editAccessRequestRoleDisplay">ISO</p>
+                        </div>
+                        <div className="editAccessRequestReasonDiv">
+                            <p className="editAccessRequestReasonLabel">Reason</p>
+                            <textarea
+                                readOnly={true}
+                                className="editAccessRequestReasonDisplay"
+                                defaultValue="Insert reason here."
+                            ></textarea>
+                        </div>
                         <div className="editAccessRequestStatusDiv">
                             <p className="editAccessRequestStatusLabel">Status</p>
-                            <Dropdown
-                                className="editAccessRequestStatusDropdown"
-                                options={ACCESSREQUESTSTATUSOPTIONS}
-                                value={ACCESSREQUESTSTATUSOPTIONS[0]}
-                                //onChange
-                                //data-testid
-                            />
+                            <p className="editAccessRequestStatusDisplay">Approved</p>
                         </div>
-                        <button
-                            className="editAccessRequestButton"
-                            type="submit"
-                            onClick={popupClose}
-                        >
-                            Submit
-                        </button>
+                        <div className="editAccessRequestButtonsDiv">
+                            <button className="editAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
+                            <button className="editAccessRequestRejectButton" onClick={() => console.log("Access Request Rejected")}>Reject</button>
+                        </div>
                     </form>
                 </div>
             </div>

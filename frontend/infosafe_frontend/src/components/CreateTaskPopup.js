@@ -48,8 +48,8 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                             id="inputTextArea"
                             name="completionDate"
                         />
-                        <div>
-                            <button className="submitButton" type="submit" onClick={popupClose}>
+                        <div className="createTaskButtonDiv">
+                            <button className="createTaskSubmitButton" type="submit" onClick={popupClose}>
                                 Submit
                             </button>
                         </div>
