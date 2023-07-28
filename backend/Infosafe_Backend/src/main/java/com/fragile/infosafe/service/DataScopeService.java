@@ -17,14 +17,11 @@ public class DataScopeService {
 
     public ResponseEntity<String> makeDs(DataScopeRequest request){
         var datascope = DataScope.builder()
-                .dsName(request.getDsName())
-                .description(request.getDescription())
-                .roleName(request.getRoleName())
-                .roleDescription(request.getRoleDescription())
-                .dateCaptured(request.getDateCaptured())
-                .dataCustodian(request.getDataCustodian())
-                .administrator(request.getAdministrator())
-                .status(request.getStatus())
+                .ds_name(request.getDs_name())
+                .ds_description(request.getDs_description())
+                .date_captured(request.getDate_captured())
+                .data_custodian(request.getData_custodian())
+                .ds_status(request.getDs_status())
                 .build();
         dataScopeRepository.save(datascope);
         return ResponseEntity.status(HttpStatus.OK).body("added");

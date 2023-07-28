@@ -26,19 +26,19 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                     <p className="ViewDataScopeTitle">View Data Scope</p>
                     <div className="view_datascope_name">
                         <p className="datascopeName">Name</p>
-                        <p className="viewDataScopeName">{/*{datascope.ds_name}*/}Data Scope 1</p>
+                        <p className="viewDataScopeName">{datascope.ds_name}</p>
                     </div>
                     <div className="view_datascope_description">
                         <p className="datascopeDescription">Description</p>
-                        <p className="viewDSDescription">{datascope.description}</p>
+                        <p className="viewDSDescription">{datascope.ds_description}</p>
                     </div>
                     <div className="view_datascope_date">
                         <p className="datascopeDate">Date Captured</p>
-                        <p className="viewDataScopeDate">{/*{datascope.date_captured}*/}2023-07-01</p>
+                        <p className="viewDataScopeDate">{datascope.date_captured}</p>
                     </div>
                     <div className="view_datascope_status">
                         <p className="datascopeStatus">Status</p>
-                        <p className="viewDataScopeStatus">{datascope.status}</p>
+                        <p className="viewDataScopeStatus">{datascope.ds_status}</p>
                     </div>
                     <div className="view_datascope_roles">
                         <p className="datascopeRoles">Roles</p>
@@ -56,7 +56,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                                             <tr key={key}>
                                                 <td>{roles.role}</td>
                                                 <td className="roledescriptionTable">
-                                                    {roles.roledescription}
+                                                    {roles.role_description}
                                                 </td>
                                             </tr>
                                         );
