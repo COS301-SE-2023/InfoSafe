@@ -23,7 +23,7 @@ public class MatrixService {
                 .due_date(request.getDue_date())
                 .date_completed(request.getDate_completed())
                 .build();
-        MatrixRepository.save(matrix);
+                matrixRepository.save(matrix);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
