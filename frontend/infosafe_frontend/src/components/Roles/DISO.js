@@ -1,24 +1,24 @@
-import '../styling/DISO.css';
+import '../../styling/DISO.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import {CreateUserPopup} from './CreateUserPopup';
-import ViewUser from './ViewUser';
-import EditUser from './EditUser';
-import ViewDataScope from './ViewDataScope';
-import ViewAccessRequest from './ViewAccessRequest';
-import EditAccessRequest from './EditAccessRequest';
-import {CreateTask} from './CreateTaskPopup';
-import {UpdateTask} from './UpdateTaskPopup';
-import {ViewTask} from './ViewTaskPopup';
+import {CreateUserPopup} from '../Create/CreateUserPopup';
+import ViewUser from '../View/ViewUser';
+import EditUser from '../Edit/EditUser';
+import ViewDataScope from '../View/ViewDataScope';
+import ViewAccessRequest from '../View/ViewAccessRequest';
+import EditAccessRequest from '../Edit/EditAccessRequest';
+import {CreateTask} from '../Create/CreateTaskPopup';
+import {UpdateTask} from '../UpdateTaskPopup';
+import {ViewTask} from '../View/ViewTaskPopup';
 // import {CreateDevicePopup} from './CreateDevicePopup';
-import {ViewDevice} from './ViewDevice';
-import ViewSupportRequest from './ViewSupportRequest';
-import EditSupportRequest from './EditSupportRequest';
-import {ReviewRisk} from "./ReviewRiskPopup";
-import {CreateRisk} from "./CreateRiskPopup";
-import Requests from './Requests';
-import '../styling/Dropdown.css';
+import {ViewDevice} from '../View/ViewDevice';
+import ViewSupportRequest from '../View/ViewSupportRequest';
+import EditSupportRequest from '../Edit/EditSupportRequest';
+import {ReviewRisk} from "../ReviewRiskPopup";
+import {CreateRisk} from "../Create/CreateRiskPopup";
+import Requests from '../Requests';
+import '../../styling/Dropdown.css';
 /* eslint-disable react/prop-types */
 
 const DISO = ({currentTab}) => {

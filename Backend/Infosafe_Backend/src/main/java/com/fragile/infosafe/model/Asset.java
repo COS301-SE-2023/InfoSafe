@@ -14,19 +14,30 @@ import lombok.NoArgsConstructor;
 @Table(name="assets")
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String asset_id;
     private String assetName;
     private String assetDescription;
     private String status;
     private String dateAcquired;
     private String assignee;
+    private String type_name;
 
-    public Long getId() {
-        return id;
+    public String getType_name() {
+        return type_name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setType_name(String type_name) {
+        this.type_name = type_name;
+    }
+
+
+
+    public String getId() {
+        return asset_id;
+    }
+
+    public void setId(String asset_id) {
+        this.asset_id = asset_id;
     }
 
     public String getAssetName() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ViewDataScope from '../ViewDataScope.js';
+import ViewDataScope from '../View/ViewDataScope.js';
 import '@testing-library/jest-dom';
 
 describe('ViewDataScope', () => {

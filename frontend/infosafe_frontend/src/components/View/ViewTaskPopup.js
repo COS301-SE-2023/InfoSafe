@@ -1,6 +1,6 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import '../styling/ViewTask.css';
+import '../../styling/ViewTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */

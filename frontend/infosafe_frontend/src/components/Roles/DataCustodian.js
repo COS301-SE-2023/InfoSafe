@@ -1,19 +1,19 @@
-import '../styling/DataCustodian.css';
+import '../../styling/DataCustodian.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import ViewDataScope from './ViewDataScope';
-import {EditDataScopePopup} from './EditDataScopePopup';
-import {CreateDataScopePopup} from './CreateDataScopePopup';
-import ViewAccessRequest from './ViewAccessRequest';
-import EditAccessRequest from './EditAccessRequest';
-import {ViewTask} from './ViewTaskPopup';
-import {ViewDevice} from './ViewDevice';
-import ViewSupportRequest from './ViewSupportRequest';
-import {ReviewRisk} from "./ReviewRiskPopup";
-import {CreateRisk} from "./CreateRiskPopup";
-import Requests from './Requests';
-import '../styling/Dropdown.css';
+import ViewDataScope from '../View/ViewDataScope';
+import {EditDataScopePopup} from '../Edit/EditDataScopePopup';
+import {CreateDataScopePopup} from '../Create/CreateDataScopePopup';
+import ViewAccessRequest from '../View/ViewAccessRequest';
+import EditAccessRequest from '../Edit/EditAccessRequest';
+import {ViewTask} from '../View/ViewTaskPopup';
+import {ViewDevice} from '../View/ViewDevice';
+import ViewSupportRequest from '../View/ViewSupportRequest';
+import {ReviewRisk} from "../ReviewRiskPopup";
+import {CreateRisk} from "../Create/CreateRiskPopup";
+import Requests from '../Requests';
+import '../../styling/Dropdown.css';
 /* eslint-disable react/prop-types */
 
 const DataCustodian = ({currentTab}) => {

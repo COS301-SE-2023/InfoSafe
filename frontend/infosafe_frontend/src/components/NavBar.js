@@ -1,10 +1,10 @@
 import '../styling/NavBar.css';
 import React, {useState} from 'react';
-import ISO from './ISO';
-import DISO from './DISO';
-import DataCustodian from './DataCustodian';
-import AssetManager from "./AssetManager";
-import Employee from "./Employee";
+import ISO from './Roles/ISO';
+import DISO from './Roles/DISO';
+import DataCustodian from './Roles/DataCustodian';
+import AssetManager from "./Roles/AssetManager";
+import Employee from "./Roles/Employee";
 
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */

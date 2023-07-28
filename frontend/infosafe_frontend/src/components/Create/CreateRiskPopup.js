@@ -1,6 +1,6 @@
 import Popup from 'reactjs-popup';
 import React, {useState,  useEffect } from 'react';
-import '../styling/CreateRisk.css';
+import '../../styling/CreateRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];

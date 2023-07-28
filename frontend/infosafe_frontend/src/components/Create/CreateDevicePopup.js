@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../styling/CreateDevicePopup.css';
+import '../../styling/CreateDevicePopup.css';
 import Popup from 'reactjs-popup';
 
 import { IoArrowBackOutline } from 'react-icons/io5';

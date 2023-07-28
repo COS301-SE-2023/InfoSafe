@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styling/ViewAssetRequest.css';
+import '../../styling/ViewAssetRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */

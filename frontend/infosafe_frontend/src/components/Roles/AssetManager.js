@@ -1,17 +1,17 @@
-import '../styling/AssetManager.css';
+import '../../styling/AssetManager.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import {ViewTask} from './ViewTaskPopup';
-import {CreateDevicePopup} from './CreateDevicePopup';
-import {ViewDevice} from './ViewDevice';
-import EditDevice from './EditDevice';
-import ViewSupportRequest from './ViewSupportRequest';
-import Requests from './Requests';
-import '../styling/Dropdown.css';
-import ViewDataScope from "./ViewDataScope";
-import {EditDataScopePopup} from "./EditDataScopePopup";
-import ViewAssetRequest from './ViewAssetRequest';
+import {ViewTask} from '../View/ViewTaskPopup';
+import {CreateDevicePopup} from '../Create/CreateDevicePopup';
+import {ViewDevice} from '../View/ViewDevice';
+import EditDevice from '../Edit/EditDevice';
+import ViewSupportRequest from '../View/ViewSupportRequest';
+import Requests from '../Requests';
+import '../../styling/Dropdown.css';
+import ViewDataScope from "../View/ViewDataScope";
+import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
+import ViewAssetRequest from '../View/ViewAssetRequest';
 /* eslint-disable react/prop-types */
 
 const AssetManager = ({currentTab}) => {

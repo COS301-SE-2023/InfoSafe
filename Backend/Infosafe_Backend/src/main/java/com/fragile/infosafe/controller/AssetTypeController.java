@@ -1,8 +1,5 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model.AssetType;
-import com.fragile.infosafe.requests.AssetTypeRequest;
-import com.fragile.infosafe.service.AssetTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

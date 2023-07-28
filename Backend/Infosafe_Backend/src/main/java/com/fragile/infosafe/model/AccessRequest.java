@@ -12,13 +12,26 @@ import org.springframework.context.annotation.Primary;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="acces_requests")
+@Table(name="access_requests")
 public class AccessRequest {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int request_id;
     private int user_id;
     private int ds_id;
+    private String reason;
+    private Boolean status;
 
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Boolean getStatus() { return status; }
+
+    public void setStatus(Boolean status) {this.status = status;}
     public int getRequest_id() { return request_id; }
 
     public void setRequest_id(int request_id) { this.request_id = request_id; }

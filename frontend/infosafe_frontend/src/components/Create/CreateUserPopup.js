@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
-import '../styling/CreateUserPopup.css';
+import '../../styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
