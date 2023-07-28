@@ -56,7 +56,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                                             <tr key={key}>
                                                 <td>{roles.role}</td>
                                                 <td className="roledescriptionTable">
-                                                    {roles.role_description}
+                                                    {roles.roledescription}
                                                 </td>
                                             </tr>
                                         );
