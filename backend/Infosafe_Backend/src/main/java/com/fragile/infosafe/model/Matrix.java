@@ -8,49 +8,49 @@ import java.util.Date;
 @Table(name="matrices")
 public class Matrix {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long taskId;
-    private String description;
-    private String status;
-    private Date dueDate;
-    private Date dateCompleted;
+    private int task_id;
+    private String task_description;
+    private String task_status;
+    private Date due_date;
+    private Date date_completed;
 
-    public Long getTaskId() {
-        return taskId;
+    public int getTask_id() {
+        return task_id;
     }
 
-    public void setTaskId(Long task_id) {
-        this.taskId = task_id;
+    public void setTask_id(int task_id) {
+        this.task_id = task_id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTask_description() {
+        return task_description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTask_description(String task_description) {
+        this.task_description = task_description;
     }
 
-    public String getStatus() {
-        return status;
+    public String getTask_status() {
+        return task_status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTask_status(String task_status) {
+        this.task_status = task_status;
     }
 
-    public Date getDueDate() {
-        return dueDate;
+    public Date getDue_date() {
+        return due_date;
     }
 
-    public void setDueDate(Date due_date) {
-        this.dueDate = due_date;
+    public void setDue_date(Date due_date) {
+        this.due_date = due_date;
     }
 
-    public Date getDateCompleted() {
-        return dateCompleted;
+    public Date getDate_completed() {
+        return date_completed;
     }
 
-    public void setDateCompleted(Date date_completed) {
-        this.dateCompleted = date_completed;
+    public void setDate_completed(Date date_completed) {
+        this.date_completed = date_completed;
     }
 }

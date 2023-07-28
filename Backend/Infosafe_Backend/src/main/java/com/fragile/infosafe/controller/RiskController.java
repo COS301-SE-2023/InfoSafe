@@ -1,6 +1,7 @@
 package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.model.Risk;
+import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.requests.RiskRequest;
 import com.fragile.infosafe.service.RiskService;
 import lombok.RequiredArgsConstructor;
@@ -22,4 +23,10 @@ public class RiskController {
 
     @GetMapping("/getRisk")
     public List<Risk> list() { return service.getAllRisks(); }
+
+    @PutMapping("/update/{id}")
+    public Risk updateRisk (@PathVariable("id") Long risk_id, @RequestBody Risk risk) {
+        risk.setRisk_id(risk_id);
+        return service.updateRisk(risk);
+    }
 }

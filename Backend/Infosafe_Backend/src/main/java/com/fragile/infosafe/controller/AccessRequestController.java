@@ -1,6 +1,7 @@
 package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.model.AccessRequest;
+import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.requests.AccessRequestRequest;
 import com.fragile.infosafe.service.AccessRequestService;
 import lombok.RequiredArgsConstructor;
@@ -24,4 +25,10 @@ public class AccessRequestController {
 
     @GetMapping("/getAr")
     public List<AccessRequest> accessrequestlist() { return service.getAllAccessRequests(); }
+
+    @PutMapping("/update/{id}")
+    public AccessRequest updateAccessRequest (@PathVariable("id") int request_id, @RequestBody AccessRequest accessRequest) {
+        accessRequest.setRequest_id(request_id);
+        return service.updateAccessRequest(accessRequest);
+    }
 }

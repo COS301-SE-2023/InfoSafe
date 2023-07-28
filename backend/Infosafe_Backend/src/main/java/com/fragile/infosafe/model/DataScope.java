@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,70 +16,70 @@ import lombok.NoArgsConstructor;
 @Table(name="datascopes")
 public class DataScope {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String dsName;
-    private String description;
-    private String roleName;
-    private String roleDescription;
-    private String dateCaptured;
-    private String dataCustodian;
+    private int data_scope_id;
+    private String ds_name;
+    private String ds_description;
+    private String role_name;
+    private String role_description;
+    private Date date_captured;
+    private String data_custodian;
     private String administrator;
-    private String status;
+    private String ds_status;
 
-    public Long getId() {
-        return id;
+    public int getData_scope_id() {
+        return data_scope_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setData_scope_id(int data_scope_id) {
+        this.data_scope_id = data_scope_id;
     }
 
-    public String getDsName() {
-        return dsName;
+    public String getDs_name() {
+        return ds_name;
     }
 
-    public void setDsName(String ds_name) {
-        this.dsName = ds_name;
+    public void setDs_name(String ds_name) {
+        this.ds_name = ds_name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDs_description() {
+        return ds_description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDs_description(String ds_description) {
+        this.ds_description = ds_description;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getRole_name() {
+        return role_name;
     }
 
-    public void setRoleName(String role_name) {
-        this.roleName = role_name;
+    public void setRole_name(String role_name) {
+        this.role_name = role_name;
     }
 
-    public String getRoleDescription() {
-        return roleDescription;
+    public String getRole_description() {
+        return role_description;
     }
 
-    public void setRoleDescription(String role_description) {
-        this.roleDescription = role_description;
+    public void setRole_description(String role_description) {
+        this.role_description = role_description;
     }
 
-    public String getDateCaptured() {
-        return dateCaptured;
+    public Date getDate_captured() {
+        return date_captured;
     }
 
-    public void setDateCaptured(String date_captured) {
-        this.dateCaptured = date_captured;
+    public void setDate_captured(Date date_captured) {
+        this.date_captured = date_captured;
     }
 
-    public String getDataCustodian() {
-        return dataCustodian;
+    public String getData_custodian() {
+        return data_custodian;
     }
 
-    public void setDataCustodian(String data_custodian) {
-        this.dataCustodian = data_custodian;
+    public void setData_custodian(String data_custodian) {
+        this.data_custodian = data_custodian;
     }
 
     public String getAdministrator() {
@@ -88,11 +90,11 @@ public class DataScope {
         this.administrator = administrator;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDs_status() {
+        return ds_status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDs_status(String ds_status) {
+        this.ds_status = ds_status;
     }
 }
