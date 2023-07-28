@@ -1,6 +1,7 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.Risk;
+import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.repository.RiskRepository;
 import com.fragile.infosafe.requests.RiskRequest;
 import lombok.RequiredArgsConstructor;
@@ -30,4 +31,6 @@ public class RiskService {
         riskRepository.save(risk);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
+
+    public Risk updateRisk(Risk risk) {return riskRepository.save(risk);}
 }
