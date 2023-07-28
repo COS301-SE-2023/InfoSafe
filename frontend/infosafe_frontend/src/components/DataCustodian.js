@@ -14,6 +14,8 @@ import {ReviewRisk} from "./ReviewRiskPopup";
 import {CreateRisk} from "./CreateRiskPopup";
 import Requests from './Requests';
 import '../styling/Dropdown.css';
+import {ViewRisk} from "./ViewRisk";
+import {EditRisk} from "./EditRisk";
 /* eslint-disable react/prop-types */
 
 const DataCustodian = ({currentTab}) => {
@@ -24,8 +26,9 @@ const DataCustodian = ({currentTab}) => {
     const [viewTaskOpen, setViewTaskOpen] = useState(false);
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
+    const [viewRiskOpen, setViewRiskOpen] = useState(false);
     const [showAsset, setShowAsset] = useState([]);
+    const [editRiskOpen, setEditRiskOpen] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
@@ -243,19 +246,39 @@ const DataCustodian = ({currentTab}) => {
         for (let y = 1; y < 30; y++) {
             risks.push(
                 <li key={y}>
-                    Risk {y}
-                    <button
-                        className="reviewRiskButton"
-                        onClick={() => setReviewRiskOpen(true)}
-                    >
-                        Review
-                    </button>
-                    {reviewRiskOpen ? (
-                        <ReviewRisk
-                            popupClose={() => setReviewRiskOpen(false)}
-                            popupOpen={reviewRiskOpen}
+                    <p onClick={() => setViewRiskOpen(true)}>
+                        Risk {y}
+                        {viewRiskOpen ? (
+                            <ViewRisk
+                                popupClose={() => setViewRiskOpen(false)}
+                                popupOpen={viewRiskOpen}
+                            />
+                        ) : null}
+                    </p>{' '}
+                    <FaRegEdit
+                        className="EditIcon"
+                        onClick={() => setEditRiskOpen(true)}
+                    />
+                    {editRiskOpen ? (
+                        <EditRisk
+                            popupClose={() => setEditRiskOpen(false)}
+                            popupOpen={editRiskOpen}
                         />
                     ) : null}
+
+
+                    {/*<button*/}
+                    {/*    className="reviewRiskButton"*/}
+                    {/*    onClick={() => setReviewRiskOpen(true)}*/}
+                    {/*>*/}
+                    {/*    Review*/}
+                    {/*</button>*/}
+                    {/*{reviewRiskOpen ? (*/}
+                    {/*    <ReviewRisk*/}
+                    {/*        popupClose={() => setReviewRiskOpen(false)}*/}
+                    {/*        popupOpen={reviewRiskOpen}*/}
+                    {/*    />*/}
+                    {/*) : null}*/}
                 </li>
             );
         }
