@@ -10,7 +10,6 @@ import EditAccessRequest from './EditAccessRequest';
 import {ViewTask} from './ViewTaskPopup';
 import {ViewDevice} from './ViewDevice';
 import ViewSupportRequest from './ViewSupportRequest';
-import {ReviewRisk} from "./ReviewRiskPopup";
 import {CreateRisk} from "./CreateRiskPopup";
 import Requests from './Requests';
 import '../styling/Dropdown.css';
