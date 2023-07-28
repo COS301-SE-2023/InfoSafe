@@ -20,11 +20,11 @@ const ViewUser = ({ user, popupClose, popupOpen }) => {
                     <p className="viewUserTitle">View User</p>
                     <div className="view_name">
                         <p className="nameDisplay">Name</p>
-                        <p className="viewName">{user.firstname}</p>
+                        <p className="viewName">{user.first_name}</p>
                     </div>
                     <div className="view_surname">
                         <p className="surnameDisplay">Surname</p>
-                        <p className="viewSurname">{user.lastname}</p>
+                        <p className="viewSurname">{user.last_name}</p>
                     </div>
                     <div className="view_email">
                         <p className="emailDisplay">Email</p>
