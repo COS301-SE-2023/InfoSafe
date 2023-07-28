@@ -1,8 +1,16 @@
 name: Codecov
 on: [push, pull_request]
+
 jobs:
-  steps:
+  codecov:
     name: Codecov
-    uses: codecov/codecov-action@v3.1.0
-    with:
-      token: ${{ secrets.CODECOV }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV }}
+
