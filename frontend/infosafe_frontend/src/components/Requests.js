@@ -4,6 +4,8 @@ import '../styling/Requests.css';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 /*eslint-disable react-hooks/rules-of-hooks */
+
+const AvailableDevices = ['Device A', 'Device B', 'Device C', 'Device D'];
 const displayISORequests = () => {
     const REQUESTTYPES = ['Support Request', 'Asset Request'];
     const SUPPORTOPTIONS = [
@@ -57,10 +59,13 @@ const displayISORequests = () => {
                 {selectedRequest === 'Asset Request' && (
                     <div className="createAssetRequestDiv">
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device Name</p>
-                            <input type="text" className="createAssetRequestDeviceNameInput" />
-                            <p className="createAssetRequestUserLabel">User</p>
-                            <input type="text" className="createAssetRequestUserInput" />
+                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <Dropdown
+                                className="assetRequestSelectDeviceDropdown"
+                                options={AvailableDevices}
+                                value={AvailableDevices[0]}
+                            />
+
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea className="createAssetRequestReasonInput"></textarea>
                             <p className="createAssetRequestDateLabel">Date Required</p>
@@ -135,8 +140,12 @@ const displayDISORequests = () => {
                 {selectedRequest === 'Asset Request' && (
                     <div className="createAssetRequestDiv">
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device Name</p>
-                            <input type="text" className="createAssetRequestDeviceNameInput" />
+                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <Dropdown
+                                className="assetRequestSelectDeviceDropdown"
+                                options={AvailableDevices}
+                                value={AvailableDevices[0]}
+                            />
                             {/*Automatically send user details through to db instead of user having to input own info again.*/}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea className="createAssetRequestReasonInput"></textarea>
@@ -213,8 +222,12 @@ const displayAssetManagerRequests = () => {
                 {selectedRequest === 'Asset Request' && (
                     <div className="createAssetRequestDiv">
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device Name</p>
-                            <input type="text" className="createAssetRequestDeviceNameInput" />
+                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <Dropdown
+                                className="assetRequestSelectDeviceDropdown"
+                                options={AvailableDevices}
+                                value={AvailableDevices[0]}
+                            />
                             {/*Automatically send user details through to db instead of user having to input own info again.*/}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea className="createAssetRequestReasonInput"></textarea>
@@ -311,7 +324,11 @@ const displayDataCustodianRequests = () => {
                     <div className="createAssetRequestDiv">
                         <form>
                             <p className="createAssetRequestDeviceNameLabel">Device Name</p>
-                            <input type="text" className="createAssetRequestDeviceNameInput" />
+                            <Dropdown
+                                className="assetRequestSelectDeviceDropdown"
+                                options={AvailableDevices}
+                                value={AvailableDevices[0]}
+                            />
                             {/*Automatically send user details through to db instead of user having to input own info again.*/}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea className="createAssetRequestReasonInput"></textarea>
@@ -388,8 +405,12 @@ const displayEmployeeRequests = () => {
                 {selectedRequest === 'Asset Request' && (
                     <div className="createAssetRequestDiv">
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device Name</p>
-                            <input type="text" className="createAssetRequestDeviceNameInput" />
+                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <Dropdown
+                                className="assetRequestSelectDeviceDropdown"
+                                options={AvailableDevices}
+                                value={AvailableDevices[0]}
+                            />
                             {/*Automatically send user details through to db instead of user having to input own info again.*/}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea className="createAssetRequestReasonInput"></textarea>
@@ -466,8 +487,12 @@ const displaySystemAdminRequests = () => {
                 {selectedRequest === 'Asset Request' && (
                     <div className="createAssetRequestDiv">
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device Name</p>
-                            <input type="text" className="createAssetRequestDeviceNameInput" />
+                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <Dropdown
+                                className="assetRequestSelectDeviceDropdown"
+                                options={AvailableDevices}
+                                value={AvailableDevices[0]}
+                            />
                             {/*Automatically send user details through to db instead of user having to input own info again.*/}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea className="createAssetRequestReasonInput"></textarea>
