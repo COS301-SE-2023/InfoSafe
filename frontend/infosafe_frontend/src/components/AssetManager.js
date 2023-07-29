@@ -10,7 +10,6 @@ import ViewSupportRequest from './ViewSupportRequest';
 import Requests from './Requests';
 import '../styling/Dropdown.css';
 import ViewDataScope from "./ViewDataScope";
-import {EditDataScopePopup} from "./EditDataScopePopup";
 import ViewAssetRequest from './ViewAssetRequest';
 import ReviewAssetRequest from'./ReviewAssetRequest';
 /* eslint-disable react/prop-types */
@@ -77,7 +76,6 @@ const AssetManager = ({currentTab}) => {
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-        const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
             <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
@@ -91,15 +89,6 @@ const AssetManager = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
-                {editDataScopeOpen ? (
-                    <EditDataScopePopup
-                        popupClose={() => setEditDataScopeOpen(false)}
-                        popupOpen={editDataScopeOpen}
-                        datascope={datascope}
-                    />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };
