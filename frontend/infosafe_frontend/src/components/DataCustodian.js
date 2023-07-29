@@ -255,7 +255,7 @@ const DataCustodian = ({currentTab}) => {
                         ) : null}
                     </p>{' '}
                     <FaRegEdit
-                        className="EditIcon"
+                        className="EditRiskIcon"
                         onClick={() => setEditRiskOpen(true)}
                     />
                     {editRiskOpen ? (

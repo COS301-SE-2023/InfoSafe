@@ -386,6 +386,14 @@
     height: 100%;
     fill: #cf0000;
 }
+.EditRiskIcon {
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    right: 1vw;
+    height: 100%;
+    fill: #000000;
+}
 .risks {
     background-color: transparent;
     width: 90%;
