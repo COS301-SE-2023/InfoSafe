@@ -16,9 +16,7 @@ import java.util.List;
 public class AssetService {
     private final AssetRepository assetRepository;
 
-    public List<Asset> getAllAssets() {
-        return assetRepository.findAll();
-    }
+    public List<Asset> getAllAssets() {return assetRepository.findAll();}
 
     public Asset updateAsset(Asset asset) {return assetRepository.save(asset);}
 

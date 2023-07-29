@@ -10,7 +10,7 @@ const Home = () => {
     if(sessionStorage.getItem('accessToken') == null)
         window.location.href = "/";
 
-        const [systemRole, setRole] = useState('ISO');
+        const [systemRole, setRole] = useState('Data Custodian');
         const [settings, showSettings] = useState(false);
 
         const showDiv = () =>

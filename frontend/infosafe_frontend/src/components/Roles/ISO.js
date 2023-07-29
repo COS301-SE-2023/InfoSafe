@@ -1,85 +1,48 @@
-import '../styling/ISO.css';
+import '../../styling/ISO.css';
+import '../../styling/Dropdown.css';
 import React, { useEffect, useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import {CreateUserPopup} from './CreateUserPopup';
-import ViewUser from './ViewUser';
-import EditUser from './EditUser';
-import ViewDataScope from './ViewDataScope';
-import {EditDataScopePopup} from './EditDataScopePopup';
-import ViewAccessRequest from './ViewAccessRequest';
-import EditAccessRequest from './EditAccessRequest';
-import {CreateTask} from './CreateTaskPopup';
-import {UpdateTask} from './UpdateTaskPopup';
-import {ViewTask} from './ViewTaskPopup';
-import {CreateDevicePopup} from './CreateDevicePopup';
-import {ViewDevice} from './ViewDevice';
-import EditDevice from './EditDevice';
-import ViewSupportRequest from './ViewSupportRequest';
-import EditSupportRequest from './EditSupportRequest';
-import {ReviewRisk} from "./ReviewRiskPopup";
-import {CreateRisk} from "./CreateRiskPopup";
-import Requests from './Requests';
-import '../styling/Dropdown.css';
-import {TaskApproval} from "./TaskApprovalPopup";
-import {ViewRisk} from "./ViewRisk";
-import {EditRisk} from "./EditRisk";
+import {CreateUserPopup} from '../Create/CreateUserPopup';
+import ViewUser from '../View/ViewUser';
+import EditUser from '../Edit/EditUser';
+import ViewDataScope from '../View/ViewDataScope';
+import {EditDataScopePopup} from '../Edit/EditDataScopePopup';
+import ViewAccessRequest from '../View/ViewAccessRequest';
+import EditAccessRequest from '../Edit/EditAccessRequest';
+import {CreateTask} from '../Create/CreateTaskPopup';
+import {UpdateTask} from '../UpdateTaskPopup';
+import {ViewTask} from '../View/ViewTaskPopup';
+import {CreateDevicePopup} from '../Create/CreateDevicePopup';
+import {ViewDevice} from '../View/ViewDevice';
+import EditDevice from '../Edit/EditDevice';
+import ViewSupportRequest from '../View/ViewSupportRequest';
+import EditSupportRequest from '../Edit/EditSupportRequest';
+import {ReviewRisk} from "../ReviewRiskPopup";
+import {CreateRisk} from "../Create/CreateRiskPopup";
+import Requests from '../Requests';
+import {TaskApproval} from "../TaskApprovalPopup";
+import {ViewRisk} from "../View/ViewRisk";
+import {EditRisk} from "../Edit/EditRisk";
+import AccessAndDisplay from "./AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
-    const [createUserOpen, setCreateUserOpen] = useState(false);
-    const [showUser, setShowUser] = useState([]);
-    const [showDatascope, setShowDatascope] = useState([]);
-    const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
-    const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
-    const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
-    const [viewTaskOpen, setViewTaskOpen] = useState(false);
-    const [createTaskOpen, setCreateTaskOpen] = useState(false);
-    const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-    const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
-    const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
-    const [showAsset, setShowAsset] = useState([]);
+    const {showUser,showDatascope, setShowDatascope, showAsset, setShowAsset, showRisk, setShowRisk, showAccess, setShowAccess, createUserOpen, setCreateUserOpen} = AccessAndDisplay()
+    const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+    const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
+    const [updateTaskOpen, setUpdateTaskOpen] = useState(false); // ISO DISO
+    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
+    const [createTaskOpen, setCreateTaskOpen] = useState(false); // ISO DISO
+    const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM
+    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+    const [createRiskOpen, setCreateRiskOpen] = useState(false); // ISO DISO
+    const [reviewRiskOpen, setReviewRiskOpen] = useState(false); // ISO DISO
+    const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
+    const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
-    const [viewRiskOpen, setViewRiskOpen] = useState(false);
-    const [editRiskOpen, setEditRiskOpen] = useState(false);
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/user/getAll', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowUser(result);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getDs', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowDatascope(result);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowAsset(result);
-            });
-    }, []);
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);

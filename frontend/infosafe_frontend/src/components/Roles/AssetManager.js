@@ -12,39 +12,15 @@ import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import ViewAssetRequest from '../View/ViewAssetRequest';
+import AccessAndDisplay from "./AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const AssetManager = ({currentTab}) => {
-    const [viewTaskOpen, setViewTaskOpen] = useState(false);
-    const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-    const [showAsset, setShowAsset] = useState([]);
-    const [showDatascope, setShowDatascope] = useState([]);
-    const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getDs', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowDatascope(result);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowAsset(result);
-            });
-    }, []);
+    const {showDatascope, setShowDatascope, showAsset, setShowAsset, showRisk, setShowRisk, showAccess, setShowAccess} = AccessAndDisplay()
+    const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false); // AM
+    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM
+    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
 
     const ViewDeviceItem = ({ asset }) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);

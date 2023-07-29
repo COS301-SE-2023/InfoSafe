@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("api/asset")
 @RequiredArgsConstructor
-//@CrossOrigin
 public class AssetController {
     private final AssetService service;
     @PostMapping("/addAsset")
@@ -26,7 +25,7 @@ public class AssetController {
     public List<Asset> assetlist() { return service.getAllAssets(); }
 
     @PutMapping("/update/{id}")
-    public Asset updateAsset (@PathVariable("id") String asset_id, @RequestBody Asset asset) {
+    public Asset updateAsset (@PathVariable("id") Long asset_id, @RequestBody Asset asset) {
         asset.setId(asset_id);
         return service.updateAsset(asset);
     }

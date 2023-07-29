@@ -6,14 +6,13 @@ import ViewSupportRequest from '../View/ViewSupportRequest';
 import Requests from '../Requests';
 import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
+import AccessAndDisplay from "./AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const Employee = ({currentTab}) => {
-    const [viewTaskOpen, setViewTaskOpen] = useState(false);
-    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-    const [showAsset, setShowAsset] = useState([]);
-    const [showDatascope, setShowDatascope] = useState([]);
-
+    const {showDatascope, setShowDatascope, showAsset, setShowAsset} = AccessAndDisplay()
+    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
