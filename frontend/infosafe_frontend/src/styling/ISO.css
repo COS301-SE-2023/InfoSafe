@@ -511,6 +511,14 @@
     right: 1vw;
     height: 100%;
 }
+.ISODeviceEditIcon {
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    right: 1vw;
+    height: 100%;
+    fill: #cf0000;
+}
 .DeleteIcon {
     position: absolute;
     top: 52%;

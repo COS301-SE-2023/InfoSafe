@@ -63,7 +63,7 @@ const AssetManager = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                <FaRegEdit className="AssetManagerEditIcon" onClick={() => setEditDeviceOpen(true)} />
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
@@ -71,7 +71,6 @@ const AssetManager = ({currentTab}) => {
                         asset={asset}
                     />
                 ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };

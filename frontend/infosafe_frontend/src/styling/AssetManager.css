@@ -519,6 +519,14 @@
     height: 100%;
     fill: #cf0000;
 }
+.AssetManagerEditIcon{
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    right: 1vw;
+    height: 100%;
+    fill: #cf0000;
+}
 .assetRequests {
     background-color: transparent;
     width: 90%;

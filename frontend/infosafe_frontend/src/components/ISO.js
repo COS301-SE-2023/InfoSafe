@@ -153,15 +153,14 @@ const ISO = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                <FaRegEdit className="ISODeviceEditIcon" onClick={() => setEditDeviceOpen(true)} />
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
                         popupOpen={editDeviceOpen}
                         asset={asset}
                     />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
+                ) : null}
             </li>
         );
     };
