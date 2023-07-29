@@ -24,6 +24,7 @@ import '../styling/Dropdown.css';
 import {TaskApproval} from "./TaskApprovalPopup";
 import {ViewRisk} from "./ViewRisk";
 import {EditRisk} from "./EditRisk";
+import AccessRequestApproval from "./AccessRequestApproval";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
@@ -44,6 +45,7 @@ const ISO = ({currentTab}) => {
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
     const [viewRiskOpen, setViewRiskOpen] = useState(false);
     const [editRiskOpen, setEditRiskOpen] = useState(false);
+    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
@@ -257,6 +259,21 @@ const ISO = ({currentTab}) => {
             <div className="display">
                 <div className="accessRequests">
                     <ul className="accessrequestsList">{accessRequests}</ul>
+                </div>
+                <div className="ApproveAccessRequestButtonDiv">
+                    <button
+                        className="approveAccessRequestButton"
+                        data-testid="approveAccessRequestButton"
+                        onClick={() => setApproveAccessRequestOpen(true)}
+                    >
+                        Access Request Approval
+                    </button>
+                    {approveAccessRequestOpen ? (
+                        <AccessRequestApproval
+                            popupClose={() => setApproveAccessRequestOpen(false)}
+                            popupOpen={approveAccessRequestOpen}
+                        />
+                    ) : null}
                 </div>
             </div>
         );

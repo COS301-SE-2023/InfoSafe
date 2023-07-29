@@ -11,6 +11,7 @@ import EditAccessRequest from './EditAccessRequest';
 import {CreateTask} from './CreateTaskPopup';
 import {UpdateTask} from './UpdateTaskPopup';
 import {ViewTask} from './ViewTaskPopup';
+import AccessRequestApproval from "./AccessRequestApproval";
 // import {CreateDevicePopup} from './CreateDevicePopup';
 import {ViewDevice} from './ViewDevice';
 import ViewSupportRequest from './ViewSupportRequest';
@@ -40,6 +41,7 @@ const DISO = ({currentTab}) => {
     const [showAsset, setShowAsset] = useState([]);
     const [viewRiskOpen, setViewRiskOpen] = useState(false);
     const [editRiskOpen, setEditRiskOpen] = useState(false);
+    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getAll', {
@@ -236,6 +238,21 @@ const DISO = ({currentTab}) => {
             <div className="display">
                 <div className="accessRequests">
                     <ul className="accessrequestsList">{accessRequests}</ul>
+                </div>
+                <div className="ApproveAccessRequestButtonDiv">
+                    <button
+                        className="approveAccessRequestButton"
+                        data-testid="approveAccessRequestButton"
+                        onClick={() => setApproveAccessRequestOpen(true)}
+                    >
+                        Access Request Approval
+                    </button>
+                    {approveAccessRequestOpen ? (
+                        <AccessRequestApproval
+                            popupClose={() => setApproveAccessRequestOpen(false)}
+                            popupOpen={approveAccessRequestOpen}
+                        />
+                    ) : null}
                 </div>
             </div>
         );
