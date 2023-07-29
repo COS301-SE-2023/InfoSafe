@@ -36,6 +36,15 @@ const EditAccessRequest = ({ popupClose, popupOpen }) => {
                             <p className="editAccessRequestStatusLabel">Status</p>
                             <p className="editAccessRequestStatusDisplay">Approved</p>
                         </div>
+                        <div className="editAccessRequestButtonsDiv">
+                            <button
+                                className="editAccessRequestButton"
+                                onClick={() => console.log('Edit Accees Request')}
+                            >
+                                Submit
+                            </button>
+                        </div>
+
                     </form>
                 </div>
             </div>

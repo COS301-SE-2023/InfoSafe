@@ -176,39 +176,29 @@
     left: 25%;
 
 }
-.editAccessRequestApproveButton{
-    width: fit-content;
-    height: fit-content;
-    background-color: #227821;
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+.editAccessRequestButtonsDiv
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
-    border: none;
-    padding: 0.4% 1%;
-
-
 }
-.editAccessRequestRejectButton{
+.editAccessRequestButton {
     width: fit-content;
-    height: fit-content;
-    background-color: rgba(233, 0, 0, 1);
+    height: 5%;
+    background-color: #cf0000;
     color: #ffffff;
     text-align: center;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.84px;
     text-transform: uppercase;
-    position: relative;
+
     align-self: center;
     justify-self: center;
     margin: 0 auto;
+    top: 5vh;
+    left: 42.5%;
     border: none;
-    padding: 0.4% 1%;
+    padding: 0.5% 1%;
 }
