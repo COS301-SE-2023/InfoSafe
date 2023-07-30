@@ -1,7 +1,6 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.Asset;
-import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.repository.AssetRepository;
 import com.fragile.infosafe.requests.AssetRequest;
 import lombok.RequiredArgsConstructor;

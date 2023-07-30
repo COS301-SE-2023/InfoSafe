@@ -18,18 +18,15 @@ const data = [
 export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     const [roles, setRoles] = useState(data);
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
-    const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-
     const[ds_name,setDsName]=useState('')
-    const[description,setDsDesc]=useState('')
-    const[role_name,setRoleName]=useState('General User')
-    const[role_description,setRoleDesc]=useState('Can use basic functionality of the product')
-    // const[date_captured,setDateCaptured]=useState(date)
-    const[data_custodian,setDataCustodian]=useState('LoggedIn User')
-    const[administrator,setAdmin]=useState('Admin1')
-    const[status,setStatus]=useState('Pending Approval')
-
+    const[ds_description,setDsDesc]=useState('')
+    const[date_captured,setDateCaptured]=useState()
+    const[data_custodian,setDataCustodian]=useState('')
+    const[ds_status,setStatus]=useState('')
+    const[role_type,setRoleType]=useState('')
+    const[role_description,setRoleDesc]=useState('')
+    const[ds_id, setDsId] = useState('')
+    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewRole((prevRole) => ({ ...prevRole, [name]: value }));
@@ -43,23 +40,69 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
         }
     };
 
-    const handleClick=(e)=> {
-        e.preventDefault()
-        const datascope = {ds_name, description, role_name, role_description, data_custodian, administrator}
-        // var today = new Date()
-        // setDateCaptured(today)
-        console.log(datascope)
-        fetch("http://localhost:8080/api/datascope/addDs", {
-            method:"POST",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            },
-            body:JSON.stringify(datascope)
-        }).then(()=>{
-            console.log("New DataScope added")
-        })
-        popupClose()
+    const handleCaptureDate = () => {
+        var today = new Date();
+        setDateCaptured(today);
+        console.log(date_captured);
     };
+
+    const formatDate = (date) => {
+        const year = date.getFullYear().toString().slice(-2);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${year}/${month}/${day}`;
+    };
+    const handleClick = (e) => {
+        e.preventDefault();
+        const datascope = { data_custodian, date_captured, ds_description, ds_name, ds_status };
+        const dataScopeRoles = { ds_id, role_description, role_type };
+
+        fetch(`http://localhost:8080/api/datascope/checkName?name=${ds_name}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data) {
+                    console.log("DataScope name already exists");
+                } else {
+                    console.log(datascope);
+                    fetch("http://localhost:8080/api/datascope/addDs", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                        },
+                        body: JSON.stringify(datascope),
+                    })
+                        .then(() => {
+                            console.log("New DataScope added");
+                        })
+                        .catch((error) => {
+                            console.error("Error adding new DataScope:", error);
+                        });
+
+                    fetch("http://localhost:8080/api/dataScopeRole/addDataScopeRole", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                        },
+                        body: JSON.stringify(dataScopeRoles),
+                    })
+                        .then(() => {
+                            console.log("New DataScopeRole added");
+                        })
+                        .catch((error) => {
+                            console.error("Error adding new DataScopeRole:", error);
+                        });
+
+                    popupClose();
+                }
+            })
+            .catch((error) => {
+                console.error("Error checking DataScope name:", error);
+            });
+    };
+
+
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -78,7 +121,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                                 </div>
                                 <div className="datascope_description">
                                     <p className="descriptionLabel">Description</p>
-                                    <textarea className="createDataScopeDescriptionInput" value={description} onChange={(e)=>setDsDesc(e.target.value)}/>
+                                    <textarea className="createDataScopeDescriptionInput" value={ds_description} onChange={(e)=>setDsDesc(e.target.value)}/>
                                 </div>
                                 <div className="datascope_roles">
                                     <p className="roleLabel">Data Scope Roles</p>
@@ -110,18 +153,18 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             </div>
 
                             <div className="datascope_addrole">
-                                <p className="AddRoleNameLabel">Role</p>
+                                <p className="AddRoleNameLabel">Role Type</p>
                                 <input
                                     className="AddRoleNameInput"
                                     name="role"
-                                    value={newRole.role}
+                                    value={newRole.role_type}
                                     onChange={handleInputChange}
                                 />
                                 <p className="AddRoleDescriptionLabel">Role Description</p>
                                 <textarea
                                     className="AddRoleDescriptionInput"
                                     name="roledescription"
-                                    value={newRole.roledescription}
+                                    value={newRole.role_description}
                                     onChange={handleInputChange}
                                 />
                                 <button

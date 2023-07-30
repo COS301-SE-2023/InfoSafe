@@ -22,25 +22,42 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
 
-    const handleClick=(e)=> {
-        e.preventDefault()
+    const handleClick = (e) => {
+        e.preventDefault();
+        const selectedRole = role === '' ? 'EMPLOYEE' : role;
+        const user = { firstname, lastname, email, password, role: selectedRole };
 
-        const user = {firstname, lastname, email, password, role}
-        if(role === ''){
-            setRole('EMPLOYEE');
-        }
-        console.log(user)
-        fetch("http://localhost:8080/api/user/add", {
-            method:"POST",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            },
-            body:JSON.stringify(user)
-        }).then(()=>{
-            console.log("New User added")
+        fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
+            method: "GET",
         })
-        popupClose()
-    }
+            .then((response) => response.json())
+            .then((data) => {
+                if (data) {
+                    console.log("User already exists");
+                } else {
+                    console.log(user);
+                    fetch("http://localhost:8080/api/user/add", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                        },
+                        body: JSON.stringify(user),
+                    })
+                        .then(() => {
+                            console.log("New User added");
+                        })
+                        .catch((error) => {
+                            console.error("Error adding new user:", error);
+                        });
+                    popupClose();
+                }
+            })
+            .catch((error) => {
+                console.error("Error checking email:", error);
+            });
+    };
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -63,7 +80,6 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                 console.error('Error:', error);
             }
         };
-
         fetchData();
     }, []);
 
