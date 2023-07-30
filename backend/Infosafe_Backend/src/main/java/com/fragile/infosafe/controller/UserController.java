@@ -46,8 +46,7 @@ public class UserController {
     public int getCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication != null && authentication.getPrincipal() instanceof User) {
-            User authenticatedUser = (User) authentication.getPrincipal();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
             return authenticatedUser.getUser_id();
         }
 

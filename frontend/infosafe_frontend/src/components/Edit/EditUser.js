@@ -8,12 +8,21 @@ import axios from "axios";
 /* eslint-disable  no-unused-vars */
 
 const EditUser = ({ user, popupClose, popupOpen }) => {
-    const[first_name,setName]=useState(user.first_name)
-    const[last_name,setSurname]=useState(user.last_name)
-    const[email,setEmail]=useState(user.email)
-    let [role,setRole]=useState(user.role)
+    // const[first_name,setName]=useState({first_name: user.first_name})
+    // const[last_name,setSurname]=useState({last_name: user.last_name})
+    // const[email,setEmail]=useState({email: user.email})
+    // const[password]=useState({password: user.password})
+    // let [role,setRole]=useState({role: user.role})
+    const[values, setValues]=useState({
+        user_id: user.user_id,
+        first_name: user.first_name,
+        last_name: user.lats_name,
+        email: user.email,
+        password: user.password,
+        role: user.role
+    })
 
-    const values = [first_name, last_name, email, role];
+    //const values = [first_name, last_name, email, password, role];
 
     const ROLE_OPTIONS = [
         'EMPLOYEE',
@@ -29,7 +38,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         // axios.post('http://localhost:8080/api/user/getUser/' + user.user_id, values)
         //     .catch(err => console.log(err))
         console.log(values)
-        fetch('http//:localhost:8080/api/user/update/' + user.user_id, {
+        fetch('http://localhost:8080/api/user/update/' + user.user_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -38,6 +47,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         }).then(()=>{
             console.log("Updated User")
         })
+        //console.log(JSON.stringify(values))
         popupClose()
     }
 
@@ -57,7 +67,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusername"
                                 name="editusername"
-                                defaultValue={user.first_name} onChange={e => setName(e.target.value)}
+                                defaultValue={user.first_name} onChange={e => setValues({...values, first_name: e.target.value})}
                             />
                         </div>
                         <div className="surnameEdit">
@@ -67,7 +77,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusersurname"
                                 name="editusersurname"
-                                defaultValue={user.last_name} onChange={e => setSurname(e.target.value)}
+                                defaultValue={user.last_name} onChange={e => setValues({...values, last_name: e.target.value})}
                             />
                         </div>
                         <div className="emailEdit">
@@ -77,7 +87,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="edituseremail"
                                 name="edituseremail"
-                                defaultValue={user.email} onChange={e => setEmail(e.target.value)}
+                                defaultValue={user.email} onChange={e => setValues({...values, email: e.target.value})}
                             />
                         </div>
                         <div className="roleEdit">
