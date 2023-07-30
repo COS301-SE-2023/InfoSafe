@@ -17,7 +17,7 @@ import EditSupportRequest from "../Edit/EditSupportRequest";
 /* eslint-disable react/prop-types */
 
 const AssetManager = ({currentTab}) => {
-    const {showDatascope,  showAsset,     showMySupport, showAssetRequests} = AccessAndDisplay()
+    const {showDatascope,  showAsset, showMySupport, showAssetRequests, showTask} = AccessAndDisplay()
     const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false); // AM
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM

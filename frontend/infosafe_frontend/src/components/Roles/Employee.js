@@ -12,7 +12,7 @@ import EditSupportRequest from "../Edit/EditSupportRequest";
 /* eslint-disable react/prop-types */
 
 const Employee = ({currentTab}) => {
-    const {showDatascope, setShowDatascope, showAsset, setShowAsset} = AccessAndDisplay()
+    const {showDatascope, showAsset, showTask, showMySupport } = AccessAndDisplay()
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
     const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
 

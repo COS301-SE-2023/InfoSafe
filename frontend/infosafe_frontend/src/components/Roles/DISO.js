@@ -25,7 +25,7 @@ import AccessAndDisplay from "./AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const DISO = ({currentTab}) => {
-    const {showDatascope, setShowDatascope, showAsset, setShowAsset, showRisk,  showAccess,  createUserOpen, setCreateUserOpen,  setShowUser, showUser,showMySupport, showAllSupport} = AccessAndDisplay()
+    const {showDatascope,  showAsset,  showRisk,  showAccess,  createUserOpen, setCreateUserOpen,   showUser,showMySupport, showAllSupport, showTask} = AccessAndDisplay()
     const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
     const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false); // ISO DISO
