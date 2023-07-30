@@ -32,6 +32,6 @@ public class DataScopeService {
     public DataScope updateDataScope(DataScope dataScope) {return dataScopeRepository.save(dataScope);}
 
     public boolean checkDataScopeExists(String name) {
-        return dataScopeRepository.existsByDs_name(name);
+        return dataScopeRepository.existsByds_name(name);
     }
 }
