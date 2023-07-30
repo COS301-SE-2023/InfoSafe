@@ -21,7 +21,7 @@ public class PasswordEncryption{
         int keyLength = 128;
         char[] charPassword = password.toCharArray();
 
-        SecretKeyMaker secretKeyMaker = new SecretKeyMakerImpl();
+        SecretKeyMaker secretKeyMaker = new SecretKeyMaker();
 
         //Creates a secret key using the variables passed in anf the password
         SecretKeySpec secretKey = secretKeyMaker.generateSecretKey(charPassword, salt, iterations, keyLength);

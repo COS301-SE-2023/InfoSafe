@@ -3,6 +3,8 @@ import Dropdown from 'react-dropdown';
 import '../../styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import employee from "../Roles/Employee";
+import Employee from "../Roles/Employee";
 
 /* eslint-disable react/prop-types */
 const ROLE_OPTIONS = [
@@ -24,6 +26,9 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
 
         const user = {firstname, lastname, email, password, role}
+        if(role === ''){
+            setRole('EMPLOYEE');
+        }
         console.log(user)
         fetch("http://localhost:8080/api/user/add", {
             method:"POST",
@@ -40,9 +45,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api//generate", {
-                    headers: {
-                        Authorization: sessionStorage.getItem('accessToken')
+                const response = await fetch("http://localhost:8080/api/randPass/generate", {
+                    method: "GET",
+                    headers: {"Content-Type":"application/json",
+                        Authorization: "Bearer " + sessionStorage.getItem('accessToken')
                     }
                 });
 

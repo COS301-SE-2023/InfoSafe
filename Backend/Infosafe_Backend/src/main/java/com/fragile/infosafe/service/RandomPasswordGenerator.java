@@ -1,20 +1,23 @@
 package com.fragile.infosafe.service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class RandomPasswordGenerator {
+    @Bean
     public String generateRandomPassword() {
 
         Random rnd = new Random();
         String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String numbers = "0123456789";
         String specials = "=+-?@#$%^&*!_<>|";
-        ArrayList list = new ArrayList();
+        ArrayList<Character> list = new ArrayList<>();
 
-        for(int i=0; i<3; i++){
+        // Increase loop iterations to 12
+        for (int i = 0; i < 12; i++) {
             list.add(letters.charAt(rnd.nextInt(letters.length())));
             list.add(Character.toLowerCase(letters.charAt(rnd.nextInt(letters.length()))));
             list.add(numbers.charAt(rnd.nextInt(numbers.length())));
@@ -22,7 +25,7 @@ public class RandomPasswordGenerator {
         }
 
         String password = "";
-        for(int i=12; i>0; i--){
+        for (int i = 0; i < 12; i++) {
             password += list.remove(rnd.nextInt(list.size()));
         }
 
