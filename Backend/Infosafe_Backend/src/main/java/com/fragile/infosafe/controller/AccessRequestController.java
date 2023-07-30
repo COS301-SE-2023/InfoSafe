@@ -31,4 +31,10 @@ public class AccessRequestController {
         accessRequest.setRequest_id(request_id);
         return service.updateAccessRequest(accessRequest);
     }
+
+//    @GetMapping("/check")
+//    public ResponseEntity<Boolean> checkEmailExists(@RequestParam("email") String email) {
+//        boolean emailExists = userService.checkEmailExists(email);
+//        return ResponseEntity.ok(emailExists);
+//    }
 }

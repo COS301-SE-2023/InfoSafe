@@ -7,7 +7,7 @@ import {CreateDevicePopup} from '../Create/CreateDevicePopup';
 import {ViewDevice} from '../View/ViewDevice';
 import EditDevice from '../Edit/EditDevice';
 import ViewSupportRequest from '../View/ViewSupportRequest';
-import Requests from '../Requests';
+import Requests from '../Create/Requests';
 import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
 import ViewAssetRequest from '../View/ViewAssetRequest';

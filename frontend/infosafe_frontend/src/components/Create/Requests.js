@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
-import '../styling/Requests.css';
+import '../../styling/Requests.css';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 /*eslint-disable react-hooks/rules-of-hooks */

@@ -12,7 +12,7 @@ import {ViewTask} from '../View/ViewTaskPopup';
 import {ViewDevice} from '../View/ViewDevice';
 import ViewSupportRequest from '../View/ViewSupportRequest';
 import {CreateRisk} from "../Create/CreateRiskPopup";
-import Requests from '../Requests';
+import Requests from '../Create/Requests';
 import {ViewRisk} from "../View/ViewRisk";
 import {EditRisk} from "../Edit/EditRisk";
 import AccessAndDisplay from "./AccessAndDisplay";
