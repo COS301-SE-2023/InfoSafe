@@ -2,6 +2,7 @@ package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.auth.AuthenticationResponse;
 import com.fragile.infosafe.auth.AuthenticationService;
+import com.fragile.infosafe.model.Role;
 import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.service.UserService;
@@ -53,4 +54,13 @@ public class UserController {
         return -1; // Or any other value indicating that the user ID couldn't be retrieved.
     }
 
+    @GetMapping("/getRole")
+    public Role getCurrentUserRole(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return authenticatedUser.getRole();
+        }
+        return null;
+    }
 }

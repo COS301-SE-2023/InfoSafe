@@ -40,7 +40,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/auth/generate", {
+                const response = await fetch("http://localhost:8080/api//generate", {
                     headers: {
                         Authorization: sessionStorage.getItem('accessToken')
                     }

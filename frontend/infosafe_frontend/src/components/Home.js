@@ -1,5 +1,5 @@
 import '../styling/Home.css';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from './NavBar';
 import {IoPersonCircleSharp} from "react-icons/io5";
 /* eslint-disable react/prop-types */
@@ -10,9 +10,21 @@ const Home = () => {
     if(sessionStorage.getItem('accessToken') == null)
         window.location.href = "/";
 
-        const [systemRole, setRole] = useState('Asset Manager');
+        const [systemRole, setRole] = useState();
         const [settings, showSettings] = useState(false);
 
+    useEffect(() => {
+        fetch('http://localhost:8080/api/user/getRole', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setRole(result);
+            });
+    }, []);
         const showDiv = () =>
         {
             showSettings(!settings);
@@ -31,7 +43,7 @@ const Home = () => {
                     {settings &&
                         <div className="settingsDiv">
 
-                            <p className="logoutLabel" onClick={() => console.log("Logout User")}>Logout</p>
+                            <p className="logoutLabel" onClick={() => {sessionStorage.removeItem('accessToken'); window.location.href = "/";} }>Logout</p>
                         </div>
                     }
                 </div>
