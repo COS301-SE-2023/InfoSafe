@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 
-import static com.fragile.infosafe.model.Role.ADMIN;
-import static com.fragile.infosafe.model.Role.DATA_CUSTODIAN;
+import static com.fragile.infosafe.model.Role.*;
 
 @SpringBootApplication
 public class InfosafeBackendApplication {
@@ -34,4 +33,5 @@ public class InfosafeBackendApplication {
 //            System.out.println("Admin token: " + service.register(admin).getAccessToken());
 //        };
 //    }
+
 }

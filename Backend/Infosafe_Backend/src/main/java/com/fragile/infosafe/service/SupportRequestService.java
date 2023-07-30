@@ -22,7 +22,6 @@ public class SupportRequestService {
                 .support_type(request.getSupport_type())
                 .support_description(request.getSupport_description())
                 .support_status(request.getSupport_status())
-                .asset_id(request.getAsset_id())
                 .build();
         supportRequestRepository.save(supportrequest);
         return ResponseEntity.status(HttpStatus.OK).body("added");

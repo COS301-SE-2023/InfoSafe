@@ -18,6 +18,7 @@ public class AssetRequest {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int asset_request_id;
     private int user_id;
+    private int asset_id;
     private String reason;
     private Date desired_date;
     private String request_status;

@@ -21,7 +21,7 @@ public class Task {
     private String task_description;
     private String task_status;
     private Date due_date;
-    private Date date_completed;
+    private Date date_created;
 
     public int getTask_id() {
         return task_id;
@@ -56,10 +56,10 @@ public class Task {
     }
 
     public Date getDate_completed() {
-        return date_completed;
+        return date_created;
     }
 
-    public void setDate_completed(Date date_completed) {
-        this.date_completed = date_completed;
+    public void setDate_completed(Date date_created) {
+        this.date_created = date_created;
     }
 }
