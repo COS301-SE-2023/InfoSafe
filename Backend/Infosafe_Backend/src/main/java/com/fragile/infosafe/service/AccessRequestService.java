@@ -1,7 +1,6 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.AccessRequest;
-import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.repository.AccessRequestRepository;
 import com.fragile.infosafe.requests.AccessRequestRequest;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +28,6 @@ public class AccessRequestService {
     public List<AccessRequest> getAllAccessRequests() {return accessRequestRepository.findAll();}
 
     public AccessRequest updateAccessRequest(AccessRequest accessRequest) {return accessRequestRepository.save(accessRequest);}
+
 
 }

@@ -1,8 +1,6 @@
 package com.fragile.infosafe.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,20 +14,43 @@ import lombok.NoArgsConstructor;
 @Table(name="data_scope_roles")
 public class DataScopeRole {
 
-    @Id
-    private int user_id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int role_id;
+    private int ds_id;
     private String role_type;
-
     private String role_description;
 
+    public int getRole_id() {
+        return role_id;
+    }
 
-    public int getUserID() { return this.user_id; }
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
 
-    public String getRoleType() { return this.role_type; }
+    public int getDs_id() {
+        return ds_id;
+    }
 
-    public void setRoleType(String role) { this.role_type = role; }
+    public void setDs_id(int ds_id) {
+        this.ds_id = ds_id;
+    }
 
-    public String getRoleDescription() { return this.role_description; }
+    public String getRole_type() {
+        return role_type;
+    }
 
-    public void setRoleDescription(String description) { this.role_description = description; }
+    public void setRole_type(String role_type) {
+        this.role_type = role_type;
+    }
+
+    public String getRole_description() {
+        return role_description;
+    }
+
+    public void setRole_description(String role_description) {
+        this.role_description = role_description;
+    }
+
+
 }
