@@ -1,21 +1,34 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/EditUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import axios from "axios";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
+
 const EditUser = ({ user, popupClose, popupOpen }) => {
+    const[first_name,setName]=useState(user.first_name)
+    const[last_name,setSurname]=useState(user.last_name)
+    const[email,setEmail]=useState(user.email)
+    let [role,setRole]=useState(user.role)
 
-        const ROLE_OPTIONS = [
-            'EMPLOYEE',
-            'ISO',
-            'DISO',
-            'DATA CUSTODIAN',
-            'SYSTEM ADMINISTRATOR',
-            'ASSET MANAGER'
-        ];
+    const values = [first_name, last_name, email, role];
 
+    const ROLE_OPTIONS = [
+        'EMPLOYEE',
+        'ISO',
+        'DISO',
+        'DATA CUSTODIAN',
+        'SYSTEM ADMINISTRATOR',
+        'ASSET MANAGER'
+    ];
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:8080/api/user/getUser/' + user.user_id, values)
+            .catch(err => console.log(err))
+    }
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -25,7 +38,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <p className="editUserTitle">Edit User</p>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="nameEdit">
                             <p className="nameTitle">Name</p>
                             <input
@@ -33,7 +46,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusername"
                                 name="editusername"
-                                defaultValue={user.firstname}
+                                defaultValue={user.first_name} onChange={e => setName(e.target.value)}
                             />
                         </div>
                         <div className="surnameEdit">
@@ -43,7 +56,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusersurname"
                                 name="editusersurname"
-                                defaultValue={user.lastname}
+                                defaultValue={user.last_name} onChange={e => setSurname(e.target.value)}
                             />
                         </div>
                         <div className="emailEdit">
@@ -53,7 +66,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="edituseremail"
                                 name="edituseremail"
-                                defaultValue={user.email}
+                                defaultValue={user.email} onChange={e => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="roleEdit">
