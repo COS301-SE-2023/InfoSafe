@@ -12,6 +12,7 @@ import EditAccessRequest from '../Edit/EditAccessRequest';
 import {CreateTask} from '../Create/CreateTaskPopup';
 import {UpdateTask} from '../UpdateTaskPopup';
 import {ViewTask} from '../View/ViewTaskPopup';
+import AccessRequestApproval from "./AccessRequestApproval";
 // import {CreateDevicePopup} from './CreateDevicePopup';
 import {ViewDevice} from '../View/ViewDevice';
 import ViewSupportRequest from '../View/ViewSupportRequest';
@@ -38,6 +39,7 @@ const DISO = ({currentTab}) => {
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false); // ISO DISO
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
     const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
+    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
@@ -301,6 +303,21 @@ const DISO = ({currentTab}) => {
             <div className="display">
                 <div className="accessRequests">
                     <ul className="accessrequestsList">{accessRequests}</ul>
+                </div>
+                <div className="ApproveAccessRequestButtonDiv">
+                    <button
+                        className="approveAccessRequestButton"
+                        data-testid="approveAccessRequestButton"
+                        onClick={() => setApproveAccessRequestOpen(true)}
+                    >
+                        Access Request Approval
+                    </button>
+                    {approveAccessRequestOpen ? (
+                        <AccessRequestApproval
+                            popupClose={() => setApproveAccessRequestOpen(false)}
+                            popupOpen={approveAccessRequestOpen}
+                        />
+                    ) : null}
                 </div>
             </div>
         );

@@ -10,7 +10,6 @@ import ViewSupportRequest from '../View/ViewSupportRequest';
 import Requests from '../Requests';
 import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
-import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import ViewAssetRequest from '../View/ViewAssetRequest';
 import AccessAndDisplay from "./AccessAndDisplay";
 import EditSupportRequest from "../Edit/EditSupportRequest";
@@ -38,22 +37,20 @@ const AssetManager = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                <FaRegEdit className="AssetManagerEditIcon" onClick={() => setEditDeviceOpen(true)} />
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
                         popupOpen={editDeviceOpen}
                         asset={asset}
                     />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
+                ) : null}
             </li>
         );
     };
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-        const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
             <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
@@ -67,15 +64,6 @@ const AssetManager = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
-                {editDataScopeOpen ? (
-                    <EditDataScopePopup
-                        popupClose={() => setEditDataScopeOpen(false)}
-                        popupOpen={editDataScopeOpen}
-                        datascope={datascope}
-                    />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
             </li>
         );
     };

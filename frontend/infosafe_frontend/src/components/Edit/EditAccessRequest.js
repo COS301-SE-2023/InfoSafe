@@ -27,7 +27,7 @@ const EditAccessRequest = ({ popupClose, popupOpen }) => {
                         <div className="editAccessRequestReasonDiv">
                             <p className="editAccessRequestReasonLabel">Reason</p>
                             <textarea
-                                readOnly={true}
+                                readOnly={false}
                                 className="editAccessRequestReasonDisplay"
                                 defaultValue="Insert reason here."
                             ></textarea>
@@ -37,8 +37,12 @@ const EditAccessRequest = ({ popupClose, popupOpen }) => {
                             <p className="editAccessRequestStatusDisplay">Approved</p>
                         </div>
                         <div className="editAccessRequestButtonsDiv">
-                            <button className="editAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
-                            <button className="editAccessRequestRejectButton" onClick={() => console.log("Access Request Rejected")}>Reject</button>
+                            <button
+                                className="editAccessRequestButton"
+                                onClick={() => console.log('Edit Accees Request')}
+                            >
+                                Submit
+                            </button>
                         </div>
                     </form>
                 </div>
