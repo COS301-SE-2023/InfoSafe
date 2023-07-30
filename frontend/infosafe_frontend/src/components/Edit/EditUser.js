@@ -26,8 +26,19 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/api/user/getUser/' + user.user_id, values)
-            .catch(err => console.log(err))
+        // axios.post('http://localhost:8080/api/user/getUser/' + user.user_id, values)
+        //     .catch(err => console.log(err))
+        console.log(values)
+        fetch('http//:localhost:8080/api/user/update/' + user.user_id, {
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated User")
+        })
+        popupClose()
     }
 
     return (
@@ -80,7 +91,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 //onChange={(selectedOption) => setRole(selectedOption.value)}
                             />
                         </div>
-                        <button className="FinishButton" onClick={popupClose}>
+                        <button className="FinishButton">
                             Finish
                         </button>
                     </form>
