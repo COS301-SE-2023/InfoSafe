@@ -7,6 +7,8 @@ import Requests from '../Requests';
 import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
 import AccessAndDisplay from "./AccessAndDisplay";
+import {FaRegEdit} from "react-icons/fa";
+import EditSupportRequest from "../Edit/EditSupportRequest";
 /* eslint-disable react/prop-types */
 
 const Employee = ({currentTab}) => {
@@ -31,6 +33,33 @@ const Employee = ({currentTab}) => {
             </li>
         );
     };
+    const ViewMySupport = ({ mySupport }) => {
+        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+        return(
+            <li key={mySupport.support_id}>
+                <p onClick={() => setViewSupportRequestOpen(true)}>
+                    Support Request {mySupport.support_id}
+                    {viewSupportRequestOpen ? (
+                        <ViewSupportRequest
+                            popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
+                            popupOpen={viewSupportRequestOpen}
+                        />
+                    ) : null}
+                </p>{' '}
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
+                />
+                {editSupportRequestOpen ? (
+                    <EditSupportRequest
+                        popupClose={() => setEditSupportRequestOpen(false)}
+                        popupOpen={editSupportRequestOpen}
+                    />
+                ) : null}
+            </li>
+        );
+    };
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
@@ -46,6 +75,23 @@ const Employee = ({currentTab}) => {
                             datascope={datascope}
                         />
                     )}
+                </p>
+            </li>
+        );
+    };
+
+    const ViewTaskItems = ({ task }) => {
+        const [viewTaskOpen, setViewTaskOpen] = useState(false);
+        return(
+            <li key={task.task_id}>
+                <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
+                    Task {task.task_id}
+                    {viewTaskOpen ? (
+                        <ViewTask
+                            popupClose={() => setViewTaskOpen(false)}
+                            popupOpen={viewTaskOpen}
+                        />
+                    ) : null}
                 </p>
             </li>
         );
@@ -70,21 +116,9 @@ const Employee = ({currentTab}) => {
     if (currentTab === 3)
     {
         const complianceItems = [];
-        for (let l = 1; l < 30; l++) {
-            complianceItems.push(
-                <li key={l}>
-                    <p onClick={() => setViewTaskOpen(true)}>
-                        Task {l}
-                        {viewTaskOpen ? (
-                            <ViewTask
-                                popupClose={() => setViewTaskOpen(false)}
-                                popupOpen={viewTaskOpen}
-                            />
-                        ) : null}
-                    </p>
-                </li>
-            );
-        }
+        showTask.map((task) =>
+            complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
+        );
         return (
             <div className="display">
                 <div className="tasks">
@@ -112,21 +146,9 @@ const Employee = ({currentTab}) => {
     if (currentTab === 5)
     {
         const my_requests = [];
-        for (let b = 1; b < 15; b++) {
-            my_requests.push(
-                <li key={b}>
-                    <p onClick={() => setViewSupportRequestOpen(true)}>
-                        Support Request {b}
-                        {viewSupportRequestOpen ? (
-                            <ViewSupportRequest
-                                popupClose={() => setViewSupportRequestOpen(false)}
-                                popupOpen={viewSupportRequestOpen}
-                            />
-                        ) : null}
-                    </p>
-                </li>
-            );
-        }
+        showMySupport.map((mySupport) =>
+            my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
+        );
 
         return (
             <div className="display">

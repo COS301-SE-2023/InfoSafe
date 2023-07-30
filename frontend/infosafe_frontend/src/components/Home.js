@@ -10,7 +10,7 @@ const Home = () => {
     if(sessionStorage.getItem('accessToken') == null)
         window.location.href = "/";
 
-        const [systemRole, setRole] = useState('DISO');
+        const [systemRole, setRole] = useState('Asset Manager');
         const [settings, showSettings] = useState(false);
 
         const showDiv = () =>

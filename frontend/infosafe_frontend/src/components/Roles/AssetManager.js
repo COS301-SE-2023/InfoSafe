@@ -13,10 +13,11 @@ import ViewDataScope from "../View/ViewDataScope";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import ViewAssetRequest from '../View/ViewAssetRequest';
 import AccessAndDisplay from "./AccessAndDisplay";
+import EditSupportRequest from "../Edit/EditSupportRequest";
 /* eslint-disable react/prop-types */
 
 const AssetManager = ({currentTab}) => {
-    const {showDatascope, setShowDatascope, showAsset, setShowAsset, showRisk, setShowRisk, showAccess, setShowAccess} = AccessAndDisplay()
+    const {showDatascope,  showAsset,     showMySupport, showAssetRequests} = AccessAndDisplay()
     const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false); // AM
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM
@@ -79,6 +80,73 @@ const AssetManager = ({currentTab}) => {
         );
     };
 
+    const ViewMySupport = ({ mySupport }) => {
+        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+        return(
+            <li key={mySupport.support_id}>
+                <p onClick={() => setViewSupportRequestOpen(true)}>
+                    Support Request {mySupport.support_id}
+                    {viewSupportRequestOpen ? (
+                        <ViewSupportRequest
+                            popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
+                            popupOpen={viewSupportRequestOpen}
+                        />
+                    ) : null}
+                </p>{' '}
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
+                />
+                {editSupportRequestOpen ? (
+                    <EditSupportRequest
+                        popupClose={() => setEditSupportRequestOpen(false)}
+                        popupOpen={editSupportRequestOpen}
+                    />
+                ) : null}
+            </li>
+        );
+    };
+
+    const ViewAssetRequests = ({ assetRequest }) => {
+        const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false); // AM
+        return(
+            <li key={assetRequest.asset_request_id}>
+            <p onClick={() => setViewAssetRequestOpen(!viewAssetRequestOpen)}>
+                Asset Request {assetRequest.asset_request_id}
+                {viewAssetRequestOpen ? (
+                    <ViewAssetRequest
+                        popupClose={() => setViewAssetRequestOpen(false)}
+                        popupOpen={viewAssetRequestOpen}
+                    />
+                ) : null}
+                <button
+                    className="reviewAssetRequestButton"
+                    // onClick={() => setAssetRequestOpen(true)}
+                >
+                    Review
+                </button>
+
+            </p>
+        </li>
+        );
+    };
+    const ViewTaskItems = ({ task }) => {
+        const [viewTaskOpen, setViewTaskOpen] = useState(false);
+        return(
+            <li key={task.task_id}>
+                <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
+                    Task {task.task_id}
+                    {viewTaskOpen ? (
+                        <ViewTask
+                            popupClose={() => setViewTaskOpen(false)}
+                            popupOpen={viewTaskOpen}
+                        />
+                    ) : null}
+                </p>
+            </li>
+        );
+    };
     if (currentTab === 1)
     {
         const dataItems = [];
@@ -91,20 +159,6 @@ const AssetManager = ({currentTab}) => {
                 <div className="datascopes">
                     <ul className="datascopesList">{dataItems}</ul>
                 </div>
-                {/*<div className="CreateDataScopeDiv">*/}
-                {/*    <button*/}
-                {/*        className="CreateDataScopeButton"*/}
-                {/*        onClick={() => setCreateDataScopeOpen(true)}*/}
-                {/*    >*/}
-                {/*        Create Data Scope*/}
-                {/*    </button>*/}
-                {/*    {createDataScopeOpen ? (*/}
-                {/*        <CreateDataScopePopup*/}
-                {/*            popupClose={() => setCreateDataScopeOpen(false)}*/}
-                {/*            popupOpen={createDataScopeOpen}*/}
-                {/*        />*/}
-                {/*    ) : null}*/}
-                {/*</div>*/}
             </div>
         );
     }
@@ -112,21 +166,9 @@ const AssetManager = ({currentTab}) => {
     if (currentTab === 3)
     {
         const complianceItems = [];
-        for (let l = 1; l < 30; l++) {
-            complianceItems.push(
-                <li key={l}>
-                    <p onClick={() => setViewTaskOpen(true)}>
-                        Task {l}
-                        {viewTaskOpen ? (
-                            <ViewTask
-                                popupClose={() => setViewTaskOpen(false)}
-                                popupOpen={viewTaskOpen}
-                            />
-                        ) : null}
-                    </p>
-                </li>
-            );
-        }
+        showTask.map((task) =>
+            complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
+        );
         return (
             <div className="display">
                 <div className="tasks">
@@ -168,21 +210,9 @@ const AssetManager = ({currentTab}) => {
     if (currentTab === 5)
     {
         const my_requests = [];
-        for (let b = 1; b < 15; b++) {
-            my_requests.push(
-                <li key={b}>
-                    <p onClick={() => setViewSupportRequestOpen(true)}>
-                        Support Request {b}
-                        {viewSupportRequestOpen ? (
-                            <ViewSupportRequest
-                                popupClose={() => setViewSupportRequestOpen(false)}
-                                popupOpen={viewSupportRequestOpen}
-                            />
-                        ) : null}
-                    </p>
-                </li>
-            );
-        }
+        showMySupport.map((mySupport) =>
+            my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
+        );
 
         return (
             <div className="display">
@@ -200,28 +230,9 @@ const AssetManager = ({currentTab}) => {
     if (currentTab === 8)
     {
         const assetRequests = [];
-        for (let i = 1; i < 30; i++) {
-            assetRequests.push(
-                <li key={i}>
-                    <p onClick={() => setViewAssetRequestOpen(true)}>
-                        Asset Request {i}
-                        {viewAssetRequestOpen ? (
-                        <ViewAssetRequest
-                                popupClose={() => setViewAssetRequestOpen(false)}
-                                popupOpen={viewAssetRequestOpen}
-                            />
-                        ) : null}
-                        <button
-                            className="reviewAssetRequestButton"
-                            // onClick={() => setAssetRequestOpen(true)}
-                        >
-                            Review
-                        </button>
-
-                    </p>
-                </li>
-            );
-        }
+        showAssetRequests.map((assetRequest) =>
+            assetRequest.push(<ViewAssetRequests assetRequest={assetRequest} key={assetRequest.asset_request_id}/>)
+        );
 
         return (
             <div className="display">
