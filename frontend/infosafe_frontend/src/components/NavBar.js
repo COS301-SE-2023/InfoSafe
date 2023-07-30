@@ -22,25 +22,6 @@ const NavBar = ({ systemRole }) => {
         activate(NavTabIndex);
     };
 
-
-
-    /*    const ViewTaskItem = ( l ) => {
-        const [viewTaskOpen, setViewTaskOpen] = useState(false);
-        return (
-            <li key={l}>
-                <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
-                    Task {l}
-                    {viewTaskOpen && (
-                        <ViewTask
-                            popupClose={() => setViewTaskOpen(false)}
-                            popupOpen={viewTaskOpen}
-                        />
-                    )}
-                </p>
-            </li>
-        );
-    };*/
-
     const displayPage = () => {
         if (systemRole === 'ISO') {
             return (
@@ -60,7 +41,7 @@ const NavBar = ({ systemRole }) => {
             );
         }
 
-        if (systemRole === 'Data Custodian') {
+        if (systemRole === 'DATA_CUSTODIAN') {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: DataCustodianTabs})}
@@ -69,7 +50,7 @@ const NavBar = ({ systemRole }) => {
             );
         }
 
-        if (systemRole === 'Asset Manager') {
+        if (systemRole === 'ASSET_MANAGER') {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: AssetManagerTabs})}
@@ -78,7 +59,7 @@ const NavBar = ({ systemRole }) => {
             );
         }
 
-        if (systemRole === 'Employee') {
+        if (systemRole === 'EMPLOYEE') {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: EmployeeTabs})}

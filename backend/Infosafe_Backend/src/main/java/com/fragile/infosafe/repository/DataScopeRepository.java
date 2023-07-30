@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DataScopeRepository extends JpaRepository<DataScope,Integer> {
-
+    boolean existsByDs_name(String name);
 }

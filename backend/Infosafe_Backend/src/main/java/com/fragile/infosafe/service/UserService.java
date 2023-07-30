@@ -15,4 +15,8 @@ public class UserService {
     public List<User> getAllUsers() {return repository.findAll();}
     public Optional<User> getUser(Integer user_id) {return repository.findById(user_id);}
     public User updateUser(User user) {return repository.save(user);}
+
+    public boolean checkEmailExists(String email) {
+        return repository.existsByEmail(email);
+    }
 }

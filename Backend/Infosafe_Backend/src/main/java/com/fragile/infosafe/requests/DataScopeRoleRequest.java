@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DataScopeRoleRequest {
-    private int user_id;
+    private int ds_id;
     private String role_type;
     private String role_description;
+
 }

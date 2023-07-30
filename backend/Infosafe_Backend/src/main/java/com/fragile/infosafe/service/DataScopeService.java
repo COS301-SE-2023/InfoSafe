@@ -1,7 +1,6 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.repository.DataScopeRepository;
 import com.fragile.infosafe.requests.DataScopeRequest;
 import lombok.RequiredArgsConstructor;
@@ -31,4 +30,8 @@ public class DataScopeService {
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
 
     public DataScope updateDataScope(DataScope dataScope) {return dataScopeRepository.save(dataScope);}
+
+    public boolean checkDataScopeExists(String name) {
+        return dataScopeRepository.existsByDs_name(name);
+    }
 }

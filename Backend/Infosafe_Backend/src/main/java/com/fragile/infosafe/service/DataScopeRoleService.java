@@ -19,7 +19,7 @@ public class DataScopeRoleService {
 
     public ResponseEntity<String> makeDataScopeRole(DataScopeRoleRequest request){
         var dataScopeRole = DataScopeRole.builder()
-                .user_id(request.getUser_id())
+                .ds_id(request.getDs_id())
                 .role_type(request.getRole_type())
                 .role_description(request.getRole_description())
                 .build();
