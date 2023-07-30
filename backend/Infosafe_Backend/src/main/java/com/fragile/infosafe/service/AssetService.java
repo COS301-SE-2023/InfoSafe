@@ -20,7 +20,6 @@ public class AssetService {
 
     public Asset updateAsset(Asset asset) {return assetRepository.save(asset);}
 
-
     public ResponseEntity<String> makeAsset(AssetRequest request){
         var asset = Asset.builder()
                 .assetName(request.getAssetName())
