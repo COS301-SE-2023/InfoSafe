@@ -62,7 +62,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                             className="editDSStatusDropdown"
                             data-testid="editDSStatusDropdown"
                         />
-                        <button className="editdatascope_finish" onClick={popupClose}>
+                        <button className="editdatascope_finish">
                             Submit
                         </button>
                     </form>
