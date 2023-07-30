@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 
-import static com.fragile.infosafe.model.Role.ADMIN;
-import static com.fragile.infosafe.model.Role.DATA_CUSTODIAN;
+import static com.fragile.infosafe.model.Role.*;
 
 @SpringBootApplication
 public class InfosafeBackendApplication {
@@ -21,17 +20,17 @@ public class InfosafeBackendApplication {
         SpringApplication.run(InfosafeBackendApplication.class, args);
     }
 
-//    @Bean
-//    public CommandLineRunner commandLineRunner(AuthenticationService service) {
-//        return args -> {
-//            var admin = RegisterRequest.builder()
-//                    .firstname("Alistair")
-//                    .lastname("Ross")
-//                    .email("ali@gmail.com")
-//                    .password("1234")
-//                    .role(ADMIN)
-//                    .build();
-//            System.out.println("Admin token: " + service.register(admin).getAccessToken());
-//        };
-//    }
+    @Bean
+    public CommandLineRunner commandLineRunner(AuthenticationService service) {
+        return args -> {
+            var admin = RegisterRequest.builder()
+                    .firstname("Alistair")
+                    .lastname("Ross")
+                    .email("ali@gmail.com")
+                    .password("1234")
+                    .role(ISO)
+                    .build();
+            System.out.println("Admin token: " + service.register(admin).getAccessToken());
+        };
+    }
 }

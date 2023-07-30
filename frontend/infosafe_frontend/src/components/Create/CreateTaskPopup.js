@@ -9,6 +9,23 @@ const TASK_TYPES = ['COMPLIANCE MATRIX', 'RISK', 'SUPPORT REQUEST'];
 const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
 const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
 export const CreateTask = ({ popupClose, popupOpen }) => {
+
+    const handleClick=(e)=> {
+        e.preventDefault()
+        const task = {due_date, task_description, task_status}
+
+        fetch("http://localhost:8080/api/task/addTask", {
+            method:"POST",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(task)
+        }).then(()=>{
+            console.log("New task added")
+        })
+        popupClose()
+    };
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="createTaskOverlay">
@@ -21,7 +38,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                         <p className="inputTitle">Type</p>
                         <Dropdown
                             options={TASK_TYPES}
-                            value={TASK_TYPES[1]}
+                            value={}
                             className="createTaskTypeDropdown"
                             name="createTaskTypeDropdown"
                         />
