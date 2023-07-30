@@ -14,44 +14,37 @@ import lombok.NoArgsConstructor;
 @Table(name="assets")
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long asset_id;
-    private String assetName;
-    private String assetDescription;
+    private int asset_id;
+    private String asset_name;
+    private String asset_description;
     private String status;
-    private String dateAcquired;
-    private String assignee;
-    private String type_name;
+    private Boolean availability;
+    private String current_assignee;
+    private String previous_assignee;
+    private String device_type;
 
-    public String getType_name() {
-        return type_name;
-    }
-
-    public void setType_name(String type_name) {
-        this.type_name = type_name;
-    }
-
-    public Long getId() {
+    public int getAsset_id() {
         return asset_id;
     }
 
-    public void setId(Long asset_id) {
+    public void setAsset_id(int asset_id) {
         this.asset_id = asset_id;
     }
 
-    public String getAssetName() {
-        return assetName;
+    public String getAsset_name() {
+        return asset_name;
     }
 
-    public void setAssetName(String asset_name) {
-        this.assetName = asset_name;
+    public void setAsset_name(String asset_name) {
+        this.asset_name = asset_name;
     }
 
-    public String getAssetDescription() {
-        return assetDescription;
+    public String getAsset_description() {
+        return asset_description;
     }
 
-    public void setAssetDescription(String asset_description) {
-        this.assetDescription = asset_description;
+    public void setAsset_description(String asset_description) {
+        this.asset_description = asset_description;
     }
 
     public String getStatus() {
@@ -62,19 +55,35 @@ public class Asset {
         this.status = status;
     }
 
-    public String getDateAcquired() {
-        return dateAcquired;
+    public Boolean getAvailability() {
+        return availability;
     }
 
-    public void setDateAcquired(String date_acquired) {
-        this.dateAcquired = date_acquired;
+    public void setAvailability(Boolean availability) {
+        this.availability = availability;
     }
 
-    public String getAssignee() {
-        return assignee;
+    public String getCurrent_assignee() {
+        return current_assignee;
     }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
+    public void setCurrent_assignee(String current_assignee) {
+        this.current_assignee = current_assignee;
+    }
+
+    public String getPrevious_assignee() {
+        return previous_assignee;
+    }
+
+    public void setPrevious_assignee(String previous_assignee) {
+        this.previous_assignee = previous_assignee;
+    }
+
+    public String getDevice_type() {
+        return device_type;
+    }
+
+    public void setDevice_type(String device_type) {
+        this.device_type = device_type;
     }
 }
