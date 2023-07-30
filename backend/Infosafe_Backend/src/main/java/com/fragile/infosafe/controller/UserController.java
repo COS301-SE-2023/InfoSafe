@@ -7,6 +7,8 @@ import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +34,18 @@ public class UserController {
     public User updateUser (@PathVariable("id") int user_id, @RequestBody User user) {
         user.setUser_id(user_id);
         return userService.updateUser(user);
+    }
+
+    @GetMapping("/getId")
+    public int getCurrentUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            User authenticatedUser = (User) authentication.getPrincipal();
+            return authenticatedUser.getUser_id();
+        }
+
+        return -1; // Or any other value indicating that the user ID couldn't be retrieved.
     }
 
 }
