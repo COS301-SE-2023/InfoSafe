@@ -18,10 +18,11 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         asset_id: asset.asset_id,
         asset_name: asset.asset_name,
         asset_description: asset.asset_description,
-        //asset_availabiliyu: user.last_name,
         status: asset.status,
-        current_custodian: asset.current_custodian,
-        previous_custodian: asset.previous_custodian
+        availability: asset.availability,
+        current_assignee: asset.current_assignee,
+        previous_assignee: asset.previous_assignee,
+        device_type: asset.device_type
     })
 
     const handleSubmit = (e) => {
@@ -77,13 +78,13 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                         <p className="editDeviceCurrentCustodianLabel">Current Custodian</p>
                         <input
                             className="editDeviceCurrentCustodianInput"
-                            defaultValue={asset.current_custodian} onChange={e => setValues({...values, current_custodian: e.target.value})}
+                            defaultValue={asset.current_custodian} onChange={e => setValues({...values, current_assignee: e.target.value})}
                             // onChange={(e) => setAssignee(e.target.value)}
                         />
                         <p className="editDevicePreviousCustodianLabel">Previous Custodian</p>
                         <input
                             className="editDevicePreviousCustodianInput"
-                            value={asset.previous_custodian} onChange={e => setValues({...values, previous_custodian: e.target.value})}
+                            value={asset.previous_custodian} onChange={e => setValues({...values, previous_assignee: e.target.value})}
                             // onChange={(e) => setAssignee(e.target.value)}
                         />
                         <button className="EditDeviceButton" type="submit">
