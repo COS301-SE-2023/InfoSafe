@@ -601,3 +601,33 @@
     position: relative;
     bottom: -10%;
 }
+.ISODeviceEditIcon {
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    right: 1vw;
+    height: 100%;
+    fill: #cf0000;
+}
+.approveAccessRequestButton {
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 0.5% 2%;
+    width: fit-content;
+}
+.ApproveAccessRequestButtonDiv {
+    position: relative;
+    bottom: -10%;
+}

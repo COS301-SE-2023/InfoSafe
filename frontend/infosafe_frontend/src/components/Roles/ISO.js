@@ -25,6 +25,7 @@ import {TaskApproval} from "../TaskApprovalPopup";
 import {ViewRisk} from "../View/ViewRisk";
 import {EditRisk} from "../Edit/EditRisk";
 import AccessAndDisplay from "./AccessAndDisplay";
+import AccessRequestApproval from "./AccessRequestApproval";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
@@ -42,6 +43,7 @@ const ISO = ({currentTab}) => {
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
     const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
+    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
 
     const ViewUserItem = ({ user }) => {
@@ -117,15 +119,14 @@ const ISO = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(!editDeviceOpen)} />
+                <FaRegEdit className="ISODeviceEditIcon" onClick={() => setEditDeviceOpen(!editDeviceOpen)} />
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
                         popupOpen={editDeviceOpen}
                         asset={asset}
                     />
-                ) : null}{' '}
-                <RiDeleteBin6Fill className="DeleteIcon" />
+                ) : null}
             </li>
         );
     };
@@ -325,6 +326,21 @@ const ISO = ({currentTab}) => {
             <div className="display">
                 <div className="accessRequests">
                     <ul className="accessrequestsList">{accessRequests}</ul>
+                </div>
+                <div className="ApproveAccessRequestButtonDiv">
+                    <button
+                        className="approveAccessRequestButton"
+                        data-testid="approveAccessRequestButton"
+                        onClick={() => setApproveAccessRequestOpen(true)}
+                    >
+                        Access Request Approval
+                    </button>
+                    {approveAccessRequestOpen ? (
+                        <AccessRequestApproval
+                            popupClose={() => setApproveAccessRequestOpen(false)}
+                            popupOpen={approveAccessRequestOpen}
+                        />
+                    ) : null}
                 </div>
             </div>
         );
