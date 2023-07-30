@@ -20,6 +20,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         asset_description: asset.asset_description,
         status: asset.status,
         availability: asset.availability,
+        used: asset.used,
         current_assignee: asset.current_assignee,
         previous_assignee: asset.previous_assignee,
         device_type: asset.device_type

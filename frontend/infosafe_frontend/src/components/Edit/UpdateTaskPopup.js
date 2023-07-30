@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useState} from 'react';
 import '../../styling/UpdateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
@@ -7,7 +7,31 @@ import Dropdown from 'react-dropdown';
 /* eslint-disable  no-unused-vars */
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3'];
 const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
-export const UpdateTask = ({ popupClose, popupOpen }) => {
+export const UpdateTask = ({ task, popupClose, popupOpen }) => {
+    const[values, setValues]=useState({
+        task_id: task.task_id,
+        date_completed: task.date_completed,
+        due_date: task.due_date,
+        task_description: task.task_description,
+        task_status: task.task_status
+    })
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values)
+        fetch('http://localhost:8080/api/task/update/' + task.task_id, {
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated Task")
+        })
+        //console.log(JSON.stringify(values))
+        popupClose()
+    }
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="updateTaskOverlay">
@@ -41,7 +65,7 @@ export const UpdateTask = ({ popupClose, popupOpen }) => {
                             name="completionDate"
                         />
                         <div className="updateTaskButtonDiv">
-                            <button className="updateTaskSubmitButton" type="submit" onClick={popupClose}>
+                            <button className="updateTaskSubmitButton" type="submit">
                                 Submit
                             </button>
                         </div>

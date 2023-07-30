@@ -29,7 +29,7 @@ public class InfosafeBackendApplication {
 //                    .lastname("Ross")
 //                    .email("ali@gmail.com")
 //                    .password("1234")
-//                    .role(ADMIN)
+//                    .role(ISO)
 //                    .build();
 //            System.out.println("Admin token: " + service.register(admin).getAccessToken());
 //        };
