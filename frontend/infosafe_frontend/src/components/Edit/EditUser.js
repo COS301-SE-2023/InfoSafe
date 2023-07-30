@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/EditUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-import axios from "axios";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 
@@ -35,8 +34,6 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // axios.post('http://localhost:8080/api/user/getUser/' + user.user_id, values)
-        //     .catch(err => console.log(err))
         console.log(values)
         fetch('http://localhost:8080/api/user/update/' + user.user_id, {
             method:"PUT",

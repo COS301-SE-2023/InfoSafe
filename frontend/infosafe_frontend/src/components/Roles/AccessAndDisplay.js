@@ -10,8 +10,7 @@ const AccessAndDisplay = () => {
     const [showAccess, setShowAccess] = useState([]);
     const [showAllSupport, setShowAllSupport] = useState([]);
     const [showMySupport, setShowMySupport] = useState([]);
-    const [userId, setUserId] = useState([]);
-    let id = null;
+    const [showAssetRequests, setShowAssetRequests] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
@@ -144,6 +143,19 @@ const AccessAndDisplay = () => {
             });
     }, []);
 
+    useEffect(() => {
+        fetch('http://localhost:8080/api/assetrequest/getAr', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setShowAssetRequests(result);
+            });
+    }, []);
+
 
     return {
         createUserOpen,
@@ -163,7 +175,8 @@ const AccessAndDisplay = () => {
         showAllSupport,
         setShowAllSupport,
         showMySupport,
-        setShowMySupport
+        setShowMySupport,
+        showAssetRequests
     };
 };
 export default AccessAndDisplay;

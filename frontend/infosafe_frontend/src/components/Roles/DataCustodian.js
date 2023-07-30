@@ -230,7 +230,7 @@ const DataCustodian = ({currentTab}) => {
     {
         const devices = [];
         showAsset.map((device) =>
-            devices.push(<ViewDeviceItem asset={device} key={device.id} />)
+            devices.push(<ViewDeviceItem asset={device} key={device.device_id} />)
         );
         return (
             <div className="display">
