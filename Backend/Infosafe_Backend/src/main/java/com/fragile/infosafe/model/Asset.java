@@ -19,6 +19,7 @@ public class Asset {
     private String asset_description;
     private String status;
     private Boolean availability;
+    private Boolean used;
     private String current_assignee;
     private String previous_assignee;
     private String device_type;
@@ -61,6 +62,14 @@ public class Asset {
 
     public void setAvailability(Boolean availability) {
         this.availability = availability;
+    }
+
+    public Boolean getUsed() {
+        return used;
+    }
+
+    public void setUsed(Boolean used) {
+        this.used = used;
     }
 
     public String getCurrent_assignee() {

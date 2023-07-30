@@ -11,16 +11,19 @@ const NEW_OPTIONS = ['YES', 'NO'];
 const AVAILABILITY_OPTIONS = ['YES', 'NO'];
 export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
     const current = new Date();
-    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-    const[asset_name,setAssetName]=useState('')
-    const[asset_description,setAssetDesc]=useState('')
-    const[assignee,setAssignee]=useState('')
-    const[date_acquired,setDate]=useState(date)
+    //const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const[asset_name,setAsset_name]=useState('')
+    const[asset_description,setAsset_description]=useState('')
+    const[availability,setAvailability]=useState('')
+    const[used,setUsed]=useState('')
+    const[current_assignee,setCurrent_assignee]=useState('')
+    const[previous_assignee,setPrevious_assignee]=useState('')
     const[status,setStatus]=useState('CLEAN')
+    const[device_type,setDevice_type]=useState('')
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const asset = {asset_name, asset_description, assignee, date_acquired, status}
+        const asset = {asset_name, asset_description, current_assignee, previous_assignee, status, used, availability, device_type}
         console.log(asset)
         fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",
@@ -43,30 +46,32 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                     <form>
                         <p className="createDeviceLabel">Add Device</p>
                         <p className="deviceNameLabel">Device Name</p>
-                        <input className="deviceNameInput" value={asset_name} onChange={(e)=>setAssetName(e.target.value)}/>
+                        <input className="deviceNameInput"
+                               value={asset_name} onChange={(e)=>setAsset_name(e.target.value)}
+                        />
                         <p className="deviceTypeLabel">Device Type</p>
                         <input
                             className="deviceTypeInput"
-                            // value=
-                            // onChange={(e) => setAssetType(e.target.value)}
+                            value={device_type} onChange={(e)=>setDevice_type(e.target.value)}
                         />
                         <p className="deviceDescriptionLabel">Device Description</p>
-                        <textarea className="deviceDescriptionInput" value={asset_description} onChange={(e)=>setAssetDesc(e.target.value)}/>
+                        <textarea className="deviceDescriptionInput"
+                                  value={asset_description} onChange={(e)=>setAsset_description(e.target.value)}/>
                         <p className = "deviceNewLabel">New</p>
                         <Dropdown
                             options={NEW_OPTIONS}
-                            value={NEW_OPTIONS[0]}
+                            value={NEW_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
                             className="newDropdown"
-                            // name="status"
-                            // onChange={(selectedOption) => setStatus(selectedOption.value)}
+                            name="used"
+                            onChange={(selectedOption) => setUsed(selectedOption.value)}
                         />
                         <p className = "deviceAvailabilityLabel">Available</p>
                         <Dropdown
                             options={AVAILABILITY_OPTIONS}
-                            value={AVAILABILITY_OPTIONS[0]}
+                            value={AVAILABILITY_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
                             className="availableDropdown"
-                            // name="status"
-                            // onChange={(selectedOption) => setStatus(selectedOption.value)}
+                            name="availability"
+                            onChange={(selectedOption) => setAvailability(selectedOption.value)}
                         />
                         <p className="deviceStatusLabel">Status</p>
                         <Dropdown
@@ -80,14 +85,14 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <p className="currentCustodianLabel">Current Custodian</p>
                         <input
                             className="currentCustodianInput"
-                            // value={assignee}
-                            // onChange={(e) => setAssignee(e.target.value)}
+                            value={current_assignee}
+                            onChange={(e) => setCurrent_assignee(e.target.value)}
                         />
                         <p className="previousCustodianLabel">Previous Custodian</p>
                         <input
                             className="previousCustodianInput"
-                            // value={assignee}
-                            // onChange={(e) => setAssignee(e.target.value)}
+                            value={previous_assignee}
+                            onChange={(e) => setPrevious_assignee(e.target.value)}
                         />
                         <button className="createDeviceFinish" onClick={handleClick}>
                             Submit

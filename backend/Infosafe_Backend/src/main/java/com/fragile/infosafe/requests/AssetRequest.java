@@ -16,6 +16,7 @@ public class AssetRequest {
     private String asset_description;
     private String status;
     private Boolean availability;
+    private Boolean used;
     private String current_assignee;
     private String previous_assignee;
     private String device_type;

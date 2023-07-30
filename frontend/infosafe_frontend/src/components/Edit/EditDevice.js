@@ -55,37 +55,39 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                             <p className="editDeviceDescriptionLabel">Description</p>
                             <textarea
                                 className="editDeviceDescriptionInput"
-                                defaultValue={asset.asset_description} onChange={e => setValues({...values, asset_description: e.target.value})}
+                                defaultValue={asset.asset_description}
+                                onChange={e => setValues({...values, asset_description: e.target.value})}
                             />
                         </div>
                         <p className = "editDeviceAvailabilityLabel">Available</p>
                         <Dropdown
                             options={AVAILABILITY_OPTIONS}
-                            value={AVAILABILITY_OPTIONS[0]}
+                            value={asset.availability}
                             className="editDeviceAvailableDropdown"
-                            // name="status"
-                            // onChange={(selectedOption) => setStatus(selectedOption.value)}
+                            name="status"
+                            onChange={(selectedOption) => setValues({...values, availability: selectedOption.value})}
                         />
                         <div className="editDeviceStatusDiv">
                             <p className="editDevicestatusTitle">Status</p>
                             <Dropdown
                                 options={STATUS_OPTIONS}
-                                value={asset.status} //onChange={e => setValues({...values, status: e.target.value})}
+                                value={asset.status}
                                 className="editDeviceStatusDropdown"
-                                name="editDeviceStatusDropdown"
+                                name="availability"
+                                onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
                             />
                         </div>
                         <p className="editDeviceCurrentCustodianLabel">Current Custodian</p>
                         <input
                             className="editDeviceCurrentCustodianInput"
-                            defaultValue={asset.current_custodian} onChange={e => setValues({...values, current_assignee: e.target.value})}
-                            // onChange={(e) => setAssignee(e.target.value)}
+                            defaultValue={asset.current_assignee}
+                            onChange={e => setValues({...values, current_assignee: e.target.value})}
                         />
                         <p className="editDevicePreviousCustodianLabel">Previous Custodian</p>
                         <input
                             className="editDevicePreviousCustodianInput"
-                            value={asset.previous_custodian} onChange={e => setValues({...values, previous_assignee: e.target.value})}
-                            // onChange={(e) => setAssignee(e.target.value)}
+                            value={asset.previous_assignee}
+                            onChange={e => setValues({...values, previous_assignee: e.target.value})}
                         />
                         <button className="EditDeviceButton" type="submit">
                             Submit
