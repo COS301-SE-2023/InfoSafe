@@ -2,6 +2,7 @@ package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.service.PasswordEncryption;
 import com.fragile.infosafe.service.RandomPasswordGenerator;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import java.util.Map;
 @RequestMapping("api/randPass")
 @RequiredArgsConstructor
 public class RandomPasswordController {
-
+    @NonNull
     private RandomPasswordGenerator randomPasswordGenerator;
 
     @GetMapping("/generate")
