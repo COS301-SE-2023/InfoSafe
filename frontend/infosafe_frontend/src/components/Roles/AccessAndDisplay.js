@@ -6,10 +6,12 @@ const AccessAndDisplay = () => {
     const [showDatascope, setShowDatascope] = useState([]); // ISO DS DISO Employee AM
     const [showAsset, setShowAsset] = useState([]); // ISO DISO DS Employee AM
     const [showRisk, setShowRisk] = useState([]);
+    const [showTask, setShowTask] = useState([]);
     const [showAccess, setShowAccess] = useState([]);
-    const [showMatrix, setShowMatrix] = useState([]);
-    const [showSupport, setShowSupport] = useState([]);
-
+    const [showAllSupport, setShowAllSupport] = useState([]);
+    const [showMySupport, setShowMySupport] = useState([]);
+    const [userId, setUserId] = useState([]);
+    let id = null;
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
@@ -91,7 +93,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/matrix/getM', {
+        fetch('http://localhost:8080/api/task/getTask', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -99,7 +101,7 @@ const AccessAndDisplay = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setShowMatrix(result);
+                setShowTask(result);
             });
     }, []);
 
@@ -112,7 +114,33 @@ const AccessAndDisplay = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setShowSupport(result);
+                setShowAllSupport(result);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/user/getId', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                const id = result; // Store the id in a local variable
+                console.log(id); // Check if the id is fetched correctly
+
+                // Use the id in the second fetch request
+                fetch('http://localhost:8080/api/supportrequest/getSrById/' + id, {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                    }
+                })
+                    .then((res) => res.json())
+                    .then((result) => {
+                        setShowMySupport(result);
+                    });
             });
     }, []);
 
@@ -130,10 +158,12 @@ const AccessAndDisplay = () => {
         setShowRisk,
         showAccess,
         setShowAccess,
-        showMatrix,
-        setShowMatrix,
-        showSupport,
-        setShowSupport
+        showTask,
+        setShowTask,
+        showAllSupport,
+        setShowAllSupport,
+        showMySupport,
+        setShowMySupport
     };
 };
 export default AccessAndDisplay;

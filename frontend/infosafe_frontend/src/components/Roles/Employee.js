@@ -14,30 +14,6 @@ const Employee = ({currentTab}) => {
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
     const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getDs', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowDatascope(result);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowAsset(result);
-            });
-    }, []);
-
     const ViewDeviceItem = ({ asset }) => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (

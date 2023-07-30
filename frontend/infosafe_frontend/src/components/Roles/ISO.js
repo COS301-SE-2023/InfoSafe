@@ -28,7 +28,7 @@ import AccessAndDisplay from "./AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
-    const {showUser,showDatascope, setShowDatascope, showAsset, setShowAsset, showRisk, setShowRisk, showAccess, setShowAccess, createUserOpen, setCreateUserOpen} = AccessAndDisplay()
+    const {showUser,showDatascope, showAsset, showRisk,  showAccess, createUserOpen, setCreateUserOpen,  showTask, showMySupport, showAllSupport} = AccessAndDisplay()
     const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
     const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false); // ISO DISO
@@ -42,6 +42,7 @@ const ISO = ({currentTab}) => {
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
     const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
+
 
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
@@ -105,9 +106,9 @@ const ISO = ({currentTab}) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
-            <li key={asset.id}>
+            <li key={asset.asset_id}>
                 <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                    Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
+                    Asset {asset.asset_id}: {asset.asset_name} ----- {asset.asset_description}
                     {viewDeviceOpen && (
                         <ViewDevice
                             popupClose={() => setViewDeviceOpen(false)}
@@ -116,7 +117,7 @@ const ISO = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(true)} />
+                <FaRegEdit className="EditIcon" onClick={() => setEditDeviceOpen(!editDeviceOpen)} />
                 {editDeviceOpen ? (
                     <EditDevice
                         popupClose={() => setEditDeviceOpen(false)}
@@ -128,6 +129,146 @@ const ISO = ({currentTab}) => {
             </li>
         );
     };
+
+    const ViewAccessRequests = ({ access }) => {
+        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+        const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
+        return (
+            <li key={access.requests_id}>
+                <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
+                    Access Request {access.id}
+                    {viewAccessRequestOpen ? (
+                        <ViewAccessRequest
+                            popupClose={() => setViewAccessRequestOpen(false)}
+                            popupOpen={viewAccessRequestOpen}
+                        />
+                    ) : null}
+                </p>
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditAccessRequestOpen(!editAccessRequestOpen)}
+                />
+                {editAccessRequestOpen ? (
+                    <EditAccessRequest
+                        popupClose={() => setEditAccessRequestOpen(false)}
+                        popupOpen={editAccessRequestOpen}
+                    />
+                ) : null}
+                <RiDeleteBin6Fill className="DeleteIcon" />
+            </li>
+        );
+    };
+
+    const ViewTaskItems = ({ task }) => {
+        const [viewTaskOpen, setViewTaskOpen] = useState(false);
+        return(
+            <li key={task.task_id}>
+                <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
+                    Task {task.task_id}
+                    {viewTaskOpen ? (
+                        <ViewTask
+                            popupClose={() => setViewTaskOpen(false)}
+                            popupOpen={viewTaskOpen}
+                        />
+                    ) : null}
+                </p>
+            </li>
+        );
+    };
+
+    const ViewAllSupport = ({ allSupport }) => {
+        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+        return(
+            <li key={allSupport.support_id}>
+                <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
+                    Support Request {allSupport.support_id}
+                    {viewSupportRequestOpen ? (
+                        <ViewSupportRequest
+                            popupClose={() => setViewSupportRequestOpen(false)}
+                            popupOpen={viewSupportRequestOpen}
+                        />
+                    ) : null}
+                </p>
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
+                />
+                {editSupportRequestOpen ? (
+                    <EditSupportRequest
+                        popupClose={() => setEditSupportRequestOpen(false)}
+                        popupOpen={editSupportRequestOpen}
+                    />
+                ) : null}
+            </li>
+        )
+    }
+
+    const ViewMySupport = ({ mySupport }) => {
+        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+        return(
+            <li key={mySupport.support_id}>
+                <p onClick={() => setViewSupportRequestOpen(true)}>
+                    Support Request {mySupport.support_id}
+                    {viewSupportRequestOpen ? (
+                        <ViewSupportRequest
+                            popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
+                            popupOpen={viewSupportRequestOpen}
+                        />
+                    ) : null}
+                </p>{' '}
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
+                />
+                {editSupportRequestOpen ? (
+                    <EditSupportRequest
+                        popupClose={() => setEditSupportRequestOpen(false)}
+                        popupOpen={editSupportRequestOpen}
+                    />
+                ) : null}
+            </li>
+        )
+    }
+
+    const ViewRisks = ({ risk }) => {
+        const [editRiskOpen, setEditRiskOpen] = useState(false);
+        return (
+            <li key={risk.risk_id}>
+                <p onClick={() => setViewRiskOpen(!viewRiskOpen)}>
+                    Risk {risk.risk_id}
+                    {viewRiskOpen ? (
+                        <ViewRisk
+                            popupClose={() => setViewRiskOpen(false)}
+                            popupOpen={viewRiskOpen}
+                        />
+                    ) : null}
+                </p>{' '}
+                <FaRegEdit
+                    className="EditIcon"
+                    onClick={() => setEditRiskOpen(editRiskOpen)}
+                />
+                {editRiskOpen ? (
+                    <EditRisk
+                        popupClose={() => setEditRiskOpen(false)}
+                        popupOpen={editRiskOpen}
+                    />
+                ) : null}
+                <button
+                    className="ISOReviewRiskButton"
+                    onClick={() => setReviewRiskOpen(true)}>
+                    Review
+                </button>
+                {reviewRiskOpen ? (
+                    <ReviewRisk
+                        popupClose={() => setReviewRiskOpen(false)}
+                        popupOpen={reviewRiskOpen}
+                    />
+                ) : null}
+            </li>
+        )
+    }
 
     if (currentTab === 0)
     {
@@ -170,20 +311,6 @@ const ISO = ({currentTab}) => {
                 <div className="datascopes">
                     <ul className="datascopesList">{dataItems}</ul>
                 </div>
-                {/*<div className="CreateDataScopeDiv">*/}
-                {/*    <button*/}
-                {/*        className="CreateDataScopeButton"*/}
-                {/*        onClick={() => setCreateDataScopeOpen(true)}*/}
-                {/*    >*/}
-                {/*        Create Data Scope*/}
-                {/*    </button>*/}
-                {/*    {createDataScopeOpen ? (*/}
-                {/*        <CreateDataScopePopup*/}
-                {/*            popupClose={() => setCreateDataScopeOpen(false)}*/}
-                {/*            popupOpen={createDataScopeOpen}*/}
-                {/*        />*/}
-                {/*    ) : null}*/}
-                {/*</div>*/}
             </div>
         );
     }
@@ -191,32 +318,9 @@ const ISO = ({currentTab}) => {
     if (currentTab === 2)
     {
         const accessRequests = [];
-        for (let k = 1; k < 30; k++) {
-            accessRequests.push(
-                <li key={k}>
-                    <p onClick={() => setViewAccessRequestOpen(true)}>
-                        Access Request {k}
-                        {viewAccessRequestOpen ? (
-                            <ViewAccessRequest
-                                popupClose={() => setViewAccessRequestOpen(false)}
-                                popupOpen={viewAccessRequestOpen}
-                            />
-                        ) : null}
-                    </p>
-                    <FaRegEdit
-                        className="EditIcon"
-                        onClick={() => setEditAccessRequestOpen(true)}
-                    />
-                    {editAccessRequestOpen ? (
-                        <EditAccessRequest
-                            popupClose={() => setEditAccessRequestOpen(false)}
-                            popupOpen={editAccessRequestOpen}
-                        />
-                    ) : null}
-                    <RiDeleteBin6Fill className="DeleteIcon" />
-                </li>
-            );
-        }
+        showAccess.map((access) =>
+            accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
+        );
         return (
             <div className="display">
                 <div className="accessRequests">
@@ -229,21 +333,9 @@ const ISO = ({currentTab}) => {
     if (currentTab === 3)
     {
         const complianceItems = [];
-        for (let l = 1; l < 30; l++) {
-            complianceItems.push(
-                <li key={l}>
-                    <p onClick={() => setViewTaskOpen(true)}>
-                        Task {l}
-                        {viewTaskOpen ? (
-                            <ViewTask
-                                popupClose={() => setViewTaskOpen(false)}
-                                popupOpen={viewTaskOpen}
-                            />
-                        ) : null}
-                    </p>
-                </li>
-            );
-        }
+        showTask.map((task) =>
+            complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
+        );
         return (
             <div className="display">
                 <div className="tasks">
@@ -300,8 +392,8 @@ const ISO = ({currentTab}) => {
     if (currentTab === 4)
     {
         const devices = [];
-        showAsset.map((device) =>
-            devices.push(<ViewDeviceItem asset={device} key={device.id} />)
+        showAsset.map((asset) =>
+            devices.push(<ViewDeviceItem asset={asset} key={asset.asset_id} />)
         );
         return (
             <div className="display">
@@ -311,7 +403,7 @@ const ISO = ({currentTab}) => {
                 <div className="AddDeviceDiv">
                     <button
                         className="AddDeviceButton"
-                        onClick={() => setCreateDeviceOpen(true)}
+                        onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
                     >
                         Add Device
                     </button>
@@ -329,58 +421,13 @@ const ISO = ({currentTab}) => {
     if (currentTab === 5)
     {
         const active_requests = [];
-        for (let a = 1; a < 15; a++) {
-            active_requests.push(
-                <li key={a}>
-                    <p onClick={() => setViewSupportRequestOpen(true)}>
-                        Support Request {a}
-                        {viewSupportRequestOpen ? (
-                            <ViewSupportRequest
-                                popupClose={() => setViewSupportRequestOpen(false)}
-                                popupOpen={viewSupportRequestOpen}
-                            />
-                        ) : null}
-                    </p>
-                    <FaRegEdit
-                        className="EditIcon"
-                        onClick={() => setEditSupportRequestOpen(true)}
-                    />
-                    {editSupportRequestOpen ? (
-                        <EditSupportRequest
-                            popupClose={() => setEditSupportRequestOpen(false)}
-                            popupOpen={editSupportRequestOpen}
-                        />
-                    ) : null}
-                </li>
-            );
-        }
+        showAllSupport.map((allSupport) =>
+            active_requests.push(<ViewAllSupport allSupport={allSupport} key={allSupport.support_id}/>)
+        );
         const my_requests = [];
-        for (let b = 1; b < 15; b++) {
-            my_requests.push(
-                <li key={b}>
-                    <p onClick={() => setViewSupportRequestOpen(true)}>
-                        Support Request {b}
-                        {viewSupportRequestOpen ? (
-                            <ViewSupportRequest
-                                popupClose={() => setViewSupportRequestOpen(false)}
-                                popupOpen={viewSupportRequestOpen}
-                            />
-                        ) : null}
-                    </p>{' '}
-                    <FaRegEdit
-                        className="EditIcon"
-                        onClick={() => setEditSupportRequestOpen(true)}
-                    />
-                    {editSupportRequestOpen ? (
-                        <EditSupportRequest
-                            popupClose={() => setEditSupportRequestOpen(false)}
-                            popupOpen={editSupportRequestOpen}
-                        />
-                    ) : null}
-                </li>
-            );
-        }
-
+        showMySupport.map((mySupport) =>
+            my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
+        );
         return (
             <div className="display">
                 <div>
@@ -409,43 +456,9 @@ const ISO = ({currentTab}) => {
     if (currentTab === 6)
     {
         const risks = [];
-        for (let y = 1; y < 30; y++) {
-            risks.push(
-                <li key={y}>
-                    <p onClick={() => setViewRiskOpen(true)}>
-                        Risk {y}
-                        {viewRiskOpen ? (
-                            <ViewRisk
-                                popupClose={() => setViewRiskOpen(false)}
-                                popupOpen={viewRiskOpen}
-                            />
-                        ) : null}
-                    </p>
-                    <FaRegEdit
-                        className="ISOEditIcon"
-                        onClick={() => setEditRiskOpen(true)}
-                    />
-                    {editRiskOpen ? (
-                        <EditRisk
-                            popupClose={() => setEditRiskOpen(false)}
-                            popupOpen={editRiskOpen}
-                        />
-                    ) : null}
-                    <button
-                        className="ISOReviewRiskButton"
-                        onClick={() => setReviewRiskOpen(true)}
-                    >
-                        Review
-                    </button>
-                    {reviewRiskOpen ? (
-                        <ReviewRisk
-                            popupClose={() => setReviewRiskOpen(false)}
-                            popupOpen={reviewRiskOpen}
-                        />
-                    ) : null}
-                </li>
-            );
-        }
+        showRisk.map((risk) =>
+            risks.push(<ViewRisks risk={risk} key={risk.risk_id}/>)
+        )
         return (
             <div className="display">
                 <div className="risks">

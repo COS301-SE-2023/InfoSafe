@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,4 +33,8 @@ public class SupportRequestService {
     public List<SupportRequest> getAllSupportRequests() {return supportRequestRepository.findAll();}
 
     public SupportRequest updateSupportRequest(SupportRequest supportRequest) {return supportRequestRepository.save(supportRequest);}
+
+    public List<SupportRequest> getUserSupportRequests(int user_id) {
+        return supportRequestRepository.findByUser_id(user_id);
+    }
 }

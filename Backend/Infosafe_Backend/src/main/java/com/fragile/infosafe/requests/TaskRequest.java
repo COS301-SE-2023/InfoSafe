@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MatrixRequest {
+public class TaskRequest {
     private int task_id;
     private String task_description;
     private String task_status;

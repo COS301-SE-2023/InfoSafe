@@ -85,7 +85,7 @@ const DataCustodian = ({currentTab}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
         return (
             <li key={access.id}>
-                <p onClick={() => setViewAccessRequestOpen(!viewDataScopeOpen)}>
+                <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
                     Access Request {access.id}
                     {viewAccessRequestOpen ? (
                         <ViewAccessRequest

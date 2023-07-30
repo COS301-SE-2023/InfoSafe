@@ -14,8 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="matrices")
-public class Matrix {
+@Table(name="tasks")
+public class Task {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int task_id;
     private String task_description;
