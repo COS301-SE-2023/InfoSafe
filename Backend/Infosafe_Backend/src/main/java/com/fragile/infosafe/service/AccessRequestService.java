@@ -16,12 +16,21 @@ public class AccessRequestService {
     private final AccessRequestRepository accessRequestRepository;
 
     public ResponseEntity<String> makeAR(AccessRequestRequest request){
-        var accessrequest = AccessRequest.builder()
-                .request_id(request.getRequest_id())
-                .user_id(request.getUser_id())
-                .ds_id(request.getDs_id())
+        int userId = request.getUser_id();
+        int dsId = request.getDs_id();
+
+        if (checkAccessRequestExists(userId, dsId)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("AccessRequest already exists.");
+        }
+
+        AccessRequest accessRequest = AccessRequest.builder()
+                .user_id(userId)
+                .ds_id(dsId)
+                .reason(request.getReason())
+                .status(request.getStatus())
                 .build();
-        accessRequestRepository.save(accessrequest);
+
+        accessRequestRepository.save(accessRequest);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
@@ -29,5 +38,8 @@ public class AccessRequestService {
 
     public AccessRequest updateAccessRequest(AccessRequest accessRequest) {return accessRequestRepository.save(accessRequest);}
 
+    public boolean checkAccessRequestExists(int userId, int dsId) {
+        return accessRequestRepository.existsByUserIdAndDsId(userId, dsId);
+    }
 
 }

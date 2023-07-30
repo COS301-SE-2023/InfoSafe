@@ -17,5 +17,4 @@ public class SupportRequestRequest {
     private String support_type;
     private String support_description;
     private String support_status;
-    private int asset_id;
 }

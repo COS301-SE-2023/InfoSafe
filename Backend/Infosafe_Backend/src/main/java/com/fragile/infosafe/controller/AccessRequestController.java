@@ -6,6 +6,7 @@ import com.fragile.infosafe.requests.AccessRequestRequest;
 import com.fragile.infosafe.service.AccessRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,19 @@ public class AccessRequestController {
     private final AccessRequestService service;
     @PostMapping("/addAr")
     public ResponseEntity addAr(@RequestBody AccessRequestRequest accessrequest) {
-        log.info("Adding an access request");
-        return ResponseEntity.ok(service.makeAR(accessrequest));
+        ResponseEntity<String> response = service.makeAR(accessrequest);
+
+        if (response.getStatusCode() == HttpStatus.OK) {
+            log.info("Adding an access request");
+            return ResponseEntity.status(HttpStatus.OK).body("AccessRequest created.");
+        } else if (response.getStatusCode() == HttpStatus.CONFLICT) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("AccessRequest already exists.");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating AccessRequest.");
+        }
+
+
+
     }
 
     @GetMapping("/getAr")
@@ -32,9 +44,4 @@ public class AccessRequestController {
         return service.updateAccessRequest(accessRequest);
     }
 
-//    @GetMapping("/check")
-//    public ResponseEntity<Boolean> checkEmailExists(@RequestParam("email") String email) {
-//        boolean emailExists = userService.checkEmailExists(email);
-//        return ResponseEntity.ok(emailExists);
-//    }
 }
