@@ -188,6 +188,7 @@ const ISO = ({currentTab}) => {
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(false)}
                             popupOpen={viewSupportRequestOpen}
+                            support={allSupport}
                         />
                     ) : null}
                 </p>
@@ -199,6 +200,7 @@ const ISO = ({currentTab}) => {
                     <EditSupportRequest
                         popupClose={() => setEditSupportRequestOpen(false)}
                         popupOpen={editSupportRequestOpen}
+                        support={allSupport}
                     />
                 ) : null}
             </li>
@@ -216,6 +218,7 @@ const ISO = ({currentTab}) => {
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
                             popupOpen={viewSupportRequestOpen}
+                            support={mySupport}
                         />
                     ) : null}
                 </p>{' '}
@@ -227,6 +230,7 @@ const ISO = ({currentTab}) => {
                     <EditSupportRequest
                         popupClose={() => setEditSupportRequestOpen(false)}
                         popupOpen={editSupportRequestOpen}
+                        support={mySupport}
                     />
                 ) : null}
             </li>

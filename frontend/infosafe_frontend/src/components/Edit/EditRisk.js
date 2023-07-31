@@ -68,8 +68,6 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
                             defaultValue={risk.risk_description}
                             onChange={e => setValues({...values, risk_description: e.target.value})}
                         />
-                        <!--<p className="inputTitle">Threat</p>
-                        <textarea className="inputTextArea" />-->
                         <div>
                             <button className="submitButton" type="submit">
                                 Submit

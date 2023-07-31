@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 
-const ViewSupportRequest = ({ popupOpen, popupClose }) => {
+const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewSupportRequestPopup">
@@ -16,18 +16,18 @@ const ViewSupportRequest = ({ popupOpen, popupClose }) => {
                     <p className="viewSupportRequestTitle">View Support Request</p>
                     <div className="viewSupportRequestTypeDiv">
                         <p className="viewSupportRequestTypeLabel">Type of Support Request</p>
-                        <p className="viewSupportRequestTypeDisplay">Microsoft Account</p>
+                        <p className="viewSupportRequestTypeDisplay">{support.support_type}</p>
                     </div>
                     <div className="viewSupportRequestUserDiv">
                         <p className="viewSupportRequestUserLabel">User</p>
-                        <p className="viewSupportRequestTypeDisplay">User A</p>
+                        <p className="viewSupportRequestTypeDisplay">{support.user_id}</p>
                     </div>
                     <div className="viewSupportRequestDescriptionDiv">
                         <p className="viewSupportRequestDescriptionLabel">Description</p>
                         <textarea
                             className="viewSupportRequestDescriptionDisplay"
                             readOnly={true}
-                            defaultValue={'Insert description here'}
+                            defaultValue={support.support_description}
                         ></textarea>
                     </div>
                 </div>
