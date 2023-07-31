@@ -1,14 +1,43 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useState,  useEffect } from 'react';
 import '../styling/CreateRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
-const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
+// const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
+
 export const CreateRisk = ({ popupClose, popupOpen }) => {
+    const [datascopeData, setDatascopeData] = useState(null);
+    const handleClick=(e)=> {
+        e.preventDefault()
+        // const risk = {ds_id, impact_rating, risk_description, risk_status, suggested_mitigation}
+        // console.log(risks)
+        fetch("http://localhost:8080/api/risk/addRisk", {
+            method:"POST",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            // body:JSON.stringify(risk)
+        }).then(()=>{
+            console.log("New risk added")
+        })
+        popupClose()
+    };
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/datascope/getDs', {
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setDatascopeData(result);
+            });
+    }, []);
+
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="createRiskOverlay">
@@ -20,8 +49,8 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                         <p className="pageTitle">Create Risk</p>
                         <p className="inputTitle">Data Scope</p>
                         <Dropdown
-                            options={DATA_SCOPES}
-                            value={DATA_SCOPES[0]}
+                            // options={datascopeData.ds_name}
+                            // value={datascopeData[0]}
                             className="datascopeDropdown"
                             name="datascopeDropdown"
                         />

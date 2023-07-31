@@ -1,6 +1,7 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.AssetRequest;
+import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.repository.AssetRequestRepository;
 import com.fragile.infosafe.requests.AssetRequestRequest;
 import lombok.RequiredArgsConstructor;
@@ -28,4 +29,7 @@ public class AssetRequestService {
     }
 
     public List<AssetRequest> getAllAssetRequests() { return assetRequestRepository.findAll(); }
+
+    public AssetRequest updateAssetRequest(AssetRequest assetRequest) {return assetRequestRepository.save(assetRequest);}
+
 }

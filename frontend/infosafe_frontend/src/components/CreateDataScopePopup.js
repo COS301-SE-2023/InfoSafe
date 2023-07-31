@@ -25,7 +25,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     const[description,setDsDesc]=useState('')
     const[role_name,setRoleName]=useState('General User')
     const[role_description,setRoleDesc]=useState('Can use basic functionality of the product')
-    const[date_captured,setDateCaptured]=useState(date)
+    // const[date_captured,setDateCaptured]=useState(date)
     const[data_custodian,setDataCustodian]=useState('LoggedIn User')
     const[administrator,setAdmin]=useState('Admin1')
     const[status,setStatus]=useState('Pending Approval')
@@ -45,7 +45,9 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const datascope = {ds_name, description, role_name, role_description, date_captured, data_custodian, administrator, status}
+        const datascope = {ds_name, description, role_name, role_description, data_custodian, administrator}
+        // var today = new Date()
+        // setDateCaptured(today)
         console.log(datascope)
         fetch("http://localhost:8080/api/datascope/addDs", {
             method:"POST",

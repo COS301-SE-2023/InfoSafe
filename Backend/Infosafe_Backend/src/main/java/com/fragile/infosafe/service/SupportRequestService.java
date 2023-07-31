@@ -29,4 +29,6 @@ public class SupportRequestService {
     }
 
     public List<SupportRequest> getAllSupportRequests() {return supportRequestRepository.findAll();}
+
+    public SupportRequest updateSupportRequest(SupportRequest supportRequest) {return supportRequestRepository.save(supportRequest);}
 }

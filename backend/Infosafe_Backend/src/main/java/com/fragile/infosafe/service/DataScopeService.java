@@ -1,6 +1,7 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.repository.DataScopeRepository;
 import com.fragile.infosafe.requests.DataScopeRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,19 +18,21 @@ public class DataScopeService {
 
     public ResponseEntity<String> makeDs(DataScopeRequest request){
         var datascope = DataScope.builder()
-                .dsName(request.getDsName())
-                .description(request.getDescription())
-                .roleName(request.getRoleName())
-                .roleDescription(request.getRoleDescription())
-                .dateCaptured(request.getDateCaptured())
-                .dataCustodian(request.getDataCustodian())
+                .ds_name(request.getDs_name())
+                .ds_description(request.getDs_description())
+                .role_name(request.getRole_name())
+                .role_description(request.getRole_description())
+                .date_captured(request.getDate_captured())
+                .data_custodian(request.getData_custodian())
                 .administrator(request.getAdministrator())
-                .status(request.getStatus())
+                .ds_status(request.getDs_status())
                 .build();
         dataScopeRepository.save(datascope);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
+
+    public DataScope updateDataScope(DataScope datascope) {return dataScopeRepository.save(datascope);}
 
 }

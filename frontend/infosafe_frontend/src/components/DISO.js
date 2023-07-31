@@ -72,6 +72,19 @@ const DISO = ({currentTab}) => {
                 setShowAsset(result);
             });
     }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/risk/getRisk', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setReviewRiskOpen(result);
+            });
+    }, []);
     const ViewUserItem = ({ user }) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
@@ -79,7 +92,7 @@ const DISO = ({currentTab}) => {
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.id}: {user.name} {user.surname}
+                    User {user.user_id}: {user.first_name} {user.last_surname}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
@@ -398,6 +411,7 @@ const DISO = ({currentTab}) => {
 
     if (currentTab === 6)
     {
+
         const risks = [];
         for (let y = 1; y < 30; y++) {
             risks.push(

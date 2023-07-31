@@ -49,7 +49,7 @@
     top: -3vh;
     left: 20%;
 }
-.editAccessRequestStatusDiv {
+.editAccessRequestDatascopeDiv {
     justify-content: center;
     align-content: center;
     color: #000;
@@ -58,9 +58,9 @@
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 1vh;
-    margin-top: 12vh;
+    margin-top: 6vh;
 }
-.editAccessRequestStatusLabel {
+.editAccessRequestDatascopeLabel {
     text-transform: uppercase;
     font-size: 22px;
     width: 50%;
@@ -70,19 +70,134 @@
     left: 25%;
     margin-bottom: 1vh;
 }
-.editAccessRequestStatusDropdown {
+.editAccessRequestDatascopeNameDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    position: relative;
+    left: 25%;
+    top: 8%;
+}
+.editAccessRequestRoleDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0 auto;
+}
+.editAccessRequestRoleLabel {
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-bottom: 1vh;
+    position: relative;
+    left: 25%;
+}
+.editAccessRequestRoleDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    top: 8%;
+    position: relative;
+    left: 25%;
+}
+.editAccessRequestReasonDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0 auto;
+}
+.editAccessRequestReasonLabel {
+    text-transform: uppercase;
+    font-size: 22px;
     width: 50%;
     margin: 0 auto;
     text-align: center;
     border: none;
-    align-content: center;
-    height: 10%;
+    position: relative;
+    top: -1vh;
 }
-.editAccessRequestButton {
+.editAccessRequestReasonDisplay {
+    font-size: 16px;
+    width: 50%;
+    text-align: left;
+    border: none;
+    background-color: #ffffff;
+    top: 8%;
+    position: relative;
+}
+.editAccessRequestStatusDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+.editAccessRequestStatusLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    margin-bottom: 1vh;
+}
+.editAccessRequestStatusDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    top: 8%;
+    position: relative;
+    left: 25%;
+}
+.editAccessRequestButtonsDiv{
+    display: flex;
+    gap: 20%;
+    position: relative;
+    top: 4vh;
+    width: 50%;
+    left: 25%;
+
+}
+.editAccessRequestApproveButton{
     width: fit-content;
-    height: 5%;
+    height: fit-content;
+    background-color: #227821;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto;
+    border: none;
+    padding: 0.4% 1%;
+
+
+}
+.editAccessRequestRejectButton{
+    width: fit-content;
+    height: fit-content;
     background-color: rgba(233, 0, 0, 1);
     color: #ffffff;
     text-align: center;
@@ -90,38 +205,10 @@
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.84px;
     text-transform: uppercase;
-    position: absolute;
-    bottom: 10%;
+    position: relative;
     align-self: center;
     justify-self: center;
-    left: 45%;
-    border: none;
-    margin: 5% auto 0;
-    padding-left: 1%;
-    padding-right: 1%;
-}
-.editSupportRequestButtonsDiv {
-    position: relative;
-    margin-top: 4%;
-    width: 100%;
-    height: 10%;
-}
-.updateSupportRequestStatusButton {
-    width: fit-content;
-    background-color: rgb(58, 57, 57);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    align-self: center;
-    justify-self: center;
-    border: none;
     margin: 0 auto;
-    padding-left: 1%;
-    padding-right: 1%;
+    border: none;
+    padding: 0.4% 1%;
 }

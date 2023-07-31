@@ -1,6 +1,7 @@
 package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.model.AssetRequest;
+import com.fragile.infosafe.model.SupportRequest;
 import com.fragile.infosafe.requests.AssetRequestRequest;
 import com.fragile.infosafe.service.AssetRequestService;
 import lombok.RequiredArgsConstructor;
@@ -24,4 +25,10 @@ public class AssetRequestController {
 
     @GetMapping("/getAr")
     public List<AssetRequest> assetrequestlist() { return service.getAllAssetRequests(); }
+
+    @PutMapping("/update/{id}")
+    public AssetRequest updateAssetRequest (@PathVariable("id") int asset_request_id, @RequestBody AssetRequest assetRequest) {
+        assetRequest.setAsset_request_id(asset_request_id);
+        return service.updateAssetRequest(assetRequest);
+    }
 }
