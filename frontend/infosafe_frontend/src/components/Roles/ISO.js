@@ -185,7 +185,7 @@ const ISO = ({currentTab}) => {
         return(
             <li key={allSupport.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
-                    Support Request {allSupport.support_id}
+                    SupportRequest {allSupport.support_id}: {allSupport.support_type}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(false)}
@@ -215,7 +215,7 @@ const ISO = ({currentTab}) => {
         return(
             <li key={mySupport.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(true)}>
-                    Support Request {mySupport.support_id}
+                    SupportRequest {mySupport.support_id}: {mySupport.support_type}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
