@@ -1,60 +1,60 @@
-// describe("Visits the backend", () => {
-//   it("returns 403 Forbidden", () => {
-//     cy.request({
-//       url: "http://localhost:8080/",
-//       failOnStatusCode: false,
-//     }).then((response) => {
-//       expect(response.status).to.equal(403);
-//     });
-//   });
-// });
-// describe("Login", () => {
-//   it("Logs in successfully with valid credentials", () => {
-//     const email = "ali@gmail.com";
-//     const password = "1234";
-//
-//     cy.visit("http://localhost:3000");
-//     cy.get("input[data-testid=\"userIn\"]").should("exist");
-//     cy.get("input[data-testid=\"passIn\"]").should("exist");
-//
-//
-//     cy.get("input[data-testid=\"userIn\"]").type(email);
-//
-//     cy.wait(3000)
-//
-//
-//     cy.get("input[data-testid=\"passIn\"]").type(password);
-//
-//     cy.get("button[data-testid=\"btnTest\"]").click();
-//
-//
-//     Cypress.on("window:before:load", (win) => {
-//       cy.spy(win.console, "error");
-//     });
-//       cy.window().then((win) => {
-//         expect(win.console.error).to.have.callCount(0);
-//     });
-//     cy.url().should("include", "/home");
-//   });
-//
-//   it("Displays an error message with invalid credentials", () => {
-//     const email = "invalid@example.com";
-//     const password = "incorrect";
-//
-//     cy.visit("http://localhost:3000");
-//
-//
-//     cy.get("input[data-testid=\"userIn\"]").should("exist");
-//     cy.get("input[data-testid=\"passIn\"]").should("exist");
-//     cy.get("input[data-testid=\"userIn\"]").type(email);
-//     cy.wait(3000)
-//     cy.get("input[data-testid=\"passIn\"]").type(password);
-//
-//     cy.get("button[data-testid=\"btnTest\"]").click();
-//
-//     cy.url().should("eq", "http://localhost:3000/");
-// });
-// });
+describe("Visits the backend", () => {
+  it("returns 403 Forbidden", () => {
+    cy.request({
+      url: "http://localhost:8080/",
+      failOnStatusCode: false,
+    }).then((response) => {
+      expect(response.status).to.equal(403);
+    });
+  });
+});
+describe("Login", () => {
+  it("Logs in successfully with valid credentials", () => {
+    const email = "ali@gmail.com";
+    const password = "1234";
+
+    cy.visit("http://localhost:3000");
+    cy.get("input[data-testid=\"userIn\"]").should("exist");
+    cy.get("input[data-testid=\"passIn\"]").should("exist");
+
+
+    cy.get("input[data-testid=\"userIn\"]").type(email);
+
+    cy.wait(3000)
+
+
+    cy.get("input[data-testid=\"passIn\"]").type(password);
+
+    cy.get("button[data-testid=\"btnTest\"]").click();
+
+
+    Cypress.on("window:before:load", (win) => {
+      cy.spy(win.console, "error");
+    });
+      cy.window().then((win) => {
+        expect(win.console.error).to.have.callCount(0);
+    });
+    cy.url().should("include", "/home");
+  });
+
+  it("Displays an error message with invalid credentials", () => {
+    const email = "invalid@example.com";
+    const password = "incorrect";
+
+    cy.visit("http://localhost:3000");
+
+
+    cy.get("input[data-testid=\"userIn\"]").should("exist");
+    cy.get("input[data-testid=\"passIn\"]").should("exist");
+    cy.get("input[data-testid=\"userIn\"]").type(email);
+    cy.wait(3000)
+    cy.get("input[data-testid=\"passIn\"]").type(password);
+
+    cy.get("button[data-testid=\"btnTest\"]").click();
+
+    cy.url().should("eq", "http://localhost:3000/");
+});
+});
 
 describe("It Navigates to users tab", () => {
   it("Logs in and goes to tab", () => {
