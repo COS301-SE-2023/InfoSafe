@@ -273,6 +273,7 @@ const ISO = ({currentTab}) => {
                     <ReviewRisk
                         popupClose={() => setReviewRiskOpen(false)}
                         popupOpen={reviewRiskOpen}
+                        risk={risk}
                     />
                 ) : null}
             </li>

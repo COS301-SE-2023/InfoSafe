@@ -65,11 +65,12 @@ public class UserController {
     }
 
     @GetMapping("/getUserName")
-    public String getCurrentUserName(){
+    public ResponseEntity<String> getCurrentUserName(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            return (authenticatedUser.getFirst_name() + " " + authenticatedUser.getLast_name());
+            String userName = authenticatedUser.getFirst_name() + " " + authenticatedUser.getLast_name();
+            return ResponseEntity.ok("{\"username\": \"" + userName + "\"}");
         }
         return null;
     }

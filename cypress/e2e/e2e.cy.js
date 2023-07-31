@@ -136,6 +136,8 @@ describe("It Navigates to users tab", () => {
         cy.get("[data-testid='editButton']").first().should("be.visible").click();
 
         cy.get("[data-testid='editUserPopup']").should("be.visible");
+
+
     });
   });
 
