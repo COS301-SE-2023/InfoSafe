@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import '../../styling/EditSupportRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import Dropdown from "react-dropdown";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-
+const STATUS = ["LOGGED","IN PROGRESS","RESOLVED"];
 const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
     const[values, setValues]=useState({
         support_id: support.support_id,
@@ -56,8 +57,13 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
                             ></textarea>
                         </div>
                         <div className="editSupportRequestStatusDiv">
-                            <p className="editSupportRequestStatusLabel">Current Status</p>
-                            <p className="editSupportRequestStatusDisplay">{support.support_status}</p>
+                            <p className="editSupportRequestStatusLabel">Status</p>
+                            <Dropdown
+                                options={STATUS}
+                                value={support.support_status}
+                                className="updateSupportRequestDropdown"
+                                name="updateSupportRequestDropdown"
+                            />
                         </div>
                         <div className="editSupportRequestButtonsDiv">
                             <button
