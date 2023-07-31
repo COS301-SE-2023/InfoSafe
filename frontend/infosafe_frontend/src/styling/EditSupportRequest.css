@@ -176,3 +176,22 @@
     left: 25%;
     top: 8%;
 }
+.updateSupportRequestStatusButton {
+    width: fit-content;
+    height: 5%;
+    background-color: rgb(75, 71, 71);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto;
+    top: 5vh;
+    left: 42.5%;
+    border: none;
+    padding: 0.5% 1%;
+}

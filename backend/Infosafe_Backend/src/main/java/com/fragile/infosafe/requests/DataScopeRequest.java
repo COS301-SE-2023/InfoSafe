@@ -15,11 +15,8 @@ import java.util.Date;
 public class DataScopeRequest {
     private String ds_name;
     private String ds_description;
-    private String role_name;
-    private String role_description;
     private Date date_captured;
     private String data_custodian;
-    private String administrator;
     private String ds_status;
 }
 

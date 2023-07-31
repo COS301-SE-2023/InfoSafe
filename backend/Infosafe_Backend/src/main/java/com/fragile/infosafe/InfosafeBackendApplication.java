@@ -3,8 +3,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import static com.fragile.infosafe.model.Role.ADMIN;
-import static com.fragile.infosafe.model.Role.DATA_CUSTODIAN;
+import java.util.Date;
+
+import static com.fragile.infosafe.model.Role.*;
 
 
 @SpringBootApplication
@@ -14,17 +15,19 @@ public class InfosafeBackendApplication {
         SpringApplication.run(InfosafeBackendApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(AuthenticationService service) {
-        return args -> {
-            var admin =  RegisterRequest.builder()
-                    .firstname("Alistair")
-                    .lastname("Ross")
-                    .email("ali@gmail.com")
-                    .password("1234")
-                    .role(DATA_CUSTODIAN)
-                    .build();
-            System.out.println("Admin token: " + service.register(admin).getAccessToken());
-        };
-    }
+
+//    @Bean
+//    public CommandLineRunner commandLineRunner(AuthenticationService service) {
+//        return args -> {
+//            var admin = RegisterRequest.builder()
+//                    .first_name("Alistair")
+//                    .last_name("Ross")
+//                    .email("alistairmikeross@gmail.com")
+//                    .password("1234")
+//                    .role(ISO)
+//                    .build();
+//            System.out.println("Admin token: " + service.register(admin).getAccessToken());
+//        };
+//    }
+
 }

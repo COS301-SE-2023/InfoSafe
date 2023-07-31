@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ViewUser from '../ViewUser.js';
+import ViewUser from '../View/ViewUser.js';
 import '@testing-library/jest-dom';
 
 describe('ViewUser', () => {

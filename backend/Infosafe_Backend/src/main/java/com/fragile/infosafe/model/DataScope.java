@@ -19,11 +19,8 @@ public class DataScope {
     private int data_scope_id;
     private String ds_name;
     private String ds_description;
-    private String role_name;
-    private String role_description;
     private Date date_captured;
     private String data_custodian;
-    private String administrator;
     private String ds_status;
 
     public int getData_scope_id() {
@@ -50,22 +47,6 @@ public class DataScope {
         this.ds_description = ds_description;
     }
 
-    public String getRole_name() {
-        return role_name;
-    }
-
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
-    }
-
-    public String getRole_description() {
-        return role_description;
-    }
-
-    public void setRole_description(String role_description) {
-        this.role_description = role_description;
-    }
-
     public Date getDate_captured() {
         return date_captured;
     }
@@ -80,14 +61,6 @@ public class DataScope {
 
     public void setData_custodian(String data_custodian) {
         this.data_custodian = data_custodian;
-    }
-
-    public String getAdministrator() {
-        return administrator;
-    }
-
-    public void setAdministrator(String administrator) {
-        this.administrator = administrator;
     }
 
     public String getDs_status() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { CreateDevicePopup } from '../CreateDevicePopup.js';
+import { CreateDevicePopup } from '../Create/CreateDevicePopup.js';
 import '@testing-library/jest-dom';
 
 describe('CreateDevicePopup', () => {

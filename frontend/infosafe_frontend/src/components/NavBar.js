@@ -1,13 +1,11 @@
 import '../styling/NavBar.css';
 import React, {useState} from 'react';
-import ISO from './ISO';
-import DISO from './DISO';
-import DataCustodian from './DataCustodian';
-import AssetManager from "./AssetManager";
-import Employee from "./Employee";
+import ISO from './Roles/ISO';
+import DISO from './Roles/DISO';
+import DataCustodian from './Roles/DataCustodian';
+import AssetManager from "./Roles/AssetManager";
+import Employee from "./Roles/Employee";
 
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(
         systemRole === 'ISO' || systemRole === 'DISO' || systemRole === 'System Administrator' ? 0 : 1
@@ -21,25 +19,6 @@ const NavBar = ({ systemRole }) => {
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
-
-
-
-    /*    const ViewTaskItem = ( l ) => {
-        const [viewTaskOpen, setViewTaskOpen] = useState(false);
-        return (
-            <li key={l}>
-                <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
-                    Task {l}
-                    {viewTaskOpen && (
-                        <ViewTask
-                            popupClose={() => setViewTaskOpen(false)}
-                            popupOpen={viewTaskOpen}
-                        />
-                    )}
-                </p>
-            </li>
-        );
-    };*/
 
     const displayPage = () => {
         if (systemRole === 'ISO') {
@@ -60,7 +39,7 @@ const NavBar = ({ systemRole }) => {
             );
         }
 
-        if (systemRole === 'Data Custodian') {
+        if (systemRole === 'DATA_CUSTODIAN') {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: DataCustodianTabs})}
@@ -69,7 +48,7 @@ const NavBar = ({ systemRole }) => {
             );
         }
 
-        if (systemRole === 'Asset Manager') {
+        if (systemRole === 'ASSET_MANAGER') {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: AssetManagerTabs})}
@@ -78,7 +57,7 @@ const NavBar = ({ systemRole }) => {
             );
         }
 
-        if (systemRole === 'Employee') {
+        if (systemRole === 'EMPLOYEE') {
             return (
                 <div className="navbar">
                     {displayTabs({viewTabs: EmployeeTabs})}

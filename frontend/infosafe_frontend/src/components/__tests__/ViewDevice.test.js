@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { ViewDevice } from '../ViewDevice.js';
+import { ViewDevice } from '../View/ViewDevice.js';
 import '@testing-library/jest-dom';
 
 describe('ViewDevice', () => {

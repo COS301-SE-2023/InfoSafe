@@ -504,11 +504,11 @@
     padding: 0.5% 2%;
     width: fit-content;
 }
-.EditIcon {
+.DISOEditIcon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 2.5vw;
+    right: 1vw;
     height: 100%;
 }
 .DeleteIcon {
@@ -564,7 +564,7 @@
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.reviewRiskButton {
+.DISOReviewRiskButton {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -574,7 +574,7 @@
     width: fit-content;
     position: absolute;
     top: 50%;
-    right: 1%;
+    right: 2.5vw;
     transform: translateY(-50%);
     background-color: #bbbbbb;
     border: 1px solid #000000;
@@ -598,6 +598,28 @@
     width: fit-content;
 }
 .CreateRiskButtonDiv {
+    position: relative;
+    bottom: -10%;
+}
+.approveAccessRequestButton {
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 0.5% 2%;
+    width: fit-content;
+}
+.ApproveAccessRequestButtonDiv {
     position: relative;
     bottom: -10%;
 }

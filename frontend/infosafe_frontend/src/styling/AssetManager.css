@@ -538,6 +538,14 @@
     margin: 0;
     padding: 0;
 }
+.AssetManagerEditIcon{
+    position: absolute;
+    top: 52%;
+    transform: translateY(-50%);
+    right: 1vw;
+    height: 100%;
+    fill: #000000;
+}
 .assetRequestsList li {
     position: relative;
     height: 4vh;
