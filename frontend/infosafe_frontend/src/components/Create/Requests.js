@@ -151,6 +151,7 @@ const DisplayDataCustodianRequests = () => {
         'Other'
     ];
     const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
+    const USERS = ['User A', 'User B', 'User C', 'User D'];
     const [selectedRequest, setSelectedRequest] = useState(REQUESTTYPES[0]);
     const {
         handleClick,
@@ -245,6 +246,13 @@ const DisplayDataCustodianRequests = () => {
                                 /> ) : (
                                 <p className="loadTitle">Loading...</p>
                             )}
+                            <p className="createAccessRequestUserLabel">User</p>
+                            <Dropdown
+                                className="createAccessRequestUserDropdown"
+                                options={USERS}
+                                value={USERS[0]}
+                                //onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
+                            />
                             <p className="createAccessRequestReasonLabel">Reason</p>
                             <textarea
                                 className="createAccessRequestReasonInput"

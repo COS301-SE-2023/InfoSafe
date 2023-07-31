@@ -516,3 +516,24 @@
     left: 30%;
     font-size: 18px;
 }
+.createAccessRequestUserLabel{
+    color: #ffffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 2%;
+}
+.createAccessRequestUserDropdown{
+    width: 40%;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 22%;
+    left: 30%;
+    font-size: 18px;
+}
