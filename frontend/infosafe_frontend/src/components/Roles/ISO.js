@@ -25,23 +25,23 @@ import {TaskApproval} from "../TaskApprovalPopup";
 import {ViewRisk} from "../View/ViewRisk";
 import {EditRisk} from "../Edit/EditRisk";
 import AccessAndDisplay from "./AccessAndDisplay";
-import AccessRequestApproval from "../Edit/AccessRequestApproval";
+import AccessRequestApproval from "./AccessRequestApproval";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
     const {showUser,showDatascope, showAsset, showRisk,  showAccess, createUserOpen, setCreateUserOpen,  showTask, showMySupport, showAllSupport} = AccessAndDisplay()
-    // const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
-    // const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
+    const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+    const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false); // ISO DISO
-    // const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
+    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
     const [createTaskOpen, setCreateTaskOpen] = useState(false); // ISO DISO
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM
-    // const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-    // const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
     const [createRiskOpen, setCreateRiskOpen] = useState(false); // ISO DISO
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false); // ISO DISO
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
-    // const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
+    const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
@@ -79,9 +79,9 @@ const ISO = ({currentTab}) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
-            <li key={datascope.data_scope_id}>
+            <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.data_scope_id}: {datascope.ds_name}:{' '}{datascope.ds_description}
+                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description} ------ {datascope.data_custodian}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -134,9 +134,9 @@ const ISO = ({currentTab}) => {
         const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
         return (
-            <li key={access.request_id}>
+            <li key={access.requests_id}>
                 <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
-                    Access Request {access.access_id}
+                    Access Request {access.id}
                     {viewAccessRequestOpen ? (
                         <ViewAccessRequest
                             popupClose={() => setViewAccessRequestOpen(false)}
@@ -303,7 +303,7 @@ const ISO = ({currentTab}) => {
     {
         const dataItems = [];
         showDatascope.map((datascope) =>
-            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id} />)
         );
 
         return (
@@ -330,7 +330,7 @@ const ISO = ({currentTab}) => {
                     <button
                         className="approveAccessRequestButton"
                         data-testid="approveAccessRequestButton"
-                        onClick={() => setApproveAccessRequestOpen(!approveAccessRequestOpen)}
+                        onClick={() => setApproveAccessRequestOpen(true)}
                     >
                         Access Request Approval
                     </button>
@@ -360,7 +360,7 @@ const ISO = ({currentTab}) => {
                     <div className="CreateTaskDiv">
                         <button
                             className="CreateTaskButton"
-                            onClick={() => setCreateTaskOpen(!createTaskOpen)}
+                            onClick={() => setCreateTaskOpen(true)}
                         >
                             Create New Task
                         </button>
@@ -374,7 +374,7 @@ const ISO = ({currentTab}) => {
                     <div className="UpdateTaskDiv">
                         <button
                             className="UpdateTaskButton"
-                            onClick={() => setUpdateTaskOpen(!updateTaskOpen)}
+                            onClick={() => setUpdateTaskOpen(true)}
                         >
                             Update Task
                         </button>
@@ -388,7 +388,7 @@ const ISO = ({currentTab}) => {
                     <div className="ApproveTaskDiv">
                         <button
                             className="ApproveTaskButton"
-                            onClick={() => setApproveTaskOpen(!approveTaskOpen)}
+                            onClick={() => setApproveTaskOpen(true)}
                         >
                             Task Approval
                         </button>
@@ -483,7 +483,7 @@ const ISO = ({currentTab}) => {
                     <button
                         className="CreateRiskButton"
                         data-testid="CreateRiskButton"
-                        onClick={() => setCreateRiskOpen(!createRiskOpen)}
+                        onClick={() => setCreateRiskOpen(true)}
                     >
                         Create Risk
                     </button>
