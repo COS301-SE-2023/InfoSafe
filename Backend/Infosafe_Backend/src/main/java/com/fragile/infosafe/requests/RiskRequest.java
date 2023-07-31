@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class RiskRequest {
     private int ds_id;
     private int impact_rating;
+    private int probability_rating;
     private String risk_description;
     private String suggested_mitigation;
     private String risk_status;

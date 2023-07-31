@@ -81,7 +81,7 @@ const ISO = ({currentTab}) => {
         return (
             <li key={datascope.id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description} ------ {datascope.data_custodian}
+                    Data Scope {datascope.data_scope_id}: {datascope.ds_name} ------ {datascope.ds_description} ------ {datascope.data_custodian}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -152,6 +152,7 @@ const ISO = ({currentTab}) => {
                     <EditAccessRequest
                         popupClose={() => setEditAccessRequestOpen(false)}
                         popupOpen={editAccessRequestOpen}
+                        access={access}
                     />
                 ) : null}
                 <RiDeleteBin6Fill className="DeleteIcon" />

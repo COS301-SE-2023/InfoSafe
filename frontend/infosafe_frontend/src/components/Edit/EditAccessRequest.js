@@ -1,12 +1,37 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useState} from 'react';
 import '../../styling/EditAccessRequest.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 
-const EditAccessRequest = ({ popupClose, popupOpen }) => {
+const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
+
+    const[values, setValues]=useState({
+        request_id: access.request_id,
+        user_id: access.user_id,
+        ds_id: access.ds_id,
+        status: access.status,
+        reason: access.reason
+    })
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values)
+        fetch('http://localhost:8080/api/accessrequest/update/' + access.request_id, {
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated AccessRequest")
+        })
+        //console.log(JSON.stringify(values))
+        popupClose()
+    }
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editAccessRequestPopup">
@@ -14,11 +39,11 @@ const EditAccessRequest = ({ popupClose, popupOpen }) => {
                     <button className="editAccessRequestBackButton" onClick={popupClose}>
                         <IoArrowBackOutline className="editAccessRequestBackIcon" />
                     </button>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <p className="editAccessRequestTitle">Edit Access Request</p>
                         <div className="editAccessRequestDatascopeDiv">
                             <p className="editAccessRequestDatascopeLabel">Data Scope</p>
-                            <p className="editAccessRequestDatascopeNameDisplay">Data Scope 9</p>
+                            <p className="editAccessRequestDatascopeNameDisplay">{access.ds_id}</p>
                         </div>
                         <div className="editAccessRequestRoleDiv">
                             <p className="editAccessRequestRoleLabel">Role</p>
@@ -29,17 +54,18 @@ const EditAccessRequest = ({ popupClose, popupOpen }) => {
                             <textarea
                                 readOnly={false}
                                 className="editAccessRequestReasonDisplay"
-                                defaultValue="Insert reason here."
+                                defaultValue={access.reason}
+                                onChange={e => setValues({...values, reason: e.target.value})}
                             ></textarea>
                         </div>
                         <div className="editAccessRequestStatusDiv">
                             <p className="editAccessRequestStatusLabel">Status</p>
-                            <p className="editAccessRequestStatusDisplay">Approved</p>
+                            <p className="editAccessRequestStatusDisplay">{access.status}</p>
                         </div>
                         <div className="editAccessRequestButtonsDiv">
                             <button
                                 className="editAccessRequestButton"
-                                onClick={() => console.log('Edit Accees Request')}
+                                type="submit"
                             >
                                 Submit
                             </button>

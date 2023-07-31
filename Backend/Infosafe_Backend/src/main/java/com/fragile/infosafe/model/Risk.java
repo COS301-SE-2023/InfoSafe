@@ -17,6 +17,7 @@ public class Risk {
     private Long risk_id;
     private int ds_id;
     private int impact_rating;
+    private int probability_rating;
     private String risk_description;
     private String suggested_mitigation;
     private String risk_status;
@@ -32,6 +33,10 @@ public class Risk {
     public int getImpact_rating() { return impact_rating; }
 
     public void setImpact_rating(int impact_rating) { this.impact_rating = impact_rating; }
+
+    public int getProbability_rating() { return probability_rating; }
+
+    public void setProbability_rating(int probability_rating) { this.probability_rating = probability_rating; }
 
     public String getRisk_description() { return risk_description; }
 
