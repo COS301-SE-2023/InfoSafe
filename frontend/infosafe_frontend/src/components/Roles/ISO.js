@@ -62,7 +62,7 @@ const ISO = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
+                <FaRegEdit className="EditIcon" data-testid ="editButton" onClick={() => setEditUserOpen(true)} />
                 {editUserOpen ? (
                     <EditUser
                         popupClose={() => setEditUserOpen(false)}

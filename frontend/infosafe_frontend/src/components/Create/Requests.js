@@ -23,6 +23,7 @@ const DisplayISORequests = () => {
         setDesiredDate,
         setRequestStatus,
         AvailableDevices,
+        setAvailableDevices
         } = useRequestMaker();
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
@@ -91,13 +92,17 @@ const DisplayISORequests = () => {
                     <div className="createAssetRequestDiv">
                         <form>
                             <p className="createAssetRequestDeviceNameLabel">Device</p>
-                            <Dropdown
-                                className="assetRequestSelectDeviceDropdown"
-                                options={AvailableDevices}
-                                value={AvailableDevices[0]}
-                                onChange={(selectedOption) => setAssetId(selectedOption.asset_id)}
-                            />
-
+                            {AvailableDevices && AvailableDevices.length > 0 ? (
+                                <Dropdown
+                                    options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
+                                    value={AvailableDevices.asset_name}
+                                    className="assetRequestSelectDeviceDropdown"
+                                    name="assetRequestSelectDeviceDropdown"
+                                    placeholder={"Add Device"}
+                                    onChange={(selectedOption)=> setAvailableDevices(selectedOption.value)}
+                                /> ) : (
+                                <p>Loading...</p>
+                            )}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea
                                 className="createAssetRequestReasonInput"
@@ -162,6 +167,7 @@ const DisplayDataCustodianRequests = () => {
         setRequestStatus,
         AvailableDevices,
         datascopeData,
+        setAvailableDevices
         } = useRequestMaker();
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
@@ -174,6 +180,7 @@ const DisplayDataCustodianRequests = () => {
         setReason(e.target.value);
     }
     const handleDateChange = (date) => {
+        console.log(date)
         setDesiredDate(date);
     };
     return (
@@ -227,13 +234,17 @@ const DisplayDataCustodianRequests = () => {
                     <div className="createAccessRequestDiv">
                         <form>
                             <p className="createAccessRequestDataScopeLabel">Data Scope</p>
-                            <Dropdown
-                                options={datascopeData}
-                                value={datascopeData.data_scope_id}
-                                className="datascopeDropdown"
-                                name="datascopeDropdown"
-                                onChange={(selectedOption) => setDsId(selectedOption.value)}
-                            />
+                            {datascopeData && datascopeData.length > 0 ? (
+                                <Dropdown
+                                    options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                    value={datascopeData.asset_id}
+                                    className="datascopeDropdown"
+                                    name="datascopeDropdown"
+                                    placeholder={"Add DataScope"}
+                                    onChange={(selectedOption)=> setDsId(selectedOption.value)}
+                                /> ) : (
+                                <p>Loading...</p>
+                            )}
                             <p className="createAccessRequestReasonLabel">Reason</p>
                             <textarea
                                 className="createAccessRequestReasonInput"
@@ -263,13 +274,17 @@ const DisplayDataCustodianRequests = () => {
                     <div className="createAssetRequestDiv">
                         <form>
                             <p className="createAssetRequestDeviceNameLabel">Device</p>
-                            <Dropdown
-                                className="assetRequestSelectDeviceDropdown"
-                                options={AvailableDevices}
-                                value={AvailableDevices[0]}
-                                onChange={(selectedOption) => setAssetId(selectedOption.asset_id)}
-                            />
-
+                            {AvailableDevices && AvailableDevices.length > 0 ? (
+                                <Dropdown
+                                    options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
+                                    value={AvailableDevices.asset_name}
+                                    className="assetRequestSelectDeviceDropdown"
+                                    name="assetRequestSelectDeviceDropdown"
+                                    placeholder={"Add Device"}
+                                    onChange={(selectedOption)=> setAvailableDevices(selectedOption.value)}
+                                /> ) : (
+                                <p>Loading...</p>
+                            )}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea
                                 className="createAssetRequestReasonInput"

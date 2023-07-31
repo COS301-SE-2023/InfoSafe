@@ -31,12 +31,12 @@ const useRequestMaker = () => {
                 requestBody = support;
                 break;
             case 'Asset Request':
-                apiUrl = "http://localhost:8080/api/accessrequest/addAr";
-                requestBody = access;
-                break;
-            case 'Access Request':
                 apiUrl = "http://localhost:8080/api/assetrequest/addAr";
                 requestBody = asset;
+                break;
+            case 'Access Request':
+                apiUrl = "http://localhost:8080/api/accessrequest/addAr";
+                requestBody = access;
                 break;
             default:
                 return;

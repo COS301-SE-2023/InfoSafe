@@ -89,7 +89,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             <div className="createUserOverlay">
                 <div className="createUserBorder">
                     <form>
-                        <button className="backButton" onClick={popupClose}>
+                        <button className="backButton" data-testid="backArrow" onClick={popupClose}>
                             <IoArrowBackOutline className="backIcon" />
                         </button>
                         <p className="createUserLabel">User Creation</p>

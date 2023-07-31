@@ -1,6 +1,6 @@
 import '../../styling/DataCustodian.css';
 import '../../styling/Dropdown.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {FaRegEdit} from 'react-icons/fa';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
 import ViewDataScope from '../View/ViewDataScope';
@@ -19,7 +19,7 @@ import AccessAndDisplay from "./AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const DataCustodian = ({currentTab}) => {
-    const {showDatascope, showAsset,  showRisk, showAccess,  showMatrix,showSupport} = AccessAndDisplay()
+    const {showDatascope, showAsset,  showRisk, showAccess,  showTask,showMySupport} = AccessAndDisplay()
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false); // DS
     // const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
@@ -122,8 +122,8 @@ const DataCustodian = ({currentTab}) => {
                     ) : null}
                 </p>
             </li>
-        )
-    }
+        );
+    };
     const ViewRisks = ({ risk }) => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         return (
@@ -148,26 +148,26 @@ const DataCustodian = ({currentTab}) => {
                 />
             ) : null}
         </li>
-        )
-    }
+        );
+    };
 
-    const ViewSupportRequests = ({ request }) => {
+    const ViewSupportRequests = ({ mySupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
         return(
-            <li key={request.support_id}>
-                <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
-                    Support Request {request.support_id}
+            <li key={mySupport.support_id}>
+                <p onClick={() => setViewSupportRequestOpen(true)}>
+                    Support Request {mySupport.support_id}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(false)}
                             popupOpen={viewSupportRequestOpen}
+                            support={mySupport}
                         />
                     ) : null}
                 </p>
             </li>
-        )
-    }
+        );
+    };
 
     if (currentTab === 1) { // Datascopes
         const dataItems = [];
@@ -213,7 +213,7 @@ const DataCustodian = ({currentTab}) => {
 
     if (currentTab === 3) { // compliance matrix
         const complianceItems = [];
-        showMatrix.map((task) =>
+        showTask.map((task) =>
             complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
         );
         return (
@@ -243,8 +243,8 @@ const DataCustodian = ({currentTab}) => {
     if (currentTab === 5) //support requests
     {
         const my_requests = [];
-        showSupport.map((request) =>
-            my_requests.push(<ViewSupportRequests request={request} key={request.support_id}/>)
+        showMySupport.map((mySupport) =>
+            my_requests.push(<ViewSupportRequests mySupport={mySupport} key={mySupport.support_id}/>)
         );
         return (
             <div className="display">

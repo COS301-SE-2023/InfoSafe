@@ -57,7 +57,13 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
         const dataScopeRoles = {ds_id, role_description, role_type};
 
-        fetch(`http://localhost:8080/api/datascope/checkName?name=${ds_name}`)
+        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+            },
+        })
             .then((response) => response.json())
             .then((data) => {
                 if (data) {
