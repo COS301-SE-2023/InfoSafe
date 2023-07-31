@@ -39,8 +39,6 @@ const ISO = ({currentTab}) => {
     const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
     const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
     const [createRiskOpen, setCreateRiskOpen] = useState(false); // ISO DISO
-    const [reviewRiskOpen, setReviewRiskOpen] = useState(false); // ISO DISO
-    const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
     const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
@@ -241,9 +239,11 @@ const ISO = ({currentTab}) => {
 
     const ViewRisks = ({ risk }) => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
+        const [viewRiskOpen, setViewRiskOpen] = useState(false);
+        const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
         return (
-            <li key={risk.risk_id}>
-                <p onClick={() => setViewRiskOpen(!viewRiskOpen)}>
+            <li className="ISOrisksListItem" key={risk.risk_id}>
+                <p className="ISOrisksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
                     Risk {risk.risk_id}
                     {viewRiskOpen ? (
                         <ViewRisk
@@ -254,7 +254,7 @@ const ISO = ({currentTab}) => {
                     ) : null}
                 </p>{' '}
                 <FaRegEdit
-                    className="EditIcon"
+                    className="ISOEditIcon"
                     onClick={() => setEditRiskOpen(editRiskOpen)}
                 />
                 {editRiskOpen ? (
@@ -487,7 +487,7 @@ const ISO = ({currentTab}) => {
         return (
             <div className="display">
                 <div className="risks">
-                    <ul className="risksList">{risks}</ul>
+                    <ul className="ISOrisksList">{risks}</ul>
                 </div>
                 <div className="CreateRiskButtonDiv">
                     <button

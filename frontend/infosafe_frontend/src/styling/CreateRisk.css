@@ -89,6 +89,16 @@
     width: 50%;
     margin-top: 1.5%;
 }
+.statusDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 1.5%;
+}
 .datascopeDropdown{
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
