@@ -96,6 +96,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 className="role_dropdown"
                                 data-testid="role_dropdown"
                                 name="role"
+                                defaultValue={user.role}  onChange={(selectedOption) => setValues({ ...values, role: selectedOption.value })}
                                 //onChange={(selectedOption) => setRole(selectedOption.value)}
                             />
                         </div>
