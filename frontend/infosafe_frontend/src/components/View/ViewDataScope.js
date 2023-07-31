@@ -5,16 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 
 const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
-    const ROLES = [
-        {
-            role: 'Administrator',
-            roledescription: 'Manage users, manage data scope, edit permissions.'
-        },
-        {
-            role: 'General User',
-            roledescription: 'Access data scope, complete tasks within data scopes.'
-        }
-    ];
+    const ROLES = [];
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
