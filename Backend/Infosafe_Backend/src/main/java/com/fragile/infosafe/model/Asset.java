@@ -18,8 +18,8 @@ public class Asset {
     private String asset_name;
     private String asset_description;
     private String status;
-    private Boolean availability;
-    private Boolean used;
+    private String availability;
+    private String used;
     private String current_assignee;
     private String previous_assignee;
     private String device_type;
@@ -56,21 +56,17 @@ public class Asset {
         this.status = status;
     }
 
-    public Boolean getAvailability() {
+    public String getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Boolean availability) {
+    public void setAvailability(String availability) {
         this.availability = availability;
     }
 
-    public Boolean getUsed() {
-        return used;
-    }
+    public String getUsed() { return used; }
 
-    public void setUsed(Boolean used) {
-        this.used = used;
-    }
+    public void setUsed(String used) { this.used = used; }
 
     public String getCurrent_assignee() {
         return current_assignee;

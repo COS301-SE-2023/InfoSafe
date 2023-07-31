@@ -25,6 +25,16 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
         e.preventDefault()
         const asset = {asset_name, asset_description, current_assignee, previous_assignee, status, used, availability, device_type}
         console.log(asset)
+        // if (availability == 'YES') {
+        //     availability = true;
+        // } else {
+        //     availability = false;
+        // }
+        // if (used == 'YES') {
+        //     used = true;
+        // } else {
+        //     used = false;
+        // }
         fetch("http://localhost:8080/api/asset/addAsset", {
             method:"POST",
             headers:{"Content-Type":"application/json",
