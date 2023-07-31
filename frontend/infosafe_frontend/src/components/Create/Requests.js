@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import useRequestMaker from './useRequestMaker';
@@ -23,14 +23,14 @@ const DisplayISORequests = () => {
         setDesiredDate,
         setRequestStatus,
         AvailableDevices,
-        setAvailableDevices
+        selectedAssetId,
+        setSelectedAssetId
         } = useRequestMaker();
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
     };
     const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
     const [selectedRequest, setSelectedRequest] = useState(REQUESTTYPES[0]);
-
     const handleDescriptionChange = (e) => {
         setSupportDescription(e.target.value);
     };
@@ -95,11 +95,12 @@ const DisplayISORequests = () => {
                             {AvailableDevices && AvailableDevices.length > 0 ? (
                                 <Dropdown
                                     options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
-                                    value={AvailableDevices.asset_name}
+                                    value={selectedAssetId}
                                     className="assetRequestSelectDeviceDropdown"
                                     name="assetRequestSelectDeviceDropdown"
                                     placeholder={"Add Device"}
-                                    onChange={(selectedOption)=> setAvailableDevices(selectedOption.value)}
+                                    onChange={(selectedOption)=> setSelectedAssetId(selectedOption.value)}
+
                                 /> ) : (
                                 <p className="loadTitle">Loading...</p>
                             )}

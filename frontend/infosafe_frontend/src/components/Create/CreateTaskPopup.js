@@ -36,26 +36,30 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                 console.log("New task added");
                 console.log(data.task_id);
 
-                const assignedTasks = selectedUsers.map((user) => ({
-                    task_id: data.task_id, // Use the task_id from the API response
-                    user_id: user.value,
-                }));
+                if (selectedUsers.length > 0) {
+                    const assignedTasks = selectedUsers.map((user) => ({
+                        task_id: data.task_id, // Use the task_id from the API response
+                        user_id: user.value,
+                    }));
 
-                Promise.all(
-                    assignedTasks.map((assignedtask) =>
-                        fetch("http://localhost:8080/api/assignedTask/addTask", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
-                            },
-                            body: JSON.stringify(assignedtask),
-                        })
-                    )
-                ).then(() => {
-                    console.log("New Assignedtasks added");
+                    Promise.all(
+                        assignedTasks.map((assignedtask) =>
+                            fetch("http://localhost:8080/api/assignedTask/addTask", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
+                                },
+                                body: JSON.stringify(assignedtask),
+                            })
+                        )
+                    ).then(() => {
+                        console.log("New Assignedtasks added");
+                        popupClose();
+                    });
+                } else {
                     popupClose();
-                });
+                }
             })
             .catch((error) => {
                 console.error("Error adding task:", error);
@@ -79,16 +83,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
         setSelectedUsers(selectedOptions);
     };
     const handleDateChange = (date) => {
-        setDateCreated(formatDate(date));
-    };
-    const formatDate = (date) => {
-        if (!date || !(date instanceof Date)) {
-            return ''; // or handle the invalid date case appropriately
-        }
-        const year = date.getFullYear().toString().slice(-2);
-        const month = ('0' + (date.getMonth() + 1)).slice(-2);
-        const day = ('0' + date.getDate()).slice(-2);
-        return `${year}/${month}/${day}`;
+        setDateCreated(date);
     };
 
 
@@ -124,7 +119,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                         <p className="inputTitle">Completion Date</p>
                         <input
                             type="date"
-                            className="textboxInput"
+                            className="createAssetRequestDateInput"
                             onChange={(e) => handleDateChange(e.target.value)}
                             required
                         />

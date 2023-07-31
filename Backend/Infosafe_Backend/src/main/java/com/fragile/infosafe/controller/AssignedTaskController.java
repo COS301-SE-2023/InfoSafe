@@ -1,7 +1,10 @@
 package com.fragile.infosafe.controller;
 
+import com.fragile.infosafe.model.AssignedTask;
 import com.fragile.infosafe.model.Task;
+import com.fragile.infosafe.requests.AssignedTaskRequest;
 import com.fragile.infosafe.requests.TaskRequest;
+import com.fragile.infosafe.service.AssignedTaskService;
 import com.fragile.infosafe.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,16 +17,16 @@ import java.util.List;
 @RequestMapping("api/assignedTask")
 @RequiredArgsConstructor
 public class AssignedTaskController {
-    private final TaskService service;
+    private final AssignedTaskService service;
 
     @PostMapping("/addTask")
-    public ResponseEntity addTask(@RequestBody TaskRequest Task) {
+    public ResponseEntity addTask(@RequestBody AssignedTaskRequest Task) {
         log.info("Adding a task");
-        return ResponseEntity.ok(service.makeT(Task));
+        return ResponseEntity.ok(service.makeAT(Task));
     }
 
     @GetMapping("/getTask")
-    public List<Task> list() {
+    public List<AssignedTask> list() {
         return service.getAllTasks();
     }
 }

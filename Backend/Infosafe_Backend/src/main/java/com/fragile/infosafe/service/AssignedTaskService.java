@@ -1,8 +1,6 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.AssignedTask;
-import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.repository.AssetRepository;
 import com.fragile.infosafe.repository.AssignedTaskRepository;
 import com.fragile.infosafe.requests.AssignedTaskRequest;
 import lombok.RequiredArgsConstructor;
@@ -29,4 +27,6 @@ public class AssignedTaskService {
     public List<AssignedTask> getAllAssignedTasks() {return repository.findAll();}
 
     public AssignedTask updateDataScope(AssignedTask assignedTask) {return repository.save(assignedTask);}
+
+    public List<AssignedTask> getAllTasks() { return repository.findAll(); }
 }

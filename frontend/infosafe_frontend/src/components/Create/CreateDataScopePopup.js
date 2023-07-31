@@ -211,7 +211,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                 </button>
                             </div>
                         </div>
-                        <button className="datascope_finish" onClick={handleClick}>
+                        <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
                             Submit
                         </button>
                     </form>

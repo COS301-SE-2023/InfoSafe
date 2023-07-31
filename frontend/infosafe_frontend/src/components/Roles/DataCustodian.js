@@ -183,6 +183,7 @@ const DataCustodian = ({currentTab}) => {
                 <div className="CreateDataScopeDiv">
                     <button
                         className="CreateDataScopeButton"
+                        data-testid="dataScopeMake"
                         onClick={() => setCreateDataScopeOpen(!createDataScopeOpen)}
                     >
                         Create Data Scope

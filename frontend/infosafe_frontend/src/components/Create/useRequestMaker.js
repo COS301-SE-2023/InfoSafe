@@ -17,6 +17,8 @@ const useRequestMaker = () => {
 
     const [AvailableDevices, setAvailableDevices] = useState([]);
     const [datascopeData, setDatascopeData] = useState([]);
+    const [selectedAssetId, setSelectedAssetId] = useState(null);
+
     const handleClick = (e, selectedRequest) => {
         e.preventDefault();
         const support = {user_id, support_type, support_description, support_status}
@@ -33,6 +35,7 @@ const useRequestMaker = () => {
             case 'Asset Request':
                 apiUrl = "http://localhost:8080/api/assetrequest/addAr";
                 requestBody = asset;
+                setAssetId(selectedAssetId)
                 break;
             case 'Access Request':
                 apiUrl = "http://localhost:8080/api/accessrequest/addAr";
@@ -115,7 +118,9 @@ const useRequestMaker = () => {
         AvailableDevices,
         setAvailableDevices,
         datascopeData,
-        setDatascopeData
+        setDatascopeData,
+        selectedAssetId,
+        setSelectedAssetId
     };
 };
 

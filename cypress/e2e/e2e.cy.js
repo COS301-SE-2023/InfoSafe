@@ -65,7 +65,6 @@ describe("It Navigates to users tab", () => {
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
-
     cy.get("input[data-testid=\"userIn\"]").type(email1);
 
     cy.wait(1000)
@@ -150,31 +149,42 @@ describe("It Navigates to users tab", () => {
   });
 
 describe("It Navigates to dataScopes tab", () => {
-  const email1 = "ali@gmail.com";
-  const password = "1234";
+  it("Creates a datascope", () => {
+    const email1 = "alistairmikeross@gmail.com";
+    const password = "1234";
 
-  cy.visit("http://localhost:3000");
-  cy.get("input[data-testid=\"userIn\"]").should("exist");
-  cy.get("input[data-testid=\"passIn\"]").should("exist");
-
-
-  cy.get("input[data-testid=\"userIn\"]").type(email1);
-
-  cy.wait(1000)
+    cy.visit("http://localhost:3000");
+    cy.get("input[data-testid=\"userIn\"]").should("exist");
+    cy.get("input[data-testid=\"passIn\"]").should("exist");
 
 
-  cy.get("input[data-testid=\"passIn\"]").type(password);
+    cy.get("input[data-testid=\"userIn\"]").type(email1);
 
-  cy.get("button[data-testid=\"btnTest\"]").click();
-
-  cy.wait(1000);
-
-  cy.get("input[data-testid=\"nameInput\"]").should("exist");
-  cy.get("textarea[data-testid=\"Description\"]").should("exist");
-  cy.get("[data-testid=\"roles\"]").should("be.visible");
-  cy.get("input[data-testid=\"addRole\"]").should("exist");
-  cy.get("textarea[data-testid=\"addRoleDescription\" ]").should("exist");
-  cy.get("button[data-testid=\"addRoleButton\"]").should("exist");
+    cy.wait(1000)
 
 
+    cy.get("input[data-testid=\"passIn\"]").type(password);
+
+    cy.get("button[data-testid=\"btnTest\"]").click();
+
+    cy.wait(1000);
+
+    cy.get("button[data-testid=\"dataScopeMake\"]").should("exist");
+    cy.get("button[data-testid=\"dataScopeMake\"]").click();
+    cy.get("input[data-testid=\"nameInput\"]").should("exist");
+    cy.get("textarea[data-testid=\"Description\"]").should("exist");
+    cy.get("[data-testid=\"roles\"]").should("be.visible");
+    cy.get("input[data-testid=\"addRole\"]").should("exist");
+    cy.get("textarea[data-testid=\"addRoleDescription\" ]").should("exist");
+    cy.get("button[data-testid=\"addRoleButton\"]").should("exist");
+    cy.get("button[data-testid=\"addDataScope\"]").should("exist");
+
+    cy.get("input[data-testid=\"nameInput\"]").type("datascope1");
+    cy.get("textarea[data-testid=\"Description\"]").type("Cool datascope");
+    cy.get("[data-testid=\"roles\"]").type("be.visible");
+    cy.get("input[data-testid=\"addRole\"]").type("Admin");
+    cy.get("textarea[data-testid=\"addRoleDescription\" ]").type("admins are cool");
+    cy.get("button[data-testid=\"addRoleButton\"]").click();
+    cy.get("button[data-testid=\"addDataScope\"]").click();
+  });
 });

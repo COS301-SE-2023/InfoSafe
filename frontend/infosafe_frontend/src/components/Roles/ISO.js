@@ -132,9 +132,9 @@ const ISO = ({currentTab}) => {
         const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
         return (
-            <li key={access.requests_id}>
+            <li key={access.request_id}>
                 <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
-                    Access Request {access.id}
+                    Access Request {access.request_id}
                     {viewAccessRequestOpen ? (
                         <ViewAccessRequest
                             popupClose={() => setViewAccessRequestOpen(false)}
