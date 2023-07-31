@@ -53,7 +53,6 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
                                 className="editSupportRequestDescriptionDisplay"
                                 readOnly={true}
                                 defaultValue={support.support_description}
-                                onChange={e => setValues({...values, support_description: e.target.value})}
                             ></textarea>
                         </div>
                         <div className="editSupportRequestStatusDiv">
