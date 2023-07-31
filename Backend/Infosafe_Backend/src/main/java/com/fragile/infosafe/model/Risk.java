@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 public class Risk {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long risk_id;
-    private int ds_id;
     private int impact_rating;
     private int probability_rating;
     private String risk_description;
@@ -25,10 +24,6 @@ public class Risk {
     public Long getRisk_id() { return risk_id; }
 
     public void setRisk_id(Long risk_id) { this.risk_id = risk_id; }
-
-    public int getDs_id() { return ds_id; }
-
-    public void setDs_id(int ds_id) { this.ds_id = ds_id; }
 
     public int getImpact_rating() { return impact_rating; }
 

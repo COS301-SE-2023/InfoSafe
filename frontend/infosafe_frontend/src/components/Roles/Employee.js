@@ -43,6 +43,7 @@ const Employee = ({currentTab}) => {
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
                             popupOpen={viewSupportRequestOpen}
+                            support={mySupport}
                         />
                     ) : null}
                 </p>{' '}
@@ -54,6 +55,7 @@ const Employee = ({currentTab}) => {
                     <EditSupportRequest
                         popupClose={() => setEditSupportRequestOpen(false)}
                         popupOpen={editSupportRequestOpen}
+                        support={mySupport}
                     />
                 ) : null}
             </li>
@@ -88,6 +90,7 @@ const Employee = ({currentTab}) => {
                         <ViewTask
                             popupClose={() => setViewTaskOpen(false)}
                             popupOpen={viewTaskOpen}
+                            task={task}
                         />
                     ) : null}
                 </p>

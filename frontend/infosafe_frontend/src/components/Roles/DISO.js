@@ -118,6 +118,7 @@ const DISO = ({currentTab}) => {
                         <ViewAccessRequest
                             popupClose={() => setViewAccessRequestOpen(false)}
                             popupOpen={viewAccessRequestOpen}
+                            access={access}
                         />
                     ) : null}
                 </p>
@@ -129,6 +130,7 @@ const DISO = ({currentTab}) => {
                     <EditAccessRequest
                         popupClose={() => setEditAccessRequestOpen(false)}
                         popupOpen={editAccessRequestOpen}
+                        access={access}
                     />
                 ) : null}
                 <RiDeleteBin6Fill className="DeleteIcon" />
@@ -147,6 +149,7 @@ const DISO = ({currentTab}) => {
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(false)}
                             popupOpen={viewSupportRequestOpen}
+                            support={allSupport}
                         />
                     ) : null}
                 </p>
@@ -158,6 +161,7 @@ const DISO = ({currentTab}) => {
                     <EditSupportRequest
                         popupClose={() => setEditSupportRequestOpen(false)}
                         popupOpen={editSupportRequestOpen}
+                        support={allSupport}
                     />
                 ) : null}
             </li>
@@ -175,6 +179,7 @@ const DISO = ({currentTab}) => {
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}
                             popupOpen={viewSupportRequestOpen}
+                            support={mySupport}
                         />
                     ) : null}
                 </p>{' '}
@@ -186,6 +191,7 @@ const DISO = ({currentTab}) => {
                     <EditSupportRequest
                         popupClose={() => setEditSupportRequestOpen(false)}
                         popupOpen={editSupportRequestOpen}
+                        support={mySupport}
                     />
                 ) : null}
             </li>
@@ -202,6 +208,7 @@ const DISO = ({currentTab}) => {
                         <ViewTask
                             popupClose={() => setViewTaskOpen(false)}
                             popupOpen={viewTaskOpen}
+                            task={task}
                         />
                     ) : null}
                 </p>
@@ -219,6 +226,7 @@ const DISO = ({currentTab}) => {
                         <ViewRisk
                             popupClose={() => setViewRiskOpen(false)}
                             popupOpen={viewRiskOpen}
+                            risk={risk}
                         />
                     ) : null}
                 </p>{' '}
@@ -230,6 +238,7 @@ const DISO = ({currentTab}) => {
                     <EditRisk
                         popupClose={() => setEditRiskOpen(false)}
                         popupOpen={editRiskOpen}
+                        risk={risk}
                     />
                 ) : null}
                 <button

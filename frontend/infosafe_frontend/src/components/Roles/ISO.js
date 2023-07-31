@@ -141,6 +141,7 @@ const ISO = ({currentTab}) => {
                         <ViewAccessRequest
                             popupClose={() => setViewAccessRequestOpen(false)}
                             popupOpen={viewAccessRequestOpen}
+                            access={access}
                         />
                     ) : null}
                 </p>
@@ -170,6 +171,7 @@ const ISO = ({currentTab}) => {
                         <ViewTask
                             popupClose={() => setViewTaskOpen(false)}
                             popupOpen={viewTaskOpen}
+                            task={task}
                         />
                     ) : null}
                 </p>
@@ -247,6 +249,7 @@ const ISO = ({currentTab}) => {
                         <ViewRisk
                             popupClose={() => setViewRiskOpen(false)}
                             popupOpen={viewRiskOpen}
+                            risk={risk}
                         />
                     ) : null}
                 </p>{' '}
@@ -258,6 +261,7 @@ const ISO = ({currentTab}) => {
                     <EditRisk
                         popupClose={() => setEditRiskOpen(false)}
                         popupOpen={editRiskOpen}
+                        risk={risk}
                     />
                 ) : null}
                 <button
