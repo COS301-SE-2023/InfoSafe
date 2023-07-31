@@ -42,8 +42,9 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Demo Videos:
-- :vhs: [Demo 1]()
-- :vhs: [Demo 2]()
+- :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
+- :vhs: [Demo 2](https://drive.google.com/file/d/1ZGrzbsJevsbJFgryFvfZMmA00x-Y2ty9/view?usp=drive_link)
+- :vhs: [Demo 3]()
 
 ### SRS Documentation:
 - :book: [version 1]()
@@ -51,6 +52,7 @@ Users will be assigned certain roles when their profile has been created on the 
 
 ### Supporting Documentation:
 - :scroll: [User Manual]()
+- :cd: [Installation Guide]()
 - :triangular_ruler: [System Architecture]()
 - :floppy_disk: [Database Design]()
 - :chart_with_upwards_trend: [Coding Standards]()
