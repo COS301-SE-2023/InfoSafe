@@ -9,9 +9,9 @@ const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
-    const [datascopeData, setDatascopeData] = useState();
-    const[ds_id, setDsId] = useState('')
+    //const[datascopeData, setDatascopeData] = useState();
     const[impact_rating, setImpactRating] = useState('')
+    const[probability_rating, setProbabilityRating] = useState('')
     const[risk_description, setRiskDescription] = useState('')
     const[risk_status, setRiskStatus] = useState('')
     const[suggested_mitigation, setSuggestedMitigation] = useState('')
@@ -25,7 +25,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
     }
     const handleClick = (e)=> {
         e.preventDefault();
-        const risk = {ds_id, impact_rating, risk_description, risk_status, suggested_mitigation};
+        const risk = {impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation};
         console.log(risk);
         fetch("http://localhost:8080/api/risk/addRisk", {
             method:"POST",
@@ -39,18 +39,18 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
         popupClose()
     };
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getDs', {
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setDatascopeData(result);
-                console.log(datascopeData);
-            });
-    }, []);
+    // useEffect(() => {
+    //     fetch('http://localhost:8080/api/datascope/getDs', {
+    //         headers: {
+    //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+    //         }
+    //     })
+    //         .then((res) => res.json())
+    //         .then((result) => {
+    //             setDatascopeData(result);
+    //             console.log(datascopeData);
+    //         });
+    // }, []);
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -61,25 +61,25 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="pageTitle">Create Risk</p>
-                        <p className="inputTitle">Data Scope</p>
-                        {datascopeData && datascopeData.length > 0 ? (
-                        <Dropdown
-                            options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                            value={datascopeData.ds_name}
-                            className="datascopeDropdown"
-                            name="datascopeDropdown"
-                            placeholder={"Add DataScope"}
-                            onChange={(selectedOption)=> setDsId(selectedOption.value)}
-                        /> ) : (
-                            <p>Loading...</p>
-                        )}
-                        <p className="inputTitle">Risk Status</p>
+                        {/*<p className="inputTitle">Data Scope</p>*/}
+                        {/*{datascopeData && datascopeData.length > 0 ? (*/}
+                        {/*<Dropdown*/}
+                        {/*    options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}*/}
+                        {/*    value={datascopeData.ds_name}*/}
+                        {/*    className="datascopeDropdown"*/}
+                        {/*    name="datascopeDropdown"*/}
+                        {/*    placeholder={"Add DataScope"}*/}
+                        {/*    onChange={(selectedOption)=> setDsId(selectedOption.value)}*/}
+                        {/*/> ) : (*/}
+                        {/*    <p>Loading...</p>*/}
+                        {/*)}*/}
+                        <p className="inputTitle">Probability</p>
                         <Dropdown
                             options={PROBABILITY}
                             value={PROBABILITY[0]}
                             className="probabilityDropdown"
                             name="probabilityDropdown"
-                            onChange={(selectedOption) => setImpactRating(selectedOption.value)}
+                            onChange={(selectedOption) => setProbabilityRating(selectedOption.value)}
                         />
                         <p className="inputTitle">Impact</p>
                         <Dropdown
