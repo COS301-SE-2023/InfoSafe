@@ -237,7 +237,7 @@ const DisplayDataCustodianRequests = () => {
                                 <Dropdown
                                     options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                                     value={datascopeData.asset_id}
-                                    className="datascopeDropdown"
+                                    className="accessRequestDatascopeDropdown"
                                     name="datascopeDropdown"
                                     placeholder={"Add DataScope"}
                                     onChange={(selectedOption)=> setDsId(selectedOption.value)}
