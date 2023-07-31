@@ -21,7 +21,7 @@ public class TaskService {
                 .task_description(request.getTask_description())
                 .task_status(request.getTask_status())
                 .due_date(request.getDue_date())
-                .date_completed(request.getDate_completed())
+                .date_created(request.getDate_created())
                 .build();
         taskRepository.save(matrix);
         return ResponseEntity.status(HttpStatus.OK).body("added");

@@ -55,11 +55,11 @@ public class Task {
         this.due_date = due_date;
     }
 
-    public Date getDate_completed() {
+    public Date getDate_created() {
         return date_created;
     }
 
-    public void setDate_completed(Date date_created) {
+    public void setDate_created(Date date_created) {
         this.date_created = date_created;
     }
 }
