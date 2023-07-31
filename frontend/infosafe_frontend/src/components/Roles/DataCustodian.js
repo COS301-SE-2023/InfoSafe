@@ -22,7 +22,6 @@ const DataCustodian = ({currentTab}) => {
     const {showDatascope, showAsset,  showRisk, showAccess,  showTask,showMySupport} = AccessAndDisplay()
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false); // DS
     // const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
-    const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
     // const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
     // const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
@@ -126,6 +125,7 @@ const DataCustodian = ({currentTab}) => {
     };
     const ViewRisks = ({ risk }) => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
+        const [viewRiskOpen, setViewRiskOpen] = useState(false);
         return (
         <li key={risk.risk_id}>
             <p onClick={() => setViewRiskOpen(!viewRiskOpen)}>
