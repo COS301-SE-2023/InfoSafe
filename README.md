@@ -42,18 +42,21 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Demo Videos:
-- :vhs: [Demo 1]()
-- :vhs: [Demo 2]()
+- :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
+- :vhs: [Demo 2](https://drive.google.com/file/d/1ZGrzbsJevsbJFgryFvfZMmA00x-Y2ty9/view?usp=drive_link)
+- :vhs: [Demo 3]()
 
 ### SRS Documentation:
-- :book: [version 1]()
-- :book: [Version 2]()
+- :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
+- :book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
+- :book: [Version 3]()
 
 ### Supporting Documentation:
+- :cd: [Installation Guide]()
 - :scroll: [User Manual]()
 - :triangular_ruler: [System Architecture]()
-- :floppy_disk: [Database Design]()
-- :chart_with_upwards_trend: [Coding Standards]()
+- :floppy_disk: [Database Design](https://drive.google.com/file/d/19lEQfhf-AGBNxfh5Ta0vYNW8SyThgfeI/view?usp=drive_link)
+- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1Mq1ZA1fK-0AXT2SZCbgqIrSisEyAUX6P/view?usp=drive_link)
 - :memo: [Team Contributions]()
 
 ### GitHub Links:
