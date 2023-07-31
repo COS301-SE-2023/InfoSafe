@@ -36,8 +36,6 @@ const DISO = ({currentTab}) => {
     // const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
     // const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
     const [createRiskOpen, setCreateRiskOpen] = useState(false); // ISO DISO
-    const [reviewRiskOpen, setReviewRiskOpen] = useState(false); // ISO DISO
-    const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
     // const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
@@ -217,6 +215,8 @@ const DISO = ({currentTab}) => {
     };
 
     const ViewRisks = ({ risk }) => {
+        const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
+        const [viewRiskOpen, setViewRiskOpen] = useState(false);
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         return (
             <li key={risk.risk_id}>
