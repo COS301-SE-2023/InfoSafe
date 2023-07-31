@@ -63,6 +63,7 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
                                 value={support.support_status}
                                 className="updateSupportRequestDropdown"
                                 name="updateSupportRequestDropdown"
+                                onChange={(selectedOption) => setValues({...values, support_status: selectedOption.value})}
                             />
                         </div>
                         <div className="editSupportRequestButtonsDiv">
