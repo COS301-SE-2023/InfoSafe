@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.15.0"
+    "cypress": "^12.15.0",
+    "eslint-plugin-react": "^7.33.1"
   },
   "dependencies": {
     "react-select": "^5.7.4"
