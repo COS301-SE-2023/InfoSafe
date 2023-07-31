@@ -2,6 +2,7 @@ package com.fragile.infosafe.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@IdClass(AssignedTaskId.class)
 @Table(name="assignedtask")
 public class AssignedTask {
     public Long getUser_Id() {
