@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useState} from 'react';
 import '../../styling/CreateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
@@ -9,11 +9,17 @@ const TASK_TYPES = ['COMPLIANCE MATRIX', 'RISK', 'SUPPORT REQUEST'];
 const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
 const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
 export const CreateTask = ({ popupClose, popupOpen }) => {
+    const [task_description, setTaskDescription] = useState('');
+    const [task_status, setTaskStatus] = useState('');
+    const [due_date, setDueDate] = useState('');
+    const [date_created, setDateCreated] = useState('');
+    const [user_id, setUserId] = useState([]);
+    const [task_id, setTaskId] = useState('');
 
     const handleClick=(e)=> {
         e.preventDefault()
-        const task = {due_date, task_description, task_status}
-
+        const task = {task_description, task_status,  due_date, date_created}
+        const assignedtask = {task_id, user_id}
         fetch("http://localhost:8080/api/task/addTask", {
             method:"POST",
             headers:{"Content-Type":"application/json",
