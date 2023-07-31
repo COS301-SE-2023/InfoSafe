@@ -1,14 +1,10 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/CreateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-import Select from "react-select/base";
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
-const TASK_TYPES = ['COMPLIANCE MATRIX', 'RISK', 'SUPPORT REQUEST'];
-const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
-const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
+import Select from 'react-select/base';
+
 export const CreateTask = ({ popupClose, popupOpen }) => {
     const [task_description, setTaskDescription] = useState('');
     const [task_status, setTaskStatus] = useState('');
@@ -17,7 +13,11 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     const [user_id, setUserId] = useState([]);
     const [task_id, setTaskId] = useState('');
     const [selectedUsers, setSelectedUsers] = useState();
+    const [users, setUsers] = useState([]);
 
+    const handleDescriptionChange = (e) => {
+        setTaskDescription(e.target.value);
+    };
     const handleClick=(e)=> {
         e.preventDefault()
         const task = {task_description, task_status,  due_date, date_created}
@@ -34,10 +34,32 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
         popupClose()
     };
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/user/getAll", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUsers(result);
+            });
+    }, []);
     //Adds users to the array on selection change
-    function handleSelect(data){
-        selectedUsers(data);
+    const handleSelect = (e) =>{
+        selectedUsers(e.target.value);
     }
+    const handleDateChange = (date) => {
+        setDateCreated(formatDate(date));
+    };
+    const formatDate = (date) => {
+        const year = date.getFullYear().toString().slice(-2);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${year}/${month}/${day}`;
+    };
+
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -48,24 +70,16 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="pageTitle">Create Task</p>
-                        <p className="inputTitle">Type</p>
-                        <Dropdown
-                            options={TASK_TYPES}
-                            value={TASK_TYPES[1]}
-                            className="createTaskTypeDropdown"
-                            name="createTaskTypeDropdown"
-                        />
-                        <p className="inputTitle">Data Scope</p>
-                        <Dropdown
-                            options={DATA_SCOPES}
-                            value={DATA_SCOPES[1]}
-                            className="createTaskDataScopeDropdown"
-                            name="createTaskDataScopeDropdown"
+                        <p className="inputTitle">Type Description</p>
+                        <textarea
+                            className="inputTextArea"
+                            onChange={handleDescriptionChange}
+                            value={task_description}
                         />
                         <p className="inputTitle">Assignee</p>
                         <Select  //Dropdown
-                            options={USER_LIST}
-                            value={selectedUsers}//{USER_LIST[1]}
+                            options={users.email}
+                            value={user_id}
                             className="createTaskAssigneeDropdown"
                             name="createTaskAssigneeDropdown"
                             placeholder={"Add Assignees"}
@@ -73,17 +87,15 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                             isSearchable={true}
                             isMulti
                         />
-                        <p className="inputTitle">Task Description</p>
-                        <textarea className="inputTextArea" />
                         <p className="inputTitle">Completion Date</p>
                         <input
+                            type="date"
                             className="textboxInput"
-                            type="text"
-                            id="inputTextArea"
-                            name="completionDate"
+                            onChange={(e) => handleDateChange(e.target.value)}
+                            required
                         />
                         <div className="createTaskButtonDiv">
-                            <button className="createTaskSubmitButton" type="submit" onClick={popupClose}>
+                            <button className="createTaskSubmitButton" type="submit" onClick={handleClick}>
                                 Submit
                             </button>
                         </div>

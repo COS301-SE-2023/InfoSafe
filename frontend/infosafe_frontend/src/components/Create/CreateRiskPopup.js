@@ -67,7 +67,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                             value={ds_id}
                             className="datascopeDropdown"
                             name="datascopeDropdown"
-                            onChange={(selectedOption)=>setDsId(selectedOption.value)}
+                            onChange={(selectedOption)=> setDsId(selectedOption.value)}
                         />
                         <p className="inputTitle">Risk Status</p>
                         <Dropdown
