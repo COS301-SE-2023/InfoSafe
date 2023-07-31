@@ -90,6 +90,7 @@ const DataCustodian = ({currentTab}) => {
                         <ViewAccessRequest
                             popupClose={() => setViewAccessRequestOpen(false)}
                             popupOpen={viewAccessRequestOpen}
+                            access={access}
                         />
                     ) : null}
                 </p>
@@ -101,6 +102,7 @@ const DataCustodian = ({currentTab}) => {
                     <EditAccessRequest
                         popupClose={() => setEditAccessRequestOpen(false)}
                         popupOpen={editAccessRequestOpen}
+                        access={access}
                     />
                 ) : null}
                 <RiDeleteBin6Fill className="DeleteIcon" />
@@ -118,6 +120,7 @@ const DataCustodian = ({currentTab}) => {
                         <ViewTask
                             popupClose={() => setViewTaskOpen(false)}
                             popupOpen={viewTaskOpen}
+                            task={task}
                         />
                     ) : null}
                 </p>
@@ -134,6 +137,7 @@ const DataCustodian = ({currentTab}) => {
                     <ViewRisk
                         popupClose={() => setViewRiskOpen(false)}
                         popupOpen={viewRiskOpen}
+                        risk={risk}
                     />
                 ) : null}
             </p>{' '}
@@ -145,6 +149,7 @@ const DataCustodian = ({currentTab}) => {
                 <EditRisk
                     popupClose={() => setEditRiskOpen(false)}
                     popupOpen={editRiskOpen}
+                    risk={risk}
                 />
             ) : null}
         </li>
@@ -162,6 +167,7 @@ const DataCustodian = ({currentTab}) => {
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(false)}
                             popupOpen={viewSupportRequestOpen}
+                            support={request}
                         />
                     ) : null}
                 </p>
