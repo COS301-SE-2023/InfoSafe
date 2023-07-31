@@ -55,6 +55,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
                                 readOnly={false}
                                 className="editAccessRequestReasonDisplay"
                                 defaultValue={access.reason}
+                                onChange={e => setValues({...values, reason: e.target.value})}
                             ></textarea>
                         </div>
                         <div className="editAccessRequestStatusDiv">
@@ -64,7 +65,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
                         <div className="editAccessRequestButtonsDiv">
                             <button
                                 className="editAccessRequestButton"
-                                onClick={() => console.log('Edit Access Request')}
+                                type="submit"
                             >
                                 Submit
                             </button>
