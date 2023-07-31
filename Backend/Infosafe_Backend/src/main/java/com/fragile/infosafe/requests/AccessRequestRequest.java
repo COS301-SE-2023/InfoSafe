@@ -16,5 +16,5 @@ public class AccessRequestRequest {
     private int user_id;
     private int ds_id;
     private String reason;
-    private Boolean status;
+    private String status;
 }

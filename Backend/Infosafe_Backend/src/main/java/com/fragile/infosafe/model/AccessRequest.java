@@ -19,7 +19,7 @@ public class AccessRequest {
     private int user_id;
     private int ds_id;
     private String reason;
-    private Boolean status;
+    private String status;
 
     public String getReason() {
         return reason;
@@ -29,9 +29,9 @@ public class AccessRequest {
         this.reason = reason;
     }
 
-    public Boolean getStatus() { return status; }
+    public String getStatus() { return status; }
 
-    public void setStatus(Boolean status) {this.status = status;}
+    public void setStatus(String status) {this.status = status;}
     public int getRequest_id() { return request_id; }
 
     public void setRequest_id(int request_id) { this.request_id = request_id; }
