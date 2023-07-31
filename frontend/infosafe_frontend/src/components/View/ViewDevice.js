@@ -14,21 +14,21 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
                     </button>
                     <p className="viewDeviceLabel">View Device</p>
                     <p className="viewDeviceNameLabel">Device Name</p>
-                    <p className="viewDeviceName">Device A</p>
+                    <p className="viewDeviceName">{asset.asset_name}</p>
                     <p className="viewDeviceTypeLabel">Device Type</p>
-                    <p className="viewDeviceType">Laptop</p>
+                    <p className="viewDeviceType">{asset.device_type}</p>
                     <p className="viewDeviceDescriptionLabel">Device Description</p>
-                    <textarea className="viewDeviceDescription" readOnly={'true'} defaultValue={"Device description here"}/>
+                    <textarea className="viewDeviceDescription" readOnly={'true'} defaultValue={asset.asset_description}/>
                     <p className = "viewDeviceNewLabel">New</p>
-                    <p className = "viewDeviceNew">No</p>
+                    <p className = "viewDeviceNew">{asset.used}</p>
                     <p className = "viewDeviceAvailabilityLabel">Available</p>
-                    <p className = "viewDeviceAvailability">No</p>
+                    <p className = "viewDeviceAvailability">{asset.availability}</p>
                     <p className="viewDeviceStatusLabel">Status</p>
-                    <p className="viewDeviceStatus">Full</p>
+                    <p className="viewDeviceStatus">{asset.status}</p>
                     <p className="viewDeviceCurrentCustodianLabel">Current Custodian</p>
-                    <p className="viewDeviceCurrentCustodian">User 5</p>
-                    <p className="viewDevicePreviousCustodianLabel">Current Custodian</p>
-                    <p className="viewDevicePreviousCustodian">Storage</p>
+                    <p className="viewDeviceCurrentCustodian">{asset.current_assignee}</p>
+                    <p className="viewDevicePreviousCustodianLabel">Previous Custodian</p>
+                    <p className="viewDevicePreviousCustodian">{asset.previous_assignee}</p>
 
                 </div>
             </div>
