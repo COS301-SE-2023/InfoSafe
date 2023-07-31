@@ -3,10 +3,7 @@ import Dropdown from 'react-dropdown';
 import '../../styling/CreateUserPopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import employee from "../Roles/Employee";
-import Employee from "../Roles/Employee";
 
-/* eslint-disable react/prop-types */
 const ROLE_OPTIONS = [
     'EMPLOYEE',
     'ISO',

@@ -9,19 +9,18 @@ import ViewDataScope from "../View/ViewDataScope";
 import AccessAndDisplay from "./AccessAndDisplay";
 import {FaRegEdit} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
-/* eslint-disable react/prop-types */
 
 const Employee = ({currentTab}) => {
     const {showDatascope, showAsset, showTask, showMySupport } = AccessAndDisplay()
-    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
+    // const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    // const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
 
     const ViewDeviceItem = ({ asset }) => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
             <li key={asset.id}>
                 <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                    Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
+                    Asset {asset.asset_id}: {asset.asset_name} ----- {asset.asset_description}
                     {viewDeviceOpen && (
                         <ViewDevice
                             popupClose={() => setViewDeviceOpen(false)}
@@ -38,7 +37,7 @@ const Employee = ({currentTab}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
         return(
             <li key={mySupport.support_id}>
-                <p onClick={() => setViewSupportRequestOpen(true)}>
+                <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
                     Support Request {mySupport.support_id}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
@@ -64,10 +63,9 @@ const Employee = ({currentTab}) => {
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         return (
-            <li key={datascope.id}>
+            <li key={datascope.data_scope_id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description}{' '}
-                    ------ {datascope.data_custodian}
+                    Data Scope {datascope.data_scope_id}: {datascope.ds_name}{' '}{datascope.description}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -101,7 +99,7 @@ const Employee = ({currentTab}) => {
     {
         const dataItems = [];
         showDatascope.map((datascope) =>
-            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id} />)
+            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
         );
 
         return (
@@ -132,7 +130,7 @@ const Employee = ({currentTab}) => {
     {
         const devices = [];
         showAsset.map((device) =>
-            devices.push(<ViewDeviceItem asset={device} key={device.id} />)
+            devices.push(<ViewDeviceItem asset={device} key={device.asset_id} />)
         );
         return (
             <div className="display">

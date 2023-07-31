@@ -9,7 +9,7 @@ const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
-    const [datascopeData, setDatascopeData] = useState();
+    const [datascopeData, setDatascopeData] = useState([]);
     const[ds_id, setDsId] = useState('')
     const[impact_rating, setImpactRating] = useState('')
     const[risk_description, setRiskDescription] = useState('')

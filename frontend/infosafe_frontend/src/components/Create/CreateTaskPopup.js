@@ -44,7 +44,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                         <p className="inputTitle">Type</p>
                         <Dropdown
                             options={TASK_TYPES}
-                            value={}
+                            value={TASK_TYPES[0]}
                             className="createTaskTypeDropdown"
                             name="createTaskTypeDropdown"
                         />

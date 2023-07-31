@@ -21,26 +21,25 @@ import AccessAndDisplay from "./AccessAndDisplay";
 const DataCustodian = ({currentTab}) => {
     const {showDatascope, showAsset,  showRisk, showAccess,  showMatrix,showSupport} = AccessAndDisplay()
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false); // DS
-    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
+    // const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
-    const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
+    // const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-    const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
-    const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
-    const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
-    const [viewMatrixOpen, setViewMatrixOpen] = useState(false);
-    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-    const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+    // const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
+    // const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
+    // const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+    // const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
+    // const [viewMatrixOpen, setViewMatrixOpen] = useState(false);
+    // const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    // const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
 
     const ViewDataScopeItemDs = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         return (
-            <li key={datascope.id}>
+            <li key={datascope.data_scope_id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.id}: {datascope.ds_name} ------ {datascope.description}{' '}
-                    ------ {datascope.data_custodian}
+                    Data Scope {datascope.data_scope_id}: {datascope.ds_name}{' '}{datascope.description}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -49,7 +48,7 @@ const DataCustodian = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(true)} />
+                <FaRegEdit className="EditIcon" onClick={() => setEditDataScopeOpen(!editDataScopeOpen)} />
                 {editDataScopeOpen ? (
                     <EditDataScopePopup
                         popupClose={() => setEditDataScopeOpen(false)}
@@ -65,9 +64,9 @@ const DataCustodian = ({currentTab}) => {
     const ViewDeviceItem = ({ asset }) => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
-            <li key={asset.id}>
+            <li key={asset.asset_id}>
                 <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                    Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
+                    Asset {asset.asset_id}: {asset.asset_name} ----- {asset.asset_description}
                     {viewDeviceOpen && (
                         <ViewDevice
                             popupClose={() => setViewDeviceOpen(false)}
@@ -84,9 +83,9 @@ const DataCustodian = ({currentTab}) => {
         const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
         return (
-            <li key={access.id}>
+            <li key={access.request_id}>
                 <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
-                    Access Request {access.id}
+                    Access Request:{' '}{access.request_id}
                     {viewAccessRequestOpen ? (
                         <ViewAccessRequest
                             popupClose={() => setViewAccessRequestOpen(false)}
@@ -156,9 +155,9 @@ const DataCustodian = ({currentTab}) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
         return(
-            <li key={request.id}>
+            <li key={request.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
-                    Support Request {request.id}
+                    Support Request {request.support_id}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(false)}
@@ -173,7 +172,7 @@ const DataCustodian = ({currentTab}) => {
     if (currentTab === 1) { // Datascopes
         const dataItems = [];
         showDatascope.map((datascope) =>
-            dataItems.push(<ViewDataScopeItemDs datascope={datascope} key={datascope.id} />)
+            dataItems.push(<ViewDataScopeItemDs datascope={datascope} key={datascope.data_scope_id} />)
         );
 
         return (
@@ -184,7 +183,7 @@ const DataCustodian = ({currentTab}) => {
                 <div className="CreateDataScopeDiv">
                     <button
                         className="CreateDataScopeButton"
-                        onClick={() => setCreateDataScopeOpen(true)}
+                        onClick={() => setCreateDataScopeOpen(!createDataScopeOpen)}
                     >
                         Create Data Scope
                     </button>
@@ -201,7 +200,7 @@ const DataCustodian = ({currentTab}) => {
     if (currentTab === 2) { // Access Requests
         const accessRequests = [];
         showAccess.map((access) =>
-            accessRequests.push(<ViewAccessRequests access={access} key={access.id}/>)
+            accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
         );
         return (
             <div className="display">
@@ -245,7 +244,7 @@ const DataCustodian = ({currentTab}) => {
     {
         const my_requests = [];
         showSupport.map((request) =>
-            my_requests.push(<ViewSupportRequests request={request} key={request.id}/>)
+            my_requests.push(<ViewSupportRequests request={request} key={request.support_id}/>)
         );
         return (
             <div className="display">

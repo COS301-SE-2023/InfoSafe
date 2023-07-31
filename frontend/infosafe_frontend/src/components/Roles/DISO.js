@@ -12,7 +12,7 @@ import EditAccessRequest from '../Edit/EditAccessRequest';
 import {CreateTask} from '../Create/CreateTaskPopup';
 import {UpdateTask} from '../Edit/UpdateTaskPopup';
 import {ViewTask} from '../View/ViewTaskPopup';
-import AccessRequestApproval from "./AccessRequestApproval";
+import AccessRequestApproval from "../Edit/AccessRequestApproval";
 // import {CreateDevicePopup} from './CreateDevicePopup';
 import {ViewDevice} from '../View/ViewDevice';
 import ViewSupportRequest from '../View/ViewSupportRequest';
@@ -27,18 +27,18 @@ import AccessAndDisplay from "./AccessAndDisplay";
 
 const DISO = ({currentTab}) => {
     const {showDatascope,  showAsset,  showRisk,  showAccess,  createUserOpen, setCreateUserOpen,   showUser,showMySupport, showAllSupport, showTask} = AccessAndDisplay()
-    const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
-    const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
+    // const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+    // const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false); // ISO DISO
-    const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
+    // const [viewTaskOpen, setViewTaskOpen] = useState(false); // ISO DS DISO Employee AM
     const [createTaskOpen, setCreateTaskOpen] = useState(false); // ISO DISO
-    const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM
-    const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-    const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
+    // const [createDeviceOpen, setCreateDeviceOpen] = useState(false); // ISO DISO AM
+    // const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+    // const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
     const [createRiskOpen, setCreateRiskOpen] = useState(false); // ISO DISO
     const [reviewRiskOpen, setReviewRiskOpen] = useState(false); // ISO DISO
     const [viewRiskOpen, setViewRiskOpen] = useState(false); // ISO DISO DS
-    const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
+    // const [editRiskOpen, setEditRiskOpen] = useState(false); // ISO DS DISO
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     const ViewUserItem = ({ user }) => {
@@ -57,7 +57,7 @@ const DISO = ({currentTab}) => {
                         />
                     )}
                 </p>
-                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(true)} />
+                <FaRegEdit className="EditIcon" onClick={() => setEditUserOpen(!editUserOpen)} />
                 {editUserOpen ? (
                     <EditUser
                         popupClose={() => setEditUserOpen(false)}
@@ -74,9 +74,9 @@ const DISO = ({currentTab}) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
 
         return (
-            <li key={datascope.id}>
+            <li key={datascope.data_scope_id}>
                 <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                    Data Scope {datascope.data_scope_id}: {datascope.ds_name} ------ {datascope.ds_description} ------ {datascope.data_custodian}
+                    Data Scope {datascope.data_scope_id}: {datascope.ds_name}{' '}{datascope.ds_description}
                     {viewDataScopeOpen && (
                         <ViewDataScope
                             popupClose={() => setViewDataScopeOpen(false)}
@@ -90,12 +90,11 @@ const DISO = ({currentTab}) => {
     };
 
     const ViewDeviceItem = ({ asset }) => {
-
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         return (
             <li key={asset.id}>
                 <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                    Asset {asset.id}: {asset.asset_name} ----- {asset.asset_description}
+                    Asset {asset.asset_id}: {asset.asset_name} ----- {asset.asset_description}
                     {viewDeviceOpen && (
                         <ViewDevice
                             popupClose={() => setViewDeviceOpen(false)}
@@ -112,7 +111,7 @@ const DISO = ({currentTab}) => {
         const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
         return (
-            <li key={access.requests_id}>
+            <li key={access.request_id}>
                 <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
                     Access Request {access.id}
                     {viewAccessRequestOpen ? (
@@ -170,7 +169,7 @@ const DISO = ({currentTab}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
         return(
             <li key={mySupport.support_id}>
-                <p onClick={() => setViewSupportRequestOpen(true)}>
+                <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
                     Support Request {mySupport.support_id}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
@@ -225,7 +224,7 @@ const DISO = ({currentTab}) => {
                 </p>{' '}
                 <FaRegEdit
                     className="EditIcon"
-                    onClick={() => setEditRiskOpen(editRiskOpen)}
+                    onClick={() => setEditRiskOpen(!editRiskOpen)}
                 />
                 {editRiskOpen ? (
                     <EditRisk
@@ -235,7 +234,7 @@ const DISO = ({currentTab}) => {
                 ) : null}
                 <button
                     className="ISOReviewRiskButton"
-                    onClick={() => setReviewRiskOpen(true)}>
+                    onClick={() => setReviewRiskOpen(!reviewRiskOpen)}>
                     Review
                 </button>
                 {reviewRiskOpen ? (
@@ -251,7 +250,7 @@ const DISO = ({currentTab}) => {
     if (currentTab === 0)
     {
         const userItems = [];
-        showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.id} />));
+        showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id} />));
 
         return (
             <div className="display">
@@ -262,7 +261,7 @@ const DISO = ({currentTab}) => {
                     <button
                         className="CreateUserButton"
                         data-testid="CreateUserButton"
-                        onClick={() => setCreateUserOpen(true)}
+                        onClick={() => setCreateUserOpen(!createUserOpen)}
                     >
                         Create New User
                     </button>
@@ -281,7 +280,7 @@ const DISO = ({currentTab}) => {
     {
         const dataItems = [];
         showDatascope.map((datascope) =>
-            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.id} />)
+            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
         );
 
         return (
@@ -308,7 +307,7 @@ const DISO = ({currentTab}) => {
                     <button
                         className="approveAccessRequestButton"
                         data-testid="approveAccessRequestButton"
-                        onClick={() => setApproveAccessRequestOpen(true)}
+                        onClick={() => setApproveAccessRequestOpen(!approveAccessRequestOpen)}
                     >
                         Access Request Approval
                     </button>
@@ -338,7 +337,7 @@ const DISO = ({currentTab}) => {
                     <div className="CreateTaskDiv">
                         <button
                             className="CreateTaskButton"
-                            onClick={() => setCreateTaskOpen(true)}
+                            onClick={() => setCreateTaskOpen(!createTaskOpen)}
                         >
                             Create New Task
                         </button>
@@ -352,7 +351,7 @@ const DISO = ({currentTab}) => {
                     <div className="UpdateTaskDiv">
                         <button
                             className="UpdateTaskButton"
-                            onClick={() => setUpdateTaskOpen(true)}
+                            onClick={() => setUpdateTaskOpen(!updateTaskOpen)}
                         >
                             Update Task
                         </button>
@@ -380,7 +379,7 @@ const DISO = ({currentTab}) => {
     {
         const devices = [];
         showAsset.map((device) =>
-            devices.push(<ViewDeviceItem asset={device} key={device.id} />)
+            devices.push(<ViewDeviceItem asset={device} key={device.asset_id} />)
         );
         return (
             <div className="display">

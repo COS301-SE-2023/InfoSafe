@@ -6,8 +6,6 @@ import DataCustodian from './Roles/DataCustodian';
 import AssetManager from "./Roles/AssetManager";
 import Employee from "./Roles/Employee";
 
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(
         systemRole === 'ISO' || systemRole === 'DISO' || systemRole === 'System Administrator' ? 0 : 1
