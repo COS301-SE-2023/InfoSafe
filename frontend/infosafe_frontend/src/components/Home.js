@@ -9,7 +9,7 @@ const Home = () => {
 
     const [systemRole, setRole] = useState();
     const [settings, showSettings] = useState(false);
-    const [username, setUserName] = useState();
+    const [username, setUserName] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getRole', {
@@ -33,15 +33,12 @@ const Home = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setUserName(result);
+                setUserName(result.username);
             });
     }, []);
         const showDiv = () =>
         {
             showSettings(!settings);
-        };
-        const handleRole = (RoleIndex) => {
-            setRole(RoleIndex);
         };
 
         return (
@@ -49,7 +46,7 @@ const Home = () => {
                 <NavBar systemRole={systemRole}/>
 
                 <div className="activeUser">
-                    <p className="userDisplay" >${username}</p>
+                    <p className="userDisplay" >{username}</p>
                     <IoPersonCircleSharp className="avatar" onClick={showDiv} />
                     {settings &&
                         <div className="settingsDiv">
