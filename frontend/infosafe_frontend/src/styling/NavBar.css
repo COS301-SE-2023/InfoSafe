@@ -1,0 +1,58 @@
+.navbar {
+    height: 100%;
+}
+.tabs {
+    display: flex;
+    margin-bottom: 2%;
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    height: 5%;
+    padding: 0;
+    width: 50vw;
+    z-index: 2;
+}
+.tabs li {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: none;
+    white-space: nowrap;
+    padding-left: 0.8%;
+    padding-right: 0.8%;
+    width: fit-content;
+}
+.tabs li:not(.active) {
+    border: 1px solid #9e0000;
+    border-bottom: none;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.tabs li.active {
+    background-color: #4b4a4a;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    z-index: 3;
+    position: relative;
+    margin-top: 1px;
+}
+.display {
+    position: absolute;
+    top: 8%;
+    left: 1%;
+    width: 98%;
+    height: 90vh;
+    background: #4b4a4a;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    border: 1px solid #ffffff;
+    margin-top: -1px;
+}

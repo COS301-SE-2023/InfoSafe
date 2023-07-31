@@ -33,8 +33,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository repository;
-    private final DataScopeRepository dataScopeRepository;
-    private final AssetRepository assetRepository;
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -42,8 +40,8 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .first_name(request.getFirst_name())
+                .last_name(request.getLast_name())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole())
@@ -51,39 +49,16 @@ public class AuthenticationService {
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
-        saveUserToken(savedUser, jwtToken);
+         saveUserToken(savedUser, jwtToken);
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
     }
 
-    public ResponseEntity<String> makeDs(DataScopeRequest request){
-        var datascope = DataScope.builder()
-                .ds_name(request.getDs_name())
-                .description(request.getDescription())
-                .role_name(request.getRole_name())
-                .role_description(request.getRole_description())
-                .date_captured(request.getDate_captured())
-                .data_custodian(request.getData_custodian())
-                .administrator(request.getAdministrator())
-                .status(request.getStatus())
-                .build();
-        dataScopeRepository.save(datascope);
-        return ResponseEntity.status(HttpStatus.OK).body("added");
-    }
 
-    public ResponseEntity<String>  makeAsset(AssetRequest request){
-        var asset = Asset.builder()
-                .asset_name(request.getAsset_name())
-                .asset_description(request.getAsset_description())
-                .status(request.getStatus())
-                .date_acquired(request.getDate_acquired())
-                .assignee(request.getAssignee())
-                .build();
-        assetRepository.save(asset);
-        return ResponseEntity.status(HttpStatus.OK).body("added");
-    }
+
+
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         try {
             authenticationManager.authenticate(
@@ -96,7 +71,7 @@ public class AuthenticationService {
                     .orElseThrow();
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
-            revokeAllUserTokens(user);
+             revokeAllUserTokens(user);
             saveUserToken(user, jwtToken);
 
             return AuthenticationResponse.builder()
@@ -122,7 +97,7 @@ public class AuthenticationService {
     }
 
     private void revokeAllUserTokens(User user) {
-        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUser_id());
         if (validUserTokens.isEmpty())
             return;
         validUserTokens.forEach(token -> {
@@ -158,13 +133,6 @@ public class AuthenticationService {
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
-    }
-    public List<User> getAllUsers() {
-        return repository.findAll();
-    }
-    public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
-    public List<Asset> getAllAssets() {
-        return assetRepository.findAll();
     }
 
 }

@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,19 +14,22 @@ import java.util.Date;
 @Table(name="assets")
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int asset_id;
     private String asset_name;
     private String asset_description;
     private String status;
-    private String date_acquired;
-    private String assignee;
+    private String availability;
+    private String used;
+    private String current_assignee;
+    private String previous_assignee;
+    private String device_type;
 
-    public Long getId() {
-        return id;
+    public int getAsset_id() {
+        return asset_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAsset_id(int asset_id) {
+        this.asset_id = asset_id;
     }
 
     public String getAsset_name() {
@@ -54,19 +56,39 @@ public class Asset {
         this.status = status;
     }
 
-    public String getDate_acquired() {
-        return date_acquired;
+    public String getAvailability() {
+        return availability;
     }
 
-    public void setDate_acquired(String date_acquired) {
-        this.date_acquired = date_acquired;
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 
-    public String getAssignee() {
-        return assignee;
+    public String getUsed() { return used; }
+
+    public void setUsed(String used) { this.used = used; }
+
+    public String getCurrent_assignee() {
+        return current_assignee;
     }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
+    public void setCurrent_assignee(String current_assignee) {
+        this.current_assignee = current_assignee;
+    }
+
+    public String getPrevious_assignee() {
+        return previous_assignee;
+    }
+
+    public void setPrevious_assignee(String previous_assignee) {
+        this.previous_assignee = previous_assignee;
+    }
+
+    public String getDevice_type() {
+        return device_type;
+    }
+
+    public void setDevice_type(String device_type) {
+        this.device_type = device_type;
     }
 }

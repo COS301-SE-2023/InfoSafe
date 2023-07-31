@@ -1,0 +1,180 @@
+.body {
+    font-size: 14px;
+}
+.background {
+    background: url('../images/Welcome_New.png');
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    zoom: normal;
+    background-size: cover;
+}
+.panelBack {
+    width: 25%;
+    height: 40%;
+    /*background-size: cover;*/
+    position: relative;
+    top: 30%;
+    left: 37.5%;
+    /*background: transparent;*/
+    border-radius: 8px;
+    align-content: center;
+    overflow: hidden;
+    perspective: 1000px;
+    background-color: rgba(201, 200, 197, 0.8999999761581421);
+}
+/*.panel {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+
+    /*transition: 0.6s;*/
+    /*transform-style: preserve-3d;*/
+
+    /*box-shadow: 0 4px 4px rgba(0, 0, 0, 0.49);*/
+/*}*/
+/*.background:hover .panel {*/
+/*    transform: rotateY(180deg);*/
+/*}*/
+/*.panelFront,*/
+/*.panelBack {*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    -webkit-backface-visibility: hidden;*/
+/*    backface-visibility: hidden;*/
+/*}*/
+/*.panelFront {*/
+/*    display: none;*/
+/*    background: transparent;*/
+/*}*/
+/*.panelBack {*/
+/*    transform: rotateY(180deg);*/
+/*    background-color: rgba(201, 200, 197, 0.8999999761581421);*/
+/*    border: 1px solid #ffffff;*/
+/*    backface-visibility: hidden;*/
+/*    -webkit-backface-visibility: hidden;*/
+/*}*/
+.title {
+    width: 100%;
+    margin: 0 auto;
+}
+.loginTitle {
+    color: rgba(56, 56, 56, 1);
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    height: 10%;
+    position: relative;
+}
+.btnLogin {
+    width: fit-content;
+    height: 10%;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    background: #cf0000;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 500;
+    border-color: transparent;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 8px;
+}
+.credentials {
+    width: 100%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+}
+.user {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    top: 2%;
+}
+.username {
+    width: fit-content;
+    color: rgb(0, 0, 0);
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    opacity: 1;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+.untxt {
+    width: 60%;
+    height: 30%;
+    color: black;
+    position: relative;
+    left: 20%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    /*opacity: 1;*/
+    text-align: center;
+    border: 1px solid #414141;
+    border-radius: 19px;
+    background-color: #ffffff;
+}
+.user_password {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    top: 6%;
+}
+.pass {
+    width: fit-content;
+    color: rgb(0, 0, 0);
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    opacity: 1;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+.pwtxt {
+    width: 60%;
+    height: 30%;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+    top: 10%;
+    left: 20%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    opacity: 1;
+    text-align: center;
+    border: 1px solid #414141;
+    border-radius: 19px;
+}
+.name {
+    color: #fff;
+}
+.forgot {
+    width: fit-content;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    height: 10%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 1;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1% 2%;
+}
+.forgot:hover {
+    color: #ffffff;
+}

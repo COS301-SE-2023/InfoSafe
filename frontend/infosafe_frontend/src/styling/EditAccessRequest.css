@@ -1,0 +1,194 @@
+.editAccessRequestPopup {
+    width: 50vw;
+    height: 75vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+}
+.editAccessRequestPopupBorder {
+    border: 1px solid #ffffff;
+    width: 46vw;
+    margin: 0 auto;
+    height: 70vh;
+    position: relative;
+    top: 2.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.editAccessRequestBackButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.editAccessRequestBackIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
+.editAccessRequestTitle {
+    width: 60%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: -3vh;
+    left: 20%;
+}
+.editAccessRequestDatascopeDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 1vh;
+    margin-top: 6vh;
+}
+.editAccessRequestDatascopeLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    position: relative;
+    left: 25%;
+    margin-bottom: 1vh;
+}
+.editAccessRequestDatascopeNameDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    position: relative;
+    left: 25%;
+    top: 8%;
+}
+.editAccessRequestRoleDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0 auto;
+}
+.editAccessRequestRoleLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    margin-bottom: 1vh;
+    position: relative;
+    left: 25%;
+}
+.editAccessRequestRoleDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    top: 8%;
+    position: relative;
+    left: 25%;
+}
+.editAccessRequestReasonDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0 auto;
+}
+.editAccessRequestReasonLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    position: relative;
+    top: -1vh;
+}
+.editAccessRequestReasonDisplay {
+    font-size: 16px;
+    width: 50%;
+    text-align: left;
+    border: none;
+    background-color: #ffffff;
+    top: 8%;
+    position: relative;
+}
+.editAccessRequestStatusDiv {
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+.editAccessRequestStatusLabel {
+    text-transform: uppercase;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    margin-bottom: 1vh;
+}
+.editAccessRequestStatusDisplay {
+    font-size: 22px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    background-color: #ffffff;
+    top: 8%;
+    position: relative;
+    left: 25%;
+}
+.editAccessRequestButtonsDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+.editAccessRequestButton {
+    width: fit-content;
+    height: 5%;
+    background-color: #cf0000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto;
+    top: 5vh;
+    left: 42.5%;
+    border: none;
+    padding: 0.5% 1%;
+}

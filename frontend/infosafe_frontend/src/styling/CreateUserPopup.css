@@ -1,0 +1,179 @@
+.createUserOverlay {
+    width: 60vw;
+    height: 90vh;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(173, 173, 173, 0.69);
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+}
+.createUserBorder {
+    border: 1px solid #ffffff;
+    width: 56vw;
+    margin: 0 auto;
+    height: 82vh;
+    position: relative;
+    top: 4vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.createUserBorder::-webkit-scrollbar {
+    display: none;
+}
+.backButton {
+    background-color: rgba(233, 0, 0, 1);
+    border: none;
+    position: relative;
+    height: 4vh;
+    width: 2.5vw;
+    align-content: center;
+    border-radius: 5px;
+    top: 2vh;
+    left: 1vw;
+    color: #ffffff;
+}
+.backIcon {
+    color: #ffffff;
+    margin: 0 auto;
+    height: 3vh;
+    width: 1.3vw;
+}
+.createUserLabel {
+    width: 60%;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    top: -3vh;
+    left: 20%;
+}
+.nameLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.nameInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    height: 4vh;
+}
+.surnameLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.surnameInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
+    height: 4vh;
+}
+.emailLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.emailInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
+    height: 4vh;
+}
+.passwordLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+.passwordInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 0;
+    height: 4vh;
+}
+.roleLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    top: 1vh;
+}
+
+.role_dropdown {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    left: 25%;
+    position: relative;
+    width: 50%;
+    margin-top: 1.5%;
+}
+.role_dropdown:after {
+    transform: translateY(50%);
+}
+.createUserFinish {
+    width: 20%;
+    height: 5%;
+    background-color: rgba(233, 0, 0, 1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    bottom: 2vh;
+    left: 40%;
+    border: none;
+    margin: 5% auto 0;
+}
