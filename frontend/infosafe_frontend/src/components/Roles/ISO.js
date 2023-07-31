@@ -53,7 +53,7 @@ const ISO = ({currentTab}) => {
         return (
             <li key={user.id}>
                 <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.id}: {user.name} {user.surname}
+                    User {user.user_id}: {user.first_name} {user.last_name}
                     {viewUserOpen && (
                         <ViewUser
                             popupClose={() => setViewUserOpen(false)}
