@@ -252,10 +252,15 @@ const ISO = ({currentTab}) => {
                             risk={risk}
                         />
                     ) : null}
-                </p>{' '}
+                </p>
+                <button
+                    className="ISOReviewRiskButton"
+                    onClick={() => setReviewRiskOpen(true)}>
+                    Review
+                </button>
                 <FaRegEdit
                     className="ISOEditIcon"
-                    onClick={() => setEditRiskOpen(editRiskOpen)}
+                    onClick={() => setEditRiskOpen(true)}
                 />
                 {editRiskOpen ? (
                     <EditRisk
@@ -264,11 +269,6 @@ const ISO = ({currentTab}) => {
                         risk={risk}
                     />
                 ) : null}
-                <button
-                    className="ISOReviewRiskButton"
-                    onClick={() => setReviewRiskOpen(true)}>
-                    Review
-                </button>
                 {reviewRiskOpen ? (
                     <ReviewRisk
                         popupClose={() => setReviewRiskOpen(false)}
