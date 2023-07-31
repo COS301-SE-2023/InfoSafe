@@ -147,15 +147,15 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                             <div className="datascope_info">
                                 <div className="datascope_name">
                                     <p className="datascopeNameLabel">Name</p>
-                                    <input className="datascopeNameInput" value={ds_name}
+                                    <input className="datascopeNameInput" data-testid="nameInput" value={ds_name}
                                            onChange={(e) => setDsName(e.target.value)}/>
                                 </div>
                                 <div className="datascope_description">
                                     <p className="descriptionLabel">Description</p>
-                                    <textarea className="createDataScopeDescriptionInput" value={ds_description}
+                                    <textarea className="createDataScopeDescriptionInput" data-testid="Description" value={ds_description}
                                               onChange={(e) => setDsDesc(e.target.value)}/>
                                 </div>
-                                <div className="datascope_roles">
+                                <div className="datascope_roles" data-testid="roles">
                                     <p className="roleLabel">Data Scope Roles</p>
                                     <div className="table">
                                         <table className="roles_tbl">
@@ -188,6 +188,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                 <p className="AddRoleNameLabel">Role Type</p>
                                 <input
                                     className="AddRoleNameInput"
+                                    data-testid="addRole"
                                     name="role"
                                     value={newRole.role_type}
                                     onChange={handleInputChange}
@@ -195,12 +196,14 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                 <p className="AddRoleDescriptionLabel">Role Description</p>
                                 <textarea
                                     className="AddRoleDescriptionInput"
+                                    data-testid="addRoleDescription"
                                     name="roledescription"
                                     value={newRole.role_description}
                                     onChange={handleInputChange}
                                 />
                                 <button
                                     className="AddRoleButton"
+                                    data-testid="addRoleButton"
                                     onClick={handleAddRole}
                                     type="button"
                                 >

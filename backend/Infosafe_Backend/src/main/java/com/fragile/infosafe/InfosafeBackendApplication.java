@@ -24,9 +24,9 @@ public class InfosafeBackendApplication {
 //    public CommandLineRunner commandLineRunner(AuthenticationService service) {
 //        return args -> {
 //            var admin = RegisterRequest.builder()
-//                    .firstname("Alistair")
-//                    .lastname("Ross")
-//                    .email("ali@gmail.com")
+//                    .first_name("Alistair")
+//                    .last_name("Ross")
+//                    .email("alistairmikeross@gmail.com")
 //                    .password("1234")
 //                    .role(ISO)
 //                    .build();

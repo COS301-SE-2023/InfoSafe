@@ -49,8 +49,8 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     }
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-            <div className="editUserOverlay">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
+            <div className="editUserOverlay" data-testid="editUserPopup">
                 <div className="border">
                     <button className="backButton" onClick={popupClose}>
                         <IoArrowBackOutline className="backIcon" />
@@ -64,6 +64,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 type="text"
                                 id="editusername"
                                 name="editusername"
+                                data-testid="firstNameEdit"
                                 defaultValue={user.first_name} onChange={e => setValues({...values, first_name: e.target.value})}
                             />
                         </div>
@@ -98,7 +99,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                 //onChange={(selectedOption) => setRole(selectedOption.value)}
                             />
                         </div>
-                        <button className="FinishButton">
+                        <button className="FinishButton" data-testid="finish">
                             Finish
                         </button>
                     </form>

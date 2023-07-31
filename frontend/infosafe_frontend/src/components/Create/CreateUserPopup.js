@@ -8,9 +8,9 @@ const ROLE_OPTIONS = [
     'EMPLOYEE',
     'ISO',
     'DISO',
-    'DATA CUSTODIAN',
-    'SYSTEM ADMINISTRATOR',
-    'ASSET MANAGER'
+    'DATA_CUSTODIAN',
+    //'SYSTEM ADMINISTRATOR',
+    'ASSET_MANAGER'
 ];
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[first_name,setName]=useState('')
