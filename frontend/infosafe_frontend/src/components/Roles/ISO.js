@@ -25,7 +25,7 @@ import {TaskApproval} from "../TaskApprovalPopup";
 import {ViewRisk} from "../View/ViewRisk";
 import {EditRisk} from "../Edit/EditRisk";
 import AccessAndDisplay from "./AccessAndDisplay";
-import AccessRequestApproval from "./AccessRequestApproval";
+import AccessRequestApproval from "../Edit/AccessRequestApproval";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {

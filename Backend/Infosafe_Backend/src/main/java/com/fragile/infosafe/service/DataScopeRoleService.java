@@ -27,4 +27,8 @@ public class DataScopeRoleService {
 
         return ResponseEntity.status(HttpStatus.OK).body("Data Scope Role Added.");
     }
+
+    public List<DataScopeRole> getDataScopeRolesByDsId(int ds_id) {
+        return dsrRepository.findByDsId(ds_id);
+    }
 }

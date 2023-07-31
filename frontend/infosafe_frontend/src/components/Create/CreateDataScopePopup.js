@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import '../../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
-const data = [
-    {
-        role: 'Administrator',
-        roledescription: 'Manage users, manage data scope, edit permissions.'
-    },
-    {
-        role: 'General User',
-        roledescription: 'Access data scope, complete tasks within data scopes.'
-    }
-];
+import {IoArrowBackOutline} from 'react-icons/io5';
 
-export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
-    const [roles, setRoles] = useState(data);
-    const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
-    const[ds_name,setDsName]=useState('')
-    const[ds_description,setDsDesc]=useState('')
-    const[date_captured,setDateCaptured]=useState()
-    const[data_custodian,setDataCustodian]=useState('')
-    const[ds_status,setStatus]=useState('')
-    const[role_type,setRoleType]=useState('')
-    const[role_description,setRoleDesc]=useState('')
-    const[ds_id, setDsId] = useState('')
+// const data = [
+//     {
+//         role: 'Administrator',
+//         roledescription: 'Manage users, manage data scope, edit permissions.'
+//     },
+//     {
+//         role: 'General User',
+//         roledescription: 'Access data scope, complete tasks within data scopes.'
+//     }
+// ];
+
+export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
+    const [newRole, setNewRole] = useState({role: '', roledescription: ''});
+    const [ds_name, setDsName] = useState('')
+    const [ds_description, setDsDesc] = useState('')
+    const [date_captured, setDateCaptured] = useState()
+    const [data_custodian, setDataCustodian] = useState('')
+    const [ds_status, setStatus] = useState('Pending')
+    const [role_type, setRoleType] = useState('')
+    const [role_description, setRoleDesc] = useState('')
+    const [ds_id, setDsId] = useState('')
     // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const [data, setData] =useState([])
+    const [roles, setRoles] = useState(data);
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewRole((prevRole) => ({ ...prevRole, [name]: value }));
+        const {name, value} = e.target;
+        setNewRole((prevRole) => ({...prevRole, [name]: value}));
     };
 
     const handleAddRole = (e) => {
         e.preventDefault();
         if (newRole.role && newRole.roledescription) {
             setRoles((prevRoles) => [...prevRoles, newRole]);
-            setNewRole({ role: '', roledescription: '' });
+            setNewRole({role: '', roledescription: ''});
         }
     };
 
     const handleCaptureDate = () => {
         var today = new Date();
-        setDateCaptured(today);
+        setDateCaptured(formatDate(date));
         console.log(date_captured);
     };
 
@@ -54,8 +54,8 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
     };
     const handleClick = (e) => {
         e.preventDefault();
-        const datascope = { data_custodian, date_captured, ds_description, ds_name, ds_status };
-        const dataScopeRoles = { ds_id, role_description, role_type };
+        const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
+        const dataScopeRoles = {ds_id, role_description, role_type};
 
         fetch(`http://localhost:8080/api/datascope/checkName?name=${ds_name}`)
             .then((response) => response.json())
@@ -102,14 +102,38 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
             });
     };
 
+    useEffect(() => {
+        fetch('http://localhost:8080/api/dataScopeRole/getDataScopeRole', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setData(result);
+            });
+    }, []);
 
+    seEffect(() => {
+        fetch('http://localhost:8080/api/user/getId', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setDataCustodian(result);
+            });
+    }, []);
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
                 <div className="createDataScopeBorder">
                     <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
+                        <IoArrowBackOutline className="backIcon"/>
                     </button>
                     <p className="datascopeLabel">Data Scope Creation</p>
                     <form>
@@ -117,35 +141,37 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose }) => {
                             <div className="datascope_info">
                                 <div className="datascope_name">
                                     <p className="datascopeNameLabel">Name</p>
-                                    <input className="datascopeNameInput" value={ds_name} onChange={(e)=>setDsName(e.target.value)}/>
+                                    <input className="datascopeNameInput" value={ds_name}
+                                           onChange={(e) => setDsName(e.target.value)}/>
                                 </div>
                                 <div className="datascope_description">
                                     <p className="descriptionLabel">Description</p>
-                                    <textarea className="createDataScopeDescriptionInput" value={ds_description} onChange={(e)=>setDsDesc(e.target.value)}/>
+                                    <textarea className="createDataScopeDescriptionInput" value={ds_description}
+                                              onChange={(e) => setDsDesc(e.target.value)}/>
                                 </div>
                                 <div className="datascope_roles">
                                     <p className="roleLabel">Data Scope Roles</p>
                                     <div className="table">
                                         <table className="roles_tbl">
                                             <thead>
-                                                <tr>
-                                                    <th className="role_Header">Role</th>
-                                                    <th className="role_descrHeader">
-                                                        Role Description
-                                                    </th>
-                                                </tr>
+                                            <tr>
+                                                <th className="role_Header">Role</th>
+                                                <th className="role_descrHeader">
+                                                    Role Description
+                                                </th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                {roles.map((role, key) => {
-                                                    return (
-                                                        <tr key={key}>
-                                                            <td>{role.role}</td>
-                                                            <td className="roledescription_Table">
-                                                                {role.roledescription}
-                                                            </td>
-                                                        </tr>
-                                                    );
-                                                })}
+                                            {roles.map((role, key) => {
+                                                return (
+                                                    <tr key={key}>
+                                                        <td>{role.role}</td>
+                                                        <td className="roledescription_Table">
+                                                            {role.roledescription}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
                                             </tbody>
                                         </table>
                                     </div>
