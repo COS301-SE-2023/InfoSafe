@@ -42,7 +42,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
 
     const handleCaptureDate = () => {
         var today = new Date();
-        setDateCaptured(formatDate(date));
+        setDateCaptured(formatDate(today));
         console.log(date_captured);
     };
 
@@ -115,7 +115,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
             });
     }, []);
 
-    seEffect(() => {
+    useEffect(() => {
         fetch('http://localhost:8080/api/user/getId', {
             method: "GET",
             headers: {

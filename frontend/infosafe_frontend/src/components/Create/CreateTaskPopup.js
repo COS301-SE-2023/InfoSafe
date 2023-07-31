@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/CreateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-import Select from 'react-select/base';
+import Select from 'react-select';
 
 export const CreateTask = ({ popupClose, popupOpen }) => {
     const [task_description, setTaskDescription] = useState('');
@@ -12,26 +12,54 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     const [date_created, setDateCreated] = useState('');
     const [user_id, setUserId] = useState([]);
     const [task_id, setTaskId] = useState('');
-    const [selectedUsers, setSelectedUsers] = useState();
+    const [selectedUsers, setSelectedUsers] = useState([]);
     const [users, setUsers] = useState([]);
 
     const handleDescriptionChange = (e) => {
         setTaskDescription(e.target.value);
     };
-    const handleClick=(e)=> {
-        e.preventDefault()
-        const task = {task_description, task_status,  due_date, date_created}
-        const assignedtask = {task_id, user_id}
+    const handleClick = (e) => {
+        e.preventDefault();
+        let use_id;
+        const task = { task_description, task_status, due_date, date_created };
         fetch("http://localhost:8080/api/task/addTask", {
-            method:"POST",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
-            body:JSON.stringify(task)
-        }).then(()=>{
-            console.log("New task added")
+            body: JSON.stringify(task),
         })
-        popupClose()
+            .then((response) => response.json())
+            .then((data) => {
+                setTaskId(data.task_id); // Save the task_id from the API response
+                console.log("New task added");
+                console.log(data.task_id);
+
+                const assignedTasks = selectedUsers.map((user) => ({
+                    task_id: data.task_id, // Use the task_id from the API response
+                    user_id: user.value,
+                }));
+
+                Promise.all(
+                    assignedTasks.map((assignedtask) =>
+                        fetch("http://localhost:8080/api/assignedTask/addTask", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
+                            },
+                            body: JSON.stringify(assignedtask),
+                        })
+                    )
+                ).then(() => {
+                    console.log("New Assignedtasks added");
+                    popupClose();
+                });
+            })
+            .catch((error) => {
+                console.error("Error adding task:", error);
+            });
     };
 
     useEffect(() => {
@@ -47,13 +75,16 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
             });
     }, []);
     //Adds users to the array on selection change
-    const handleSelect = (e) =>{
-        selectedUsers(e.target.value);
-    }
+    const handleSelect = (selectedOptions) => {
+        setSelectedUsers(selectedOptions);
+    };
     const handleDateChange = (date) => {
         setDateCreated(formatDate(date));
     };
     const formatDate = (date) => {
+        if (!date || !(date instanceof Date)) {
+            return ''; // or handle the invalid date case appropriately
+        }
         const year = date.getFullYear().toString().slice(-2);
         const month = ('0' + (date.getMonth() + 1)).slice(-2);
         const day = ('0' + date.getDate()).slice(-2);
@@ -76,17 +107,20 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                             onChange={handleDescriptionChange}
                             value={task_description}
                         />
-                        <p className="inputTitle">Assignee</p>
+                        <p className="inputTitle">Assignees</p>
+                        {users && users.length > 0 ? (
                         <Select  //Dropdown
-                            options={users.email}
-                            value={user_id}
-                            className="createTaskAssigneeDropdown"
-                            name="createTaskAssigneeDropdown"
+                            options={users.map((data) => ({value: data.user_id, label: data.email}))}
+                            value = {selectedUsers}
+                            className="datascopeDropdown"
+                            name="datascopeDropdown"
                             placeholder={"Add Assignees"}
                             onChange={handleSelect}
                             isSearchable={true}
                             isMulti
-                        />
+                        /> ) : (
+                            <p>Loading...</p>
+                        )}
                         <p className="inputTitle">Completion Date</p>
                         <input
                             type="date"

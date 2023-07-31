@@ -9,7 +9,7 @@ const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
-    const [datascopeData, setDatascopeData] = useState([]);
+    const [datascopeData, setDatascopeData] = useState();
     const[ds_id, setDsId] = useState('')
     const[impact_rating, setImpactRating] = useState('')
     const[risk_description, setRiskDescription] = useState('')
@@ -48,9 +48,9 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
             .then((res) => res.json())
             .then((result) => {
                 setDatascopeData(result);
+                console.log(datascopeData);
             });
     }, []);
-
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -62,13 +62,17 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                     <form>
                         <p className="pageTitle">Create Risk</p>
                         <p className="inputTitle">Data Scope</p>
+                        {datascopeData && datascopeData.length > 0 ? (
                         <Dropdown
-                            options={datascopeData}
-                            value={ds_id}
+                            options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                            value={datascopeData.ds_name}
                             className="datascopeDropdown"
                             name="datascopeDropdown"
+                            placeholder={"Add DataScope"}
                             onChange={(selectedOption)=> setDsId(selectedOption.value)}
-                        />
+                        /> ) : (
+                            <p>Loading...</p>
+                        )}
                         <p className="inputTitle">Risk Status</p>
                         <Dropdown
                             options={PROBABILITY}

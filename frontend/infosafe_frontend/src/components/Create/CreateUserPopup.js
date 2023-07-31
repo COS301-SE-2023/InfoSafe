@@ -26,6 +26,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
 
         fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
             method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+            },
         })
             .then((response) => response.json())
             .then((data) => {

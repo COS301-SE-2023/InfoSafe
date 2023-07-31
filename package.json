@@ -7,15 +7,16 @@
     "format": "eslint . --ext .js",
     "fix": "eslint --fix . --ext .js",
     "frontend": "cd frontend/infosafe_frontend && npm start",
-    "frontend_tests": "cd frontend/infosafe_frontend && react-scripts test"
+    "frontend_tests": "cd frontend/infosafe_frontend && react-scripts test",
+    "infront": "cd frontend/infosafe_frontend && npm install",
+    "eslint": "^8.45.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.32.2"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.15.0",
-    "eslint": "^8.45.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-react": "^7.32.2"
+    "cypress": "^12.15.0"
   },
   "dependencies": {
     "react-select": "^5.7.4"
