@@ -64,6 +64,16 @@ public class UserController {
         return null;
     }
 
+    @GetMapping("/getUserName")
+    public String getCurrentUserName(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return (authenticatedUser.getFirst_name() + " " + authenticatedUser.getLast_name());
+        }
+        return null;
+    }
+
     @GetMapping("/checkEmail")
     public ResponseEntity<Boolean> checkEmailExists(@RequestParam("email") String email) {
         boolean emailExists = userService.checkEmailExists(email);

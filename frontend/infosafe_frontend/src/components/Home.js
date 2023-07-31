@@ -2,16 +2,14 @@ import '../styling/Home.css';
 import React, {useEffect, useState} from 'react';
 import NavBar from './NavBar';
 import {IoPersonCircleSharp} from "react-icons/io5";
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
-//import various things to be displayed
 
 const Home = () => {
     if(sessionStorage.getItem('accessToken') == null)
         window.location.href = "/";
 
-        const [systemRole, setRole] = useState();
-        const [settings, showSettings] = useState(false);
+    const [systemRole, setRole] = useState();
+    const [settings, showSettings] = useState(false);
+    const [username, setUserName] = useState();
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getRole', {
@@ -23,6 +21,19 @@ const Home = () => {
             .then((res) => res.json())
             .then((result) => {
                 setRole(result);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/user/getUserName', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUserName(result);
             });
     }, []);
         const showDiv = () =>
@@ -38,7 +49,7 @@ const Home = () => {
                 <NavBar systemRole={systemRole}/>
 
                 <div className="activeUser">
-                    <p className="userDisplay" >Jane Doe</p>
+                    <p className="userDisplay" >${username}</p>
                     <IoPersonCircleSharp className="avatar" onClick={showDiv} />
                     {settings &&
                         <div className="settingsDiv">
