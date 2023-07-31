@@ -13,8 +13,8 @@ const ROLE_OPTIONS = [
     'ASSET MANAGER'
 ];
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
-    const[firstname,setName]=useState('')
-    const[lastname,setSurname]=useState('')
+    const[first_name,setName]=useState('')
+    const[last_name,setSurname]=useState('')
     const[email,setEmail]=useState('')
     let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
@@ -22,7 +22,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const handleClick = (e) => {
         e.preventDefault();
         const selectedRole = role === '' ? 'EMPLOYEE' : role;
-        const user = { firstname, lastname, email, password, role: selectedRole };
+        const user = { first_name, last_name, email, password, role: selectedRole };
 
         fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
             method: "GET",
@@ -94,9 +94,9 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         </button>
                         <p className="createUserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
-                        <input className="nameInput" data-testid="nameInput" name="name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
+                        <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" data-testid="surnameInput" name="surname" value={lastname} onChange={(e)=>setSurname(e.target.value)}/>
+                        <input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
                         <p className="emailLabel">Email</p>
                         <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="passwordLabel">Password</p>
