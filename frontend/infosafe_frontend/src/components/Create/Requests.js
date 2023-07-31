@@ -101,7 +101,7 @@ const DisplayISORequests = () => {
                                     placeholder={"Add Device"}
                                     onChange={(selectedOption)=> setAvailableDevices(selectedOption.value)}
                                 /> ) : (
-                                <p>Loading...</p>
+                                <p className="loadTitle">Loading...</p>
                             )}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea
@@ -112,7 +112,7 @@ const DisplayISORequests = () => {
                             <p className="createAssetRequestDateLabel">Desired Date</p>
                             <input
                                 type="date"
-                                className="createAssetRequestDateLabel"
+                                className="createAssetRequestDateInput"
                                 onChange={(e) => handleDateChange(e.target.value)}
                                 required
                             />
@@ -123,7 +123,6 @@ const DisplayISORequests = () => {
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                             />
-                            <input type="text" className="createAssetRequestDateInput" />
                             <div className="createAssetRequestButtonDiv">
                                 <button
                                     className="createAssetRequestButton"
@@ -243,7 +242,7 @@ const DisplayDataCustodianRequests = () => {
                                     placeholder={"Add DataScope"}
                                     onChange={(selectedOption)=> setDsId(selectedOption.value)}
                                 /> ) : (
-                                <p>Loading...</p>
+                                <p className="loadTitle">Loading...</p>
                             )}
                             <p className="createAccessRequestReasonLabel">Reason</p>
                             <textarea
@@ -251,9 +250,9 @@ const DisplayDataCustodianRequests = () => {
                                 onChange={handleReasonChange}
                                 value={reason}
                             />
-                            <p className="createAccessRequestDeviceNameLabel">Status</p>
+                            <p className="createAccessRequestStatusLabel">Status</p>
                             <Dropdown
-                                className="assetAccessSelectDeviceDropdown"
+                                className="accessRequestStatusDropdown"
                                 options={STATUS}
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setStatus(selectedOption.value)}
@@ -283,7 +282,7 @@ const DisplayDataCustodianRequests = () => {
                                     placeholder={"Add Device"}
                                     onChange={(selectedOption)=> setAvailableDevices(selectedOption.value)}
                                 /> ) : (
-                                <p>Loading...</p>
+                                <p className="loadTitle">Loading...</p>
                             )}
                             <p className="createAssetRequestReasonLabel">Reason</p>
                             <textarea
@@ -294,7 +293,7 @@ const DisplayDataCustodianRequests = () => {
                             <p className="createAssetRequestDateLabel">Desired Date</p>
                             <input
                                 type="date"
-                                className="createAssetRequestDateLabel"
+                                className="createAssetRequestDateInput"
                                 onChange={(e) => handleDateChange(e.target.value)}
                                 required
                             />
@@ -305,7 +304,6 @@ const DisplayDataCustodianRequests = () => {
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                             />
-                            <input type="text" className="createAssetRequestDateInput" />
                             <div className="createAssetRequestButtonDiv">
                                 <button
                                     className="createAssetRequestButton"
