@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import '../../styling/CreateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import Select from "react-select/base";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 const TASK_TYPES = ['COMPLIANCE MATRIX', 'RISK', 'SUPPORT REQUEST'];
@@ -15,6 +16,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     const [date_created, setDateCreated] = useState('');
     const [user_id, setUserId] = useState([]);
     const [task_id, setTaskId] = useState('');
+    const [selectedUsers, setSelectedUsers] = useState();
 
     const handleClick=(e)=> {
         e.preventDefault()
@@ -31,6 +33,11 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
         })
         popupClose()
     };
+
+    //Adds users to the array on selection change
+    function handleSelect(data){
+        selectedUsers(data);
+    }
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -56,11 +63,15 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                             name="createTaskDataScopeDropdown"
                         />
                         <p className="inputTitle">Assignee</p>
-                        <Dropdown
+                        <Select  //Dropdown
                             options={USER_LIST}
-                            value={USER_LIST[1]}
+                            value={selectedUsers}//{USER_LIST[1]}
                             className="createTaskAssigneeDropdown"
                             name="createTaskAssigneeDropdown"
+                            placeholder={"Add Assignees"}
+                            onChange={handleSelect}
+                            isSearchable={true}
+                            isMulti
                         />
                         <p className="inputTitle">Task Description</p>
                         <textarea className="inputTextArea" />
