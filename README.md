@@ -49,16 +49,15 @@ Users will be assigned certain roles when their profile has been created on the 
 ### SRS Documentation:
 - :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
 - :book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
-- :book: [Version 3]()
+- :book: [Version 3](https://drive.google.com/file/d/1gsfEIISYS6TjLWlR5U_ChzInj6DKuebH/view?usp=drive_link)
 
 ### Supporting Documentation:
 - :cd: [Installation Guide](https://drive.google.com/file/d/1dknsxkSdO7IuFwLEQOQQMyryFXCjHErY/view?usp=drive_link)
 - :scroll: [User Manual](https://drive.google.com/file/d/1kwUym9M0jMED1HV_6snhC9W_sWb0qIHg/view?usp=drive_link)
 - :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1pAsGk5qfdi2SdU56Sl2BqYO98z9Tmzfh/view?usp=drive_link)
-- :triangular_ruler: [System Architecture]()
 - :floppy_disk: [Database Design](https://drive.google.com/file/d/19lEQfhf-AGBNxfh5Ta0vYNW8SyThgfeI/view?usp=drive_link)
 - :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1Mq1ZA1fK-0AXT2SZCbgqIrSisEyAUX6P/view?usp=drive_link)
-- :memo: [Team Contributions]()
+- :memo: [Team Contributions](https://drive.google.com/file/d/13r8slHJgSczPNC0pmyFKHnAvALqjSeCp/view?usp=drive_link)
 
 ### GitHub Links:
 - :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
