@@ -52,7 +52,7 @@ Users will be assigned certain roles when their profile has been created on the 
 - :book: [Version 3]()
 
 ### Supporting Documentation:
-- :cd: [Installation Guide]()
+- :cd: [Installation Guide](https://drive.google.com/file/d/1dknsxkSdO7IuFwLEQOQQMyryFXCjHErY/view?usp=drive_link)
 - :scroll: [User Manual](https://drive.google.com/file/d/1kwUym9M0jMED1HV_6snhC9W_sWb0qIHg/view?usp=drive_link)
 - :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1pAsGk5qfdi2SdU56Sl2BqYO98z9Tmzfh/view?usp=drive_link)
 - :triangular_ruler: [System Architecture]()
