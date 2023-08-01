@@ -20,7 +20,6 @@ public class SupportRequest {
     private String support_type;
     private String support_description;
     private String support_status;
-    private int asset_id;
 
     public int getSupport_id() { return support_id; }
 
@@ -42,7 +41,4 @@ public class SupportRequest {
 
     public void setSupport_status(String support_status) { this.support_status = support_status; }
 
-    public int getAsset_id() { return asset_id; }
-
-    public void setAsset_id(int asset_id) { this.asset_id = asset_id; }
 }

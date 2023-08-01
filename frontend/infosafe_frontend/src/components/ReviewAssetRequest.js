@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 
-const ReviewAssetRequest = ({popupOpen, popupClose}) => {
+const ReviewAssetRequest = ({asset, popupOpen, popupClose}) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position= "center center">
             <div className="reviewAssetRequestOverlay">
@@ -15,9 +15,9 @@ const ReviewAssetRequest = ({popupOpen, popupClose}) => {
                     </button>
                     <p className="reviewAssetRequestLabel">Review Asset Request</p>
                     <p className="reviewAssetRequestDeviceNameLabel">Device Name</p>
-                    <p className="reviewAssetRequestDeviceName">Device A</p>
+                    <p className="reviewAssetRequestDeviceName">{asset.asset_name}</p>
                     <p className="reviewAssetRequestUserLabel">User</p>
-                    <p className="reviewAssetRequestUser">User 5</p>
+                    <p className="reviewAssetRequestUser">{}</p>
                     <p className="reviewAssetRequestReasonLabel">Reason</p>
                     <textarea className="reviewAssetRequestReason" readOnly={true} defaultValue="Reason for asset request here."></textarea>
                     <p className="reviewAssetRequestDateRequiredLabel">Date Required</p>

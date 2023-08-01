@@ -13,6 +13,7 @@ import java.util.Date;
 public class AssetRequestRequest {
     private int asset_request_id;
     private int user_id;
+    private int asset_id;
     private String reason;
     private Date desired_date;
     private String request_status;

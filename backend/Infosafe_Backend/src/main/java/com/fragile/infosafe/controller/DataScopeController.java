@@ -32,4 +32,9 @@ public class DataScopeController {
         return service.updateDataScope(datascope);
     }
 
+    @GetMapping("/checkName")
+    public ResponseEntity<Boolean> checkEmailExists(@RequestParam("dsname") String name) {
+        boolean nameExists = service.checkDataScopeExists(name);
+        return ResponseEntity.ok(nameExists);
+    }
 }

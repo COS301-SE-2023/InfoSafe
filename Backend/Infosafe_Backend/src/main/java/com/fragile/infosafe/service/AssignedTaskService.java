@@ -7,23 +7,26 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AssignedTaskService {
+    private final AssignedTaskRepository repository;
 
-    private final AssignedTaskRepository atRepository;
-
-    public List<AssignedTask> getAllAssignedTasks() { return atRepository.findAll(); }
-
-    public ResponseEntity<String> makeAssignedTask(AssignedTaskRequest atRequest){
+    public ResponseEntity<String> makeAT(AssignedTaskRequest request){
         var assignedTask = AssignedTask.builder()
-                .task_id(atRequest.getTask_id())
-                .user_id(atRequest.getUser_id())
-                .ds_id(atRequest.getDs_id())
+                .user_Id(request.getUser_Id())
+                .task_Id((request.getTask_Id()))
                 .build();
-        atRepository.save(assignedTask);
-        return ResponseEntity.status(HttpStatus.OK).body("Assgined Task Created.");
+        repository.save(assignedTask);
+        return ResponseEntity.status(HttpStatus.OK).body("added");
     }
+
+    public List<AssignedTask> getAllAssignedTasks() {return repository.findAll();}
+
+    public AssignedTask updateDataScope(AssignedTask assignedTask) {return repository.save(assignedTask);}
+
+    public List<AssignedTask> getAllTasks() { return repository.findAll(); }
 }
