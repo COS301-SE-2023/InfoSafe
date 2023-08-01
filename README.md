@@ -53,7 +53,7 @@ Users will be assigned certain roles when their profile has been created on the 
 
 ### Supporting Documentation:
 - :cd: [Installation Guide]()
-- :scroll: [User Manual]()
+- :scroll: [User Manual](https://drive.google.com/file/d/1kwUym9M0jMED1HV_6snhC9W_sWb0qIHg/view?usp=drive_link)
 - :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1pAsGk5qfdi2SdU56Sl2BqYO98z9Tmzfh/view?usp=drive_link)
 - :triangular_ruler: [System Architecture]()
 - :floppy_disk: [Database Design](https://drive.google.com/file/d/19lEQfhf-AGBNxfh5Ta0vYNW8SyThgfeI/view?usp=drive_link)
