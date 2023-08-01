@@ -84,7 +84,7 @@ I am proficient in:
 
 
 #### Profiles:
-<a href="https://github.com/P3TROOS"><img src="Documentation/Images/Github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="Documentation/Images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
+<a href="https://github.com/P3TROOS"><img src="documentation/images/Github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="documentation/images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -102,7 +102,7 @@ I am proficient in:
 - [![ASP.Net (MVC)](https://img.shields.io/badge/ASP.Net-lightblue.svg)](https://en.wikipedia.org/wiki/ASP.NET)
 
 #### Profiles:
-<a href="https://github.com/ChrisMitt"><img src="Documentation/Images/github.jpeg" alt="chris github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="Documentation/Images/linkedin.png" alt="chris linkedin" width="30" height="30"></a>
+<a href="https://github.com/ChrisMitt"><img src="documentation/images/github.jpeg" alt="chris github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="documentation/images/linkedin.png" alt="chris linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -122,7 +122,7 @@ I am proficient in:
 - [![NoSQL](https://img.shields.io/badge/NoSQL-8f2c3e.svg)](https://en.wikipedia.org/wiki/NoSQL)
 
 #### Profiles:
-<a href="https://github.com/yanevdw19021209"><img src="Documentation/Images/github.jpeg" alt="yane github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/"><img src="Documentation/Images/linkedin.png" alt="yane linkedin" width="30" height="30"></a>
+<a href="https://github.com/yanevdw19021209"><img src="documentation/images/github.jpeg" alt="yane github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/"><img src="documentation/images/linkedin.png" alt="yane linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -140,7 +140,7 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 - [![PHP](https://img.shields.io/badge/PHP-purple.svg)](https://en.wikipedia.org/wiki/PHP)
 
 #### Profiles:
-<a href="https://github.com/KarelSmit"><img src="Documentation/Images/github.jpeg" alt="karel github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="Documentation/Images/linkedin.png" alt="karel linkedin" width="30" height="30"></a>
+<a href="https://github.com/KarelSmit"><img src="documentation/images/github.jpeg" alt="karel github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="documentation/images/linkedin.png" alt="karel linkedin" width="30" height="30"></a>
 
 <hr>
 
@@ -157,4 +157,4 @@ I am proficient in:
 - [![SQL](https://img.shields.io/badge/SQL-a7f77e.svg)](https://en.wikipedia.org/wiki/SQL)
 
 #### Profiles:
-<a href="https://github.com/AlistairMRoss"><img src="Documentation/Images/github.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="Documentation/Images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
+<a href="https://github.com/AlistairMRoss"><img src="documentation/images/github.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="documentation/images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
