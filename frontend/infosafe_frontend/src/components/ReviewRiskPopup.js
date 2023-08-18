@@ -8,7 +8,7 @@ import Dropdown from 'react-dropdown';
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ['Accept','Avoid','Transfer','Mitigate'];
-export const ReviewRisk = ({ popupClose, popupOpen }) => {
+export const ReviewRisk = ({ risk, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="reviewRiskOverlay">

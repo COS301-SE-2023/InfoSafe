@@ -30,4 +30,6 @@ public class SupportRequestController {
         supportRequest.setSupport_id(support_id);
         return service.updateSupportRequest(supportRequest);
     }
+    @GetMapping("/getSrById/{id}")
+    public List<SupportRequest> supportRequestsById(@PathVariable("id") int user_id){ return service.getUserSupportRequests(user_id); }
 }

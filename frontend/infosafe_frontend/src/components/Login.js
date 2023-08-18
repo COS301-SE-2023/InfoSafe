@@ -21,7 +21,6 @@ function Login(){
                     window.location.href = '/home';
                 });
             } else {
-                //throw new Error('Login failed');
                 console.log("Login failed");
             }
         })
@@ -38,9 +37,9 @@ function Login(){
 
     return (
         <div className="background">
-            <div className="flipPanel">
-                <div className="panel">
-                    <div className="panelFront"></div>
+            {/*<div className="flipPanel">*/}
+            {/*    <div className="panel">*/}
+            {/*        <div className="panelFront"></div>*/}
                     <div className="panelBack">
                         <div className="title">
                             <p className="loginTitle">Login</p>
@@ -77,8 +76,8 @@ function Login(){
                             Login
                         </button>
                     </div>
-                </div>
-            </div>
+                {/*</div>*/}
+            {/*</div>*/}
         </div>
     );
 }

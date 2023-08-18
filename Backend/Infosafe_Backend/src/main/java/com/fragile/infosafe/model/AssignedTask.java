@@ -1,8 +1,8 @@
 package com.fragile.infosafe.model;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,21 +14,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="assigned_tasks")
+@IdClass(AssignedTaskId.class)
+@Table(name="assignedtask")
 public class AssignedTask {
+    public Long getUser_Id() {
+        return user_Id;
+    }
+
+    public void setUser_Id(Long user_Id) {
+        this.user_Id = user_Id;
+    }
+
+    public Long getTask_Id() {
+        return task_Id;
+    }
+
+    public void setTask_Id(Long task_Id) {
+        this.task_Id = task_Id;
+    }
 
     @Id
-    private int task_id;
-    private int user_id;
+    private Long user_Id;
 
-    @Nullable
-    private int ds_id;
-
-    private int getTaskID() { return this.task_id; }
-
-    private int getUserID() { return this.user_id; }
-
-    private void setUserID(int user) { this.user_id = user; }
-
-    private int getDataScopeID() { return this.ds_id; }
+    @Id
+    private Long task_Id;
 }

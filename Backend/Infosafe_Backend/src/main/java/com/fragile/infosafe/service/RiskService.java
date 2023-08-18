@@ -1,7 +1,6 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.model.Risk;
-import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.repository.RiskRepository;
 import com.fragile.infosafe.requests.RiskRequest;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +21,8 @@ public class RiskService {
 
     public ResponseEntity<String> makeRisk(RiskRequest request){
         var risk = Risk.builder()
-                .ds_id(request.getDs_id())
                 .impact_rating(request.getImpact_rating())
+                .probability_rating(request.getProbability_rating())
                 .risk_description(request.getRisk_description())
                 .suggested_mitigation(request.getSuggested_mitigation())
                 .risk_status(request.getRisk_status())
