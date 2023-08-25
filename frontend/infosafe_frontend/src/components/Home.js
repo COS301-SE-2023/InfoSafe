@@ -40,7 +40,6 @@ const Home = () => {
         {
             showSettings(!settings);
         };
-
         return (
             <div className="backdrop">
                 <NavBar systemRole={systemRole}/>
