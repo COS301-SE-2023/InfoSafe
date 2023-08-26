@@ -12,6 +12,9 @@ const RoleCreation = () => {
     const [displayPermission, setDisplayPermission] = useState(new Array(subsystems.length).fill(false));
     const [canViewAll, setCanViewAll] = useState(new Array(subsystems.length).fill(false));
     const [allPermissions, setAllPermissions] = useState([]);
+    const [canCreateAssetRequest, setCanCreateAssetRequest] = useState([]);
+    const [canCreateSupportRequest, setCanCreateSupportRequest] = useState([]);
+    const [canCreateAccessRequest, setCanCreateAccessRequest] = useState([]);
 
     const [permissions, setPermissions] = useState(
         subsystems.map(() => ({
@@ -61,8 +64,16 @@ const RoleCreation = () => {
         const createAllowed = [...canCreate];
         createAllowed[index] = !createAllowed[index];
         setCanCreate(createAllowed);
+        let permission = '';
+        if (index === 3){
+            permission = "Create Tasks";
+        }
+        else
+        {
+            permission = "Create " + subsystems[index];
+        }
 
-        const permission = "Create " + subsystems[index];
+
         if (!createAllowed[index]) {
             setAllPermissions(prev => prev.filter(p => p !== permission));
         } else {
@@ -74,8 +85,15 @@ const RoleCreation = () => {
         const editAllowed = [...canEdit];
         editAllowed[index] = !editAllowed[index];
         setCanEdit(editAllowed);
+        let permission = '';
+        if (index === 3){
+            permission = "Edit Tasks";
+        }
+        else
+        {
+            permission = "Edit " + subsystems[index];
+        }
 
-        const permission = "Edit " + subsystems[index];
         if (!editAllowed[index]) {
             setAllPermissions(prev => prev.filter(p => p !== permission));
         } else {
@@ -88,7 +106,15 @@ const RoleCreation = () => {
         deleteAllowed[index] = !deleteAllowed[index];
         setCanDelete(deleteAllowed);
 
-        const permission = "Delete " + subsystems[index];
+        let permission = '';
+        if (index === 3){
+            permission = "Delete Tasks";
+        }
+        else
+        {
+            permission = "Delete " + subsystems[index];
+        }
+
         if (!deleteAllowed[index]) {
             setAllPermissions(prev => prev.filter(p => p !== permission));
         } else {
@@ -101,7 +127,15 @@ const RoleCreation = () => {
         approveAllowed[index] = !approveAllowed[index];
         setCanApprove(approveAllowed);
 
-        const permission = "Approve " + subsystems[index];
+        let permission = '';
+        if (index === 3){
+            permission = "Approve Tasks";
+        }
+        else
+        {
+            permission = "Approve " + subsystems[index];
+        }
+
         if (!approveAllowed[index]) {
             setAllPermissions(prev => prev.filter(p => p !== permission));
         } else {
@@ -114,7 +148,15 @@ const RoleCreation = () => {
         reviewAllowed[index] = !reviewAllowed[index];
         setCanReview(reviewAllowed);
 
-        const permission = "Review " + subsystems[index];
+        let permission = '';
+        if (index === 3){
+            permission = "Review Tasks";
+        }
+        else
+        {
+            permission = "Review " + subsystems[index];
+        }
+
         if (!reviewAllowed[index]) {
             setAllPermissions(prev => prev.filter(p => p !== permission));
         } else {
@@ -127,13 +169,58 @@ const RoleCreation = () => {
         viewAllAllowed[index] = !viewAllAllowed[index];
         setCanViewAll(viewAllAllowed);
 
-        const permission = "View All " + subsystems[index];
+        let permission = '';
+        if (index === 3){
+            permission = "View All Tasks";
+        }
+        else
+        {
+            permission = "View All " + subsystems[index];
+        }
+
         if (!viewAllAllowed[index]) {
             setAllPermissions(prev => prev.filter(p => p !== permission));
         } else {
             setAllPermissions(prev => [...prev, permission]);
         }
     }
+    const handleCreateSupportRequest = (index) => {
+        const createSupportRequestAllowed = [...canCreateSupportRequest];
+        createSupportRequestAllowed[index] = !createSupportRequestAllowed[index];
+        setCanCreateSupportRequest(createSupportRequestAllowed);
+
+        const permission = "Create Support " + subsystems[index];
+        if (!createSupportRequestAllowed[index]) {
+            setAllPermissions(prev => prev.filter(p => p !== permission));
+        } else {
+            setAllPermissions(prev => [...prev, permission]);
+        }
+    };
+    const handleCreateAssetRequest = (index) => {
+        const createAssetRequestAllowed = [...canCreateAssetRequest];
+        createAssetRequestAllowed[index] = !createAssetRequestAllowed[index];
+        setCanCreateAssetRequest(createAssetRequestAllowed);
+
+        const permission = "Create Asset " + subsystems[index];
+        if (!createAssetRequestAllowed[index]) {
+            setAllPermissions(prev => prev.filter(p => p !== permission));
+        } else {
+            setAllPermissions(prev => [...prev, permission]);
+        }
+    };
+
+    const handleCreateAccessRequest = (index) => {
+        const createAccessRequestAllowed = [...canCreateAccessRequest];
+        createAccessRequestAllowed[index] = !createAccessRequestAllowed[index];
+        setCanCreateAccessRequest(createAccessRequestAllowed);
+
+        const permission = "Create Access " + subsystems[index];
+        if (!createAccessRequestAllowed[index]) {
+            setAllPermissions(prev => prev.filter(p => p !== permission));
+        } else {
+            setAllPermissions(prev => [...prev, permission]);
+        }
+    };
 
     return (
         <div className="display">
@@ -466,8 +553,8 @@ const RoleCreation = () => {
                                                         <label className="accessLabels">
                                                             <input
                                                                 type="checkbox"
-                                                                checked={canCreate[index]}
-                                                                onChange={() => handleCreate(index)}
+                                                                checked={canCreateAssetRequest[index]}
+                                                                onChange={() => handleCreateAssetRequest(index)}
                                                                 className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Asset Requests
@@ -477,8 +564,8 @@ const RoleCreation = () => {
                                                         <label className="accessLabels">
                                                             <input
                                                                 type="checkbox"
-                                                                checked={canCreate[index]}
-                                                                onChange={() => handleCreate(index)}
+                                                                checked={canCreateSupportRequest[index]}
+                                                                onChange={() => handleCreateSupportRequest(index)}
                                                                 className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Support Requests
@@ -488,8 +575,8 @@ const RoleCreation = () => {
                                                         <label className="accessLabels">
                                                             <input
                                                                 type="checkbox"
-                                                                checked={canCreate[index]}
-                                                                onChange={() => handleCreate(index)}
+                                                                checked={canCreateAccessRequest[index]}
+                                                                onChange={() => handleCreateAccessRequest(index)}
                                                                 className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Access Requests
