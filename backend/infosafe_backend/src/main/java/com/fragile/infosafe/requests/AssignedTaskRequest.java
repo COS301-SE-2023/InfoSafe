@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AssignedTaskRequest {
-    private Long user_Id;
-    private Long task_Id;
+    private int user_Id;
+    private int task_Id;
 }

@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Asset {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int asset_id;
+    private String serial_number;
     private String asset_name;
     private String asset_description;
     private String status;
@@ -91,4 +92,8 @@ public class Asset {
     public void setDevice_type(String device_type) {
         this.device_type = device_type;
     }
+
+    public String getSerial_number() { return serial_number; }
+
+    public void setSerial_number(String serial) { this.serial_number = serial; }
 }

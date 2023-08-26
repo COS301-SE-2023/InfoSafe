@@ -1,12 +1,6 @@
 package com.fragile.infosafe.auth;
 
 import com.fragile.infosafe.config.JwtService;
-import com.fragile.infosafe.model.Asset;
-import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.repository.AssetRepository;
-import com.fragile.infosafe.repository.DataScopeRepository;
-import com.fragile.infosafe.requests.AssetRequest;
-import com.fragile.infosafe.requests.DataScopeRequest;
 import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.token.Token;
 import com.fragile.infosafe.token.TokenRepository;
@@ -18,8 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.AuthenticationException;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -49,7 +40,7 @@ public class AuthenticationService {
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
-         saveUserToken(savedUser, jwtToken);
+        saveUserToken(savedUser, jwtToken);
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
@@ -71,7 +62,7 @@ public class AuthenticationService {
                     .orElseThrow();
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
-             revokeAllUserTokens(user);
+            revokeAllUserTokens(user);
             saveUserToken(user, jwtToken);
 
             return AuthenticationResponse.builder()
