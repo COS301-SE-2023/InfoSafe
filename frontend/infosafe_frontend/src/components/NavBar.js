@@ -10,12 +10,12 @@ const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(
         systemRole === 'ISO' || systemRole === 'DISO' || systemRole === 'System Administrator' ? 0 : 1
     );
-    const ISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
-    const DISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7];
-    const DataCustodianTabs = [ 1, 2, 3, 4, 5, 6, 7];
-    const AssetManagerTabs = [ 1, 3, 4, 5, 8, 7];
-    const EmployeeTabs = [ 1, 3, 4, 5, 7];
-    const TabNames = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
+    const ISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const DISOTabs = [ 0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const DataCustodianTabs = [ 1, 2, 3, 4, 5, 6, 7, 8];
+    const AssetManagerTabs = [ 1, 3, 4, 5, 9, 7];
+    const EmployeeTabs = [ 1, 3, 4, 5, 8];
+    const TabNames = ['Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
     const handleClick = (NavTabIndex) => {
         activate(NavTabIndex);
     };
