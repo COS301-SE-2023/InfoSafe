@@ -11,54 +11,314 @@ const RoleCreation = () => {
     const [canReview, setCanReview] = useState(new Array(subsystems.length).fill(false));
     const [displayPermission, setDisplayPermission] = useState(new Array(subsystems.length).fill(false));
     const [canViewAll, setCanViewAll] = useState(new Array(subsystems.length).fill(false));
-    const [allPermissions, setAllPermissions] = useState([]);
     const [canCreateAssetRequest, setCanCreateAssetRequest] = useState([]);
     const [canCreateSupportRequest, setCanCreateSupportRequest] = useState([]);
     const [canCreateAccessRequest, setCanCreateAccessRequest] = useState([]);
+    let permissionsList = [];
 
-    const [permissions, setPermissions] = useState(
-        subsystems.map(() => ({
-            checkboxState: false,
-            canCreate: false,
-            canEdit: false,
-            canDelete: false,
-            canApprove: false,
-            canReview: false,
-            canViewAll: false,
-            displayPermission: false,
-        }))
-    );
-    const handleCheckboxChecked = (index) => {
+    const handleCheckboxChecked = (index, subsystem) => {
         const newCheckboxState = [...checkboxState];
         newCheckboxState[index] = !newCheckboxState[index];
         setCheckboxState(newCheckboxState);
 
-        const updatedPermissions = [...permissions];
-        updatedPermissions[index].checkboxState = !updatedPermissions[index].checkboxState;
-        updatedPermissions[index].displayPermission = !updatedPermissions[index].displayPermission;
-        setPermissions(updatedPermissions);
-
         const newDisplayPermission = [...displayPermission];
         newDisplayPermission[index] = !newDisplayPermission[index];
         setDisplayPermission(newDisplayPermission);
+
+        if (newCheckboxState[index] === false && subsystem === "Users")
+        {
+            let permissionsCheckbox = document.querySelector('input.usersCreate');
+            if (permissionsCheckbox.checked) {
+               handleCreate(0);
+
+               if (permissionsList.includes("Create Users"))
+               {
+                   permissionsList.filter(permissionList => permissionList !== "Create Users");
+               }
+            }
+
+            permissionsCheckbox = document.querySelector('input.usersEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(0);
+
+                if (permissionsList.includes("Edit Users"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Users");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.usersDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(0);
+
+                if (permissionsList.includes("Delete Users"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Users");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Data Scopes")
+        {
+            let permissionsCheckbox = document.querySelector('input.dataScopesCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(1);
+
+                if (permissionsList.includes("Create Data Scopes"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Data Scopes");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.dataScopesEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(1);
+
+                if (permissionsList.includes("Edit Data Scopes"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Data Scopes");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.dataScopesDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(1);
+
+                if (permissionsList.includes("Delete Data Scopes"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Data Scopes");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Access Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(2);
+
+                if (permissionsList.includes("Edit Access Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Access Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.accessRequestsApprove');
+            if (permissionsCheckbox.checked) {
+                handleApprove(2);
+
+                if (permissionsList.includes("Approve Access Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Approve Access Requests");
+                }
+            }
+
+
+        }
+        if (newCheckboxState[index] === false && subsystem === "Compliance Matrix")
+        {
+
+            let permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(3);
+
+                if (permissionsList.includes("Create Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Tasks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(3);
+
+                if (permissionsList.includes("Edit Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Tasks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(3);
+
+                if (permissionsList.includes("Delete Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Tasks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
+            if (permissionsCheckbox.checked) {
+                handleApprove(3);
+
+                if (permissionsList.includes("Approve Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Approve Tasks");
+                }
+            }
+        }
+        if (newCheckboxState[index] === false && subsystem === "Devices")
+        {
+            let permissionsCheckbox = document.querySelector('input.devicesCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(4);
+
+                if (permissionsList.includes("Create Devices"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Devices");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.devicesEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(4);
+
+                if (permissionsList.includes("Edit Devices"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Devices");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.devicesDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(4);
+
+                if (permissionsList.includes("Delete Devices"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Devices");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Support Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
+            if (permissionsCheckbox.checked) {
+                handleViewAll(5);
+
+                if (permissionsList.includes("View All Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "View All Support Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.supportRequestsEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(5);
+
+                if (permissionsList.includes("Edit Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Support Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.supportRequestsDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(5);
+
+                if (permissionsList.includes("Delete Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Support Requests");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Asset Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.assetRequestsReview');
+            if (permissionsCheckbox.checked) {
+                handleReview(6);
+
+                if (permissionsList.includes("Review Asset Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Review Asset Requests");
+                }
+            }
+
+
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Risks")
+        {
+            let permissionsCheckbox = document.querySelector('input.risksCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(7);
+
+                if (permissionsList.includes("Create Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Risks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.risksEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(7);
+
+                if (permissionsList.includes("Edit Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Risks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.risksDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(7);
+
+                if (permissionsList.includes("Delete Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Risks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.risksReview');
+            if (permissionsCheckbox.checked) {
+                handleReview(7);
+
+                if (permissionsList.includes("Review Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Review Risks");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreateAssetRequest(8);
+
+                if (permissionsList.includes("Create Asset Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Asset Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.requestsSupportCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreateSupportRequest(8);
+
+                if (permissionsList.includes("Create Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Support Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.requestsAccessCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreateAccessRequest(8);
+
+                if (permissionsList.includes("Create Access Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Access Requests");
+                }
+            }
+
+
+        }
+
     };
 
-    const handlePermissionChange = (index, permissionType) => {
-        const updatedPermissions = [...permissions];
-        const permissionState = permissionType === 'canCreate'
-            ? 'canCreate'
-            : permissionType === 'canEdit'
-                ? 'canEdit'
-                : permissionType === 'canDelete'
-                    ? 'canDelete'
-                    : permissionType === 'canApprove'
-                        ? 'canApprove'
-                        : permissionType === 'canReview'
-                            ? 'canReview'
-                            : 'canViewAll';
-        updatedPermissions[index][permissionState] = !updatedPermissions[index][permissionState];
-        setPermissions(updatedPermissions);
-    };
 
     const handleCreate = (index) => {
         const createAllowed = [...canCreate];
@@ -112,139 +372,263 @@ const RoleCreation = () => {
         setCanCreateAccessRequest(createAccessRequestAllowed);
     };
 
-    const permissionsList = [];
-    const createPermissionsList = () => {
+    const clearAll = () =>
+    {
+        let roleName =document.querySelector('input.roleCreationRoleNameInput');
+        roleName.value = null;
+
+        // for (let i = 0; i < 9; i++)
+        // {
+        //     if (checkboxState[i])
+        //     {
+        //         for (let j = 0; j < 9; j++)
+        //         {
+        //             handleCheckboxChecked(i, subsystems[j]);
+        //         }
+        //     }
+        //
+        // }
+    }
+
+    const submitInfo = () => {
+
+        let roleName =document.querySelector('input.roleCreationRoleNameInput').value;
+        // Send this also to backend.
 
         let permissionsCheckbox = document.querySelector('input.usersCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Users");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Users"))
+            {
+                permissionsList.push("Create Users");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.usersEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Users");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Users"))
+            {
+                permissionsList.push("Edit Users");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.usersDelete');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Delete Users");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Users"))
+            {
+                permissionsList.push("Delete Users");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.dataScopesCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Data Scopes");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Data Scopes"))
+            {
+                permissionsList.push("Create Data Scopes");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.dataScopesEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Data Scopes");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Data Scopes"))
+            {
+                permissionsList.push("Edit Data Scopes");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.dataScopesDelete');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Delete  Data Scopes");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Data Scopes"))
+            {
+                permissionsList.push("Delete Data Scopes");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Access Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Access Requests"))
+            {
+                permissionsList.push("Edit Access Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.accessRequestsApprove');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Approve Access Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Approve Access Requests"))
+            {
+                permissionsList.push("Approve Access Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Tasks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Tasks"))
+            {
+                permissionsList.push("Create Tasks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Tasks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Tasks"))
+            {
+                permissionsList.push("Edit Tasks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Delete Tasks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Tasks"))
+            {
+                permissionsList.push("Delete Tasks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Approve Tasks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Approve Tasks"))
+            {
+                permissionsList.push("Approve Tasks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.devicesCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Devices");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Devices"))
+            {
+                permissionsList.push("Create Devices");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.devicesEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Devices");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Devices"))
+            {
+                permissionsList.push("Edit Devices");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.devicesDelete');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Delete Devices");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Devices"))
+            {
+                permissionsList.push("Delete Devices");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("View All Support Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("View All Support Requests"))
+            {
+                permissionsList.push("View All Support Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.supportRequestsEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Support Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Support Requests"))
+            {
+                permissionsList.push("Edit Support Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.supportRequestsDelete');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Delete Support Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Support Requests"))
+            {
+                permissionsList.push("Delete Support Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.assetRequestsReview');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Review Asset Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Review Asset Requests"))
+            {
+                permissionsList.push("Review Asset Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.risksCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Risks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Risks"))
+            {
+                permissionsList.push("Create Risks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.risksEdit');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Edit Risks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Risks"))
+            {
+                permissionsList.push("Edit Risks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.risksDelete');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Delete Risks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Risks"))
+            {
+                permissionsList.push("Delete Risks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.risksReview');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Review Risks");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Review Risks"))
+            {
+                permissionsList.push("Review Risks");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Asset Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Asset Requests"))
+            {
+                permissionsList.push("Create Asset Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.requestsSupportCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Support Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Support Requests"))
+            {
+                permissionsList.push("Create Support Requests");
+            }
+
         }
 
         permissionsCheckbox = document.querySelector('input.requestsAccessCreate');
-        if (permissionsCheckbox.checked == true) {
-            permissionsList.push("Create Access Requests");
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Access Requests"))
+            {
+                permissionsList.push("Create Access Requests");
+            }
+
         }
-        console.log(permissionsList)
+        console.log(roleName, permissionsList)
     };
 
     return (
@@ -610,19 +994,26 @@ const RoleCreation = () => {
                                                 </div>
                                             );
                                         }
-                                })()}
+                                    })()}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
 
             <button
                 className="roleCreationButton"
-                onClick={() => {
-                   createPermissionsList()
-                }}>
+                type = "submit"
+                onClick={submitInfo}
+                >
                 Create Role
+            </button>
+
+            <button
+                className="clearButton"
+                onClick={clearAll}
+            >
+                Clear
             </button>
         </div>
 
