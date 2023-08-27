@@ -64,162 +64,187 @@ const RoleCreation = () => {
         const createAllowed = [...canCreate];
         createAllowed[index] = !createAllowed[index];
         setCanCreate(createAllowed);
-        let permission = '';
-        if (index === 3){
-            permission = "Create Tasks";
-        }
-        else
-        {
-            permission = "Create " + subsystems[index];
-        }
-
-
-        if (!createAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleEdit = (index) => {
         const editAllowed = [...canEdit];
         editAllowed[index] = !editAllowed[index];
         setCanEdit(editAllowed);
-        let permission = '';
-        if (index === 3){
-            permission = "Edit Tasks";
-        }
-        else
-        {
-            permission = "Edit " + subsystems[index];
-        }
-
-        if (!editAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleDelete = (index) => {
         const deleteAllowed = [...canDelete];
         deleteAllowed[index] = !deleteAllowed[index];
         setCanDelete(deleteAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "Delete Tasks";
-        }
-        else
-        {
-            permission = "Delete " + subsystems[index];
-        }
-
-        if (!deleteAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleApprove = (index) => {
         const approveAllowed = [...canApprove];
         approveAllowed[index] = !approveAllowed[index];
         setCanApprove(approveAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "Approve Tasks";
-        }
-        else
-        {
-            permission = "Approve " + subsystems[index];
-        }
-
-        if (!approveAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleReview = (index) => {
         const reviewAllowed = [...canReview];
         reviewAllowed[index] = !reviewAllowed[index];
         setCanReview(reviewAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "Review Tasks";
-        }
-        else
-        {
-            permission = "Review " + subsystems[index];
-        }
-
-        if (!reviewAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleViewAll = (index) => {
         const viewAllAllowed = [...canViewAll];
         viewAllAllowed[index] = !viewAllAllowed[index];
         setCanViewAll(viewAllAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "View All Tasks";
-        }
-        else
-        {
-            permission = "View All " + subsystems[index];
-        }
-
-        if (!viewAllAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
     const handleCreateSupportRequest = (index) => {
         const createSupportRequestAllowed = [...canCreateSupportRequest];
         createSupportRequestAllowed[index] = !createSupportRequestAllowed[index];
         setCanCreateSupportRequest(createSupportRequestAllowed);
-
-        const permission = "Create Support " + subsystems[index];
-        if (!createSupportRequestAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     };
     const handleCreateAssetRequest = (index) => {
         const createAssetRequestAllowed = [...canCreateAssetRequest];
         createAssetRequestAllowed[index] = !createAssetRequestAllowed[index];
         setCanCreateAssetRequest(createAssetRequestAllowed);
-
-        const permission = "Create Asset " + subsystems[index];
-        if (!createAssetRequestAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     };
 
     const handleCreateAccessRequest = (index) => {
         const createAccessRequestAllowed = [...canCreateAccessRequest];
         createAccessRequestAllowed[index] = !createAccessRequestAllowed[index];
         setCanCreateAccessRequest(createAccessRequestAllowed);
+    };
 
-        const permission = "Create Access " + subsystems[index];
-        if (!createAccessRequestAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
+    const permissionsList = [];
+    const createPermissionsList = () => {
+
+        let permissionsCheckbox = document.querySelector('input.usersCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Users");
         }
+
+        permissionsCheckbox = document.querySelector('input.usersEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Users");
+        }
+
+        permissionsCheckbox = document.querySelector('input.usersDelete');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Delete Users");
+        }
+
+        permissionsCheckbox = document.querySelector('input.dataScopesCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Data Scopes");
+        }
+
+        permissionsCheckbox = document.querySelector('input.dataScopesEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Data Scopes");
+        }
+
+        permissionsCheckbox = document.querySelector('input.dataScopesDelete');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Delete  Data Scopes");
+        }
+
+        permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Access Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.accessRequestsApprove');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Approve Access Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Tasks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Tasks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Delete Tasks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Approve Tasks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.devicesCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Devices");
+        }
+
+        permissionsCheckbox = document.querySelector('input.devicesEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Devices");
+        }
+
+        permissionsCheckbox = document.querySelector('input.devicesDelete');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Delete Devices");
+        }
+
+        permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("View All Support Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.supportRequestsEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Support Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.supportRequestsDelete');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Delete Support Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.assetRequestsReview');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Review Asset Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Risks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksEdit');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Edit Risks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksDelete');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Delete Risks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksReview');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Review Risks");
+        }
+
+        permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Asset Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.requestsSupportCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Support Requests");
+        }
+
+        permissionsCheckbox = document.querySelector('input.requestsAccessCreate');
+        if (permissionsCheckbox.checked == true) {
+            permissionsList.push("Create Access Requests");
+        }
+        console.log(permissionsList)
     };
 
     return (
@@ -242,8 +267,8 @@ const RoleCreation = () => {
                                         <input
                                             type="checkbox"
                                             checked={checkboxState[index]}
-                                            onChange={() => handleCheckboxChecked(index)}
                                             className={`${subsystem.replace(/\s+/g, '')}Access`.replace(/^\w/, name => name.toLowerCase())}
+                                            onChange={() => handleCheckboxChecked(index, subsystem)}
                                         />
                                         {subsystem}
                                     </label>
@@ -451,7 +476,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canViewAll[index]}
                                                                 onChange={() => handleViewAll(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}ViewAll`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             View All {subsystem}
                                                         </label>
@@ -489,7 +514,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canReview[index]}
                                                                 onChange={() => handleReview(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Review {subsystem}
                                                         </label>
@@ -538,7 +563,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canReview[index]}
                                                                 onChange={() => handleReview(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Review {subsystem}
                                                         </label>
@@ -555,7 +580,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canCreateAssetRequest[index]}
                                                                 onChange={() => handleCreateAssetRequest(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}AssetCreate`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Asset Requests
                                                         </label>
@@ -566,7 +591,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canCreateSupportRequest[index]}
                                                                 onChange={() => handleCreateSupportRequest(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}SupportCreate`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Support Requests
                                                         </label>
@@ -577,7 +602,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canCreateAccessRequest[index]}
                                                                 onChange={() => handleCreateAccessRequest(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}AccessCreate`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Access Requests
                                                         </label>
@@ -595,8 +620,7 @@ const RoleCreation = () => {
             <button
                 className="roleCreationButton"
                 onClick={() => {
-                    console.log('Button clicked!');
-                    console.log(allPermissions);
+                   createPermissionsList()
                 }}>
                 Create Role
             </button>
