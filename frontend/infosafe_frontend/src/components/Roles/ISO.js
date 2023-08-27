@@ -20,12 +20,13 @@ import ViewSupportRequest from '../View/ViewSupportRequest';
 import EditSupportRequest from '../Edit/EditSupportRequest';
 import {ReviewRisk} from "../ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
-import Requests from '../Create/Requests';
+import Requests from '../Subsystems/Requests';
 import {TaskApproval} from "../TaskApprovalPopup";
 import {ViewRisk} from "../View/ViewRisk";
 import {EditRisk} from "../Edit/EditRisk";
 import AccessAndDisplay from "./AccessAndDisplay";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
+import RoleCreation from "./RoleCreation";
 /* eslint-disable react/prop-types */
 
 const ISO = ({currentTab}) => {
@@ -279,8 +280,11 @@ const ISO = ({currentTab}) => {
             </li>
         )
     }
-
     if (currentTab === 0)
+    {
+        return <RoleCreation  />;
+    }
+    if (currentTab === 1)
     {
         const userItems = [];
         showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.id} />));
@@ -309,7 +313,7 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 1)
+    if (currentTab === 2)
     {
         const dataItems = [];
         showDatascope.map((datascope) =>
@@ -325,7 +329,7 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 2)
+    if (currentTab === 3)
     {
         const accessRequests = [];
         showAccess.map((access) =>
@@ -355,7 +359,7 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 3)
+    if (currentTab === 4)
     {
         const complianceItems = [];
         showTask.map((task) =>
@@ -414,7 +418,7 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 4)
+    if (currentTab === 5)
     {
         const devices = [];
         showAsset.map((asset) =>
@@ -443,7 +447,7 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 5)
+    if (currentTab === 6)
     {
         const active_requests = [];
         showAllSupport.map((allSupport) =>
@@ -478,7 +482,7 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 6)
+    if (currentTab === 7)
     {
         const risks = [];
         showRisk.map((risk) =>
@@ -508,9 +512,10 @@ const ISO = ({currentTab}) => {
         );
     }
 
-    if (currentTab === 7)
+    if (currentTab === 8)
     {
-        return <Requests userRole="ISO" />;
+        const types=[  "Create Asset Requests", "Create Support Requests"];
+        return <Requests requestTypes={types} />;
     }
 
 
