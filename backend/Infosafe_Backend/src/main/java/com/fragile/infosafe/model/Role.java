@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-
-import javax.persistence.Id;
+import java.math.BigInteger;
 
 
 @Data
@@ -15,11 +14,13 @@ import javax.persistence.Id;
 @Entity
 @Table(name="roles")
 public class Role{
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int role_id;
     private String roleName;
-    private int permissions;
+    @Column(name = "permissions")
+    private long permissions;
+
     public String getRoleName() {
         return roleName;
     }
@@ -28,13 +29,23 @@ public class Role{
         this.roleName = roleName;
     }
 
-    public int getPermissions() {
+    public long getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(int permissions) {
+    public void setPermissions(long permissions) {
         this.permissions = permissions;
     }
 
+    public boolean hasPermission(Permission permission) {
+        return (permissions & permission.getMask()) != 0;
+    }
 
+    public void grantPermission(Permission permission) {
+        permissions |= permission.getMask();
+    }
+
+    public void revokePermission(Permission permission) {
+        permissions &= ~permission.getMask();
+    }
 }

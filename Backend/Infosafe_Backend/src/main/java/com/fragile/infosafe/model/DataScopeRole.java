@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 @Table(name="data_scope_roles")
 public class DataScopeRole {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int role_id;
     private int ds_id;
     private String role_type;

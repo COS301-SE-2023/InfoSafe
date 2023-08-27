@@ -1,28 +1,50 @@
 package com.fragile.infosafe.controller;
 
+import com.fragile.infosafe.model.Permission;
 import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.requests.RoleRequest;
+import com.fragile.infosafe.requests.TaskRequest;
+import com.fragile.infosafe.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("api/role")
 @RequiredArgsConstructor
 public class RoleController {
+    private RoleService service;
 
     @GetMapping("/getPermissions")
-    public int getCurrentUserId() {
+    public List<String> getUserPermissions() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            log.info("Role made");
-            return authenticatedUser.getRole().getPermissions();
+            long userPermissions = authenticatedUser.getRole().getPermissions();
+            List<String> userPermissionList = new ArrayList<>();
+
+            for (Permission permission : Permission.values()) {
+                if ((userPermissions & permission.getMask()) != 0) {
+                    userPermissionList.add(permission.name());
+                }
+            }
+
+            return userPermissionList;
         }
-        return -1;
+
+        return Collections.emptyList(); // Return an empty list if user is not authenticated
+    }
+    @PostMapping("/addRole")
+    public ResponseEntity addTask(@RequestBody RoleRequest role) {
+        log.info("Adding a task");
+        return ResponseEntity.ok(service.makeRole(role));
     }
 }
