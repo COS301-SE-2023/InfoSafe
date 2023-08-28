@@ -11,215 +11,624 @@ const RoleCreation = () => {
     const [canReview, setCanReview] = useState(new Array(subsystems.length).fill(false));
     const [displayPermission, setDisplayPermission] = useState(new Array(subsystems.length).fill(false));
     const [canViewAll, setCanViewAll] = useState(new Array(subsystems.length).fill(false));
-    const [allPermissions, setAllPermissions] = useState([]);
     const [canCreateAssetRequest, setCanCreateAssetRequest] = useState([]);
     const [canCreateSupportRequest, setCanCreateSupportRequest] = useState([]);
     const [canCreateAccessRequest, setCanCreateAccessRequest] = useState([]);
+    let permissionsList = [];
 
-    const [permissions, setPermissions] = useState(
-        subsystems.map(() => ({
-            checkboxState: false,
-            canCreate: false,
-            canEdit: false,
-            canDelete: false,
-            canApprove: false,
-            canReview: false,
-            canViewAll: false,
-            displayPermission: false,
-        }))
-    );
-    const handleCheckboxChecked = (index) => {
+    const handleCheckboxChecked = (index, subsystem) => {
         const newCheckboxState = [...checkboxState];
         newCheckboxState[index] = !newCheckboxState[index];
         setCheckboxState(newCheckboxState);
 
-        const updatedPermissions = [...permissions];
-        updatedPermissions[index].checkboxState = !updatedPermissions[index].checkboxState;
-        updatedPermissions[index].displayPermission = !updatedPermissions[index].displayPermission;
-        setPermissions(updatedPermissions);
-
         const newDisplayPermission = [...displayPermission];
         newDisplayPermission[index] = !newDisplayPermission[index];
         setDisplayPermission(newDisplayPermission);
+
+        if (newCheckboxState[index] === false && subsystem === "Users")
+        {
+            let permissionsCheckbox = document.querySelector('input.usersCreate');
+            if (permissionsCheckbox.checked) {
+               handleCreate(0);
+
+               if (permissionsList.includes("Create Users"))
+               {
+                   permissionsList.filter(permissionList => permissionList !== "Create Users");
+               }
+            }
+
+            permissionsCheckbox = document.querySelector('input.usersEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(0);
+
+                if (permissionsList.includes("Edit Users"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Users");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.usersDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(0);
+
+                if (permissionsList.includes("Delete Users"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Users");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Data Scopes")
+        {
+            let permissionsCheckbox = document.querySelector('input.dataScopesCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(1);
+
+                if (permissionsList.includes("Create Data Scopes"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Data Scopes");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.dataScopesEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(1);
+
+                if (permissionsList.includes("Edit Data Scopes"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Data Scopes");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.dataScopesDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(1);
+
+                if (permissionsList.includes("Delete Data Scopes"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Data Scopes");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Access Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(2);
+
+                if (permissionsList.includes("Edit Access Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Access Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.accessRequestsApprove');
+            if (permissionsCheckbox.checked) {
+                handleApprove(2);
+
+                if (permissionsList.includes("Approve Access Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Approve Access Requests");
+                }
+            }
+
+
+        }
+        if (newCheckboxState[index] === false && subsystem === "Compliance Matrix")
+        {
+
+            let permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(3);
+
+                if (permissionsList.includes("Create Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Tasks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(3);
+
+                if (permissionsList.includes("Edit Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Tasks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(3);
+
+                if (permissionsList.includes("Delete Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Tasks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
+            if (permissionsCheckbox.checked) {
+                handleApprove(3);
+
+                if (permissionsList.includes("Approve Tasks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Approve Tasks");
+                }
+            }
+        }
+        if (newCheckboxState[index] === false && subsystem === "Devices")
+        {
+            let permissionsCheckbox = document.querySelector('input.devicesCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(4);
+
+                if (permissionsList.includes("Create Devices"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Devices");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.devicesEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(4);
+
+                if (permissionsList.includes("Edit Devices"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Devices");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.devicesDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(4);
+
+                if (permissionsList.includes("Delete Devices"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Devices");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Support Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
+            if (permissionsCheckbox.checked) {
+                handleViewAll(5);
+
+                if (permissionsList.includes("View All Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "View All Support Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.supportRequestsEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(5);
+
+                if (permissionsList.includes("Edit Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Support Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.supportRequestsDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(5);
+
+                if (permissionsList.includes("Delete Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Support Requests");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Asset Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.assetRequestsReview');
+            if (permissionsCheckbox.checked) {
+                handleReview(6);
+
+                if (permissionsList.includes("Review Asset Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Review Asset Requests");
+                }
+            }
+
+
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Risks")
+        {
+            let permissionsCheckbox = document.querySelector('input.risksCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreate(7);
+
+                if (permissionsList.includes("Create Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Risks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.risksEdit');
+            if (permissionsCheckbox.checked) {
+                handleEdit(7);
+
+                if (permissionsList.includes("Edit Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Edit Risks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.risksDelete');
+            if (permissionsCheckbox.checked) {
+                handleDelete(7);
+
+                if (permissionsList.includes("Delete Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Delete Risks");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.risksReview');
+            if (permissionsCheckbox.checked) {
+                handleReview(7);
+
+                if (permissionsList.includes("Review Risks"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Review Risks");
+                }
+            }
+        }
+
+        if (newCheckboxState[index] === false && subsystem === "Requests")
+        {
+            let permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreateAssetRequest(8);
+
+                if (permissionsList.includes("Create Asset Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Asset Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.requestsSupportCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreateSupportRequest(8);
+
+                if (permissionsList.includes("Create Support Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Support Requests");
+                }
+            }
+
+            permissionsCheckbox = document.querySelector('input.requestsAccessCreate');
+            if (permissionsCheckbox.checked) {
+                handleCreateAccessRequest(8);
+
+                if (permissionsList.includes("Create Access Requests"))
+                {
+                    permissionsList.filter(permissionList => permissionList !== "Create Access Requests");
+                }
+            }
+
+
+        }
+
     };
 
-    const handlePermissionChange = (index, permissionType) => {
-        const updatedPermissions = [...permissions];
-        const permissionState = permissionType === 'canCreate'
-            ? 'canCreate'
-            : permissionType === 'canEdit'
-                ? 'canEdit'
-                : permissionType === 'canDelete'
-                    ? 'canDelete'
-                    : permissionType === 'canApprove'
-                        ? 'canApprove'
-                        : permissionType === 'canReview'
-                            ? 'canReview'
-                            : 'canViewAll';
-        updatedPermissions[index][permissionState] = !updatedPermissions[index][permissionState];
-        setPermissions(updatedPermissions);
-    };
 
     const handleCreate = (index) => {
         const createAllowed = [...canCreate];
         createAllowed[index] = !createAllowed[index];
         setCanCreate(createAllowed);
-        let permission = '';
-        if (index === 3){
-            permission = "Create Tasks";
-        }
-        else
-        {
-            permission = "Create " + subsystems[index];
-        }
-
-
-        if (!createAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleEdit = (index) => {
         const editAllowed = [...canEdit];
         editAllowed[index] = !editAllowed[index];
         setCanEdit(editAllowed);
-        let permission = '';
-        if (index === 3){
-            permission = "Edit Tasks";
-        }
-        else
-        {
-            permission = "Edit " + subsystems[index];
-        }
-
-        if (!editAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleDelete = (index) => {
         const deleteAllowed = [...canDelete];
         deleteAllowed[index] = !deleteAllowed[index];
         setCanDelete(deleteAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "Delete Tasks";
-        }
-        else
-        {
-            permission = "Delete " + subsystems[index];
-        }
-
-        if (!deleteAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleApprove = (index) => {
         const approveAllowed = [...canApprove];
         approveAllowed[index] = !approveAllowed[index];
         setCanApprove(approveAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "Approve Tasks";
-        }
-        else
-        {
-            permission = "Approve " + subsystems[index];
-        }
-
-        if (!approveAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleReview = (index) => {
         const reviewAllowed = [...canReview];
         reviewAllowed[index] = !reviewAllowed[index];
         setCanReview(reviewAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "Review Tasks";
-        }
-        else
-        {
-            permission = "Review " + subsystems[index];
-        }
-
-        if (!reviewAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
 
     const handleViewAll = (index) => {
         const viewAllAllowed = [...canViewAll];
         viewAllAllowed[index] = !viewAllAllowed[index];
         setCanViewAll(viewAllAllowed);
-
-        let permission = '';
-        if (index === 3){
-            permission = "View All Tasks";
-        }
-        else
-        {
-            permission = "View All " + subsystems[index];
-        }
-
-        if (!viewAllAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     }
     const handleCreateSupportRequest = (index) => {
         const createSupportRequestAllowed = [...canCreateSupportRequest];
         createSupportRequestAllowed[index] = !createSupportRequestAllowed[index];
         setCanCreateSupportRequest(createSupportRequestAllowed);
-
-        const permission = "Create Support " + subsystems[index];
-        if (!createSupportRequestAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     };
     const handleCreateAssetRequest = (index) => {
         const createAssetRequestAllowed = [...canCreateAssetRequest];
         createAssetRequestAllowed[index] = !createAssetRequestAllowed[index];
         setCanCreateAssetRequest(createAssetRequestAllowed);
-
-        const permission = "Create Asset " + subsystems[index];
-        if (!createAssetRequestAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
-        }
     };
 
     const handleCreateAccessRequest = (index) => {
         const createAccessRequestAllowed = [...canCreateAccessRequest];
         createAccessRequestAllowed[index] = !createAccessRequestAllowed[index];
         setCanCreateAccessRequest(createAccessRequestAllowed);
+    };
 
-        const permission = "Create Access " + subsystems[index];
-        if (!createAccessRequestAllowed[index]) {
-            setAllPermissions(prev => prev.filter(p => p !== permission));
-        } else {
-            setAllPermissions(prev => [...prev, permission]);
+    const clearAll = () =>
+    {
+        let roleName =document.querySelector('input.roleCreationRoleNameInput');
+        roleName.value = null;
+
+        // for (let i = 0; i < 9; i++)
+        // {
+        //     if (checkboxState[i])
+        //     {
+        //         for (let j = 0; j < 9; j++)
+        //         {
+        //             handleCheckboxChecked(i, subsystems[j]);
+        //         }
+        //     }
+        //
+        // }
+    }
+
+    const submitInfo = () => {
+
+        let roleName =document.querySelector('input.roleCreationRoleNameInput').value;
+        // Send this also to backend.
+
+        let permissionsCheckbox = document.querySelector('input.usersCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Users"))
+            {
+                permissionsList.push("Create Users");
+            }
+
         }
+
+        permissionsCheckbox = document.querySelector('input.usersEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Users"))
+            {
+                permissionsList.push("Edit Users");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.usersDelete');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Users"))
+            {
+                permissionsList.push("Delete Users");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.dataScopesCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Data Scopes"))
+            {
+                permissionsList.push("Create Data Scopes");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.dataScopesEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Data Scopes"))
+            {
+                permissionsList.push("Edit Data Scopes");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.dataScopesDelete');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Data Scopes"))
+            {
+                permissionsList.push("Delete Data Scopes");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Access Requests"))
+            {
+                permissionsList.push("Edit Access Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.accessRequestsApprove');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Approve Access Requests"))
+            {
+                permissionsList.push("Approve Access Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Tasks"))
+            {
+                permissionsList.push("Create Tasks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Tasks"))
+            {
+                permissionsList.push("Edit Tasks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Tasks"))
+            {
+                permissionsList.push("Delete Tasks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Approve Tasks"))
+            {
+                permissionsList.push("Approve Tasks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.devicesCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Devices"))
+            {
+                permissionsList.push("Create Devices");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.devicesEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Devices"))
+            {
+                permissionsList.push("Edit Devices");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.devicesDelete');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Devices"))
+            {
+                permissionsList.push("Delete Devices");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("View All Support Requests"))
+            {
+                permissionsList.push("View All Support Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.supportRequestsEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Support Requests"))
+            {
+                permissionsList.push("Edit Support Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.supportRequestsDelete');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Support Requests"))
+            {
+                permissionsList.push("Delete Support Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.assetRequestsReview');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Review Asset Requests"))
+            {
+                permissionsList.push("Review Asset Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Risks"))
+            {
+                permissionsList.push("Create Risks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksEdit');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Edit Risks"))
+            {
+                permissionsList.push("Edit Risks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksDelete');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Delete Risks"))
+            {
+                permissionsList.push("Delete Risks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.risksReview');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Review Risks"))
+            {
+                permissionsList.push("Review Risks");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Asset Requests"))
+            {
+                permissionsList.push("Create Asset Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.requestsSupportCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Support Requests"))
+            {
+                permissionsList.push("Create Support Requests");
+            }
+
+        }
+
+        permissionsCheckbox = document.querySelector('input.requestsAccessCreate');
+        if (permissionsCheckbox.checked === true) {
+            if (!permissionsList.includes("Create Access Requests"))
+            {
+                permissionsList.push("Create Access Requests");
+            }
+
+        }
+        console.log(roleName, permissionsList)
     };
 
     return (
@@ -242,8 +651,8 @@ const RoleCreation = () => {
                                         <input
                                             type="checkbox"
                                             checked={checkboxState[index]}
-                                            onChange={() => handleCheckboxChecked(index)}
                                             className={`${subsystem.replace(/\s+/g, '')}Access`.replace(/^\w/, name => name.toLowerCase())}
+                                            onChange={() => handleCheckboxChecked(index, subsystem)}
                                         />
                                         {subsystem}
                                     </label>
@@ -451,7 +860,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canViewAll[index]}
                                                                 onChange={() => handleViewAll(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}ViewAll`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             View All {subsystem}
                                                         </label>
@@ -489,7 +898,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canReview[index]}
                                                                 onChange={() => handleReview(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Review {subsystem}
                                                         </label>
@@ -538,7 +947,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canReview[index]}
                                                                 onChange={() => handleReview(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Review {subsystem}
                                                         </label>
@@ -555,7 +964,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canCreateAssetRequest[index]}
                                                                 onChange={() => handleCreateAssetRequest(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}AssetCreate`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Asset Requests
                                                         </label>
@@ -566,7 +975,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canCreateSupportRequest[index]}
                                                                 onChange={() => handleCreateSupportRequest(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}SupportCreate`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Support Requests
                                                         </label>
@@ -577,7 +986,7 @@ const RoleCreation = () => {
                                                                 type="checkbox"
                                                                 checked={canCreateAccessRequest[index]}
                                                                 onChange={() => handleCreateAccessRequest(index)}
-                                                                className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                className={`${subsystem.replace(/\s+/g, '')}AccessCreate`.replace(/^\w/, name => name.toLowerCase())}
                                                             />
                                                             Create Access Requests
                                                         </label>
@@ -585,20 +994,26 @@ const RoleCreation = () => {
                                                 </div>
                                             );
                                         }
-                                })()}
+                                    })()}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
 
             <button
                 className="roleCreationButton"
-                onClick={() => {
-                    console.log('Button clicked!');
-                    console.log(allPermissions);
-                }}>
+                type = "submit"
+                onClick={submitInfo}
+                >
                 Create Role
+            </button>
+
+            <button
+                className="clearButton"
+                onClick={clearAll}
+            >
+                Clear
             </button>
         </div>
 
