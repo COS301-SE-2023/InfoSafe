@@ -11,7 +11,7 @@ const AccessRequests = () => {
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     const EditAccessRequest = ({access}) => {
-        const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false); // ISO DISO
+        const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
         return (
             <div className="EditIcon">
                 <FaRegEdit
@@ -26,6 +26,7 @@ const AccessRequests = () => {
                 ) : null}
             </div>
         )
+
     }
 
     const DeleteAccessRequest = () => {
@@ -34,7 +35,7 @@ const AccessRequests = () => {
         )
     }
     const ViewAccessRequests = ({access}) => {
-        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
 
         return (
             <li key={access.request_id}>
@@ -78,6 +79,8 @@ const AccessRequests = () => {
     showAccess.map((access) =>
         accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
     );
+
+
     return (
         <div className="display">
             <div className="accessRequests">

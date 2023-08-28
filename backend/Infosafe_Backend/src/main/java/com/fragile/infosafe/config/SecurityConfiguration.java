@@ -1,5 +1,6 @@
 package com.fragile.infosafe.config;
 
+import com.fragile.infosafe.model.Permission;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+
+import static org.springframework.http.HttpMethod.POST;
 
 // import static org.springframework.http.HttpMethod.*;
 
@@ -33,7 +36,7 @@ public class SecurityConfiguration {
                 .cors(cfg -> cfg.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
-//                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(ADMIN.name())
+//                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(String.valueOf(Permission.user_create))
 //                        .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated())
