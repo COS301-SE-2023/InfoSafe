@@ -25,7 +25,9 @@ public enum Permission {
     risks_delete(2097152),
     request_device(4194304),
     request_support(8388608),
-    request_access(16777216);
+    request_access(16777216),
+
+    asset_request_review(33554432);
 
     private final int mask;
     Permission(int mask) {
