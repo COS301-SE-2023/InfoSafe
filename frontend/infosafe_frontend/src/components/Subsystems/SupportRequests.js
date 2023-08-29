@@ -4,7 +4,7 @@ import ViewSupportRequest from "../View/ViewSupportRequest";
 import {FaRegEdit} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 
-const SupportRequests = () => {
+export const SupportRequests = () => {
     const {showMySupport, showAllSupport} = AccessAndDisplay()
 
     const EditSupportRequest = ({allSupport}) => {

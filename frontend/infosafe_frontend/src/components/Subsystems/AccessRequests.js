@@ -6,7 +6,7 @@ import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
-const AccessRequests = () => {
+export const AccessRequests = () => {
     const {showAccess} = AccessAndDisplay()
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 

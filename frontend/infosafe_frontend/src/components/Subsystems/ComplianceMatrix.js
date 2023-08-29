@@ -5,7 +5,7 @@ import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 
-const ComplianceMatrix = () => {
+export const ComplianceMatrix = () => {
     const {showTask} = AccessAndDisplay()
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);

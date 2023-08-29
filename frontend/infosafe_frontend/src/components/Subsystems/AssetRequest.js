@@ -3,7 +3,7 @@ import ViewAssetRequest from "../View/ViewAssetRequest";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ReviewAssetRequest from "../ReviewAssetRequest";
 
-const AssetRequest = () => {
+export const AssetRequest = () => {
     const {showAssetRequests} = AccessAndDisplay()
 
     const AssetRequestApproval = ({ assetRequest }) =>{

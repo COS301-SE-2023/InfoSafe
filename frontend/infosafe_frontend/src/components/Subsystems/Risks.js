@@ -6,7 +6,7 @@ import {EditRisk} from "../Edit/EditRisk";
 import {ReviewRisk} from "../ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
 
-const Risks = () => {
+export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
     const {showRisk} = AccessAndDisplay()
 

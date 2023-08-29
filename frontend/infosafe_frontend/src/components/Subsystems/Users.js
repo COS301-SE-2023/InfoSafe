@@ -7,7 +7,7 @@ import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
 
-const Users = () => {
+export const Users = () => {
     const {
         showUser,
         createUserOpen,
