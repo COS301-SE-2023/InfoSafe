@@ -11,71 +11,87 @@ const Users = () => {
     const {
         showUser,
         createUserOpen,
-        setCreateUserOpen
+        setCreateUserOpen,
+        roles
     } = AccessAndDisplay()
 
     const EditUser = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
-        return(
-            <div className="EditIcon">
-                <FaRegEdit  data-testid="editButton" onClick={() => setEditUserOpen(true)}/>
-                {editUserOpen ? (
-                    <EditUser
-                        popupClose={() => setEditUserOpen(false)}
-                        popupOpen={editUserOpen}
-                        user={user}
-                    />
-                ) : null}{' '}
-            </div>
-        )
+        if(roles.includes("user_edit")) {
+            return (
+                <div className="EditIcon">
+                    <FaRegEdit data-testid="editButton" onClick={() => setEditUserOpen(true)}/>
+                    {editUserOpen ? (
+                        <EditUser
+                            popupClose={() => setEditUserOpen(false)}
+                            popupOpen={editUserOpen}
+                            user={user}
+                        />
+                    ) : null}{' '}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     };
 
     const DeleteUser = () => {
-        return(
-            <RiDeleteBin6Fill className="DeleteIcon"/>
-        )
+        if(roles.includes("user_delete")) {
+            return (
+                <RiDeleteBin6Fill className="DeleteIcon"/>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const ViewUserItem = ({user}) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
-
-        return (
-            <li key={user.id}>
-                <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                    User {user.user_id}: {user.first_name} {user.last_name}
-                    {viewUserOpen && (
-                        <ViewUser
-                            popupClose={() => setViewUserOpen(false)}
-                            popupOpen={viewUserOpen}
-                            user={user}
-                        />
-                    )}
-                </p>
-                <EditUser></EditUser>
-                <DeleteUser></DeleteUser>
-            </li>
-        );
+        if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
+            return (
+                <li key={user.id}>
+                    <p onClick={() => setViewUserOpen(!viewUserOpen)}>
+                        User {user.user_id}: {user.first_name} {user.last_name}
+                        {viewUserOpen && (
+                            <ViewUser
+                                popupClose={() => setViewUserOpen(false)}
+                                popupOpen={viewUserOpen}
+                                user={user}
+                            />
+                        )}
+                    </p>
+                    <EditUser></EditUser>
+                    <DeleteUser></DeleteUser>
+                </li>
+            );
+        } else {
+            return (null)
+        }
     };
 
     const CreateUser = () => {
-        return (
-            <div className="CreateUserButtonDiv">
-                <button
-                    className="CreateUserButton"
-                    data-testid="CreateUserButton"
-                    onClick={() => setCreateUserOpen(true)}
-                >
-                    Create New User
-                </button>
-                {createUserOpen ? (
-                    <CreateUserPopup
-                        popupClose={() => setCreateUserOpen(false)}
-                        popupOpen={createUserOpen}
-                    />
-                ) : null}
-            </div>
-        )
+        if(roles.includes("user_create")) {
+            return (
+                <div className="CreateUserButtonDiv">
+                    <button
+                        className="CreateUserButton"
+                        data-testid="CreateUserButton"
+                        onClick={() => setCreateUserOpen(true)}
+                    >
+                        Create New User
+                    </button>
+                    {createUserOpen ? (
+                        <CreateUserPopup
+                            popupClose={() => setCreateUserOpen(false)}
+                            popupOpen={createUserOpen}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     };
 
     const userItems = [];

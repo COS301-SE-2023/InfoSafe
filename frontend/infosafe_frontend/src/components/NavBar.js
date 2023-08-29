@@ -1,10 +1,10 @@
 import '../styling/NavBar.css';
 import React, {useState} from 'react';
-import ISO from './Roles/ISO';
-import DISO from './Roles/DISO';
-import DataCustodian from './Roles/DataCustodian';
-import AssetManager from "./Roles/AssetManager";
-import Employee from "./Roles/Employee";
+import ISO from './OldFiles/ISO';
+import DISO from './OldFiles/DISO';
+import DataCustodian from './OldFiles/DataCustodian';
+import AssetManager from "./OldFiles/AssetManager";
+import Employee from "./OldFiles/Employee";
 
 const NavBar = ({ systemRole }) => {
     const [activeNavTab, activate] = useState(

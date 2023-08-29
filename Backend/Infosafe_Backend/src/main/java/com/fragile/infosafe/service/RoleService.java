@@ -13,23 +13,25 @@ import javax.management.relation.RoleNotFoundException;
 @Service
 @RequiredArgsConstructor
 public class RoleService {
-    private RoleRepository repository;
+    private final RoleRepository repository;
 
     public ResponseEntity<String> makeRole (RoleRequest request){
         var role = Role.builder()
-                .roleName(request.getRoleName())
+                .role_name(request.getRole_name())
                 .permissions(request.getPermissions())
                 .build();
         repository.save(role);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-    public long getRolePermissions(String roleName) throws RoleNotFoundException {
-        Role role = repository.findByRoleName(roleName);
-        if (role != null) {
-            return role.getPermissions();
-        } else {
-            throw new RoleNotFoundException("Role not found: " + roleName);
-        }
-    }
+//    public long getRolePermissions(String role_name) throws RoleNotFoundException {
+//        Role role = repository.findByRole_name(role_name);
+//        if (role != null) {
+//            return role.getPermissions();
+//        } else {
+//            throw new RoleNotFoundException("Role not found: " + role_name);
+//        }
+//    }
+
+    public boolean checkRoleExists(String name){return repository.existsByRole_name(name);}
 }

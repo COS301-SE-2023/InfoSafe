@@ -7,72 +7,87 @@ import AccessRequestApproval from "../Edit/AccessRequestApproval";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
 const AccessRequests = () => {
-    const {showAccess} = AccessAndDisplay()
-    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
+    const {showAccess, roles} = AccessAndDisplay()
+    const [approveAccessRequestOpen, setApproveAccessRequestOpen] = useState(false);
 
     const EditAccessRequest = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
-        return (
-            <div className="EditIcon">
-                <FaRegEdit
-                    onClick={() => setEditAccessRequestOpen(!editAccessRequestOpen)}
-                />
-                {editAccessRequestOpen ? (
-                    <EditAccessRequest
-                        popupClose={() => setEditAccessRequestOpen(false)}
-                        popupOpen={editAccessRequestOpen}
-                        access={access}
+        if (roles.includes("access_requests_edit")) {
+            return (
+                <div className="EditIcon">
+                    <FaRegEdit
+                        onClick={() => setEditAccessRequestOpen(!editAccessRequestOpen)}
                     />
-                ) : null}
-            </div>
-        )
-
-    }
-
-    const DeleteAccessRequest = () => {
-        return(
-            <RiDeleteBin6Fill className="DeleteIcon"/>
-        )
-    }
-    const ViewAccessRequests = ({access}) => {
-        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
-
-        return (
-            <li key={access.request_id}>
-                <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
-                    Access Request {access.request_id}
-                    {viewAccessRequestOpen ? (
-                        <ViewAccessRequest
-                            popupClose={() => setViewAccessRequestOpen(false)}
-                            popupOpen={viewAccessRequestOpen}
+                    {editAccessRequestOpen ? (
+                        <EditAccessRequest
+                            popupClose={() => setEditAccessRequestOpen(false)}
+                            popupOpen={editAccessRequestOpen}
                             access={access}
                         />
                     ) : null}
-                </p>
-                <EditAccessRequest></EditAccessRequest>
-                <DeleteAccessRequest></DeleteAccessRequest>
-            </li>
-        );
+                </div>
+            )
+        } else {
+            return (null)
+        }
+
+    }
+
+    const DeleteAccessRequest = () => { // ??
+        if(roles.includes("delete_access")){
+            return (
+                <RiDeleteBin6Fill className="DeleteIcon"/>
+            )
+        } else {
+            return (null)
+        }
+    }
+    const ViewAccessRequests = ({access}) => {
+        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
+        if (roles.includes("access_requests_edit") || roles.includes("access_requests_approve")) {
+            return (
+                <li key={access.request_id}>
+                    <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
+                        Access Request {access.request_id}
+                        {viewAccessRequestOpen ? (
+                            <ViewAccessRequest
+                                popupClose={() => setViewAccessRequestOpen(false)}
+                                popupOpen={viewAccessRequestOpen}
+                                access={access}
+                            />
+                        ) : null}
+                    </p>
+                    <EditAccessRequest></EditAccessRequest>
+                    <DeleteAccessRequest></DeleteAccessRequest>
+                </li>
+            );
+        } else {
+            return (null)
+        }
     };
 
     const ApproveAccessRequest = () => {
-        return(
-            <div className="ApproveAccessRequestButtonDiv">
-                <button
-                    className="approveAccessRequestButton"
-                    data-testid="approveAccessRequestButton"
-                    onClick={() => setApproveAccessRequestOpen(true)}
-                >
-                    Access Request Approval
-                </button>
-                {approveAccessRequestOpen ? (
-                    <AccessRequestApproval
-                        popupClose={() => setApproveAccessRequestOpen(false)}
-                        popupOpen={approveAccessRequestOpen}
-                    />
-                ) : null}
-            </div>
-        )
+        if(roles.includes("access_requests_approve")) {
+            return (
+                <div className="ApproveAccessRequestButtonDiv">
+                    <button
+                        className="approveAccessRequestButton"
+                        data-testid="approveAccessRequestButton"
+                        onClick={() => setApproveAccessRequestOpen(true)}
+                    >
+                        Access Request Approval
+                    </button>
+                    {approveAccessRequestOpen ? (
+                        <AccessRequestApproval
+                            popupClose={() => setApproveAccessRequestOpen(false)}
+                            popupOpen={approveAccessRequestOpen}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const accessRequests = [];

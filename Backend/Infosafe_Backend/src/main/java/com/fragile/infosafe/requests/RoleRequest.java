@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleRequest {
-    private String roleName;
-    private int permissions;
+    private String role_name;
+    private long permissions;
 }

@@ -11,7 +11,7 @@ import Requests from '../Create/Requests';
 import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
 import ViewAssetRequest from '../View/ViewAssetRequest';
-import AccessAndDisplay from "./AccessAndDisplay";
+import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 const AssetManager = ({currentTab}) => {
     const {showDatascope,  showAsset, showMySupport, showAssetRequests, showTask} = AccessAndDisplay()

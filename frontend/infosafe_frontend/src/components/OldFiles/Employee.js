@@ -6,7 +6,7 @@ import ViewSupportRequest from '../View/ViewSupportRequest';
 import Requests from '../Create/Requests';
 import '../../styling/Dropdown.css';
 import ViewDataScope from "../View/ViewDataScope";
-import AccessAndDisplay from "./AccessAndDisplay";
+import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {FaRegEdit} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 

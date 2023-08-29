@@ -5,68 +5,81 @@ import {FaRegEdit} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 
 const SupportRequests = () => {
-    const {showMySupport, showAllSupport} = AccessAndDisplay()
+    const {showMySupport, showAllSupport, roles} = AccessAndDisplay()
 
     const EditSupportRequest = ({allSupport}) => {
-        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false); // ISO DISO
-        return(
-            <div className="EditIcon">
-                <FaRegEdit
+        const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
+        if (roles.includes("support_requests_edit")) {
+            return (
+                <div className="EditIcon">
+                    <FaRegEdit
 
-                    onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
-                />
-                {editSupportRequestOpen ? (
-                    <EditSupportRequest
-                        popupClose={() => setEditSupportRequestOpen(false)}
-                        popupOpen={editSupportRequestOpen}
-                        support={allSupport}
+                        onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
                     />
-                ) : null}
-            </div>
-        )
+                    {editSupportRequestOpen ? (
+                        <EditSupportRequest
+                            popupClose={() => setEditSupportRequestOpen(false)}
+                            popupOpen={editSupportRequestOpen}
+                            support={allSupport}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
+
     }
 
     const EditMySupportRequest = ({mySupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
-        return(
-            <div  className="EditIcon">
-                <FaRegEdit
+        if (roles.includes("support_requests_edit")) {
+            return (
+                <div className="EditIcon">
+                    <FaRegEdit
 
-                    onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
-                />
-                {editSupportRequestOpen ? (
-                    <EditSupportRequest
-                        popupClose={() => setEditSupportRequestOpen(false)}
-                        popupOpen={editSupportRequestOpen}
-                        support={mySupport}
+                        onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
                     />
-                ) : null}
-            </div>
-        )
-    }
-
-    const ViewAllSupport = ({ allSupport }) => {
-        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-        return(
-            <li key={allSupport.support_id}>
-                <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
-                    Support Request {allSupport.support_id}
-                    {viewSupportRequestOpen ? (
-                        <ViewSupportRequest
-                            popupClose={() => setViewSupportRequestOpen(false)}
-                            popupOpen={viewSupportRequestOpen}
-                            support={allSupport}
+                    {editSupportRequestOpen ? (
+                        <EditSupportRequest
+                            popupClose={() => setEditSupportRequestOpen(false)}
+                            popupOpen={editSupportRequestOpen}
+                            support={mySupport}
                         />
                     ) : null}
-                </p>
-                <EditSupportRequest></EditSupportRequest>
-            </li>
-        )
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
-    const ViewMySupport = ({ mySupport }) => {
+    const ViewAllSupport = ({allSupport}) => {
+        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
+        if(roles.includes("support_requests_viewAll")) {
+            return (
+                <li key={allSupport.support_id}>
+                    <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
+                        Support Request {allSupport.support_id}
+                        {viewSupportRequestOpen ? (
+                            <ViewSupportRequest
+                                popupClose={() => setViewSupportRequestOpen(false)}
+                                popupOpen={viewSupportRequestOpen}
+                                support={allSupport}
+                            />
+                        ) : null}
+                    </p>
+                    <EditSupportRequest></EditSupportRequest>
+                </li>
+            )
+        } else {
+            return (null)
+        }
+    }
+
+    const ViewMySupport = ({mySupport}) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-        return(
+        return (
             <li key={mySupport.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
                     Support Request {mySupport.support_id}
@@ -92,9 +105,9 @@ const SupportRequests = () => {
         my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
     );
 
-    const ViewSupportRequests = () =>{
+    const ViewSupportRequests = () => {
 
-        return(
+        return (
             <div className="tables">
                 <div className="active_support_requests">
                     <ul className="activeRequestsList">{active_requests}</ul>
@@ -106,7 +119,7 @@ const SupportRequests = () => {
         )
     }
 
-    return(
+    return (
         <div className="display">
             <div>
                 <div className="titles">

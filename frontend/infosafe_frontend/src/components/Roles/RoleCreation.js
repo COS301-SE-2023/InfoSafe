@@ -14,7 +14,48 @@ const RoleCreation = () => {
     const [canCreateAssetRequest, setCanCreateAssetRequest] = useState([]);
     const [canCreateSupportRequest, setCanCreateSupportRequest] = useState([]);
     const [canCreateAccessRequest, setCanCreateAccessRequest] = useState([]);
+    const [role_name, setRoleName] = useState([]);
     let permissionsList = [];
+    let permissionsNumber = [];
+
+
+    const handleClick = (e) => {
+        submitInfo();
+        e.preventDefault();
+        const role = {role_name, permissionsNumber};
+
+        // add check to make sure role doesnt exist
+        fetch(`http://localhost:8080/api/role/checkName?rolename=${role_name}`,{
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data) {
+                            console.log("role name already exists");
+                        } else {
+                            console.log(role);
+                            fetch("http://localhost:8080/api/role/addRole", {
+                                mathod: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                                },
+                                body: JSON.stringify(role),
+                            }).then(() => {
+                                console.log("New Role added");
+                            })
+                                .catch((error) => {
+                                    console.error("Error adding new Role:", error);
+                                });
+                        }
+                        // popupClose();
+                    });
+    };
+
 
     const handleCheckboxChecked = (index, subsystem) => {
         const newCheckboxState = [...checkboxState];
@@ -400,6 +441,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Users"))
             {
                 permissionsList.push("Create Users");
+                permissionsNumber += 1;
             }
 
         }
@@ -409,6 +451,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Edit Users"))
             {
                 permissionsList.push("Edit Users");
+                permissionsNumber += 2;
             }
 
         }
@@ -418,6 +461,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Delete Users"))
             {
                 permissionsList.push("Delete Users");
+                permissionsNumber += 4;
             }
 
         }
@@ -427,6 +471,8 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Data Scopes"))
             {
                 permissionsList.push("Create Data Scopes");
+                permissionsNumber += 8;
+
             }
 
         }
@@ -436,6 +482,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Edit Data Scopes"))
             {
                 permissionsList.push("Edit Data Scopes");
+                permissionsNumber += 16;
             }
 
         }
@@ -445,15 +492,17 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Delete Data Scopes"))
             {
                 permissionsList.push("Delete Data Scopes");
+                permissionsNumber += 32;
             }
 
         }
 
         permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Access Requests"))
+            if (!permissionsList.includes("Request Access Request"))
             {
                 permissionsList.push("Edit Access Requests");
+                permissionsNumber += 128;
             }
 
         }
@@ -463,6 +512,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Approve Access Requests"))
             {
                 permissionsList.push("Approve Access Requests");
+                permissionsNumber += 64;
             }
 
         }
@@ -472,6 +522,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Tasks"))
             {
                 permissionsList.push("Create Tasks");
+                permissionsNumber += 256;
             }
 
         }
@@ -481,6 +532,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Edit Tasks"))
             {
                 permissionsList.push("Edit Tasks");
+                permissionsNumber += 512;
             }
 
         }
@@ -490,6 +542,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Delete Tasks"))
             {
                 permissionsList.push("Delete Tasks");
+                permissionsNumber += 1024;
             }
 
         }
@@ -499,6 +552,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Approve Tasks"))
             {
                 permissionsList.push("Approve Tasks");
+                permissionsNumber += 2048;
             }
 
         }
@@ -508,6 +562,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Devices"))
             {
                 permissionsList.push("Create Devices");
+                permissionsNumber += 4096;
             }
 
         }
@@ -517,6 +572,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Edit Devices"))
             {
                 permissionsList.push("Edit Devices");
+                permissionsNumber += 8192;
             }
 
         }
@@ -526,6 +582,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Delete Devices"))
             {
                 permissionsList.push("Delete Devices");
+                permissionsNumber += 16384;
             }
 
         }
@@ -535,6 +592,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("View All Support Requests"))
             {
                 permissionsList.push("View All Support Requests");
+                permissionsNumber += 32768;
             }
 
         }
@@ -544,6 +602,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Edit Support Requests"))
             {
                 permissionsList.push("Edit Support Requests");
+                permissionsNumber += 65536;
             }
 
         }
@@ -553,6 +612,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Delete Support Requests"))
             {
                 permissionsList.push("Delete Support Requests");
+                permissionsNumber += 131072;
             }
 
         }
@@ -562,6 +622,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Review Asset Requests"))
             {
                 permissionsList.push("Review Asset Requests");
+                permissionsNumber += 33554432;
             }
 
         }
@@ -571,6 +632,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Risks"))
             {
                 permissionsList.push("Create Risks");
+                permissionsNumber += 262144;
             }
 
         }
@@ -580,6 +642,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Edit Risks"))
             {
                 permissionsList.push("Edit Risks");
+                permissionsNumber += 524288;
             }
 
         }
@@ -589,6 +652,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Delete Risks"))
             {
                 permissionsList.push("Delete Risks");
+                permissionsNumber += 2097152;
             }
 
         }
@@ -598,6 +662,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Review Risks"))
             {
                 permissionsList.push("Review Risks");
+                permissionsNumber += 1048576;
             }
 
         }
@@ -607,6 +672,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Asset Requests"))
             {
                 permissionsList.push("Create Asset Requests");
+                permissionsNumber += 4194304;
             }
 
         }
@@ -616,6 +682,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Support Requests"))
             {
                 permissionsList.push("Create Support Requests");
+                permissionsNumber += 8388608;
             }
 
         }
@@ -625,6 +692,7 @@ const RoleCreation = () => {
             if (!permissionsList.includes("Create Access Requests"))
             {
                 permissionsList.push("Create Access Requests");
+                permissionsNumber += 16777216;
             }
 
         }
@@ -637,8 +705,9 @@ const RoleCreation = () => {
                 <p className="roleCreateNameLabel">Role Name:</p>
                 <input
                     className="roleCreationRoleNameInput"
-                    defaultValue=""
-                    // onChange={e => setValues({...values, current_assignee: e.target.value})}
+                    data-testid="roleCreationTest"
+                    value={role_name}
+                    onChange={(e) => setRoleName(e.target.value)}
                 />
             </div>
             <div className="permissions">
@@ -1004,7 +1073,7 @@ const RoleCreation = () => {
             <button
                 className="roleCreationButton"
                 type = "submit"
-                onClick={submitInfo}
+                onClick={handleClick}
                 >
                 Create Role
             </button>

@@ -17,16 +17,16 @@ public class Role{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int role_id;
-    private String roleName;
+    private String role_name;
     @Column(name = "permissions")
     private long permissions;
 
-    public String getRoleName() {
-        return roleName;
+    public String getRole_name() {
+        return role_name;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRole_Name(String role_name) {
+        this.role_name = role_name;
     }
 
     public long getPermissions() {

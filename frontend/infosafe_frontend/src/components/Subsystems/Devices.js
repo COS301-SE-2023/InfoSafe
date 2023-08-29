@@ -7,61 +7,72 @@ import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
 const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const {showAsset} = AccessAndDisplay()
+    const {showAsset, roles} = AccessAndDisplay()
 
     const EditDevice = ({asset}) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
-        return(
-            <div className="AssetManagerEditIcon">
-                <FaRegEdit  onClick={() => setEditDeviceOpen(!editDeviceOpen)} />
-                {editDeviceOpen ? (
-                    <EditDevice
-                        popupClose={() => setEditDeviceOpen(false)}
-                        popupOpen={editDeviceOpen}
-                        asset={asset}
-                    />
-                ) : null}
-            </div>
-        )
+        if(roles.includes("risks_edit")) {
+            return (
+                <div className="AssetManagerEditIcon">
+                    <FaRegEdit onClick={() => setEditDeviceOpen(!editDeviceOpen)}/>
+                    {editDeviceOpen ? (
+                        <EditDevice
+                            popupClose={() => setEditDeviceOpen(false)}
+                            popupOpen={editDeviceOpen}
+                            asset={asset}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const ViewDeviceItem = ({ asset }) => {
-
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-        return (
-            <li key={asset.id}>
-                <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                    Asset {asset.asset_id}: {asset.asset_name}:{' '}{asset.asset_description}
-                    {viewDeviceOpen && (
-                        <ViewDevice
-                            popupClose={() => setViewDeviceOpen(false)}
-                            popupOpen={viewDeviceOpen}
-                            asset={asset}
-                        />
-                    )}
-                </p>
-                <EditDevice></EditDevice>
-            </li>
-        );
+        if(roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {
+            return (
+                <li key={asset.id}>
+                    <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
+                        Asset {asset.asset_id}: {asset.asset_name}:{' '}{asset.asset_description}
+                        {viewDeviceOpen && (
+                            <ViewDevice
+                                popupClose={() => setViewDeviceOpen(false)}
+                                popupOpen={viewDeviceOpen}
+                                asset={asset}
+                            />
+                        )}
+                    </p>
+                    <EditDevice></EditDevice>
+                </li>
+            );
+        } else {
+            return (null)
+        }
     };
 
     const CreateDevice = () => {
-        return(
-            <div className="AddDeviceDiv">
-                <button
-                    className="AddDeviceButton"
-                    onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
-                >
-                    Add Device
-                </button>
-                {createDeviceOpen ? (
-                    <CreateDevicePopup
-                        popupClose={() => setCreateDeviceOpen(false)}
-                        popupOpen={createDeviceOpen}
-                    />
-                ) : null}
-            </div>
-        )
+        if(roles.includes("devices_create")) {
+            return (
+                <div className="AddDeviceDiv">
+                    <button
+                        className="AddDeviceButton"
+                        onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
+                    >
+                        Add Device
+                    </button>
+                    {createDeviceOpen ? (
+                        <CreateDevicePopup
+                            popupClose={() => setCreateDeviceOpen(false)}
+                            popupOpen={createDeviceOpen}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const devices = [];

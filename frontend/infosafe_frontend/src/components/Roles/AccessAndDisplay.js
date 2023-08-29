@@ -192,7 +192,8 @@ const AccessAndDisplay = () => {
         setShowAllSupport,
         showMySupport,
         setShowMySupport,
-        showAssetRequests
+        showAssetRequests,
+        roles
     };
 };
 export default AccessAndDisplay;

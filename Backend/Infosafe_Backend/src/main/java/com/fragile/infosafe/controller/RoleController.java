@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("api/role")
 @RequiredArgsConstructor
 public class RoleController {
-    private RoleService service;
+    private final RoleService service;
 
     @GetMapping("/getPermissions")
     public List<String> getUserPermissions() {
@@ -40,11 +40,17 @@ public class RoleController {
             return userPermissionList;
         }
 
-        return Collections.emptyList(); // Return an empty list if user is not authenticated
+        return Collections.emptyList();
     }
     @PostMapping("/addRole")
     public ResponseEntity addTask(@RequestBody RoleRequest role) {
         log.info("Adding a task");
         return ResponseEntity.ok(service.makeRole(role));
+    }
+
+    @GetMapping("/checkName")
+    public ResponseEntity<Boolean> checkEmailExists(@RequestParam("rolename") String name) {
+        boolean nameExists = service.checkRoleExists(name);
+        return ResponseEntity.ok(nameExists);
     }
 }

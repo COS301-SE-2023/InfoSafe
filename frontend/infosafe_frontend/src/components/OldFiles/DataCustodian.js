@@ -15,7 +15,7 @@ import {CreateRisk} from "../Create/CreateRiskPopup";
 import Requests from '../Create/Requests';
 import {ViewRisk} from "../View/ViewRisk";
 import {EditRisk} from "../Edit/EditRisk";
-import AccessAndDisplay from "./AccessAndDisplay";
+import AccessAndDisplay from "../Roles/AccessAndDisplay";
 /* eslint-disable react/prop-types */
 
 const DataCustodian = ({currentTab}) => {

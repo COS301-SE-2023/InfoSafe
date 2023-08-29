@@ -8,68 +8,80 @@ import {CreateRisk} from "../Create/CreateRiskPopup";
 
 const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const {showRisk} = AccessAndDisplay()
+    const {showRisk, roles} = AccessAndDisplay()
 
     const CreateRisk = () => {
-        return(
-            <div className="CreateRiskButtonDiv">
-                <button
-                    className="CreateRiskButton"
-                    data-testid="CreateRiskButton"
-                    onClick={() => setCreateRiskOpen(true)}
-                >
-                    Create Risk
-                </button>
-                {createRiskOpen ? (
-                    <CreateRisk
-                        popupClose={() => setCreateRiskOpen(false)}
-                        popupOpen={createRiskOpen}
-                    />
-                ) : null}
-            </div>
-        )
+        if(roles.includes("risks_create")) {
+            return (
+                <div className="CreateRiskButtonDiv">
+                    <button
+                        className="CreateRiskButton"
+                        data-testid="CreateRiskButton"
+                        onClick={() => setCreateRiskOpen(true)}
+                    >
+                        Create Risk
+                    </button>
+                    {createRiskOpen ? (
+                        <CreateRisk
+                            popupClose={() => setCreateRiskOpen(false)}
+                            popupOpen={createRiskOpen}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const EditRisk = ({risk}) => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
-        return (
-            <div className="ISOEditIcon">
-                <FaRegEdit
-                    onClick={() => setEditRiskOpen(true)}
-                />
-                {editRiskOpen ? (
-                    <EditRisk
-                        popupClose={() => setEditRiskOpen(false)}
-                        popupOpen={editRiskOpen}
-                        risk={risk}
+        if(roles.includes("risks_edit")) {
+            return (
+                <div className="ISOEditIcon">
+                    <FaRegEdit
+                        onClick={() => setEditRiskOpen(true)}
                     />
-                ) : null}
-            </div>
-        )
+                    {editRiskOpen ? (
+                        <EditRisk
+                            popupClose={() => setEditRiskOpen(false)}
+                            popupOpen={editRiskOpen}
+                            risk={risk}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const ReviewRisk = ({risk}) => {
         const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
-        return(
-            <div className="ISOReviewRiskButton">
-                <button
-                    onClick={() => setReviewRiskOpen(true)}>
-                    Review
-                </button>
-                {reviewRiskOpen ? (
-                    <ReviewRisk
-                        popupClose={() => setReviewRiskOpen(false)}
-                        popupOpen={reviewRiskOpen}
-                        risk={risk}
-                    />
-                ) : null}
-            </div>
-        )
+        if(roles.includes("risks_review")) {
+            return (
+                <div className="ISOReviewRiskButton">
+                    <button
+                        onClick={() => setReviewRiskOpen(true)}>
+                        Review
+                    </button>
+                    {reviewRiskOpen ? (
+                        <ReviewRisk
+                            popupClose={() => setReviewRiskOpen(false)}
+                            popupOpen={reviewRiskOpen}
+                            risk={risk}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return (null)
+        }
     }
 
     const ViewRisks = ({ risk }) => {
         const [viewRiskOpen, setViewRiskOpen] = useState(false);
-
+        if (risks.includes("risk_edit") || risks.includes("risks_create") || risks.includes("risks_review"))
         return (
             <li className="ISOrisksListItem" key={risk.risk_id}>
                 <p className="ISOrisksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
