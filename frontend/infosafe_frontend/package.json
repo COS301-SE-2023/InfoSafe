@@ -12,6 +12,7 @@
         "react-bootstrap": "^2.7.4",
         "react-dom": "^18.2.0",
         "react-dropdown": "^1.11.0",
+        "react-dropdown-select": "^4.10.0",
         "react-icons": "^4.10.1",
         "react-router-dom": "^6.12.1",
         "react-scripts": "^5.0.1",
@@ -44,8 +45,8 @@
         ]
     },
     "devDependencies": {
+        "eslint": "^8.43.0",
         "jest-fetch-mock": "^3.0.3",
-        "prettier": "^2.8.8",
-        "eslint": "^8.43.0"
+        "prettier": "^2.8.8"
     }
 }

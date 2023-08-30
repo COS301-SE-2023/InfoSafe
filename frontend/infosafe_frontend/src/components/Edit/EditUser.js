@@ -7,30 +7,30 @@ import Dropdown from 'react-dropdown';
 /* eslint-disable  no-unused-vars */
 
 const EditUser = ({ user, popupClose, popupOpen }) => {
-    // const[first_name,setName]=useState({first_name: user.first_name})
-    // const[last_name,setSurname]=useState({last_name: user.last_name})
-    // const[email,setEmail]=useState({email: user.email})
-    // const[password]=useState({password: user.password})
-    // let [role,setRole]=useState({role: user.role})
-    const[values, setValues]=useState({
-        user_id: user.user_id,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-        password: user.password,
-        role: user.role
-    })
+    const [selectedRole, setSelectedRole] = useState('')
+    const [roleNames, setRoleNames] = useState('')
 
-    //const values = [first_name, last_name, email, password, role];
+    const [values, setValues] = useState({
+        user_id: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        role: ''
+    });
 
-    const ROLE_OPTIONS = [
-        'EMPLOYEE',
-        'ISO',
-        'DISO',
-        'DATA CUSTODIAN',
-        'SYSTEM ADMINISTRATOR',
-        'ASSET MANAGER'
-    ];
+    useEffect(() => {
+        if (user) {
+            setValues({
+                user_id: user.user_id,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+                password: user.password,
+                role: user.role.role_name
+            });
+        }
+    }, [user]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,9 +44,20 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         }).then(()=>{
             console.log("Updated User")
         })
-        //console.log(JSON.stringify(values))
         popupClose()
     }
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/role/getRoleNames", {
+            method:"GET",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+        }).then((res) => res.json())
+            .then((result) => {
+                setRoleNames(result);
+            });
+    }, [])
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
@@ -90,15 +101,17 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                         </div>
                         <div className="roleEdit">
                             <p className="roleTitle">System Role</p>
-                            <Dropdown
-                                options={ROLE_OPTIONS}
-                                value={ROLE_OPTIONS[0]}
-                                className="role_dropdown"
-                                data-testid="role_dropdown"
-                                name="role"
-                                defaultValue={user.role}  onChange={(selectedOption) => setValues({ ...values, role: selectedOption.value })}
-                                //onChange={(selectedOption) => setRole(selectedOption.value)}
-                            />
+                            {roleNames && roleNames.length > 0 ? (
+                                <Dropdown
+                                    options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
+                                    values={[{ label: selectedRole, value: selectedRole }]}
+                                    className="role_dropdown"
+                                    name="role_dropdown"
+                                    onChange={values => setSelectedRole(values[0].value)}
+                                />
+                            ) : (
+                                <p className="loadTitle">Loading...</p>
+                            )}
                         </div>
                         <button className="FinishButton" data-testid="finish">
                             Finish

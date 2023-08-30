@@ -46,11 +46,10 @@ export const Users = () => {
     }
 
     const ViewUserItem = ({user}) => {
-        //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
         if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
             return (
-                <li key={user.id}>
+                <li key={user.user_id}>
                     <p onClick={() => setViewUserOpen(!viewUserOpen)}>
                         User {user.user_id}: {user.first_name} {user.last_name}
                         {viewUserOpen && (
@@ -61,7 +60,7 @@ export const Users = () => {
                             />
                         )}
                     </p>
-                    <EditUserDiv/>
+                    <EditUserDiv user={user}/>
                     <DeleteUser></DeleteUser>
                 </li>
             );
@@ -95,7 +94,7 @@ export const Users = () => {
     };
 
     const userItems = [];
-    showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.id}/>));
+    showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
 
     return (
         <div className="display">

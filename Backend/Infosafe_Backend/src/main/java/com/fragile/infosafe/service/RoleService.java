@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.RoleNotFoundException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +35,11 @@ public class RoleService {
 //        }
 //    }
 
+    public List<String> getRoleNames() {
+        List<Role> roles = repository.findAll();
+        return roles.stream()
+                .map(Role::getRole_name)
+                .collect(Collectors.toList());
+    }
     public boolean checkRoleExists(String name){return repository.existsByRole_name(name);}
 }
