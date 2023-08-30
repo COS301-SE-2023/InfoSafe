@@ -5,6 +5,7 @@ import {FaRegEdit} from "react-icons/fa";
 import EditUser from "../Edit/EditUser";
 import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
+import '../../styling/Users.css';
 
 
 export const Users = () => {
@@ -31,7 +32,7 @@ export const Users = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
     };
 
@@ -41,13 +42,14 @@ export const Users = () => {
                 <RiDeleteBin6Fill className="DeleteIcon"/>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 
     const ViewUserItem = ({user}) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
+        const [editUserOpen, setEditUserOpen] = useState(false);
         if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
             return (
                 <li key={user.id}>
@@ -61,7 +63,16 @@ export const Users = () => {
                             />
                         )}
                     </p>
-                    <EditUser></EditUser>
+                    <div className="EditIcon">
+                        <FaRegEdit data-testid="editButton" onClick={() => setEditUserOpen(true)}/>
+                        {editUserOpen ? (
+                            <EditUser
+                                popupClose={() => setEditUserOpen(false)}
+                                popupOpen={editUserOpen}
+                                user={user}
+                            />
+                        ) : null}{' '}
+                    </div>
                     <DeleteUser></DeleteUser>
                 </li>
             );
