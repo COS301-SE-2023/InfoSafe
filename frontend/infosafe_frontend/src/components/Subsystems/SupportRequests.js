@@ -3,7 +3,7 @@ import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ViewSupportRequest from "../View/ViewSupportRequest";
 import {FaRegEdit} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
-
+import "../../styling/SupportRequests.css";
 export const SupportRequests = () => {
     const {showMySupport, showAllSupport, roles} = AccessAndDisplay()
 
