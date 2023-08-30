@@ -4,7 +4,7 @@ import {ViewDevice} from "../View/ViewDevice";
 import {FaRegEdit} from "react-icons/fa";
 import EditDevice from "../Edit/EditDevice";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
-
+import "../../styling/Devices.css";
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const {showAsset, roles} = AccessAndDisplay()
@@ -13,7 +13,7 @@ export const Devices = () => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="AssetManagerEditIcon">
+                <div className="EditIcon">
                     <FaRegEdit onClick={() => setEditDeviceOpen(!editDeviceOpen)}/>
                     {editDeviceOpen ? (
                         <EditDevice
