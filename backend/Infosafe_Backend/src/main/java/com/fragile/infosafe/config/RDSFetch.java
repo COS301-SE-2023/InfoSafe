@@ -77,53 +77,53 @@ public class RDSFetch {
         return gson.fromJson(secret, RDSLogin.class);
     }
 
-    private String getAccess() {
-
-        String secretName = "security_credentials";
-        Region region = Region.of("us-east-1");
-
-        // Create a Secrets Manager client
-        SecretsManagerClient client = SecretsManagerClient.builder()
-                .region(region)
-                .build();
-
-        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
-                .secretId(secretName)
-                .build();
-
-        GetSecretValueResponse getSecretValueResponse;
-
-        try {
-            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
-        } catch (Exception e) {
-            throw e;
-        }
-
-        return getSecretValueResponse.secretString();
-    }
-
-    private String getSecret() {
-
-        String secretName = "security_access_secret";
-        Region region = Region.of("us-east-1");
-
-        // Create a Secrets Manager client
-        SecretsManagerClient client = SecretsManagerClient.builder()
-                .region(region)
-                .build();
-
-        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
-                .secretId(secretName)
-                .build();
-
-        GetSecretValueResponse getSecretValueResponse;
-
-        try {
-            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
-        } catch (Exception e) {
-            throw e;
-        }
-
-        return getSecretValueResponse.secretString();
-    }
+//    private String getAccess() {
+//
+//        String secretName = "security_credentials";
+//        Region region = Region.of("us-east-1");
+//
+//        // Create a Secrets Manager client
+//        SecretsManagerClient client = SecretsManagerClient.builder()
+//                .region(region)
+//                .build();
+//
+//        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
+//                .secretId(secretName)
+//                .build();
+//
+//        GetSecretValueResponse getSecretValueResponse;
+//
+//        try {
+//            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
+//        } catch (Exception e) {
+//            throw e;
+//        }
+//
+//        return getSecretValueResponse.secretString();
+//    }
+//
+//    private String getSecret() {
+//
+//        String secretName = "security_access_secret";
+//        Region region = Region.of("us-east-1");
+//
+//        // Create a Secrets Manager client
+//        SecretsManagerClient client = SecretsManagerClient.builder()
+//                .region(region)
+//                .build();
+//
+//        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
+//                .secretId(secretName)
+//                .build();
+//
+//        GetSecretValueResponse getSecretValueResponse;
+//
+//        try {
+//            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
+//        } catch (Exception e) {
+//            throw e;
+//        }
+//
+//        return getSecretValueResponse.secretString();
+//    }
 }
