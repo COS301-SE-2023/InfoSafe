@@ -4,12 +4,12 @@ import ViewSupportRequest from "../View/ViewSupportRequest";
 import {FaRegEdit} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 
-const SupportRequests = () => {
+export const SupportRequests = () => {
     const {showMySupport, showAllSupport, roles} = AccessAndDisplay()
 
     const EditSupportRequest = ({allSupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
-        if (roles.includes("support_requests_edit")) {
+        if(roles.includes("support_requests_edit")) {
             return (
                 <div className="EditIcon">
                     <FaRegEdit
@@ -26,14 +26,12 @@ const SupportRequests = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
-
     }
 
     const EditMySupportRequest = ({mySupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
-        if (roles.includes("support_requests_edit")) {
             return (
                 <div className="EditIcon">
                     <FaRegEdit
@@ -49,12 +47,9 @@ const SupportRequests = () => {
                     ) : null}
                 </div>
             )
-        } else {
-            return (null)
-        }
     }
 
-    const ViewAllSupport = ({allSupport}) => {
+    const ViewAllSupport = ({ allSupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_viewAll")) {
             return (
@@ -73,13 +68,13 @@ const SupportRequests = () => {
                 </li>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 
-    const ViewMySupport = ({mySupport}) => {
+    const ViewMySupport = ({ mySupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
-        return (
+        return(
             <li key={mySupport.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
                     Support Request {mySupport.support_id}
@@ -105,9 +100,8 @@ const SupportRequests = () => {
         my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
     );
 
-    const ViewSupportRequests = () => {
-
-        return (
+    const ViewSupportRequests = () =>{
+        return(
             <div className="tables">
                 <div className="active_support_requests">
                     <ul className="activeRequestsList">{active_requests}</ul>
@@ -119,7 +113,7 @@ const SupportRequests = () => {
         )
     }
 
-    return (
+    return(
         <div className="display">
             <div>
                 <div className="titles">

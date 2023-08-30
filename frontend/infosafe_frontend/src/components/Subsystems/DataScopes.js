@@ -6,7 +6,7 @@ import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
-const DataScopes = () => {
+export const DataScopes = () => {
 
     const {showDatascope, roles} = AccessAndDisplay()
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false); // DS

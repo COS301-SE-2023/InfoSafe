@@ -6,13 +6,13 @@ import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
-const AccessRequests = () => {
+export const AccessRequests = () => {
     const {showAccess, roles} = AccessAndDisplay()
-    const [approveAccessRequestOpen, setApproveAccessRequestOpen] = useState(false);
+    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     const EditAccessRequest = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
-        if (roles.includes("access_requests_edit")) {
+        if(roles.includes("access_requests_edit")) {
             return (
                 <div className="EditIcon">
                     <FaRegEdit
@@ -30,11 +30,10 @@ const AccessRequests = () => {
         } else {
             return (null)
         }
-
     }
 
-    const DeleteAccessRequest = () => { // ??
-        if(roles.includes("delete_access")){
+    const DeleteAccessRequest = () => {
+        if(roles.includes("access_request_delete")) {
             return (
                 <RiDeleteBin6Fill className="DeleteIcon"/>
             )
@@ -43,8 +42,8 @@ const AccessRequests = () => {
         }
     }
     const ViewAccessRequests = ({access}) => {
-        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false);
-        if (roles.includes("access_requests_edit") || roles.includes("access_requests_approve")) {
+        const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
+        if(roles.includes("access_requests_edit") || roles.includes("access_requests_approve")) {
             return (
                 <li key={access.request_id}>
                     <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
@@ -94,8 +93,6 @@ const AccessRequests = () => {
     showAccess.map((access) =>
         accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
     );
-
-
     return (
         <div className="display">
             <div className="accessRequests">

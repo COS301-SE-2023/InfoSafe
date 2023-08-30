@@ -5,38 +5,38 @@ import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 
-const ComplianceMatrix = () => {
+export const ComplianceMatrix = () => {
     const {showTask, roles} = AccessAndDisplay()
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
 
     const EditTask = () => {
-        if(roles.includes("tasks_edit")){
-        return(
-            <div className="UpdateTaskDiv">
-                <button
-                    className="UpdateTaskButton"
-                    onClick={() => setUpdateTaskOpen(true)}
-                >
-                    Update Task
-                </button>
-                {updateTaskOpen ? (
-                    <UpdateTask
-                        popupClose={() => setUpdateTaskOpen(false)}
-                        popupOpen={updateTaskOpen}
-                    />
-                ) : null}
-            </div>
-        )}
-        else{
-            return (null)
+        if(roles.includes("tasks_create")) {
+            return (
+                <div className="UpdateTaskDiv">
+                    <button
+                        className="UpdateTaskButton"
+                        onClick={() => setUpdateTaskOpen(true)}
+                    >
+                        Update Task
+                    </button>
+                    {updateTaskOpen ? (
+                        <UpdateTask
+                            popupClose={() => setUpdateTaskOpen(false)}
+                            popupOpen={updateTaskOpen}
+                        />
+                    ) : null}
+                </div>
+            )
+        } else {
+            return null;
         }
     }
 
     const ViewTaskItems = ({ task }) => {
-        const [viewTaskOpen, setViewTaskOpen] = useState(false);
-        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete")) {
+        const [viewTaskOpen, setViewTaskOpen] = useState(false)
+        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
@@ -51,8 +51,8 @@ const ComplianceMatrix = () => {
                     </p>
                 </li>
             );
-        }else{
-            return (null)
+        } else {
+            return null;
         }
     };
 
@@ -75,7 +75,7 @@ const ComplianceMatrix = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 
@@ -98,7 +98,7 @@ const ComplianceMatrix = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 

@@ -3,10 +3,10 @@ import ViewAssetRequest from "../View/ViewAssetRequest";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ReviewAssetRequest from "../ReviewAssetRequest";
 
-const AssetRequest = () => {
+export const AssetRequest = () => {
     const {showAssetRequests, roles} = AccessAndDisplay()
 
-    const AssetRequestApproval = ({ assetRequest }) => {
+    const AssetRequestApproval = ({ assetRequest }) =>{
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
             return (
@@ -26,12 +26,12 @@ const AssetRequest = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 
 
-    const ViewAssetRequests = ({ assetRequest }) => { // asset request request??
+    const ViewAssetRequests = ({ assetRequest }) => {
         const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
             return (
@@ -50,7 +50,7 @@ const AssetRequest = () => {
                 </li>
             );
         } else {
-            return (null)
+            return null;
         }
     };
 

@@ -5,7 +5,7 @@ import {FaRegEdit} from "react-icons/fa";
 import EditDevice from "../Edit/EditDevice";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
-const Devices = () => {
+export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const {showAsset, roles} = AccessAndDisplay()
 
