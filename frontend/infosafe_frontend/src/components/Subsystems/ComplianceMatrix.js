@@ -4,6 +4,7 @@ import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
+import "../../styling/ComplianceMatrix.css";
 
 export const ComplianceMatrix = () => {
     const {showTask, roles} = AccessAndDisplay()
