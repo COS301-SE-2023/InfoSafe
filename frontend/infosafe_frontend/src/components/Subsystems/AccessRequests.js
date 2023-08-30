@@ -5,6 +5,7 @@ import EditAccessRequest from "../Edit/EditAccessRequest";
 import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
+import "../../styling/AccessRequests.css";
 
 export const AccessRequests = () => {
     const {showAccess, roles} = AccessAndDisplay()
