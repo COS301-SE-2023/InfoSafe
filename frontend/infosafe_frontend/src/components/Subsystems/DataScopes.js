@@ -5,7 +5,7 @@ import {FaRegEdit} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
-
+import "../../styling/DataScopes.css";
 export const DataScopes = () => {
 
     const {showDatascope, roles} = AccessAndDisplay()
