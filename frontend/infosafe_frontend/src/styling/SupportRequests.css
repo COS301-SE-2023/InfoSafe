@@ -159,3 +159,11 @@
     padding: 0.5% 2%;
     width: fit-content;
 }
+.EditIcon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2vw;
+    height: 100%;
+    z-index: 5;
+}

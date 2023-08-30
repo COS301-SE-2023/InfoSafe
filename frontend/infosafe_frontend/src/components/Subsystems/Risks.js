@@ -5,6 +5,7 @@ import {FaRegEdit} from "react-icons/fa";
 import {EditRisk} from "../Edit/EditRisk";
 import {ReviewRisk} from "../ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
+import "../../styling/Risks.css";
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
@@ -15,8 +16,8 @@ export const Risks = () => {
             return (
                 <div className="CreateRiskButtonDiv">
                     <button
-                        className="createRiskButton"
-                        data-testid="createRiskButton"
+                        className="CreateRiskButton"
+                        data-testid="CreateRiskButton"
                         onClick={() => setCreateRiskOpen(true)}
                     >
                         Create Risk
@@ -38,7 +39,7 @@ export const Risks = () => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="editIcon">
+                <div className="EditIcon">
                     <FaRegEdit
                         onClick={() => setEditRiskOpen(true)}
                     />
