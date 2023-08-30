@@ -63,16 +63,7 @@ export const Users = () => {
                             />
                         )}
                     </p>
-                    <div className="EditIcon">
-                        <FaRegEdit data-testid="editButton" onClick={() => setEditUserOpen(true)}/>
-                        {editUserOpen ? (
-                            <EditUser
-                                popupClose={() => setEditUserOpen(false)}
-                                popupOpen={editUserOpen}
-                                user={user}
-                            />
-                        ) : null}{' '}
-                    </div>
+                    <EditUser/>
                     <DeleteUser></DeleteUser>
                 </li>
             );
