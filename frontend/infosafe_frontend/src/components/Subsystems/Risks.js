@@ -15,8 +15,8 @@ export const Risks = () => {
             return (
                 <div className="CreateRiskButtonDiv">
                     <button
-                        className="CreateRiskButton"
-                        data-testid="CreateRiskButton"
+                        className="createRiskButton"
+                        data-testid="createRiskButton"
                         onClick={() => setCreateRiskOpen(true)}
                     >
                         Create Risk
@@ -38,7 +38,7 @@ export const Risks = () => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="ISOEditIcon">
+                <div className="editIcon">
                     <FaRegEdit
                         onClick={() => setEditRiskOpen(true)}
                     />
@@ -60,7 +60,7 @@ export const Risks = () => {
         const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
         if(roles.includes("risks_review")) {
             return (
-                <div className="ISOReviewRiskButton">
+                <div className="reviewRiskButton">
                     <button
                         onClick={() => setReviewRiskOpen(true)}>
                         Review
@@ -83,8 +83,8 @@ export const Risks = () => {
         const [viewRiskOpen, setViewRiskOpen] = useState(false);
         if (risks.includes("risk_edit") || risks.includes("risks_create") || risks.includes("risks_review"))
         return (
-            <li className="ISOrisksListItem" key={risk.risk_id}>
-                <p className="ISOrisksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
+            <li className="risksListItem" key={risk.risk_id}>
+                <p className="risksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
                     Risk {risk.risk_id}
                     {viewRiskOpen ? (
                         <ViewRisk
@@ -108,7 +108,7 @@ export const Risks = () => {
     return(
         <div className="display">
             <div className="risks">
-                <ul className="ISOrisksList">{risks}</ul>
+                <ul className="risksList">{risks}</ul>
             </div>
             <CreateRisk></CreateRisk>
         </div>
