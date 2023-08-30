@@ -168,7 +168,7 @@ const AccessAndDisplay = () => {
             .then((result) => {
                 setRoles(result);
             });
-    }, [])
+    }, []);
 
 
 

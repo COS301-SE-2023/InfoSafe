@@ -28,7 +28,7 @@ public class User implements UserDetails{
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_name")
     private Role role;
 
     public int getUser_id() {

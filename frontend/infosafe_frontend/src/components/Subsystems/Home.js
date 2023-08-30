@@ -1,6 +1,6 @@
 import '../../styling/Home.css';
 import React, {useEffect, useState} from 'react';
-import NavBar from './NavBar';
+import NavBar from './Navbar';
 import {IoPersonCircleSharp} from "react-icons/io5";
 
 export const Home = () => {
@@ -44,3 +44,5 @@ export const Home = () => {
         </div>
     );
 };
+
+export default Home;

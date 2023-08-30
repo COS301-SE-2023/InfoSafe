@@ -15,24 +15,25 @@ const SUPPORTOPTIONS = [
 
 const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 const USERS = ['User A', 'User B', 'User C', 'User D'];
-const {roles} = AccessAndDisplay()
+
 const CreateSupportRequest = ({selectedRequest}) => {
+
     const {
         handleClick,
-        reason,
+        // reason,
         setReason,
         setSupportType,
         support_description,
         setSupportDescription,
         setSupportStatus,
-        setDsId,
-        setStatus,
-        setAssetId,
+        // setDsId,
+        // setStatus,
+        // setAssetId,
         setDesiredDate,
-        setRequestStatus,
-        AvailableDevices,
-        datascopeData,
-        setAvailableDevices
+        // setRequestStatus,
+        // AvailableDevices,
+        // datascopeData,
+        // setAvailableDevices
     } = useRequestMaker();
     const handleDescriptionChange = (e) => {
         setSupportDescription(e.target.value);
@@ -246,7 +247,7 @@ const CreateAssetRequest = ({selectedRequest}) => {
 
 
 const Requests = ({requestTypes}) => {
-
+    const {roles} = AccessAndDisplay();
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
     };

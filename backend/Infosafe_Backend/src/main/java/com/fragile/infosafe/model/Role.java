@@ -15,8 +15,6 @@ import java.math.BigInteger;
 @Table(name="roles")
 public class Role{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int role_id;
     private String role_name;
     @Column(name = "permissions")
     private long permissions;
