@@ -29,7 +29,6 @@ public class JwtService {
     public JwtService(JwtAWSFetch fetch){
         this.fetch = fetch;
     }
-    //private String secretKey = fetch.getSecret();
     @Value("${application.security.jwt.expiration}")
     private long jwtExpiration;
     @Value("${application.security.jwt.refresh-token.expiration}")
