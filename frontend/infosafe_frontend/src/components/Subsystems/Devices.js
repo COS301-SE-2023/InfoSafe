@@ -9,7 +9,7 @@ export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const {showAsset, roles} = AccessAndDisplay()
 
-    const EditDevice = ({asset}) => {
+    const EditDeviceDiv = ({asset}) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
@@ -44,7 +44,7 @@ export const Devices = () => {
                             />
                         )}
                     </p>
-                    <EditDevice></EditDevice>
+                    <EditDeviceDiv></EditDeviceDiv>
                 </li>
             );
         } else {

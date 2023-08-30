@@ -7,7 +7,7 @@ import "../../styling/SupportRequests.css";
 export const SupportRequests = () => {
     const {showMySupport, showAllSupport, roles} = AccessAndDisplay()
 
-    const EditSupportRequest = ({allSupport}) => {
+    const EditSupportRequestDiv = ({allSupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
             return (
@@ -30,7 +30,7 @@ export const SupportRequests = () => {
         }
     }
 
-    const EditMySupportRequest = ({mySupport}) => {
+    const EditMySupportRequestDiv = ({mySupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
             return (
                 <div className="EditIcon">
@@ -64,7 +64,7 @@ export const SupportRequests = () => {
                             />
                         ) : null}
                     </p>
-                    <EditSupportRequest></EditSupportRequest>
+                    <EditSupportRequestDiv></EditSupportRequestDiv>
                 </li>
             )
         } else {
@@ -86,7 +86,7 @@ export const SupportRequests = () => {
                         />
                     ) : null}
                 </p>{' '}
-                <EditMySupportRequest></EditMySupportRequest>
+                <EditMySupportRequestDiv></EditMySupportRequestDiv>
             </li>
         )
     }

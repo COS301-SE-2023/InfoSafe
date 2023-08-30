@@ -10,7 +10,7 @@ export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
     const {showRisk, roles} = AccessAndDisplay()
 
-    const CreateRisk = () => {
+    const CreateRiskDiv = () => {
         if(roles.includes("risks_create")) {
             return (
                 <div className="CreateRiskButtonDiv">
@@ -34,7 +34,7 @@ export const Risks = () => {
         }
     }
 
-    const EditRisk = ({risk}) => {
+    const EditRiskDiv = ({risk}) => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
@@ -56,7 +56,7 @@ export const Risks = () => {
         }
     }
 
-    const ReviewRisk = ({risk}) => {
+    const ReviewRiskDiv = ({risk}) => {
         const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
         if(roles.includes("risks_review")) {
             return (
@@ -94,8 +94,8 @@ export const Risks = () => {
                         />
                     ) : null}
                 </p>
-                <ReviewRisk></ReviewRisk>
-                <EditRisk></EditRisk>
+                <ReviewRiskDiv></ReviewRiskDiv>
+                <EditRiskDiv></EditRiskDiv>
             </li>
         )
     }
@@ -110,7 +110,7 @@ export const Risks = () => {
             <div className="risks">
                 <ul className="risksList">{risks}</ul>
             </div>
-            <CreateRisk></CreateRisk>
+            <CreateRiskDiv></CreateRiskDiv>
         </div>
     )
 }

@@ -7,7 +7,6 @@ import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import '../../styling/Users.css';
 
-
 export const Users = () => {
     const {
         showUser,
@@ -16,7 +15,7 @@ export const Users = () => {
         roles
     } = AccessAndDisplay()
 
-    const EditUser = ({user}) => {
+    const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
         if(roles.includes("user_edit")) {
             return (
@@ -49,7 +48,6 @@ export const Users = () => {
     const ViewUserItem = ({user}) => {
         //const CURRENT = user;
         const [viewUserOpen, setViewUserOpen] = useState(false);
-        const [editUserOpen, setEditUserOpen] = useState(false);
         if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
             return (
                 <li key={user.id}>
@@ -63,7 +61,7 @@ export const Users = () => {
                             />
                         )}
                     </p>
-                    <EditUser/>
+                    <EditUserDiv/>
                     <DeleteUser></DeleteUser>
                 </li>
             );

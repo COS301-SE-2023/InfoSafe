@@ -11,7 +11,7 @@ export const AccessRequests = () => {
     const {showAccess, roles} = AccessAndDisplay()
     const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
-    const EditAccessRequest = ({access}) => {
+    const EditAccessRequestDiv = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
         if(roles.includes("access_requests_edit")) {
             return (
@@ -57,7 +57,7 @@ export const AccessRequests = () => {
                             />
                         ) : null}
                     </p>
-                    <EditAccessRequest></EditAccessRequest>
+                    <EditAccessRequestDiv></EditAccessRequestDiv>
                     <DeleteAccessRequest></DeleteAccessRequest>
                 </li>
             );

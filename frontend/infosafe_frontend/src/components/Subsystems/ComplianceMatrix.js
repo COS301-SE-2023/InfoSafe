@@ -57,7 +57,7 @@ export const ComplianceMatrix = () => {
         }
     };
 
-    const CreateTask = () => {
+    const CreateTaskDiv = () => {
         if(roles.includes("tasks_create")) {
             return (
                 <div className="CreateTaskDiv">
@@ -114,7 +114,7 @@ export const ComplianceMatrix = () => {
                 <ul className="taskList">{complianceItems}</ul>
             </div>
             <div className="buttons">
-                <CreateTask></CreateTask>
+                <CreateTaskDiv></CreateTaskDiv>
                 <EditTask></EditTask>
                 <ApproveTask></ApproveTask>
             </div>
