@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ViewAssetRequest from "../View/ViewAssetRequest";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ReviewAssetRequest from "../ReviewAssetRequest";
-
+import "../../styling/AssetRequests.css";
 export const AssetRequest = () => {
     const {showAssetRequests, roles} = AccessAndDisplay()
 
