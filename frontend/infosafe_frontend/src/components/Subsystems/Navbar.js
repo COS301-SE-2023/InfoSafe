@@ -1,9 +1,10 @@
 import '../../styling/NavBar.css';
-import React from 'react';
+import React, {useState} from 'react';
 import {TabView} from "./TabView";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
 const NavBar = () => {
+    const [activeTab,setActive] = useState(0);
     let tabItems = [];
     const {roles} = AccessAndDisplay();
     const TabNames = ['Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
@@ -39,11 +40,11 @@ const NavBar = () => {
         tabItems.push(9);
     }
 
-    let activeTab = tabItems[0];
 
     const handleClick = (NavTabIndex) => {
-        activeTab = NavTabIndex;
+        setActive(NavTabIndex);
     };
+
 
     const displayPage = () => {
         return(
