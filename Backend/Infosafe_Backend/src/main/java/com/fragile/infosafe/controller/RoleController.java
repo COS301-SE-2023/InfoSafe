@@ -1,6 +1,7 @@
 package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.model.Permission;
+import com.fragile.infosafe.model.Role;
 import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.requests.RoleRequest;
 import com.fragile.infosafe.requests.TaskRequest;
@@ -36,12 +37,16 @@ public class RoleController {
                     userPermissionList.add(permission.name());
                 }
             }
-
             return userPermissionList;
         }
-
         return Collections.emptyList();
     }
+
+    @GetMapping("/getRoleNames")
+    public List<String> getRoleNames() {
+        return service.getRoleNames();
+    }
+
     @PostMapping("/addRole")
     public ResponseEntity addTask(@RequestBody RoleRequest role) {
         log.info("Adding a task");

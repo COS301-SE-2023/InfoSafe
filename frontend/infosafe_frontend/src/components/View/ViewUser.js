@@ -32,7 +32,7 @@ const ViewUser = ({ user, popupClose, popupOpen }) => {
                     </div>
                     <div className="view_role">
                         <p className="roleDisplay">System Role</p>
-                        <p className="viewRole">{user.role}</p>
+                        <p className="viewRole">{user.role.role_name}</p>
                     </div>
                 </div>
             </div>
