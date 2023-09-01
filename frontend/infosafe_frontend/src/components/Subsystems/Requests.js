@@ -5,47 +5,50 @@ import '../../styling/Dropdown.css';
 import useRequestMaker from '../Create/useRequestMaker';
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 
-const SUPPORTOPTIONS = [
-    'Laptop Hardware',
-    'Microsoft Accounts',
-    'Microsoft Applications',
-    'Application',
-    'Other'
-];
 
-const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
-const USERS = ['User A', 'User B', 'User C', 'User D'];
+export const Requests = () => {
+    const SUPPORTOPTIONS = [
+        'Laptop Hardware',
+        'Microsoft Accounts',
+        'Microsoft Applications',
+        'Application',
+        'Other'
+    ];
 
-const CreateSupportRequest = ({selectedRequest}) => {
+    const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
 
-    const {
-        handleClick,
-        // reason,
-        setReason,
-        setSupportType,
-        support_description,
-        setSupportDescription,
-        setSupportStatus,
-        // setDsId,
-        // setStatus,
-        // setAssetId,
-        setDesiredDate,
-        // setRequestStatus,
-        // AvailableDevices,
-        // datascopeData,
-        // setAvailableDevices
-    } = useRequestMaker();
-    const handleDescriptionChange = (e) => {
-        setSupportDescription(e.target.value);
-    };
 
-    const handleReasonChange = (e) => {
-        setReason(e.target.value);
+    const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
+
+    let permittedRequests = [];
+
+    if (true) {//Support Requests
+        permittedRequests.push('SUPPORT');
     }
-    const handleDateChange = (date) => {
-        setDesiredDate(date);
+    if (true) {//Asset Requests
+        permittedRequests.push('ASSET');
+    }
+    if (true) {//Access Requests
+        permittedRequests.push('ACCESS');
+    }
+
+    const handleRequestSelect = (requestType) => {
+        setSelectedRequest(requestType.value);
     };
-    if (roles.includes("request_support")) {
+    const [selectedRequest, setSelectedRequest] = useState(permittedRequests[0]);
+
+    const CreateSupportRequest = () => {
+
+        const {
+            handleClick,
+            setSupportType,
+            support_description,
+            setSupportDescription,
+            setSupportStatus,
+        } = useRequestMaker();
+        const handleDescriptionChange = (e) => {
+            setSupportDescription(e.target.value);
+        };
         return (
             <div className="createSupportRequestDiv">
                 <form>
@@ -72,47 +75,28 @@ const CreateSupportRequest = ({selectedRequest}) => {
                         <button
                             className="createSupportRequestButton"
                             type="submit"
-                            onClick={(e) => handleClick(e, selectedRequest)}
+                            //onClick={(e) => handleClick(e, selectedRequest)}
                         >Log Request
                         </button>
                     </div>
                 </form>
             </div>
         );
-    } else {
-        return (null)
     }
-}
 
-const CreateAccessRequest = ({selectedRequest}) => {
-    const {
-        handleClick,
-        reason,
-        setReason,
-        setSupportType,
-        support_description,
-        setSupportDescription,
-        setSupportStatus,
-        setDsId,
-        setStatus,
-        setAssetId,
-        setDesiredDate,
-        setRequestStatus,
-        AvailableDevices,
-        datascopeData,
-        setAvailableDevices
-    } = useRequestMaker();
-    const handleDescriptionChange = (e) => {
-        setSupportDescription(e.target.value);
-    };
+    const CreateAccessRequest = () => {
+        const {
+            handleClick,
+            reason,
+            setReason,
+            setDsId,
+            setStatus,
+            datascopeData
+        } = useRequestMaker();
 
-    const handleReasonChange = (e) => {
-        setReason(e.target.value);
-    }
-    const handleDateChange = (date) => {
-        setDesiredDate(date);
-    };
-    if (roles.includes("request_access")) {
+        const handleReasonChange = (e) => {
+            setReason(e.target.value);
+        }
         return (
             <div className="createAccessRequestDiv">
                 <form>
@@ -131,7 +115,7 @@ const CreateAccessRequest = ({selectedRequest}) => {
                     <p className="createAccessRequestUserLabel">User</p>
                     <Dropdown
                         className="createAccessRequestUserDropdown"
-                        options={USERS}
+                        options={USERS} //Add system users here
                         value={USERS[0]}
                         //onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                     />
@@ -152,7 +136,7 @@ const CreateAccessRequest = ({selectedRequest}) => {
                         <button
                             className="createAccessRequestButton"
                             type="submit"
-                            onClick={(e) => handleClick(e, selectedRequest)}
+                            //onClick={(e) => handleClick(e, selectedRequest)}
                         >
                             Log Request
                         </button>
@@ -160,39 +144,24 @@ const CreateAccessRequest = ({selectedRequest}) => {
                 </form>
             </div>
         );
-    } else {
-        return (null)
-    }
-};
-const CreateAssetRequest = ({selectedRequest}) => {
-    const {
-        handleClick,
-        reason,
-        setReason,
-        setSupportType,
-        support_description,
-        setSupportDescription,
-        setSupportStatus,
-        setDsId,
-        setStatus,
-        setAssetId,
-        setDesiredDate,
-        setRequestStatus,
-        AvailableDevices,
-        datascopeData,
-        setAvailableDevices
-    } = useRequestMaker();
-    const handleDescriptionChange = (e) => {
-        setSupportDescription(e.target.value);
     };
+    const CreateAssetRequest = () => {
+        const {
+            handleClick,
+            reason,
+            setReason,
+            setDesiredDate,
+            setRequestStatus,
+            AvailableDevices,
+            setAvailableDevices
+        } = useRequestMaker();
 
-    const handleReasonChange = (e) => {
-        setReason(e.target.value);
-    }
-    const handleDateChange = (date) => {
-        setDesiredDate(date);
-    };
-    if (roles.includes("request_asset")) {
+        const handleReasonChange = (e) => {
+            setReason(e.target.value);
+        }
+        const handleDateChange = (date) => {
+            setDesiredDate(date);
+        };
         return (
             <div className="createAssetRequestDiv">
                 <form>
@@ -232,7 +201,7 @@ const CreateAssetRequest = ({selectedRequest}) => {
                         <button
                             className="createAssetRequestButton"
                             type="submit"
-                            onClick={(e) => handleClick(e, selectedRequest)}
+                            //onClick={(e) => handleClick(e, selectedRequest)}
                         >
                             Log Request
                         </button>
@@ -240,24 +209,18 @@ const CreateAssetRequest = ({selectedRequest}) => {
                 </form>
             </div>
         );
-    } else {
-        return (null)
     }
-}
 
-
-const Requests = ({requestTypes}) => {
-    const {roles} = AccessAndDisplay();
-    const handleRequestSelect = (requestType) => {
-        setSelectedRequest(requestType.value);
-    };
-    const [selectedRequest, setSelectedRequest] = useState(requestTypes[0]);
-
-    {
-        requestTypes.map((requesType, index) => (
-            <div key={index}>
-            </div>
-        ))
+    const RequestType = ({type}) => {
+        if (type === "SUPPORT") {
+            return (<CreateSupportRequest></CreateSupportRequest>);
+        } else if (type === "ASSET") {
+            return (<CreateAssetRequest></CreateAssetRequest>);
+        } else if (type === "ACCESS") {
+            return (<CreateAccessRequest></CreateAccessRequest>);
+        } else {
+            return null;
+        }
     }
 
     return (
@@ -267,23 +230,15 @@ const Requests = ({requestTypes}) => {
                     <p className="selectRequestLabel">SELECT REQUEST CREATION</p>
                     <Dropdown
                         className="selectRequestDropdown"
-                        options={requestTypes}
-                        value={selectedRequest}
+                        options={permittedRequests}
+                        value={permittedRequests[0]}
                         onChange={handleRequestSelect}
                     />
                 </div>
             </div>
             <div className="requestDiv">
-                {selectedRequest === 'Create Support Requests' &&
-                    <CreateSupportRequest selectedRequest={selectedRequest}/>}
-                {selectedRequest === 'Create Access Requests' &&
-                    <CreateAccessRequest selectedRequest={selectedRequest}/>}
-                {selectedRequest === 'Create Asset Requests' && <CreateAssetRequest selectedRequest={selectedRequest}/>}
+                <RequestType requestType={selectedRequest}></RequestType>
             </div>
         </div>
     );
-
-
-};
-
-export default Requests;
+}
