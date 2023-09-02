@@ -6,7 +6,7 @@ import {ComplianceMatrix} from "./ComplianceMatrix";
 import {Devices} from "./Devices";
 import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
-import Requests from "./Requests";
+import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
 
 export const TabView = ({currentTab}) => {

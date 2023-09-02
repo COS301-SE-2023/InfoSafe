@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Dropdown from 'react-dropdown-select';
+import Dropdown from 'react-dropdown';
 import '../../styling/CreateUserPopup.css';
 import '../../styling/Dropdown.css'
 import Popup from 'reactjs-popup';
