@@ -1,36 +1,75 @@
 .backdrop {
-    background: url('../images/HomeBackground.png');
+    background: url('../images/InfoSafeBackground.png');
     width: 100%;
     height: 100%;
     position: fixed;
     overflow: hidden;
 }
+.toolbar {
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 6%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+}
+
+.toolbarLeft {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.menuIcon {
+    font-size: 24px;
+    position: relative;
+    left: 4%;
+}
+
+.tabTitle {
+    color: #000;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 6%;
+
+}
+.toolbarRight{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: right;
+}
 .userDisplay{
-    color: white;
-    position: absolute;
-    right: 4%;
-    top: 3%;
+    color: #000000;
     font-family: "Roboto", sans-serif;
     font-size:16px;
     text-align: center;
     width: fit-content;
     height: fit-content;
-    margin: 0 auto;
+    margin: 0;
+    position: relative;
+    right: 4%;
 }
 .avatar {
-    position: absolute;
     height: 4%;
-    fill: white;
+    fill: #383838;
     font-size: 2.4rem;
-    right: 1%;
-    top: 2%;
+    position: relative;
+    right: 2%;
 }
 
 .settingsDiv
 {
     background-color: rgb(65, 64, 64);
     position: absolute;
-    top: 2%;
     right: 4%;
     z-index: 40;
     width: 10%;
@@ -51,5 +90,481 @@
     color: white;
     cursor: pointer;
 }
+.quickFacts{
+    width: 100%;
+    height: 25vh;
+    position: relative;
+    display: flex;
+
+}
+.dataScopesInfo
+{
+    background: #9E0000;
+    width: 20%;
+    height: 70%;
+    border-radius: 20px;
+    position: relative;
+    top: 15%;
+    justify-content: left;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    margin-left: 2.5%;
+}
+.dataScopesInfoLabel{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    top: 10%;
+    margin: 0;
+}
+.dataScopesInfoDisplay
+{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    top: 20%;
+}
+.currentTasksInfo
+{
+    background: #444040;
+    width: 20%;
+    height: 70%;
+    border-radius: 20px;
+    position: relative;
+    top: 15%;
+    justify-content: left;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    margin-left: 5%;
+}
+.currentTasksInfoLabel{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    top: 10%;
+    margin: 0;
+}
+.currentTasksInfoDisplay
+{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    top: 20%;
+}
+.currentDevicesInfo
+{
+    background: #383838;
+    width: 20%;
+    height: 70%;
+    border-radius: 20px;
+    position: relative;
+    top: 15%;
+    justify-content: left;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    margin-left: 5%;
+}
+.currentDevicesInfoLabel{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    top: 10%;
+    margin: 0;
+}
+.currentDevicesInfoDisplay
+{
+    color: #FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    top: 20%;
+}
+.currentRequestsInfo
+{
+    background: #49D4D0;
+    width: 20%;
+    height: 70%;
+    border-radius: 20px;
+    position: relative;
+    top: 15%;
+    justify-content: left;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    margin-left: 5%;
+}
+.currentRequestsInfoLabel{
+    color: #444040;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    position: relative;
+    top: 10%;
+    margin: 0;
+}
+.currentRequestsInfoDisplay
+{
+    color: #444040;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    top: 20%;
+}
+.analytics{
+    height: 45vh;
+    width: 100%;
+    display: flex;
+}
+.systemAnalyticsDiv
+{
+    height: 90%;
+    background-color: #FFFFFF;
+    width: 45%;
+    position: relative;
+    left: 2.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.systemAnalyticsLabel{
+    color: #444040;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top: 4%;
+    left: 3%;
+    margin: 0;
+    width: 30%;
+}
+.systemAnalyticsChartDiv{
+    width: 80%;
+    height: 85%;
+    position: relative;
+    top: 5%;
+    font-family: "Roboto", sans-serif;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+.systemLabels{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.barLabels{
+    display: flex;
+    width: 70%;
+    justify-content: flex-end;
+    position: relative;
+    right: 5%;
+    top: 2%;
+}
+.systemIcon{
+    color: #49D4D0;
+    align-self: center;
+}
+.myTotals
+{
+    width: 25%;
+    justify-content:  center;
+    display: flex;
+}
+.systemTotals
+{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+.myTotalIcon{
+    color: #E90000;
+    align-self: center;
+}
+.systemTotalLabel, .myTotalLabel{
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    text-align: left;
+}
+.userTaskDiv
+{   height: 90%;
+    background-color: #FFFFFF;
+    width: 20%;
+    position: relative;
+    left: 7.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.userTaskLabel{
+    color: #444040;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top: 4%;
+    left: 6%;
+    margin: 0;
+}
+.tasksChartDiv
+{
+    width: 60%;
+    height:60%;
+    position: relative;
+    top: 10%;
+    font-family: "Roboto", sans-serif;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+.chartLabels {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    position: relative;
+    margin-top: 15%;
+    justify-content: center;}
+
+.tasksLeftLabel,
+.tasksCompletedLabel {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+
+}
+
+.tasksLeftDiv {
+    display: flex;
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+.tasksCompletedDiv {
+    display: flex;
+    width: 45%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasksLeftIcon {
+    color: #444040;
+    margin: 0 auto;
+}
+
+.tasksCompletedIcon {
+    color: #9E0000;
+    margin: 0 auto;
+}
+
+.userSupportRequestsDiv
+{   height: 90%;
+    background-color: #FFFFFF;
+    width: 20%;
+    position: relative;
+    left: 12.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.userSupportRequestsLabel{
+    color: #444040;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top: 4%;
+    left: 6%;
+    margin: 0;
+}
+.infoDiv
+{
+    display: flex;
+}
+.myDevicesDiv
+{   height: 20vh;
+    background-color: #FFFFFF;
+    width: 45%;
+    position: relative;
+    left: 2.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.myDevicesLabel{
+    color: #444040;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top: 2vh;
+    left: 3%;
+    margin: 0;
+}
+.myDevicesDisplay {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    height: 12vh;
+    position: relative;
+    top: 10%;
+}
+
+.myDevicesDisplay::-webkit-scrollbar {
+    display: none;
+}
+
+.inUseDevicesList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 94%;
+    position: relative;
+    left: 3%;
+}
+
+.inUseDevicesList li {
+    position: relative;
+    height: 3.5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #f2f2f2;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #E90000;
+    margin-top: 3px;
+    display: flex;
+
+}
+.inUseDevicesList li:nth-child(even) {
+    border-color: #49D4D0;
+}
+
+.inUseDevicesList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 1%;
+}
+.notificationsDiv {
+    height: 20vh;
+    background-color: #FFFFFF;
+    width: 45%;
+    position: relative;
+    left: 7.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.notificationsLabel {
+    color: #444040;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top: 2vh;
+    left: 3%;
+    margin: 0;
+}
+
+.notificationsDisplay {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    height: 12vh;
+    position: relative;
+    top: 10%;
+}
+
+.notificationsDisplay::-webkit-scrollbar {
+    display: none;
+}
+
+.myNotificationsList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 94%;
+    position: relative;
+    left: 3%;
+}
+
+.myNotificationsList li {
+    display: flex;
+    align-items: center;
+    height: 3.5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #f2f2f2;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.myNotificationsList li p {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.notificationsInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.timeDisplay {
+    background-color:  #49D4D0;
+    width: 10%;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    margin-right: 5%;
+    text-align: center;
+}
+
+.notificationsMessage {
+    margin-left: 20%;
+    width: 80%;
+    height: fit-content;
+}
+
+
+
+
+
+
+
 
 
