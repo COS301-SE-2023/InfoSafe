@@ -1,7 +1,20 @@
 .navbar {
     height: 100%;
-    background-color: deeppink;
     z-index: 100;
+    display: flex;
+}
+.tabMenu
+{
+    background-color: #E90000;
+    width: 25%;
+    height: 94vh;
+    position: relative;
+    top: 48vh;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 100;
+
 }
 .tabs {
     margin-bottom: 2%;
@@ -10,7 +23,6 @@
     height: 5%;
     padding: 0;
     width: 50vw;
-    z-index: 110;
 }
 .tabs li {
     color: #ffffff;
@@ -39,7 +51,6 @@
     border-left: 1px solid #ffffff;
     border-right: 1px solid #ffffff;
     border-top: 1px solid #ffffff;
-    z-index: 120;
     position: relative;
     margin-top: 1px;
 }
@@ -51,7 +62,6 @@
     height: 90vh;
     background: #4b4a4a;
     overflow: hidden;
-    z-index: 150;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     border: 1px solid #ffffff;
     margin-top: -1px;

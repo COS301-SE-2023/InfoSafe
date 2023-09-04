@@ -51,8 +51,12 @@ const NavBar = () => {
     const displayPage = () => {
         return(
             <div className="navbar">
-                {displayTabs({viewTabs: tabItems})}
-                <TabView currentTab={activeTab}></TabView>
+                <div className="tabMenu" id="tabMenu">
+                    {displayTabs({viewTabs: tabItems})}
+                </div>
+                <div className="displayTabContent">
+                    <TabView currentTab={activeTab}></TabView>
+                </div>
             </div>
         );
     }

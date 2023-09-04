@@ -35,15 +35,23 @@ export const Home = () => {
 
     const displayMenu = () => {
         setMenuVisible(!menuVisible);
+        if (!menuVisible)
+        {
+            document.getElementById("tabMenu").style.display = "inline";
+            // document.getElementById("backdrop").style.backgroundColor = "red";
+        }
+        else
+        {
+            document.getElementById("tabMenu").style.display = "none";
+        }
     };
 
 
     return (
-        <div className="backdrop">
+        <div className="backdrop" id="backdrop">
             <div className="toolbar">
                 <div className="toolbarLeft">
                      <IoMenu className="menuIcon" onClick={displayMenu} />
-                    {menuVisible && <NavBar />}
                      <p className="tabTitle">Home</p>  {/*Get this from the respective tabs*/}
                 </div>
                 <div className="toolbarRight">
@@ -56,6 +64,7 @@ export const Home = () => {
                     }
                 </div>
             </div>
+            <NavBar />
         </div>
     );
 };
