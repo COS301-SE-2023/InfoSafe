@@ -104,7 +104,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                         />
                         <p className="inputTitle">Assignees</p>
                         {users && users.length > 0 ? (
-                        <Select  //Dropdown
+                        <Select
                             options={users.map((data) => ({value: data.user_id, label: data.email}))}
                             value = {selectedUsers}
                             className="datascopeDropdown"

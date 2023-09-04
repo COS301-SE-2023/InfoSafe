@@ -68,7 +68,7 @@ export const DataScopes = () => {
     };
 
     const CreateDataScope = () => {
-        if(roles.includes("data_scope_creates")) {
+        if(roles.includes("data_scope_create")) {
             return (
                 <div className="CreateDataScopeDiv">
                     <button

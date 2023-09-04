@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Dropdown from 'react-dropdown-select';
+import Dropdown from 'react-dropdown';
 import '../../styling/CreateUserPopup.css';
 import '../../styling/Dropdown.css'
 import Popup from 'reactjs-popup';
@@ -112,7 +112,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                             <Dropdown
                                 options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
                                 values={[{ label: selectedRole, value: selectedRole }]}
-                                className="Dropdown"
+                                className="role_dropdown"
                                 name="role_dropdown"
                                 onChange={values => setSelectedRole(values[0].value)}
                             />

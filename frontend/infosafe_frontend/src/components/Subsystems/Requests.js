@@ -1,56 +1,63 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
 import useRequestMaker from '../Create/useRequestMaker';
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
+import Select from "react-select";
 
 
 export const Requests = () => {
-    const SUPPORTOPTIONS = [
-        'Laptop Hardware',
-        'Microsoft Accounts',
-        'Microsoft Applications',
-        'Application',
-        'Other'
-    ];
+    const SUPPORTOPTIONS = ['Laptop Hardware', 'Microsoft Accounts', 'Microsoft Applications', 'Application', 'Other'];
 
-    const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
+    const {roles} = AccessAndDisplay();
 
+    // const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
 
     const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
-    let permittedRequests = [];
+    const [permittedRequests, setPermittedRequests] = useState([]);
+    const [selectedRequest, setSelectedRequest] = useState('');
+    const [users, setUsers] = useState([]);
+    const [selectedUsers, setSelectedUsers] = useState([]);
+    const {showUser} = AccessAndDisplay();
 
-    if (true) {//Support Requests
-        permittedRequests.push('SUPPORT');
-    }
-    if (true) {//Asset Requests
-        permittedRequests.push('ASSET');
-    }
-    if (true) {//Access Requests
-        permittedRequests.push('ACCESS');
-    }
+    useEffect(() => {
+        const updatedPermittedRequests = [];
+
+        if (roles.includes('request_support')) {
+            updatedPermittedRequests.push('SUPPORT');
+        }
+        if (roles.includes('request_asset')) {
+            updatedPermittedRequests.push('ASSET');
+        }
+        if (roles.includes('request_access')) {
+            updatedPermittedRequests.push('ACCESS');
+        }
+
+        setPermittedRequests(updatedPermittedRequests);
+
+        if (!updatedPermittedRequests.includes(selectedRequest) && updatedPermittedRequests.length > 0) {
+            setSelectedRequest(updatedPermittedRequests[0]);
+        }
+    }, [roles, selectedRequest]);
+
 
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
     };
-    const [selectedRequest, setSelectedRequest] = useState(permittedRequests[0]);
+
 
     const CreateSupportRequest = () => {
 
         const {
-            handleClick,
-            setSupportType,
-            support_description,
-            setSupportDescription,
-            setSupportStatus,
+            handleClick, setSupportType, support_description, setSupportDescription, setSupportStatus,
         } = useRequestMaker();
         const handleDescriptionChange = (e) => {
             setSupportDescription(e.target.value);
         };
-        return (
-            <div className="createSupportRequestDiv">
+        console.log("Support Request")
+        return (<div className="createSupportRequestDiv">
                 <form>
                     <p className="supportRequestTypeLabel">Support Type</p>
                     <Dropdown
@@ -80,45 +87,45 @@ export const Requests = () => {
                         </button>
                     </div>
                 </form>
-            </div>
-        );
+            </div>);
     }
 
     const CreateAccessRequest = () => {
         const {
-            handleClick,
-            reason,
-            setReason,
-            setDsId,
-            setStatus,
-            datascopeData
+            handleClick, reason, setReason, setDsId, setStatus, datascopeData
         } = useRequestMaker();
-
+        console.log("Access Request")
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
-        return (
-            <div className="createAccessRequestDiv">
+        const handleSelect = (selectedOptions) => {
+            setSelectedUsers(selectedOptions);
+        };
+        return (<div className="createAccessRequestDiv">
                 <form>
                     <p className="createAccessRequestDataScopeLabel">Data Scope</p>
-                    {datascopeData && datascopeData.length > 0 ? (
-                        <Dropdown
-                            options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                            value={datascopeData.asset_id}
-                            className="accessRequestDatascopeDropdown"
-                            name="datascopeDropdown"
-                            placeholder={"Add DataScope"}
-                            onChange={(selectedOption) => setDsId(selectedOption.value)}
-                        />) : (
-                        <p className="loadTitle">Loading...</p>
-                    )}
+                    {datascopeData && datascopeData.length > 0 ? (<Dropdown
+                        options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                        value={datascopeData.asset_id}
+                        className="accessRequestDatascopeDropdown"
+                        name="datascopeDropdown"
+                        placeholder={"Add DataScope"}
+                        onChange={(selectedOption) => setDsId(selectedOption.value)}
+                    />) : (<p className="loadTitle">Loading...</p>)}
                     <p className="createAccessRequestUserLabel">User</p>
-                    <Dropdown
-                        className="createAccessRequestUserDropdown"
-                        options={USERS} //Add system users here
-                        value={USERS[0]}
-                        //onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
-                    />
+                    {showUser && showUser.length > 0 ? (
+                        <Select
+                            options={showUser.map((data) => ({value: data.user_id, label: data.email}))}
+                            value = {selectedUsers}
+                            className="datascopeDropdown"
+                            name="datascopeDropdown"
+                            placeholder={"Add Assignees"}
+                            onChange={handleSelect}
+                            isSearchable={true}
+                            isMulti
+                        /> ) : (
+                        <p>Loading...</p>
+                    )}
                     <p className="createAccessRequestReasonLabel">Reason</p>
                     <textarea
                         className="createAccessRequestReasonInput"
@@ -142,41 +149,30 @@ export const Requests = () => {
                         </button>
                     </div>
                 </form>
-            </div>
-        );
+            </div>);
     };
     const CreateAssetRequest = () => {
         const {
-            handleClick,
-            reason,
-            setReason,
-            setDesiredDate,
-            setRequestStatus,
-            AvailableDevices,
-            setAvailableDevices
+            handleClick, reason, setReason, setDesiredDate, setRequestStatus, AvailableDevices, setAvailableDevices
         } = useRequestMaker();
-
+        console.log("Asset Request")
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
         const handleDateChange = (date) => {
             setDesiredDate(date);
         };
-        return (
-            <div className="createAssetRequestDiv">
+        return (<div className="createAssetRequestDiv">
                 <form>
                     <p className="createAssetRequestDeviceNameLabel">Device</p>
-                    {AvailableDevices && AvailableDevices.length > 0 ? (
-                        <Dropdown
-                            options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
-                            value={AvailableDevices.asset_name}
-                            className="assetRequestSelectDeviceDropdown"
-                            name="assetRequestSelectDeviceDropdown"
-                            placeholder={"Add Device"}
-                            onChange={(selectedOption) => setAvailableDevices(selectedOption.value)}
-                        />) : (
-                        <p className="loadTitle">Loading...</p>
-                    )}
+                    {AvailableDevices && AvailableDevices.length > 0 ? (<Dropdown
+                        options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
+                        value={AvailableDevices.asset_name}
+                        className="assetRequestSelectDeviceDropdown"
+                        name="assetRequestSelectDeviceDropdown"
+                        placeholder={"Add Device"}
+                        onChange={(selectedOption) => setAvailableDevices(selectedOption.value)}
+                    />) : (<p className="loadTitle">Loading...</p>)}
                     <p className="createAssetRequestReasonLabel">Reason</p>
                     <textarea
                         className="createAssetRequestReasonInput"
@@ -207,11 +203,11 @@ export const Requests = () => {
                         </button>
                     </div>
                 </form>
-            </div>
-        );
+            </div>);
     }
 
     const RequestType = ({type}) => {
+        console.log("Type received:", type);
         if (type === "SUPPORT") {
             return (<CreateSupportRequest></CreateSupportRequest>);
         } else if (type === "ASSET") {
@@ -222,9 +218,7 @@ export const Requests = () => {
             return null;
         }
     }
-
-    return (
-        <div className="display">
+    return (<div className="display">
             <div className="selectRequestDiv">
                 <div className="selectRequest">
                     <p className="selectRequestLabel">SELECT REQUEST CREATION</p>
@@ -237,8 +231,7 @@ export const Requests = () => {
                 </div>
             </div>
             <div className="requestDiv">
-                <RequestType requestType={selectedRequest}></RequestType>
+                <RequestType type={selectedRequest} />
             </div>
-        </div>
-    );
+        </div>);
 }
