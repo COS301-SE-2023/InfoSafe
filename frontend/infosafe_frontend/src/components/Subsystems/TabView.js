@@ -8,13 +8,13 @@ import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
 import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
-import Home from "./Home";
+import {Dashboard} from "../Dashboard";
 
 export const TabView = ({currentTab}) => {
     switch (currentTab){
         case 0:
         {
-            return (<Home></Home>);
+            return (<Dashboard></Dashboard>);
         }
         case 1:
         {
