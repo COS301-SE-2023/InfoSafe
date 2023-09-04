@@ -7,37 +7,39 @@ const NavBar = () => {
     const [activeTab,setActive] = useState(0);
     let tabItems = [];
     const {roles} = AccessAndDisplay();
-    const TabNames = ['Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
+    const TabNames = ['Home','Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
+
+    tabItems.push(0);
 
     if ( roles.includes("role_creation") ) {//Role Creation
-        tabItems.push(0);
-    }
-    if ( roles.includes("user_create") || roles.includes("user_edit") || roles.includes("user_delete")) {//Users
         tabItems.push(1);
     }
-    if ( roles.includes("data_scope_edit") || roles.includes("data_scope_create") || roles.includes("data_scope_delete") ) {//Data Scopes
+    if ( roles.includes("user_create") || roles.includes("user_edit") || roles.includes("user_delete")) {//Users
         tabItems.push(2);
     }
-    if ( roles.includes("access_requests_approve") || roles.includes("access_requests_edit")) {//Access Requests
+    if ( roles.includes("data_scope_edit") || roles.includes("data_scope_create") || roles.includes("data_scope_delete") ) {//Data Scopes
         tabItems.push(3);
     }
-    if ( roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
+    if ( roles.includes("access_requests_approve") || roles.includes("access_requests_edit")) {//Access Requests
         tabItems.push(4);
     }
-    if ( roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete") ) {//Devices
+    if ( roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
         tabItems.push(5);
     }
-    if ( roles.includes("support_requests_viewAll") || roles.includes("support_requests_edit") || roles.includes("support_requests_delete") || roles.includes("request_support")) {//Support Requests
+    if ( roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete") ) {//Devices
         tabItems.push(6);
     }
-    if ( roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review") ) {//Risks
+    if ( roles.includes("support_requests_viewAll") || roles.includes("support_requests_edit") || roles.includes("support_requests_delete") || roles.includes("request_support")) {//Support Requests
         tabItems.push(7);
     }
-    if ( roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access") ) {//Requests
+    if ( roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review") ) {//Risks
         tabItems.push(8);
     }
-    if ( roles.includes("asset_request_review")) {//Asset Requests
+    if ( roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access") ) {//Requests
         tabItems.push(9);
+    }
+    if ( roles.includes("asset_request_review")) {//Asset Requests
+        tabItems.push(10);
     }
 
 

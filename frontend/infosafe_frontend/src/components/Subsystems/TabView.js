@@ -8,46 +8,51 @@ import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
 import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
+import Home from "./Home";
 
 export const TabView = ({currentTab}) => {
     switch (currentTab){
         case 0:
         {
-            return(<RoleCreation></RoleCreation>)
+            return (<Home></Home>);
         }
         case 1:
         {
-            return (<Users></Users>);
+            return(<RoleCreation></RoleCreation>);
         }
         case 2:
         {
-            return (<DataScopes></DataScopes>);
+            return (<Users></Users>);
         }
         case 3:
         {
-            return (<AccessRequests></AccessRequests>);
+            return (<DataScopes></DataScopes>);
         }
         case 4:
         {
-            return (<ComplianceMatrix></ComplianceMatrix>);
+            return (<AccessRequests></AccessRequests>);
         }
         case 5:
         {
-            return (<Devices></Devices>);
+            return (<ComplianceMatrix></ComplianceMatrix>);
         }
         case 6:
         {
-            return (<SupportRequests></SupportRequests>);
+            return (<Devices></Devices>);
         }
         case 7:
         {
-            return (<Risks></Risks>);
+            return (<SupportRequests></SupportRequests>);
         }
         case 8:
         {
-            return (<Requests></Requests>);
+            return (<Risks></Risks>);
         }
         case 9:
+        {
+            return (<Requests></Requests>);
+        }
+        case 10:
         {
             return (<AssetRequest></AssetRequest>);
         }
