@@ -2,7 +2,7 @@ package com.fragile.infosafe.repository;
 
 import java.util.List;
 
-import com.fragile.infosafe.model_primary.SupportRequest;
+import com.fragile.infosafe.model.SupportRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

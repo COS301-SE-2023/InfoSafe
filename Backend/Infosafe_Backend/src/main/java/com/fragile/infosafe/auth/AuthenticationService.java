@@ -5,7 +5,7 @@ import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.token.Token;
 import com.fragile.infosafe.token.TokenRepository;
 import com.fragile.infosafe.token.TokenType;
-import com.fragile.infosafe.model_primary.User;
+import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;

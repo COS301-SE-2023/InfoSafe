@@ -2,7 +2,7 @@ package com.fragile.infosafe.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fragile.infosafe.model_primary.Task;
+import com.fragile.infosafe.model.Task;
 import com.fragile.infosafe.repository.TaskRepository;
 import com.fragile.infosafe.requests.TaskRequest;
 import lombok.RequiredArgsConstructor;

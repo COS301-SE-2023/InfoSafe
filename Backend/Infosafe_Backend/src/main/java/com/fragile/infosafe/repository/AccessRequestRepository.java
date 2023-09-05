@@ -1,6 +1,6 @@
 package com.fragile.infosafe.repository;
 
-import com.fragile.infosafe.model_primary.AccessRequest;
+import com.fragile.infosafe.model.AccessRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

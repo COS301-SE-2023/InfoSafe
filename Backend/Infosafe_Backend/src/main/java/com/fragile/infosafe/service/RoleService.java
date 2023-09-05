@@ -1,6 +1,6 @@
 package com.fragile.infosafe.service;
 
-import com.fragile.infosafe.model_primary.Role;
+import com.fragile.infosafe.model.Role;
 import com.fragile.infosafe.repository.RoleRepository;
 import com.fragile.infosafe.requests.RoleRequest;
 import lombok.RequiredArgsConstructor;

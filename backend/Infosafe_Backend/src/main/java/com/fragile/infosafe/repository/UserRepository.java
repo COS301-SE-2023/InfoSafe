@@ -2,7 +2,7 @@ package com.fragile.infosafe.repository;
 
 import java.util.Optional;
 
-import com.fragile.infosafe.model_primary.User;
+import com.fragile.infosafe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

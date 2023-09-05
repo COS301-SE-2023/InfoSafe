@@ -1,4 +1,4 @@
-package com.fragile.infosafe.model_primary;
+package com.fragile.infosafe.model;
 
 import java.io.Serializable;
 
