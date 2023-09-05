@@ -1,6 +1,6 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model_primary.Task;
+import com.fragile.infosafe.model.Task;
 import com.fragile.infosafe.service.TaskService;
 import com.fragile.infosafe.requests.TaskRequest;
 import lombok.RequiredArgsConstructor;

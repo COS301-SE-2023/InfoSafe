@@ -4,7 +4,7 @@ import com.fragile.infosafe.auth.AuthenticationRequest;
 import com.fragile.infosafe.auth.AuthenticationResponse;
 import com.fragile.infosafe.auth.AuthenticationService;
 import com.fragile.infosafe.config.JwtService;
-import com.fragile.infosafe.model_primary.User;
+import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.repository.UserRepository;
 import com.fragile.infosafe.requests.RegisterRequest;
 import org.junit.jupiter.api.BeforeEach;

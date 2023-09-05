@@ -1,6 +1,6 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model_primary.Risk;
+import com.fragile.infosafe.model.Risk;
 import com.fragile.infosafe.requests.RiskRequest;
 import com.fragile.infosafe.service.RiskService;
 import lombok.RequiredArgsConstructor;
