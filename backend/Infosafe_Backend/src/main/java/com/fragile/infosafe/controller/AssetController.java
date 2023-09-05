@@ -1,6 +1,6 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model.Asset;
+import com.fragile.infosafe.model_primary.Asset;
 import com.fragile.infosafe.requests.AssetRequest;
 import com.fragile.infosafe.service.AssetService;
 import lombok.RequiredArgsConstructor;

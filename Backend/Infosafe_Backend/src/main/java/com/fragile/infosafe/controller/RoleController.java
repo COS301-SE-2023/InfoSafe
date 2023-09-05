@@ -1,10 +1,8 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model.Permission;
-import com.fragile.infosafe.model.Role;
-import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.model_primary.Permission;
+import com.fragile.infosafe.model_primary.User;
 import com.fragile.infosafe.requests.RoleRequest;
-import com.fragile.infosafe.requests.TaskRequest;
 import com.fragile.infosafe.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

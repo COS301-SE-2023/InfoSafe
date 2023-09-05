@@ -1,6 +1,6 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model.DataScopeRole;
+import com.fragile.infosafe.model_primary.DataScopeRole;
 import com.fragile.infosafe.requests.DataScopeRoleRequest;
 import com.fragile.infosafe.service.DataScopeRoleService;
 import lombok.RequiredArgsConstructor;

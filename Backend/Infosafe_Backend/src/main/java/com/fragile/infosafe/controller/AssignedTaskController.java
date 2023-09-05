@@ -1,11 +1,8 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model.AssignedTask;
-import com.fragile.infosafe.model.Task;
+import com.fragile.infosafe.model_primary.AssignedTask;
 import com.fragile.infosafe.requests.AssignedTaskRequest;
-import com.fragile.infosafe.requests.TaskRequest;
 import com.fragile.infosafe.service.AssignedTaskService;
-import com.fragile.infosafe.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

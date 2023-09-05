@@ -1,10 +1,7 @@
-package com.fragile.infosafe.model;
+package com.fragile.infosafe.model_primary;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import java.math.BigInteger;
 
 
 @Data

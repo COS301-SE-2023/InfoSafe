@@ -1,4 +1,4 @@
-package com.fragile.infosafe.model;
+package com.fragile.infosafe.model_primary;
 
 public enum Permission {
     user_create(1),

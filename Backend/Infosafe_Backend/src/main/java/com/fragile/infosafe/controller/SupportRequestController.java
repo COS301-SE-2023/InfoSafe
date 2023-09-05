@@ -1,6 +1,6 @@
 package com.fragile.infosafe.controller;
 
-import com.fragile.infosafe.model.SupportRequest;
+import com.fragile.infosafe.model_primary.SupportRequest;
 import com.fragile.infosafe.requests.SupportRequestRequest;
 import com.fragile.infosafe.service.SupportRequestService;
 import lombok.RequiredArgsConstructor;

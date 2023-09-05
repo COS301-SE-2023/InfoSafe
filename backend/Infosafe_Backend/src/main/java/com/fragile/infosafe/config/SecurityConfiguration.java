@@ -1,6 +1,5 @@
 package com.fragile.infosafe.config;
 
-import com.fragile.infosafe.model.Permission;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +15,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
-
-import static org.springframework.http.HttpMethod.POST;
 
 // import static org.springframework.http.HttpMethod.*;
 

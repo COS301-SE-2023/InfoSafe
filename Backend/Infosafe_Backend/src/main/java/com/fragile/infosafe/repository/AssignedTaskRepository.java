@@ -1,7 +1,6 @@
 package com.fragile.infosafe.repository;
 
-import com.fragile.infosafe.model.AssignedTask;
-import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.model_primary.AssignedTask;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

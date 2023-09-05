@@ -1,8 +1,8 @@
 package com.fragile.infosafe.service;
 
 import com.fragile.infosafe.exceptions.UserNotFoundException;
-import com.fragile.infosafe.model.Role;
-import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.model_primary.Role;
+import com.fragile.infosafe.model_primary.User;
 import com.fragile.infosafe.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

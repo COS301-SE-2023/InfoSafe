@@ -1,4 +1,4 @@
-package com.fragile.infosafe.model;
+package com.fragile.infosafe.model_primary;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
-import org.springframework.context.annotation.Primary;
 
 @Data
 @Builder

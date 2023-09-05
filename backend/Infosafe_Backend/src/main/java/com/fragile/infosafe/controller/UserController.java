@@ -2,8 +2,8 @@ package com.fragile.infosafe.controller;
 
 import com.fragile.infosafe.auth.AuthenticationResponse;
 import com.fragile.infosafe.auth.AuthenticationService;
-import com.fragile.infosafe.model.Role;
-import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.model_primary.Role;
+import com.fragile.infosafe.model_primary.User;
 import com.fragile.infosafe.requests.RegisterRequest;
 import com.fragile.infosafe.service.UserService;
 import lombok.RequiredArgsConstructor;

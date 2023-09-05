@@ -1,6 +1,6 @@
 package com.fragile.infosafe.service;
 
-import com.fragile.infosafe.model.AssignedTask;
+import com.fragile.infosafe.model_primary.AssignedTask;
 import com.fragile.infosafe.repository.AssignedTaskRepository;
 import com.fragile.infosafe.requests.AssignedTaskRequest;
 import lombok.RequiredArgsConstructor;

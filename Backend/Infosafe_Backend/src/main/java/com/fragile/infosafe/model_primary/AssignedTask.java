@@ -1,4 +1,4 @@
-package com.fragile.infosafe.model;
+package com.fragile.infosafe.model_primary;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

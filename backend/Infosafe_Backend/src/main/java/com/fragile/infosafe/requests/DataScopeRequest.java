@@ -1,6 +1,5 @@
 package com.fragile.infosafe.requests;
 
-import com.fragile.infosafe.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
