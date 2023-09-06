@@ -6,23 +6,25 @@
 .tabMenu
 {
     background-color: #E90000;
-    width: 25%;
-    height: 94vh;
-    position: relative;
-    top: 48vh;
+    width: 20%;
+    height: 50%;
+    position: absolute;
+    top: 0;
     align-items: center;
     justify-content: center;
     display: none;
     z-index: 100;
-
+    box-shadow: 10px 8px 10px rgba(0, 0, 0, 2);
 }
 .tabs {
-    margin-bottom: 2%;
+    margin-top: 5%;
+    margin-left: 2%;
     top: 3%;
     left: 1%;
-    height: 5%;
+    height: 50%;
     padding: 0;
     width: 50vw;
+    color: #FFFFFF;
 }
 .tabs li {
     color: #ffffff;
@@ -39,20 +41,16 @@
     padding-left: 0.8%;
     padding-right: 0.8%;
     width: fit-content;
+    margin-top: 1vh;
 }
 .tabs li:not(.active) {
-    border: 1px solid #9e0000;
     border-bottom: none;
-    margin-left: 0px;
-    margin-right: 0px;
 }
 .tabs li.active {
-    background-color: #4b4a4a;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    border-top: 1px solid #ffffff;
     position: relative;
-    margin-top: 1px;
+    text-decoration: underline ;
+    text-decoration-color: #FFFFFF;
+    font-weight: bold;
 }
 .display {
     position: absolute;
