@@ -64,7 +64,8 @@
 .displayTabContent{
     position: relative;
     z-index: 0;
-    top: 2vh;
+    top: 4vh;
+    margin: 0;
 }
 /*.display {*/
 /*    position: relative;*/

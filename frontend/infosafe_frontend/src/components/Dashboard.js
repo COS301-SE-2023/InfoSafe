@@ -8,6 +8,9 @@ import {FaCircle} from 'react-icons/fa';
 export const Dashboard = () => {
     const myDevicesList = ['Zenbook Pro 15', 'PowerGuardian 1500', 'QuantumTab S7', 'Device 4', 'Device 5', 'Device 6', 'Device 7', 'Device 8', 'Device 9', 'Device 10'];
     const notificationsList = ['The status for Support Request 6 has been updated.', 'The status for Support Request 4 has been updated.', 'The status for Support Request 2 has been updated.', 'You have been added to Data Scope 40.' ];
+    const userTasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5', 'Task 6', 'Task 7', 'Task 8', 'Task 9'];
+    const taskDeadlines = ['1 month', '1 week', '1 day', '1 month', '1 week', '1 day', '1 month', '1 week', '1 day']
+
     return (
         <div className="display">
             <div className="quickFacts">
@@ -60,8 +63,27 @@ export const Dashboard = () => {
 
                     </div>
                 </div>
-                <div className="userSupportRequestsDiv">
-                    <p className="userSupportRequestsLabel">Support Requests</p>
+                <div className="userTaskDeadlinesDiv">
+                    <p className="userTaskDeadlinesLabel">Approaching Deadlines</p>
+                    <div className="deadlinesDiv">
+                        <ul className="taskDeadlinesList">
+                            {userTasks.map((task, index) => (
+                                <li key={index}>
+                                    <p>{task}</p>
+                                    {taskDeadlines[index] === '1 month' && (
+                                        <div className="oneMonthDeadline">{taskDeadlines[index]}</div>
+                                    )}
+                                    {taskDeadlines[index] === '1 week' && (
+                                        <div className="oneWeekDeadline">{taskDeadlines[index]}</div>
+                                    )}
+                                    {taskDeadlines[index] === '1 day' && (
+                                        <div className="oneDayDeadline" >{taskDeadlines[index]}</div>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
                 </div>
             </div>
             <div className="infoDiv">
