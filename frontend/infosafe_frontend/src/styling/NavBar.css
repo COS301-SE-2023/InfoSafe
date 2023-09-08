@@ -55,7 +55,8 @@
 .tabs li.active {
     position: relative;
     /*text-decoration: underline ;*/
-    text-decoration-color: #FFFFFF;
+    text-decoration-color: #989898;
+    background-color: rgba(196, 194, 194, 0.29);
     /*font-weight: bold;*/
     border: 1px solid white;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
