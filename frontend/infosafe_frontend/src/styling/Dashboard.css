@@ -181,6 +181,8 @@
     display: flex;
     width: 100%;
     align-items: center;
+    position: relative;
+    top: 4%;
 }
 .barLabels{
     display: flex;
