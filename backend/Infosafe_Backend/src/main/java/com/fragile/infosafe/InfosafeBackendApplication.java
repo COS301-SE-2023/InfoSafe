@@ -23,6 +23,7 @@ public class InfosafeBackendApplication {
 //    @Autowired
 //    private RoleRepository roleRepository;
 //
+//
 //    @Bean
 //    public CommandLineRunner commandLineRunner(AuthenticationService service) {
 //        return args -> {

@@ -3,11 +3,14 @@ package com.fragile.infosafe.auth;
 import com.fragile.infosafe.config.JwtService;
 import com.fragile.infosafe.model.Asset;
 import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.model.Role;
 import com.fragile.infosafe.repository.AssetRepository;
 import com.fragile.infosafe.repository.DataScopeRepository;
+import com.fragile.infosafe.repository.RoleRepository;
 import com.fragile.infosafe.requests.AssetRequest;
 import com.fragile.infosafe.requests.DataScopeRequest;
 import com.fragile.infosafe.requests.RegisterRequest;
+import com.fragile.infosafe.requests.RoleRequest;
 import com.fragile.infosafe.token.Token;
 import com.fragile.infosafe.token.TokenRepository;
 import com.fragile.infosafe.token.TokenType;
@@ -37,14 +40,14 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-
+    private final RoleRepository roleRepository;
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .first_name(request.getFirst_name())
                 .last_name(request.getLast_name())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .role(Role.builder().role_name(request.getRole().getRole_name()).build())
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);

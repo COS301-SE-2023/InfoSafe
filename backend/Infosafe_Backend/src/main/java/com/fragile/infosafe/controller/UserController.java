@@ -38,7 +38,7 @@ public class UserController {
             @RequestBody RegisterRequest request
     ) {
 
-        emailService.sendEmail(request.getEmail(), request.getPassword());
+        emailService.sendEmail(request.getEmail(), "New User to InfoSafe", "Welcome to InfoSafe, your password is " + "\n" + request.getPassword() + "\n You can change your password by logging in a selecting your profile in the top left corner and follwoing the prompts" + "\nKind regards\nThe InfoSafe Team");
         return ResponseEntity.ok(authService.register(request));
     }
 

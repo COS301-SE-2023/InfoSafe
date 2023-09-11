@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable) // csrf -> csrf.disable()
                 .cors(cfg -> cfg.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "api/forgot").permitAll()
+                .requestMatchers("/api/auth/**", "/api/forgot/**").permitAll()
 //                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(String.valueOf(Permission.user_create))
 //                        .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN.name())
                 .anyRequest()
