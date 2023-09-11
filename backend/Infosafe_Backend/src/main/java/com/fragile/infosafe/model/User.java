@@ -26,7 +26,7 @@ public class User implements UserDetails{
     private String last_name;
     private String email;
     private String password;
-
+    private String otp;
     @ManyToOne
     @JoinColumn(name = "role_name")
     private Role role;

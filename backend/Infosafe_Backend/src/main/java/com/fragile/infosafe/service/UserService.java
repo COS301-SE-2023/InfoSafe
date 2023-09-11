@@ -14,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repository;
+
     public List<User> getAllUsers() {return repository.findAll();}
     public Optional<User> getUser(Integer user_id) {return repository.findById(user_id);}
     public User updateUser(User user) {return repository.save(user);}
@@ -25,5 +26,30 @@ public class UserService {
     }
     public boolean checkEmailExists(String email) {
         return repository.existsByEmail(email);
+    }
+
+    public void generateAndSaveOtp(String email){
+        Optional<User> userOptional = repository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            String otp = generateRandomOTP();
+            user.setOtp(otp);
+            repository.save(user);
+            //sendOTPViaEmail(user.getEmail(), otp);
+        } else {
+        }
+    }
+
+    private String generateRandomOTP() {
+        // implement
+        return "123456";
+    }
+    public boolean verifyOTP(String email, String otp) {
+        Optional<User> userOptional = repository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            return user.getOtp().equals(otp);
+        }
+        return false;
     }
 }
