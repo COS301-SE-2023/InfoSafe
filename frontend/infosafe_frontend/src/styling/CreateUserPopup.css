@@ -1,17 +1,22 @@
 .createUserOverlay {
-    width: 60vw;
-    height: 90vh;
-    flex-shrink: 0;
+    width: 50vw;
+    height: 80vh;
+    display: flex;
     border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
+    background: rgb(173, 173, 173);
     backdrop-filter: blur(20px);
+    position: fixed;
+    top: 13%;
+    right: 25%;
     margin: 0 auto;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    /*border: 3px solid #49D4D0;*/
 }
 .createUserBorder {
-    border: 1px solid #ffffff;
-    width: 56vw;
+    border: 2px solid #ffffff;
+    width: 46vw;
     margin: 0 auto;
-    height: 82vh;
+    height: 72vh;
     position: relative;
     top: 4vh;
     overflow-y: scroll;
@@ -21,8 +26,8 @@
 .createUserBorder::-webkit-scrollbar {
     display: none;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.createUserBackButton {
+    background-color: #49D4D0;
     border: none;
     position: relative;
     height: 4vh;
@@ -32,8 +37,10 @@
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
 }
-.backIcon {
+.createUserBackIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
@@ -153,7 +160,7 @@
     border: none;
     left: 25%;
     position: relative;
-    width: 50%;
+    /*width: 100%;*/
     margin-top: 1.5%;
 }
 .role_dropdown:after {
@@ -162,7 +169,7 @@
 .createUserFinish {
     width: 20%;
     height: 5%;
-    background-color: rgba(233, 0, 0, 1);
+    background-color: #49D4D0;
     color: #ffffff;
     text-align: center;
     font-size: 18px;
@@ -173,7 +180,20 @@
     align-self: center;
     justify-self: center;
     bottom: 2vh;
+    padding: 0.5% 2%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
     left: 40%;
     border: none;
     margin: 5% auto 0;
+}
+
+.createUserOverlay input {
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.createUserOverlay input:focus{
+    border: 2px solid #49D4D0;
 }

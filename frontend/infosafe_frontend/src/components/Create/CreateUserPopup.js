@@ -95,10 +95,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             <div className="createUserOverlay">
                 <div className="createUserBorder">
                     <form>
-                        <button className="backButton" data-testid="backArrow" onClick={popupClose}>
-                            <IoArrowBackOutline className="backIcon" />
+                        <button className="createUserBackButton" data-testid="backArrow" onClick={popupClose}>
+                            <IoArrowBackOutline className="createUserBackIcon" />
                         </button>
-                        <p className="createUserLabel">User Creation</p>
+                        <p className="createUserLabel">Create User</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
@@ -112,7 +112,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                             <Dropdown
                                 options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
                                 values={[{ label: selectedRole, value: selectedRole }]}
-                                className="Dropdown"
+                                className="role_dropdown"
                                 name="role_dropdown"
                                 onChange={values => setSelectedRole(values[0].value)}
                             />
