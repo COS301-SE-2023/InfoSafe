@@ -5,6 +5,7 @@ import com.fragile.infosafe.auth.AuthenticationService;
 import com.fragile.infosafe.model.Role;
 import com.fragile.infosafe.model.User;
 import com.fragile.infosafe.requests.RegisterRequest;
+import com.fragile.infosafe.service.EmailService;
 import com.fragile.infosafe.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,8 @@ public class UserController {
     private final UserService userService;
     private final AuthenticationService authService;
 
+    private final EmailService emailService;
+
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
 
@@ -34,6 +37,8 @@ public class UserController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
+
+        emailService.sendEmail(request.getEmail(), request.getPassword());
         return ResponseEntity.ok(authService.register(request));
     }
 
