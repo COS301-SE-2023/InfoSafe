@@ -29,7 +29,6 @@ function Login(){
     const submitLogin = e => {
         if (e.key === 'Enter')
         {
-            console.log("here");
             document.getElementById("btnLogin").click();
         }
 
