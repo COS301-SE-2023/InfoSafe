@@ -3,6 +3,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Collections;
 import java.util.Date;
 
 import static com.fragile.infosafe.model.Role.*;
@@ -12,22 +13,9 @@ import static com.fragile.infosafe.model.Role.*;
 public class InfosafeBackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(InfosafeBackendApplication.class, args);
+
+        SpringApplication infosafe = new  SpringApplication(InfosafeBackendApplication.class);
+        infosafe.setDefaultProperties(Collections.singletonMap("server.port", "8080"));
+        infosafe.run(args);
     }
-
-
-//    @Bean
-//    public CommandLineRunner commandLineRunner(AuthenticationService service) {
-//        return args -> {
-//            var admin = RegisterRequest.builder()
-//                    .first_name("Alistair")
-//                    .last_name("Ross")
-//                    .email("alistairmikeross@gmail.com")
-//                    .password("1234")
-//                    .role(ISO)
-//                    .build();
-//            System.out.println("Admin token: " + service.register(admin).getAccessToken());
-//        };
-//    }
-
 }
