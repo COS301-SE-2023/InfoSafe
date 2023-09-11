@@ -62,9 +62,9 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
             <div className="editUserOverlay" data-testid="editUserPopup">
-                <div className="border">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
+                <div className="editUserBorder">
+                    <button className="editUserBackButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="editUserBackIcon" />
                     </button>
                     <p className="editUserTitle">Edit User</p>
                     <form onSubmit={handleSubmit}>
