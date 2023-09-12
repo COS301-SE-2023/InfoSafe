@@ -28,11 +28,11 @@ jobs:
 
       - name: Install frontend dependencies
         run: npm install
-        working-directory: home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/frontend/infosafe_frontend
+        working-directory: frontend/infosafe_frontend
 
       - name: Build frontend
         run: npm run build
-        working-directory: home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/frontend/infosafe_frontend
+        working-directory: frontend/infosafe_frontend
 
       - name: Set up JDK 20
         uses: actions/setup-java@v3
