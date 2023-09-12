@@ -12,7 +12,7 @@ const Home = () => {
     const [username, setUserName] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getRole', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getRole', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -25,7 +25,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getUserName', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getUserName', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

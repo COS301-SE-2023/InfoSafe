@@ -22,7 +22,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
         e.preventDefault();
         let use_id;
         const task = { task_description, task_status, due_date, date_created };
-        fetch("http://localhost:8080/api/task/addTask", {
+        fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/task/addTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
 
                     Promise.all(
                         assignedTasks.map((assignedtask) =>
-                            fetch("http://localhost:8080/api/assignedTask/addTask", {
+                            fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/assignedTask/addTask", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
+        fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

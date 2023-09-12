@@ -7,7 +7,7 @@ function Login(){
     const handleLogin = (e) => {
         e.preventDefault()
         const login = {email, password}
-        fetch("http://localhost:8080/api/auth/login", {
+        fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/auth/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)

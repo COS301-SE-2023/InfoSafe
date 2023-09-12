@@ -24,7 +24,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         const selectedRole = role === '' ? 'EMPLOYEE' : role;
         const user = { first_name, last_name, email, password, role: selectedRole };
 
-        fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
+        fetch(`http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/checkEmail?email=${email}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                     console.log("User already exists");
                 } else {
                     console.log(user);
-                    fetch("http://localhost:8080/api/user/add", {
+                    fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/add", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/randPass/generate", {
+                const response = await fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/randPass/generate", {
                     method: "GET",
                     headers: {"Content-Type":"application/json",
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
