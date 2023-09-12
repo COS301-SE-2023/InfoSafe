@@ -1,5 +1,6 @@
-package com.fragile.infosafe.model;
+package com.fragile.infosafe.deletedModels;
 
+import com.fragile.infosafe.model.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,10 +18,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="users")
-public class User implements UserDetails{
+@Table(name="DeletedUser")
+public class DeletedUsers implements UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
     private String first_name;
     private String last_name;
@@ -100,6 +102,3 @@ public class User implements UserDetails{
         this.role = role;
     }
 }
-
-
-
