@@ -29,8 +29,8 @@ public class JwtService {
     public JwtService(JwtAWSFetch fetch){
         this.fetch = fetch;
     }
-    private long jwtExpiration = Long.parseLong(System.getenv("JWT_EXP"));
-    private long refreshExpiration = Long.parseLong(System.getenv("JWT_REFRESH"));
+    private int jwtExpiration = 86400000;
+    private int refreshExpiration = 604800000;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
