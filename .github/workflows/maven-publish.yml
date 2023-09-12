@@ -42,12 +42,12 @@ jobs:
 
       - name: Install frontend dependencies
         run: npm install
-        workingDir: /home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/frontend/infosafe_frontend
+        working-directory: home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/frontend/infosafe_frontend
 
       - name: Build frontend
         run: npm run build
-        workingDir: /home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/frontend/infosafe_frontend
-        
+        working-directory: home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/frontend/infosafe_frontend
+
 #    - name: Publish to GitHub Packages Apache Maven
 #      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
 #      env:
