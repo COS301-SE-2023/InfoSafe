@@ -34,6 +34,11 @@ function Login(){
 
     };
 
+    const forgot = () =>{
+        window.location.href = '/ForgotPassword';
+    }
+
+
     return (
         <div className="background">
             {/*<div className="flipPanel">*/}
@@ -70,7 +75,7 @@ function Login(){
                                 ></input>
                             </div>
                         </div>
-                        <a className="forgot" href="www.youtube.com/watch?v=dQw4w9WgXcQ">Forgot Password?</a>
+                        <a className="forgot" onClick={forgot} >Forgot Password?</a>
                         <button data-testid="btnTest"  id="btnLogin" className="btnLogin" onClick={handleLogin}>
                             Login
                         </button>
