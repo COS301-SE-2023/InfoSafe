@@ -1,68 +1,49 @@
 package com.fragile.infosafe.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import static com.fragile.infosafe.model.Permission.*;
+import java.math.BigInteger;
 
 
-@RequiredArgsConstructor
-public enum Role {
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="roles")
+public class Role{
+    @Id
+    private String role_name;
+    @Column(name = "permissions")
+    private long permissions;
 
-    EMPLOYEE(Collections.emptySet()),
-    ADMIN(
-            Set.of(
-                    ADMIN_READ,
-                    ADMIN_UPDATE,
-                    ADMIN_DELETE,
-                    ADMIN_CREATE
-            )
-    ),
-    ISO(
-            Set.of(
-                    ISO_READ,
-                    ISO_UPDATE,
-                    ISO_DELETE,
-                    ISO_CREATE
-            )
-    ),
+    public String getRole_name() {
+        return role_name;
+    }
 
-    DISO(
-            Set.of(
-                    DISO_READ,
-                    DISO_UPDATE,
-                    DISO_DELETE
-            )
-    ),
-    DATA_CUSTODIAN(
-            Set.of(
-                    DATA_CUSTODIAN_READ
-            )
-    ),
+    public void setRole_Name(String role_name) {
+        this.role_name = role_name;
+    }
 
-    ASSET_MANAGER(
-            Set.of(
-                    ASSET_MANAGER_READ
-        )
-    )
-    ;
+    public long getPermissions() {
+        return permissions;
+    }
 
-    @Getter
-    private final Set<Permission> permissions;
+    public void setPermissions(long permissions) {
+        this.permissions = permissions;
+    }
 
-    public List<SimpleGrantedAuthority> getAuthorities() {
-        var authorities = getPermissions()
-                .stream()
-                .map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
-                .collect(Collectors.toList());
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
-        return authorities;
+    public boolean hasPermission(Permission permission) {
+        return (permissions & permission.getMask()) != 0;
+    }
+
+    public void grantPermission(Permission permission) {
+        permissions |= permission.getMask();
+    }
+
+    public void revokePermission(Permission permission) {
+        permissions &= ~permission.getMask();
     }
 }

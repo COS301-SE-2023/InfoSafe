@@ -1,17 +1,21 @@
 .viewDataScopeOverlay {
-    width: 60vw;
-    height: 90vh;
+    width: 50vw;
+    height: 80vh;
     flex-shrink: 0;
     border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(10px);
+    background: rgb(173, 173, 173);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
     margin: 0 auto;
+    position: fixed;
+    top: 13%;
+    right: 25%;
 }
 .borderDataScopeView {
-    border: 1px solid #ffffff;
-    width: 56vw;
+    border: 2px solid #ffffff;
+    width: 46vw;
     margin: 0 auto;
-    height: 82vh;
+    height: 72vh;
     position: relative;
     top: 4vh;
     overflow-y: scroll;
@@ -21,8 +25,8 @@
 .borderDataScopeView::-webkit-scrollbar{
     display: none;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.viewDataScopeBackButton {
+    background-color: #49D4D0;
     border: none;
     position: relative;
     height: 4vh;
@@ -32,8 +36,9 @@
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-.backIcon {
+.viewDataScopeBackIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
@@ -109,9 +114,11 @@
     margin: 0 auto;
     background-color: #ffffff;
     margin-top: 1.5vh;
+    padding-left: 12px;
     text-transform: none;
     text-align: left;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 .view_datascope_date {
     margin: 0 auto;
@@ -196,19 +203,21 @@
     height: 30%;
     overflow-y: scroll;
     font-size: 18px;
+    border-radius: 20px;
 }
 .roleHeader {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     text-transform: uppercase;
     width: 40%;
+    border-radius: 20px;
 }
 .roledescrHeader {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     text-transform: uppercase;
     width: 60%;
-    font-size: 22px;
+    font-size: 20px;
 }
 .rolesTable td {
     font-family: 'Roboto', sans-serif;
@@ -216,4 +225,11 @@
     width: 50%;
     font-size: 14px;
     height: 3%;
+    border-radius: 20px;
+}
+
+.viewDataScopeName, .viewDSDescription, .viewDataScopeDate, .viewDataScopeStatus
+{
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }

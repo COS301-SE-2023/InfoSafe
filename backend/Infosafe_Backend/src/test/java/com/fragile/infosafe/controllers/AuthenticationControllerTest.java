@@ -47,11 +47,11 @@ class AuthenticationServiceTest {
     @Test
     void testRegister() {
         RegisterRequest request = new RegisterRequest();
-        request.setFirstname("John");
-        request.setLastname("Doe");
+        request.setFirst_name("John");
+        request.setLast_name("Doe");
         request.setEmail("johndoe@example.com");
         request.setPassword("password123");
-        request.setRole(Role.ADMIN);
+        // request.setRole();
 
 
         User savedUser = new User();

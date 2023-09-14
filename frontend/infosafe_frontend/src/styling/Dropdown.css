@@ -6,9 +6,9 @@
 .Dropdown-control {
     position: relative;
     overflow: hidden;
+    width: 50%;
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 2px;
     box-sizing: border-box;
     color: #333;
     cursor: default;
@@ -16,6 +16,8 @@
     transition: all 200ms ease;
     height: 4vh;
     padding-top: 1%;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .Dropdown-control:hover {
@@ -31,7 +33,7 @@
     height: 0;
     margin-top: -ceil(2.5);
     position: absolute;
-    right: 10px;
+    right: 14px;
     top: 16px;
     width: 0;
 }
@@ -51,7 +53,8 @@
     overflow-y: auto;
     position: absolute;
     top: 100%;
-    width: 100%;
+    width: 50%;
+    border-radius: 20px;
     z-index: 1000;
     -webkit-overflow-scrolling: touch;
 }

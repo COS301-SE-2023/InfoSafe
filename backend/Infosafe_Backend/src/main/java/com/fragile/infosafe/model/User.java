@@ -26,7 +26,9 @@ public class User implements UserDetails{
     private String last_name;
     private String email;
     private String password;
-    @Enumerated(EnumType.STRING)
+    private String otp;
+    @ManyToOne
+    @JoinColumn(name = "role_name")
     private Role role;
 
     public int getUser_id() {
@@ -58,8 +60,9 @@ public class User implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(role.getRole_name()));
     }
+
     @Override
     public String getPassword() {
         return password;

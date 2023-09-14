@@ -29,11 +29,15 @@ function Login(){
     const submitLogin = e => {
         if (e.key === 'Enter')
         {
-            console.log("here");
             document.getElementById("btnLogin").click();
         }
 
     };
+
+    const forgot = () =>{
+        window.location.href = '/ForgotPassword';
+    }
+
 
     return (
         <div className="background">
@@ -71,7 +75,7 @@ function Login(){
                                 ></input>
                             </div>
                         </div>
-                        <a className="forgot" href="www.youtube.com/watch?v=dQw4w9WgXcQ">Forgot Password?</a>
+                        <a className="forgot" onClick={forgot} >Forgot Password?</a>
                         <button data-testid="btnTest"  id="btnLogin" className="btnLogin" onClick={handleLogin}>
                             Login
                         </button>
