@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
-import {RiDeleteBin6Fill} from "react-icons/ri";
+import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import "../../styling/DataScopes.css";
 export const DataScopes = () => {
@@ -16,7 +16,7 @@ export const DataScopes = () => {
         if(roles.includes("data_scope_edit")) {
             return (
                 <div className="dataScopesEditButton">
-                    <FaRegEdit onClick={() => setEditDataScopeOpen(true)} className="dataScopesEditIcon"/>
+                    <RiEditBoxFill onClick={() => setEditDataScopeOpen(true)} className="dataScopesEditIcon"/>
                     {editDataScopeOpen ? (
                         <EditDataScopePopup
                             popupClose={() => setEditDataScopeOpen(false)}
