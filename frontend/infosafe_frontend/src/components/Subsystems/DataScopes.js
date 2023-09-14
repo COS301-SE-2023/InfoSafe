@@ -1,7 +1,7 @@
 import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
 import React, {useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
-import {FaRegEdit} from "react-icons/fa";
+import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
@@ -15,8 +15,8 @@ export const DataScopes = () => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         if(roles.includes("data_scope_edit")) {
             return (
-                <div className="EditIcon">
-                    <FaRegEdit onClick={() => setEditDataScopeOpen(true)}/>
+                <div className="dataScopesEditButton">
+                    <FaRegEdit onClick={() => setEditDataScopeOpen(true)} className="dataScopesEditIcon"/>
                     {editDataScopeOpen ? (
                         <EditDataScopePopup
                             popupClose={() => setEditDataScopeOpen(false)}
@@ -34,7 +34,10 @@ export const DataScopes = () => {
     const DeleteDataScope = () => {
         if(roles.includes("data_scope_delete")) {
             return (
-                <RiDeleteBin6Fill className="DeleteIcon"/>
+                <div className="dataScopesDeleteButton">
+                    <RiDeleteBin6Fill className="dataScopesDeleteIcon"/>
+                </div>
+
             )
         } else {
             return (null)
@@ -98,10 +101,24 @@ export const DataScopes = () => {
 
     return (
         <div className="display">
-            <div className="datascopes">
-                <ul className="datascopesList">{dataItems}</ul>
+            <div className="dataScopesBackground">
+                <div className="searchDataScopes">
+                    <input
+                        // data-testid="datascopesSearch"
+                        className="dataScopesSearchInput"
+                        type="text"
+                        id="dataScopesSearchInput"
+                        name="dataScopesSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="dataScopesSearchIcon" />
+                </div>
+                <div className="datascopes">
+                    <ul className="datascopesList">{dataItems}</ul>
+                </div>
+                <CreateDataScope></CreateDataScope>
             </div>
-            <CreateDataScope></CreateDataScope>
+
         </div>
     );
 }
