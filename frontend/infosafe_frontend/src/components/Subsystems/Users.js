@@ -1,11 +1,12 @@
 import {CreateUserPopup} from "../Create/CreateUserPopup";
 import React, {useState} from "react";
 import ViewUser from "../View/ViewUser";
-import {FaRegEdit} from "react-icons/fa";
+import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditUser from "../Edit/EditUser";
-import {RiDeleteBin6Fill} from "react-icons/ri";
+import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import '../../styling/Users.css';
+import '../../styling/Dropdown.css';
 
 export const Users = () => {
     const {
@@ -19,15 +20,18 @@ export const Users = () => {
         const [editUserOpen, setEditUserOpen] = useState(false);
         if(roles.includes("user_edit")) {
             return (
-                <div className="EditIcon">
-                    <FaRegEdit data-testid="editButton" onClick={() => setEditUserOpen(true)}/>
-                    {editUserOpen ? (
-                        <EditUser
-                            popupClose={() => setEditUserOpen(false)}
-                            popupOpen={editUserOpen}
-                            user={user}
-                        />
-                    ) : null}{' '}
+                <div>
+                    <div className="usersEditButton">
+                        <RiEditBoxFill data-testid="editButton" onClick={() => setEditUserOpen(true)} className="usersEditIcon" />
+                        {editUserOpen ? (
+                            <EditUser
+                                popupClose={() => setEditUserOpen(false)}
+                                popupOpen={editUserOpen}
+                                user={user}
+                            />
+                        ) : null}{' '}
+                    </div>
+
                 </div>
             )
         } else {
@@ -38,7 +42,10 @@ export const Users = () => {
     const DeleteUser = () => {
         if(roles.includes("user_delete")) {
             return (
-                <RiDeleteBin6Fill className="DeleteIcon"/>
+                <div className="usersDeleteButton">
+                    <RiDeleteBin6Fill className="usersDeleteIcon"/>
+                </div>
+
             )
         } else {
             return null;
@@ -98,10 +105,24 @@ export const Users = () => {
 
     return (
         <div className="display">
-            <div className="users">
-                <ul className="userList">{userItems}</ul>
+            <div className="usersBackground">
+                <div className="searchUsers">
+                    <input
+                        // data-testid="userSearch"
+                        className="userSearchInput"
+                        type="text"
+                        id="userSearchInput"
+                        name="userSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="userSearchIcon" />
+                </div>
+                <div className="users">
+                    <ul className="userList">{userItems}</ul>
+                </div>
+                <CreateUser></CreateUser>
             </div>
-            <CreateUser></CreateUser>
+
         </div>
     );
 }

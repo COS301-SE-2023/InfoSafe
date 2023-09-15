@@ -1,3 +1,12 @@
+.roleBackground{
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
 .permissions {
     background-color: transparent;
     width: 90%;
@@ -19,35 +28,20 @@
     padding: 0;
 }
 
-.usersPermissions, .accessRequestsPermissions, .devicesPermissions, .assetRequestsPermissions, .requestsPermissions
+.usersPermissions, .accessRequestsPermissions, .devicesPermissions, .assetRequestsPermissions, .requestsPermissions, .dataScopesPermissions, .complianceMatrixPermissions, .supportRequestsPermissions, .risksPermissions
 {
-    position: relative;
-    color: #000000;
-    text-transform: none;
-    border-radius: 5px;
-    margin-top: 1px;
-    background-color: #787878;
+    background-color: #CECECE;
     width: 100%;
     min-height: 5vh;
     height: auto;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-.dataScopesPermissions, .complianceMatrixPermissions, .supportRequestsPermissions, .risksPermissions
-{
-    background-color: #635F5F;
-    width: 100%;
-    min-height: 5vh;
-    height: auto;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
     display: flex;
     flex-direction: column;
     position: relative;
     color: #000000;
     text-transform: none;
     border-radius: 5px;
-    margin-top: 1px;
+    margin-top: 4px;
 }
 
 .displaySubsystemDiv
@@ -56,10 +50,11 @@
     height: 3vh;
     width: fit-content;
     position: relative;
-    top: 0.8vh;
+    top: 1.1vh;
     display: flex;
     border-radius:10px;
     left: 2%;
+    box-shadow: 1px 3px 2px 0 #E90000;
 
 }
 
@@ -78,7 +73,11 @@
 }
 
 input:checked{
-    accent-color: #CF0000;
+    accent-color: #E90000;
+}
+
+.permissionsDiv input:checked{
+    accent-color: #49D4D0;
 }
 
 .displayPermissionsDiv{
@@ -102,15 +101,25 @@ input:checked{
     top: 14%;
     border-radius:10px;
     margin-right: 1vh;
+    box-shadow: 1px 3px 2px 0 #49D4D0;
 }
 
 .permissionsDiv{
     position: relative;
     left: 2%;
 }
-
+.roleCreationButtonsDiv
+{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    top: 15%;
+    justify-content: center;
+}
 .roleCreationButton {
-    background: #373737;
+    background: #383838;
     border: 1px solid #3a3a3a;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
@@ -123,13 +132,12 @@ input:checked{
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #ffffff;
-    margin: 4% auto;
     padding: 0.5% 2%;
     width: fit-content;
 }
 
 .clearButton {
-    background: #373737;
+    background: #383838;
     border: 1px solid #3a3a3a;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
@@ -142,9 +150,10 @@ input:checked{
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #ffffff;
-    margin: 0.5% auto;
     padding: 0.5% 2%;
-    width: fit-content;
+    width: 15%;
+    margin-left: 20%;
+
 }
 
 .roleInfo{
@@ -159,7 +168,7 @@ input:checked{
 
 .roleCreateNameLabel
 {
-    color: #ffffff;
+    color: #000000;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     position: relative;
@@ -170,8 +179,14 @@ input:checked{
     margin-right: 3vw;
 }
 .roleCreationRoleNameInput {
-    border-radius: 12px;
     font-family: "Roboto", sans-serif;
+    border-radius: 8px;
+    background: #CECECE;
+    border: 0;
+}
+.roleCreationRoleNameInput:focus{
+    border: 3px solid #9E0000;
+    outline: none;
 }
 
 

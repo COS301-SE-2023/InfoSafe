@@ -1,3 +1,34 @@
+.searchUsers{
+    display: flex;
+    width: 100%;
+    position: relative;
+    right: 4.2vw;
+    justify-content: right;
+    height: 3%;
+    top: 3%;
+}
+.userSearchInput{
+    background-color: #CECECE;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #383838;
+    padding-right: 3px;
+    padding-left: 2%;
+}
+.userSearchInput:focus{
+    border: 2px solid #9E0000;
+}
+.userSearchIcon
+{
+    position: absolute;
+    top: 15%;
+    right: 9.5vw;
+    margin-right: 1%;
+    color: #9E0000;
+
+}
 .users {
     background-color: transparent;
     width: 90%;
@@ -24,12 +55,11 @@
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #f2f2f2;
+    background-color: #CECECE;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: 1px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
 }
 .userList li p {
     font-family: 'Roboto', sans-serif;
@@ -42,7 +72,7 @@
 }
 .userList li:hover {
     z-index: 4;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0 0 8px rgba(68, 64, 64, 0.78);
 }
 .CreateUserButton {
     background: #373737;
@@ -66,19 +96,52 @@
     position: relative;
     bottom: -10%;
 }
-.EditIcon{
+.usersEditButton{
+    background-color: #444040;
+    width: 2.5%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 2vw;
-    height: 100%;
-    z-index: 5;
+    right: 4vw;
+    height: 70%;
+    top: 15%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
-.DeleteIcon{
+.usersEditIcon{
+    color: #FFFFFF;
+    width: 110%;
+    position: relative;
+    left: 2%;
+
+}
+.usersDeleteButton{
+    background-color: #E90000;
+    width: 2.5%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    top: 50%;
-    transform: translateY(-55%);
-    right: 0.5vw;
-    height: 100%;
-    fill: #cf0000;
+    right: 1vw;
+    height: 70%;
+    top: 15%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.usersDeleteIcon{
+    color: #FFFFFF;
+    width: 130%;
+    outline: 2px black;
+}
+.usersBackground{
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
 }

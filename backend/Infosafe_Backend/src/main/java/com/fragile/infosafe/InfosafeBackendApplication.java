@@ -5,12 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class InfosafeBackendApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(InfosafeBackendApplication.class, args);
     }
 
+
 //    @Autowired
 //    private RoleRepository roleRepository;
+//
 //
 //    @Bean
 //    public CommandLineRunner commandLineRunner(AuthenticationService service) {
