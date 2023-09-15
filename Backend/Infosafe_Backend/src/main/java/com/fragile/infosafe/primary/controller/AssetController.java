@@ -3,6 +3,7 @@ package com.fragile.infosafe.primary.controller;
 import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.requests.AssetRequest;
 import com.fragile.infosafe.primary.service.AssetService;
+import com.fragile.infosafe.primary.service.DeleteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AssetController {
     private final AssetService service;
+    private final DeleteService deleteService;
     @PostMapping("/addAsset")
     public ResponseEntity addAsset(@RequestBody AssetRequest asset) {
         log.info("Adding an asset");
@@ -29,4 +31,10 @@ public class AssetController {
         asset.setAsset_id(asset_id);
         return service.updateAsset(asset);
     }
+
+    @DeleteMapping("/sdeleteAsset/{assetId}")
+    public void deleteAssetAndSaveToSecondary(@PathVariable int assetId) {
+        deleteService.deleteAssetAndSaveToSecondary(assetId);
+    }
+
 }

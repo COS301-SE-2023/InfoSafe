@@ -24,10 +24,6 @@ public class DeletedUser implements UserDetails {
     private String last_name;
     private String email;
     private String password;
-
-
-    // @ManyToOne
-    // @JoinColumn(name = "role_name")
     private String role;
 
     public int getUser_id() {

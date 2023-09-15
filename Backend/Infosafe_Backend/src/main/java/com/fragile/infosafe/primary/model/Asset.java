@@ -24,13 +24,13 @@ public class Asset {
     private String previous_assignee;
     private String device_type;
 
-    public int getAsset_id() {
-        return asset_id;
-    }
-
-    public void setAsset_id(int asset_id) {
-        this.asset_id = asset_id;
-    }
+//    public int getAsset_id() {
+//        return asset_id;
+//    }
+//
+//    public void setAsset_id(int asset_id) {
+//        this.asset_id = asset_id;
+//    }
 
     public String getAsset_name() {
         return asset_name;

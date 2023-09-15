@@ -78,7 +78,6 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                 setUsers(result);
             });
     }, []);
-    //Adds users to the array on selection change
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
     };

@@ -1,7 +1,14 @@
 package com.fragile.infosafe;
+import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.model.Role;
+import com.fragile.infosafe.primary.repository.RoleRepository;
+import com.fragile.infosafe.primary.requests.RegisterRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
@@ -12,7 +19,7 @@ public class InfosafeBackendApplication {
         SpringApplication.run(InfosafeBackendApplication.class, args);
     }
 
-
+//
 //    @Autowired
 //    private RoleRepository roleRepository;
 //

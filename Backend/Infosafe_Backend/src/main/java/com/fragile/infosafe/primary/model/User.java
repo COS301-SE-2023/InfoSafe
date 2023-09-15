@@ -17,14 +17,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="users")
-public class User implements UserDetails{
+@Table(name = "users")
+public class User implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
+    private String email;
     private String first_name;
     private String last_name;
-    private String email;
+
     private String password;
 
     @Column(nullable = true)
@@ -59,7 +60,9 @@ public class User implements UserDetails{
     }
 
     @Override
-    public String getUsername() {return email;}
+    public String getUsername() {
+        return email;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

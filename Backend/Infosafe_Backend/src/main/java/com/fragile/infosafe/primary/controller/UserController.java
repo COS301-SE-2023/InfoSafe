@@ -92,7 +92,7 @@ public class UserController {
     @PostMapping("/deleteUser")
     public ResponseEntity<Boolean> deleteUser(@RequestBody DeleteRequest deleteRequest){
         try{
-            deleteService.deleteAndSaveToSecondary(deleteRequest.getEmail());
+            deleteService.deleteUserAndSaveToSecondary(deleteRequest.getEmail());
             return ResponseEntity.ok(true);
         }catch (Exception e) {
             return ResponseEntity.ok(false);

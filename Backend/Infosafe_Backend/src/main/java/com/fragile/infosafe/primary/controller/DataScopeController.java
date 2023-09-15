@@ -3,6 +3,7 @@ package com.fragile.infosafe.primary.controller;
 import com.fragile.infosafe.primary.model.DataScope;
 import com.fragile.infosafe.primary.service.DataScopeService;
 import com.fragile.infosafe.primary.requests.DataScopeRequest;
+import com.fragile.infosafe.primary.service.DeleteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("api/datascope")
 @RequiredArgsConstructor
-//@CrossOrigin
 public class DataScopeController {
     private final DataScopeService service;
+    private final DeleteService deleteService;
     @PostMapping("/addDs")
     public ResponseEntity addDs(@RequestBody DataScopeRequest datascope) {
         log.info("Adding a datascope");
@@ -36,4 +37,11 @@ public class DataScopeController {
         boolean nameExists = service.checkDataScopeExists(name);
         return ResponseEntity.ok(nameExists);
     }
+
+    @DeleteMapping("/deleteDataScope/{dataScopeId}")
+    public void deleteDataScopeAndSaveToSecondary(@PathVariable int dataScopeId) {
+        deleteService.deleteDataScopeAndSaveToSecondary(dataScopeId);
+    }
+
+
 }
