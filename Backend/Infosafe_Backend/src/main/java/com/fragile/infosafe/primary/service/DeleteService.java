@@ -1,8 +1,8 @@
 package com.fragile.infosafe.primary.service;
 
 
-import com.fragile.infosafe.delete.DeleteRepository.DeletedUserRepository;
-import com.fragile.infosafe.delete.DeletedModels.DeletedUser;
+import com.fragile.infosafe.delete.deleterepository.DeletedUserRepository;
+import com.fragile.infosafe.delete.deletemodel.DeletedUser;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.fragile.infosafe.delete.DeletedModels;
+package com.fragile.infosafe.delete.deletemodel;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,8 +25,6 @@ public class DeletedUser implements UserDetails {
     private String email;
     private String password;
 
-    @Column(nullable = true)
-    private String otp;
 
     // @ManyToOne
     // @JoinColumn(name = "role_name")

@@ -18,7 +18,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 @RequiredArgsConstructor
 public class ApplicationConfig {
     private final UserRepository repository;
-    private final PlatformTransactionManager primaryTransactionManager;
 
     @Bean
     public UserDetailsService userDetailsService(){

@@ -20,9 +20,9 @@ import java.util.Objects;
 
 @Configuration
 @RequiredArgsConstructor
-@PropertySource({ "classpath:application.properties" })
+// @PropertySource({ "classpath:application.properties" })
 @EnableJpaRepositories(
-        basePackages = "com.fragile.infosafe.delete",
+        basePackages = {"com.fragile.infosafe.delete"},
         entityManagerFactoryRef = "secondaryEntityManager",
         transactionManagerRef = "secondaryTransactionManager"
 )
@@ -37,14 +37,14 @@ public class PersistenceSecondaryConfiguration {
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         final HashMap<String, Object> properties = new HashMap<String, Object>();
-        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         em.setJpaPropertyMap(properties);
 
         return em;
     }
     @Bean
-    @ConfigurationProperties(prefix = "spring.second-datasource")
+    @ConfigurationProperties(prefix="spring.datasource.second")
     public DataSource secondaryDataSource() {
         return DataSourceBuilder.create().build();
     }
@@ -57,3 +57,4 @@ public class PersistenceSecondaryConfiguration {
         return transactionManager;
     }
 }
+
