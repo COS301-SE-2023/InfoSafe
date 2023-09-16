@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ViewAccessRequest from "../View/ViewAccessRequest";
 import {FaRegEdit} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
-import {RiDeleteBin6Fill} from "react-icons/ri";
+import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import "../../styling/AccessRequests.css";
@@ -15,9 +15,10 @@ export const AccessRequests = () => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
         if(roles.includes("access_requests_edit")) {
             return (
-                <div className="EditIcon">
-                    <FaRegEdit
+                <div className="accessRequestsEditButton">
+                    <RiEditBoxFill
                         onClick={() => setEditAccessRequestOpen(!editAccessRequestOpen)}
+                        className="accessRequestsEditIcon"
                     />
                     {editAccessRequestOpen ? (
                         <EditAccessRequest
@@ -96,10 +97,12 @@ export const AccessRequests = () => {
     );
     return (
         <div className="display">
-            <div className="accessRequests">
-                <ul className="accessrequestsList">{accessRequests}</ul>
+            <div className="accessRequestsBackground">
+                <div className="accessRequests">
+                    <ul className="accessrequestsList">{accessRequests}</ul>
+                </div>
+                <ApproveAccessRequest></ApproveAccessRequest>
             </div>
-            <ApproveAccessRequest></ApproveAccessRequest>
         </div>
     );
 }

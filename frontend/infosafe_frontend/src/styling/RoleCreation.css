@@ -111,7 +111,7 @@ input:checked{
 .roleCreationButtonsDiv
 {
     display: flex;
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     padding: 0;
     position: relative;
@@ -133,7 +133,7 @@ input:checked{
     text-transform: uppercase;
     color: #ffffff;
     padding: 0.5% 2%;
-    width: fit-content;
+    width: 20%;
 }
 
 .clearButton {
@@ -151,7 +151,7 @@ input:checked{
     text-transform: uppercase;
     color: #ffffff;
     padding: 0.5% 2%;
-    width: 15%;
+    width: 20%;
     margin-left: 20%;
 
 }
