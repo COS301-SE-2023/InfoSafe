@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ViewAccessRequest from "../View/ViewAccessRequest";
-import {FaRegEdit} from "react-icons/fa";
+import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
@@ -98,6 +98,17 @@ export const AccessRequests = () => {
     return (
         <div className="display">
             <div className="accessRequestsBackground">
+                <div className="searchAccessRequests">
+                    <input
+                        // data-testid="userSearch"
+                        className="accessRequestsSearchInput"
+                        type="text"
+                        id="accessRequestsSearchInput"
+                        name="accessRequestsSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="accessRequestsSearchIcon" />
+                </div>
                 <div className="accessRequests">
                     <ul className="accessrequestsList">{accessRequests}</ul>
                 </div>
