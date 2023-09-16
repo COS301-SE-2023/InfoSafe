@@ -1,6 +1,6 @@
 .roleBackground{
     background-color: #FFFFFF;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
     height: 90%;
     width: 98%;
@@ -13,7 +13,7 @@
     margin: 0 auto;
     height: 60%;
     position: relative;
-    top: 5%;
+    top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
     scrollbar-width: none;
@@ -33,14 +33,14 @@
     background-color: #CECECE;
     width: 100%;
     min-height: 5vh;
-    height: auto;
+    height: fit-content;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
     display: flex;
     flex-direction: column;
     position: relative;
     color: #000000;
     text-transform: none;
-    border-radius: 5px;
+    border-radius: 4px;
     margin-top: 4px;
 }
 
@@ -50,9 +50,9 @@
     height: 3vh;
     width: fit-content;
     position: relative;
-    top: 1.1vh;
+    top: 1vh;
     display: flex;
-    border-radius:10px;
+    border-radius: 4px;
     left: 2%;
     box-shadow: 1px 3px 2px 0 #E90000;
 
@@ -64,7 +64,9 @@
     margin-right: 1vw;
     height: fit-content;
     position: relative;
-    padding: 2px;
+    padding: 0;
+    vertical-align: center;
+
 }
 
 .accessLabels input {
@@ -96,10 +98,10 @@ input:checked{
     background-color: #ffffff;
     height: fit-content;
     width: fit-content;
-    padding: 2px;
+    padding: 1px;
     position: relative;
-    top: 14%;
-    border-radius:10px;
+    top: 1vh;
+    border-radius:4px;
     margin-right: 1vh;
     box-shadow: 1px 3px 2px 0 #49D4D0;
 }
@@ -111,12 +113,15 @@ input:checked{
 .roleCreationButtonsDiv
 {
     display: flex;
-    width: 70%;
+    height: 20%;
+    width: 90%;
     margin: 0 auto;
     padding: 0;
     position: relative;
-    top: 15%;
-    justify-content: center;
+    top: 0;
+    left: 0;
+    justify-content: left;
+    vertical-align: center;
 }
 .roleCreationButton {
     background: #383838;
@@ -134,6 +139,10 @@ input:checked{
     color: #ffffff;
     padding: 0.5% 2%;
     width: 20%;
+    height: 30%;
+    left: 0;
+    position: relative;
+    top: 35%;
 }
 
 .clearButton {
@@ -152,35 +161,39 @@ input:checked{
     color: #ffffff;
     padding: 0.5% 2%;
     width: 20%;
-    margin-left: 20%;
+    margin-left: 1vh;
+    height: 30%;
+    position: relative;
+    top: 35%;
 
 }
 
 .roleInfo{
     display: flex;
-    height: 8vh;
+    height: 20%;
     align-items: center;
     position: relative;
     margin: 0 auto;
     width: 90%;
-    top: 5%;
+    top: 0;
+    padding: 0;
 }
 
 .roleCreateNameLabel
 {
     color: #000000;
     font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
+    text-transform: none;
     position: relative;
     height: 6vh;
     width: fit-content;
     font-size: 18px;
     top: 2.5vh;
-    margin-right: 3vw;
+    margin-right: 0.5vw;
 }
 .roleCreationRoleNameInput {
     font-family: "Roboto", sans-serif;
-    border-radius: 8px;
+    border-radius: 4px;
     background: #CECECE;
     border: 0;
 }
