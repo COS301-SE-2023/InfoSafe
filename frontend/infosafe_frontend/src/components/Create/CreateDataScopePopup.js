@@ -3,17 +3,6 @@ import '../../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import {IoArrowBackOutline} from 'react-icons/io5';
 
-// const data = [
-//     {
-//         role: 'Administrator',
-//         roledescription: 'Manage users, manage data scope, edit permissions.'
-//     },
-//     {
-//         role: 'General User',
-//         roledescription: 'Access data scope, complete tasks within data scopes.'
-//     }
-// ];
-
 export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [newRole, setNewRole] = useState({role: '', roledescription: ''});
     const [ds_name, setDsName] = useState('')
