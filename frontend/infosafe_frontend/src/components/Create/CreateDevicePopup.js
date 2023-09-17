@@ -58,6 +58,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose }) => {
                         <p className="deviceNameLabel">Device Name</p>
                         <input className="deviceNameInput"
                                value={asset_name} onChange={(e)=>setAsset_name(e.target.value)}
+                               inputprops={{ "data-testid": "asset_name" }}
                         />
                         <p className="deviceTypeLabel">Device Type</p>
                         <input
