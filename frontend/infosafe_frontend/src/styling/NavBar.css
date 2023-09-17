@@ -36,7 +36,7 @@
     font-style: normal;
     font-size: 16px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     text-align: center;
     letter-spacing: 1px;
@@ -71,8 +71,12 @@
 }
 .displayTabContent{
     position: relative;
+    bottom: -3.5vh;
     z-index: 0;
-    top: 4vh;
+    vertical-align: bottom;
+    horiz-align: center;
+    height: 100%;
+    width: 100%;
     margin: 0;
 }
 /*.display {*/

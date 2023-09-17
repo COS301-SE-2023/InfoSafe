@@ -1,10 +1,54 @@
+.complianceMatrixBackground{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.searchTasks{
+    display: flex;
+    width: 100%;
+    position: relative;
+    right: 4.2vw;
+    justify-content: right;
+    height: 20%;
+    top: 0;
+}
+.taskSearchInput{
+    background-color: #CECECE;
+    height: 3vh;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    color: #383838;
+    padding-right: 0;
+    padding-left: 10px;
+    position: relative;
+    top: 40%;
+}
+.taskSearchInput:focus{
+    border: 2px solid #9E0000;
+}
+.taskSearchIcon
+{
+    position: absolute;
+    height: 100%;
+    right: 0;
+    margin-right: 1%;
+    padding-left: 2px;
+    color: #9E0000;
+
+}
 .tasks {
     background-color: transparent;
     width: 90%;
     margin: 0 auto;
-    height: 80%;
+    height: 60%;
     position: relative;
-    top: 5%;
+    top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
     scrollbar-width: none;
@@ -16,16 +60,15 @@
 }
 .taskList li {
     position: relative;
-    height: 4vh;
+    height: 5vh;
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #f2f2f2;
+    background-color: #CECECE;
     padding: 5px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: 1px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
 }
 .taskList li p {
     font-family: 'Roboto', sans-serif;
@@ -45,90 +88,73 @@
 }
 .buttons {
     position: relative;
-    bottom: -10%;
-    justify-content: center;
+    height: 20%;
+    top: 0;
+    width: 90%;
+    left: 5%;
+    padding: 0;
+    margin: 0;
     display: flex;
-}
-.CreateTaskDiv {
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-}
-.UpdateTaskDiv {
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
-}
-.ApproveTaskDiv {
-    position: relative;
-    margin: 0 auto;
-    left: 0%;
 }
 .CreateTaskButton {
     background: #373737;
     border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
     text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
     color: #ffffff;
-    width: 120%;
-    padding: 3% 3%;
-    text-wrap: none;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    top: 40%;
+    white-space: nowrap;
 }
 .UpdateTaskButton {
     background: #373737;
     border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
     color: #ffffff;
-    padding: 3% 3%;
-    width: 120%;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    top: 40%;
+    left: 12%;
+    white-space: nowrap;
 }
 .ApproveTaskButton {
     background: #373737;
     border: 1px solid #3a3a3a;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
     color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
     position: relative;
-    margin: 0 auto;
-    left: 0%;
-    padding: 3% 3%;
-    width: 120%;
-}
-.EditIcon{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 2vw;
-    height: 100%;
-    z-index: 5;
-}
-.DeleteIcon{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-55%);
-    right: 0.5vw;
-    height: 100%;
-    fill: #cf0000;
+    height: 30%;
+    top: 40%;
+    left: 20.5%;
+    white-space: nowrap;
 }
