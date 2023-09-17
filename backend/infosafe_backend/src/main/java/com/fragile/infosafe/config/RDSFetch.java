@@ -100,4 +100,48 @@ public class RDSFetch {
         String secret = getSecretValueResponse.secretString();
         return gson.fromJson(secret, RDSLogin.class);
     }
+
+    private DeleteDBLogin getDeleteDBLogin() {
+
+        String secretName = "delete_login";
+        String region = "us-east-1";
+
+        // Create a Secrets Manager client
+        SecretsManagerClient client = SecretsManagerClient.builder()
+                .region(Region.of(region))
+                .credentialsProvider(new AwsCredentialsProvider() {
+                    @Override
+                    public AwsCredentials resolveCredentials() {
+                        AwsCredentials awsCredentials = new AwsCredentials() {
+                            @Override
+                            public String accessKeyId() {
+                                return System.getenv("AWS_ACCESS_KEY_ID");
+                            }
+
+                            @Override
+                            public String secretAccessKey() {
+                                return System.getenv("AWS_SECRET_ACCESS_KEY");
+                            }
+                        };
+
+                        return awsCredentials;
+                    }
+                })
+                .build();
+
+        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
+                .secretId(secretName)
+                .build();
+
+        GetSecretValueResponse getSecretValueResponse;
+
+        try {
+            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
+        } catch (Exception e) {
+            throw e;
+        }
+
+        String secret = getSecretValueResponse.secretString();
+        return gson.fromJson(secret, DeleteDBLogin.class);
+    }
 }
