@@ -58,7 +58,7 @@ export const Users = () => {
             return (
                 <li key={user.user_id}>
                     <p onClick={() => setViewUserOpen(!viewUserOpen)}>
-                        User {user.user_id}: {user.first_name} {user.last_name}
+                        {user.first_name} {user.last_name}
                         {viewUserOpen && (
                             <ViewUser
                                 popupClose={() => setViewUserOpen(false)}

@@ -1,14 +1,12 @@
 package com.fragile.infosafe.controllers;
 
-import com.fragile.infosafe.auth.AuthenticationRequest;
-import com.fragile.infosafe.auth.AuthenticationResponse;
-import com.fragile.infosafe.auth.AuthenticationService;
-import com.fragile.infosafe.config.JwtService;
-import com.fragile.infosafe.controller.AuthenticationController;
-import com.fragile.infosafe.model.Role;
-import com.fragile.infosafe.model.User;
-import com.fragile.infosafe.repository.UserRepository;
-import com.fragile.infosafe.requests.RegisterRequest;
+import com.fragile.infosafe.primary.auth.AuthenticationRequest;
+import com.fragile.infosafe.primary.auth.AuthenticationResponse;
+import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.config.JwtService;
+import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.repository.UserRepository;
+import com.fragile.infosafe.primary.requests.RegisterRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,14 +15,10 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import java.security.AuthProvider;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class AuthenticationServiceTest {

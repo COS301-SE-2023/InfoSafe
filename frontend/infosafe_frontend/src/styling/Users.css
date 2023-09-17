@@ -4,18 +4,21 @@
     position: relative;
     right: 4.2vw;
     justify-content: right;
-    height: 3%;
-    top: 3%;
+    height: 20%;
+    top: 0;
 }
 .userSearchInput{
     background-color: #CECECE;
+    height: 3vh;
     border: none;
     outline: none;
-    border-radius: 12px;
+    border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     color: #383838;
-    padding-right: 3px;
-    padding-left: 1%;
+    padding-right: 0;
+    padding-left: 10px;
+    position: relative;
+    top: 40%;
 }
 .userSearchInput:focus{
     border: 2px solid #9E0000;
@@ -23,9 +26,10 @@
 .userSearchIcon
 {
     position: absolute;
-    top: 15%;
+    height: 100%;
     right: 0;
     margin-right: 1%;
+    padding-left: 2px;
     color: #9E0000;
 
 }
@@ -33,9 +37,9 @@
     background-color: transparent;
     width: 90%;
     margin: 0 auto;
-    height: 80%;
+    height: 60%;
     position: relative;
-    top: 5%;
+    top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
     scrollbar-width: none;
@@ -51,13 +55,13 @@
 }
 .userList li {
     position: relative;
-    height: 4vh;
+    height: 5vh;
     color: #000000;
     width: 100%;
     text-transform: none;
     background-color: #CECECE;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
     margin-top: 4px;
 }
@@ -83,18 +87,25 @@
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
     letter-spacing: 1px;
-    text-transform: uppercase;
     color: #ffffff;
-    margin: 0 auto;
     padding: 0.5% 2%;
-    width: 20%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    top: 40%;
 }
 .CreateUserButtonDiv {
     position: relative;
-    bottom: -10%;
+    height: 20%;
+    top: 0;
+    width: 100%;
+    left: 5%;
+    padding: 0;
+    margin: 0;
+
 }
 .usersEditButton{
 
@@ -105,7 +116,7 @@
     right: 4vw;
     height: 70%;
     top: 15%;
-    border-radius: 6px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,7 +126,7 @@
     color: #FFFFFF;
     width: 110%;
     position: relative;
-    left: 2%;
+
 
 }
 .usersDeleteButton{
@@ -126,7 +137,7 @@
     right: 1vw;
     height: 70%;
     top: 15%;
-    border-radius: 6px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,7 +150,7 @@
 }
 .usersBackground{
     background-color: #FFFFFF;
-    border-radius: 20px;
+    border-radius: 4px;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
     height: 90%;
     width: 98%;

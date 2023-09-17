@@ -4,24 +4,30 @@ import '../../styling/CreateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import Select from 'react-select';
+import useRequestMaker from "./useRequestMaker";
 
 export const CreateTask = ({ popupClose, popupOpen }) => {
     const [task_description, setTaskDescription] = useState('');
     const [task_status, setTaskStatus] = useState('');
     const [due_date, setDueDate] = useState('');
     const [date_created, setDateCreated] = useState('');
-    const [user_id, setUserId] = useState([]);
-    const [task_id, setTaskId] = useState('');
+    const [dataScope, setDataScope] = useState([[]]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [users, setUsers] = useState([]);
+    const [task_name, setTask_name] = useState('');
 
-    const handleDescriptionChange = (e) => {
-        setTaskDescription(e.target.value);
-    };
+    const { datascopeData, setDsId } = useRequestMaker();
     const handleClick = (e) => {
         e.preventDefault();
-        let use_id;
-        const task = { task_description, task_status, due_date, date_created };
+        const task = {
+            task_name,
+            task_description,
+            task_status,
+            dataScope,
+            due_date,
+            date_created,
+            users: selectedUsers.map((user) => user.value),
+        };
         fetch("http://localhost:8080/api/task/addTask", {
             method: "POST",
             headers: {
@@ -32,34 +38,9 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                setTaskId(data.task_id); // Save the task_id from the API response
                 console.log("New task added");
                 console.log(data.task_id);
-
-                if (selectedUsers.length > 0) {
-                    const assignedTasks = selectedUsers.map((user) => ({
-                        task_id: data.task_id, // Use the task_id from the API response
-                        user_id: user.value,
-                    }));
-
-                    Promise.all(
-                        assignedTasks.map((assignedtask) =>
-                            fetch("http://localhost:8080/api/assignedTask/addTask", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
-                                },
-                                body: JSON.stringify(assignedtask),
-                            })
-                        )
-                    ).then(() => {
-                        console.log("New Assignedtasks added");
-                        popupClose();
-                    });
-                } else {
-                    popupClose();
-                }
+                popupClose();
             })
             .catch((error) => {
                 console.error("Error adding task:", error);
@@ -78,7 +59,6 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                 setUsers(result);
             });
     }, []);
-    //Adds users to the array on selection change
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
     };
@@ -86,6 +66,13 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
         setDateCreated(date);
     };
 
+    const handleDescriptionChange = (e) => {
+        setTaskDescription(e.target.value);
+    };
+
+    const handleTaskNameChange = (e) => {
+        setTask_name(e.target.value);
+    }
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -96,6 +83,12 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="pageTitle">Create Task</p>
+                        <p className="inputTitle">Type name</p>
+                        <textarea
+                            className="inputTextArea"
+                            onChange={handleTaskNameChange}
+                            value={task_name}
+                        />
                         <p className="inputTitle">Type Description</p>
                         <textarea
                             className="inputTextArea"
@@ -104,7 +97,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                         />
                         <p className="inputTitle">Assignees</p>
                         {users && users.length > 0 ? (
-                        <Select  //Dropdown
+                        <Select
                             options={users.map((data) => ({value: data.user_id, label: data.email}))}
                             value = {selectedUsers}
                             className="datascopeDropdown"
@@ -115,6 +108,19 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
                             isMulti
                         /> ) : (
                             <p>Loading...</p>
+                        )}
+                        <p className="createAccessRequestDataScopeLabel">Data Scope</p>
+                        {datascopeData && datascopeData.length > 0 ? (
+                            <Select
+                                options={datascopeData.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
+                                value={datascopeData.asset_id}
+                                className="accessRequestDatascopeDropdown"
+                                name="datascopeDropdown"
+                                placeholder={"Add DataScope"}
+                                onChange={(selectedOption) => setDsId(selectedOption.value)}
+                            />
+                        ) : (
+                            <p className="loadTitle">Loading...</p>
                         )}
                         <p className="inputTitle">Completion Date</p>
                         <input

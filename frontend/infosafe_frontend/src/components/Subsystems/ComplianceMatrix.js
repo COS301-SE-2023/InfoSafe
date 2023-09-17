@@ -5,6 +5,7 @@ import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 import "../../styling/ComplianceMatrix.css";
+import {FaSearch} from "react-icons/fa";
 
 export const ComplianceMatrix = () => {
     const {showTask, roles} = AccessAndDisplay()
@@ -110,14 +111,28 @@ export const ComplianceMatrix = () => {
 
     return(
         <div className="display">
-            <div className="tasks">
-                <ul className="taskList">{complianceItems}</ul>
+            <div className="complianceMatrixBackground">
+                <div className="searchTasks">
+                    <input
+                        // data-testid="userSearch"
+                        className="taskSearchInput"
+                        type="text"
+                        id="taskSearchInput"
+                        name="taskSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="userSearchIcon" />
+                </div>
+                <div className="tasks">
+                    <ul className="taskList">{complianceItems}</ul>
+                </div>
+                <div className="buttons">
+                    <CreateTaskDiv></CreateTaskDiv>
+                    <EditTask></EditTask>
+                    <ApproveTask></ApproveTask>
+                </div>
             </div>
-            <div className="buttons">
-                <CreateTaskDiv></CreateTaskDiv>
-                <EditTask></EditTask>
-                <ApproveTask></ApproveTask>
-            </div>
+
         </div>
     );
 }

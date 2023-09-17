@@ -128,8 +128,6 @@ const AccessAndDisplay = () => {
             .then((res) => res.json())
             .then((result) => {
                 const id = result; // Store the id in a local variable
-                console.log(id); // Check if the id is fetched correctly
-
                 // Use the id in the second fetch request
                 fetch('http://localhost:8080/api/supportrequest/getSrById/' + id, {
                     method: "GET",
