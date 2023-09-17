@@ -237,7 +237,7 @@ export const Requests = () => {
                 </div>
             </div>
             <div className="requestDiv">
-                <RequestType requestType={selectedRequest}></RequestType>
+                <RequestType type={selectedRequest}></RequestType>
             </div>
         </div>
     );
