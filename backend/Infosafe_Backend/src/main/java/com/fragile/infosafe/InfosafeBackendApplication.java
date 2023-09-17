@@ -19,10 +19,9 @@ public class InfosafeBackendApplication {
         SpringApplication.run(InfosafeBackendApplication.class, args);
     }
 
-//
+
 //    @Autowired
 //    private RoleRepository roleRepository;
-//
 //
 //    @Bean
 //    public CommandLineRunner commandLineRunner(AuthenticationService service) {

@@ -21,6 +21,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int task_id;
+    private String task_name;
     private String task_description;
     private String task_status;
     private Date due_date;
