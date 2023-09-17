@@ -16,7 +16,7 @@
     transition: all 200ms ease;
     height: 4vh;
     padding-top: 1%;
-    border-radius: 20px;
+    border-radius: 4px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -54,7 +54,7 @@
     position: absolute;
     top: 100%;
     width: 50%;
-    border-radius: 20px;
+    border-radius: 4px;
     z-index: 1000;
     -webkit-overflow-scrolling: touch;
 }
