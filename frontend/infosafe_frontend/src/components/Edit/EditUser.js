@@ -3,11 +3,9 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/EditUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 
 const EditUser = ({ user, popupClose, popupOpen }) => {
-    const [selectedRole, setSelectedRole] = useState('')
+    const [selectedRole, setSelectedRole] = useState(user.role.role_name)
     const [roleNames, setRoleNames] = useState('')
 
     const [values, setValues] = useState({
@@ -27,7 +25,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                 last_name: user.last_name,
                 email: user.email,
                 password: user.password,
-                role: user.role.role_name
+                role: {role_name: selectedRole}
             });
         }
     }, [user]);
@@ -58,7 +56,6 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                 setRoleNames(result);
             });
     }, [])
-
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
             <div className="editUserOverlay" data-testid="editUserPopup">
@@ -104,10 +101,10 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                             {roleNames && roleNames.length > 0 ? (
                                 <Dropdown
                                     options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
-                                    values={[{ label: selectedRole, value: selectedRole }]}
+                                    value={selectedRole}
                                     className="role_dropdown"
                                     name="role_dropdown"
-                                    onChange={values => setSelectedRole(values[0].value)}
+                                    onChange={values => setSelectedRole(values.value)}
                                 />
                             ) : (
                                 <p className="loadTitle">Loading...</p>

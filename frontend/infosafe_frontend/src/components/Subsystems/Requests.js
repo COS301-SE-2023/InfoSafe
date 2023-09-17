@@ -56,7 +56,6 @@ export const Requests = () => {
         const handleDescriptionChange = (e) => {
             setSupportDescription(e.target.value);
         };
-        console.log("Support Request")
         return (<div className="createSupportRequestDiv">
                 <form>
                     <p className="supportRequestTypeLabel">Support Type</p>
@@ -94,7 +93,6 @@ export const Requests = () => {
         const {
             handleClick, reason, setReason, setDsId, setStatus, datascopeData
         } = useRequestMaker();
-        console.log("Access Request")
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
@@ -155,7 +153,6 @@ export const Requests = () => {
         const {
             handleClick, reason, setReason, setDesiredDate, setRequestStatus, AvailableDevices, setAvailableDevices
         } = useRequestMaker();
-        console.log("Asset Request")
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
@@ -207,7 +204,6 @@ export const Requests = () => {
     }
 
     const RequestType = ({type}) => {
-        console.log("Type received:", type);
         if (type === "SUPPORT") {
             return (<CreateSupportRequest></CreateSupportRequest>);
         } else if (type === "ASSET") {

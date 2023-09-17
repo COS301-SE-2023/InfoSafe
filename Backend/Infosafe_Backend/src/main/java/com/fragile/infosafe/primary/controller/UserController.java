@@ -4,6 +4,7 @@ import com.fragile.infosafe.primary.auth.AuthenticationResponse;
 import com.fragile.infosafe.primary.auth.AuthenticationService;
 import com.fragile.infosafe.primary.model.Role;
 import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.requests.ChangePasswordRequest;
 import com.fragile.infosafe.primary.requests.DeleteRequest;
 import com.fragile.infosafe.primary.requests.RegisterRequest;
 import com.fragile.infosafe.primary.service.DeleteService;
@@ -93,6 +94,16 @@ public class UserController {
     public ResponseEntity<Boolean> deleteUser(@RequestBody DeleteRequest deleteRequest){
         try{
             deleteService.deleteUserAndSaveToSecondary(deleteRequest.getEmail());
+            return ResponseEntity.ok(true);
+        }catch (Exception e) {
+            return ResponseEntity.ok(false);
+        }
+    }
+
+    @PostMapping("/changePassword")
+    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
+        try{
+            userService.changePassword(changePasswordRequest.getUser(), changePasswordRequest.getNewPassword());
             return ResponseEntity.ok(true);
         }catch (Exception e) {
             return ResponseEntity.ok(false);

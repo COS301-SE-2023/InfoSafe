@@ -27,19 +27,6 @@ public class ForgotPasswordController {
         }
     }
 
-//    @PostMapping("/verify-otp")
-//    public ResponseEntity<String> verifyOTP(@RequestBody PasswordResetRequest request) {
-//        try {
-//            if (userService.verifyOTP(request.getEmail(), request.getOtp())) {
-//                return ResponseEntity.ok("OTP is valid.");
-//            } else {
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid OTP.");
-//            }
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred.");
-//        }
-//    }
-
     @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody PasswordResetRequest request) {
         try {
@@ -53,4 +40,17 @@ public class ForgotPasswordController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred.");
         }
     }
+
+    //    @PostMapping("/verify-otp")
+    //    public ResponseEntity<String> verifyOTP(@RequestBody PasswordResetRequest request) {
+//        try {
+//            if (userService.verifyOTP(request.getEmail(), request.getOtp())) {
+//                return ResponseEntity.ok("OTP is valid.");
+//            } else {
+//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid OTP.");
+//            }
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred.");
+//        }
+//    }
 }

@@ -2,8 +2,7 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../../styling/ViewUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
+
 const ViewUser = ({ user, popupClose, popupOpen }) => {
     return (
         <Popup
