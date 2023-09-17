@@ -15,7 +15,7 @@ public class InfosafeBackendApplication {
     public static void main(String[] args) {
 
         SpringApplication infosafe = new  SpringApplication(InfosafeBackendApplication.class);
-        infosafe.setDefaultProperties(Collections.singletonMap("server.port", "80"));
+        infosafe.setDefaultProperties(Collections.singletonMap("server.port", "8080"));
         infosafe.run(args);
     }
 }
