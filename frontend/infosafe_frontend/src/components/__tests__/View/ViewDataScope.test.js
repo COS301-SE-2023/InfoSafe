@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import ViewDataScope from '../../View/ViewDataScope';
 
-describe('ViewAsset Component', () => {
+describe('ViewDataScope Component', () => {
     const datascope = {
         ds_name: 'Datascope 1',
         ds_description: 'Data scope for time management',

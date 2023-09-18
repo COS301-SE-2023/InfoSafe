@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import ViewAccessRequest from '../../View/ViewAccessRequest';
 import Popup from "reactjs-popup"; // Import your component here
 
-describe('ViewUser Component', () => {
+describe('ViewAccessRequest Component', () => {
     const request = {
         data_scope: 'John',
         role: 'Doe',
