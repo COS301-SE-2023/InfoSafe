@@ -16,4 +16,4 @@ jobs:
       - name: Install Modules
         run: npm install
       - name: Run eslint
-        run: npx eslint . --ext .js
+        run: npx eslint . --ext .js --config .eslintrc.json
