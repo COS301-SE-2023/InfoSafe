@@ -16,7 +16,9 @@ describe('ViewUser Component', () => {
         first_name: 'John',
         last_name: 'Doe',
         email: 'john.doe@example.com',
-        role: 'User',
+        role: {
+            role_name: 'User',
+        },
     };
 
     it('renders correctly with user data', () => {
