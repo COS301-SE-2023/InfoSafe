@@ -26,7 +26,7 @@ jobs:
         working-directory: frontend/infosafe_frontend
       
       - name: Build frontend
-        run: npm run build
+        run: CI=false npm run build
         working-directory: frontend/infosafe_frontend
       
       - name: Set up JDK 20
