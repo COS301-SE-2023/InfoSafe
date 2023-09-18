@@ -19,7 +19,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://localhost:8080/api/accessrequest/update/' + access.request_id, {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/accessrequest/update/' + access.request_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

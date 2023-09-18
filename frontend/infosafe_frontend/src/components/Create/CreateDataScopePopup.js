@@ -3,17 +3,6 @@ import '../../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import {IoArrowBackOutline} from 'react-icons/io5';
 
-// const data = [
-//     {
-//         role: 'Administrator',
-//         roledescription: 'Manage users, manage data scope, edit permissions.'
-//     },
-//     {
-//         role: 'General User',
-//         roledescription: 'Access data scope, complete tasks within data scopes.'
-//     }
-// ];
-
 export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [newRole, setNewRole] = useState({role: '', roledescription: ''});
     const [ds_name, setDsName] = useState('')
@@ -57,7 +46,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
         const dataScopeRoles = {ds_id, role_description, role_type};
 
-        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`,{
+        fetch(`http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/datascope/checkName?dsname=${ds_name}`,{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -70,7 +59,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                     console.log("DataScope name already exists");
                 } else {
                     console.log(datascope);
-                    fetch("http://localhost:8080/api/datascope/addDs", {
+                    fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/datascope/addDs", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -85,7 +74,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                             console.error("Error adding new DataScope:", error);
                         });
 
-                    fetch("http://localhost:8080/api/dataScopeRole/addDataScopeRole", {
+                    fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/dataScopeRole/addDataScopeRole", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -109,7 +98,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/getDataScopeRole', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/dataScopeRole/getDataScopeRole', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -122,7 +111,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getId', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getId', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -36,7 +36,11 @@ public class AuthenticationService {
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
-        // saveUserToken(savedUser, jwtToken);
+//<<<<<<< HEAD
+//        saveUserToken(savedUser, jwtToken);
+//=======
+//        // saveUserToken(savedUser, jwtToken);
+//>>>>>>> 15feedf781cf4fe3af30af02e76148bf89bd096f
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
@@ -58,8 +62,13 @@ public class AuthenticationService {
                     .orElseThrow();
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
-            // revokeAllUserTokens(user);
-            // saveUserToken(user, jwtToken);
+//<<<<<<< HEAD
+//            revokeAllUserTokens(user);
+//            saveUserToken(user, jwtToken);
+//=======
+//            // revokeAllUserTokens(user);
+//            // saveUserToken(user, jwtToken);
+//>>>>>>> 15feedf781cf4fe3af30af02e76148bf89bd096f
 
             return AuthenticationResponse.builder()
                     .accessToken(jwtToken)

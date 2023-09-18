@@ -19,6 +19,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     const { datascopeData, setDsId } = useRequestMaker();
     const handleClick = (e) => {
         e.preventDefault();
+
         const task = {
             task_name,
             task_description,
@@ -48,7 +49,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
+        fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

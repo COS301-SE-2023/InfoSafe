@@ -20,4 +20,5 @@ public class DataScopeRole {
     private int ds_id;
     private String role_type;
     private String role_description;
+
 }

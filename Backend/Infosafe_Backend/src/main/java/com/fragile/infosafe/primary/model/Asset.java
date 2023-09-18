@@ -24,4 +24,5 @@ public class Asset {
     private String current_assignee;
     private String previous_assignee;
     private String device_type;
+
 }
