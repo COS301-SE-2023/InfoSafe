@@ -1,26 +1,22 @@
-package com.fragile.infosafe.config;
+package com.fragile.infosafe.primary.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Arrays;
 
-import static com.fragile.infosafe.model.Permission.*;
-import static com.fragile.infosafe.model.Role.ADMIN;
-import static org.springframework.http.HttpMethod.*;
+// import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
@@ -33,11 +29,11 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
-                .csrf(csrf -> csrf.disable())
+                .csrf(AbstractHttpConfigurer::disable) // csrf -> csrf.disable()
                 .cors(cfg -> cfg.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
-//                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(ADMIN.name())
+                .requestMatchers("/api/auth/**", "/api/forgot/**").permitAll()
+//                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(String.valueOf(Permission.user_create))
 //                        .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated())

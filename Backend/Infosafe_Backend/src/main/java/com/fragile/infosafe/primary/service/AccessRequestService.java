@@ -1,8 +1,8 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
-import com.fragile.infosafe.model.AccessRequest;
-import com.fragile.infosafe.repository.AccessRequestRepository;
-import com.fragile.infosafe.requests.AccessRequestRequest;
+import com.fragile.infosafe.primary.model.AccessRequest;
+import com.fragile.infosafe.primary.requests.AccessRequestRequest;
+import com.fragile.infosafe.primary.repository.AccessRequestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.fragile.infosafe.auth;
+package com.fragile.infosafe.primary.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

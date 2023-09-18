@@ -1,4 +1,4 @@
-package com.fragile.infosafe.model;
+package com.fragile.infosafe.primary.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,15 +18,21 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="users")
-public class User implements UserDetails{
+public class User implements UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
     private String first_name;
     private String last_name;
     private String email;
     private String password;
-    @Enumerated(EnumType.STRING)
+
+    @Column(nullable = true)
+    private String otp;
+
+    @ManyToOne
+    @JoinColumn(name = "role_name")
     private Role role;
 
     public int getUser_id() {
@@ -54,12 +60,15 @@ public class User implements UserDetails{
     }
 
     @Override
-    public String getUsername() {return email;}
+    public String getUsername() {
+        return email;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(role.getRole_name()));
     }
+
     @Override
     public String getPassword() {
         return password;
@@ -97,4 +106,5 @@ public class User implements UserDetails{
         this.role = role;
     }
 }
+
 

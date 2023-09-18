@@ -1,8 +1,8 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
-import com.fragile.infosafe.model.Risk;
-import com.fragile.infosafe.repository.RiskRepository;
-import com.fragile.infosafe.requests.RiskRequest;
+import com.fragile.infosafe.primary.model.Risk;
+import com.fragile.infosafe.primary.repository.RiskRepository;
+import com.fragile.infosafe.primary.requests.RiskRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

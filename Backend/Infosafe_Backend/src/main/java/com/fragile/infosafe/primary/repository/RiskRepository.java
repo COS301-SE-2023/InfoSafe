@@ -1,6 +1,6 @@
-package com.fragile.infosafe.repository;
+package com.fragile.infosafe.primary.repository;
 
-import com.fragile.infosafe.model.Risk;
+import com.fragile.infosafe.primary.model.Risk;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

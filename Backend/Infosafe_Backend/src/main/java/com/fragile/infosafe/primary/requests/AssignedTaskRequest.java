@@ -1,4 +1,4 @@
-package com.fragile.infosafe.requests;
+package com.fragile.infosafe.primary.requests;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;

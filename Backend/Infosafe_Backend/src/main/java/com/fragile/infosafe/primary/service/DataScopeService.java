@@ -1,8 +1,8 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
-import com.fragile.infosafe.model.DataScope;
-import com.fragile.infosafe.repository.DataScopeRepository;
-import com.fragile.infosafe.requests.DataScopeRequest;
+import com.fragile.infosafe.primary.model.DataScope;
+import com.fragile.infosafe.primary.repository.DataScopeRepository;
+import com.fragile.infosafe.primary.requests.DataScopeRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

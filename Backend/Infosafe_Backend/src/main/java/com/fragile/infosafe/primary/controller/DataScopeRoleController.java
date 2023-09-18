@@ -1,8 +1,8 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.model.DataScopeRole;
-import com.fragile.infosafe.requests.DataScopeRoleRequest;
-import com.fragile.infosafe.service.DataScopeRoleService;
+import com.fragile.infosafe.primary.model.DataScopeRole;
+import com.fragile.infosafe.primary.requests.DataScopeRoleRequest;
+import com.fragile.infosafe.primary.service.DataScopeRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

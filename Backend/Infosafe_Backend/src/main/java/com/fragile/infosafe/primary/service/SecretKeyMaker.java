@@ -1,4 +1,4 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
 import lombok.RequiredArgsConstructor;
 

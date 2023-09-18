@@ -1,28 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/CreateUserPopup.css';
+import '../../styling/Dropdown.css'
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const ROLE_OPTIONS = [
-    'EMPLOYEE',
-    'ISO',
-    'DISO',
-    'DATA_CUSTODIAN',
-    //'SYSTEM ADMINISTRATOR',
-    'ASSET_MANAGER'
-];
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[first_name,setName]=useState('')
     const[last_name,setSurname]=useState('')
     const[email,setEmail]=useState('')
-    let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
-
+    const [roleNames, setRoleNames] = useState('')
+    const [selectedRole, setSelectedRole] = useState('');
     const handleClick = (e) => {
         e.preventDefault();
-        const selectedRole = role === '' ? 'EMPLOYEE' : role;
-        const user = { first_name, last_name, email, password, role: selectedRole };
+        const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
+
 
         fetch(`http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/checkEmail?email=${email}`, {
             method: "GET",
@@ -84,6 +77,18 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+            fetch("http://localhost:8080/api/role/getRoleNames", {
+                method:"GET",
+                headers:{"Content-Type":"application/json",
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                },
+            }).then((res) => res.json())
+            .then((result) => {
+                setRoleNames(result);
+            });
+    }, [])
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
@@ -102,14 +107,18 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         <p className="passwordLabel">Password</p>
                         <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
                         <p className="roleLabel">System role</p>
-                        <Dropdown
-                            options={ROLE_OPTIONS}
-                            value={ROLE_OPTIONS[0]}
-                            className="role_dropdown"
-                            data-testid="role_dropdown"
-                            name="role"
-                            onChange={(selectedOption) => setRole(selectedOption.value)}
-                        />
+                        {roleNames && roleNames.length > 0 ? (
+                            <Dropdown
+                                options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
+                                values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
+                                className="role_dropdown"
+                                name="role_dropdown"
+                                onChange={values => setSelectedRole(values.value)}
+                            />
+                        ) : (
+                            <p className="loadTitle">Loading...</p>
+                        )}
+
                         <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
                             Submit
                         </button>

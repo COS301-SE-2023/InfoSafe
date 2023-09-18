@@ -1,10 +1,8 @@
-package com.fragile.infosafe.repository;
+package com.fragile.infosafe.primary.repository;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.fragile.infosafe.model.SupportRequest;
-import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.primary.model.SupportRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

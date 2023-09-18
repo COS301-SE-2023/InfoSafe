@@ -1,6 +1,6 @@
-package com.fragile.infosafe.repository;
+package com.fragile.infosafe.primary.repository;
 
-import com.fragile.infosafe.model.DataScope;
+import com.fragile.infosafe.primary.model.DataScope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

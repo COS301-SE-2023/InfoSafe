@@ -1,16 +1,17 @@
 import {useEffect, useState} from "react";
 
 const AccessAndDisplay = () => {
-    const [createUserOpen, setCreateUserOpen] = useState(false); // ISO DISO
-    const [showUser, setShowUser] = useState([]); // ISO DISO
-    const [showDatascope, setShowDatascope] = useState([]); // ISO DS DISO Employee AM
-    const [showAsset, setShowAsset] = useState([]); // ISO DISO DS Employee AM
+    const [createUserOpen, setCreateUserOpen] = useState(false);
+    const [showUser, setShowUser] = useState([]);
+    const [showDatascope, setShowDatascope] = useState([]);
+    const [showAsset, setShowAsset] = useState([]);
     const [showRisk, setShowRisk] = useState([]);
     const [showTask, setShowTask] = useState([]);
     const [showAccess, setShowAccess] = useState([]);
     const [showAllSupport, setShowAllSupport] = useState([]);
     const [showMySupport, setShowMySupport] = useState([]);
     const [showAssetRequests, setShowAssetRequests] = useState([]);
+    const [roles, setRoles] = useState([]);
 
     useEffect(() => {
         fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/datascope/getDs', {
@@ -127,8 +128,6 @@ const AccessAndDisplay = () => {
             .then((res) => res.json())
             .then((result) => {
                 const id = result; // Store the id in a local variable
-                console.log(id); // Check if the id is fetched correctly
-
                 // Use the id in the second fetch request
                 fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/supportrequest/getSrById/' + id, {
                     method: "GET",
@@ -156,6 +155,21 @@ const AccessAndDisplay = () => {
             });
     }, []);
 
+    useEffect(() => {
+        fetch('http://localhost:8080/api/role/getPermissions', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setRoles(result);
+            });
+    }, []);
+
+
+
 
     return {
         createUserOpen,
@@ -176,7 +190,8 @@ const AccessAndDisplay = () => {
         setShowAllSupport,
         showMySupport,
         setShowMySupport,
-        showAssetRequests
+        showAssetRequests,
+        roles
     };
 };
 export default AccessAndDisplay;

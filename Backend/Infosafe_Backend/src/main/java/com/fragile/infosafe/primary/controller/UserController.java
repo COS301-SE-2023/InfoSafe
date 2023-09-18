@@ -1,11 +1,15 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.auth.AuthenticationResponse;
-import com.fragile.infosafe.auth.AuthenticationService;
-import com.fragile.infosafe.model.Role;
-import com.fragile.infosafe.model.User;
-import com.fragile.infosafe.requests.RegisterRequest;
-import com.fragile.infosafe.service.UserService;
+import com.fragile.infosafe.primary.auth.AuthenticationResponse;
+import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.model.Role;
+import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.requests.ChangePasswordRequest;
+import com.fragile.infosafe.primary.requests.DeleteRequest;
+import com.fragile.infosafe.primary.requests.RegisterRequest;
+import com.fragile.infosafe.primary.service.DeleteService;
+import com.fragile.infosafe.primary.service.EmailService;
+import com.fragile.infosafe.primary.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -21,6 +25,9 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final AuthenticationService authService;
+    private final EmailService emailService;
+    private final DeleteService deleteService;
+
 
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
@@ -34,6 +41,8 @@ public class UserController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
+
+        emailService.sendEmail(request.getEmail(), "New User to InfoSafe", "Welcome to InfoSafe, your password is " + "\n" + request.getPassword() + "\n You can change your password by logging in a selecting your profile in the top left corner and follwoing the prompts" + "\nKind regards\nThe InfoSafe Team");
         return ResponseEntity.ok(authService.register(request));
     }
 
@@ -79,5 +88,25 @@ public class UserController {
     public ResponseEntity<Boolean> checkEmailExists(@RequestParam("email") String email) {
         boolean emailExists = userService.checkEmailExists(email);
         return ResponseEntity.ok(emailExists);
+    }
+
+    @PostMapping("/deleteUser")
+    public ResponseEntity<Boolean> deleteUser(@RequestBody DeleteRequest deleteRequest){
+        try{
+            deleteService.deleteUserAndSaveToSecondary(deleteRequest.getEmail());
+            return ResponseEntity.ok(true);
+        }catch (Exception e) {
+            return ResponseEntity.ok(false);
+        }
+    }
+
+    @PostMapping("/changePassword")
+    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
+        try{
+            userService.changePassword(changePasswordRequest.getUser(), changePasswordRequest.getNewPassword());
+            return ResponseEntity.ok(true);
+        }catch (Exception e) {
+            return ResponseEntity.ok(false);
+        }
     }
 }

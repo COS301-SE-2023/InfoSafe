@@ -1,9 +1,8 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.model.Risk;
-import com.fragile.infosafe.model.User;
-import com.fragile.infosafe.requests.RiskRequest;
-import com.fragile.infosafe.service.RiskService;
+import com.fragile.infosafe.primary.model.Risk;
+import com.fragile.infosafe.primary.requests.RiskRequest;
+import com.fragile.infosafe.primary.service.RiskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

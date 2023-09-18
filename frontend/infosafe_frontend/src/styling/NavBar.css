@@ -1,16 +1,34 @@
 .navbar {
     height: 100%;
+    z-index: 100;
+    display: flex;
+}
+.shift{
+    position: relative;
+}
+.tabMenu
+{
+    background-color: #E90000;
+    width: 12%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 100;
 }
 .tabs {
-    display: flex;
-    margin-bottom: 2%;
-    position: absolute;
-    top: 3%;
-    left: 1%;
-    height: 5%;
+    /*margin-top: 5%;*/
+    /*margin-left: 2%;*/
+    position: relative;
+    top: 10%;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
     padding: 0;
-    width: 50vw;
-    z-index: 2;
+    color: #FFFFFF;
 }
 .tabs li {
     color: #ffffff;
@@ -18,41 +36,158 @@
     font-style: normal;
     font-size: 16px;
     display: flex;
+    justify-content: left;
     align-items: center;
     text-align: center;
     letter-spacing: 1px;
-    text-transform: uppercase;
     border-bottom: none;
     white-space: nowrap;
     padding-left: 0.8%;
     padding-right: 0.8%;
-    width: fit-content;
+    width: 100%;
+    /*margin-top: 1vh;*/
+    margin: 0 auto;
+    height: 5vh;
 }
 .tabs li:not(.active) {
-    border: 1px solid #9e0000;
-    border-bottom: none;
-    margin-left: 0px;
-    margin-right: 0px;
+    /*border-bottom: none;*/
 }
 .tabs li.active {
-    background-color: #4b4a4a;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    border-top: 1px solid #ffffff;
-    z-index: 3;
     position: relative;
-    margin-top: 1px;
+    /*text-decoration: underline ;*/
+    text-decoration-color: #989898;
+    background-color: rgba(196, 194, 194, 0.29);
+    /*font-weight: bold;*/
+    border: 1px solid white;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
-.display {
-    position: absolute;
-    top: 8%;
+.display{
+    position: relative;
+    top: 4vh;
     left: 1%;
     width: 98%;
-    height: 90vh;
-    background: #4b4a4a;
+    height: 91vh;
     overflow: hidden;
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    border: 1px solid #ffffff;
-    margin-top: -1px;
+}
+.displayTabContent{
+    position: relative;
+    bottom: -3.5vh;
+    z-index: 0;
+    vertical-align: bottom;
+    horiz-align: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+/*.display {*/
+/*    position: relative;*/
+/*    top: 4vh;*/
+/*    left: 1%;*/
+/*    width: 98%;*/
+/*    height: 91vh;*/
+/*    background: #4b4a4a;*/
+/*    overflow: hidden;*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
+/*    border: 1px solid #ffffff;*/
+/*    margin-top: -1px;*/
+/*}*/
+.toolbar {
+    background-color: #FFFFFF;
+    height: 6%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.toolbarLeft {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.menuIcon {
+    font-size: 24px;
+    position: absolute;
+    left: 1%;
+}
+
+.tabTitle {
+    color: #000;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 8%;
+
+}
+.toolbarRight{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: right;
+}
+.userDisplay{
+    color: #000000;
+    font-family: "Roboto", sans-serif;
+    font-size:16px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    position: relative;
+    right: 4%;
+}
+.avatar {
+    height: 4%;
+    fill: #383838;
+    font-size: 2.4rem;
+    position: relative;
+    right: 2%;
+}
+
+.settingsDiv
+{
+    position: absolute;
+    top: 2%;
+    right: 4%;
+    width: 10%;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.logoutLabel
+{
+    position: relative;
+    z-index: 100;
+    height: 4%;
+    background-color: rgb(65, 64, 64);
+    border: 1px solid white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.49);
+    border-radius: 12px;
+    margin: 5% auto;
+    color: white;
+    cursor: pointer;
+    padding: 2%;
+}
+.changeLabel
+{
+    z-index: 100;
+    position: relative;
+    height: 4%;
+    background-color: rgb(65, 64, 64);
+    border: 1px solid white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.49);
+    border-radius: 12px;
+    margin: 0 auto;
+    color: white;
+    cursor: pointer;
+    padding: 2%;
 }

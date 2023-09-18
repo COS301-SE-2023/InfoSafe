@@ -1,9 +1,8 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.model.AssetRequest;
-import com.fragile.infosafe.model.SupportRequest;
-import com.fragile.infosafe.requests.AssetRequestRequest;
-import com.fragile.infosafe.service.AssetRequestService;
+import com.fragile.infosafe.primary.model.AssetRequest;
+import com.fragile.infosafe.primary.requests.AssetRequestRequest;
+import com.fragile.infosafe.primary.service.AssetRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

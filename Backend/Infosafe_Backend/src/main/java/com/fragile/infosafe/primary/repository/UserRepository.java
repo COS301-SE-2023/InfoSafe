@@ -1,8 +1,8 @@
-package com.fragile.infosafe.repository;
+package com.fragile.infosafe.primary.repository;
 
 import java.util.Optional;
 
-import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.primary.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByEmail(String email);
     boolean existsByEmail(String email);
+    Optional<User> findByOtp(String otp);
 }
+

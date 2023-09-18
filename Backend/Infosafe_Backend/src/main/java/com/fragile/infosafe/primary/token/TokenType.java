@@ -1,4 +1,4 @@
-package com.fragile.infosafe.token;
+package com.fragile.infosafe.primary.token;
 
 public enum TokenType {
     BEARER

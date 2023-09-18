@@ -1,10 +1,12 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.model.Task;
-import com.fragile.infosafe.service.TaskService;
-import com.fragile.infosafe.requests.TaskRequest;
+import com.fragile.infosafe.primary.model.Task;
+import com.fragile.infosafe.primary.service.DeleteService;
+import com.fragile.infosafe.primary.service.TaskService;
+import com.fragile.infosafe.primary.requests.TaskRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.sql.Delete;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService service;
+    private final DeleteService deleteService;
 
     @PostMapping("/addTask")
     public ResponseEntity addTask(@RequestBody TaskRequest Task) {
@@ -29,5 +32,10 @@ public class TaskController {
     public Task updateTask (@PathVariable("id") int task_id, @RequestBody Task task) {
         task.setTask_id(task_id);
         return service.updateTask(task);
+    }
+
+    @DeleteMapping("/deleteTask/{taskId}")
+    public void deleteTaskAndSaveToSecondary(@PathVariable int taskId) {
+        deleteService.deleteTaskAndSaveToSecondary(taskId);
     }
 }

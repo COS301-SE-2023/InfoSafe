@@ -1,7 +1,7 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.service.PasswordEncryption;
-import com.fragile.infosafe.service.RandomPasswordGenerator;
+import com.fragile.infosafe.primary.service.PasswordEncryption;
+import com.fragile.infosafe.primary.service.RandomPasswordGenerator;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

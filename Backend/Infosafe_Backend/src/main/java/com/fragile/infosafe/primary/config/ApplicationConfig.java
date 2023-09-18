@@ -1,6 +1,6 @@
-package com.fragile.infosafe.config;
+package com.fragile.infosafe.primary.config;
 
-import com.fragile.infosafe.repository.UserRepository;
+import com.fragile.infosafe.primary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
     private final UserRepository repository;
+
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> repository.findByEmail(username)
@@ -40,3 +41,5 @@ public class ApplicationConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
+

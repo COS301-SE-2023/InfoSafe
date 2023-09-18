@@ -1,8 +1,8 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
-import com.fragile.infosafe.model.Asset;
-import com.fragile.infosafe.repository.AssetRepository;
-import com.fragile.infosafe.requests.AssetRequest;
+import com.fragile.infosafe.primary.model.Asset;
+import com.fragile.infosafe.primary.repository.AssetRepository;
+import com.fragile.infosafe.primary.requests.AssetRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

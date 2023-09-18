@@ -1,10 +1,10 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fragile.infosafe.model.Task;
-import com.fragile.infosafe.repository.TaskRepository;
-import com.fragile.infosafe.requests.TaskRequest;
+import com.fragile.infosafe.primary.model.Task;
+import com.fragile.infosafe.primary.repository.TaskRepository;
+import com.fragile.infosafe.primary.requests.TaskRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

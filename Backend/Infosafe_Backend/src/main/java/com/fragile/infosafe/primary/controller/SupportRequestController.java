@@ -1,8 +1,8 @@
-package com.fragile.infosafe.controller;
+package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.model.SupportRequest;
-import com.fragile.infosafe.requests.SupportRequestRequest;
-import com.fragile.infosafe.service.SupportRequestService;
+import com.fragile.infosafe.primary.model.SupportRequest;
+import com.fragile.infosafe.primary.requests.SupportRequestRequest;
+import com.fragile.infosafe.primary.service.SupportRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

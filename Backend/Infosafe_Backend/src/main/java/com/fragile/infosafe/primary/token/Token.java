@@ -1,6 +1,6 @@
-package com.fragile.infosafe.token;
+package com.fragile.infosafe.primary.token;
 
-import com.fragile.infosafe.model.User;
+import com.fragile.infosafe.primary.model.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -1,4 +1,4 @@
-package com.fragile.infosafe.service;
+package com.fragile.infosafe.primary.service;
 
 
 public class TaskResponse {

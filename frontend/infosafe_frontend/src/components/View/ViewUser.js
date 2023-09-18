@@ -2,8 +2,7 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../../styling/ViewUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
+
 const ViewUser = ({ user, popupClose, popupOpen }) => {
     return (
         <Popup
@@ -14,8 +13,8 @@ const ViewUser = ({ user, popupClose, popupOpen }) => {
         >
             <div className="viewUserOverlay">
                 <div className="borderView">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
+                    <button className="viewUserBackButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="viewUserBackIcon" />
                     </button>
                     <p className="viewUserTitle">View User</p>
                     <div className="view_name">
@@ -32,7 +31,7 @@ const ViewUser = ({ user, popupClose, popupOpen }) => {
                     </div>
                     <div className="view_role">
                         <p className="roleDisplay">System Role</p>
-                        <p className="viewRole">{user.role}</p>
+                        <p className="viewRole">{user.role.role_name}</p>
                     </div>
                 </div>
             </div>
