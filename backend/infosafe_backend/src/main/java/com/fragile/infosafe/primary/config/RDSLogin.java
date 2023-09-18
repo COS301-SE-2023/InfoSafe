@@ -1,4 +1,4 @@
-package com.fragile.infosafe.config;
+package com.fragile.infosafe.primary.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeleteDBLogin {
+public class RDSLogin {
     private String username;
     private String password;
     private String engine;

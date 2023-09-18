@@ -1,4 +1,4 @@
-package com.fragile.infosafe.config;
+package com.fragile.infosafe.primary.config;
 
 import com.google.gson.Gson;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -15,49 +15,54 @@ import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRespon
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-public class RDSFetch {
+@RequiredArgsConstructor
+@EnableJpaRepositories(
+        basePackages = {"com.fragile.infosafe.delete"},
+        entityManagerFactoryRef = "secondaryEntityManager",
+        transactionManagerRef = "secondaryTransactionManager"
+)
+public class PersistenceSecondaryConfiguration {
 
     private Gson gson = new Gson();
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(datasource());
-        em.setPackagesToScan("com.fragile.infosafe");
+    public LocalContainerEntityManagerFactoryBean secondaryEntityManager() {
+        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(secondaryDataSource());
+        em.setPackagesToScan("com.fragile.infosafe.delete");
 
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
-        vendorAdapter.setShowSql(true);
-
+        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaPropertyMap(jpaProperties());
+        vendorAdapter.setShowSql(true);
+        final HashMap<String, Object> properties = new HashMap<String, Object>();
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        em.setJpaPropertyMap(properties);
+
         return em;
     }
 
     @Bean
-    public DataSource datasource() {
-
-        RDSLogin login = getRDSLogin();
-
+    @ConfigurationProperties(prefix="spring.datasource.second")
+    public DataSource secondaryDataSource() {
+        DeleteDBLogin login = getDeleteDBLogin();
         return DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/" + login.getDbname())
+                .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
                 .username(login.getUsername())
                 .password(login.getPassword())
                 .build();
     }
 
-    @Bean
-    public Map<String, Object> jpaProperties() {
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "update");
-        return properties;
-    }
-
-    private RDSLogin getRDSLogin() {
+    private DeleteDBLogin getDeleteDBLogin() {
 
         String secretName = "rds_login";
         String region = "us-east-1";
@@ -98,50 +103,13 @@ public class RDSFetch {
         }
 
         String secret = getSecretValueResponse.secretString();
-        return gson.fromJson(secret, RDSLogin.class);
+        return gson.fromJson(secret, DeleteDBLogin.class);
     }
 
-    private DeleteDBLogin getDeleteDBLogin() {
-
-        String secretName = "delete_login";
-        String region = "us-east-1";
-
-        // Create a Secrets Manager client
-        SecretsManagerClient client = SecretsManagerClient.builder()
-                .region(Region.of(region))
-                .credentialsProvider(new AwsCredentialsProvider() {
-                    @Override
-                    public AwsCredentials resolveCredentials() {
-                        AwsCredentials awsCredentials = new AwsCredentials() {
-                            @Override
-                            public String accessKeyId() {
-                                return System.getenv("AWS_ACCESS_KEY_ID");
-                            }
-
-                            @Override
-                            public String secretAccessKey() {
-                                return System.getenv("AWS_SECRET_ACCESS_KEY");
-                            }
-                        };
-
-                        return awsCredentials;
-                    }
-                })
-                .build();
-
-        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
-                .secretId(secretName)
-                .build();
-
-        GetSecretValueResponse getSecretValueResponse;
-
-        try {
-            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
-        } catch (Exception e) {
-            throw e;
-        }
-
-        String secret = getSecretValueResponse.secretString();
-        return gson.fromJson(secret, DeleteDBLogin.class);
+    @Bean
+    public PlatformTransactionManager secondaryTransactionManager() {
+        final JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(secondaryEntityManager().getObject());
+        return transactionManager;
     }
 }

@@ -1,4 +1,4 @@
-package com.fragile.infosafe.config;
+package com.fragile.infosafe.primary.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

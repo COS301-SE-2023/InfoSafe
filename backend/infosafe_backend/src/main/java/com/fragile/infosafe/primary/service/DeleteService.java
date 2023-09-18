@@ -50,8 +50,8 @@ public class DeleteService {
         }
     }
 
-    public void deleteDataScopeAndSaveToSecondary(int datascope_id) {
-        Optional<DataScope> entityOptional = dataScopeRepository.findByDatAndDataScopeId(datascope_id);
+    public void deleteDataScopeAndSaveToSecondary(int data_scope_id) {
+        Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(data_scope_id);
         if(entityOptional.isPresent()) {
             DataScope entityToDelete = entityOptional.get();
             DeletedDataScope de = new DeletedDataScope();

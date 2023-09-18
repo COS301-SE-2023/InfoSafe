@@ -1,4 +1,4 @@
-package com.fragile.infosafe.config;
+package com.fragile.infosafe.primary.config;
 
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.regions.Region;
