@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 const ViewUser = ({ user, popupClose, popupOpen }) => {
     return (
-        <Popup
+        <Popup data-testid="viewUser"
             open={popupOpen}
             onClose={popupClose}
             closeOnDocumentClick={false}

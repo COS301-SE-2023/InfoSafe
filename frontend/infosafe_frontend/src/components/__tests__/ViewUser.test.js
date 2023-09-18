@@ -1,43 +1,53 @@
+// import {render, screen, cleanup} from '@testing-library/react';
+// import ViewUser from '../View/ViewUser'
+//
+// test('Should render View user', () => {
+//     render(<ViewUser/>);
+//     const viewuserElement = screen.getByTestId('viewUser');
+//     expect(viewuserElement).toBeInTheDocument();
+// })
+
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import ViewUser from '../View/ViewUser.js';
-import '@testing-library/jest-dom';
+import { render, fireEvent, screen } from '@testing-library/react';
+import ViewUser from '../View/ViewUser'; // Import your component here
 
-describe('ViewUser', () => {
-    test('should display the user information correctly', () => {
-        const user = {
-            firstname: 'John',
-            lastname: 'Doe',
-            email: 'john.doe@example.com',
-            role: 'Administrator'
-        };
-        const popupOpen = true;
-        const popupClose = jest.fn();
+describe('ViewUser Component', () => {
+    const user = {
+        first_name: 'John',
+        last_name: 'Doe',
+        email: 'john.doe@example.com',
+        role: 'User',
+    };
 
-        render(<ViewUser user={user} popupClose={popupClose} popupOpen={popupOpen} />);
+    it('renders correctly with user data', () => {
+        const { getByText } = render(
+            <ViewUser user={user} popupOpen={true} popupClose={() => {}} />
+        );
 
-        const nameDisplay = screen.getByText('Name');
-        const surnameDisplay = screen.getByText('Surname');
-        const emailDisplay = screen.getByText('Email');
-        const roleDisplay = screen.getByText('System Role');
-        const backButton = screen.getByRole('button', { name: 'Back' });
+        // Ensure that the component renders with user data
+        expect(screen.getByText('View User')).toBeInTheDocument();
+        expect(screen.getByText('Name')).toBeInTheDocument();
+        expect(screen.getByText('John')).toBeInTheDocument();
+        expect(screen.getByText('Surname')).toBeInTheDocument();
+        expect(screen.getByText('Doe')).toBeInTheDocument();
+        expect(screen.getByText('Email')).toBeInTheDocument();
+        expect(screen.getByText('john.doe@example.com')).toBeInTheDocument();
+        expect(screen.getByText('System Role')).toBeInTheDocument();
+        expect(screen.getByText('User')).toBeInTheDocument();
+    });
 
-        const viewName = screen.getByText(user.firstname);
-        const viewSurname = screen.getByText(user.lastname);
-        const viewEmail = screen.getByText(user.email);
-        const viewRole = screen.getByText(user.role);
+    it('calls popupClose when back button is clicked', () => {
+        const popupCloseMock = jest.fn();
 
-        expect(nameDisplay).toBeInTheDocument();
-        expect(surnameDisplay).toBeInTheDocument();
-        expect(emailDisplay).toBeInTheDocument();
-        expect(roleDisplay).toBeInTheDocument();
-        expect(viewName).toBeInTheDocument();
-        expect(viewSurname).toBeInTheDocument();
-        expect(viewEmail).toBeInTheDocument();
-        expect(viewRole).toBeInTheDocument();
+        const { getByTestId } = render(
+            <ViewUser user={user} popupOpen={true} popupClose={popupCloseMock} />
+        );
 
+        // eslint-disable-next-line testing-library/prefer-screen-queries
+        const backButton = getByTestId('back-button'); // Select the button by test ID
         fireEvent.click(backButton);
 
-        expect(popupClose).toHaveBeenCalledTimes(1);
+        // Ensure that popupClose was called when the back button is clicked
+        expect(popupCloseMock).toHaveBeenCalled();
     });
 });
