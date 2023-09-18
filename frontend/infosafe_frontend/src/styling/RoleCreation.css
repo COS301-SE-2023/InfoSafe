@@ -1,0 +1,205 @@
+.roleBackground{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.permissions {
+    background-color: transparent;
+    width: 90%;
+    margin: 0 auto;
+    height: 60%;
+    position: relative;
+    top: 0;
+    overflow-y: scroll;
+    box-sizing: content-box;
+    scrollbar-width: none;
+    font-family: "Roboto", sans-serif;
+}
+.permissions::-webkit-scrollbar {
+    display: none;
+}
+
+.permissionsList {
+    margin: 0;
+    padding: 0;
+}
+
+.usersPermissions, .accessRequestsPermissions, .devicesPermissions, .assetRequestsPermissions, .requestsPermissions, .dataScopesPermissions, .complianceMatrixPermissions, .supportRequestsPermissions, .risksPermissions
+{
+    background-color: #CECECE;
+    width: 100%;
+    min-height: 5vh;
+    height: fit-content;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #000000;
+    text-transform: none;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.displaySubsystemDiv
+{
+    background-color: #ffffff;
+    height: 3vh;
+    width: fit-content;
+    position: relative;
+    top: 1vh;
+    display: flex;
+    border-radius: 4px;
+    left: 2%;
+    box-shadow: 1px 3px 2px 0 #E90000;
+
+}
+
+.accessLabels{
+    display: flex;
+    align-items: center;
+    margin-right: 1vw;
+    height: fit-content;
+    position: relative;
+    padding: 0;
+    vertical-align: center;
+
+}
+
+.accessLabels input {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+input:checked{
+    accent-color: #E90000;
+}
+
+.permissionsDiv input:checked{
+    accent-color: #49D4D0;
+}
+
+.displayPermissionsDiv{
+    background: transparent;
+    align-items: center;
+    height: 6vh;
+    box-shadow: none;
+    border: none;
+    z-index: 10;
+    position: relative;
+    margin-bottom: 1vh;
+    display:flex;
+}
+
+.displayCreateDiv, .displayEditDiv, .displayDeleteDiv, .displayApproveDiv, .displayReviewDiv, .displayViewAllDiv{
+    background-color: #ffffff;
+    height: fit-content;
+    width: fit-content;
+    padding: 1px;
+    position: relative;
+    top: 1vh;
+    border-radius:4px;
+    margin-right: 1vh;
+    box-shadow: 1px 3px 2px 0 #49D4D0;
+}
+
+.permissionsDiv{
+    position: relative;
+    left: 2%;
+}
+.roleCreationButtonsDiv
+{
+    display: flex;
+    height: 20%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: left;
+    vertical-align: center;
+}
+.roleCreationButton {
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    height: 30%;
+    left: 0;
+    position: relative;
+    top: 35%;
+}
+
+.clearButton {
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    margin-left: 1vh;
+    height: 30%;
+    position: relative;
+    top: 35%;
+
+}
+
+.roleInfo{
+    display: flex;
+    height: 20%;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    top: 0;
+    padding: 0;
+}
+
+.roleCreateNameLabel
+{
+    color: #000000;
+    font-family: "Roboto", sans-serif;
+    text-transform: none;
+    position: relative;
+    height: 6vh;
+    width: fit-content;
+    font-size: 18px;
+    top: 2.5vh;
+    margin-right: 0.5vw;
+}
+.roleCreationRoleNameInput {
+    font-family: "Roboto", sans-serif;
+    border-radius: 4px;
+    background: #CECECE;
+    border: 0;
+}
+.roleCreationRoleNameInput:focus{
+    border: 3px solid #9E0000;
+    outline: none;
+}
+
+
+
+

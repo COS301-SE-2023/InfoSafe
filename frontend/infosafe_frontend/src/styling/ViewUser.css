@@ -1,22 +1,26 @@
 .viewUserOverlay {
-    width: 60vw;
-    height: 75vh;
+    width: 50vw;
+    height: 80vh;
     flex-shrink: 0;
     border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
+    background: rgb(173, 173, 173);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(20px);
     margin: 0 auto;
+    position: fixed;
+    top: 13%;
+    right: 25%;
 }
 .borderView {
-    border: 1px solid #ffffff;
-    width: 56vw;
+    border: 2px solid #ffffff;
+    width: 46vw;
     margin: 0 auto;
-    height: 67vh;
+    height: 72vh;
     position: relative;
     top: 4vh;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.viewUserBackButton {
+    background-color: #49D4D0;
     border: none;
     position: relative;
     height: 4vh;
@@ -26,8 +30,9 @@
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-.backIcon {
+.viewUserBackIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
@@ -47,7 +52,6 @@
     left: 20%;
 }
 .view_name {
-    margin: 0 auto;
     justify-content: center;
     align-content: center;
     color: #000;
@@ -164,4 +168,8 @@
     margin: 0 auto;
     background-color: #ffffff;
     margin-top: 2vh;
+}
+.viewName, .viewSurname, .viewEmail, .viewRole {
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }

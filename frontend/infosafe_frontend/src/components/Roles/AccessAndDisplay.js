@@ -1,19 +1,20 @@
 import {useEffect, useState} from "react";
 
 const AccessAndDisplay = () => {
-    const [createUserOpen, setCreateUserOpen] = useState(false); // ISO DISO
-    const [showUser, setShowUser] = useState([]); // ISO DISO
-    const [showDatascope, setShowDatascope] = useState([]); // ISO DS DISO Employee AM
-    const [showAsset, setShowAsset] = useState([]); // ISO DISO DS Employee AM
+    const [createUserOpen, setCreateUserOpen] = useState(false);
+    const [showUser, setShowUser] = useState([]);
+    const [showDatascope, setShowDatascope] = useState([]);
+    const [showAsset, setShowAsset] = useState([]);
     const [showRisk, setShowRisk] = useState([]);
     const [showTask, setShowTask] = useState([]);
     const [showAccess, setShowAccess] = useState([]);
     const [showAllSupport, setShowAllSupport] = useState([]);
     const [showMySupport, setShowMySupport] = useState([]);
     const [showAssetRequests, setShowAssetRequests] = useState([]);
+    const [roles, setRoles] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getDs', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/datascope/getDs', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -26,7 +27,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/asset/getAsset', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -40,7 +41,7 @@ const AccessAndDisplay = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getAll', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getAll', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -53,7 +54,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/accessrequest/getAr', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/accessrequest/getAr', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -66,7 +67,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/asset/getAsset', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -79,7 +80,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/risk/getRisk', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/risk/getRisk', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -92,7 +93,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/task/getTask', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/task/getTask', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -105,7 +106,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/supportrequest/getSr', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/supportrequest/getSr', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -118,7 +119,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getId', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getId', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -127,10 +128,8 @@ const AccessAndDisplay = () => {
             .then((res) => res.json())
             .then((result) => {
                 const id = result; // Store the id in a local variable
-                console.log(id); // Check if the id is fetched correctly
-
                 // Use the id in the second fetch request
-                fetch('http://localhost:8080/api/supportrequest/getSrById/' + id, {
+                fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/supportrequest/getSrById/' + id, {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -144,7 +143,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/assetrequest/getAr', {
+        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/assetrequest/getAr', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -155,6 +154,21 @@ const AccessAndDisplay = () => {
                 setShowAssetRequests(result);
             });
     }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/role/getPermissions', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setRoles(result);
+            });
+    }, []);
+
+
 
 
     return {
@@ -176,7 +190,8 @@ const AccessAndDisplay = () => {
         setShowAllSupport,
         showMySupport,
         setShowMySupport,
-        showAssetRequests
+        showAssetRequests,
+        roles
     };
 };
 export default AccessAndDisplay;
