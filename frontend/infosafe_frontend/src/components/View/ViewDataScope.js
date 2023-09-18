@@ -11,7 +11,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewDataScopeOverlay">
                 <div className="borderDataScopeView">
-                    <button className="viewDataScopeBackButton" onClick={popupClose}>
+                    <button className="viewDataScopeBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="viewDataScopeBackIcon" />
                     </button>
                     <p className="ViewDataScopeTitle">View Data Scope</p>
