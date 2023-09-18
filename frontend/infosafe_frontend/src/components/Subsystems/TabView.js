@@ -50,11 +50,11 @@ export const TabView = ({currentTab}) => {
         }
         case 9:
         {
-            return (<Requests></Requests>);
+            return (<AssetRequest></AssetRequest>);
         }
         case 10:
         {
-            return (<AssetRequest></AssetRequest>);
+            return (<Requests></Requests>);
         }
         default:
         {
