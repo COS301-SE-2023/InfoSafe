@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ViewSupportRequest from "../View/ViewSupportRequest";
-import {FaRegEdit} from "react-icons/fa";
+import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 import "../../styling/SupportRequests.css";
 export const SupportRequests = () => {
@@ -115,17 +115,33 @@ export const SupportRequests = () => {
 
     return(
         <div className="display">
-            <div>
-                <div className="titles">
-                    <div className="activeHeader">
-                        <p>Active System Requests</p>
-                    </div>
-                    <div className="myHeader">
-                        <p>My Requests</p>
-                    </div>
+            <div className="supportRequestsBackground">
+                <div className="searchSupportRequests">
+                    <input
+                        // data-testid="supportRequestSearch"
+                        className="supportRequestSearchInput"
+                        type="text"
+                        id="supportRequestSearchInput"
+                        name="supportRequestSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="supportRequestSearchIcon" />
                 </div>
-
                 <ViewSupportRequests></ViewSupportRequests>
+                <div className="supportRequestButtonsDiv">
+                    <button
+                        className="viewMySupportRequestButton"
+                        // onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
+                    >
+                        View My Support Requests
+                    </button>
+                    <button
+                        className="viewAllSupportRequestButton"
+                        // onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
+                    >
+                        View All Support Requests
+                    </button>
+                </div>
             </div>
         </div>
     )
