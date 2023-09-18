@@ -10,7 +10,7 @@ const ViewAssetRequest = ({asset, popupOpen, popupClose}) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position= "center center">
             <div className="viewAssetRequestOverlay">
                 <div className="viewAssetRequestBorder">
-                    <button className="viewAssetRequestBackButton" onClick={popupClose}>
+                    <button className="viewAssetRequestBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="viewAssetRequestBackIcon" />
                     </button>
                     <p className="viewAssetRequestLabel">View Asset Request</p>
