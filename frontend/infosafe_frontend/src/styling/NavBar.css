@@ -156,37 +156,37 @@
 .settingsDiv
 {
     position: absolute;
-    top: 2%;
-    right: 4%;
-    width: 10%;
+    top: 1vh;
+    right: 0.5vw;
+    width: 12vw;
     text-align: center;
     font-family: "Roboto", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 .logoutLabel
 {
     position: relative;
     z-index: 100;
-    height: 4%;
+    height: 5%;
     background-color: rgb(65, 64, 64);
-    border: 1px solid white;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.49);
-    border-radius: 12px;
-    margin: 5% auto;
+    border: 1px solid black;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     padding: 2%;
+    margin-left: 1vw;
 }
 .changeLabel
 {
     z-index: 100;
     position: relative;
-    height: 4%;
+    height: 5%;
     background-color: rgb(65, 64, 64);
-    border: 1px solid white;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.49);
-    border-radius: 12px;
-    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     padding: 2%;
