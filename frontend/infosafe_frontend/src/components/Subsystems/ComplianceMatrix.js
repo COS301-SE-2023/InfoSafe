@@ -27,6 +27,7 @@ export const ComplianceMatrix = () => {
                         <UpdateTask
                             popupClose={() => setUpdateTaskOpen(false)}
                             popupOpen={updateTaskOpen}
+                            task={showTask}
                         />
                     ) : null}
                 </div>
@@ -95,6 +96,7 @@ export const ComplianceMatrix = () => {
                         <TaskApproval
                             popupClose={() => setApproveTaskOpen(false)}
                             popupOpen={approveTaskOpen}
+                            task={showTask}
                         />
                     ) : null}
                 </div>

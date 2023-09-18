@@ -1,10 +1,55 @@
+.risksBackground{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.searchRisks{
+    display: flex;
+    width: 100%;
+    position: relative;
+    right: 4.2vw;
+    justify-content: right;
+    height: 20%;
+    top: 0;
+}
+.riskSearchInput{
+    background-color: #CECECE;
+    height: 3vh;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    color: #383838;
+    padding-right: 0;
+    padding-left: 10px;
+    position: relative;
+    top: 45%;
+}
+.riskSearchInput:focus{
+    border: 2px solid #9E0000;
+}
+.riskSearchIcon
+{
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0.5vh;
+    margin-right: 1%;
+    padding-left: 2px;
+    color: #9E0000;
+
+}
 .risks {
     background-color: transparent;
     width: 90%;
     margin: 0 auto;
-    height: 80%;
+    height: 60%;
     position: relative;
-    top: 5%;
+    top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
     scrollbar-width: none;
@@ -19,16 +64,15 @@
 }
 .risksListItem {
     position: relative;
-    height: 4vh;
+    height: 5vh;
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #f2f2f2;
+    background-color: #CECECE;
     padding: 5px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: 1px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
 }
 .risksListItemName {
     font-family: 'Roboto', sans-serif;
@@ -38,7 +82,6 @@
     position: relative;
     top: 50%;
     left: 1%;
-    width: 80%;
 }
 .risksListItem:hover {
     z-index: 4;
@@ -68,18 +111,24 @@
     font-size: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
     letter-spacing: 1px;
-    text-transform: uppercase;
     color: #ffffff;
-    margin: 0 auto;
     padding: 0.5% 2%;
     width: fit-content;
+    position: relative;
+    height: 30%;
+    top: 35%;
 }
 .CreateRiskButtonDiv {
     position: relative;
-    bottom: -10%;
+    height: 20%;
+    top: 0;
+    width: 100%;
+    left: 5%;
+    padding: 0;
+    margin: 0;
 }
 .EditIcon{
     position: absolute;

@@ -21,7 +21,7 @@ export const DataScopes = () => {
                         <EditDataScopePopup
                             popupClose={() => setEditDataScopeOpen(false)}
                             popupOpen={editDataScopeOpen}
-                            // datascope={datascope}
+                            datascope={datascope}
                         />
                     ) : null}{' '}
                 </div>
@@ -61,7 +61,7 @@ export const DataScopes = () => {
                             />
                         )}
                     </p>
-                    <EditDataScope></EditDataScope>
+                    <EditDataScope datascope={datascope}></EditDataScope>
                     <DeleteDataScope></DeleteDataScope>
                 </li>
             );
