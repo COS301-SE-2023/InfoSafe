@@ -6,7 +6,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable  no-unused-vars */
 const ViewUser = ({ user, popupClose, popupOpen }) => {
     return (
-        <Popup
+        <Popup data-testid="viewUser"
             open={popupOpen}
             onClose={popupClose}
             closeOnDocumentClick={false}
@@ -14,7 +14,7 @@ const ViewUser = ({ user, popupClose, popupOpen }) => {
         >
             <div className="viewUserOverlay">
                 <div className="borderView">
-                    <button className="backButton" onClick={popupClose}>
+                    <button className="backButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <p className="viewUserTitle">View User</p>
