@@ -17,13 +17,27 @@ public class UserService {
     private final UserRepository repository;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
-    public List<User> getAllUsers() {return repository.findAll();}
-    public Optional<User> getUser(Integer user_id) {return repository.findById(user_id);}
-    public User updateUser(User user) {return repository.save(user);}
 
-    public User changePassword(User user, String newPassword) {
-        user.setPassword(passwordEncoder.encode(newPassword));
+    public List<User> getAllUsers() {
+        return repository.findAll();
+    }
+
+    public Optional<User> getUser(Integer user_id) {
+        return repository.findById(user_id);
+    }
+
+    public User updateUser(User user) {
         return repository.save(user);
+    }
+
+    public Optional<User> getUserByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+
+    public void changePassword(User user, String newPassword) {
+        user.setPassword(passwordEncoder.encode(newPassword));
+        repository.save(user);
     }
 
     public void assignRoleToUser(int userId, Role role) {
@@ -31,6 +45,7 @@ public class UserService {
         user.setRole(role);
         repository.save(user);
     }
+
     public boolean checkEmailExists(String email) {
         return repository.existsByEmail(email);
     }
@@ -46,7 +61,8 @@ public class UserService {
             throw new UserNotFoundException("User not found for email: " + email);
         }
     }
-    public void generateAndSaveOtp(String email){
+
+    public void generateAndSaveOtp(String email) {
         Optional<User> userOptional = repository.findByEmail(email);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
@@ -61,9 +77,10 @@ public class UserService {
     private String generateRandomOTP() {
         int min = 10000;
         int max = 99999;
-        int random_int = (int)Math.floor(Math.random() * (max - min + 1) + min);
+        int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
         return Integer.toString(random_int);
     }
+
     public boolean verifyOTP(String email, String otp) {
         Optional<User> userOptional = repository.findByEmail(email);
         if (userOptional.isPresent()) {

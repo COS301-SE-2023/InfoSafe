@@ -11,17 +11,19 @@ import com.fragile.infosafe.primary.service.DeleteService;
 import com.fragile.infosafe.primary.service.EmailService;
 import com.fragile.infosafe.primary.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/user")
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
     private final UserService userService;
     private final AuthenticationService authService;
@@ -73,6 +75,19 @@ public class UserController {
         return null;
     }
 
+    @GetMapping("/getEmail")
+    @ResponseBody
+    public Map<String, String> getUserEmail(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            Map<String, String> response = new HashMap<>();
+            response.put("email", authenticatedUser.getEmail());
+            return response;
+        }
+        return Collections.emptyMap();
+    }
+
     @GetMapping("/getUserName")
     public ResponseEntity<String> getCurrentUserName(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -101,12 +116,18 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
-        try{
-            userService.changePassword(changePasswordRequest.getUser(), changePasswordRequest.getNewPassword());
-            return ResponseEntity.ok(true);
-        }catch (Exception e) {
-            return ResponseEntity.ok(false);
+    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
+        try {
+            Optional<User> user = userService.getUserByEmail(changePasswordRequest.getUserEmail());
+            log.info("Changing password for user with email: {}", changePasswordRequest.getUserEmail());
+            if (user.isPresent()) {
+                userService.changePassword(user.get(), changePasswordRequest.getNewPassword());
+                return ResponseEntity.ok(true);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
         }
     }
 }

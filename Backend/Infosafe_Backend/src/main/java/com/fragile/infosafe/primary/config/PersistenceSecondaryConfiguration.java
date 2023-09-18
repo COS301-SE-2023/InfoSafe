@@ -44,7 +44,7 @@ public class PersistenceSecondaryConfiguration {
         return em;
     }
     @Bean
-    @ConfigurationProperties(prefix="spring.datasource.second")
+    @ConfigurationProperties(prefix="spring.datasource.second") // this stimulates the database
     public DataSource secondaryDataSource() {
         return DataSourceBuilder.create().build();
     }
