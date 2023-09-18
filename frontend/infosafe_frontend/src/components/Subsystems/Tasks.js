@@ -7,7 +7,7 @@ import {TaskApproval} from "../TaskApprovalPopup";
 import "../../styling/ComplianceMatrix.css";
 import {FaSearch} from "react-icons/fa";
 
-export const ComplianceMatrix = () => {
+export const Tasks = () => {
     const {showTask, roles} = AccessAndDisplay()
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
