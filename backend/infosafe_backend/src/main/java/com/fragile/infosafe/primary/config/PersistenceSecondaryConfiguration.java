@@ -50,7 +50,6 @@ public class PersistenceSecondaryConfiguration {
     }
 
     @Bean
-    @ConfigurationProperties(prefix="spring.datasource.second")
     public DataSource secondaryDataSource() {
         DeleteDBLogin login = getDeleteDBLogin();
         return DataSourceBuilder

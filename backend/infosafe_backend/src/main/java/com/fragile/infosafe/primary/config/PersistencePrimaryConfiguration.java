@@ -50,7 +50,6 @@ public class PersistencePrimaryConfiguration {
     }
     @Primary
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource primaryDataSource () {
         RDSLogin login = getRDSLogin();
         return DataSourceBuilder
