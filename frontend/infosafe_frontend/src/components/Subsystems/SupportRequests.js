@@ -6,7 +6,7 @@ import EditSupportRequest from "../Edit/EditSupportRequest";
 import "../../styling/SupportRequests.css";
 export const SupportRequests = () => {
     const {showMySupport, showAllSupport, roles} = AccessAndDisplay()
-
+    const [viewMy, setViewMy] = useState(false);
     const EditSupportRequestDiv = ({allSupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
@@ -91,26 +91,55 @@ export const SupportRequests = () => {
         )
     }
 
-    const active_requests = [];
-    showAllSupport.map((allSupport) =>
-        active_requests.push(<ViewAllSupport allSupport={allSupport} key={allSupport.support_id}/>)
-    );
+
     const my_requests = [];
     showMySupport.map((mySupport) =>
         my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
     );
 
+    const AllSupport = () => {
+        const active_requests = [];
+        showAllSupport.map((allSupport) =>
+            active_requests.push(<ViewAllSupport allSupport={allSupport} key={allSupport.support_id}/>)
+        );
+
+        if(roles.includes("support_requests_viewAll")){
+            return (
+                <div className="active_support_requests" id="active_support_requests" style={{ display: `${allDisplay}`}}>
+                    <ul className="activeRequestsList">{active_requests}</ul>
+                </div>
+            )
+        }else {
+            return null;
+        }
+    }
+    const [myDisplay, setMyDisplay] = useState("block");
+    const [allDisplay, setAllDisplay] = useState("none");
+
     const ViewSupportRequests = () =>{
         return(
             <div className="tables">
-                <div className="active_support_requests">
-                    <ul className="activeRequestsList">{active_requests}</ul>
-                </div>
-                <div className="my_support_requests">
+                <AllSupport></AllSupport>
+                <div className="my_support_requests" id="my_support_requests" style={{ display: `${myDisplay}`}}>
                     <ul className="myRequestsList">{my_requests}</ul>
                 </div>
             </div>
         )
+    }
+
+    const changeView = () => {
+        setViewMy(!viewMy);
+        if ( !viewMy ){
+            setAllDisplay("block");
+            setMyDisplay("none");
+            // document.getElementById("active_support_requests").style.display = "none";
+            // document.getElementById("my_support_requests").style.display = "block";
+        }else  {
+            setAllDisplay("none");
+            setMyDisplay("block");
+            // document.getElementById("active_support_requests").style.display = "block";
+            // document.getElementById("my_support_requests").style.display = "none";
+        }
     }
 
     return(
@@ -127,21 +156,12 @@ export const SupportRequests = () => {
                     />
                     <FaSearch className="supportRequestSearchIcon" />
                 </div>
+                {roles.includes("support_requests_viewAll") &&
+                    <div className="changeViewBtnDiv">
+                        <button className="changeViewBtn" onClick={changeView} id="changeViewBtn">Change View</button>
+                    </div>
+                }
                 <ViewSupportRequests></ViewSupportRequests>
-                <div className="supportRequestButtonsDiv">
-                    <button
-                        className="viewMySupportRequestButton"
-                        // onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
-                    >
-                        View My Support Requests
-                    </button>
-                    <button
-                        className="viewAllSupportRequestButton"
-                        // onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
-                    >
-                        View All Support Requests
-                    </button>
-                </div>
             </div>
         </div>
     )
