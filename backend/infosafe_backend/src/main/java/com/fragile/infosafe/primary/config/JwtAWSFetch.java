@@ -31,7 +31,9 @@ public class JwtAWSFetch {
         }
 
         final String secret = getSecretValueResponse.secretString();
+        String key = secret.substring(secret.lastIndexOf(":")+1);
+        key = key.substring(1, key.length()-2);
 
-        return secret;
+        return key;
     }
 }
