@@ -51,7 +51,7 @@ public class DeleteService {
     }
 
     public void deleteDataScopeAndSaveToSecondary(int datascope_id) {
-        Optional<DataScope> entityOptional = dataScopeRepository.findByDatAndDataScopeId(datascope_id);
+        Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(datascope_id);
         if(entityOptional.isPresent()) {
             DataScope entityToDelete = entityOptional.get();
             DeletedDataScope de = new DeletedDataScope();
@@ -59,7 +59,7 @@ public class DeleteService {
             de.setDs_description(entityToDelete.getDs_description());
             de.setDs_status(entityToDelete.getDs_status());
             de.setDate_captured(entityToDelete.getDate_captured());
-            de.setData_custodian(entityToDelete.getData_custodian());
+            //de.setData_custodian(entityToDelete.());
             deletedDataScopeRepository.save(de);
             dataScopeRepository.delete(entityToDelete);
         }

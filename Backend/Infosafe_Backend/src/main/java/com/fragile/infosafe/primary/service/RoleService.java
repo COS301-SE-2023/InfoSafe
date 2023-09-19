@@ -41,4 +41,6 @@ public class RoleService {
                 .collect(Collectors.toList());
     }
     public boolean checkRoleExists(String name){return repository.existsByRole_name(name);}
+
+    public Role updateRole(Role role){return repository.save(role);}
 }
