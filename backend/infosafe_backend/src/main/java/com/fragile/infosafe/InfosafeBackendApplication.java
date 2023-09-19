@@ -23,23 +23,23 @@ public class InfosafeBackendApplication {
     }
 
 
-    @Autowired
-    private RoleRepository roleRepository;
-    @Bean
-    public CommandLineRunner commandLineRunner(AuthenticationService service) {
-        return args -> {
-            Role adminRole = roleRepository.findByRole_name("ADMIN");
-
-            var admin = RegisterRequest.builder()
-                    .first_name("Chris")
-                    .last_name("Mittendorf")
-                    .email("chris.mitt@gmail.com")
-                    .password("123456")
-                    .role(adminRole)
-                    .build();
-
-            System.out.println("Admin token: " + service.register(admin).getAccessToken());
-        };
-    }
+//    @Autowired
+//    private RoleRepository roleRepository;
+//    @Bean
+//    public CommandLineRunner commandLineRunner(AuthenticationService service) {
+//        return args -> {
+//            Role adminRole = roleRepository.findByRole_name("ADMIN");
+//
+//            var admin = RegisterRequest.builder()
+//                    .first_name("")
+//                    .last_name("")
+//                    .email("")
+//                    .password("")
+//                    .role(adminRole)
+//                    .build();
+//
+//            System.out.println("Admin token: " + service.register(admin).getAccessToken());
+//        };
+//    }
 }
 
