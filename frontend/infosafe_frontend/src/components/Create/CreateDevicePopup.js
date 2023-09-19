@@ -31,7 +31,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                 asset_name,
                 asset_description,
                 current_assignee,
-                previous_assignee,
+                // previous_assignee,
                 status,
                 used,
                 availability,
@@ -88,10 +88,10 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             return !userIdsInDropdown2.includes(user.user_id);
         });
 
-        const filteredUsersForDropdown2 = users.filter((user) => {
-            const userIdsInDropdown1 = selectedUsersArray1.map((selectedUser) => selectedUser.value);
-            return !userIdsInDropdown1.includes(user.user_id);
-        });
+        // const filteredUsersForDropdown2 = users.filter((user) => {
+        //     const userIdsInDropdown1 = selectedUsersArray1.map((selectedUser) => selectedUser.value);
+        //     return !userIdsInDropdown1.includes(user.user_id);
+        // });
 
         return (
             <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -156,23 +156,23 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                             ) : (
                                 <p>No available users</p>
                             )}
-                            <p className="previousCustodianLabel">Previous Custodian</p>
-                            {filteredUsersForDropdown2.length > 0 ? (
-                                <Select
-                                    options={filteredUsersForDropdown2.map((data) => ({
-                                        value: data.user_id,
-                                        label: data.email
-                                    }))}
-                                    value={selectedUsersArray2}
-                                    className="datascopeDropdown"
-                                    name="datascopeDropdown2"
-                                    placeholder={"Add Assignees"}
-                                    onChange={(selectedOption) => handleSelect(selectedOption, 2)}
-                                    isSearchable={true}
-                                />
-                            ) : (
-                                <p>No available users</p>
-                            )}
+                            {/*<p className="previousCustodianLabel">Previous Custodian</p>*/}
+                            {/*{filteredUsersForDropdown2.length > 0 ? (*/}
+                            {/*    <Select*/}
+                            {/*        options={filteredUsersForDropdown2.map((data) => ({*/}
+                            {/*            value: data.user_id,*/}
+                            {/*            label: data.email*/}
+                            {/*        }))}*/}
+                            {/*        value={selectedUsersArray2}*/}
+                            {/*        className="datascopeDropdown"*/}
+                            {/*        name="datascopeDropdown2"*/}
+                            {/*        placeholder={"Add Assignees"}*/}
+                            {/*        onChange={(selectedOption) => handleSelect(selectedOption, 2)}*/}
+                            {/*        isSearchable={true}*/}
+                            {/*    />*/}
+                            {/*) : (*/}
+                            {/*    <p>No available users</p>*/}
+                            {/*)}*/}
                             <button className="createDeviceFinish" onClick={handleClick}>
                                 Submit
                             </button>
