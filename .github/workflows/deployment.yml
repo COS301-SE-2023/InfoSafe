@@ -1,7 +1,7 @@
 name: Deploy to EC2
 on:
   push:
-    branches: [backend/dev-ops/minor-fixes]
+    branches: [dev-ops/minor-fixes]
   release:
     types: [created]
 
