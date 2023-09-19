@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {ViewRisk} from "../View/ViewRisk";
-import {FaRegEdit} from "react-icons/fa";
+import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditRisk} from "../Edit/EditRisk";
 import {ReviewRisk} from "../ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
@@ -108,10 +108,23 @@ export const Risks = () => {
 
     return(
         <div className="display">
-            <div className="risks">
-                <ul className="risksList">{risks}</ul>
+            <div className="risksBackground">
+                <div className="searchRisks">
+                    <input
+                        // data-testid="riskSearch"
+                        className="riskSearchInput"
+                        type="text"
+                        id="riskSearchInput"
+                        name="riskSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="deviceSearchIcon" />
+                </div>
+                <div className="risks">
+                    <ul className="risksList">{risks}</ul>
+                </div>
+                <CreateRiskDiv></CreateRiskDiv>
             </div>
-            <CreateRiskDiv></CreateRiskDiv>
         </div>
     )
 }

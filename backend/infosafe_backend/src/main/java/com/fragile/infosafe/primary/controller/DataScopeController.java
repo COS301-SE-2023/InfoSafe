@@ -43,5 +43,15 @@ public class DataScopeController {
         deleteService.deleteDataScopeAndSaveToSecondary(dataScopeId);
     }
 
+    @GetMapping("/numberDs")
+    public int getNumberDataScopes(){
+        return 0;
+    }
+
+    @GetMapping("/myNumberDs/")
+    public int getMyNumberDataScopes(){
+        return 0;
+    }
+
 
 }

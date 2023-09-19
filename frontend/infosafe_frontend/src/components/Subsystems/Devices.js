@@ -1,7 +1,8 @@
 import {CreateDevicePopup} from "../Create/CreateDevicePopup";
 import React, {useState} from "react";
 import {ViewDevice} from "../View/ViewDevice";
-import {FaRegEdit} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
+import {RiEditBoxFill} from "react-icons/ri";
 import EditDevice from "../Edit/EditDevice";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import "../../styling/Devices.css";
@@ -13,13 +14,14 @@ export const Devices = () => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="EditIcon">
-                    <FaRegEdit onClick={() => setEditDeviceOpen(!editDeviceOpen)}/>
+                <div className="deviceEditButton">
+                    <RiEditBoxFill onClick={() => setEditDeviceOpen(!editDeviceOpen)} className="deviceEditIcon"/>
                     {editDeviceOpen ? (
                         <EditDevice
                             popupClose={() => setEditDeviceOpen(false)}
                             popupOpen={editDeviceOpen}
                             asset={asset}
+
                         />
                     ) : null}
                 </div>
@@ -82,10 +84,24 @@ export const Devices = () => {
 
     return(
         <div className="display">
-            <div className="devices">
-                <ul className="deviceList">{devices}</ul>
+            <div className="devicesBackground">
+                <div className="searchDevices">
+                    <input
+                        // data-testid="deviceSearch"
+                        className="deviceSearchInput"
+                        type="text"
+                        id="deviceSearchInput"
+                        name="deviceSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="deviceSearchIcon" />
+                </div>
+                <div className="devices">
+                    <ul className="deviceList">{devices}</ul>
+                </div>
+                <CreateDevice></CreateDevice>
             </div>
-            <CreateDevice></CreateDevice>
+
         </div>
     )
 }

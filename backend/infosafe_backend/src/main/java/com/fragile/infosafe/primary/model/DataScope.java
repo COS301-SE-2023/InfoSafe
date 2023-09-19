@@ -1,10 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -21,6 +18,8 @@ public class DataScope {
     private String ds_name;
     private String ds_description;
     private Date date_captured;
-    private String data_custodian;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User data_custodian;
     private String ds_status;
 }

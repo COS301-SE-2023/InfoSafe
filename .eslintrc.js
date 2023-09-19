@@ -1,29 +1,24 @@
 module.exports = {
     root: true,
     env: {
-        browser: true, // Add browser environment for frontend (React) code
-        node: true, // Add node environment for backend (Spring Boot) code
+        browser: true,
+        node: true,
     },
     parserOptions: {
-        ecmaVersion: 2021, // Adjust this based on your ECMAScript version
+        ecmaVersion: 2021,
         sourceType: "module",
     },
     extends: [
-        "eslint:recommended",
-        "plugin:react/recommended", // For React-specific rules
+        "react-app",
+        "plugin:react/recommended",
     ],
     plugins: ["react"],
     rules: {
-        // Add any general rules here that apply to both frontend and backend code
-        // ...
-
-        // Example rule: Enforce using double quotes for strings
         quotes: ["error", "double"],
     },
     ignorePatterns: ["**/*.java", "**/*.cy.js"],
     overrides: [
         {
-            // Frontend (React) code in frontend/ directory
             files: ["frontend/**/*.js"],
             env: {
                 browser: true,

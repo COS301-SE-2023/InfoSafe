@@ -3,13 +3,16 @@ import React, {useState,  useEffect } from 'react';
 import '../../styling/CreateRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import useRequestMaker from "./useRequestMaker";
+import Select from "react-select";
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
 // const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
-    //const[datascopeData, setDatascopeData] = useState();
+    const [datascope, setDataScope] = useState(null);
+    const {datascopeData, setDsId} = useRequestMaker();
     const[impact_rating, setImpactRating] = useState('')
     const[probability_rating, setProbabilityRating] = useState('')
     const[risk_description, setRiskDescription] = useState('')
@@ -25,7 +28,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
     }
     const handleClick = (e)=> {
         e.preventDefault();
-        const risk = {impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation};
+        const risk = {impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation, dataScope_id: datascope.value,};
         console.log(risk);
         fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/addRisk", {
             method:"POST",
@@ -39,19 +42,6 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
         popupClose()
     };
 
-    // useEffect(() => {
-    //     fetch('http://localhost:8080/api/datascope/getDs', {
-    //         headers: {
-    //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-    //         }
-    //     })
-    //         .then((res) => res.json())
-    //         .then((result) => {
-    //             setDatascopeData(result);
-    //             console.log(datascopeData);
-    //         });
-    // }, []);
-
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="createRiskOverlay">
@@ -61,18 +51,6 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="pageTitle">Create Risk</p>
-                        {/*<p className="inputTitle">Data Scope</p>*/}
-                        {/*{datascopeData && datascopeData.length > 0 ? (*/}
-                        {/*<Dropdown*/}
-                        {/*    options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}*/}
-                        {/*    value={datascopeData.ds_name}*/}
-                        {/*    className="datascopeDropdown"*/}
-                        {/*    name="datascopeDropdown"*/}
-                        {/*    placeholder={"Add DataScope"}*/}
-                        {/*    onChange={(selectedOption)=> setDsId(selectedOption.value)}*/}
-                        {/*/> ) : (*/}
-                        {/*    <p>Loading...</p>*/}
-                        {/*)}*/}
                         <p className="inputTitle">Probability</p>
                         <Dropdown
                             options={PROBABILITY}
@@ -109,6 +87,19 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                             onChange={handleMitigation}
                             value={suggested_mitigation}
                         />
+                        <p className="inputTitle">Data Scope</p>
+                        {datascopeData && datascopeData.length > 0 ? (
+                            <Select
+                                options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                value={datascope}
+                                className="accessRequestDatascopeDropdown"
+                                name="datascopeDropdown"
+                                placeholder={"Add DataScope"}
+                                onChange={(selectedOption) => setDataScope(selectedOption)}
+                            />
+                        ) : (
+                            <p className="loadTitle">Loading...</p>
+                        )}
                         <div>
                             <button className="submitButton" type="submit" onClick={handleClick}>
                                 Submit

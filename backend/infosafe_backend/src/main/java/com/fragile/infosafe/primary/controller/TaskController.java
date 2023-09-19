@@ -22,7 +22,7 @@ public class TaskController {
     @PostMapping("/addTask")
     public ResponseEntity addTask(@RequestBody TaskRequest Task) {
         log.info("Adding a task");
-        return ResponseEntity.ok(service.makeT(Task));
+        return ResponseEntity.ok(service.createTask(Task));
     }
 
     @GetMapping("/getTask")

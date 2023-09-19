@@ -3,6 +3,7 @@ import ViewAssetRequest from "../View/ViewAssetRequest";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ReviewAssetRequest from "../ReviewAssetRequest";
 import "../../styling/AssetRequests.css";
+import {FaSearch} from "react-icons/fa";
 export const AssetRequest = () => {
     const {showAssetRequests, roles} = AccessAndDisplay()
 
@@ -10,9 +11,10 @@ export const AssetRequest = () => {
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
             return (
-                <div className="reviewAssetRequestButton">
+                <div className="reviewAssetRequestDiv">
                     <button
                         onClick={() => setAssetRequestOpen(true)}
+                        className="reviewAssetRequestButton"
                     >
                         Review
                     </button>
@@ -45,8 +47,9 @@ export const AssetRequest = () => {
                                 asset={assetRequest}
                             />
                         ) : null}
-                        <AssetRequestApproval></AssetRequestApproval>
+
                     </p>
+                    <AssetRequestApproval assetRequest={assetRequest}></AssetRequestApproval>
                 </li>
             );
         } else {
@@ -56,13 +59,27 @@ export const AssetRequest = () => {
 
     const assetRequests = [];
     showAssetRequests.map((assetRequest) =>
-        assetRequest.push(<ViewAssetRequests assetRequest={assetRequest} key={assetRequest.asset_request_id}/>)
+        assetRequests.push(<ViewAssetRequests assetRequest={assetRequest} key={assetRequest.asset_request_id}/>)
     );
     return (
         <div className="display">
-            <div className="assetRequests">
-                <ul className="assetRequestsList">{assetRequests}</ul>
+            <div className="assetRequestsBackground">
+                <div className="searchAssetRequests">
+                    <input
+                        // data-testid="assetRequestSearch"
+                        className="assetRequestSearchInput"
+                        type="text"
+                        id="assetRequestSearchInput"
+                        name="assetRequestSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="deviceSearchIcon" />
+                </div>
+                <div className="assetRequests">
+                    <ul className="assetRequestsList">{assetRequests}</ul>
+                </div>
             </div>
+
         </div>
     )
 }

@@ -1,6 +1,8 @@
 package com.fragile.infosafe.primary.service;
 
+import com.fragile.infosafe.primary.model.DataScope;
 import com.fragile.infosafe.primary.model.Risk;
+import com.fragile.infosafe.primary.repository.DataScopeRepository;
 import com.fragile.infosafe.primary.repository.RiskRepository;
 import com.fragile.infosafe.primary.requests.RiskRequest;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RiskService {
     private final RiskRepository riskRepository;
+    private final DataScopeRepository dataScopeRepository;
 
     public List<Risk> getAllRisks() {
         return riskRepository.findAll();
@@ -27,6 +30,13 @@ public class RiskService {
                 .suggested_mitigation(request.getSuggested_mitigation())
                 .risk_status(request.getRisk_status())
                 .build();
+
+        if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
+            DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
+            if (dataScope != null) {
+                risk.setDataScope(dataScope);
+            }
+        }
         riskRepository.save(risk);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }

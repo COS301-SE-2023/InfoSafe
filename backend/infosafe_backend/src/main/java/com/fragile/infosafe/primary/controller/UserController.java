@@ -4,29 +4,36 @@ import com.fragile.infosafe.primary.auth.AuthenticationResponse;
 import com.fragile.infosafe.primary.auth.AuthenticationService;
 import com.fragile.infosafe.primary.model.Role;
 import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.ChangePasswordRequest;
 import com.fragile.infosafe.primary.requests.DeleteRequest;
 import com.fragile.infosafe.primary.requests.RegisterRequest;
 import com.fragile.infosafe.primary.service.DeleteService;
 import com.fragile.infosafe.primary.service.EmailService;
+import com.fragile.infosafe.primary.service.TaskService;
 import com.fragile.infosafe.primary.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/user")
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
     private final UserService userService;
     private final AuthenticationService authService;
     private final EmailService emailService;
     private final DeleteService deleteService;
+    private final TaskService taskService;
+    private final UserRepository userRepository;
 
 
     @GetMapping("/getAll")
@@ -41,7 +48,6 @@ public class UserController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
-
         emailService.sendEmail(request.getEmail(), "New User to InfoSafe", "Welcome to InfoSafe, your password is " + "\n" + request.getPassword() + "\n You can change your password by logging in a selecting your profile in the top left corner and follwoing the prompts" + "\nKind regards\nThe InfoSafe Team");
         return ResponseEntity.ok(authService.register(request));
     }
@@ -60,7 +66,7 @@ public class UserController {
             return authenticatedUser.getUser_id();
         }
 
-        return -1; // Or any other value indicating that the user ID couldn't be retrieved.
+        return -1;
     }
 
     @GetMapping("/getRole")
@@ -71,6 +77,19 @@ public class UserController {
             return authenticatedUser.getRole();
         }
         return null;
+    }
+
+    @GetMapping("/getEmail")
+    @ResponseBody
+    public Map<String, String> getUserEmail(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            Map<String, String> response = new HashMap<>();
+            response.put("email", authenticatedUser.getEmail());
+            return response;
+        }
+        return Collections.emptyMap();
     }
 
     @GetMapping("/getUserName")
@@ -101,12 +120,42 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
-        try{
-            userService.changePassword(changePasswordRequest.getUser(), changePasswordRequest.getNewPassword());
-            return ResponseEntity.ok(true);
-        }catch (Exception e) {
-            return ResponseEntity.ok(false);
+    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
+        try {
+            Optional<User> user = userService.getUserByEmail(changePasswordRequest.getUserEmail());
+            log.info("Changing password for user with email: {}", changePasswordRequest.getUserEmail());
+            if (user.isPresent()) {
+                userService.changePassword(user.get(), changePasswordRequest.getNewPassword());
+                return ResponseEntity.ok(true);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
+    }
+
+    @GetMapping("/taskCount")
+    public ResponseEntity<Integer> countTasksForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            int taskCount = taskService.countTasksForUser(authenticatedUser);
+            return ResponseEntity.ok(taskCount);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
+    @GetMapping("/dataScopeCount")
+    public ResponseEntity<Integer> countDataScopesForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            int taskCount = taskService.countDataScopesForUser(authenticatedUser);
+            return ResponseEntity.ok(taskCount);
+        }else {
+            return ResponseEntity.notFound().build();
         }
     }
 }

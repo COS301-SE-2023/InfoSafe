@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RiskRequest {
-    private int ds_id;
     private String impact_rating;
     private String probability_rating;
     private String risk_description;
     private String suggested_mitigation;
     private String risk_status;
+    private int dataScope_id;
 }
