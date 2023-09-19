@@ -21,6 +21,7 @@
         <repository>
             <id>InfoSafe</id>
             <url>https://github.com/COS301-SE-2023/InfoSafe</url>
+            <layout>default</layout>
         </repository>
     </distributionManagement>
     <dependencies>
