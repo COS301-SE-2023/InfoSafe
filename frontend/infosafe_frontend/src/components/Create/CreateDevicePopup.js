@@ -38,7 +38,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                 device_type
             }
             console.log(asset)
-            fetch("http://localhost:8080/api/asset/addAsset", {
+            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/addAsset", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             popupClose()
         }
         useEffect(() => {
-            fetch("http://localhost:8080/api/user/getAll", {
+            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
