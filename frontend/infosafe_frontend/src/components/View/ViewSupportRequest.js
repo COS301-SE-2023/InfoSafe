@@ -10,7 +10,7 @@ const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewSupportRequestPopup">
                 <div className="viewSupportRequestPopupBorder">
-                    <button className="viewSupportRequestBackButton" onClick={popupClose}>
+                    <button className="viewSupportRequestBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="viewSupportRequestBackIcon" />
                     </button>
                     <p className="viewSupportRequestTitle">View Support Request</p>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
