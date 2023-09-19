@@ -1,22 +1,15 @@
-// import {render, screen, cleanup} from '@testing-library/react';
-// import ViewUser from '../View/ViewUser'
-//
-// test('Should render View user', () => {
-//     render(<ViewUser/>);
-//     const viewuserElement = screen.getByTestId('viewUser');
-//     expect(viewuserElement).toBeInTheDocument();
-// })
-
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import ViewUser from '../View/ViewUser'; // Import your component here
+import ViewUser from '../../View/ViewUser'; // Import your component here
 
 describe('ViewUser Component', () => {
     const user = {
         first_name: 'John',
         last_name: 'Doe',
         email: 'john.doe@example.com',
-        role: 'User',
+        role: {
+            role_name: 'User',
+        },
     };
 
     it('renders correctly with user data', () => {

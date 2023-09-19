@@ -13,7 +13,7 @@ const ViewUser = ({ user, popupClose, popupOpen }) => {
         >
             <div className="viewUserOverlay">
                 <div className="borderView">
-                    <button className="viewUserBackButton" onClick={popupClose}>
+                    <button className="viewUserBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="viewUserBackIcon" />
                     </button>
                     <p className="viewUserTitle">View User</p>
