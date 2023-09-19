@@ -32,7 +32,7 @@ public class AssetController {
         return service.updateAsset(asset);
     }
 
-    @DeleteMapping("/sdeleteAsset/{assetId}")
+    @DeleteMapping("/deleteAsset/{assetId}")
     public void deleteAssetAndSaveToSecondary(@PathVariable int assetId) {
         deleteService.deleteAssetAndSaveToSecondary(assetId);
     }
