@@ -29,7 +29,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
             date_created,
             users: selectedUsers.map((user) => user.value),
         };
-        fetch("http://localhost:8080/api/task/addTask", {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/addTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const CreateTask = ({ popupClose, popupOpen }) => {
     };
 
     useEffect(() => {
-        fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getAll", {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
