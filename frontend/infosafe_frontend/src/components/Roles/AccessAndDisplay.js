@@ -14,7 +14,7 @@ const AccessAndDisplay = () => {
     const [roles, setRoles] = useState([]);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/datascope/getDs', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -27,7 +27,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/asset/getAsset', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -41,7 +41,7 @@ const AccessAndDisplay = () => {
 
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getAll', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -54,7 +54,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/accessrequest/getAr', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/getAr', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -67,7 +67,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/asset/getAsset', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:80/api/asset/getAsset', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -80,7 +80,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/risk/getRisk', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/getRisk', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -93,7 +93,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/task/getTask', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/getTask', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -106,7 +106,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/supportrequest/getSr', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getSr', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -119,7 +119,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getId', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -129,7 +129,7 @@ const AccessAndDisplay = () => {
             .then((result) => {
                 const id = result; // Store the id in a local variable
                 // Use the id in the second fetch request
-                fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/supportrequest/getSrById/' + id, {
+                fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getSrById/' + id, {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -143,7 +143,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/assetrequest/getAr', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/getAr', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -156,7 +156,7 @@ const AccessAndDisplay = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/role/getPermissions', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getPermissions', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
