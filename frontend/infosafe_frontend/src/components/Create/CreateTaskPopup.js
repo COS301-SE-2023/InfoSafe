@@ -23,17 +23,18 @@ export const CreateTask = ({popupClose, popupOpen}) => {
     ];
     const handleClick = (e) => {
         e.preventDefault();
+        const currentDate = new Date().toISOString().split('T')[0];
         const task = {
             task_name,
             task_description,
             task_status,
-            dataScope,
             due_date,
             date_created: currentDate,
             dataScope_id: datascope.value,
             users_email: selectedUsers.map((user) => user.label),
         };
-        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/addTask", {
+        console.log(task)
+        fetch("http://localhost:8080/api/task/addTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -52,7 +53,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
     };
 
     useEffect(() => {
-        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
+        fetch("http://localhost:8080/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -63,9 +64,11 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                 setUsers(result);
             });
     }, []);
+
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
     };
+
     const handleDateChange = (date) => {
         setDueDate(date);
     };
