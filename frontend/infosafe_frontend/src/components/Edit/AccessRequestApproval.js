@@ -11,7 +11,7 @@ const AccessRequestApproval = ({ popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="approveAccessRequestPopup">
                 <div className="approveAccessRequestPopupBorder">
-                    <button className="approveAccessRequestBackButton" onClick={popupClose}>
+                    <button className="approveAccessRequestBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="approveAccessRequestBackIcon" />
                     </button>
                     <form>
