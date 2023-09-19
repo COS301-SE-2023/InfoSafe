@@ -33,14 +33,9 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.builder().role_name(request.getRole().getRole_name()).build())
                 .build();
-        var savedUser = repository.save(user);
+        repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
-//<<<<<<< HEAD
-//        saveUserToken(savedUser, jwtToken);
-//=======
-//        // saveUserToken(savedUser, jwtToken);
-//>>>>>>> 15feedf781cf4fe3af30af02e76148bf89bd096f
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
@@ -62,13 +57,6 @@ public class AuthenticationService {
                     .orElseThrow();
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
-//<<<<<<< HEAD
-//            revokeAllUserTokens(user);
-//            saveUserToken(user, jwtToken);
-//=======
-//            // revokeAllUserTokens(user);
-//            // saveUserToken(user, jwtToken);
-//>>>>>>> 15feedf781cf4fe3af30af02e76148bf89bd096f
 
             return AuthenticationResponse.builder()
                     .accessToken(jwtToken)
@@ -80,28 +68,6 @@ public class AuthenticationService {
             return auth;
         }
     }
-
-//    private void saveUserToken(User user, String jwtToken) {
-//        var token = Token.builder()
-//                .user(user)
-//                .token(jwtToken)
-//                .tokenType(TokenType.BEARER)
-//                .expired(false)
-//                .revoked(false)
-//                .build();
-//        tokenRepository.save(token);
-//    }
-
-//    private void revokeAllUserTokens(User user) {
-//        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUser_id());
-//        if (validUserTokens.isEmpty())
-//            return;
-//        validUserTokens.forEach(token -> {
-//            token.setExpired(true);
-//            token.setRevoked(true);
-//        });
-//        tokenRepository.saveAll(validUserTokens);
-//    }
 
     public void refreshToken(
             HttpServletRequest request,
@@ -120,8 +86,6 @@ public class AuthenticationService {
                     .orElseThrow();
             if (jwtService.isTokenValid(refreshToken, user)) {
                 var accessToken = jwtService.generateToken(user);
-//                revokeAllUserTokens(user);
-//                saveUserToken(user, accessToken);
                 var authResponse = AuthenticationResponse.builder()
                         .accessToken(accessToken)
                         .refreshToken(refreshToken)
