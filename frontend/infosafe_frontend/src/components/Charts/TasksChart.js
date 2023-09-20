@@ -10,12 +10,12 @@ const TasksChart = () => {
         new Chart(chartContext, {
             type: "doughnut",
             data: {
-                labels: ['Tasks Completed', 'Tasks Left'],
+                labels: ["Tasks Completed", "Tasks Left"],
                 datasets: [
                     {
-                        label: 'Tasks',
+                        label: "Tasks",
                         data: [50, 50],
-                        backgroundColor: ['#9E0000', '#444040'],
+                        backgroundColor: ["#9E0000", "#444040"],
                     }
                 ]
             },
@@ -32,8 +32,8 @@ const TasksChart = () => {
     }, []);
 
     return (
-        <div className="tasksChartDiv">
-            <canvas className="doughnutChart" ref={chartReference} />
+        <div className='tasksChartDiv'>
+            <canvas className='doughnutChart' ref={chartReference} />
         </div>
     );
 };
