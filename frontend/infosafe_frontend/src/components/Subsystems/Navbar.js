@@ -9,7 +9,7 @@ const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
     const {roles} = AccessAndDisplay();
-    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
+    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests'];
 
     tabItems.push(0);
 
@@ -37,10 +37,10 @@ const NavBar = () => {
     if (roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review")) {//Risks
         tabItems.push(8);
     }
-    if (roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access")) {//Requests
+    if (roles.includes("asset_request_review")) {//Asset Requests
         tabItems.push(9);
     }
-    if (roles.includes("asset_request_review")) {//Asset Requests
+    if (roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access")) {//Requests
         tabItems.push(10);
     }
 

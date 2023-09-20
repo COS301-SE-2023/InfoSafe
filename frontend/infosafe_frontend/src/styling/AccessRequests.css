@@ -93,7 +93,7 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 4vw;
+    right: 1vw;
     height: 70%;
     top: 15%;
     border-radius: 4px;
@@ -105,33 +105,27 @@
     color: #FFFFFF;
     width: 110%;
     position: relative;
-
 }
 .approveAccessRequestButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: center;
-    letter-spacing: 1px;
+    background-color: #444040;
+    outline: none;
+    border: none;
+    border-radius: 3px;
     color: #ffffff;
-    padding: 0.5% 2%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 2% 8%;
     width: fit-content;
-    position: relative;
-    height: 30%;
-    top: 35%;
+    height: 80%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
 }
 .ApproveAccessRequestButtonDiv {
-    position: relative;
-    height: 20%;
-    top: 0;
-    width: 100%;
-    left: 5%;
-    padding: 0;
+    height: 80%;
+    width: 6%;
+    position: absolute;
+    top: 50%;
+    right: 2.5vw;
     margin: 0;
+    background-color: transparent;
 }

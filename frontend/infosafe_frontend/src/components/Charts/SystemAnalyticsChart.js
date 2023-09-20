@@ -25,7 +25,7 @@ const SystemAnalyticsChart = () => {
                     },
                     {
                         label: 'My Total',
-                        backgroundColor: '#E90000',
+                        backgroundColor: '#9E0000',
                         barThickness: 20,
                         data: [20, 50, 10, 5, 8],
                         pointStyle: 'circle',

@@ -9,7 +9,6 @@ import "../../styling/AccessRequests.css";
 
 export const AccessRequests = () => {
     const {showAccess, roles} = AccessAndDisplay()
-    const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
 
     const EditAccessRequestDiv = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
@@ -58,6 +57,7 @@ export const AccessRequests = () => {
                             />
                         ) : null}
                     </p>
+                    <ApproveAccessRequest></ApproveAccessRequest>
                     <EditAccessRequestDiv access={access}></EditAccessRequestDiv>
                     <DeleteAccessRequest></DeleteAccessRequest>
                 </li>
@@ -68,6 +68,7 @@ export const AccessRequests = () => {
     };
 
     const ApproveAccessRequest = () => {
+        const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
         if(roles.includes("access_requests_approve")) {
             return (
                 <div className="ApproveAccessRequestButtonDiv">
@@ -76,7 +77,7 @@ export const AccessRequests = () => {
                         data-testid="approveAccessRequestButton"
                         onClick={() => setApproveAccessRequestOpen(true)}
                     >
-                        Access Request Approval
+                        Review
                     </button>
                     {approveAccessRequestOpen ? (
                         <AccessRequestApproval
@@ -112,7 +113,6 @@ export const AccessRequests = () => {
                 <div className="accessRequests">
                     <ul className="accessrequestsList">{accessRequests}</ul>
                 </div>
-                <ApproveAccessRequest></ApproveAccessRequest>
             </div>
         </div>
     );

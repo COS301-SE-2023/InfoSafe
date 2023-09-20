@@ -2,7 +2,7 @@ import RoleCreation from "../Roles/RoleCreation";
 import {Users} from "./Users";
 import {DataScopes} from "./DataScopes";
 import {AccessRequests} from "./AccessRequests";
-import {ComplianceMatrix} from "./ComplianceMatrix";
+import {Tasks} from "./Tasks";
 import {Devices} from "./Devices";
 import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
@@ -34,7 +34,7 @@ export const TabView = ({currentTab}) => {
         }
         case 5:
         {
-            return (<ComplianceMatrix></ComplianceMatrix>);
+            return (<Tasks></Tasks>);
         }
         case 6:
         {
@@ -50,11 +50,11 @@ export const TabView = ({currentTab}) => {
         }
         case 9:
         {
-            return (<Requests></Requests>);
+            return (<AssetRequest></AssetRequest>);
         }
         case 10:
         {
-            return (<AssetRequest></AssetRequest>);
+            return (<Requests></Requests>);
         }
         default:
         {

@@ -4,10 +4,10 @@ import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
-import "../../styling/ComplianceMatrix.css";
+import "../../styling/Tasks.css";
 import {FaSearch} from "react-icons/fa";
 
-export const ComplianceMatrix = () => {
+export const Tasks = () => {
     const {showTask, roles} = AccessAndDisplay()
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
@@ -113,7 +113,7 @@ export const ComplianceMatrix = () => {
 
     return(
         <div className="display">
-            <div className="complianceMatrixBackground">
+            <div className="tasksBackground">
                 <div className="searchTasks">
                     <input
                         // data-testid="userSearch"

@@ -53,8 +53,11 @@
     overflow-y: scroll;
     scrollbar-width: none;
 }
+.tables::-webkit-scrollbar{
+    display: none;
+}
 .active_support_requests {
-    background-color: transparent;
+    background-color: blue;
     width: 100%;
     margin: 0 auto;
     height: 100%;
@@ -62,6 +65,7 @@
     top: 0;
     overflow-y: scroll;
     scrollbar-width: none;
+    display: none;
 }
 .activeRequestsList {
     list-style: none;
@@ -101,7 +105,7 @@
     display: none;
 }
 .my_support_requests {
-    background-color: transparent;
+    background-color: red;
     width: 100%;
     margin: 0 auto;
     height: 100%;
@@ -207,5 +211,32 @@
     height: 30%;
     position: relative;
     top: 35%;
-
+}
+.changeViewBtnDiv{
+    position: relative;
+    height: 20%;
+    top: 0;
+    width: 50%;
+    left: 5%;
+    padding: 0;
+    margin: 0;
+}
+.changeViewBtn{
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    top: 35%;
 }
