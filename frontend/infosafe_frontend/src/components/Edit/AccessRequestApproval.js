@@ -4,7 +4,7 @@ import "../../styling/AccessRequestApproval.css";
 import { IoArrowBackOutline } from "react-icons/io5";
 
 const AccessRequestApproval = ({ popupClose, popupOpen }) => {
-    const ACCESSREQUESTSTATUSOPTIONS = ["LOGGED", "APPROVED", "REJECTED"];
+    //const ACCESSREQUESTSTATUSOPTIONS = ["LOGGED", "APPROVED", "REJECTED"];
     
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
@@ -36,8 +36,8 @@ const AccessRequestApproval = ({ popupClose, popupOpen }) => {
                             <p className='approveAccessRequestStatusDisplay'>Approved</p>
                         </div>
                         <div className='approveAccessRequestButtonsDiv'>
-                            <button className='approveAccessRequestApproveButton' onClick={() => console.log('Access Request Accepted')}>Accept</button>
-                            <button className='approveAccessRequestRejectButton' onClick={() => console.log('Access Request Rejected')}>Reject</button>
+                            <button className='approveAccessRequestApproveButton' onClick={() => console.log("Access Request Accepted")}>Accept</button>
+                            <button className='approveAccessRequestRejectButton' onClick={() => console.log("Access Request Rejected")}>Reject</button>
                         </div>
                     </form>
                 </div>
