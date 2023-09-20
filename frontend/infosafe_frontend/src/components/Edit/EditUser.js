@@ -14,7 +14,8 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         last_name: "",
         email: "",
         password: "",
-        role: ""
+        role: "",
+        selectedRole: ""
     });
 
     useEffect(() => {

@@ -2261,11 +2261,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
-import '../../styling/RoleCreation.css';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react";
+import "../../styling/RoleCreation.css";
 &nbsp;
 const RoleCreation = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const subsystems = <span class="cstat-no" title="statement not covered" >['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];</span>
+    const subsystems = <span class="cstat-no" title="statement not covered" >["Users", "Data Scopes", "Access Requests", "Compliance Matrix", "Devices", "Support Requests", "Asset Requests", "Risks", "Requests"];</span>
     const [checkboxState, setCheckboxState] = <span class="cstat-no" title="statement not covered" >useState(subsystems.map(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >false)</span>);</span>
     const [canCreate, setCanCreate] = <span class="cstat-no" title="statement not covered" >useState(new Array(subsystems.length).fill(false));</span>
     const [canEdit, setCanEdit] = <span class="cstat-no" title="statement not covered" >useState(new Array(subsystems.length).fill(false));</span>
@@ -2287,12 +2287,12 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
         const role = <span class="cstat-no" title="statement not covered" >{role_name, permissions};</span>
 &nbsp;
-        // add check to make sure role doesn't exist
+        // add check to make sure role doesn"t exist
 <span class="cstat-no" title="statement not covered" >        fetch(`http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/checkName?rolename=${role_name}`,{</span>
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                        Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
                     },
                 })
                     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; <span class="cstat-no" title="statement not covered" >response.json())</span>
@@ -2305,7 +2305,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
-                                    Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                                    Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
                                 },
                                 body: JSON.stringify(role),
                             }).then(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -2332,7 +2332,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Users")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.usersCreate');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.usersCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >               handleCreate(0);</span>
 &nbsp;
@@ -2342,7 +2342,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.usersEdit');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.usersEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(0);</span>
 &nbsp;
@@ -2352,7 +2352,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.usersDelete');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.usersDelete");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleDelete(0);</span>
 &nbsp;
@@ -2365,7 +2365,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Data Scopes")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.dataScopesCreate');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.dataScopesCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreate(1);</span>
 &nbsp;
@@ -2375,7 +2375,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.dataScopesEdit');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.dataScopesEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(1);</span>
 &nbsp;
@@ -2385,7 +2385,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.dataScopesDelete');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.dataScopesDelete");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleDelete(1);</span>
 &nbsp;
@@ -2398,7 +2398,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Access Requests")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.accessRequestsEdit');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.accessRequestsEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(2);</span>
 &nbsp;
@@ -2408,7 +2408,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.accessRequestsApprove');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.accessRequestsApprove");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleApprove(2);</span>
 &nbsp;
@@ -2423,7 +2423,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Compliance Matrix")</span>
         {
 &nbsp;
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.complianceMatrixCreate');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.complianceMatrixCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreate(3);</span>
 &nbsp;
@@ -2433,7 +2433,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.complianceMatrixEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(3);</span>
 &nbsp;
@@ -2443,7 +2443,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.complianceMatrixDelete");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleDelete(3);</span>
 &nbsp;
@@ -2453,7 +2453,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.complianceMatrixApprove");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleApprove(3);</span>
 &nbsp;
@@ -2465,7 +2465,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
         }
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Devices")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.devicesCreate');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.devicesCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreate(4);</span>
 &nbsp;
@@ -2475,7 +2475,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.devicesEdit');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.devicesEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(4);</span>
 &nbsp;
@@ -2485,7 +2485,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.devicesDelete');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.devicesDelete");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleDelete(4);</span>
 &nbsp;
@@ -2498,7 +2498,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Support Requests")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.supportRequestsViewAll');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.supportRequestsViewAll");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleViewAll(5);</span>
 &nbsp;
@@ -2508,7 +2508,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.supportRequestsEdit');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.supportRequestsEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(5);</span>
 &nbsp;
@@ -2518,7 +2518,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.supportRequestsDelete');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.supportRequestsDelete");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleDelete(5);</span>
 &nbsp;
@@ -2531,7 +2531,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Asset Requests")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.assetRequestsReview');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.assetRequestsReview");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleReview(6);</span>
 &nbsp;
@@ -2546,7 +2546,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Risks")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.risksCreate');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.risksCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreate(7);</span>
 &nbsp;
@@ -2556,7 +2556,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.risksEdit');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.risksEdit");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleEdit(7);</span>
 &nbsp;
@@ -2566,7 +2566,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.risksDelete');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.risksDelete");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleDelete(7);</span>
 &nbsp;
@@ -2576,7 +2576,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.risksReview');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.risksReview");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleReview(7);</span>
 &nbsp;
@@ -2589,7 +2589,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (newCheckboxState[index] === false &amp;&amp; subsystem === "Requests")</span>
         {
-            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.requestsAssetCreate');</span>
+            let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.requestsAssetCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreateAssetRequest(8);</span>
 &nbsp;
@@ -2599,7 +2599,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.requestsSupportCreate');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.requestsSupportCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreateSupportRequest(8);</span>
 &nbsp;
@@ -2609,7 +2609,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                 }
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector('input.requestsAccessCreate');</span>
+<span class="cstat-no" title="statement not covered" >            permissionsCheckbox = document.querySelector("input.requestsAccessCreate");</span>
 <span class="cstat-no" title="statement not covered" >            if (permissionsCheckbox.checked) {</span>
 <span class="cstat-no" title="statement not covered" >                handleCreateAccessRequest(8);</span>
 &nbsp;
@@ -2679,7 +2679,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
     const clearAll = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt;</span>
     {
-        let roleName =<span class="cstat-no" title="statement not covered" >document.querySelector('input.roleCreationRoleNameInput');</span>
+        let roleName =<span class="cstat-no" title="statement not covered" >document.querySelector("input.roleCreationRoleNameInput");</span>
 <span class="cstat-no" title="statement not covered" >        roleName.value = null;</span>
 &nbsp;
         // for (let i = 0; i &lt; 9; i++)
@@ -2697,10 +2697,10 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
     const submitInfo = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 &nbsp;
-        let roleName =<span class="cstat-no" title="statement not covered" >document.querySelector('input.roleCreationRoleNameInput').value;</span>
+        let roleName =<span class="cstat-no" title="statement not covered" >document.querySelector("input.roleCreationRoleNameInput").value;</span>
         // Send this also to backend.
 &nbsp;
-        let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector('input.usersCreate');</span>
+        let permissionsCheckbox = <span class="cstat-no" title="statement not covered" >document.querySelector("input.usersCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Users"))</span>
             {
@@ -2710,7 +2710,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.usersEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.usersEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Edit Users"))</span>
             {
@@ -2720,7 +2720,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.usersDelete');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.usersDelete");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Delete Users"))</span>
             {
@@ -2730,7 +2730,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.dataScopesCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.dataScopesCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Data Scopes"))</span>
             {
@@ -2741,7 +2741,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.dataScopesEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.dataScopesEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Edit Data Scopes"))</span>
             {
@@ -2751,7 +2751,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.dataScopesDelete');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.dataScopesDelete");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Delete Data Scopes"))</span>
             {
@@ -2761,7 +2761,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.accessRequestsEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.accessRequestsEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Request Access Request"))</span>
             {
@@ -2771,7 +2771,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.accessRequestsApprove');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.accessRequestsApprove");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Approve Access Requests"))</span>
             {
@@ -2781,7 +2781,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.complianceMatrixCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Tasks"))</span>
             {
@@ -2791,7 +2791,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.complianceMatrixEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Edit Tasks"))</span>
             {
@@ -2801,7 +2801,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.complianceMatrixDelete");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Delete Tasks"))</span>
             {
@@ -2811,7 +2811,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.complianceMatrixApprove");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Approve Tasks"))</span>
             {
@@ -2821,7 +2821,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.devicesCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.devicesCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Devices"))</span>
             {
@@ -2831,7 +2831,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.devicesEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.devicesEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Edit Devices"))</span>
             {
@@ -2841,7 +2841,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.devicesDelete');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.devicesDelete");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Delete Devices"))</span>
             {
@@ -2851,7 +2851,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.supportRequestsViewAll");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("View All Support Requests"))</span>
             {
@@ -2861,7 +2861,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.supportRequestsEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.supportRequestsEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Edit Support Requests"))</span>
             {
@@ -2871,7 +2871,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.supportRequestsDelete');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.supportRequestsDelete");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Delete Support Requests"))</span>
             {
@@ -2881,7 +2881,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.assetRequestsReview');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.assetRequestsReview");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Review Asset Requests"))</span>
             {
@@ -2891,7 +2891,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.risksCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.risksCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Risks"))</span>
             {
@@ -2901,7 +2901,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.risksEdit');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.risksEdit");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Edit Risks"))</span>
             {
@@ -2911,7 +2911,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.risksDelete');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.risksDelete");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Delete Risks"))</span>
             {
@@ -2921,7 +2921,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.risksReview');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.risksReview");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Review Risks"))</span>
             {
@@ -2931,7 +2931,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.requestsAssetCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.requestsAssetCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Asset Requests"))</span>
             {
@@ -2941,7 +2941,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.requestsSupportCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.requestsSupportCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Support Requests"))</span>
             {
@@ -2951,7 +2951,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector('input.requestsAccessCreate');</span>
+<span class="cstat-no" title="statement not covered" >        permissionsCheckbox = document.querySelector("input.requestsAccessCreate");</span>
 <span class="cstat-no" title="statement not covered" >        if (permissionsCheckbox.checked === true) {</span>
 <span class="cstat-no" title="statement not covered" >            if (!permissionsList.includes("Create Access Requests"))</span>
             {
@@ -2964,105 +2964,105 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="display"&gt;
-            &lt;div className="roleBackground"&gt;
-                &lt;div className="roleInfo"&gt;
-                    &lt;p className="roleCreateNameLabel"&gt;Role Name:&lt;/p&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='roleBackground'&gt;
+                &lt;div className='roleInfo'&gt;
+                    &lt;p className='roleCreateNameLabel'&gt;Role Name:&lt;/p&gt;
                     &lt;input
-                        className="roleCreationRoleNameInput"
-                        data-testid="roleCreationTest"
+                        className='roleCreationRoleNameInput'
+                        data-testid='roleCreationTest'
                         value={role_name}
                         onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setRoleName(e.target.value)}</span>
                     /&gt;
                 &lt;/div&gt;
-                &lt;div className="permissions"&gt;
-                    &lt;div className="permissionsList"&gt;
+                &lt;div className='permissions'&gt;
+                    &lt;div className='permissionsList'&gt;
                         {subsystems.map(<span class="fstat-no" title="function not covered" >(s</span>ubsystem, index) =&gt;
                             (
-<span class="cstat-no" title="statement not covered" >                                &lt;div key={index} className={`${subsystem.replace(/\s+/g, '')}Permissions`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}&gt;</span>
-                                    &lt;div className="displaySubsystemDiv"&gt;
-                                        &lt;label className="accessLabels"&gt;
+<span class="cstat-no" title="statement not covered" >                                &lt;div key={index} className={`${subsystem.replace(/\s+/g, "")}Permissions`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}&gt;</span>
+                                    &lt;div className='displaySubsystemDiv'&gt;
+                                        &lt;label className='accessLabels'&gt;
                                             &lt;input
-                                                type="checkbox"
+                                                type='checkbox'
                                                 checked={checkboxState[index]}
-                                                className={`${subsystem.replace(/\s+/g, '')}Access`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                className={`${subsystem.replace(/\s+/g, "")}Access`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                 onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCheckboxChecked(index, subsystem)}</span>
                                             /&gt;
                                             {subsystem}
                                         &lt;/label&gt;
                                     &lt;/div&gt;
-                                    &lt;div className="permissionsDiv" style={{ display: displayPermission[index] ? 'flex' : 'none' }}&gt;
+                                    &lt;div className='permissionsDiv' style={{ display: displayPermission[index] ? "flex" : "none" }}&gt;
                                         {(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >                                            if (subsystem === 'Users') {</span>
+<span class="cstat-no" title="statement not covered" >                                            if (subsystem === "Users") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreate[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreate(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayDeleteDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayDeleteDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canDelete[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleDelete(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Delete {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
                                                     &lt;/div&gt;
                                                 );
-                                            } else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Data Scopes') {</span>
+                                            } else <span class="cstat-no" title="statement not covered" >if (subsystem === "Data Scopes") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreate[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreate(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayDeleteDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayDeleteDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canDelete[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleDelete(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Delete {subsystem}
                                                             &lt;/label&gt;
@@ -3070,114 +3070,114 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                                                     &lt;/div&gt;
                                                 );
                                             }
-                                            else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Access Requests') {</span>
+                                            else <span class="cstat-no" title="statement not covered" >if (subsystem === "Access Requests") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayApproveDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayApproveDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canApprove[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleApprove(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Approve`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Approve {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
                                                     &lt;/div&gt;
                                                 );
-                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Compliance Matrix') {</span>
+                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === "Compliance Matrix") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreate[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreate(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create Tasks
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit Tasks
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayDeleteDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayDeleteDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canDelete[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleDelete(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Delete Tasks
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayApproveDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayApproveDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canApprove[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleApprove(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Approve`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Approve Tasks
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
                                                     &lt;/div&gt;
                                                 );
-                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Devices') {</span>
+                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === "Devices") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreate[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreate(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayDeleteDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayDeleteDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canDelete[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleDelete(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Delete {subsystem}
                                                             &lt;/label&gt;
@@ -3185,103 +3185,103 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                                                     &lt;/div&gt;
                                                 );
                                             }
-                                            else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Support Requests') {</span>
+                                            else <span class="cstat-no" title="statement not covered" >if (subsystem === "Support Requests") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayViewAllDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayViewAllDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canViewAll[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleViewAll(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}ViewAll`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}ViewAll`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 View All {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayDeleteDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayDeleteDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canDelete[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleDelete(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Delete {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
                                                     &lt;/div&gt;
                                                 );
-                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Asset Requests') {</span>
+                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === "Asset Requests") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayReviewDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayReviewDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canReview[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleReview(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Review`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Review {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
                                                     &lt;/div&gt;
                                                 );
-                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Risks') {</span>
+                                            }else <span class="cstat-no" title="statement not covered" >if (subsystem === "Risks") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreate[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreate(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Create`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayEditDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayEditDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canEdit[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleEdit(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Edit`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Edit {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayDeleteDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayDeleteDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canDelete[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleDelete(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Delete`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Delete {subsystem}
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayReviewDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayReviewDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canReview[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleReview(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}Review`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Review {subsystem}
                                                             &lt;/label&gt;
@@ -3289,38 +3289,38 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                                                     &lt;/div&gt;
                                                 );
                                             }
-                                            else <span class="cstat-no" title="statement not covered" >if (subsystem === 'Requests') {</span>
+                                            else <span class="cstat-no" title="statement not covered" >if (subsystem === "Requests") {</span>
 <span class="cstat-no" title="statement not covered" >                                                return (</span>
-                                                    &lt;div className="displayPermissionsDiv" &gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                    &lt;div className='displayPermissionsDiv' &gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreateAssetRequest[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreateAssetRequest(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}AssetCreate`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}AssetCreate`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create Asset Requests
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreateSupportRequest[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreateSupportRequest(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}SupportCreate`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}SupportCreate`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create Support Requests
                                                             &lt;/label&gt;
                                                         &lt;/div&gt;
-                                                        &lt;div className="displayCreateDiv"&gt;
-                                                            &lt;label className="accessLabels"&gt;
+                                                        &lt;div className='displayCreateDiv'&gt;
+                                                            &lt;label className='accessLabels'&gt;
                                                                 &lt;input
-                                                                    type="checkbox"
+                                                                    type='checkbox'
                                                                     checked={canCreateAccessRequest[index]}
                                                                     onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleCreateAccessRequest(index)}</span>
-                                                                    className={`${subsystem.replace(/\s+/g, '')}AccessCreate`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
+                                                                    className={`${subsystem.replace(/\s+/g, "")}AccessCreate`.replace(/^\w/, <span class="fstat-no" title="function not covered" >na</span>me =&gt; <span class="cstat-no" title="statement not covered" >name.toLowerCase())</span>}
                                                                 /&gt;
                                                                 Create Access Requests
                                                             &lt;/label&gt;
@@ -3335,10 +3335,10 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                     &lt;/div&gt;
                 &lt;/div&gt;
 &nbsp;
-                &lt;div className = "roleCreationButtonsDiv"&gt;
+                &lt;div className = 'roleCreationButtonsDiv'&gt;
                     &lt;button
-                        className="roleCreationButton"
-                        type = "submit"
+                        className='roleCreationButton'
+                        type = 'submit'
                         onClick={handleClick}
                     &gt;
 &nbsp;
@@ -3346,7 +3346,7 @@ const RoleCreation = <span class="cstat-no" title="statement not covered" ><span
                     &lt;/button&gt;
 &nbsp;
                     &lt;button
-                        className="clearButton"
+                        className='clearButton'
                         onClick={clearAll}
                     &gt;
                         Clear
@@ -3367,7 +3367,7 @@ export default RoleCreation;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

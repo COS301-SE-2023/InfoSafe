@@ -182,9 +182,7 @@
 <a name='L117'></a><a href='#L117'>117</a>
 <a name='L118'></a><a href='#L118'>118</a>
 <a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -303,86 +301,85 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import '../styling/Dashboard.css';
-import React, {useEffect, useState} from 'react';
-import {IoPersonCircleSharp, IoMenu} from "react-icons/io5";
-import SystemAnalyticsChart from './Charts/SystemAnalyticsChart';
-import TasksChart from './Charts/TasksChart';
-import {FaCircle} from 'react-icons/fa';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../styling/Dashboard.css";
+import React from "react";
+import SystemAnalyticsChart from "./Charts/SystemAnalyticsChart";
+import TasksChart from "./Charts/TasksChart";
+import {FaCircle} from "react-icons/fa";
 &nbsp;
 export const Dashboard = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const myDevicesList = <span class="cstat-no" title="statement not covered" >['Zenbook Pro 15', 'PowerGuardian 1500', 'QuantumTab S7', 'Device 4', 'Device 5', 'Device 6', 'Device 7', 'Device 8', 'Device 9', 'Device 10'];</span>
-    const notificationsList = <span class="cstat-no" title="statement not covered" >['The status for Support Request 6 has been updated.', 'The status for Support Request 4 has been updated.', 'The status for Support Request 2 has been updated.', 'You have been added to Data Scope 40.' ];</span>
-    const userTasks = <span class="cstat-no" title="statement not covered" >['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5', 'Task 6', 'Task 7', 'Task 8', 'Task 9'];</span>
-    const taskDeadlines = <span class="cstat-no" title="statement not covered" >['1 month', '1 week', '1 day', '1 month', '1 week', '1 day', '1 month', '1 week', '1 day']</span>
+    const myDevicesList = <span class="cstat-no" title="statement not covered" >["Zenbook Pro 15", "PowerGuardian 1500", "QuantumTab S7", "Device 4", "Device 5", "Device 6", "Device 7", "Device 8", "Device 9", "Device 10"];</span>
+    const notificationsList = <span class="cstat-no" title="statement not covered" >["The status for Support Request 6 has been updated.", "The status for Support Request 4 has been updated.", "The status for Support Request 2 has been updated.", "You have been added to Data Scope 40." ];</span>
+    const userTasks = <span class="cstat-no" title="statement not covered" >["Task 1", "Task 2", "Task 3", "Task 4", "Task 5", "Task 6", "Task 7", "Task 8", "Task 9"];</span>
+    const taskDeadlines = <span class="cstat-no" title="statement not covered" >["1 month", "1 week", "1 day", "1 month", "1 week", "1 day", "1 month", "1 week", "1 day"]</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="display"&gt;
-            &lt;div className="quickFacts"&gt;
-                &lt;div className="dataScopesInfo"&gt;  {/*Display the number of data scopes the user is involved in*/}
-                    &lt;p className="dataScopesInfoLabel"&gt;Current Data Scopes&lt;/p&gt;
-                    &lt;p className="dataScopesInfoDisplay"&gt;50&lt;/p&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='quickFacts'&gt;
+                &lt;div className='dataScopesInfo'&gt;  {/*Display the number of data scopes the user is involved in*/}
+                    &lt;p className='dataScopesInfoLabel'&gt;Current Data Scopes&lt;/p&gt;
+                    &lt;p className='dataScopesInfoDisplay'&gt;50&lt;/p&gt;
                 &lt;/div&gt;
-                &lt;div className="currentTasksInfo"&gt;  {/*Display the number of tasks associated with the user.*/}
-                    &lt;p className="currentTasksInfoLabel"&gt;Current Tasks&lt;/p&gt;
-                    &lt;p className="currentTasksInfoDisplay"&gt;100&lt;/p&gt;
+                &lt;div className='currentTasksInfo'&gt;  {/*Display the number of tasks associated with the user.*/}
+                    &lt;p className='currentTasksInfoLabel'&gt;Current Tasks&lt;/p&gt;
+                    &lt;p className='currentTasksInfoDisplay'&gt;100&lt;/p&gt;
                 &lt;/div&gt;
-                &lt;div className="currentDevicesInfo"&gt;  {/*Display the number of devices associated with the user.*/}
-                    &lt;p className="currentDevicesInfoLabel"&gt;Current Devices&lt;/p&gt;
-                    &lt;p className="currentDevicesInfoDisplay"&gt;10&lt;/p&gt;
+                &lt;div className='currentDevicesInfo'&gt;  {/*Display the number of devices associated with the user.*/}
+                    &lt;p className='currentDevicesInfoLabel'&gt;Current Devices&lt;/p&gt;
+                    &lt;p className='currentDevicesInfoDisplay'&gt;10&lt;/p&gt;
                 &lt;/div&gt;
-                &lt;div className="currentRequestsInfo"&gt;  {/*Display the number of requests associated with the user.*/}
-                    &lt;p className="currentRequestsInfoLabel"&gt;Current Requests&lt;/p&gt;
-                    &lt;p className="currentRequestsInfoDisplay"&gt;60&lt;/p&gt;
+                &lt;div className='currentRequestsInfo'&gt;  {/*Display the number of requests associated with the user.*/}
+                    &lt;p className='currentRequestsInfoLabel'&gt;Current Requests&lt;/p&gt;
+                    &lt;p className='currentRequestsInfoDisplay'&gt;60&lt;/p&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div className="analytics"&gt;
-                &lt;div className="systemAnalyticsDiv"&gt;
-                    &lt;div className="systemLabels"&gt;
-                        &lt;p className="systemAnalyticsLabel"&gt;System Analytics&lt;/p&gt;
-                        &lt;div className="barLabels"&gt;
-                            &lt;div className="systemTotals"&gt;
-                                &lt;FaCircle className="systemIcon" /&gt;
-                                &lt;p className="systemTotalLabel"&gt;System Total&lt;/p&gt;
+            &lt;div className='analytics'&gt;
+                &lt;div className='systemAnalyticsDiv'&gt;
+                    &lt;div className='systemLabels'&gt;
+                        &lt;p className='systemAnalyticsLabel'&gt;System Analytics&lt;/p&gt;
+                        &lt;div className='barLabels'&gt;
+                            &lt;div className='systemTotals'&gt;
+                                &lt;FaCircle className='systemIcon' /&gt;
+                                &lt;p className='systemTotalLabel'&gt;System Total&lt;/p&gt;
                             &lt;/div&gt;
-                            &lt;div className="myTotals"&gt;
-                                &lt;FaCircle className="myTotalIcon" /&gt;
-                                &lt;p className="myTotalLabel"&gt;My Total&lt;/p&gt;
+                            &lt;div className='myTotals'&gt;
+                                &lt;FaCircle className='myTotalIcon' /&gt;
+                                &lt;p className='myTotalLabel'&gt;My Total&lt;/p&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
                     &lt;SystemAnalyticsChart /&gt;
                 &lt;/div&gt;
-                &lt;div className="userTaskDiv"&gt;
-                    &lt;p className="userTaskLabel"&gt;Tasks&lt;/p&gt;
+                &lt;div className='userTaskDiv'&gt;
+                    &lt;p className='userTaskLabel'&gt;Tasks&lt;/p&gt;
                     &lt;TasksChart /&gt;
-                    &lt;div className="chartLabels"&gt;
-                        &lt;div className="tasksLeftDiv"&gt;
-                            &lt;FaCircle className="tasksLeftIcon" /&gt;
-                            &lt;p className="tasksLeftLabel"&gt;Tasks Left&lt;/p&gt;
+                    &lt;div className='chartLabels'&gt;
+                        &lt;div className='tasksLeftDiv'&gt;
+                            &lt;FaCircle className='tasksLeftIcon' /&gt;
+                            &lt;p className='tasksLeftLabel'&gt;Tasks Left&lt;/p&gt;
                         &lt;/div&gt;
-                        &lt;div className="tasksCompletedDiv"&gt;
-                            &lt;FaCircle className="tasksCompletedIcon" /&gt;
-                            &lt;p className="tasksCompletedLabel"&gt;Tasks Completed&lt;/p&gt;
+                        &lt;div className='tasksCompletedDiv'&gt;
+                            &lt;FaCircle className='tasksCompletedIcon' /&gt;
+                            &lt;p className='tasksCompletedLabel'&gt;Tasks Completed&lt;/p&gt;
                         &lt;/div&gt;
 &nbsp;
                     &lt;/div&gt;
                 &lt;/div&gt;
-                &lt;div className="userTaskDeadlinesDiv"&gt;
-                    &lt;p className="userTaskDeadlinesLabel"&gt;Approaching Deadlines&lt;/p&gt;
-                    &lt;div className="deadlinesDiv"&gt;
-                        &lt;ul className="taskDeadlinesList"&gt;
+                &lt;div className='userTaskDeadlinesDiv'&gt;
+                    &lt;p className='userTaskDeadlinesLabel'&gt;Approaching Deadlines&lt;/p&gt;
+                    &lt;div className='deadlinesDiv'&gt;
+                        &lt;ul className='taskDeadlinesList'&gt;
                             {userTasks.map(<span class="fstat-no" title="function not covered" >(t</span>ask, index) =&gt; (
 <span class="cstat-no" title="statement not covered" >                                &lt;li key={index}&gt;</span>
                                     &lt;p&gt;{task}&lt;/p&gt;
-                                    {taskDeadlines[index] === '1 month' &amp;&amp; (
-                                        &lt;div className="oneMonthDeadline"&gt;{taskDeadlines[index]}&lt;/div&gt;
+                                    {taskDeadlines[index] === "1 month" &amp;&amp; (
+                                        &lt;div className='oneMonthDeadline'&gt;{taskDeadlines[index]}&lt;/div&gt;
                                     )}
-                                    {taskDeadlines[index] === '1 week' &amp;&amp; (
-                                        &lt;div className="oneWeekDeadline"&gt;{taskDeadlines[index]}&lt;/div&gt;
+                                    {taskDeadlines[index] === "1 week" &amp;&amp; (
+                                        &lt;div className='oneWeekDeadline'&gt;{taskDeadlines[index]}&lt;/div&gt;
                                     )}
-                                    {taskDeadlines[index] === '1 day' &amp;&amp; (
-                                        &lt;div className="oneDayDeadline" &gt;{taskDeadlines[index]}&lt;/div&gt;
+                                    {taskDeadlines[index] === "1 day" &amp;&amp; (
+                                        &lt;div className='oneDayDeadline' &gt;{taskDeadlines[index]}&lt;/div&gt;
                                     )}
                                 &lt;/li&gt;
                             ))}
@@ -391,11 +388,11 @@ export const Dashboard = <span class="cstat-no" title="statement not covered" ><
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div className="infoDiv"&gt;
-                &lt;div className="myDevicesDiv"&gt;
-                    &lt;p className="myDevicesLabel"&gt;Devices in Use&lt;/p&gt;
-                    &lt;div className="myDevicesDisplay"&gt;
-                        &lt;ul className="inUseDevicesList"&gt;
+            &lt;div className='infoDiv'&gt;
+                &lt;div className='myDevicesDiv'&gt;
+                    &lt;p className='myDevicesLabel'&gt;Devices in Use&lt;/p&gt;
+                    &lt;div className='myDevicesDisplay'&gt;
+                        &lt;ul className='inUseDevicesList'&gt;
                             {myDevicesList.map(<span class="fstat-no" title="function not covered" >(d</span>eviceName, index) =&gt; (
 <span class="cstat-no" title="statement not covered" >                                &lt;li key={index}&gt;</span>
                                     &lt;p&gt;{deviceName}&lt;/p&gt;
@@ -404,15 +401,15 @@ export const Dashboard = <span class="cstat-no" title="statement not covered" ><
                         &lt;/ul&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
-                &lt;div className="notificationsDiv"&gt;
-                    &lt;p className="notificationsLabel"&gt;Notifications&lt;/p&gt;
-                    &lt;div className="notificationsDisplay"&gt;
-                        &lt;ul className="myNotificationsList"&gt;
+                &lt;div className='notificationsDiv'&gt;
+                    &lt;p className='notificationsLabel'&gt;Notifications&lt;/p&gt;
+                    &lt;div className='notificationsDisplay'&gt;
+                        &lt;ul className='myNotificationsList'&gt;
                             {notificationsList.map(<span class="fstat-no" title="function not covered" >(n</span>otification, index) =&gt; (
 <span class="cstat-no" title="statement not covered" >                                &lt;li key={index}&gt;</span>
-                                    &lt;div className="notificationsInfo"&gt;
-                                        &lt;div className="timeDisplay"&gt;11:00&lt;/div&gt;
-                                        &lt;p className="notificationsMessage"&gt;{notification}&lt;/p&gt;
+                                    &lt;div className='notificationsInfo'&gt;
+                                        &lt;div className='timeDisplay'&gt;11:00&lt;/div&gt;
+                                        &lt;p className='notificationsMessage'&gt;{notification}&lt;/p&gt;
                                     &lt;/div&gt;
                                 &lt;/li&gt;
                             ))}
@@ -430,7 +427,7 @@ export const Dashboard = <span class="cstat-no" title="statement not covered" ><
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

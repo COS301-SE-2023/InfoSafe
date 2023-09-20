@@ -213,14 +213,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from 'react';
-import '../../styling/EditDataScopePopup.css';
-import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from "react";
+import "../../styling/EditDataScopePopup.css";
+import Popup from "reactjs-popup";
+import { IoArrowBackOutline } from "react-icons/io5";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-import Dropdown from 'react-dropdown';
-const STATUS = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
+import Dropdown from "react-dropdown";
+const STATUS = ["CREATED", "APPROVED", "REJECTED", "REVOKED"];
 &nbsp;
 &nbsp;
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) =&gt; {
@@ -236,10 +236,10 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) =&gt; {
     const handleSubmit = (e) =&gt; {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/" + datascope.data_scope_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
@@ -250,34 +250,34 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) =&gt; {
     }
 &nbsp;
     return (
-        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position="center center"&gt;
-            &lt;div className="editDataScopeOverlay"&gt;
-                &lt;div className="editdatascopeBorder"&gt;
+        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position='center center'&gt;
+            &lt;div className='editDataScopeOverlay'&gt;
+                &lt;div className='editdatascopeBorder'&gt;
                     &lt;form onSubmit={handleSubmit}&gt;
-                        &lt;button className="backButton" onClick={popupClose} data-testid="back-button"&gt;
-                            &lt;IoArrowBackOutline className="backIcon" /&gt;
+                        &lt;button className='backButton' onClick={popupClose} data-testid='back-button'&gt;
+                            &lt;IoArrowBackOutline className='backIcon' /&gt;
                         &lt;/button&gt;
-                        &lt;p className="editDatascopeLabel"&gt;Edit Data Scope&lt;/p&gt;
-                        &lt;p className="editDatasscopeNameLabel"&gt;Name&lt;/p&gt;
+                        &lt;p className='editDatascopeLabel'&gt;Edit Data Scope&lt;/p&gt;
+                        &lt;p className='editDatasscopeNameLabel'&gt;Name&lt;/p&gt;
                         &lt;input
-                            className="editDatascopeNameInput"
+                            className='editDatascopeNameInput'
                             defaultValue={datascope.ds_name} onChange={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, ds_name: e.target.value})}</span>
                         /&gt;
-                        &lt;p className="editDescriptionLabel"&gt;Description&lt;/p&gt;
+                        &lt;p className='editDescriptionLabel'&gt;Description&lt;/p&gt;
                         &lt;textarea
-                            className="editDescriptionInput"
+                            className='editDescriptionInput'
                             defaultValue={datascope.description} onChange={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, ds_description: e.target.value})}</span>
                         /&gt;
                         &lt;br /&gt;
-                        &lt;p className="editStatusLabel"&gt;Status&lt;/p&gt;
+                        &lt;p className='editStatusLabel'&gt;Status&lt;/p&gt;
                         &lt;Dropdown
                             options={STATUS}
                             value={STATUS[0]}
-                            className="editDSStatusDropdown"
-                            data-testid="editDSStatusDropdown"
+                            className='editDSStatusDropdown'
+                            data-testid='editDSStatusDropdown'
                             defaultValue={datascope.status} onChange={<span class="fstat-no" title="function not covered" >se</span>lectedOption =&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, ds_status: selectedOption.value})}</span>
                         /&gt;
-                        &lt;button className="editdatascope_finish"&gt;
+                        &lt;button className='editdatascope_finish'&gt;
                             Submit
                         &lt;/button&gt;
                     &lt;/form&gt;
@@ -295,7 +295,7 @@ export default EditDataScopePopup;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

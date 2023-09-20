@@ -549,38 +549,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useEffect, useState} from 'react';
-import Dropdown from 'react-dropdown';
-import '../../styling/Requests.css';
-import '../../styling/Dropdown.css';
-import useRequestMaker from '../Create/useRequestMaker';
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from "react";
+import Dropdown from "react-dropdown";
+import "../../styling/Requests.css";
+import "../../styling/Dropdown.css";
+import useRequestMaker from "../Create/useRequestMaker";
+&nbsp;
 &nbsp;
 &nbsp;
 export const Requests = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const SUPPORTOPTIONS = <span class="cstat-no" title="statement not covered" >[</span>
-        'Laptop Hardware',
-        'Microsoft Accounts',
-        'Microsoft Applications',
-        'Application',
-        'Other'
+        "Laptop Hardware",
+        "Microsoft Accounts",
+        "Microsoft Applications",
+        "Application",
+        "Other"
     ];
 &nbsp;
-    const USERS = <span class="cstat-no" title="statement not covered" >['User A', 'User B', 'User C', 'User D'];</span> //Dynamically add system users for dropdown?
+    const USERS = <span class="cstat-no" title="statement not covered" >["User A", "User B", "User C", "User D"];</span> //Dynamically add system users for dropdown?
 &nbsp;
 &nbsp;
-    const STATUS = <span class="cstat-no" title="statement not covered" >['Open', 'In Progress', 'Resolved', 'Closed'];</span>
+    const STATUS = <span class="cstat-no" title="statement not covered" >["Open", "In Progress", "Resolved", "Closed"];</span>
 &nbsp;
     let permittedRequests = <span class="cstat-no" title="statement not covered" >[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (true) {//Support Requests</span>
-<span class="cstat-no" title="statement not covered" >        permittedRequests.push('SUPPORT');</span>
+<span class="cstat-no" title="statement not covered" >        permittedRequests.push("SUPPORT");</span>
     }
 <span class="cstat-no" title="statement not covered" >    if (true) {//Asset Requests</span>
-<span class="cstat-no" title="statement not covered" >        permittedRequests.push('ASSET');</span>
+<span class="cstat-no" title="statement not covered" >        permittedRequests.push("ASSET");</span>
     }
 <span class="cstat-no" title="statement not covered" >    if (true) {//Access Requests</span>
-<span class="cstat-no" title="statement not covered" >        permittedRequests.push('ACCESS');</span>
+<span class="cstat-no" title="statement not covered" >        permittedRequests.push("ACCESS");</span>
     }
 &nbsp;
     const handleRequestSelect = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equestType) =&gt; {</span>
@@ -591,7 +591,7 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
     const CreateSupportRequest = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 &nbsp;
         const {
-            handleClick,
+            //handleClick,
             setSupportType,
             support_description,
             setSupportDescription,
@@ -601,31 +601,31 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
 <span class="cstat-no" title="statement not covered" >            setSupportDescription(e.target.value);</span>
         };
 <span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;div className="createSupportRequestDiv"&gt;
+            &lt;div className='createSupportRequestDiv'&gt;
                 &lt;form&gt;
-                    &lt;p className="supportRequestTypeLabel"&gt;Support Type&lt;/p&gt;
+                    &lt;p className='supportRequestTypeLabel'&gt;Support Type&lt;/p&gt;
                     &lt;Dropdown
-                        className="supportRequestTypeDropdown"
+                        className='supportRequestTypeDropdown'
                         options={SUPPORTOPTIONS}
                         value={SUPPORTOPTIONS[0]}
                         onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setSupportType(selectedOption.value)}</span>
                     /&gt;
-                    &lt;p className="supportRequestDescriptionLabel"&gt;Description&lt;/p&gt;
+                    &lt;p className='supportRequestDescriptionLabel'&gt;Description&lt;/p&gt;
                     &lt;textarea
-                        className="supportRequestDescription"
+                        className='supportRequestDescription'
                         onChange={handleDescriptionChange}
                         value={support_description}/&gt;
-                    &lt;p className="supportRequestTypeLabel"&gt;Status&lt;/p&gt;
+                    &lt;p className='supportRequestTypeLabel'&gt;Status&lt;/p&gt;
                     &lt;Dropdown
-                        className="supportRequestTypeDropdown"
+                        className='supportRequestTypeDropdown'
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setSupportStatus(selectedOption.value)}</span>
                     /&gt;
-                    &lt;div className="createSupportRequestButtonDiv"&gt;
+                    &lt;div className='createSupportRequestButtonDiv'&gt;
                         &lt;button
-                            className="createSupportRequestButton"
-                            type="submit"
+                            className='createSupportRequestButton'
+                            type='submit'
                             //onClick={(e) =&gt; handleClick(e, selectedRequest)}
                         &gt;Log Request
                         &lt;/button&gt;
@@ -637,7 +637,7 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
 &nbsp;
     const CreateAccessRequest = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
         const {
-            handleClick,
+            //handleClick,
             reason,
             setReason,
             setDsId,
@@ -649,44 +649,44 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
 <span class="cstat-no" title="statement not covered" >            setReason(e.target.value);</span>
         }
 <span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;div className="createAccessRequestDiv"&gt;
+            &lt;div className='createAccessRequestDiv'&gt;
                 &lt;form&gt;
-                    &lt;p className="createAccessRequestDataScopeLabel"&gt;Data Scope&lt;/p&gt;
+                    &lt;p className='createAccessRequestDataScopeLabel'&gt;Data Scope&lt;/p&gt;
                     {datascopeData &amp;&amp; datascopeData.length &gt; 0 ? (
                         &lt;Dropdown
                             options={datascopeData.map(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; (<span class="cstat-no" title="statement not covered" >{value: data.data_scope_id, label: data.ds_name})</span>)}
                             value={datascopeData.asset_id}
-                            className="accessRequestDatascopeDropdown"
-                            name="datascopeDropdown"
-                            placeholder={"Add DataScope"}
+                            className='accessRequestDatascopeDropdown'
+                            name='datascopeDropdown'
+                            placeholder='Add DataScope'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setDsId(selectedOption.value)}</span>
                         /&gt;) : (
-                        &lt;p className="loadTitle"&gt;Loading...&lt;/p&gt;
+                        &lt;p className='loadTitle'&gt;Loading...&lt;/p&gt;
                     )}
-                    &lt;p className="createAccessRequestUserLabel"&gt;User&lt;/p&gt;
+                    &lt;p className='createAccessRequestUserLabel'&gt;User&lt;/p&gt;
                     &lt;Dropdown
-                        className="createAccessRequestUserDropdown"
+                        className='createAccessRequestUserDropdown'
                         options={USERS} //Add system users here
                         value={USERS[0]}
                         //onChange={(selectedOption) =&gt; setRequestStatus(selectedOption.value)}
                     /&gt;
-                    &lt;p className="createAccessRequestReasonLabel"&gt;Reason&lt;/p&gt;
+                    &lt;p className='createAccessRequestReasonLabel'&gt;Reason&lt;/p&gt;
                     &lt;textarea
-                        className="createAccessRequestReasonInput"
+                        className='createAccessRequestReasonInput'
                         onChange={handleReasonChange}
                         value={reason}
                     /&gt;
-                    &lt;p className="createAccessRequestStatusLabel"&gt;Status&lt;/p&gt;
+                    &lt;p className='createAccessRequestStatusLabel'&gt;Status&lt;/p&gt;
                     &lt;Dropdown
-                        className="accessRequestStatusDropdown"
+                        className='accessRequestStatusDropdown'
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setStatus(selectedOption.value)}</span>
                     /&gt;
-                    &lt;div className="createAccessRequestButtonDiv"&gt;
+                    &lt;div className='createAccessRequestButtonDiv'&gt;
                         &lt;button
-                            className="createAccessRequestButton"
-                            type="submit"
+                            className='createAccessRequestButton'
+                            type='submit'
                             //onClick={(e) =&gt; handleClick(e, selectedRequest)}
                         &gt;
                             Log Request
@@ -698,7 +698,7 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
     };
     const CreateAssetRequest = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
         const {
-            handleClick,
+            //handleClick,
             reason,
             setReason,
             setDesiredDate,
@@ -714,44 +714,44 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
 <span class="cstat-no" title="statement not covered" >            setDesiredDate(date);</span>
         };
 <span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;div className="createAssetRequestDiv"&gt;
+            &lt;div className='createAssetRequestDiv'&gt;
                 &lt;form&gt;
-                    &lt;p className="createAssetRequestDeviceNameLabel"&gt;Device&lt;/p&gt;
+                    &lt;p className='createAssetRequestDeviceNameLabel'&gt;Device&lt;/p&gt;
                     {AvailableDevices &amp;&amp; AvailableDevices.length &gt; 0 ? (
                         &lt;Dropdown
                             options={AvailableDevices.map(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; (<span class="cstat-no" title="statement not covered" >{value: data.asset_id, label: data.asset_name})</span>)}
                             value={AvailableDevices.asset_name}
-                            className="assetRequestSelectDeviceDropdown"
-                            name="assetRequestSelectDeviceDropdown"
-                            placeholder={"Add Device"}
+                            className='assetRequestSelectDeviceDropdown'
+                            name='assetRequestSelectDeviceDropdown'
+                            placeholder='Add Device'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setAvailableDevices(selectedOption.value)}</span>
                         /&gt;) : (
-                        &lt;p className="loadTitle"&gt;Loading...&lt;/p&gt;
+                        &lt;p className='loadTitle'&gt;Loading...&lt;/p&gt;
                     )}
-                    &lt;p className="createAssetRequestReasonLabel"&gt;Reason&lt;/p&gt;
+                    &lt;p className='createAssetRequestReasonLabel'&gt;Reason&lt;/p&gt;
                     &lt;textarea
-                        className="createAssetRequestReasonInput"
+                        className='createAssetRequestReasonInput'
                         onChange={handleReasonChange}
                         value={reason}
                     /&gt;
-                    &lt;p className="createAssetRequestDateLabel"&gt;Desired Date&lt;/p&gt;
+                    &lt;p className='createAssetRequestDateLabel'&gt;Desired Date&lt;/p&gt;
                     &lt;input
-                        type="date"
-                        className="createAssetRequestDateInput"
+                        type='date'
+                        className='createAssetRequestDateInput'
                         onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >handleDateChange(e.target.value)}</span>
                         required
                     /&gt;
-                    &lt;p className="createAssetRequestDeviceNameLabel"&gt;Status&lt;/p&gt;
+                    &lt;p className='createAssetRequestDeviceNameLabel'&gt;Status&lt;/p&gt;
                     &lt;Dropdown
-                        className="assetRequestSelectDeviceDropdown"
+                        className='assetRequestSelectDeviceDropdown'
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setRequestStatus(selectedOption.value)}</span>
                     /&gt;
-                    &lt;div className="createAssetRequestButtonDiv"&gt;
+                    &lt;div className='createAssetRequestButtonDiv'&gt;
                         &lt;button
-                            className="createAssetRequestButton"
-                            type="submit"
+                            className='createAssetRequestButton'
+                            type='submit'
                             //onClick={(e) =&gt; handleClick(e, selectedRequest)}
                         &gt;
                             Log Request
@@ -775,19 +775,19 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="display"&gt;
-            &lt;div className="selectRequestDiv"&gt;
-                &lt;div className="selectRequest"&gt;
-                    &lt;p className="selectRequestLabel"&gt;SELECT REQUEST CREATION&lt;/p&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='selectRequestDiv'&gt;
+                &lt;div className='selectRequest'&gt;
+                    &lt;p className='selectRequestLabel'&gt;SELECT REQUEST CREATION&lt;/p&gt;
                     &lt;Dropdown
-                        className="selectRequestDropdown"
+                        className='selectRequestDropdown'
                         options={permittedRequests}
                         value={permittedRequests[0]}
                         onChange={handleRequestSelect}
                     /&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div className="requestDiv"&gt;
+            &lt;div className='requestDiv'&gt;
                 &lt;RequestType type={selectedRequest}&gt;&lt;/RequestType&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -799,7 +799,7 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

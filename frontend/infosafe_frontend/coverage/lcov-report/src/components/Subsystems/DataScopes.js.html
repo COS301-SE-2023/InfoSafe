@@ -314,7 +314,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
 import React, {useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
@@ -328,15 +328,15 @@ export const DataScopes = <span class="cstat-no" title="statement not covered" >
         const [editDataScopeOpen, setEditDataScopeOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("data_scope_edit")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="dataScopesEditButton"&gt;
-                    &lt;RiEditBoxFill onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditDataScopeOpen(true)}</span> className="dataScopesEditIcon"/&gt;
+                &lt;div className='dataScopesEditButton'&gt;
+                    &lt;RiEditBoxFill onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditDataScopeOpen(true)}</span> className='dataScopesEditIcon'/&gt;
                     {editDataScopeOpen ? (
                         &lt;EditDataScopePopup
                             popupClose={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditDataScopeOpen(false)}</span>
                             popupOpen={editDataScopeOpen}
                             datascope={datascope}
                         /&gt;
-                    ) : null}{' '}
+                    ) : null}{" "}
                 &lt;/div&gt;
             )
         } else {
@@ -347,8 +347,8 @@ export const DataScopes = <span class="cstat-no" title="statement not covered" >
     const DeleteDataScope = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("data_scope_delete")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="dataScopesDeleteButton"&gt;
-                    &lt;RiDeleteBin6Fill className="dataScopesDeleteIcon"/&gt;
+                &lt;div className='dataScopesDeleteButton'&gt;
+                    &lt;RiDeleteBin6Fill className='dataScopesDeleteIcon'/&gt;
                 &lt;/div&gt;
 &nbsp;
             )
@@ -386,10 +386,10 @@ export const DataScopes = <span class="cstat-no" title="statement not covered" >
     const CreateDataScope = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("data_scope_create")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="CreateDataScopeDiv"&gt;
+                &lt;div className='CreateDataScopeDiv'&gt;
                     &lt;button
-                        className="CreateDataScopeButton"
-                        data-testid="dataScopeMake"
+                        className='CreateDataScopeButton'
+                        data-testid='dataScopeMake'
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setCreateDataScopeOpen(!createDataScopeOpen)}</span>
                     &gt;
                         Create Data Scope
@@ -413,21 +413,21 @@ export const DataScopes = <span class="cstat-no" title="statement not covered" >
     );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="display"&gt;
-            &lt;div className="dataScopesBackground"&gt;
-                &lt;div className="searchDataScopes"&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='dataScopesBackground'&gt;
+                &lt;div className='searchDataScopes'&gt;
                     &lt;input
-                        // data-testid="datascopesSearch"
-                        className="dataScopesSearchInput"
-                        type="text"
-                        id="dataScopesSearchInput"
-                        name="dataScopesSearch"
+                        // data-testid='datascopesSearch'
+                        className='dataScopesSearchInput'
+                        type='text'
+                        id='dataScopesSearchInput'
+                        name='dataScopesSearch'
                         // onChange={}
                     /&gt;
-                    &lt;FaSearch className="dataScopesSearchIcon" /&gt;
+                    &lt;FaSearch className='dataScopesSearchIcon' /&gt;
                 &lt;/div&gt;
-                &lt;div className="datascopes"&gt;
-                    &lt;ul className="datascopesList"&gt;{dataItems}&lt;/ul&gt;
+                &lt;div className='datascopes'&gt;
+                    &lt;ul className='datascopesList'&gt;{dataItems}&lt;/ul&gt;
                 &lt;/div&gt;
                 &lt;CreateDataScope&gt;&lt;/CreateDataScope&gt;
             &lt;/div&gt;
@@ -442,7 +442,7 @@ export const DataScopes = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

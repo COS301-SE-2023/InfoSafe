@@ -323,20 +323,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useEffect, useState} from 'react';
-import Dropdown from 'react-dropdown';
-import '../../styling/CreateUserPopup.css';
-import '../../styling/Dropdown.css'
-import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useEffect, useState} from "react";
+import Dropdown from "react-dropdown";
+import "../../styling/CreateUserPopup.css";
+import "../../styling/Dropdown.css"
+import Popup from "reactjs-popup";
+import { IoArrowBackOutline } from "react-icons/io5";
 &nbsp;
 export const CreateUserPopup = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> popupOpen, popupClose }) =&gt; {</span>
-    const[first_name,setName]=<span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[last_name,setSurname]=<span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[email,setEmail]=<span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[password,setPassword]=<span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [roleNames, setRoleNames] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [selectedRole, setSelectedRole] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+    const[first_name,setName]=<span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[last_name,setSurname]=<span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[email,setEmail]=<span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[password,setPassword]=<span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [roleNames, setRoleNames] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [selectedRole, setSelectedRole] = <span class="cstat-no" title="statement not covered" >useState("");</span>
     const handleClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
         const user = <span class="cstat-no" title="statement not covered" >{ first_name, last_name, email, password, role: { role_name: selectedRole } };</span>
@@ -346,7 +346,7 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; <span class="cstat-no" title="statement not covered" >response.json())</span>
@@ -359,7 +359,7 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                            Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
                         },
                         body: JSON.stringify(user),
                     })
@@ -384,7 +384,7 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
                 const response = <span class="cstat-no" title="statement not covered" >await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/randPass/generate", {</span>
                     method: "GET",
                     headers: {"Content-Type":"application/json",
-                        Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                        Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                     }
                 });
 &nbsp;
@@ -393,10 +393,10 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
                     const randomP = <span class="cstat-no" title="statement not covered" >data.password.toString();</span>
 <span class="cstat-no" title="statement not covered" >                    setPassword(randomP);</span>
                 } else {
-<span class="cstat-no" title="statement not covered" >                    console.error('Error fetching string from the server.');</span>
+<span class="cstat-no" title="statement not covered" >                    console.error("Error fetching string from the server.");</span>
                 }
             } catch (error) {
-<span class="cstat-no" title="statement not covered" >                console.error('Error:', error);</span>
+<span class="cstat-no" title="statement not covered" >                console.error("Error:", error);</span>
             }
         };
 <span class="cstat-no" title="statement not covered" >        fetchData();</span>
@@ -406,7 +406,7 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
 <span class="cstat-no" title="statement not covered" >            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {</span>
                 method:"GET",
                 headers:{"Content-Type":"application/json",
-                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                    Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                 },
             }).then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
             .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; {
@@ -415,36 +415,36 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
     }, [])
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position="center center"&gt;
-            &lt;div className="createUserOverlay"&gt;
-                &lt;div className="createUserBorder"&gt;
+        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position='center center'&gt;
+            &lt;div className='createUserOverlay'&gt;
+                &lt;div className='createUserBorder'&gt;
                     &lt;form&gt;
-                        &lt;button className="backButton" data-testid="backArrow" onClick={popupClose}&gt;
-                            &lt;IoArrowBackOutline className="backIcon" /&gt;
+                        &lt;button className='backButton' data-testid='backArrow' onClick={popupClose}&gt;
+                            &lt;IoArrowBackOutline className='backIcon' /&gt;
                         &lt;/button&gt;
-                        &lt;p className="createUserLabel"&gt;User Creation&lt;/p&gt;
-                        &lt;p className="nameLabel"&gt;Name&lt;/p&gt;
-                        &lt;input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={<span class="fstat-no" title="function not covered" >(e</span>)=&gt;<span class="cstat-no" title="statement not covered" >setName(e.target.value)}</span>/&gt;
-                        &lt;p className="surnameLabel"&gt;Surname&lt;/p&gt;
-                        &lt;input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={<span class="fstat-no" title="function not covered" >(e</span>)=&gt;<span class="cstat-no" title="statement not covered" >setSurname(e.target.value)}</span>/&gt;
-                        &lt;p className="emailLabel"&gt;Email&lt;/p&gt;
-                        &lt;input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={<span class="fstat-no" title="function not covered" >(e</span>)=&gt;<span class="cstat-no" title="statement not covered" >setEmail(e.target.value)}</span>/&gt;
-                        &lt;p className="passwordLabel"&gt;Password&lt;/p&gt;
-                        &lt;input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/&gt;
-                        &lt;p className="roleLabel"&gt;System role&lt;/p&gt;
+                        &lt;p className='createUserLabel'&gt;User Creation&lt;/p&gt;
+                        &lt;p className='nameLabel'&gt;Name&lt;/p&gt;
+                        &lt;input className='nameInput' data-testid='nameInput' name='name' value={first_name} onChange={<span class="fstat-no" title="function not covered" >(e</span>)=&gt;<span class="cstat-no" title="statement not covered" >setName(e.target.value)}</span>/&gt;
+                        &lt;p className='surnameLabel'&gt;Surname&lt;/p&gt;
+                        &lt;input className='surnameInput' data-testid='surnameInput' name='surname' value={last_name} onChange={<span class="fstat-no" title="function not covered" >(e</span>)=&gt;<span class="cstat-no" title="statement not covered" >setSurname(e.target.value)}</span>/&gt;
+                        &lt;p className='emailLabel'&gt;Email&lt;/p&gt;
+                        &lt;input className='emailInput' data-testid='emailInput' name='email' value={email} onChange={<span class="fstat-no" title="function not covered" >(e</span>)=&gt;<span class="cstat-no" title="statement not covered" >setEmail(e.target.value)}</span>/&gt;
+                        &lt;p className='passwordLabel'&gt;Password&lt;/p&gt;
+                        &lt;input className='passwordInput' data-testid='passwordInput' name='password' placeholder={password} readOnly/&gt;
+                        &lt;p className='roleLabel'&gt;System role&lt;/p&gt;
                         {roleNames &amp;&amp; roleNames.length &gt; 0 ? (
                             &lt;Dropdown
                                 options={roleNames.map(<span class="fstat-no" title="function not covered" >ro</span>leName =&gt; (<span class="cstat-no" title="statement not covered" >{ label: roleName, value: roleName })</span>)}
                                 values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
-                                className="role_dropdown"
-                                name="role_dropdown"
+                                className='role_dropdown'
+                                name='role_dropdown'
                                 onChange={<span class="fstat-no" title="function not covered" >va</span>lues =&gt; <span class="cstat-no" title="statement not covered" >setSelectedRole(values.value)}</span>
                             /&gt;
                         ) : (
-                            &lt;p className="loadTitle"&gt;Loading...&lt;/p&gt;
+                            &lt;p className='loadTitle'&gt;Loading...&lt;/p&gt;
                         )}
 &nbsp;
-                        &lt;button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}&gt;
+                        &lt;button className='createUserFinish' data-testid='createuser_finish'  onClick={handleClick}&gt;
                             Submit
                         &lt;/button&gt;
                     &lt;/form&gt;
@@ -460,7 +460,7 @@ export const CreateUserPopup = <span class="cstat-no" title="statement not cover
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

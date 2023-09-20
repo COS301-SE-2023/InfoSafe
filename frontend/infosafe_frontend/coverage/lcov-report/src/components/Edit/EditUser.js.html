@@ -186,7 +186,8 @@
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
 <a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -205,40 +206,41 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -309,23 +311,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from 'reactjs-popup';
-import React, {useEffect, useState} from 'react';
-import '../../styling/EditUser.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from "reactjs-popup";
+import React, {useEffect, useState} from "react";
+import "../../styling/EditUser.css";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Dropdown from "react-dropdown";
 &nbsp;
 const EditUser = ({ user, popupClose, popupOpen }) =&gt; {
     const [selectedRole, setSelectedRole] = useState(user.role.role_name)
-    const [roleNames, setRoleNames] = useState('')
+    const [roleNames, setRoleNames] = useState("")
 &nbsp;
     const [values, setValues] = useState({
-        user_id: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        password: '',
-        role: ''
+        user_id: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        role: "",
+        selectedRole: ""
     });
 &nbsp;
     useEffect(() =&gt; {
@@ -344,10 +347,10 @@ const EditUser = ({ user, popupClose, popupOpen }) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/update/' + user.user_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/update/" + user.user_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
@@ -360,7 +363,7 @@ const EditUser = ({ user, popupClose, popupOpen }) =&gt; {
         fetch("http://localhost:8080/api/role/getRoleNames", {
             method:"GET",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
         }).then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
             .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; {
@@ -368,60 +371,60 @@ const EditUser = ({ user, popupClose, popupOpen }) =&gt; {
             });
     }, [])
     return (
-        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position="center center" &gt;
-            &lt;div className="editUserOverlay" data-testid="editUserPopup"&gt;
-                &lt;div className="editUserBorder"&gt;
-                    &lt;button className="editUserBackButton" onClick={popupClose} data-testid="back-button"&gt;
-                        &lt;IoArrowBackOutline className="editUserBackIcon" /&gt;
+        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position='center center' &gt;
+            &lt;div className='editUserOverlay' data-testid='editUserPopup'&gt;
+                &lt;div className='editUserBorder'&gt;
+                    &lt;button className='editUserBackButton' onClick={popupClose} data-testid='back-button'&gt;
+                        &lt;IoArrowBackOutline className='editUserBackIcon' /&gt;
                     &lt;/button&gt;
-                    &lt;p className="editUserTitle"&gt;Edit User&lt;/p&gt;
+                    &lt;p className='editUserTitle'&gt;Edit User&lt;/p&gt;
                     &lt;form onSubmit={handleSubmit}&gt;
-                        &lt;div className="nameEdit"&gt;
-                            &lt;p className="nameTitle"&gt;Name&lt;/p&gt;
+                        &lt;div className='nameEdit'&gt;
+                            &lt;p className='nameTitle'&gt;Name&lt;/p&gt;
                             &lt;input
-                                className="editNameInput"
-                                type="text"
-                                id="editusername"
-                                name="editusername"
-                                data-testid="firstNameEdit"
+                                className='editNameInput'
+                                type='text'
+                                id='editusername'
+                                name='editusername'
+                                data-testid='firstNameEdit'
                                 defaultValue={user.first_name} onChange={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, first_name: e.target.value})}</span>
                             /&gt;
                         &lt;/div&gt;
-                        &lt;div className="surnameEdit"&gt;
-                            &lt;p className="surnameTitle"&gt;Surname&lt;/p&gt;
+                        &lt;div className='surnameEdit'&gt;
+                            &lt;p className='surnameTitle'&gt;Surname&lt;/p&gt;
                             &lt;input
-                                className="editSurnameInput"
-                                type="text"
-                                id="editusersurname"
-                                name="editusersurname"
+                                className='editSurnameInput'
+                                type='text'
+                                id='editusersurname'
+                                name='editusersurname'
                                 defaultValue={user.last_name} onChange={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, last_name: e.target.value})}</span>
                             /&gt;
                         &lt;/div&gt;
-                        &lt;div className="emailEdit"&gt;
-                            &lt;p className="emailTitle"&gt;Email&lt;/p&gt;
+                        &lt;div className='emailEdit'&gt;
+                            &lt;p className='emailTitle'&gt;Email&lt;/p&gt;
                             &lt;input
-                                className="editEmailInput"
-                                type="text"
-                                id="edituseremail"
-                                name="edituseremail"
+                                className='editEmailInput'
+                                type='text'
+                                id='edituseremail'
+                                name='edituseremail'
                                 defaultValue={user.email} onChange={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, email: e.target.value})}</span>
                             /&gt;
                         &lt;/div&gt;
-                        &lt;div className="roleEdit"&gt;
-                            &lt;p className="roleTitle"&gt;System Role&lt;/p&gt;
+                        &lt;div className='roleEdit'&gt;
+                            &lt;p className='roleTitle'&gt;System Role&lt;/p&gt;
                             {roleNames &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >roleNames.length &gt; 0 </span>? (
 <span class="branch-0 cbranch-no" title="branch not covered" >                                &lt;Dropdown</span>
                                     options={roleNames.map(<span class="fstat-no" title="function not covered" >ro</span>leName =&gt; (<span class="cstat-no" title="statement not covered" >{ label: roleName, value: roleName })</span>)}
                                     value={selectedRole}
-                                    className="role_dropdown"
-                                    name="role_dropdown"
+                                    className='role_dropdown'
+                                    name='role_dropdown'
                                     onChange={<span class="fstat-no" title="function not covered" >va</span>lues =&gt; <span class="cstat-no" title="statement not covered" >setSelectedRole(values.value)}</span>
                                 /&gt;
                             ) : (
-                                &lt;p className="loadTitle"&gt;Loading...&lt;/p&gt;
+                                &lt;p className='loadTitle'&gt;Loading...&lt;/p&gt;
                             )}
                         &lt;/div&gt;
-                        &lt;button className="FinishButton" data-testid="finish"&gt;
+                        &lt;button className='FinishButton' data-testid='finish'&gt;
                             Finish
                         &lt;/button&gt;
                     &lt;/form&gt;
@@ -439,7 +442,7 @@ export default EditUser;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

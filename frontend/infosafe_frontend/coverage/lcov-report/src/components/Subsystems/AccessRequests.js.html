@@ -301,7 +301,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from "react";
 import ViewAccessRequest from "../View/ViewAccessRequest";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
@@ -316,10 +316,10 @@ export const AccessRequests = <span class="cstat-no" title="statement not covere
         const [editAccessRequestOpen, setEditAccessRequestOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("access_requests_edit")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="accessRequestsEditButton"&gt;
+                &lt;div className='accessRequestsEditButton'&gt;
                     &lt;RiEditBoxFill
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditAccessRequestOpen(!editAccessRequestOpen)}</span>
-                        className="accessRequestsEditIcon"
+                        className='accessRequestsEditIcon'
                     /&gt;
                     {editAccessRequestOpen ? (
                         &lt;EditAccessRequest
@@ -338,7 +338,7 @@ export const AccessRequests = <span class="cstat-no" title="statement not covere
     const DeleteAccessRequest = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("access_request_delete")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;RiDeleteBin6Fill className="DeleteIcon"/&gt;
+                &lt;RiDeleteBin6Fill className='DeleteIcon'/&gt;
             )
         } else {
 <span class="cstat-no" title="statement not covered" >            return (null)</span>
@@ -371,10 +371,10 @@ export const AccessRequests = <span class="cstat-no" title="statement not covere
     const ApproveAccessRequest = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("access_requests_approve")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="ApproveAccessRequestButtonDiv"&gt;
+                &lt;div className='ApproveAccessRequestButtonDiv'&gt;
                     &lt;button
-                        className="approveAccessRequestButton"
-                        data-testid="approveAccessRequestButton"
+                        className='approveAccessRequestButton'
+                        data-testid='approveAccessRequestButton'
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setApproveAccessRequestOpen(true)}</span>
                     &gt;
                         Access Request Approval
@@ -397,21 +397,21 @@ export const AccessRequests = <span class="cstat-no" title="statement not covere
 <span class="cstat-no" title="statement not covered" >        accessRequests.push(&lt;ViewAccessRequests access={access} key={access.request_id}/&gt;)</span>
     );
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="display"&gt;
-            &lt;div className="accessRequestsBackground"&gt;
-                &lt;div className="searchAccessRequests"&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='accessRequestsBackground'&gt;
+                &lt;div className='searchAccessRequests'&gt;
                     &lt;input
-                        // data-testid="userSearch"
-                        className="accessRequestsSearchInput"
-                        type="text"
-                        id="accessRequestsSearchInput"
-                        name="accessRequestsSearch"
+                        // data-testid='userSearch'
+                        className='accessRequestsSearchInput'
+                        type='text'
+                        id='accessRequestsSearchInput'
+                        name='accessRequestsSearch'
                         // onChange={}
                     /&gt;
-                    &lt;FaSearch className="accessRequestsSearchIcon" /&gt;
+                    &lt;FaSearch className='accessRequestsSearchIcon' /&gt;
                 &lt;/div&gt;
-                &lt;div className="accessRequests"&gt;
-                    &lt;ul className="accessrequestsList"&gt;{accessRequests}&lt;/ul&gt;
+                &lt;div className='accessRequests'&gt;
+                    &lt;ul className='accessrequestsList'&gt;{accessRequests}&lt;/ul&gt;
                 &lt;/div&gt;
                 &lt;ApproveAccessRequest&gt;&lt;/ApproveAccessRequest&gt;
             &lt;/div&gt;
@@ -424,7 +424,7 @@ export const AccessRequests = <span class="cstat-no" title="statement not covere
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

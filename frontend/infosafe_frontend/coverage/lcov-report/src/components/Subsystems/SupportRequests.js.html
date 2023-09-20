@@ -370,7 +370,7 @@ export const SupportRequests = <span class="cstat-no" title="statement not cover
         const [editSupportRequestOpen, setEditSupportRequestOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("support_requests_edit")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="EditIcon"&gt;
+                &lt;div className='EditIcon'&gt;
                     &lt;FaRegEdit
 &nbsp;
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditSupportRequestOpen(!editSupportRequestOpen)}</span>
@@ -392,7 +392,7 @@ export const SupportRequests = <span class="cstat-no" title="statement not cover
     const EditMySupportRequestDiv = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span>mySupport}) =&gt; {</span>
         const [editSupportRequestOpen, setEditSupportRequestOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="EditIcon"&gt;
+                &lt;div className='EditIcon'&gt;
                     &lt;FaRegEdit
 &nbsp;
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditSupportRequestOpen(!editSupportRequestOpen)}</span>
@@ -444,7 +444,7 @@ export const SupportRequests = <span class="cstat-no" title="statement not cover
                             support={mySupport}
                         /&gt;
                     ) : null}
-                &lt;/p&gt;{' '}
+                &lt;/p&gt;{" "}
                 &lt;EditMySupportRequestDiv&gt;&lt;/EditMySupportRequestDiv&gt;
             &lt;/li&gt;
         )
@@ -461,41 +461,41 @@ export const SupportRequests = <span class="cstat-no" title="statement not cover
 &nbsp;
     const ViewSupportRequests = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt;{</span>
 <span class="cstat-no" title="statement not covered" >        return(</span>
-            &lt;div className="tables"&gt;
-                &lt;div className="active_support_requests"&gt;
-                    &lt;ul className="activeRequestsList"&gt;{active_requests}&lt;/ul&gt;
+            &lt;div className='tables'&gt;
+                &lt;div className='active_support_requests'&gt;
+                    &lt;ul className='activeRequestsList'&gt;{active_requests}&lt;/ul&gt;
                 &lt;/div&gt;
-                &lt;div className="my_support_requests"&gt;
-                    &lt;ul className="myRequestsList"&gt;{my_requests}&lt;/ul&gt;
+                &lt;div className='my_support_requests'&gt;
+                    &lt;ul className='myRequestsList'&gt;{my_requests}&lt;/ul&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         )
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return(</span>
-        &lt;div className="display"&gt;
-            &lt;div className="supportRequestsBackground"&gt;
-                &lt;div className="searchSupportRequests"&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='supportRequestsBackground'&gt;
+                &lt;div className='searchSupportRequests'&gt;
                     &lt;input
-                        // data-testid="supportRequestSearch"
-                        className="supportRequestSearchInput"
-                        type="text"
-                        id="supportRequestSearchInput"
-                        name="supportRequestSearch"
+                        // data-testid='supportRequestSearch'
+                        className='supportRequestSearchInput'
+                        type='text'
+                        id='supportRequestSearchInput'
+                        name='supportRequestSearch'
                         // onChange={}
                     /&gt;
-                    &lt;FaSearch className="supportRequestSearchIcon" /&gt;
+                    &lt;FaSearch className='supportRequestSearchIcon' /&gt;
                 &lt;/div&gt;
                 &lt;ViewSupportRequests&gt;&lt;/ViewSupportRequests&gt;
-                &lt;div className="supportRequestButtonsDiv"&gt;
+                &lt;div className='supportRequestButtonsDiv'&gt;
                     &lt;button
-                        className="viewMySupportRequestButton"
+                        className='viewMySupportRequestButton'
                         // onClick={() =&gt; setCreateDeviceOpen(!createDeviceOpen)}
                     &gt;
                         View My Support Requests
                     &lt;/button&gt;
                     &lt;button
-                        className="viewAllSupportRequestButton"
+                        className='viewAllSupportRequestButton'
                         // onClick={() =&gt; setCreateDeviceOpen(!createDeviceOpen)}
                     &gt;
                         View All Support Requests
@@ -511,7 +511,7 @@ export const SupportRequests = <span class="cstat-no" title="statement not cover
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -229,15 +229,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
-import '../../styling/EditRisk.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from "reactjs-popup";
+import React, {useState} from "react";
+import "../../styling/EditRisk.css";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Dropdown from "react-dropdown";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
-const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
+const PROBABILITY = ["Almost Certain", "Likely", "Moderate","Unlikely","Rare"];
+const IMPACT = ["Insignificant","Minor","Significant","Major","Severe"];
 export const EditRisk = ({ risk, popupClose, popupOpen }) =&gt; {
 &nbsp;
     const[values, setValues]=useState({
@@ -253,10 +253,10 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/update/' + risk.risk_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/update/" + risk.risk_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
@@ -268,39 +268,39 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) =&gt; {
 &nbsp;
     return (
         &lt;Popup open={popupOpen} closeOnDocumentClick={false}&gt;
-            &lt;div className="editRiskOverlay"&gt;
-                &lt;div className="borderEditRisk"&gt;
-                    &lt;button className="backButton" onClick={popupClose} data-testid="back-button"&gt;
-                        &lt;IoArrowBackOutline className="backIcon" /&gt;
+            &lt;div className='editRiskOverlay'&gt;
+                &lt;div className='borderEditRisk'&gt;
+                    &lt;button className='backButton' onClick={popupClose} data-testid='back-button'&gt;
+                        &lt;IoArrowBackOutline className='backIcon' /&gt;
                     &lt;/button&gt;
                     &lt;form onSubmit={handleSubmit}&gt;
-                        &lt;p className="pageTitle"&gt;Edit Risk&lt;/p&gt;
-                        &lt;p className="displayTitle"&gt;Data Scope&lt;/p&gt;
-                        &lt;p className="displayData"&gt;{risk.ds_id}&lt;/p&gt;
-                        &lt;p className="inputTitle"&gt;Probability&lt;/p&gt;
+                        &lt;p className='pageTitle'&gt;Edit Risk&lt;/p&gt;
+                        &lt;p className='displayTitle'&gt;Data Scope&lt;/p&gt;
+                        &lt;p className='displayData'&gt;{risk.ds_id}&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Probability&lt;/p&gt;
                         &lt;Dropdown
                             options={PROBABILITY}
                             value={risk.probability_rating}
-                            className="probabilityDropdown"
-                            name="probabilityDropdown"
+                            className='probabilityDropdown'
+                            name='probabilityDropdown'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, probability_rating: selectedOption.value})}</span>
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Impact&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Impact&lt;/p&gt;
                         &lt;Dropdown
                             options={IMPACT}
                             value={risk.impact_rating}
-                            className="impactDropdown"
-                            name="impactDropdown"
+                            className='impactDropdown'
+                            name='impactDropdown'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, impact_rating: selectedOption.value})}</span>
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Vulnerability/Threat&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Vulnerability/Threat&lt;/p&gt;
                         &lt;textarea
-                            className="inputTextArea"
+                            className='inputTextArea'
                             defaultValue={risk.risk_description}
                             onChange={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, risk_description: e.target.value})}</span>
                         /&gt;
                         &lt;div&gt;
-                            &lt;button className="submitButton" type="submit"&gt;
+                            &lt;button className='submitButton' type='submit'&gt;
                                 Submit
                             &lt;/button&gt;
                         &lt;/div&gt;
@@ -319,7 +319,7 @@ export default EditRisk;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:47:01.408Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
