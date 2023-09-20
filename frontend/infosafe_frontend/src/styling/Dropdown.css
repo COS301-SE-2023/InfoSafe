@@ -6,7 +6,6 @@
 .Dropdown-control {
     position: relative;
     overflow: hidden;
-    width: 50%;
     background-color: white;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -53,7 +52,7 @@
     overflow-y: auto;
     position: absolute;
     top: 100%;
-    width: 50%;
+    width: 100%;
     border-radius: 4px;
     z-index: 1000;
     -webkit-overflow-scrolling: touch;
