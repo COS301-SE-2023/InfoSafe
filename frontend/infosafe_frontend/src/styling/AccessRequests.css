@@ -93,7 +93,7 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 4vw;
+    right: 1vw;
     height: 70%;
     top: 15%;
     border-radius: 4px;
@@ -105,7 +105,6 @@
     color: #FFFFFF;
     width: 110%;
     position: relative;
-
 }
 .approveAccessRequestButton {
     background-color: #444040;
@@ -126,7 +125,7 @@
     width: 6%;
     position: absolute;
     top: 50%;
-    right: 6vw;
+    right: 2.5vw;
     margin: 0;
     background-color: transparent;
 }
