@@ -156,12 +156,13 @@ export const SupportRequests = () => {
                     />
                     <FaSearch className="supportRequestSearchIcon" />
                 </div>
+                <ViewSupportRequests></ViewSupportRequests>
                 {roles.includes("support_requests_viewAll") &&
                     <div className="changeViewBtnDiv">
                         <button className="changeViewBtn" onClick={changeView} id="changeViewBtn">Change View</button>
                     </div>
                 }
-                <ViewSupportRequests></ViewSupportRequests>
+
             </div>
         </div>
     )

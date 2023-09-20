@@ -53,6 +53,9 @@
     overflow-y: scroll;
     scrollbar-width: none;
 }
+.tables::-webkit-scrollbar{
+    display: none;
+}
 .active_support_requests {
     background-color: blue;
     width: 100%;
