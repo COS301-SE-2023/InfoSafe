@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.config;
 
+import com.fragile.infosafe.primary.service.AWSSecretService;
 import com.google.gson.Gson;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +31,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 )
 public class PersistenceSecondaryConfiguration {
 
-    private Gson gson = new Gson();
+    private final AWSSecretService awsSecretService;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean secondaryEntityManager() {
@@ -51,7 +52,7 @@ public class PersistenceSecondaryConfiguration {
 
     @Bean
     public DataSource secondaryDataSource() {
-        DeleteDBLogin login = getDeleteDBLogin();
+        RDSLogin login = awsSecretService.getRDSLogin();
         return DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
@@ -59,50 +60,6 @@ public class PersistenceSecondaryConfiguration {
                 .username(login.getUsername())
                 .password(login.getPassword())
                 .build();
-    }
-
-    private DeleteDBLogin getDeleteDBLogin() {
-
-        String secretName = "rds_login";
-        String region = "us-east-1";
-
-        // Create a Secrets Manager client
-        SecretsManagerClient client = SecretsManagerClient.builder()
-                .region(Region.of(region))
-                .credentialsProvider(new AwsCredentialsProvider() {
-                    @Override
-                    public AwsCredentials resolveCredentials() {
-                        AwsCredentials awsCredentials = new AwsCredentials() {
-                            @Override
-                            public String accessKeyId() {
-                                return System.getenv("AWS_ACCESS_KEY_ID");
-                            }
-
-                            @Override
-                            public String secretAccessKey() {
-                                return System.getenv("AWS_SECRET_ACCESS_KEY");
-                            }
-                        };
-
-                        return awsCredentials;
-                    }
-                })
-                .build();
-
-        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
-                .secretId(secretName)
-                .build();
-
-        GetSecretValueResponse getSecretValueResponse;
-
-        try {
-            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
-        } catch (Exception e) {
-            throw e;
-        }
-
-        String secret = getSecretValueResponse.secretString();
-        return gson.fromJson(secret, DeleteDBLogin.class);
     }
 
     @Bean

@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.config;
 
+import com.fragile.infosafe.primary.service.AWSSecretService;
 import com.google.gson.Gson;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +29,7 @@ import org.springframework.transaction.PlatformTransactionManager;
         transactionManagerRef = "primaryTransactionManager"
 )
 public class PersistencePrimaryConfiguration {
-    private Gson gson = new Gson();
+    private final AWSSecretService awsSecretService;
 
     @Primary
     @Bean
@@ -50,7 +51,7 @@ public class PersistencePrimaryConfiguration {
     @Primary
     @Bean
     public DataSource primaryDataSource () {
-        RDSLogin login = getRDSLogin();
+        RDSLogin login = awsSecretService.getRDSLogin();
         return DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
@@ -60,49 +61,6 @@ public class PersistencePrimaryConfiguration {
                 .build();
     }
 
-    private RDSLogin getRDSLogin() {
-
-        String secretName = "rds_login";
-        String region = "us-east-1";
-
-        // Create a Secrets Manager client
-        SecretsManagerClient client = SecretsManagerClient.builder()
-                .region(Region.of(region))
-                .credentialsProvider(new AwsCredentialsProvider() {
-                    @Override
-                    public AwsCredentials resolveCredentials() {
-                        AwsCredentials awsCredentials = new AwsCredentials() {
-                            @Override
-                            public String accessKeyId() {
-                                return System.getenv("AWS_ACCESS_KEY_ID");
-                            }
-
-                            @Override
-                            public String secretAccessKey() {
-                                return System.getenv("AWS_SECRET_ACCESS_KEY");
-                            }
-                        };
-
-                        return awsCredentials;
-                    }
-                })
-                .build();
-
-        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
-                .secretId(secretName)
-                .build();
-
-        GetSecretValueResponse getSecretValueResponse;
-
-        try {
-            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
-        } catch (Exception e) {
-            throw e;
-        }
-
-        String secret = getSecretValueResponse.secretString();
-        return gson.fromJson(secret, RDSLogin.class);
-    }
 
     @Primary
     @Bean
