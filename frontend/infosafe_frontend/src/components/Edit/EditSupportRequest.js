@@ -35,7 +35,7 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editSupportRequestPopup">
                 <div className="editSupportRequestPopupBorder">
-                    <button className="editSupportRequestBackButton" onClick={popupClose}>
+                    <button className="editSupportRequestBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="editSupportRequestBackIcon" />
                     </button>
                     <form onSubmit={handleSubmit}>
