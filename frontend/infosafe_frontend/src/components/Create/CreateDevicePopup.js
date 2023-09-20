@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import '../../styling/CreateDevicePopup.css';
-import Popup from 'reactjs-popup';
+import React, {useEffect, useState} from "react";
+import "../../styling/CreateDevicePopup.css";
+import Popup from "reactjs-popup";
 
-import {IoArrowBackOutline} from 'react-icons/io5';
+import {IoArrowBackOutline} from "react-icons/io5";
 import Dropdown from "react-dropdown";
 import Select from "react-select";
 
-const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
-const NEW_OPTIONS = ['YES', 'NO'];
-const AVAILABILITY_OPTIONS = ['YES', 'NO'];
+const STATUS_OPTIONS = ["CLEAN", "FULL", "BROKEN"];
+const NEW_OPTIONS = ["YES", "NO"];
+const AVAILABILITY_OPTIONS = ["YES", "NO"];
 export const CreateDevicePopup = ({popupOpen, popupClose}) => {
-        const current = new Date();
+        //const current = new Date();
         //const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-        const [asset_name, setAsset_name] = useState('')
-        const [asset_description, setAsset_description] = useState('')
-        const [availability, setAvailability] = useState('')
-        const [used, setUsed] = useState('')
-        const [current_assignee, setCurrent_assignee] = useState('')
-        const [previous_assignee, setPrevious_assignee] = useState('')
-        const [status, setStatus] = useState('CLEAN')
-        const [device_type, setDevice_type] = useState('')
-        const [selectedUsers, setSelectedUsers] = useState([]);
+        const [asset_name, setAsset_name] = useState("")
+        const [asset_description, setAsset_description] = useState("")
+        const [availability, setAvailability] = useState("")
+        const [used, setUsed] = useState("")
+        const [current_assignee] = useState("")
+        //const [previous_assignee, setPrevious_assignee] = useState("")
+        const [status, setStatus] = useState("CLEAN")
+        const [device_type, setDevice_type] = useState("")
+        //const [selectedUsers, setSelectedUsers] = useState([]);
         const [users, setUsers] = useState([]);
         const [selectedUsers1, setSelectedUsers1] = useState({});
         const [selectedUsers2, setSelectedUsers2] = useState({});
@@ -42,7 +42,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                    Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                 },
                 body: JSON.stringify(asset)
             }).then(() => {
@@ -54,7 +54,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
                 method: "GET",
                 headers: {
-                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                    Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                 }
             })
                 .then((res) => res.json())
@@ -94,52 +94,52 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         // });
 
         return (
-            <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-                <div className="createDeviceOverlay">
-                    <div className="createDeviceBorder">
-                        <button className="backButton" onClick={popupClose}>
-                            <IoArrowBackOutline className="backIcon"/>
+            <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
+                <div className='createDeviceOverlay'>
+                    <div className='createDeviceBorder'>
+                        <button className='backButton' onClick={popupClose}>
+                            <IoArrowBackOutline className='backIcon'/>
                         </button>
                         <form>
-                            <p className="createDeviceLabel">Add Device</p>
-                            <p className="deviceNameLabel">Device Name</p>
-                            <input className="deviceNameInput"
+                            <p className='createDeviceLabel'>Add Device</p>
+                            <p className='deviceNameLabel'>Device Name</p>
+                            <input className='deviceNameInput'
                                    value={asset_name} onChange={(e) => setAsset_name(e.target.value)}
                             />
-                            <p className="deviceTypeLabel">Device Type</p>
+                            <p className='deviceTypeLabel'>Device Type</p>
                             <input
-                                className="deviceTypeInput"
+                                className='deviceTypeInput'
                                 value={device_type} onChange={(e) => setDevice_type(e.target.value)}
                             />
-                            <p className="deviceDescriptionLabel">Device Description</p>
-                            <textarea className="deviceDescriptionInput"
+                            <p className='deviceDescriptionLabel'>Device Description</p>
+                            <textarea className='deviceDescriptionInput'
                                       value={asset_description} onChange={(e) => setAsset_description(e.target.value)}/>
-                            <p className="deviceNewLabel">New</p>
+                            <p className='deviceNewLabel'>New</p>
                             <Dropdown
                                 options={NEW_OPTIONS}
                                 value={NEW_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
-                                className="newDropdown"
-                                name="used"
+                                className='newDropdown'
+                                name='used'
                                 onChange={(selectedOption) => setUsed(selectedOption.value)}
                             />
-                            <p className="deviceAvailabilityLabel">Available</p>
+                            <p className='deviceAvailabilityLabel'>Available</p>
                             <Dropdown
                                 options={AVAILABILITY_OPTIONS}
                                 value={AVAILABILITY_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
-                                className="availableDropdown"
-                                name="availability"
+                                className='availableDropdown'
+                                name='availability'
                                 onChange={(selectedOption) => setAvailability(selectedOption.value)}
                             />
-                            <p className="deviceStatusLabel">Status</p>
+                            <p className='deviceStatusLabel'>Status</p>
                             <Dropdown
                                 options={STATUS_OPTIONS}
                                 value={STATUS_OPTIONS[0]}
-                                className="createDeviceStatusDropdown"
-                                name="status"
+                                className='createDeviceStatusDropdown'
+                                name='status'
                                 onChange={(selectedOption) => setStatus(selectedOption.value)}
                             />
                             <br/>
-                            <p className="currentCustodianLabel">Current Custodian</p>
+                            <p className='currentCustodianLabel'>Current Custodian</p>
                             {filteredUsersForDropdown1.length > 0 ? (
                                 <Select
                                     options={filteredUsersForDropdown1.map((data) => ({
@@ -147,16 +147,16 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                         label: data.email
                                     }))}
                                     value={selectedUsersArray1}
-                                    className="datascopeDropdown"
-                                    name="datascopeDropdown1"
-                                    placeholder={"Add Assignees"}
+                                    className='datascopeDropdown'
+                                    name='datascopeDropdown1'
+                                    placeholder={'Add Assignees'}
                                     onChange={(selectedOption) => handleSelect(selectedOption, 1)}
                                     isSearchable={true}
                                 />
                             ) : (
                                 <p>No available users</p>
                             )}
-                            {/*<p className="previousCustodianLabel">Previous Custodian</p>*/}
+                            {/*<p className='previousCustodianLabel'>Previous Custodian</p>*/}
                             {/*{filteredUsersForDropdown2.length > 0 ? (*/}
                             {/*    <Select*/}
                             {/*        options={filteredUsersForDropdown2.map((data) => ({*/}
@@ -164,16 +164,16 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                             {/*            label: data.email*/}
                             {/*        }))}*/}
                             {/*        value={selectedUsersArray2}*/}
-                            {/*        className="datascopeDropdown"*/}
-                            {/*        name="datascopeDropdown2"*/}
-                            {/*        placeholder={"Add Assignees"}*/}
+                            {/*        className='datascopeDropdown'*/}
+                            {/*        name='datascopeDropdown2'*/}
+                            {/*        placeholder={'Add Assignees'}*/}
                             {/*        onChange={(selectedOption) => handleSelect(selectedOption, 2)}*/}
                             {/*        isSearchable={true}*/}
                             {/*    />*/}
                             {/*) : (*/}
                             {/*    <p>No available users</p>*/}
                             {/*)}*/}
-                            <button className="createDeviceFinish" onClick={handleClick}>
+                            <button className='createDeviceFinish' onClick={handleClick}>
                                 Submit
                             </button>
                         </form>
