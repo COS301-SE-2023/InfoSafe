@@ -25,7 +25,7 @@ module.exports = {
 
   collectCoverageFrom: ['src/components/**/*.js'], // Include all JavaScript files in the 'src' directory.
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'coverage',
+  coverageDirectory: 'frontend/infosafe_frontend/coverage',
 
 
   // An array of regexp pattern strings used to skip coverage collection
