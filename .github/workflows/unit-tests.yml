@@ -11,17 +11,18 @@ jobs:
           node-version: "18"
 
       # Install required deps for action
-      - name: Install Dependencies
+      - name: Install Frontend Dependencies
         run: npm install
         working-directory: frontend/infosafe_frontend
 
       # Finally, run our tests
-      - name: run Tests
+      - name: Execute Unit Tests
         run: npm run test --coverage
         working-directory: frontend/infosafe_frontend
 
       # Codecov report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3.1.0
+        working-directory: frontend/infosafe_frontend
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
