@@ -8,19 +8,22 @@
     "fix": "eslint --fix . --ext .js",
     "frontend": "cd frontend/infosafe_frontend && npm start",
     "frontend_tests": "cd frontend/infosafe_frontend && react-scripts test",
-    "infront": "cd frontend/infosafe_frontend && npm install",
-    "eslint": "^8.45.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-react": "^7.32.2"
+    "infront": "cd frontend/infosafe_frontend && npm install"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.15.0",
     "eslint": "^8.49.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.33.1"
   },
   "dependencies": {
+    "@babel/plugin-transform-class-properties": "^7.22.5",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.11",
+    "@babel/plugin-transform-numeric-separator": "^7.22.11",
+    "@babel/plugin-transform-optional-chaining": "^7.22.15",
+    "@babel/plugin-transform-private-methods": "^7.22.5",
     "react-select": "^5.7.4"
   }
 }

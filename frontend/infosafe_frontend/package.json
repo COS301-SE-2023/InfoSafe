@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "eslint": "^8.49.0",
+    "eslint-config-react-app": "^7.0.1",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.8.8"
   }
