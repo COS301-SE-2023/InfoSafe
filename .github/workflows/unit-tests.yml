@@ -23,5 +23,7 @@ jobs:
       # Codecov report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3.1.0
+        with:
+          path: frontend/infosafe_frontend/coverage
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
