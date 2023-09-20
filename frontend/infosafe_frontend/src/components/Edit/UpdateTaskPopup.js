@@ -19,7 +19,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/task/update/' + task.task_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/update/' + task.task_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

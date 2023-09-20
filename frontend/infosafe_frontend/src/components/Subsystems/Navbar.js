@@ -74,12 +74,19 @@ const NavBar = () => {
     }, []);
     const showDiv = () => {
         showSettings(!settings);
+        if (!settings){
+            document.getElementById("userDisplay").style.right = "24%";
+            document.getElementById("avatar").style.right = "22%";
+        }else{
+            document.getElementById("userDisplay").style.right= "4%";
+            document.getElementById("avatar").style.right = "2%";
+        }
     };
 
     const displayMenu = () => {
         setMenuVisible(!menuVisible);
         if (!menuVisible) {
-            document.getElementById("tabMenu").style.display = "inline";
+            document.getElementById("tabMenu").style.display = "block";
             // document.getElementById("backdrop").style.backgroundColor = "red";
             setWidth(88);
             setLeft(12);
@@ -105,8 +112,8 @@ const NavBar = () => {
                             <p className="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
                         </div>
                         <div className="toolbarRight">
-                            <p className="userDisplay">{username}</p>
-                            <IoPersonCircleSharp className="avatar" onClick={showDiv}/>
+                            <p className="userDisplay" id="userDisplay">{username}</p>
+                            <IoPersonCircleSharp className="avatar" id="avatar" onClick={showDiv}/>
                             {settings &&
                                 <div className="settingsDiv">
                                     <p className="changeLabel" onClick={() => setChangePassOpen(true)}>Change Password</p>

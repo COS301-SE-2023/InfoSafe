@@ -29,16 +29,16 @@ const useRequestMaker = () => {
 
         switch (selectedRequest) {
             case 'Support Request':
-                apiUrl = "http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/supportrequest/addSr";
+                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/addSr";
                 requestBody = support;
                 break;
             case 'Asset Request':
-                apiUrl = "http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/assetrequest/addAr";
+                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/addAr";
                 requestBody = asset;
                 setAssetId(selectedAssetId)
                 break;
             case 'Access Request':
-                apiUrl = "http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/accessrequest/addAr";
+                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/addAr";
                 requestBody = access;
                 break;
             default:
@@ -58,7 +58,7 @@ const useRequestMaker = () => {
     };
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/asset/getAsset', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -71,7 +71,7 @@ const useRequestMaker = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/user/getId", {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -84,7 +84,7 @@ const useRequestMaker = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-3-87-39-90.compute-1.amazonaws.com:80/api/datascope/getDs', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs', {
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }

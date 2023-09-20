@@ -27,7 +27,7 @@
     padding-right: 0;
     padding-left: 10px;
     position: relative;
-    top: 40%;
+    top: 45%;
 }
 .accessRequestsSearchInput:focus{
     border: 2px solid #9E0000;
@@ -37,6 +37,7 @@
     position: absolute;
     height: 100%;
     right: 0;
+    top: 0.5vh;
     margin-right: 1%;
     padding-left: 2px;
     color: #9E0000;
@@ -123,7 +124,7 @@
     width: fit-content;
     position: relative;
     height: 30%;
-    top: 40%
+    top: 35%;
 }
 .ApproveAccessRequestButtonDiv {
     position: relative;

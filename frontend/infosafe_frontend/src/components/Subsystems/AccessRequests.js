@@ -58,7 +58,7 @@ export const AccessRequests = () => {
                             />
                         ) : null}
                     </p>
-                    <EditAccessRequestDiv></EditAccessRequestDiv>
+                    <EditAccessRequestDiv access={access}></EditAccessRequestDiv>
                     <DeleteAccessRequest></DeleteAccessRequest>
                 </li>
             );
