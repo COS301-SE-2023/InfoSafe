@@ -94,7 +94,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                                 value={datascope}
                                 className='accessRequestDatascopeDropdown'
                                 name='datascopeDropdown'
-                                placeholder={'Add DataScope'}
+                                placeholder="Add DataScope"
                                 onChange={(selectedOption) => setDataScope(selectedOption)}
                             />
                         ) : (

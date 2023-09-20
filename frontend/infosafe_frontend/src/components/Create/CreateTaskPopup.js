@@ -107,7 +107,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                             value={statusOptions.find((option) => option.value === task_status)}
                             className='datascopeDropdown'
                             name='taskStatusDropdown'
-                            placeholder={'Select Status'}
+                            placeholder="Select Status"
                             onChange={(selectedOption) => setTaskStatus(selectedOption.value)}
                         />
                         <p className='inputTitle'>Assignees</p>
@@ -117,7 +117,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                                 value={selectedUsers}
                                 className='datascopeDropdown'
                                 name='datascopeDropdown'
-                                placeholder={'Add Assignees'}
+                                placeholder="Add Assignees"
                                 onChange={handleSelect}
                                 isSearchable={true}
                                 isMulti
@@ -132,7 +132,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                                 value={datascope}
                                 className='accessRequestDatascopeDropdown'
                                 name='datascopeDropdown'
-                                placeholder={'Add DataScope'}
+                                placeholder="Add DataScope"
                                 onChange={(selectedOption) => setDataScope(selectedOption)}
                             />
                         ) : (

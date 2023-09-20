@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import '../../styling/EditSupportRequest.css';
-import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
+import React, {useState} from "react";
+import "../../styling/EditSupportRequest.css";
+import Popup from "reactjs-popup";
+import { IoArrowBackOutline } from "react-icons/io5";
 import Dropdown from "react-dropdown";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
@@ -18,10 +18,10 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/update/' + support.support_id, {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/update/" + support.support_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(()=>{
@@ -32,44 +32,44 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
     }
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-            <div className="editSupportRequestPopup">
-                <div className="editSupportRequestPopupBorder">
-                    <button className="editSupportRequestBackButton" onClick={popupClose} data-testid="back-button">
-                        <IoArrowBackOutline className="editSupportRequestBackIcon" />
+        <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
+            <div className='editSupportRequestPopup'>
+                <div className='editSupportRequestPopupBorder'>
+                    <button className='editSupportRequestBackButton' onClick={popupClose} data-testid='back-button'>
+                        <IoArrowBackOutline className='editSupportRequestBackIcon' />
                     </button>
                     <form onSubmit={handleSubmit}>
-                        <p className="editSupportRequestTitle">Edit Support Request</p>
-                        <div className="editSupportRequestTypeDiv">
-                            <p className="editSupportRequestTypeLabel">Type of Support Request</p>
-                            <p className="editSupportRequestTypeDisplay">{support.support_type}</p>
+                        <p className='editSupportRequestTitle'>Edit Support Request</p>
+                        <div className='editSupportRequestTypeDiv'>
+                            <p className='editSupportRequestTypeLabel'>Type of Support Request</p>
+                            <p className='editSupportRequestTypeDisplay'>{support.support_type}</p>
                         </div>
-                        <div className="editSupportRequestUserDiv">
-                            <p className="editSupportRequestUserLabel">User</p>
-                            <p className="editSupportRequestTypeDisplay">{support.user_id}</p>
+                        <div className='editSupportRequestUserDiv'>
+                            <p className='editSupportRequestUserLabel'>User</p>
+                            <p className='editSupportRequestTypeDisplay'>{support.user_id}</p>
                         </div>
-                        <div className="editSupportRequestDescriptionDiv">
-                            <p className="editSupportRequestDescriptionLabel">Description</p>
+                        <div className='editSupportRequestDescriptionDiv'>
+                            <p className='editSupportRequestDescriptionLabel'>Description</p>
                             <textarea
-                                className="editSupportRequestDescriptionDisplay"
+                                className='editSupportRequestDescriptionDisplay'
                                 readOnly={true}
                                 defaultValue={support.support_description}
                             ></textarea>
                         </div>
-                        <div className="editSupportRequestStatusDiv">
-                            <p className="editSupportRequestStatusLabel">Status</p>
+                        <div className='editSupportRequestStatusDiv'>
+                            <p className='editSupportRequestStatusLabel'>Status</p>
                             <Dropdown
                                 options={STATUS}
                                 value={support.support_status}
-                                className="updateSupportRequestDropdown"
-                                name="updateSupportRequestDropdown"
+                                className='updateSupportRequestDropdown'
+                                name='updateSupportRequestDropdown'
                                 onChange={(selectedOption) => setValues({...values, support_status: selectedOption.value})}
                             />
                         </div>
-                        <div className="editSupportRequestButtonsDiv">
+                        <div className='editSupportRequestButtonsDiv'>
                             <button
-                                className="updateSupportRequestStatusButton"
-                                type="submit"
+                                className='updateSupportRequestStatusButton'
+                                type='submit'
                             >
                                 Update Status
                             </button>

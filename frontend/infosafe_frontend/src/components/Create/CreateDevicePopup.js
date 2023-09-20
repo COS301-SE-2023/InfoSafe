@@ -149,7 +149,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                     value={selectedUsersArray1}
                                     className='datascopeDropdown'
                                     name='datascopeDropdown1'
-                                    placeholder={'Add Assignees'}
+                                    placeholder="Add Assignees"
                                     onChange={(selectedOption) => handleSelect(selectedOption, 1)}
                                     isSearchable={true}
                                 />

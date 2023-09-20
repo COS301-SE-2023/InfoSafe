@@ -35,12 +35,13 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     //     console.log(date_captured);
     // };
 
-    const formatDate = (date) => {
-        const year = date.getFullYear().toString().slice(-2);
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const day = ("0" + date.getDate()).slice(-2);
-        return `${year}/${month}/${day}`;
-    };
+    // const formatDate = (date) => {
+    //     const year = date.getFullYear().toString().slice(-2);
+    //     const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    //     const day = ("0" + date.getDate()).slice(-2);
+    //     return `${year}/${month}/${day}`;
+    // };
+
     const handleClick = (e) => {
         e.preventDefault();
         const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};

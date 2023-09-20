@@ -232,7 +232,7 @@ const DisplayDataCustodianRequests = () => {
                         </form>
                     </div>
                 )}
-                {selectedRequest === 'Access Request' && (
+                {selectedRequest === "Access Request" && (
                     <div className='createAccessRequestDiv'>
                         <form>
                             <p className='createAccessRequestDataScopeLabel'>Data Scope</p>
