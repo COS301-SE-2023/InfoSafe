@@ -36,7 +36,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="updateTaskOverlay">
                 <div className="borderUpdateTask">
-                    <button className="backButton" onClick={popupClose}>
+                    <button className="backButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <form>
@@ -75,3 +75,5 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default UpdateTask;
