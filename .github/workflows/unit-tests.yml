@@ -17,7 +17,7 @@ jobs:
 
       # Finally, run our tests
       - name: run Tests
-        run: npm run test
+        run: npm run test --coverage
         working-directory: frontend/infosafe_frontend
 
       # Codecov report
