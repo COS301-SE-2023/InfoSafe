@@ -19,7 +19,7 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
                     <p className="viewDeviceTypeLabel">Device Type</p>
                     <p className="viewDeviceType">{asset.device_type}</p>
                     <p className="viewDeviceDescriptionLabel">Device Description</p>
-                    <textarea className="viewDeviceDescription" readOnly={true} defaultValue={asset.asset_description}/>
+                    <textarea className="viewDeviceDescription" readOnly={'true'} defaultValue={asset.asset_description}/>
                     <p className = "viewDeviceNewLabel">New</p>
                     <p className = "viewDeviceNew">{asset.used}</p>
                     <p className = "viewDeviceAvailabilityLabel">Available</p>
