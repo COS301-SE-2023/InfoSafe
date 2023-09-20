@@ -212,11 +212,11 @@ export const Requests = () => {
     }
 
     const RequestType = ({type}) => {
-        if (type === 'SUPPORT') {
+        if (type === "SUPPORT") {
             return (<CreateSupportRequest></CreateSupportRequest>);
-        } else if (type === 'ASSET') {
+        } else if (type === "ASSET") {
             return (<CreateAssetRequest></CreateAssetRequest>);
-        } else if (type === 'ACCESS') {
+        } else if (type === "ACCESS") {
             return (<CreateAccessRequest></CreateAccessRequest>);
         } else {
             return null;

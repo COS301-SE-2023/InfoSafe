@@ -51,7 +51,7 @@ export const SupportRequests = () => {
 
     const ViewAllSupport = ({ allSupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-        if(roles.includes('support_requests_viewAll')) {
+        if(roles.includes("support_requests_viewAll")) {
             return (
                 <li key={allSupport.support_id}>
                     <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>

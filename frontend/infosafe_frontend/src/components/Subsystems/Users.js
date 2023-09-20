@@ -22,7 +22,7 @@ export const Users = () => {
             return (
                 <div>
                     <div className='usersEditButton'>
-                        <RiEditBoxFill data-testid='editButton' onClick={() => setEditUserOpen(true)} className="usersEditIcon" />
+                        <RiEditBoxFill data-testid='editButton' onClick={() => setEditUserOpen(true)} className='usersEditIcon' />
                         {editUserOpen ? (
                             <EditUser
                                 popupClose={() => setEditUserOpen(false)}
@@ -40,7 +40,7 @@ export const Users = () => {
     };
 
     const DeleteUser = () => {
-        if(roles.includes('user_delete')) {
+        if(roles.includes("user_delete")) {
             return (
                 <div className='usersDeleteButton'>
                     <RiDeleteBin6Fill className='usersDeleteIcon'/>
@@ -54,7 +54,7 @@ export const Users = () => {
 
     const ViewUserItem = ({user}) => {
         const [viewUserOpen, setViewUserOpen] = useState(false);
-        if(roles.includes('user_create') || roles.includes('user_delete') || roles.includes(('user_edit'))) {
+        if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
             return (
                 <li key={user.user_id}>
                     <p onClick={() => setViewUserOpen(!viewUserOpen)}>
@@ -77,7 +77,7 @@ export const Users = () => {
     };
 
     const CreateUser = () => {
-        if(roles.includes('user_create')) {
+        if(roles.includes("user_create")) {
             return (
                 <div className='CreateUserButtonDiv'>
                     <button

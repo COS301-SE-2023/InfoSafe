@@ -14,7 +14,7 @@ export const ComplianceMatrix = () => {
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
 
     const EditTask = () => {
-        if(roles.includes('tasks_create')) {
+        if(roles.includes("tasks_create")) {
             return (
                 <div className='UpdateTaskDiv'>
                     <button
@@ -39,7 +39,7 @@ export const ComplianceMatrix = () => {
 
     const ViewTaskItems = ({ task }) => {
         const [viewTaskOpen, setViewTaskOpen] = useState(false)
-        if(roles.includes('tasks_create') || roles.includes('tasks_edit') || roles.includes('tasks_delete') || roles.includes('tasks_approve')) {
+        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
@@ -60,7 +60,7 @@ export const ComplianceMatrix = () => {
     };
 
     const CreateTaskDiv = () => {
-        if(roles.includes('tasks_create')) {
+        if(roles.includes("tasks_create")) {
             return (
                 <div className='CreateTaskDiv'>
                     <button
@@ -83,7 +83,7 @@ export const ComplianceMatrix = () => {
     }
 
     const ApproveTask = () => {
-        if(roles.includes('tasks_approve')) {
+        if(roles.includes("tasks_approve")) {
             return (
                 <div className='ApproveTaskDiv'>
                     <button

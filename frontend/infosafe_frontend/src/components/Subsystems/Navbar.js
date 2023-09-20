@@ -118,7 +118,7 @@ const NavBar = () => {
                                 <div className='settingsDiv'>
                                     <p className='changeLabel' onClick={() => setChangePassOpen(true)}>Change Password</p>
                                     <p className='logoutLabel' onClick={() => {
-                                        sessionStorage.removeItem('accessToken');
+                                        sessionStorage.removeItem("accessToken");
                                         window.location.href = "/";
                                     }}>Logout</p>
                                     {changePassOpen ? (

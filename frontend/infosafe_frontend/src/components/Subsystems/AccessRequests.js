@@ -35,7 +35,7 @@ export const AccessRequests = () => {
     }
 
     const DeleteAccessRequest = () => {
-        if(roles.includes('access_request_delete')) {
+        if(roles.includes("access_request_delete")) {
             return (
                 <RiDeleteBin6Fill className='DeleteIcon'/>
             )
@@ -45,7 +45,7 @@ export const AccessRequests = () => {
     }
     const ViewAccessRequests = ({access}) => {
         const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
-        if(roles.includes('access_requests_edit') || roles.includes('access_requests_approve')) {
+        if(roles.includes("access_requests_edit") || roles.includes("access_requests_approve")) {
             return (
                 <li key={access.request_id}>
                     <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
@@ -68,7 +68,7 @@ export const AccessRequests = () => {
     };
 
     const ApproveAccessRequest = () => {
-        if(roles.includes('access_requests_approve')) {
+        if(roles.includes("access_requests_approve")) {
             return (
                 <div className='ApproveAccessRequestButtonDiv'>
                     <button

@@ -35,7 +35,7 @@ export const AssetRequest = () => {
 
     const ViewAssetRequests = ({ assetRequest }) => {
         const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false);
-        if(roles.includes('asset_request_review')) {
+        if(roles.includes("asset_request_review")) {
             return (
                 <li key={assetRequest.asset_request_id}>
                     <p onClick={() => setViewAssetRequestOpen(!viewAssetRequestOpen)}>

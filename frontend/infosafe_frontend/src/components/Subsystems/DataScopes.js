@@ -32,7 +32,7 @@ export const DataScopes = () => {
     }
 
     const DeleteDataScope = () => {
-        if(roles.includes('data_scope_delete')) {
+        if(roles.includes("data_scope_delete")) {
             return (
                 <div className='dataScopesDeleteButton'>
                     <RiDeleteBin6Fill className='dataScopesDeleteIcon'/>
@@ -47,7 +47,7 @@ export const DataScopes = () => {
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-        if (roles.includes ('data_scope_create') || roles.includes ('data_scope_edit') || roles.includes ('data_scope_delete')) {
+        if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete")) {
             return (
                 <li key={datascope.id}>
                     <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
@@ -71,7 +71,7 @@ export const DataScopes = () => {
     };
 
     const CreateDataScope = () => {
-        if(roles.includes('data_scope_create')) {
+        if(roles.includes("data_scope_create")) {
             return (
                 <div className='CreateDataScopeDiv'>
                     <button

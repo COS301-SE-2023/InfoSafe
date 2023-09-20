@@ -33,7 +33,7 @@ export const Devices = () => {
 
     const ViewDeviceItem = ({ asset }) => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
-        if(roles.includes('devices_create') || roles.includes('devices_edit') || roles.includes('devices_delete')) {
+        if(roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {
             return (
                 <li key={asset.id}>
                     <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
@@ -55,7 +55,7 @@ export const Devices = () => {
     };
 
     const CreateDevice = () => {
-        if(roles.includes('devices_create')) {
+        if(roles.includes("devices_create")) {
             return (
                 <div className='AddDeviceDiv'>
                     <button
