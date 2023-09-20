@@ -17,12 +17,11 @@ jobs:
 
       # Finally, run our tests
       - name: Execute Unit Tests
-        run: npm run test --coverage
+        run: npm run test
         working-directory: frontend/infosafe_frontend
 
       # Codecov report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3.1.0
-        working-directory: frontend/infosafe_frontend
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
