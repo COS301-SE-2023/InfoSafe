@@ -36,7 +36,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editAccessRequestPopup">
                 <div className="editAccessRequestPopupBorder">
-                    <button className="editAccessRequestBackButton" onClick={popupClose}>
+                    <button className="editAccessRequestBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="editAccessRequestBackIcon" />
                     </button>
                     <form onSubmit={handleSubmit}>

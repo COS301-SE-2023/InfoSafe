@@ -39,7 +39,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="editRiskOverlay">
                 <div className="borderEditRisk">
-                    <button className="backButton" onClick={popupClose}>
+                    <button className="backButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <form onSubmit={handleSubmit}>
@@ -79,3 +79,5 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default EditRisk;

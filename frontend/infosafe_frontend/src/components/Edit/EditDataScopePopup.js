@@ -5,7 +5,6 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 import Dropdown from 'react-dropdown';
-import data from "bootstrap/js/src/dom/data";
 const STATUS = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
 
 
@@ -40,7 +39,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
             <div className="editDataScopeOverlay">
                 <div className="editdatascopeBorder">
                     <form onSubmit={handleSubmit}>
-                        <button className="backButton" onClick={popupClose}>
+                        <button className="backButton" onClick={popupClose} data-testid="back-button">
                             <IoArrowBackOutline className="backIcon" />
                         </button>
                         <p className="editDatascopeLabel">Edit Data Scope</p>
@@ -72,3 +71,5 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
         </Popup>
     );
 };
+
+export default EditDataScopePopup;
