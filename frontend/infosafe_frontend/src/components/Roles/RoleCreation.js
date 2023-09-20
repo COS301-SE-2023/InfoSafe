@@ -730,7 +730,7 @@ const RoleCreation = () => {
                                     </div>
                                     <div className='permissionsDiv' style={{ display: displayPermission[index] ? "flex" : "none" }}>
                                         {(() => {
-                                            if (subsystem === 'Users') {
+                                            if (subsystem === "Users") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayCreateDiv'>
@@ -768,7 +768,7 @@ const RoleCreation = () => {
                                                         </div>
                                                     </div>
                                                 );
-                                            } else if (subsystem === 'Data Scopes') {
+                                            } else if (subsystem === "Data Scopes") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayCreateDiv'>
@@ -807,7 +807,7 @@ const RoleCreation = () => {
                                                     </div>
                                                 );
                                             }
-                                            else if (subsystem === 'Access Requests') {
+                                            else if (subsystem === "Access Requests") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayEditDiv'>
@@ -834,7 +834,7 @@ const RoleCreation = () => {
                                                         </div>
                                                     </div>
                                                 );
-                                            }else if (subsystem === 'Compliance Matrix') {
+                                            }else if (subsystem === "Compliance Matrix") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayCreateDiv'>
@@ -883,7 +883,7 @@ const RoleCreation = () => {
                                                         </div>
                                                     </div>
                                                 );
-                                            }else if (subsystem === 'Devices') {
+                                            }else if (subsystem === "Devices") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayCreateDiv'>
@@ -922,7 +922,7 @@ const RoleCreation = () => {
                                                     </div>
                                                 );
                                             }
-                                            else if (subsystem === 'Support Requests') {
+                                            else if (subsystem === "Support Requests") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayViewAllDiv'>
@@ -976,7 +976,7 @@ const RoleCreation = () => {
                                                         </div>
                                                     </div>
                                                 );
-                                            }else if (subsystem === 'Risks') {
+                                            }else if (subsystem === "Risks") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayCreateDiv'>
@@ -1026,7 +1026,7 @@ const RoleCreation = () => {
                                                     </div>
                                                 );
                                             }
-                                            else if (subsystem === 'Requests') {
+                                            else if (subsystem === "Requests") {
                                                 return (
                                                     <div className='displayPermissionsDiv' >
                                                         <div className='displayCreateDiv'>
