@@ -19,6 +19,7 @@ public class AssetService {
 
     public Asset updateAsset(Asset asset) {return assetRepository.save(asset);}
 
+
     public ResponseEntity<String> makeAsset(AssetRequest request){
         var asset = Asset.builder()
                 .asset_name(request.getAsset_name())
@@ -26,7 +27,6 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .current_assignee(request.getCurrent_assignee())
-                .previous_assignee(request.getPrevious_assignee())
                 .device_type(request.getDevice_type())
                 .build();
         assetRepository.save(asset);

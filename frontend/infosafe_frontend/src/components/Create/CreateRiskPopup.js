@@ -30,7 +30,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
         e.preventDefault();
         const risk = {impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation, dataScope_id: datascope.value,};
         console.log(risk);
-        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/addRisk", {
+        fetch("http://localhost:8080/api/risk/addRisk", {
             method:"POST",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

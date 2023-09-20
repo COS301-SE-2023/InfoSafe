@@ -22,7 +22,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/update/' + risk.risk_id, {
+        fetch('http://localhost:8080/api/risk/update/' + risk.risk_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

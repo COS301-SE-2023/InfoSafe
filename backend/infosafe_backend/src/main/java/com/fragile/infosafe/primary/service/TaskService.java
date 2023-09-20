@@ -42,9 +42,7 @@ public class TaskService {
             if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
                 DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
                 log.info("This is the datascope " + dataScope);
-                if (dataScope != null) {
-                    task.setDataScope(dataScope);
-                }
+                task.setDataScope(dataScope);
             }
             if (!request.getUsers_email().isEmpty()) {
                 Set<User> users = new HashSet<>();

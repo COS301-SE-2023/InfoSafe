@@ -21,9 +21,9 @@ public class Asset {
     private String status;
     private String availability;
     private String used;
+    @Column(nullable = true)
     private String current_assignee;
     @Column(nullable = true)
     private String previous_assignee;
     private String device_type;
-
 }

@@ -11,16 +11,13 @@ const NEW_OPTIONS = ['YES', 'NO'];
 const AVAILABILITY_OPTIONS = ['YES', 'NO'];
 export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         const current = new Date();
-        //const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
         const [asset_name, setAsset_name] = useState('')
         const [asset_description, setAsset_description] = useState('')
         const [availability, setAvailability] = useState('')
         const [used, setUsed] = useState('')
         const [current_assignee, setCurrent_assignee] = useState('')
-        const [previous_assignee, setPrevious_assignee] = useState('')
         const [status, setStatus] = useState('CLEAN')
         const [device_type, setDevice_type] = useState('')
-        const [selectedUsers, setSelectedUsers] = useState([]);
         const [users, setUsers] = useState([]);
         const [selectedUsers1, setSelectedUsers1] = useState({});
         const [selectedUsers2, setSelectedUsers2] = useState({});
@@ -31,14 +28,13 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                 asset_name,
                 asset_description,
                 current_assignee,
-                // previous_assignee,
                 status,
                 used,
                 availability,
                 device_type
             }
             console.log(asset)
-            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/addAsset", {
+            fetch("http://localhost:8080/api/asset/addAsset", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -51,7 +47,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             popupClose()
         }
         useEffect(() => {
-            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
+            fetch("http://localhost:8080//api/user/getAll", {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -87,11 +83,6 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             const userIdsInDropdown2 = selectedUsersArray2.map((selectedUser) => selectedUser.value);
             return !userIdsInDropdown2.includes(user.user_id);
         });
-
-        // const filteredUsersForDropdown2 = users.filter((user) => {
-        //     const userIdsInDropdown1 = selectedUsersArray1.map((selectedUser) => selectedUser.value);
-        //     return !userIdsInDropdown1.includes(user.user_id);
-        // });
 
         return (
             <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -156,23 +147,6 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                             ) : (
                                 <p>No available users</p>
                             )}
-                            {/*<p className="previousCustodianLabel">Previous Custodian</p>*/}
-                            {/*{filteredUsersForDropdown2.length > 0 ? (*/}
-                            {/*    <Select*/}
-                            {/*        options={filteredUsersForDropdown2.map((data) => ({*/}
-                            {/*            value: data.user_id,*/}
-                            {/*            label: data.email*/}
-                            {/*        }))}*/}
-                            {/*        value={selectedUsersArray2}*/}
-                            {/*        className="datascopeDropdown"*/}
-                            {/*        name="datascopeDropdown2"*/}
-                            {/*        placeholder={"Add Assignees"}*/}
-                            {/*        onChange={(selectedOption) => handleSelect(selectedOption, 2)}*/}
-                            {/*        isSearchable={true}*/}
-                            {/*    />*/}
-                            {/*) : (*/}
-                            {/*    <p>No available users</p>*/}
-                            {/*)}*/}
                             <button className="createDeviceFinish" onClick={handleClick}>
                                 Submit
                             </button>

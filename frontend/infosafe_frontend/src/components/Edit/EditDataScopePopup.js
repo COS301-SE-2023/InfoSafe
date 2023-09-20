@@ -22,7 +22,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
