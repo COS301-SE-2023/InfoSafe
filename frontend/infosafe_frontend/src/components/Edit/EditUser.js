@@ -60,7 +60,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
             <div className="editUserOverlay" data-testid="editUserPopup">
                 <div className="editUserBorder">
-                    <button className="editUserBackButton" onClick={popupClose}>
+                    <button className="editUserBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="editUserBackIcon" />
                     </button>
                     <p className="editUserTitle">Edit User</p>
