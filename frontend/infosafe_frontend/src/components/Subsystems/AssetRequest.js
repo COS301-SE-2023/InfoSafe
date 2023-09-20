@@ -11,10 +11,10 @@ export const AssetRequest = () => {
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
             return (
-                <div className="reviewAssetRequestDiv">
+                <div className='reviewAssetRequestDiv'>
                     <button
                         onClick={() => setAssetRequestOpen(true)}
-                        className="reviewAssetRequestButton"
+                        className='reviewAssetRequestButton'
                     >
                         Review
                     </button>
@@ -35,7 +35,7 @@ export const AssetRequest = () => {
 
     const ViewAssetRequests = ({ assetRequest }) => {
         const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false);
-        if(roles.includes("asset_request_review")) {
+        if(roles.includes('asset_request_review')) {
             return (
                 <li key={assetRequest.asset_request_id}>
                     <p onClick={() => setViewAssetRequestOpen(!viewAssetRequestOpen)}>
@@ -62,21 +62,21 @@ export const AssetRequest = () => {
         assetRequests.push(<ViewAssetRequests assetRequest={assetRequest} key={assetRequest.asset_request_id}/>)
     );
     return (
-        <div className="display">
-            <div className="assetRequestsBackground">
-                <div className="searchAssetRequests">
+        <div className='display'>
+            <div className='assetRequestsBackground'>
+                <div className='searchAssetRequests'>
                     <input
-                        // data-testid="assetRequestSearch"
-                        className="assetRequestSearchInput"
-                        type="text"
-                        id="assetRequestSearchInput"
-                        name="assetRequestSearch"
+                        // data-testid='assetRequestSearch'
+                        className='assetRequestSearchInput'
+                        type='text'
+                        id='assetRequestSearchInput'
+                        name='assetRequestSearch'
                         // onChange={}
                     />
-                    <FaSearch className="deviceSearchIcon" />
+                    <FaSearch className='deviceSearchIcon' />
                 </div>
-                <div className="assetRequests">
-                    <ul className="assetRequestsList">{assetRequests}</ul>
+                <div className='assetRequests'>
+                    <ul className='assetRequestsList'>{assetRequests}</ul>
                 </div>
             </div>
 

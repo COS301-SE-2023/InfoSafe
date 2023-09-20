@@ -14,11 +14,11 @@ export const ComplianceMatrix = () => {
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
 
     const EditTask = () => {
-        if(roles.includes("tasks_create")) {
+        if(roles.includes('tasks_create')) {
             return (
-                <div className="UpdateTaskDiv">
+                <div className='UpdateTaskDiv'>
                     <button
-                        className="UpdateTaskButton"
+                        className='UpdateTaskButton'
                         onClick={() => setUpdateTaskOpen(true)}
                     >
                         Update Task
@@ -39,7 +39,7 @@ export const ComplianceMatrix = () => {
 
     const ViewTaskItems = ({ task }) => {
         const [viewTaskOpen, setViewTaskOpen] = useState(false)
-        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
+        if(roles.includes('tasks_create') || roles.includes('tasks_edit') || roles.includes('tasks_delete') || roles.includes('tasks_approve')) {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
@@ -60,11 +60,11 @@ export const ComplianceMatrix = () => {
     };
 
     const CreateTaskDiv = () => {
-        if(roles.includes("tasks_create")) {
+        if(roles.includes('tasks_create')) {
             return (
-                <div className="CreateTaskDiv">
+                <div className='CreateTaskDiv'>
                     <button
-                        className="CreateTaskButton"
+                        className='CreateTaskButton'
                         onClick={() => setCreateTaskOpen(true)}
                     >
                         Create New Task
@@ -83,11 +83,11 @@ export const ComplianceMatrix = () => {
     }
 
     const ApproveTask = () => {
-        if(roles.includes("tasks_approve")) {
+        if(roles.includes('tasks_approve')) {
             return (
-                <div className="ApproveTaskDiv">
+                <div className='ApproveTaskDiv'>
                     <button
-                        className="ApproveTaskButton"
+                        className='ApproveTaskButton'
                         onClick={() => setApproveTaskOpen(true)}
                     >
                         Task Approval
@@ -112,23 +112,23 @@ export const ComplianceMatrix = () => {
     );
 
     return(
-        <div className="display">
-            <div className="complianceMatrixBackground">
-                <div className="searchTasks">
+        <div className='display'>
+            <div className='complianceMatrixBackground'>
+                <div className='searchTasks'>
                     <input
-                        // data-testid="userSearch"
-                        className="taskSearchInput"
-                        type="text"
-                        id="taskSearchInput"
-                        name="taskSearch"
+                        // data-testid='userSearch'
+                        className='taskSearchInput'
+                        type='text'
+                        id='taskSearchInput'
+                        name='taskSearch'
                         // onChange={}
                     />
-                    <FaSearch className="userSearchIcon" />
+                    <FaSearch className='userSearchIcon' />
                 </div>
-                <div className="tasks">
-                    <ul className="taskList">{complianceItems}</ul>
+                <div className='tasks'>
+                    <ul className='taskList'>{complianceItems}</ul>
                 </div>
-                <div className="buttons">
+                <div className='buttons'>
                     <CreateTaskDiv></CreateTaskDiv>
                     <EditTask></EditTask>
                     <ApproveTask></ApproveTask>

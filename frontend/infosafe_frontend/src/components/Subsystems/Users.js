@@ -1,12 +1,12 @@
 import {CreateUserPopup} from "../Create/CreateUserPopup";
 import React, {useState} from "react";
 import ViewUser from "../View/ViewUser";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import EditUser from "../Edit/EditUser";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
-import '../../styling/Users.css';
-import '../../styling/Dropdown.css';
+import "../../styling/Users.css";
+import "../../styling/Dropdown.css";
 
 export const Users = () => {
     const {
@@ -21,15 +21,15 @@ export const Users = () => {
         if(roles.includes("user_edit")) {
             return (
                 <div>
-                    <div className="usersEditButton">
-                        <RiEditBoxFill data-testid="editButton" onClick={() => setEditUserOpen(true)} className="usersEditIcon" />
+                    <div className='usersEditButton'>
+                        <RiEditBoxFill data-testid='editButton' onClick={() => setEditUserOpen(true)} className="usersEditIcon" />
                         {editUserOpen ? (
                             <EditUser
                                 popupClose={() => setEditUserOpen(false)}
                                 popupOpen={editUserOpen}
                                 user={user}
                             />
-                        ) : null}{' '}
+                        ) : null}{" "}
                     </div>
 
                 </div>
@@ -40,10 +40,10 @@ export const Users = () => {
     };
 
     const DeleteUser = () => {
-        if(roles.includes("user_delete")) {
+        if(roles.includes('user_delete')) {
             return (
-                <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon"/>
+                <div className='usersDeleteButton'>
+                    <RiDeleteBin6Fill className='usersDeleteIcon'/>
                 </div>
 
             )
@@ -54,7 +54,7 @@ export const Users = () => {
 
     const ViewUserItem = ({user}) => {
         const [viewUserOpen, setViewUserOpen] = useState(false);
-        if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
+        if(roles.includes('user_create') || roles.includes('user_delete') || roles.includes(('user_edit'))) {
             return (
                 <li key={user.user_id}>
                     <p onClick={() => setViewUserOpen(!viewUserOpen)}>
@@ -77,12 +77,12 @@ export const Users = () => {
     };
 
     const CreateUser = () => {
-        if(roles.includes("user_create")) {
+        if(roles.includes('user_create')) {
             return (
-                <div className="CreateUserButtonDiv">
+                <div className='CreateUserButtonDiv'>
                     <button
-                        className="CreateUserButton"
-                        data-testid="CreateUserButton"
+                        className='CreateUserButton'
+                        data-testid='CreateUserButton'
                         onClick={() => setCreateUserOpen(true)}
                     >
                         Create New User
@@ -104,21 +104,21 @@ export const Users = () => {
     showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
 
     return (
-        <div className="display">
-            <div className="usersBackground">
-                <div className="searchUsers">
+        <div className='display'>
+            <div className='usersBackground'>
+                <div className='searchUsers'>
                     <input
-                        // data-testid="userSearch"
-                        className="userSearchInput"
-                        type="text"
-                        id="userSearchInput"
-                        name="userSearch"
+                        // data-testid='userSearch'
+                        className='userSearchInput'
+                        type='text'
+                        id='userSearchInput'
+                        name='userSearch'
                         // onChange={}
                     />
-                    <FaSearch className="userSearchIcon" />
+                    <FaSearch className='userSearchIcon' />
                 </div>
-                <div className="users">
-                    <ul className="userList">{userItems}</ul>
+                <div className='users'>
+                    <ul className='userList'>{userItems}</ul>
                 </div>
                 <CreateUser></CreateUser>
             </div>

@@ -33,39 +33,39 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     }
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-            <div className="editAccessRequestPopup">
-                <div className="editAccessRequestPopupBorder">
-                    <button className="editAccessRequestBackButton" onClick={popupClose} data-testid="back-button">
-                        <IoArrowBackOutline className="editAccessRequestBackIcon" />
+        <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
+            <div className='editAccessRequestPopup'>
+                <div className='editAccessRequestPopupBorder'>
+                    <button className='editAccessRequestBackButton' onClick={popupClose} data-testid='back-button'>
+                        <IoArrowBackOutline className='editAccessRequestBackIcon' />
                     </button>
                     <form onSubmit={handleSubmit}>
-                        <p className="editAccessRequestTitle">Edit Access Request</p>
-                        <div className="editAccessRequestDatascopeDiv">
-                            <p className="editAccessRequestDatascopeLabel">Data Scope</p>
-                            <p className="editAccessRequestDatascopeNameDisplay">{access.ds_id}</p>
+                        <p className='editAccessRequestTitle'>Edit Access Request</p>
+                        <div className='editAccessRequestDatascopeDiv'>
+                            <p className='editAccessRequestDatascopeLabel'>Data Scope</p>
+                            <p className='editAccessRequestDatascopeNameDisplay'>{access.ds_id}</p>
                         </div>
-                        <div className="editAccessRequestRoleDiv">
-                            <p className="editAccessRequestRoleLabel">Role</p>
-                            <p className="editAccessRequestRoleDisplay">ISO</p>
+                        <div className='editAccessRequestRoleDiv'>
+                            <p className='editAccessRequestRoleLabel'>Role</p>
+                            <p className='editAccessRequestRoleDisplay'>ISO</p>
                         </div>
-                        <div className="editAccessRequestReasonDiv">
-                            <p className="editAccessRequestReasonLabel">Reason</p>
+                        <div className='editAccessRequestReasonDiv'>
+                            <p className='editAccessRequestReasonLabel'>Reason</p>
                             <textarea
                                 readOnly={false}
-                                className="editAccessRequestReasonDisplay"
+                                className='editAccessRequestReasonDisplay'
                                 defaultValue={access.reason}
                                 onChange={e => setValues({...values, reason: e.target.value})}
                             ></textarea>
                         </div>
-                        <div className="editAccessRequestStatusDiv">
-                            <p className="editAccessRequestStatusLabel">Status</p>
-                            <p className="editAccessRequestStatusDisplay">{access.status}</p>
+                        <div className='editAccessRequestStatusDiv'>
+                            <p className='editAccessRequestStatusLabel'>Status</p>
+                            <p className='editAccessRequestStatusDisplay'>{access.status}</p>
                         </div>
-                        <div className="editAccessRequestButtonsDiv">
+                        <div className='editAccessRequestButtonsDiv'>
                             <button
-                                className="editAccessRequestButton"
-                                type="submit"
+                                className='editAccessRequestButton'
+                                type='submit'
                             >
                                 Submit
                             </button>

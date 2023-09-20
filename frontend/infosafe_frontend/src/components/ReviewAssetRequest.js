@@ -25,8 +25,8 @@ const ReviewAssetRequest = ({asset, popupOpen, popupClose}) => {
                     <p className='reviewAssetRequestStatusLabel'>Status</p>
                     <p className='reviewAssetRequestStatus'>Logged</p>
                     <div className='reviewAssetRequestButtonsDiv'>
-                        <button className='reviewAssetRequestApproveButton' onClick={() => console.log('Asset Request Accepted')}>Accept</button>
-                        <button className='reviewAssetRequestRejectButton' onClick={() => console.log('Asset Request Rejected')}>Reject</button>
+                        <button className='reviewAssetRequestApproveButton' onClick={() => console.log("Asset Request Accepted")}>Accept</button>
+                        <button className='reviewAssetRequestRejectButton' onClick={() => console.log("Asset Request Rejected")}>Reject</button>
                     </div>
                 </div>
             </div>
