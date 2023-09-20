@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ViewAccessRequest from "../View/ViewAccessRequest";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
@@ -15,10 +15,10 @@ export const AccessRequests = () => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
         if(roles.includes("access_requests_edit")) {
             return (
-                <div className="accessRequestsEditButton">
+                <div className='accessRequestsEditButton'>
                     <RiEditBoxFill
                         onClick={() => setEditAccessRequestOpen(!editAccessRequestOpen)}
-                        className="accessRequestsEditIcon"
+                        className='accessRequestsEditIcon'
                     />
                     {editAccessRequestOpen ? (
                         <EditAccessRequest
@@ -37,7 +37,7 @@ export const AccessRequests = () => {
     const DeleteAccessRequest = () => {
         if(roles.includes("access_request_delete")) {
             return (
-                <RiDeleteBin6Fill className="DeleteIcon"/>
+                <RiDeleteBin6Fill className='DeleteIcon'/>
             )
         } else {
             return (null)
@@ -70,10 +70,10 @@ export const AccessRequests = () => {
     const ApproveAccessRequest = () => {
         if(roles.includes("access_requests_approve")) {
             return (
-                <div className="ApproveAccessRequestButtonDiv">
+                <div className='ApproveAccessRequestButtonDiv'>
                     <button
-                        className="approveAccessRequestButton"
-                        data-testid="approveAccessRequestButton"
+                        className='approveAccessRequestButton'
+                        data-testid='approveAccessRequestButton'
                         onClick={() => setApproveAccessRequestOpen(true)}
                     >
                         Access Request Approval
@@ -96,21 +96,21 @@ export const AccessRequests = () => {
         accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
     );
     return (
-        <div className="display">
-            <div className="accessRequestsBackground">
-                <div className="searchAccessRequests">
+        <div className='display'>
+            <div className='accessRequestsBackground'>
+                <div className='searchAccessRequests'>
                     <input
-                        // data-testid="userSearch"
-                        className="accessRequestsSearchInput"
-                        type="text"
-                        id="accessRequestsSearchInput"
-                        name="accessRequestsSearch"
+                        // data-testid='userSearch'
+                        className='accessRequestsSearchInput'
+                        type='text'
+                        id='accessRequestsSearchInput'
+                        name='accessRequestsSearch'
                         // onChange={}
                     />
-                    <FaSearch className="accessRequestsSearchIcon" />
+                    <FaSearch className='accessRequestsSearchIcon' />
                 </div>
-                <div className="accessRequests">
-                    <ul className="accessrequestsList">{accessRequests}</ul>
+                <div className='accessRequests'>
+                    <ul className='accessrequestsList'>{accessRequests}</ul>
                 </div>
                 <ApproveAccessRequest></ApproveAccessRequest>
             </div>

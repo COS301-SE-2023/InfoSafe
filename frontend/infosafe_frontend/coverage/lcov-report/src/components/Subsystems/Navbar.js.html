@@ -383,8 +383,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import '../../styling/NavBar.css';
-import React, {useEffect, useState} from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../../styling/NavBar.css";
+import React, {useEffect, useState} from "react";
 import {TabView} from "./TabView";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {IoMenu, IoPersonCircleSharp} from "react-icons/io5";
@@ -394,7 +394,7 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
     const [activeTab, setActive] = <span class="cstat-no" title="statement not covered" >useState(0);</span>
     let tabItems = <span class="cstat-no" title="statement not covered" >[];</span>
     const {roles} = <span class="cstat-no" title="statement not covered" >AccessAndDisplay();</span>
-    const TabNames = <span class="cstat-no" title="statement not covered" >['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];</span>
+    const TabNames = <span class="cstat-no" title="statement not covered" >["Home", "Role Creation", "Users", "Data Scopes", "Access Requests", "Compliance Matrix", "Devices", "Support Requests", "Risks", "Requests", "Asset Requests"];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    tabItems.push(0);</span>
 &nbsp;
@@ -436,20 +436,20 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
 &nbsp;
     const [menuVisible, setMenuVisible] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (sessionStorage.getItem('accessToken') == null) {</span>
+<span class="cstat-no" title="statement not covered" >    if (sessionStorage.getItem("accessToken") == null) {</span>
 <span class="cstat-no" title="statement not covered" >        window.location.href = "/";</span>
     }
     const [settings, showSettings] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
     const [changePassOpen, setChangePassOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-    const [username, setUserName] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+    const [username, setUserName] = <span class="cstat-no" title="statement not covered" >useState("");</span>
     const [width , setWidth] = <span class="cstat-no" title="statement not covered" >useState(100);</span>
     const [left,setLeft] = <span class="cstat-no" title="statement not covered" >useState(0);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://localhost:8080/api/user/getUserName', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/user/getUserName", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -485,25 +485,25 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
 &nbsp;
     const displayPage = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;div className="navbar"&gt;
-                &lt;div className="tabMenu" id="tabMenu"&gt;
+            &lt;div className='navbar'&gt;
+                &lt;div className='tabMenu' id='tabMenu'&gt;
                     {displayTabs({viewTabs: tabItems})}
                 &lt;/div&gt;
 &nbsp;
                 &lt;div className='shift' style={{ width: `${width}%`,left: `${left}%`}}&gt;
-                    &lt;div className="toolbar" id="toolbar" style={{width: `${width}%`}}&gt;
-                        &lt;div className="toolbarLeft"&gt;
-                            &lt;IoMenu className="menuIcon" onClick={displayMenu}/&gt;
-                            &lt;p className="tabTitle"&gt;{TabNames[activeTab]}&lt;/p&gt;  {/*Get this from the respective tabs*/}
+                    &lt;div className='toolbar' id='toolbar' style={{width: `${width}%`}}&gt;
+                        &lt;div className='toolbarLeft'&gt;
+                            &lt;IoMenu className='menuIcon' onClick={displayMenu}/&gt;
+                            &lt;p className='tabTitle'&gt;{TabNames[activeTab]}&lt;/p&gt;  {/*Get this from the respective tabs*/}
                         &lt;/div&gt;
-                        &lt;div className="toolbarRight"&gt;
-                            &lt;p className="userDisplay" id="userDisplay"&gt;{username}&lt;/p&gt;
-                            &lt;IoPersonCircleSharp className="avatar" id="avatar" onClick={showDiv}/&gt;
+                        &lt;div className='toolbarRight'&gt;
+                            &lt;p className='userDisplay' id='userDisplay'&gt;{username}&lt;/p&gt;
+                            &lt;IoPersonCircleSharp className='avatar' id='avatar' onClick={showDiv}/&gt;
                             {settings &amp;&amp;
-                                &lt;div className="settingsDiv"&gt;
-                                    &lt;p className="changeLabel" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setChangePassOpen(true)}</span>&gt;Change Password&lt;/p&gt;
-                                    &lt;p className="logoutLabel" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >                                        sessionStorage.removeItem('accessToken');</span>
+                                &lt;div className='settingsDiv'&gt;
+                                    &lt;p className='changeLabel' onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setChangePassOpen(true)}</span>&gt;Change Password&lt;/p&gt;
+                                    &lt;p className='logoutLabel' onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                                        sessionStorage.removeItem("accessToken");</span>
 <span class="cstat-no" title="statement not covered" >                                        window.location.href = "/";</span>
                                     }}&gt;Logout&lt;/p&gt;
                                     {changePassOpen ? (
@@ -516,7 +516,7 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
                             }
                         &lt;/div&gt;
                     &lt;/div&gt;
-                    &lt;div className="displayTabContent"&gt;
+                    &lt;div className='displayTabContent'&gt;
                         &lt;TabView currentTab={activeTab}&gt;&lt;/TabView&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
@@ -526,11 +526,11 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
 &nbsp;
     const displayTabs = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span>viewTabs}) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;ul className="tabs"&gt;
+            &lt;ul className='tabs'&gt;
                 {viewTabs.map(<span class="fstat-no" title="function not covered" >(i</span>) =&gt; (
 <span class="cstat-no" title="statement not covered" >                    &lt;li</span>
                         key={i}
-                        className={activeTab === i ? 'active' : ''}
+                        className={activeTab === i ? "active" : ""}
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleClick(i)}</span>
                     &gt;
                         {TabNames[i]}
@@ -550,7 +550,7 @@ export default NavBar;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

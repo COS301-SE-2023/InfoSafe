@@ -220,9 +220,7 @@
 <a name='L155'></a><a href='#L155'>155</a>
 <a name='L156'></a><a href='#L156'>156</a>
 <a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a>
-<a name='L159'></a><a href='#L159'>159</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L158'></a><a href='#L158'>158</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,32 +377,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from 'reactjs-popup';
-import React, {useEffect, useState} from 'react';
-import '../../styling/CreateTask.css';
-import {IoArrowBackOutline} from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
-import Select from 'react-select';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from "reactjs-popup";
+import React, {useEffect, useState} from "react";
+import "../../styling/CreateTask.css";
+import {IoArrowBackOutline} from "react-icons/io5";
+import Select from "react-select";
 import useRequestMaker from "./useRequestMaker";
 &nbsp;
 export const CreateTask = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span>popupClose, popupOpen}) =&gt; {</span>
-    const [task_description, setTaskDescription] = <span class="cstat-no" title="statement not covered" >useState('');</span>
-    const [task_status, setTaskStatus] = <span class="cstat-no" title="statement not covered" >useState('');</span>
-    const [due_date, setDueDate] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+    const [task_description, setTaskDescription] = <span class="cstat-no" title="statement not covered" >useState("");</span>
+    const [task_status, setTaskStatus] = <span class="cstat-no" title="statement not covered" >useState("");</span>
+    const [due_date, setDueDate] = <span class="cstat-no" title="statement not covered" >useState("");</span>
     const [datascope, setDataScope] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
     const [selectedUsers, setSelectedUsers] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
     const [users, setUsers] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
-    const [task_name, setTask_name] = <span class="cstat-no" title="statement not covered" >useState('');</span>
-    const {datascopeData, setDsId} = <span class="cstat-no" title="statement not covered" >useRequestMaker();</span>
+    const [task_name, setTask_name] = <span class="cstat-no" title="statement not covered" >useState("");</span>
+    const {datascopeData} = <span class="cstat-no" title="statement not covered" >useRequestMaker();</span>
 &nbsp;
     const statusOptions = <span class="cstat-no" title="statement not covered" >[</span>
-        {value: 'High', label: 'High'},
-        {value: 'Medium', label: 'Medium'},
-        {value: 'Low', label: 'Low'},
+        {value: "High", label: "High"},
+        {value: "Medium", label: "Medium"},
+        {value: "Low", label: "Low"},
     ];
     const handleClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
-        const currentDate = <span class="cstat-no" title="statement not covered" >new Date().toISOString().split('T')[0];</span>
+        const currentDate = <span class="cstat-no" title="statement not covered" >new Date().toISOString().split("T")[0];</span>
         const task = <span class="cstat-no" title="statement not covered" >{</span>
             task_name,
             task_description,
@@ -437,7 +434,7 @@ export const CreateTask = <span class="cstat-no" title="statement not covered" >
 <span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/user/getAll", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -464,42 +461,42 @@ export const CreateTask = <span class="cstat-no" title="statement not covered" >
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;Popup open={popupOpen} closeOnDocumentClick={false}&gt;
-            &lt;div className="createTaskOverlay"&gt;
-                &lt;div className="borderCreateTask"&gt;
-                    &lt;button className="backButton" onClick={popupClose}&gt;
-                        &lt;IoArrowBackOutline className="backIcon"/&gt;
+            &lt;div className='createTaskOverlay'&gt;
+                &lt;div className='borderCreateTask'&gt;
+                    &lt;button className='backButton' onClick={popupClose}&gt;
+                        &lt;IoArrowBackOutline className='backIcon'/&gt;
                     &lt;/button&gt;
                     &lt;form&gt;
-                        &lt;p className="pageTitle"&gt;Create Task&lt;/p&gt;
-                        &lt;p className="inputTitle"&gt;Type name&lt;/p&gt;
+                        &lt;p className='pageTitle'&gt;Create Task&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Type name&lt;/p&gt;
                         &lt;textarea
-                            className="inputTextArea"
+                            className='inputTextArea'
                             onChange={handleTaskNameChange}
                             value={task_name}
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Type Description&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Type Description&lt;/p&gt;
                         &lt;textarea
-                            className="inputTextArea"
+                            className='inputTextArea'
                             onChange={handleDescriptionChange}
                             value={task_description}
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Task Status&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Task Status&lt;/p&gt;
                         &lt;Select
                             options={statusOptions}
                             value={statusOptions.find(<span class="fstat-no" title="function not covered" >(o</span>ption) =&gt; <span class="cstat-no" title="statement not covered" >option.value === task_status)</span>}
-                            className="datascopeDropdown"
-                            name="taskStatusDropdown"
-                            placeholder={"Select Status"}
+                            className='datascopeDropdown'
+                            name='taskStatusDropdown'
+                            placeholder='Select Status'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setTaskStatus(selectedOption.value)}</span>
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Assignees&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Assignees&lt;/p&gt;
                         {users &amp;&amp; users.length &gt; 0 ? (
                             &lt;Select
                                 options={users.map(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; (<span class="cstat-no" title="statement not covered" >{value: data.user_id, label: data.email})</span>)}
                                 value={selectedUsers}
-                                className="datascopeDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add Assignees"}
+                                className='datascopeDropdown'
+                                name='datascopeDropdown'
+                                placeholder='Add Assignees'
                                 onChange={handleSelect}
                                 isSearchable={true}
                                 isMulti
@@ -507,28 +504,28 @@ export const CreateTask = <span class="cstat-no" title="statement not covered" >
                         ) : (
                             &lt;p&gt;Loading...&lt;/p&gt;
                         )}
-                        &lt;p className="createAccessRequestDataScopeLabel"&gt;Data Scope&lt;/p&gt;
+                        &lt;p className='createAccessRequestDataScopeLabel'&gt;Data Scope&lt;/p&gt;
                         {datascopeData &amp;&amp; datascopeData.length &gt; 0 ? (
                             &lt;Select
                                 options={datascopeData.map(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; (<span class="cstat-no" title="statement not covered" >{value: data.data_scope_id, label: data.ds_name})</span>)}
                                 value={datascope}
-                                className="accessRequestDatascopeDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add DataScope"}
+                                className='accessRequestDatascopeDropdown'
+                                name='datascopeDropdown'
+                                placeholder='Add DataScope'
                                 onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setDataScope(selectedOption)}</span>
                             /&gt;
                         ) : (
-                            &lt;p className="loadTitle"&gt;Loading...&lt;/p&gt;
+                            &lt;p className='loadTitle'&gt;Loading...&lt;/p&gt;
                         )}
-                        &lt;p className="inputTitle"&gt;Completion Date&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Completion Date&lt;/p&gt;
                         &lt;input
-                            type="date"
-                            className="createAssetRequestDateInput"
+                            type='date'
+                            className='createAssetRequestDateInput'
                             onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >handleDateChange(e.target.value)}</span>
                             required
                         /&gt;
-                        &lt;div className="createTaskButtonDiv"&gt;
-                            &lt;button className="createTaskSubmitButton" type="submit" onClick={handleClick}&gt;
+                        &lt;div className='createTaskButtonDiv'&gt;
+                            &lt;button className='createTaskSubmitButton' type='submit' onClick={handleClick}&gt;
                                 Submit
                             &lt;/button&gt;
                         &lt;/div&gt;
@@ -544,7 +541,7 @@ export const CreateTask = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

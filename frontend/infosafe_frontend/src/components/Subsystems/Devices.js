@@ -14,8 +14,8 @@ export const Devices = () => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="deviceEditButton">
-                    <RiEditBoxFill onClick={() => setEditDeviceOpen(!editDeviceOpen)} className="deviceEditIcon"/>
+                <div className='deviceEditButton'>
+                    <RiEditBoxFill onClick={() => setEditDeviceOpen(!editDeviceOpen)} className='deviceEditIcon'/>
                     {editDeviceOpen ? (
                         <EditDevice
                             popupClose={() => setEditDeviceOpen(false)}
@@ -37,7 +37,7 @@ export const Devices = () => {
             return (
                 <li key={asset.id}>
                     <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                        Asset {asset.asset_id}: {asset.asset_name}:{' '}{asset.asset_description}
+                        Asset {asset.asset_id}: {asset.asset_name}:{" "}{asset.asset_description}
                         {viewDeviceOpen && (
                             <ViewDevice
                                 popupClose={() => setViewDeviceOpen(false)}
@@ -57,9 +57,9 @@ export const Devices = () => {
     const CreateDevice = () => {
         if(roles.includes("devices_create")) {
             return (
-                <div className="AddDeviceDiv">
+                <div className='AddDeviceDiv'>
                     <button
-                        className="AddDeviceButton"
+                        className='AddDeviceButton'
                         onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
                     >
                         Add Device
@@ -83,21 +83,21 @@ export const Devices = () => {
     );
 
     return(
-        <div className="display">
-            <div className="devicesBackground">
-                <div className="searchDevices">
+        <div className='display'>
+            <div className='devicesBackground'>
+                <div className='searchDevices'>
                     <input
-                        // data-testid="deviceSearch"
-                        className="deviceSearchInput"
-                        type="text"
-                        id="deviceSearchInput"
-                        name="deviceSearch"
+                        // data-testid='deviceSearch'
+                        className='deviceSearchInput'
+                        type='text'
+                        id='deviceSearchInput'
+                        name='deviceSearch'
                         // onChange={}
                     />
-                    <FaSearch className="deviceSearchIcon" />
+                    <FaSearch className='deviceSearchIcon' />
                 </div>
-                <div className="devices">
-                    <ul className="deviceList">{devices}</ul>
+                <div className='devices'>
+                    <ul className='deviceList'>{devices}</ul>
                 </div>
                 <CreateDevice></CreateDevice>
             </div>

@@ -101,16 +101,12 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,38 +139,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import '../../styling/ViewDevice.css';
-import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import ViewDataScope from "./ViewDataScope";
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import "../../styling/ViewDevice.css";
+import Popup from "reactjs-popup";
+import { IoArrowBackOutline } from "react-icons/io5";
+&nbsp;
 export const ViewDevice = ({ asset, popupOpen, popupClose }) =&gt; {
     return (
-        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position="center center"&gt;
-            &lt;div className="viewDeviceOverlay"&gt;
-                &lt;div className="viewDeviceBorder"&gt;
-                    &lt;button className="backButton" onClick={popupClose} data-testid="back-button"&gt;
-                        &lt;IoArrowBackOutline className="backIcon" /&gt;
+        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position='center center'&gt;
+            &lt;div className='viewDeviceOverlay'&gt;
+                &lt;div className='viewDeviceBorder'&gt;
+                    &lt;button className='backButton' onClick={popupClose} data-testid='back-button'&gt;
+                        &lt;IoArrowBackOutline className='backIcon' /&gt;
                     &lt;/button&gt;
-                    &lt;p className="viewDeviceLabel"&gt;View Device&lt;/p&gt;
-                    &lt;p className="viewDeviceNameLabel"&gt;Device Name&lt;/p&gt;
-                    &lt;p className="viewDeviceName"&gt;{asset.asset_name}&lt;/p&gt;
-                    &lt;p className="viewDeviceTypeLabel"&gt;Device Type&lt;/p&gt;
-                    &lt;p className="viewDeviceType"&gt;{asset.device_type}&lt;/p&gt;
-                    &lt;p className="viewDeviceDescriptionLabel"&gt;Device Description&lt;/p&gt;
-                    &lt;textarea className="viewDeviceDescription" readOnly={true} defaultValue={asset.asset_description}/&gt;
-                    &lt;p className = "viewDeviceNewLabel"&gt;New&lt;/p&gt;
-                    &lt;p className = "viewDeviceNew"&gt;{asset.used}&lt;/p&gt;
-                    &lt;p className = "viewDeviceAvailabilityLabel"&gt;Available&lt;/p&gt;
-                    &lt;p className = "viewDeviceAvailability"&gt;{asset.availability}&lt;/p&gt;
-                    &lt;p className="viewDeviceStatusLabel"&gt;Status&lt;/p&gt;
-                    &lt;p className="viewDeviceStatus"&gt;{asset.status}&lt;/p&gt;
-                    &lt;p className="viewDeviceCurrentCustodianLabel"&gt;Current Custodian&lt;/p&gt;
-                    &lt;p className="viewDeviceCurrentCustodian"&gt;{asset.current_assignee}&lt;/p&gt;
-                    &lt;p className="viewDevicePreviousCustodianLabel"&gt;Previous Custodian&lt;/p&gt;
-                    &lt;p className="viewDevicePreviousCustodian"&gt;{asset.previous_assignee}&lt;/p&gt;
+                    &lt;p className='viewDeviceLabel'&gt;View Device&lt;/p&gt;
+                    &lt;p className='viewDeviceNameLabel'&gt;Device Name&lt;/p&gt;
+                    &lt;p className='viewDeviceName'&gt;{asset.asset_name}&lt;/p&gt;
+                    &lt;p className='viewDeviceTypeLabel'&gt;Device Type&lt;/p&gt;
+                    &lt;p className='viewDeviceType'&gt;{asset.device_type}&lt;/p&gt;
+                    &lt;p className='viewDeviceDescriptionLabel'&gt;Device Description&lt;/p&gt;
+                    &lt;textarea className='viewDeviceDescription' readOnly={true} defaultValue={asset.asset_description}/&gt;
+                    &lt;p className = 'viewDeviceNewLabel'&gt;New&lt;/p&gt;
+                    &lt;p className = 'viewDeviceNew'&gt;{asset.used}&lt;/p&gt;
+                    &lt;p className = 'viewDeviceAvailabilityLabel'&gt;Available&lt;/p&gt;
+                    &lt;p className = 'viewDeviceAvailability'&gt;{asset.availability}&lt;/p&gt;
+                    &lt;p className='viewDeviceStatusLabel'&gt;Status&lt;/p&gt;
+                    &lt;p className='viewDeviceStatus'&gt;{asset.status}&lt;/p&gt;
+                    &lt;p className='viewDeviceCurrentCustodianLabel'&gt;Current Custodian&lt;/p&gt;
+                    &lt;p className='viewDeviceCurrentCustodian'&gt;{asset.current_assignee}&lt;/p&gt;
+                    &lt;p className='viewDevicePreviousCustodianLabel'&gt;Previous Custodian&lt;/p&gt;
+                    &lt;p className='viewDevicePreviousCustodian'&gt;{asset.previous_assignee}&lt;/p&gt;
 &nbsp;
                 &lt;/div&gt;
             &lt;/div&gt;
@@ -190,7 +184,7 @@ export default ViewDevice;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -241,12 +241,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import '../styling/Login.css';
-import React, {useState} from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../styling/Login.css";
+import React, {useState} from "react";
 &nbsp;
 function <span class="fstat-no" title="function not covered" >Login(</span>){
-    const[email,setEmail]=<span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[password,setPassword]=<span class="cstat-no" title="statement not covered" >useState('')</span>
+    const[email,setEmail]=<span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[password,setPassword]=<span class="cstat-no" title="statement not covered" >useState("")</span>
     const handleLogin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        e.preventDefault()</span>
         const login = <span class="cstat-no" title="statement not covered" >{email, password}</span>
@@ -259,9 +259,9 @@ function <span class="fstat-no" title="function not covered" >Login(</span>){
 <span class="cstat-no" title="statement not covered" >            if (response.ok) {</span>
 <span class="cstat-no" title="statement not covered" >                response.json().then(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
                     const { access_token } = <span class="cstat-no" title="statement not covered" >data;</span>
-<span class="cstat-no" title="statement not covered" >                    sessionStorage.setItem('accessToken', access_token);</span>
+<span class="cstat-no" title="statement not covered" >                    sessionStorage.setItem("accessToken", access_token);</span>
 <span class="cstat-no" title="statement not covered" >                    console.log("Login successful!");</span>
-<span class="cstat-no" title="statement not covered" >                    window.location.href = '/home';</span>
+<span class="cstat-no" title="statement not covered" >                    window.location.href = "/home";</span>
                 });
             } else {
 <span class="cstat-no" title="statement not covered" >                console.log("Login failed");</span>
@@ -270,7 +270,7 @@ function <span class="fstat-no" title="function not covered" >Login(</span>){
     };
 &nbsp;
     const submitLogin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if (e.key === 'Enter')</span>
+<span class="cstat-no" title="statement not covered" >        if (e.key === "Enter")</span>
         {
 <span class="cstat-no" title="statement not covered" >            document.getElementById("btnLogin").click();</span>
         }
@@ -278,48 +278,48 @@ function <span class="fstat-no" title="function not covered" >Login(</span>){
     };
 &nbsp;
     const forgot = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt;{</span>
-<span class="cstat-no" title="statement not covered" >        window.location.href = '/ForgotPassword';</span>
+<span class="cstat-no" title="statement not covered" >        window.location.href = "/ForgotPassword";</span>
     }
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="background"&gt;
-            {/*&lt;div className="flipPanel"&gt;*/}
-            {/*    &lt;div className="panel"&gt;*/}
-            {/*        &lt;div className="panelFront"&gt;&lt;/div&gt;*/}
-                    &lt;div className="panelBack"&gt;
-                        &lt;div className="title"&gt;
-                            &lt;p className="loginTitle"&gt;Login&lt;/p&gt;
+        &lt;div className='background'&gt;
+            {/*&lt;div className='flipPanel'&gt;*/}
+            {/*    &lt;div className='panel'&gt;*/}
+            {/*        &lt;div className='panelFront'&gt;&lt;/div&gt;*/}
+                    &lt;div className='panelBack'&gt;
+                        &lt;div className='title'&gt;
+                            &lt;p className='loginTitle'&gt;Login&lt;/p&gt;
                         &lt;/div&gt;
-                        &lt;div className="credentials"&gt;
-                            &lt;div className="user"&gt;
-                                &lt;p className="username"&gt;Username&lt;/p&gt;
+                        &lt;div className='credentials'&gt;
+                            &lt;div className='user'&gt;
+                                &lt;p className='username'&gt;Username&lt;/p&gt;
                                 &lt;input
-                                    data-testid="userIn"
-                                    className="untxt"
-                                    type="text"
-                                    id="username"
-                                    name="email"
+                                    data-testid='userIn'
+                                    className='untxt'
+                                    type='text'
+                                    id='username'
+                                    name='email'
                                     value={email}
                                     onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setEmail(e.target.value)}</span>
                                 &gt;&lt;/input&gt;
                             &lt;/div&gt;
-                            &lt;div className="user_password"&gt;
-                                &lt;p className="pass"&gt;Password&lt;/p&gt;
+                            &lt;div className='user_password'&gt;
+                                &lt;p className='pass'&gt;Password&lt;/p&gt;
                                 &lt;input
-                                    data-testid="passIn"
-                                    className="pwtxt"
-                                    type="password"
-                                    id="password"
-                                    name="password"
+                                    data-testid='passIn'
+                                    className='pwtxt'
+                                    type='password'
+                                    id='password'
+                                    name='password'
                                     value={password}
                                     onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setPassword(e.target.value)}</span>
                                     onKeyPress={submitLogin}
                                 &gt;&lt;/input&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
-                        &lt;a className="forgot" onClick={forgot} &gt;Forgot Password?&lt;/a&gt;
-                        &lt;button data-testid="btnTest"  id="btnLogin" className="btnLogin" onClick={handleLogin}&gt;
+                        &lt;href className='forgot' onClick={forgot} &gt;Forgot Password?&lt;/href&gt;
+                        &lt;button data-testid='btnTest'  id='btnLogin' className='btnLogin' onClick={handleLogin}&gt;
                             Login
                         &lt;/button&gt;
                     &lt;/div&gt;
@@ -337,7 +337,7 @@ export default Login;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

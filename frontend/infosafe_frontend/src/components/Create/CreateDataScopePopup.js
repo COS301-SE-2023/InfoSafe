@@ -1,19 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import '../../styling/CreateDataScopePopup.css';
-import Popup from 'reactjs-popup';
-import {IoArrowBackOutline} from 'react-icons/io5';
+import React, {useState, useEffect} from "react";
+import "../../styling/CreateDataScopePopup.css";
+import Popup from "reactjs-popup";
+import {IoArrowBackOutline} from "react-icons/io5";
 
 export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
-    const [newRole, setNewRole] = useState({role: '', roledescription: ''});
-    const [ds_name, setDsName] = useState('')
-    const [ds_description, setDsDesc] = useState('')
-    const [date_captured, setDateCaptured] = useState()
-    const [data_custodian, setDataCustodian] = useState('')
-    const [ds_status, setStatus] = useState('Pending')
-    const [role_type, setRoleType] = useState('')
-    const [role_description, setRoleDesc] = useState('')
-    const [ds_id, setDsId] = useState('')
-    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    const [newRole, setNewRole] = useState({role: "", roledescription: ""});
+    const [ds_name, setDsName] = useState("")
+    const [ds_description, setDsDesc] = useState("")
+    const [date_captured] = useState()
+    const [data_custodian, setDataCustodian] = useState("")
+    const [ds_status] = useState("Pending")
+    const [role_type] = useState("")
+    const [role_description] = useState("")
+    const [ds_id] = useState("")
+    //const date = "${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}";
     const [data, setData] =useState([])
     const [roles, setRoles] = useState(data);
     const handleInputChange = (e) => {
@@ -25,22 +25,23 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         e.preventDefault();
         if (newRole.role && newRole.roledescription) {
             setRoles((prevRoles) => [...prevRoles, newRole]);
-            setNewRole({role: '', roledescription: ''});
+            setNewRole({role: "", roledescription: ""});
         }
     };
 
-    const handleCaptureDate = () => {
-        var today = new Date();
-        setDateCaptured(formatDate(today));
-        console.log(date_captured);
-    };
+    // const handleCaptureDate = () => {
+    //     var today = new Date();
+    //     setDateCaptured(formatDate(today));
+    //     console.log(date_captured);
+    // };
 
-    const formatDate = (date) => {
-        const year = date.getFullYear().toString().slice(-2);
-        const month = ('0' + (date.getMonth() + 1)).slice(-2);
-        const day = ('0' + date.getDate()).slice(-2);
-        return `${year}/${month}/${day}`;
-    };
+    // const formatDate = (date) => {
+    //     const year = date.getFullYear().toString().slice(-2);
+    //     const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    //     const day = ("0" + date.getDate()).slice(-2);
+    //     return `${year}/${month}/${day}`;
+    // };
+
     const handleClick = (e) => {
         e.preventDefault();
         const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
@@ -50,7 +51,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
         })
             .then((response) => response.json())
@@ -63,7 +64,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                            Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
                         },
                         body: JSON.stringify(datascope),
                     })
@@ -78,7 +79,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                            Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
                         },
                         body: JSON.stringify(dataScopeRoles),
                     })
@@ -98,10 +99,10 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     };
 
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/getDataScopeRole', {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/getDataScopeRole", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then((res) => res.json())
@@ -111,10 +112,10 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId', {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then((res) => res.json())
@@ -124,34 +125,34 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     }, []);
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-            <div className="createDataScopeOverlay">
-                <div className="createDataScopeBorder">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon"/>
+        <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
+            <div className='createDataScopeOverlay'>
+                <div className='createDataScopeBorder'>
+                    <button className='backButton' onClick={popupClose}>
+                        <IoArrowBackOutline className='backIcon'/>
                     </button>
-                    <p className="datascopeLabel">Data Scope Creation</p>
+                    <p className='datascopeLabel'>Data Scope Creation</p>
                     <form>
-                        <div className="CreateDataScopeForm">
-                            <div className="datascope_info">
-                                <div className="datascope_name">
-                                    <p className="datascopeNameLabel">Name</p>
-                                    <input className="datascopeNameInput" data-testid="nameInput" value={ds_name}
+                        <div className='CreateDataScopeForm'>
+                            <div className='datascope_info'>
+                                <div className='datascope_name'>
+                                    <p className='datascopeNameLabel'>Name</p>
+                                    <input className='datascopeNameInput' data-testid='nameInput' value={ds_name}
                                            onChange={(e) => setDsName(e.target.value)}/>
                                 </div>
-                                <div className="datascope_description">
-                                    <p className="descriptionLabel">Description</p>
-                                    <textarea className="createDataScopeDescriptionInput" data-testid="Description" value={ds_description}
+                                <div className='datascope_description'>
+                                    <p className='descriptionLabel'>Description</p>
+                                    <textarea className='createDataScopeDescriptionInput' data-testid='Description' value={ds_description}
                                               onChange={(e) => setDsDesc(e.target.value)}/>
                                 </div>
-                                <div className="datascope_roles" data-testid="roles">
-                                    <p className="roleLabel">Data Scope Roles</p>
-                                    <div className="table">
-                                        <table className="roles_tbl">
+                                <div className='datascope_roles' data-testid='roles'>
+                                    <p className='roleLabel'>Data Scope Roles</p>
+                                    <div className='table'>
+                                        <table className='roles_tbl'>
                                             <thead>
                                             <tr>
-                                                <th className="role_Header">Role</th>
-                                                <th className="role_descrHeader">
+                                                <th className='role_Header'>Role</th>
+                                                <th className='role_descrHeader'>
                                                     Role Description
                                                 </th>
                                             </tr>
@@ -161,7 +162,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                                 return (
                                                     <tr key={key}>
                                                         <td>{role.role}</td>
-                                                        <td className="roledescription_Table">
+                                                        <td className='roledescription_Table'>
                                                             {role.roledescription}
                                                         </td>
                                                     </tr>
@@ -173,34 +174,34 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                 </div>
                             </div>
 
-                            <div className="datascope_addrole">
-                                <p className="AddRoleNameLabel">Role Type</p>
+                            <div className='datascope_addrole'>
+                                <p className='AddRoleNameLabel'>Role Type</p>
                                 <input
-                                    className="AddRoleNameInput"
-                                    data-testid="addRole"
-                                    name="role"
+                                    className='AddRoleNameInput'
+                                    data-testid='addRole'
+                                    name='role'
                                     value={newRole.role_type}
                                     onChange={handleInputChange}
                                 />
-                                <p className="AddRoleDescriptionLabel">Role Description</p>
+                                <p className='AddRoleDescriptionLabel'>Role Description</p>
                                 <textarea
-                                    className="AddRoleDescriptionInput"
-                                    data-testid="addRoleDescription"
-                                    name="roledescription"
+                                    className='AddRoleDescriptionInput'
+                                    data-testid='addRoleDescription'
+                                    name='roledescription'
                                     value={newRole.role_description}
                                     onChange={handleInputChange}
                                 />
                                 <button
-                                    className="AddRoleButton"
-                                    data-testid="addRoleButton"
+                                    className='AddRoleButton'
+                                    data-testid='addRoleButton'
                                     onClick={handleAddRole}
-                                    type="button"
+                                    type='button'
                                 >
                                     Add Role
                                 </button>
                             </div>
                         </div>
-                        <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
+                        <button className='datascope_finish' data-testid='addDataScope' onClick={handleClick}>
                             Submit
                         </button>
                     </form>

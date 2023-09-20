@@ -6,7 +6,7 @@
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-  preset: 'react-scripts',
+  preset: "react-scripts",
 
   // Stop running tests after `n` failures
   // bail: 0,
@@ -23,9 +23,9 @@ module.exports = {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
-  collectCoverageFrom: ['src/components/**/*.js'], // Include all JavaScript files in the 'src' directory.
+  collectCoverageFrom: ["src/components/**/*.js"], // Include all JavaScript files in the 'src' directory.
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'frontend/infosafe_frontend/coverage',
+  coverageDirectory: "frontend/infosafe_frontend/coverage",
 
 
   // An array of regexp pattern strings used to skip coverage collection

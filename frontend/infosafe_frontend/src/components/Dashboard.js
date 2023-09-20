@@ -1,83 +1,82 @@
-import '../styling/Dashboard.css';
-import React, {useEffect, useState} from 'react';
-import {IoPersonCircleSharp, IoMenu} from "react-icons/io5";
-import SystemAnalyticsChart from './Charts/SystemAnalyticsChart';
-import TasksChart from './Charts/TasksChart';
-import {FaCircle} from 'react-icons/fa';
+import "../styling/Dashboard.css";
+import React from "react";
+import SystemAnalyticsChart from "./Charts/SystemAnalyticsChart";
+import TasksChart from "./Charts/TasksChart";
+import {FaCircle} from "react-icons/fa";
 
 export const Dashboard = () => {
-    const myDevicesList = ['Zenbook Pro 15', 'PowerGuardian 1500', 'QuantumTab S7', 'Device 4', 'Device 5', 'Device 6', 'Device 7', 'Device 8', 'Device 9', 'Device 10'];
-    const notificationsList = ['The status for Support Request 6 has been updated.', 'The status for Support Request 4 has been updated.', 'The status for Support Request 2 has been updated.', 'You have been added to Data Scope 40.' ];
-    const userTasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5', 'Task 6', 'Task 7', 'Task 8', 'Task 9'];
-    const taskDeadlines = ['1 month', '1 week', '1 day', '1 month', '1 week', '1 day', '1 month', '1 week', '1 day']
+    const myDevicesList = ["Zenbook Pro 15", "PowerGuardian 1500", "QuantumTab S7", "Device 4", "Device 5", "Device 6", "Device 7", "Device 8", "Device 9", "Device 10"];
+    const notificationsList = ["The status for Support Request 6 has been updated.", "The status for Support Request 4 has been updated.", "The status for Support Request 2 has been updated.", "You have been added to Data Scope 40." ];
+    const userTasks = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5", "Task 6", "Task 7", "Task 8", "Task 9"];
+    const taskDeadlines = ["1 month", "1 week", "1 day", "1 month", "1 week", "1 day", "1 month", "1 week", "1 day"]
 
     return (
-        <div className="display">
-            <div className="quickFacts">
-                <div className="dataScopesInfo">  {/*Display the number of data scopes the user is involved in*/}
-                    <p className="dataScopesInfoLabel">Current Data Scopes</p>
-                    <p className="dataScopesInfoDisplay">50</p>
+        <div className='display'>
+            <div className='quickFacts'>
+                <div className='dataScopesInfo'>  {/*Display the number of data scopes the user is involved in*/}
+                    <p className='dataScopesInfoLabel'>Current Data Scopes</p>
+                    <p className='dataScopesInfoDisplay'>50</p>
                 </div>
-                <div className="currentTasksInfo">  {/*Display the number of tasks associated with the user.*/}
-                    <p className="currentTasksInfoLabel">Current Tasks</p>
-                    <p className="currentTasksInfoDisplay">100</p>
+                <div className='currentTasksInfo'>  {/*Display the number of tasks associated with the user.*/}
+                    <p className='currentTasksInfoLabel'>Current Tasks</p>
+                    <p className='currentTasksInfoDisplay'>100</p>
                 </div>
-                <div className="currentDevicesInfo">  {/*Display the number of devices associated with the user.*/}
-                    <p className="currentDevicesInfoLabel">Current Devices</p>
-                    <p className="currentDevicesInfoDisplay">10</p>
+                <div className='currentDevicesInfo'>  {/*Display the number of devices associated with the user.*/}
+                    <p className='currentDevicesInfoLabel'>Current Devices</p>
+                    <p className='currentDevicesInfoDisplay'>10</p>
                 </div>
-                <div className="currentRequestsInfo">  {/*Display the number of requests associated with the user.*/}
-                    <p className="currentRequestsInfoLabel">Current Requests</p>
-                    <p className="currentRequestsInfoDisplay">60</p>
+                <div className='currentRequestsInfo'>  {/*Display the number of requests associated with the user.*/}
+                    <p className='currentRequestsInfoLabel'>Current Requests</p>
+                    <p className='currentRequestsInfoDisplay'>60</p>
                 </div>
             </div>
-            <div className="analytics">
-                <div className="systemAnalyticsDiv">
-                    <div className="systemLabels">
-                        <p className="systemAnalyticsLabel">System Analytics</p>
-                        <div className="barLabels">
-                            <div className="systemTotals">
-                                <FaCircle className="systemIcon" />
-                                <p className="systemTotalLabel">System Total</p>
+            <div className='analytics'>
+                <div className='systemAnalyticsDiv'>
+                    <div className='systemLabels'>
+                        <p className='systemAnalyticsLabel'>System Analytics</p>
+                        <div className='barLabels'>
+                            <div className='systemTotals'>
+                                <FaCircle className='systemIcon' />
+                                <p className='systemTotalLabel'>System Total</p>
                             </div>
-                            <div className="myTotals">
-                                <FaCircle className="myTotalIcon" />
-                                <p className="myTotalLabel">My Total</p>
+                            <div className='myTotals'>
+                                <FaCircle className='myTotalIcon' />
+                                <p className='myTotalLabel'>My Total</p>
                             </div>
                         </div>
                     </div>
                     <SystemAnalyticsChart />
                 </div>
-                <div className="userTaskDiv">
-                    <p className="userTaskLabel">Tasks</p>
+                <div className='userTaskDiv'>
+                    <p className='userTaskLabel'>Tasks</p>
                     <TasksChart />
-                    <div className="chartLabels">
-                        <div className="tasksLeftDiv">
-                            <FaCircle className="tasksLeftIcon" />
-                            <p className="tasksLeftLabel">Tasks Left</p>
+                    <div className='chartLabels'>
+                        <div className='tasksLeftDiv'>
+                            <FaCircle className='tasksLeftIcon' />
+                            <p className='tasksLeftLabel'>Tasks Left</p>
                         </div>
-                        <div className="tasksCompletedDiv">
-                            <FaCircle className="tasksCompletedIcon" />
-                            <p className="tasksCompletedLabel">Tasks Completed</p>
+                        <div className='tasksCompletedDiv'>
+                            <FaCircle className='tasksCompletedIcon' />
+                            <p className='tasksCompletedLabel'>Tasks Completed</p>
                         </div>
 
                     </div>
                 </div>
-                <div className="userTaskDeadlinesDiv">
-                    <p className="userTaskDeadlinesLabel">Approaching Deadlines</p>
-                    <div className="deadlinesDiv">
-                        <ul className="taskDeadlinesList">
+                <div className='userTaskDeadlinesDiv'>
+                    <p className='userTaskDeadlinesLabel'>Approaching Deadlines</p>
+                    <div className='deadlinesDiv'>
+                        <ul className='taskDeadlinesList'>
                             {userTasks.map((task, index) => (
                                 <li key={index}>
                                     <p>{task}</p>
-                                    {taskDeadlines[index] === '1 month' && (
-                                        <div className="oneMonthDeadline">{taskDeadlines[index]}</div>
+                                    {taskDeadlines[index] === "1 month" && (
+                                        <div className='oneMonthDeadline'>{taskDeadlines[index]}</div>
                                     )}
-                                    {taskDeadlines[index] === '1 week' && (
-                                        <div className="oneWeekDeadline">{taskDeadlines[index]}</div>
+                                    {taskDeadlines[index] === "1 week" && (
+                                        <div className='oneWeekDeadline'>{taskDeadlines[index]}</div>
                                     )}
-                                    {taskDeadlines[index] === '1 day' && (
-                                        <div className="oneDayDeadline" >{taskDeadlines[index]}</div>
+                                    {taskDeadlines[index] === "1 day" && (
+                                        <div className='oneDayDeadline' >{taskDeadlines[index]}</div>
                                     )}
                                 </li>
                             ))}
@@ -86,11 +85,11 @@ export const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="infoDiv">
-                <div className="myDevicesDiv">
-                    <p className="myDevicesLabel">Devices in Use</p>
-                    <div className="myDevicesDisplay">
-                        <ul className="inUseDevicesList">
+            <div className='infoDiv'>
+                <div className='myDevicesDiv'>
+                    <p className='myDevicesLabel'>Devices in Use</p>
+                    <div className='myDevicesDisplay'>
+                        <ul className='inUseDevicesList'>
                             {myDevicesList.map((deviceName, index) => (
                                 <li key={index}>
                                     <p>{deviceName}</p>
@@ -99,15 +98,15 @@ export const Dashboard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="notificationsDiv">
-                    <p className="notificationsLabel">Notifications</p>
-                    <div className="notificationsDisplay">
-                        <ul className="myNotificationsList">
+                <div className='notificationsDiv'>
+                    <p className='notificationsLabel'>Notifications</p>
+                    <div className='notificationsDisplay'>
+                        <ul className='myNotificationsList'>
                             {notificationsList.map((notification, index) => (
                                 <li key={index}>
-                                    <div className="notificationsInfo">
-                                        <div className="timeDisplay">11:00</div>
-                                        <p className="notificationsMessage">{notification}</p>
+                                    <div className='notificationsInfo'>
+                                        <div className='timeDisplay'>11:00</div>
+                                        <p className='notificationsMessage'>{notification}</p>
                                     </div>
                                 </li>
                             ))}

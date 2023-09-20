@@ -1,35 +1,35 @@
-import React, {useEffect, useState} from 'react';
-import Dropdown from 'react-dropdown';
-import '../../styling/Requests.css';
-import '../../styling/Dropdown.css';
-import useRequestMaker from '../Create/useRequestMaker';
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
+import React, {useState} from "react";
+import Dropdown from "react-dropdown";
+import "../../styling/Requests.css";
+import "../../styling/Dropdown.css";
+import useRequestMaker from "../Create/useRequestMaker";
+
 
 
 export const Requests = () => {
     const SUPPORTOPTIONS = [
-        'Laptop Hardware',
-        'Microsoft Accounts',
-        'Microsoft Applications',
-        'Application',
-        'Other'
+        "Laptop Hardware",
+        "Microsoft Accounts",
+        "Microsoft Applications",
+        "Application",
+        "Other"
     ];
 
-    const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
+    const USERS = ["User A", "User B", "User C", "User D"]; //Dynamically add system users for dropdown?
 
 
-    const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
+    const STATUS = ["Open", "In Progress", "Resolved", "Closed"];
 
     let permittedRequests = [];
 
     if (true) {//Support Requests
-        permittedRequests.push('SUPPORT');
+        permittedRequests.push("SUPPORT");
     }
     if (true) {//Asset Requests
-        permittedRequests.push('ASSET');
+        permittedRequests.push("ASSET");
     }
     if (true) {//Access Requests
-        permittedRequests.push('ACCESS');
+        permittedRequests.push("ACCESS");
     }
 
     const handleRequestSelect = (requestType) => {
@@ -40,7 +40,7 @@ export const Requests = () => {
     const CreateSupportRequest = () => {
 
         const {
-            handleClick,
+            //handleClick,
             setSupportType,
             support_description,
             setSupportDescription,
@@ -50,31 +50,31 @@ export const Requests = () => {
             setSupportDescription(e.target.value);
         };
         return (
-            <div className="createSupportRequestDiv">
+            <div className='createSupportRequestDiv'>
                 <form>
-                    <p className="supportRequestTypeLabel">Support Type</p>
+                    <p className='supportRequestTypeLabel'>Support Type</p>
                     <Dropdown
-                        className="supportRequestTypeDropdown"
+                        className='supportRequestTypeDropdown'
                         options={SUPPORTOPTIONS}
                         value={SUPPORTOPTIONS[0]}
                         onChange={(selectedOption) => setSupportType(selectedOption.value)}
                     />
-                    <p className="supportRequestDescriptionLabel">Description</p>
+                    <p className='supportRequestDescriptionLabel'>Description</p>
                     <textarea
-                        className="supportRequestDescription"
+                        className='supportRequestDescription'
                         onChange={handleDescriptionChange}
                         value={support_description}/>
-                    <p className="supportRequestTypeLabel">Status</p>
+                    <p className='supportRequestTypeLabel'>Status</p>
                     <Dropdown
-                        className="supportRequestTypeDropdown"
+                        className='supportRequestTypeDropdown'
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={(selectedOption) => setSupportStatus(selectedOption.value)}
                     />
-                    <div className="createSupportRequestButtonDiv">
+                    <div className='createSupportRequestButtonDiv'>
                         <button
-                            className="createSupportRequestButton"
-                            type="submit"
+                            className='createSupportRequestButton'
+                            type='submit'
                             //onClick={(e) => handleClick(e, selectedRequest)}
                         >Log Request
                         </button>
@@ -86,7 +86,7 @@ export const Requests = () => {
 
     const CreateAccessRequest = () => {
         const {
-            handleClick,
+            //handleClick,
             reason,
             setReason,
             setDsId,
@@ -98,44 +98,44 @@ export const Requests = () => {
             setReason(e.target.value);
         }
         return (
-            <div className="createAccessRequestDiv">
+            <div className='createAccessRequestDiv'>
                 <form>
-                    <p className="createAccessRequestDataScopeLabel">Data Scope</p>
+                    <p className='createAccessRequestDataScopeLabel'>Data Scope</p>
                     {datascopeData && datascopeData.length > 0 ? (
                         <Dropdown
                             options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                             value={datascopeData.asset_id}
-                            className="accessRequestDatascopeDropdown"
-                            name="datascopeDropdown"
-                            placeholder={"Add DataScope"}
+                            className='accessRequestDatascopeDropdown'
+                            name='datascopeDropdown'
+                            placeholder='Add DataScope'
                             onChange={(selectedOption) => setDsId(selectedOption.value)}
                         />) : (
-                        <p className="loadTitle">Loading...</p>
+                        <p className='loadTitle'>Loading...</p>
                     )}
-                    <p className="createAccessRequestUserLabel">User</p>
+                    <p className='createAccessRequestUserLabel'>User</p>
                     <Dropdown
-                        className="createAccessRequestUserDropdown"
+                        className='createAccessRequestUserDropdown'
                         options={USERS} //Add system users here
                         value={USERS[0]}
                         //onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                     />
-                    <p className="createAccessRequestReasonLabel">Reason</p>
+                    <p className='createAccessRequestReasonLabel'>Reason</p>
                     <textarea
-                        className="createAccessRequestReasonInput"
+                        className='createAccessRequestReasonInput'
                         onChange={handleReasonChange}
                         value={reason}
                     />
-                    <p className="createAccessRequestStatusLabel">Status</p>
+                    <p className='createAccessRequestStatusLabel'>Status</p>
                     <Dropdown
-                        className="accessRequestStatusDropdown"
+                        className='accessRequestStatusDropdown'
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={(selectedOption) => setStatus(selectedOption.value)}
                     />
-                    <div className="createAccessRequestButtonDiv">
+                    <div className='createAccessRequestButtonDiv'>
                         <button
-                            className="createAccessRequestButton"
-                            type="submit"
+                            className='createAccessRequestButton'
+                            type='submit'
                             //onClick={(e) => handleClick(e, selectedRequest)}
                         >
                             Log Request
@@ -147,7 +147,7 @@ export const Requests = () => {
     };
     const CreateAssetRequest = () => {
         const {
-            handleClick,
+            //handleClick,
             reason,
             setReason,
             setDesiredDate,
@@ -163,44 +163,44 @@ export const Requests = () => {
             setDesiredDate(date);
         };
         return (
-            <div className="createAssetRequestDiv">
+            <div className='createAssetRequestDiv'>
                 <form>
-                    <p className="createAssetRequestDeviceNameLabel">Device</p>
+                    <p className='createAssetRequestDeviceNameLabel'>Device</p>
                     {AvailableDevices && AvailableDevices.length > 0 ? (
                         <Dropdown
                             options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
                             value={AvailableDevices.asset_name}
-                            className="assetRequestSelectDeviceDropdown"
-                            name="assetRequestSelectDeviceDropdown"
-                            placeholder={"Add Device"}
+                            className='assetRequestSelectDeviceDropdown'
+                            name='assetRequestSelectDeviceDropdown'
+                            placeholder='Add Device'
                             onChange={(selectedOption) => setAvailableDevices(selectedOption.value)}
                         />) : (
-                        <p className="loadTitle">Loading...</p>
+                        <p className='loadTitle'>Loading...</p>
                     )}
-                    <p className="createAssetRequestReasonLabel">Reason</p>
+                    <p className='createAssetRequestReasonLabel'>Reason</p>
                     <textarea
-                        className="createAssetRequestReasonInput"
+                        className='createAssetRequestReasonInput'
                         onChange={handleReasonChange}
                         value={reason}
                     />
-                    <p className="createAssetRequestDateLabel">Desired Date</p>
+                    <p className='createAssetRequestDateLabel'>Desired Date</p>
                     <input
-                        type="date"
-                        className="createAssetRequestDateInput"
+                        type='date'
+                        className='createAssetRequestDateInput'
                         onChange={(e) => handleDateChange(e.target.value)}
                         required
                     />
-                    <p className="createAssetRequestDeviceNameLabel">Status</p>
+                    <p className='createAssetRequestDeviceNameLabel'>Status</p>
                     <Dropdown
-                        className="assetRequestSelectDeviceDropdown"
+                        className='assetRequestSelectDeviceDropdown'
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                     />
-                    <div className="createAssetRequestButtonDiv">
+                    <div className='createAssetRequestButtonDiv'>
                         <button
-                            className="createAssetRequestButton"
-                            type="submit"
+                            className='createAssetRequestButton'
+                            type='submit'
                             //onClick={(e) => handleClick(e, selectedRequest)}
                         >
                             Log Request
@@ -224,19 +224,19 @@ export const Requests = () => {
     }
 
     return (
-        <div className="display">
-            <div className="selectRequestDiv">
-                <div className="selectRequest">
-                    <p className="selectRequestLabel">SELECT REQUEST CREATION</p>
+        <div className='display'>
+            <div className='selectRequestDiv'>
+                <div className='selectRequest'>
+                    <p className='selectRequestLabel'>SELECT REQUEST CREATION</p>
                     <Dropdown
-                        className="selectRequestDropdown"
+                        className='selectRequestDropdown'
                         options={permittedRequests}
                         value={permittedRequests[0]}
                         onChange={handleRequestSelect}
                     />
                 </div>
             </div>
-            <div className="requestDiv">
+            <div className='requestDiv'>
                 <RequestType type={selectedRequest}></RequestType>
             </div>
         </div>

@@ -1,15 +1,15 @@
-import React, { useState} from 'react';
-import Dropdown from 'react-dropdown';
-import '../../styling/Requests.css';
-import useRequestMaker from './useRequestMaker';
+import React, { useState} from "react";
+import Dropdown from "react-dropdown";
+import "../../styling/Requests.css";
+import useRequestMaker from "./useRequestMaker";
 const DisplayISORequests = () => {
-    const REQUESTTYPES = ['Support Request', 'Asset Request'];
+    const REQUESTTYPES = ["Support Request", "Asset Request"];
     const SUPPORTOPTIONS = [
-        'Laptop Hardware',
-        'Microsoft Accounts',
-        'Microsoft Applications',
-        'Application',
-        'Other'
+        "Laptop Hardware",
+        "Microsoft Accounts",
+        "Microsoft Applications",
+        "Application",
+        "Other"
     ];
     const {
         handleClick,
@@ -19,7 +19,7 @@ const DisplayISORequests = () => {
         support_description,
         setSupportDescription,
         setSupportStatus,
-        setAssetId,
+        //setAssetId,
         setDesiredDate,
         setRequestStatus,
         AvailableDevices,
@@ -29,7 +29,7 @@ const DisplayISORequests = () => {
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
     };
-    const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
+    const STATUS = ["Open", "In Progress", "Resolved", "Closed"];
     const [selectedRequest, setSelectedRequest] = useState(REQUESTTYPES[0]);
     const handleDescriptionChange = (e) => {
         setSupportDescription(e.target.value);
@@ -41,46 +41,47 @@ const DisplayISORequests = () => {
     const handleDateChange = (date) => {
         setDesiredDate(date);
     };
+    
     return (
-        <div className="display">
-            <div className="selectRequestDiv">
-                <div className="selectRequest">
-                    <p className="selectRequestLabel">Select Type of Request</p>
+        <div className='display'>
+            <div className='selectRequestDiv'>
+                <div className='selectRequest'>
+                    <p className='selectRequestLabel'>Select Type of Request</p>
                     <Dropdown
-                        className="selectRequestDropdown"
+                        className='selectRequestDropdown'
                         options={REQUESTTYPES}
                         value={selectedRequest}
                         onChange={handleRequestSelect}
                     />
                 </div>
             </div>
-            <div className="requestDiv">
-                {selectedRequest === 'Support Request' && (
-                    <div className="createSupportRequestDiv">
+            <div className='requestDiv'>
+                {selectedRequest === "Support Request" && (
+                    <div className='createSupportRequestDiv'>
                         <form>
-                            <p className="supportRequestTypeLabel">Support Type</p>
+                            <p className='supportRequestTypeLabel'>Support Type</p>
                             <Dropdown
-                                className="supportRequestTypeDropdown"
+                                className='supportRequestTypeDropdown'
                                 options={SUPPORTOPTIONS}
                                 value={SUPPORTOPTIONS[0]}
                                 onChange={(selectedOption) => setSupportType(selectedOption.value)}
                             />
-                            <p className="supportRequestDescriptionLabel">Description</p>
+                            <p className='supportRequestDescriptionLabel'>Description</p>
                             <textarea
-                                className="supportRequestDescription"
+                                className='supportRequestDescription'
                                 onChange={handleDescriptionChange}
                                 value={support_description}/>
-                            <p className="supportRequestTypeLabel">Status</p>
+                            <p className='supportRequestTypeLabel'>Status</p>
                             <Dropdown
-                                className="supportRequestTypeDropdown"
+                                className='supportRequestTypeDropdown'
                                 options={STATUS}
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setSupportStatus(selectedOption.value)}
                             />
-                            <div className="createSupportRequestButtonDiv">
+                            <div className='createSupportRequestButtonDiv'>
                                 <button
-                                    className="createSupportRequestButton"
-                                    type="submit"
+                                    className='createSupportRequestButton'
+                                    type='submit'
                                     onClick={(e) => handleClick(e, selectedRequest)}
                                 >Log Request
                                 </button>
@@ -88,47 +89,47 @@ const DisplayISORequests = () => {
                         </form>
                     </div>
                 )}
-                {selectedRequest === 'Asset Request' && (
-                    <div className="createAssetRequestDiv">
+                {selectedRequest === "Asset Request" && (
+                    <div className='createAssetRequestDiv'>
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <p className='createAssetRequestDeviceNameLabel'>Device</p>
                             {AvailableDevices && AvailableDevices.length > 0 ? (
                                 <Dropdown
                                     options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
                                     value={selectedAssetId}
-                                    className="assetRequestSelectDeviceDropdown"
-                                    name="assetRequestSelectDeviceDropdown"
-                                    placeholder={"Add Device"}
+                                    className='assetRequestSelectDeviceDropdown'
+                                    name='assetRequestSelectDeviceDropdown'
+                                    placeholder='Add Device'
                                     onChange={(selectedOption)=> setSelectedAssetId(selectedOption.value)}
 
                                 /> ) : (
-                                <p className="loadTitle">Loading...</p>
+                                <p className='loadTitle'>Loading...</p>
                             )}
-                            <p className="createAssetRequestReasonLabel">Reason</p>
+                            <p className='createAssetRequestReasonLabel'>Reason</p>
                             <textarea
-                                className="createAssetRequestReasonInput"
+                                className='createAssetRequestReasonInput'
                                 onChange={handleReasonChange}
                                 value={reason}
                             />
-                            <p className="createAssetRequestDateLabel">Desired Date</p>
+                            <p className='createAssetRequestDateLabel'>Desired Date</p>
                             <input
-                                type="date"
-                                className="createAssetRequestDateInput"
+                                type='date'
+                                className='createAssetRequestDateInput'
                                 onChange={(e) => handleDateChange(e.target.value)}
                                 required
                             />
-                            <p className="createAssetRequestDeviceNameLabel">Status</p>
+                            <p className='createAssetRequestDeviceNameLabel'>Status</p>
                             <Dropdown
-                                className="assetRequestSelectDeviceDropdown"
+                                className='assetRequestSelectDeviceDropdown'
                                 options={STATUS}
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                             />
-                            <div className="createAssetRequestButtonDiv">
+                            <div className='createAssetRequestButtonDiv'>
                                 <button
-                                    className="createAssetRequestButton"
-                                    type="submit"
-                                    onClick={() => console.log('Create Asset Request')}
+                                    className='createAssetRequestButton'
+                                    type='submit'
+                                    onClick={() => console.log("Create Asset Request")}
                                 >
                                     Log Request
                                 </button>
@@ -142,16 +143,16 @@ const DisplayISORequests = () => {
 };
 
 const DisplayDataCustodianRequests = () => {
-    const REQUESTTYPES = ['Support Request', 'Access Request', 'Asset Request'];
+    const REQUESTTYPES = ["Support Request", "Access Request", "Asset Request"];
     const SUPPORTOPTIONS = [
-        'Laptop Hardware',
-        'Microsoft Accounts',
-        'Microsoft Applications',
-        'Application',
-        'Other'
+        "Laptop Hardware",
+        "Microsoft Accounts",
+        "Microsoft Applications",
+        "Application",
+        "Other"
     ];
-    const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
-    const USERS = ['User A', 'User B', 'User C', 'User D'];
+    const STATUS = ["Open", "In Progress", "Resolved", "Closed"];
+    const USERS = ["User A", "User B", "User C", "User D"];
     const [selectedRequest, setSelectedRequest] = useState(REQUESTTYPES[0]);
     const {
         handleClick,
@@ -163,7 +164,7 @@ const DisplayDataCustodianRequests = () => {
         setSupportStatus,
         setDsId,
         setStatus,
-        setAssetId,
+        //setAssetId,
         setDesiredDate,
         setRequestStatus,
         AvailableDevices,
@@ -185,45 +186,45 @@ const DisplayDataCustodianRequests = () => {
         setDesiredDate(date);
     };
     return (
-        <div className="display">
-            <div className="selectRequestDiv">
-                <div className="selectRequest">
-                    <p className="selectRequestLabel">Select Type of Request</p>
+        <div className='display'>
+            <div className='selectRequestDiv'>
+                <div className='selectRequest'>
+                    <p className='selectRequestLabel'>Select Type of Request</p>
                     <Dropdown
-                        className="selectRequestDropdown"
+                        className='selectRequestDropdown'
                         options={REQUESTTYPES}
                         value={selectedRequest}
                         onChange={handleRequestSelect}
                     />
                 </div>
             </div>
-            <div className="requestDiv">
-                {selectedRequest === 'Support Request' && (
-                    <div className="createSupportRequestDiv">
+            <div className='requestDiv'>
+                {selectedRequest === "Support Request" && (
+                    <div className='createSupportRequestDiv'>
                         <form>
-                            <p className="supportRequestTypeLabel">Support Type</p>
+                            <p className='supportRequestTypeLabel'>Support Type</p>
                             <Dropdown
-                                className="supportRequestTypeDropdown"
+                                className='supportRequestTypeDropdown'
                                 options={SUPPORTOPTIONS}
                                 value={SUPPORTOPTIONS[0]}
                                 onChange={(selectedOption) => setSupportType(selectedOption.value)}
                             />
-                            <p className="supportRequestDescriptionLabel">Description</p>
+                            <p className='supportRequestDescriptionLabel'>Description</p>
                             <textarea
-                                className="supportRequestDescription"
+                                className='supportRequestDescription'
                                 onChange={handleDescriptionChange}
                                 value={support_description}/>
-                            <p className="supportRequestTypeLabel">Status</p>
+                            <p className='supportRequestTypeLabel'>Status</p>
                             <Dropdown
-                                className="supportRequestTypeDropdown"
+                                className='supportRequestTypeDropdown'
                                 options={STATUS}
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setSupportStatus(selectedOption.value)}
                             />
-                            <div className="createSupportRequestButtonDiv">
+                            <div className='createSupportRequestButtonDiv'>
                                 <button
-                                    className="createSupportRequestButton"
-                                    type="submit"
+                                    className='createSupportRequestButton'
+                                    type='submit'
                                     onClick={(e) => handleClick(e, selectedRequest)}
                                 >Log Request
                                 </button>
@@ -231,45 +232,45 @@ const DisplayDataCustodianRequests = () => {
                         </form>
                     </div>
                 )}
-                {selectedRequest === 'Access Request' && (
-                    <div className="createAccessRequestDiv">
+                {selectedRequest === "Access Request" && (
+                    <div className='createAccessRequestDiv'>
                         <form>
-                            <p className="createAccessRequestDataScopeLabel">Data Scope</p>
+                            <p className='createAccessRequestDataScopeLabel'>Data Scope</p>
                             {datascopeData && datascopeData.length > 0 ? (
                                 <Dropdown
                                     options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                                     value={datascopeData.asset_id}
-                                    className="accessRequestDatascopeDropdown"
-                                    name="datascopeDropdown"
-                                    placeholder={"Add DataScope"}
+                                    className='accessRequestDatascopeDropdown'
+                                    name='datascopeDropdown'
+                                    placeholder='Add DataScope'
                                     onChange={(selectedOption)=> setDsId(selectedOption.value)}
                                 /> ) : (
-                                <p className="loadTitle">Loading...</p>
+                                <p className='loadTitle'>Loading...</p>
                             )}
-                            <p className="createAccessRequestUserLabel">User</p>
+                            <p className='createAccessRequestUserLabel'>User</p>
                             <Dropdown
-                                className="createAccessRequestUserDropdown"
+                                className='createAccessRequestUserDropdown'
                                 options={USERS}
                                 value={USERS[0]}
                                 //onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                             />
-                            <p className="createAccessRequestReasonLabel">Reason</p>
+                            <p className='createAccessRequestReasonLabel'>Reason</p>
                             <textarea
-                                className="createAccessRequestReasonInput"
+                                className='createAccessRequestReasonInput'
                                 onChange={handleReasonChange}
                                 value={reason}
                             />
-                            <p className="createAccessRequestStatusLabel">Status</p>
+                            <p className='createAccessRequestStatusLabel'>Status</p>
                             <Dropdown
-                                className="accessRequestStatusDropdown"
+                                className='accessRequestStatusDropdown'
                                 options={STATUS}
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setStatus(selectedOption.value)}
                             />
-                            <div className="createAccessRequestButtonDiv">
+                            <div className='createAccessRequestButtonDiv'>
                                 <button
-                                    className="createAccessRequestButton"
-                                    type="submit"
+                                    className='createAccessRequestButton'
+                                    type='submit'
                                     onClick={(e) => handleClick(e, selectedRequest)}
                                 >
                                     Log Request
@@ -278,45 +279,45 @@ const DisplayDataCustodianRequests = () => {
                         </form>
                     </div>
                 )}
-                {selectedRequest === 'Asset Request' && (
-                    <div className="createAssetRequestDiv">
+                {selectedRequest === "Asset Request" && (
+                    <div className='createAssetRequestDiv'>
                         <form>
-                            <p className="createAssetRequestDeviceNameLabel">Device</p>
+                            <p className='createAssetRequestDeviceNameLabel'>Device</p>
                             {AvailableDevices && AvailableDevices.length > 0 ? (
                                 <Dropdown
                                     options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
                                     value={AvailableDevices.asset_name}
-                                    className="assetRequestSelectDeviceDropdown"
-                                    name="assetRequestSelectDeviceDropdown"
-                                    placeholder={"Add Device"}
+                                    className='assetRequestSelectDeviceDropdown'
+                                    name='assetRequestSelectDeviceDropdown'
+                                    placeholder='Add Device'
                                     onChange={(selectedOption)=> setAvailableDevices(selectedOption.value)}
                                 /> ) : (
-                                <p className="loadTitle">Loading...</p>
+                                <p className='loadTitle'>Loading...</p>
                             )}
-                            <p className="createAssetRequestReasonLabel">Reason</p>
+                            <p className='createAssetRequestReasonLabel'>Reason</p>
                             <textarea
-                                className="createAssetRequestReasonInput"
+                                className='createAssetRequestReasonInput'
                                 onChange={handleReasonChange}
                                 value={reason}
                             />
-                            <p className="createAssetRequestDateLabel">Desired Date</p>
+                            <p className='createAssetRequestDateLabel'>Desired Date</p>
                             <input
-                                type="date"
-                                className="createAssetRequestDateInput"
+                                type='date'
+                                className='createAssetRequestDateInput'
                                 onChange={(e) => handleDateChange(e.target.value)}
                                 required
                             />
-                            <p className="createAssetRequestDeviceNameLabel">Status</p>
+                            <p className='createAssetRequestDeviceNameLabel'>Status</p>
                             <Dropdown
-                                className="assetRequestSelectDeviceDropdown"
+                                className='assetRequestSelectDeviceDropdown'
                                 options={STATUS}
                                 value={STATUS[0]}
                                 onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                             />
-                            <div className="createAssetRequestButtonDiv">
+                            <div className='createAssetRequestButtonDiv'>
                                 <button
-                                    className="createAssetRequestButton"
-                                    type="submit"
+                                    className='createAssetRequestButton'
+                                    type='submit'
                                     onClick={(e) => handleClick(e, selectedRequest)}
                                 >
                                     Log Request
@@ -332,11 +333,11 @@ const DisplayDataCustodianRequests = () => {
 
 const Requests = ({ userRole }) => {
     // console.log(userRole)
-    if (userRole === 'ISO' || userRole === 'DISO' || userRole === 'Asset Manager' || userRole === 'System Administrator' || userRole === 'Employee') {
+    if (userRole === "ISO" || userRole === "DISO" || userRole === "Asset Manager" || userRole === "System Administrator" || userRole === "Employee") {
         return <div>{DisplayISORequests()}</div>;
     }
 
-    else if (userRole === 'Data Custodian') {
+    else if (userRole === "Data Custodian") {
         return <div>{DisplayDataCustodianRequests()}</div>;
     }
 };

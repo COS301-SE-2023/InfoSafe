@@ -10,25 +10,25 @@ const SystemAnalyticsChart = () => {
             type: "bar",
             data: {
                 labels: [
-                    'Data Scopes',
-                    'Compliance Matrix',
-                    'Devices',
-                    'Asset Requests',
-                    'Support Requests',
+                    "Data Scopes",
+                    "Compliance Matrix",
+                    "Devices",
+                    "Asset Requests",
+                    "Support Requests",
                 ],
                 datasets: [
                     {
-                        label: 'System Total',
-                        backgroundColor: '#49D4D0',
+                        label: "System Total",
+                        backgroundColor: "#49D4D0",
                         barThickness: 20,
                         data: [200, 400, 300, 100, 250],
                     },
                     {
-                        label: 'My Total',
-                        backgroundColor: '#E90000',
+                        label: "My Total",
+                        backgroundColor: "#E90000",
                         barThickness: 20,
                         data: [20, 50, 10, 5, 8],
-                        pointStyle: 'circle',
+                        pointStyle: "circl",
                     },
                 ],
             },
@@ -38,7 +38,7 @@ const SystemAnalyticsChart = () => {
                         stacked: false,
                         grid: {
                             display: false,
-                            color: '#CECECE',
+                            color: "#CECECE",
                         },
                     },
                     y: {
@@ -55,8 +55,8 @@ const SystemAnalyticsChart = () => {
     }, []);
 
     return (
-        <div className="systemAnalyticsChartDiv">
-            <canvas className="barChart" ref={chartReference} />
+        <div className='systemAnalyticsChartDiv'>
+            <canvas className='barChart'ref={chartReference} />
         </div>
     );
 };

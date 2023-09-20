@@ -289,26 +289,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from 'reactjs-popup';
-import React, {useState,  useEffect } from 'react';
-import '../../styling/CreateRisk.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from "reactjs-popup";
+import React, {useState} from "react";
+import "../../styling/CreateRisk.css";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Dropdown from "react-dropdown";
 import useRequestMaker from "./useRequestMaker";
 import Select from "react-select";
-const PROBABILITY = <span class="cstat-no" title="statement not covered" >['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];</span>
-// const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
-const IMPACT = <span class="cstat-no" title="statement not covered" >['Insignificant','Minor','Significant','Major','Severe'];</span>
-const STATUS = <span class="cstat-no" title="statement not covered" >['Open', 'In Progress', 'Resolved', 'Closed'];</span>
+const PROBABILITY = <span class="cstat-no" title="statement not covered" >["Almost Certain", "Likely", "Moderate","Unlikely","Rare"];</span>
+// const DATA_SCOPES = ["DATA SCOPE 1", "DATA SCOPE 2", "DATA SCOPE 3", "DATA SCOPE 4"];
+const IMPACT = <span class="cstat-no" title="statement not covered" >["Insignificant","Minor","Significant","Major","Severe"];</span>
+const STATUS = <span class="cstat-no" title="statement not covered" >["Open", "In Progress", "Resolved", "Closed"];</span>
 &nbsp;
 export const CreateRisk = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> popupClose, popupOpen }) =&gt; {</span>
     const [datascope, setDataScope] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
-    const {datascopeData, setDsId} = <span class="cstat-no" title="statement not covered" >useRequestMaker();</span>
-    const[impact_rating, setImpactRating] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[probability_rating, setProbabilityRating] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[risk_description, setRiskDescription] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[risk_status, setRiskStatus] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const[suggested_mitigation, setSuggestedMitigation] = <span class="cstat-no" title="statement not covered" >useState('')</span>
+    const {datascopeData} = <span class="cstat-no" title="statement not covered" >useRequestMaker();</span>
+    const[impact_rating, setImpactRating] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[probability_rating, setProbabilityRating] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[risk_description, setRiskDescription] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[risk_status, setRiskStatus] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const[suggested_mitigation, setSuggestedMitigation] = <span class="cstat-no" title="statement not covered" >useState("")</span>
 &nbsp;
     const handleDescriptionChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        setRiskDescription(e.target.value);</span>
@@ -324,7 +324,7 @@ export const CreateRisk = <span class="cstat-no" title="statement not covered" >
 <span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/addRisk", {</span>
             method:"POST",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(risk)
         }).then(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
@@ -335,64 +335,64 @@ export const CreateRisk = <span class="cstat-no" title="statement not covered" >
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;Popup open={popupOpen} closeOnDocumentClick={false}&gt;
-            &lt;div className="createRiskOverlay"&gt;
-                &lt;div className="borderCreateRisk"&gt;
-                    &lt;button className="backButton" onClick={popupClose}&gt;
-                        &lt;IoArrowBackOutline className="backIcon" /&gt;
+            &lt;div className='createRiskOverlay'&gt;
+                &lt;div className='borderCreateRisk'&gt;
+                    &lt;button className='backButton' onClick={popupClose}&gt;
+                        &lt;IoArrowBackOutline className='backIcon' /&gt;
                     &lt;/button&gt;
                     &lt;form&gt;
-                        &lt;p className="pageTitle"&gt;Create Risk&lt;/p&gt;
-                        &lt;p className="inputTitle"&gt;Probability&lt;/p&gt;
+                        &lt;p className='pageTitle'&gt;Create Risk&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Probability&lt;/p&gt;
                         &lt;Dropdown
                             options={PROBABILITY}
                             value={PROBABILITY[0]}
-                            className="probabilityDropdown"
-                            name="probabilityDropdown"
+                            className='probabilityDropdown'
+                            name='probabilityDropdown'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setProbabilityRating(selectedOption.value)}</span>
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Impact&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Impact&lt;/p&gt;
                         &lt;Dropdown
                             options={IMPACT}
                             value={IMPACT[0]}
-                            className="impactDropdown"
-                            name="impactDropdown"
+                            className='impactDropdown'
+                            name='impactDropdown'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setImpactRating(selectedOption.value)}</span>
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Risk Description&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Risk Description&lt;/p&gt;
                         &lt;textarea
-                            className="inputTextArea"
+                            className='inputTextArea'
                             onChange={handleDescriptionChange}
                             value={risk_description}
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Risk Status&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Risk Status&lt;/p&gt;
                         &lt;Dropdown
                             options={STATUS}
                             value={STATUS[0]}
-                            className="statusDropdown"
-                            name="statusDropdown"
+                            className='statusDropdown'
+                            name='statusDropdown'
                             onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setRiskStatus(selectedOption.value)}</span>
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Suggested Mitigation&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Suggested Mitigation&lt;/p&gt;
                         &lt;textarea
-                            className="inputTextArea"
+                            className='inputTextArea'
                             onChange={handleMitigation}
                             value={suggested_mitigation}
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Data Scope&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Data Scope&lt;/p&gt;
                         {datascopeData &amp;&amp; datascopeData.length &gt; 0 ? (
                             &lt;Select
                                 options={datascopeData.map(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; (<span class="cstat-no" title="statement not covered" >{value: data.data_scope_id, label: data.ds_name})</span>)}
                                 value={datascope}
-                                className="accessRequestDatascopeDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add DataScope"}
+                                className='accessRequestDatascopeDropdown'
+                                name='datascopeDropdown'
+                                placeholder='Add DataScope'
                                 onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setDataScope(selectedOption)}</span>
                             /&gt;
                         ) : (
-                            &lt;p className="loadTitle"&gt;Loading...&lt;/p&gt;
+                            &lt;p className='loadTitle'&gt;Loading...&lt;/p&gt;
                         )}
                         &lt;div&gt;
-                            &lt;button className="submitButton" type="submit" onClick={handleClick}&gt;
+                            &lt;button className='submitButton' type='submit' onClick={handleClick}&gt;
                                 Submit
                             &lt;/button&gt;
                         &lt;/div&gt;
@@ -409,7 +409,7 @@ export const CreateRisk = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

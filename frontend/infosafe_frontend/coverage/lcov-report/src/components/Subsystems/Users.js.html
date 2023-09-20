@@ -320,12 +320,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {CreateUserPopup} from "../Create/CreateUserPopup";
 import React, {useState} from "react";
 import ViewUser from "../View/ViewUser";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import EditUser from "../Edit/EditUser";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
-import '../../styling/Users.css';
-import '../../styling/Dropdown.css';
+import "../../styling/Users.css";
+import "../../styling/Dropdown.css";
 &nbsp;
 export const Users = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     const {
@@ -340,15 +340,15 @@ export const Users = <span class="cstat-no" title="statement not covered" ><span
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("user_edit")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
                 &lt;div&gt;
-                    &lt;div className="usersEditButton"&gt;
-                        &lt;RiEditBoxFill data-testid="editButton" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditUserOpen(true)}</span> className="usersEditIcon" /&gt;
+                    &lt;div className='usersEditButton'&gt;
+                        &lt;RiEditBoxFill data-testid='editButton' onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditUserOpen(true)}</span> className='usersEditIcon' /&gt;
                         {editUserOpen ? (
                             &lt;EditUser
                                 popupClose={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditUserOpen(false)}</span>
                                 popupOpen={editUserOpen}
                                 user={user}
                             /&gt;
-                        ) : null}{' '}
+                        ) : null}{" "}
                     &lt;/div&gt;
 &nbsp;
                 &lt;/div&gt;
@@ -361,8 +361,8 @@ export const Users = <span class="cstat-no" title="statement not covered" ><span
     const DeleteUser = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("user_delete")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="usersDeleteButton"&gt;
-                    &lt;RiDeleteBin6Fill className="usersDeleteIcon"/&gt;
+                &lt;div className='usersDeleteButton'&gt;
+                    &lt;RiDeleteBin6Fill className='usersDeleteIcon'/&gt;
                 &lt;/div&gt;
 &nbsp;
             )
@@ -398,10 +398,10 @@ export const Users = <span class="cstat-no" title="statement not covered" ><span
     const CreateUser = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("user_create")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="CreateUserButtonDiv"&gt;
+                &lt;div className='CreateUserButtonDiv'&gt;
                     &lt;button
-                        className="CreateUserButton"
-                        data-testid="CreateUserButton"
+                        className='CreateUserButton'
+                        data-testid='CreateUserButton'
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setCreateUserOpen(true)}</span>
                     &gt;
                         Create New User
@@ -423,21 +423,21 @@ export const Users = <span class="cstat-no" title="statement not covered" ><span
 <span class="cstat-no" title="statement not covered" >    showUser.map(<span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; <span class="cstat-no" title="statement not covered" >userItems.push(&lt;ViewUserItem user={user} key={user.user_id}/&gt;))</span>;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="display"&gt;
-            &lt;div className="usersBackground"&gt;
-                &lt;div className="searchUsers"&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='usersBackground'&gt;
+                &lt;div className='searchUsers'&gt;
                     &lt;input
-                        // data-testid="userSearch"
-                        className="userSearchInput"
-                        type="text"
-                        id="userSearchInput"
-                        name="userSearch"
+                        // data-testid='userSearch'
+                        className='userSearchInput'
+                        type='text'
+                        id='userSearchInput'
+                        name='userSearch'
                         // onChange={}
                     /&gt;
-                    &lt;FaSearch className="userSearchIcon" /&gt;
+                    &lt;FaSearch className='userSearchIcon' /&gt;
                 &lt;/div&gt;
-                &lt;div className="users"&gt;
-                    &lt;ul className="userList"&gt;{userItems}&lt;/ul&gt;
+                &lt;div className='users'&gt;
+                    &lt;ul className='userList'&gt;{userItems}&lt;/ul&gt;
                 &lt;/div&gt;
                 &lt;CreateUser&gt;&lt;/CreateUser&gt;
             &lt;/div&gt;
@@ -451,7 +451,7 @@ export const Users = <span class="cstat-no" title="statement not covered" ><span
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -471,10 +471,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     const [roles, setRoles] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -484,10 +484,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -498,10 +498,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -511,10 +511,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/getAr', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/getAr", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -524,10 +524,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:80/api/asset/getAsset', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:80/api/asset/getAsset", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -537,10 +537,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/getRisk', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/getRisk", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -550,10 +550,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/getTask', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/getTask", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -563,10 +563,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getSr', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getSr", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -576,20 +576,20 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
             .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; {
                 const id = <span class="cstat-no" title="statement not covered" >result;</span> // Store the id in a local variable
                 // Use the id in the second fetch request
-<span class="cstat-no" title="statement not covered" >                fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getSrById/' + id, {</span>
+<span class="cstat-no" title="statement not covered" >                fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getSrById/" + id, {</span>
                     method: "GET",
                     headers: {
-                        Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                        Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                     }
                 })
                     .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -600,10 +600,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/getAr', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/getAr", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -613,10 +613,10 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getPermissions', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getPermissions", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -658,7 +658,7 @@ export default AccessAndDisplay;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

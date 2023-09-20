@@ -1,7 +1,7 @@
 import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
 import React, {useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
@@ -15,15 +15,15 @@ export const DataScopes = () => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         if(roles.includes("data_scope_edit")) {
             return (
-                <div className="dataScopesEditButton">
-                    <RiEditBoxFill onClick={() => setEditDataScopeOpen(true)} className="dataScopesEditIcon"/>
+                <div className='dataScopesEditButton'>
+                    <RiEditBoxFill onClick={() => setEditDataScopeOpen(true)} className='dataScopesEditIcon'/>
                     {editDataScopeOpen ? (
                         <EditDataScopePopup
                             popupClose={() => setEditDataScopeOpen(false)}
                             popupOpen={editDataScopeOpen}
                             datascope={datascope}
                         />
-                    ) : null}{' '}
+                    ) : null}{" "}
                 </div>
             )
         } else {
@@ -34,8 +34,8 @@ export const DataScopes = () => {
     const DeleteDataScope = () => {
         if(roles.includes("data_scope_delete")) {
             return (
-                <div className="dataScopesDeleteButton">
-                    <RiDeleteBin6Fill className="dataScopesDeleteIcon"/>
+                <div className='dataScopesDeleteButton'>
+                    <RiDeleteBin6Fill className='dataScopesDeleteIcon'/>
                 </div>
 
             )
@@ -73,10 +73,10 @@ export const DataScopes = () => {
     const CreateDataScope = () => {
         if(roles.includes("data_scope_create")) {
             return (
-                <div className="CreateDataScopeDiv">
+                <div className='CreateDataScopeDiv'>
                     <button
-                        className="CreateDataScopeButton"
-                        data-testid="dataScopeMake"
+                        className='CreateDataScopeButton'
+                        data-testid='dataScopeMake'
                         onClick={() => setCreateDataScopeOpen(!createDataScopeOpen)}
                     >
                         Create Data Scope
@@ -100,21 +100,21 @@ export const DataScopes = () => {
     );
 
     return (
-        <div className="display">
-            <div className="dataScopesBackground">
-                <div className="searchDataScopes">
+        <div className='display'>
+            <div className='dataScopesBackground'>
+                <div className='searchDataScopes'>
                     <input
-                        // data-testid="datascopesSearch"
-                        className="dataScopesSearchInput"
-                        type="text"
-                        id="dataScopesSearchInput"
-                        name="dataScopesSearch"
+                        // data-testid='datascopesSearch'
+                        className='dataScopesSearchInput'
+                        type='text'
+                        id='dataScopesSearchInput'
+                        name='dataScopesSearch'
                         // onChange={}
                     />
-                    <FaSearch className="dataScopesSearchIcon" />
+                    <FaSearch className='dataScopesSearchIcon' />
                 </div>
-                <div className="datascopes">
-                    <ul className="datascopesList">{dataItems}</ul>
+                <div className='datascopes'>
+                    <ul className='datascopesList'>{dataItems}</ul>
                 </div>
                 <CreateDataScope></CreateDataScope>
             </div>

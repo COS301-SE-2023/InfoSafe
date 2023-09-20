@@ -318,19 +318,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useState } from "react";
 &nbsp;
 const useRequestMaker = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const [user_id, setUserId] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [reason, setReason] = <span class="cstat-no" title="statement not covered" >useState('')</span>
+    const [user_id, setUserId] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [reason, setReason] = <span class="cstat-no" title="statement not covered" >useState("")</span>
     // Support Requests
-    const [support_type, setSupportType] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [support_description, setSupportDescription] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [support_status, setSupportStatus] = <span class="cstat-no" title="statement not covered" >useState('')</span>
+    const [support_type, setSupportType] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [support_description, setSupportDescription] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [support_status, setSupportStatus] = <span class="cstat-no" title="statement not covered" >useState("")</span>
     // Access Requests
-    const [ds_id, setDsId] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [status, setStatus] = <span class="cstat-no" title="statement not covered" >useState('')</span>
+    const [ds_id, setDsId] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [status, setStatus] = <span class="cstat-no" title="statement not covered" >useState("")</span>
     // Asset Requests
-    const [asset_id, setAssetId] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [desired_date, setDesiredDate] = <span class="cstat-no" title="statement not covered" >useState('')</span>
-    const [request_status, setRequestStatus] = <span class="cstat-no" title="statement not covered" >useState('')</span>
+    const [asset_id, setAssetId] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [desired_date, setDesiredDate] = <span class="cstat-no" title="statement not covered" >useState("")</span>
+    const [request_status, setRequestStatus] = <span class="cstat-no" title="statement not covered" >useState("")</span>
 &nbsp;
     const [AvailableDevices, setAvailableDevices] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
     const [datascopeData, setDatascopeData] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
@@ -345,16 +345,16 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
         let requestBody = <span class="cstat-no" title="statement not covered" >{};</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        switch (selectedRequest) {</span>
-            case 'Support Request':
+            case "Support Request":
 <span class="cstat-no" title="statement not covered" >                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/addSr";</span>
 <span class="cstat-no" title="statement not covered" >                requestBody = support;</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
-            case 'Asset Request':
+            case "Asset Request":
 <span class="cstat-no" title="statement not covered" >                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/addAr";</span>
 <span class="cstat-no" title="statement not covered" >                requestBody = asset;</span>
 <span class="cstat-no" title="statement not covered" >                setAssetId(selectedAssetId)</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
-            case 'Access Request':
+            case "Access Request":
 <span class="cstat-no" title="statement not covered" >                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/addAr";</span>
 <span class="cstat-no" title="statement not covered" >                requestBody = access;</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
@@ -366,7 +366,7 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body: JSON.stringify(requestBody)
         }).then(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -375,10 +375,10 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -391,7 +391,7 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
 <span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {</span>
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -401,9 +401,9 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs", {</span>
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
@@ -448,7 +448,7 @@ export default useRequestMaker;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

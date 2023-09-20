@@ -11,7 +11,7 @@ export const SupportRequests = () => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
             return (
-                <div className="EditIcon">
+                <div className='EditIcon'>
                     <FaRegEdit
 
                         onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
@@ -33,7 +33,7 @@ export const SupportRequests = () => {
     const EditMySupportRequestDiv = ({mySupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
             return (
-                <div className="EditIcon">
+                <div className='EditIcon'>
                     <FaRegEdit
 
                         onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
@@ -85,7 +85,7 @@ export const SupportRequests = () => {
                             support={mySupport}
                         />
                     ) : null}
-                </p>{' '}
+                </p>{" "}
                 <EditMySupportRequestDiv></EditMySupportRequestDiv>
             </li>
         )
@@ -102,41 +102,41 @@ export const SupportRequests = () => {
 
     const ViewSupportRequests = () =>{
         return(
-            <div className="tables">
-                <div className="active_support_requests">
-                    <ul className="activeRequestsList">{active_requests}</ul>
+            <div className='tables'>
+                <div className='active_support_requests'>
+                    <ul className='activeRequestsList'>{active_requests}</ul>
                 </div>
-                <div className="my_support_requests">
-                    <ul className="myRequestsList">{my_requests}</ul>
+                <div className='my_support_requests'>
+                    <ul className='myRequestsList'>{my_requests}</ul>
                 </div>
             </div>
         )
     }
 
     return(
-        <div className="display">
-            <div className="supportRequestsBackground">
-                <div className="searchSupportRequests">
+        <div className='display'>
+            <div className='supportRequestsBackground'>
+                <div className='searchSupportRequests'>
                     <input
-                        // data-testid="supportRequestSearch"
-                        className="supportRequestSearchInput"
-                        type="text"
-                        id="supportRequestSearchInput"
-                        name="supportRequestSearch"
+                        // data-testid='supportRequestSearch'
+                        className='supportRequestSearchInput'
+                        type='text'
+                        id='supportRequestSearchInput'
+                        name='supportRequestSearch'
                         // onChange={}
                     />
-                    <FaSearch className="supportRequestSearchIcon" />
+                    <FaSearch className='supportRequestSearchIcon' />
                 </div>
                 <ViewSupportRequests></ViewSupportRequests>
-                <div className="supportRequestButtonsDiv">
+                <div className='supportRequestButtonsDiv'>
                     <button
-                        className="viewMySupportRequestButton"
+                        className='viewMySupportRequestButton'
                         // onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
                     >
                         View My Support Requests
                     </button>
                     <button
-                        className="viewAllSupportRequestButton"
+                        className='viewAllSupportRequestButton'
                         // onClick={() => setCreateDeviceOpen(!createDeviceOpen)}
                     >
                         View All Support Requests

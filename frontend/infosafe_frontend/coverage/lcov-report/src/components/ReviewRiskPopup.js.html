@@ -177,55 +177,55 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from 'reactjs-popup';
-import React from 'react';
-import '../styling/ReviewRisk.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from "reactjs-popup";
+import React from "react";
+import "../styling/ReviewRisk.css";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Dropdown from "react-dropdown";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-const PROBABILITY = <span class="cstat-no" title="statement not covered" >['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];</span>
-const IMPACT = <span class="cstat-no" title="statement not covered" >['Insignificant','Minor','Significant','Major','Severe'];</span>
-const STATUS = <span class="cstat-no" title="statement not covered" >['Accept','Avoid','Transfer','Mitigate'];</span>
+const PROBABILITY = <span class="cstat-no" title="statement not covered" >["Almost Certain", "Likely", "Moderate","Unlikely","Rare"];</span>
+const IMPACT = <span class="cstat-no" title="statement not covered" >["Insignificant","Minor","Significant","Major","Severe"];</span>
+const STATUS = <span class="cstat-no" title="statement not covered" >["Accept","Avoid","Transfer","Mitigate"];</span>
 export const ReviewRisk = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> risk, popupClose, popupOpen }) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;Popup open={popupOpen} closeOnDocumentClick={false}&gt;
-            &lt;div className="reviewRiskOverlay"&gt;
-                &lt;div className="borderReviewRisk"&gt;
-                    &lt;button className="backButton" onClick={popupClose}&gt;
-                        &lt;IoArrowBackOutline className="backIcon" /&gt;
+            &lt;div className='reviewRiskOverlay'&gt;
+                &lt;div className='borderReviewRisk'&gt;
+                    &lt;button className='backButton' onClick={popupClose}&gt;
+                        &lt;IoArrowBackOutline className='backIcon' /&gt;
                     &lt;/button&gt;
                     &lt;form&gt;
-                        &lt;p className="pageTitle"&gt;Review Risk&lt;/p&gt;
-                        &lt;p className="displayTitle"&gt;Data Scope&lt;/p&gt;
-                        &lt;p className="displayData"&gt;Data Scope A&lt;/p&gt;
-                        &lt;p className="inputTitle"&gt;Probability&lt;/p&gt;
+                        &lt;p className='pageTitle'&gt;Review Risk&lt;/p&gt;
+                        &lt;p className='displayTitle'&gt;Data Scope&lt;/p&gt;
+                        &lt;p className='displayData'&gt;Data Scope A&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Probability&lt;/p&gt;
                         &lt;Dropdown
                             options={PROBABILITY}
                             value={PROBABILITY[0]}
-                            className="probabilityDropdown"
-                            name="probabilityDropdown"
+                            className='probabilityDropdown'
+                            name='probabilityDropdown'
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Impact&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Impact&lt;/p&gt;
                         &lt;Dropdown
                             options={IMPACT}
                             value={IMPACT[0]}
-                            className="impactDropdown"
-                            name="impactDropdown"
+                            className='impactDropdown'
+                            name='impactDropdown'
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Vulnerability&lt;/p&gt;
-                        &lt;textarea className="inputTextArea" /&gt;
-                        &lt;p className="inputTitle"&gt;Threat&lt;/p&gt;
-                        &lt;textarea className="inputTextArea" /&gt;
-                        &lt;p className="inputTitle"&gt;Status&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Vulnerability&lt;/p&gt;
+                        &lt;textarea className='inputTextArea' /&gt;
+                        &lt;p className='inputTitle'&gt;Threat&lt;/p&gt;
+                        &lt;textarea className='inputTextArea' /&gt;
+                        &lt;p className='inputTitle'&gt;Status&lt;/p&gt;
                         &lt;Dropdown
                             options={STATUS}
                             value={STATUS[0]}
-                            className="reviewRiskStatusDropdown"
-                            name="reviewRiskStatusDropdown"
+                            className='reviewRiskStatusDropdown'
+                            name='reviewRiskStatusDropdown'
                         /&gt;
                         &lt;div&gt;
-                            &lt;button className="submitButton" type="submit" onClick={popupClose}&gt;
+                            &lt;button className='submitButton' type='submit' onClick={popupClose}&gt;
                                 Submit
                             &lt;/button&gt;
                         &lt;/div&gt;
@@ -241,7 +241,7 @@ export const ReviewRisk = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -1,9 +1,9 @@
-import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import AccessRequestApproval from '../../Edit/AccessRequestApproval';
+import React from "react";
+import { render, fireEvent} from "@testing-library/react";
+import AccessRequestApproval from "../../Edit/AccessRequestApproval";
 
-describe('AccessRequestApproval Component', () => {
-    it('calls popupClose when back button is clicked', () => {
+describe("AccessRequestApproval Component", () => {
+    it("calls popupClose when back button is clicked", () => {
         const popupCloseMock = jest.fn();
 
         const { getByTestId } = render(
@@ -11,7 +11,7 @@ describe('AccessRequestApproval Component', () => {
         );
 
         // eslint-disable-next-line testing-library/prefer-screen-queries
-        const backButton = getByTestId('back-button'); // Select the button by test ID
+        const backButton = getByTestId("back-button"); // Select the button by test ID
         fireEvent.click(backButton);
 
         // Ensure that popupClose was called when the back button is clicked

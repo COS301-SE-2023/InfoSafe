@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
 const useRequestMaker = () => {
-    const [user_id, setUserId] = useState('')
-    const [reason, setReason] = useState('')
+    const [user_id, setUserId] = useState("")
+    const [reason, setReason] = useState("")
     // Support Requests
-    const [support_type, setSupportType] = useState('')
-    const [support_description, setSupportDescription] = useState('')
-    const [support_status, setSupportStatus] = useState('')
+    const [support_type, setSupportType] = useState("")
+    const [support_description, setSupportDescription] = useState("")
+    const [support_status, setSupportStatus] = useState("")
     // Access Requests
-    const [ds_id, setDsId] = useState('')
-    const [status, setStatus] = useState('')
+    const [ds_id, setDsId] = useState("")
+    const [status, setStatus] = useState("")
     // Asset Requests
-    const [asset_id, setAssetId] = useState('')
-    const [desired_date, setDesiredDate] = useState('')
-    const [request_status, setRequestStatus] = useState('')
+    const [asset_id, setAssetId] = useState("")
+    const [desired_date, setDesiredDate] = useState("")
+    const [request_status, setRequestStatus] = useState("")
 
     const [AvailableDevices, setAvailableDevices] = useState([]);
     const [datascopeData, setDatascopeData] = useState([]);
@@ -28,16 +28,16 @@ const useRequestMaker = () => {
         let requestBody = {};
 
         switch (selectedRequest) {
-            case 'Support Request':
+            case "Support Request":
                 apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/addSr";
                 requestBody = support;
                 break;
-            case 'Asset Request':
+            case "Asset Request":
                 apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/addAr";
                 requestBody = asset;
                 setAssetId(selectedAssetId)
                 break;
-            case 'Access Request':
+            case "Access Request":
                 apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/addAr";
                 requestBody = access;
                 break;
@@ -49,7 +49,7 @@ const useRequestMaker = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body: JSON.stringify(requestBody)
         }).then(() => {
@@ -58,10 +58,10 @@ const useRequestMaker = () => {
     };
 
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset', {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then((res) => res.json())
@@ -74,7 +74,7 @@ const useRequestMaker = () => {
         fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then((res) => res.json())
@@ -84,9 +84,9 @@ const useRequestMaker = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs', {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs", {
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then((res) => res.json())

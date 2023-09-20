@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import '../../styling/EditDataScopePopup.css';
-import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
+import React, {useState} from "react";
+import "../../styling/EditDataScopePopup.css";
+import Popup from "reactjs-popup";
+import { IoArrowBackOutline } from "react-icons/io5";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-import Dropdown from 'react-dropdown';
-const STATUS = ['CREATED', 'APPROVED', 'REJECTED', 'REVOKED'];
+import Dropdown from "react-dropdown";
+const STATUS = ["CREATED", "APPROVED", "REJECTED", "REVOKED"];
 
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
@@ -21,10 +21,10 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/" + datascope.data_scope_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(()=>{
@@ -35,34 +35,34 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     }
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-            <div className="editDataScopeOverlay">
-                <div className="editdatascopeBorder">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
+            <div className='editDataScopeOverlay'>
+                <div className='editdatascopeBorder'>
                     <form onSubmit={handleSubmit}>
-                        <button className="backButton" onClick={popupClose} data-testid="back-button">
-                            <IoArrowBackOutline className="backIcon" />
+                        <button className='backButton' onClick={popupClose} data-testid='back-button'>
+                            <IoArrowBackOutline className='backIcon' />
                         </button>
-                        <p className="editDatascopeLabel">Edit Data Scope</p>
-                        <p className="editDatasscopeNameLabel">Name</p>
+                        <p className='editDatascopeLabel'>Edit Data Scope</p>
+                        <p className='editDatasscopeNameLabel'>Name</p>
                         <input
-                            className="editDatascopeNameInput"
+                            className='editDatascopeNameInput'
                             defaultValue={datascope.ds_name} onChange={e => setValues({...values, ds_name: e.target.value})}
                         />
-                        <p className="editDescriptionLabel">Description</p>
+                        <p className='editDescriptionLabel'>Description</p>
                         <textarea
-                            className="editDescriptionInput"
+                            className='editDescriptionInput'
                             defaultValue={datascope.description} onChange={e => setValues({...values, ds_description: e.target.value})}
                         />
                         <br />
-                        <p className="editStatusLabel">Status</p>
+                        <p className='editStatusLabel'>Status</p>
                         <Dropdown
                             options={STATUS}
                             value={STATUS[0]}
-                            className="editDSStatusDropdown"
-                            data-testid="editDSStatusDropdown"
+                            className='editDSStatusDropdown'
+                            data-testid='editDSStatusDropdown'
                             defaultValue={datascope.status} onChange={selectedOption => setValues({...values, ds_status: selectedOption.value})}
                         />
-                        <button className="editdatascope_finish">
+                        <button className='editdatascope_finish'>
                             Submit
                         </button>
                     </form>

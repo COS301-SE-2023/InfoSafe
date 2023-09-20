@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import Dropdown from 'react-dropdown';
-import '../../styling/CreateUserPopup.css';
-import '../../styling/Dropdown.css'
-import Popup from 'reactjs-popup';
-import { IoArrowBackOutline } from 'react-icons/io5';
+import React, {useEffect, useState} from "react";
+import Dropdown from "react-dropdown";
+import "../../styling/CreateUserPopup.css";
+import "../../styling/Dropdown.css"
+import Popup from "reactjs-popup";
+import { IoArrowBackOutline } from "react-icons/io5";
 
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
-    const[first_name,setName]=useState('')
-    const[last_name,setSurname]=useState('')
-    const[email,setEmail]=useState('')
-    const[password,setPassword]=useState('')
-    const [roleNames, setRoleNames] = useState('')
-    const [selectedRole, setSelectedRole] = useState('');
+    const[first_name,setName]=useState("")
+    const[last_name,setSurname]=useState("")
+    const[email,setEmail]=useState("")
+    const[password,setPassword]=useState("")
+    const [roleNames, setRoleNames] = useState("")
+    const [selectedRole, setSelectedRole] = useState("");
     const handleClick = (e) => {
         e.preventDefault();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
@@ -21,7 +21,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
         })
             .then((response) => response.json())
@@ -34,7 +34,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                            Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
                         },
                         body: JSON.stringify(user),
                     })
@@ -59,7 +59,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                 const response = await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/randPass/generate", {
                     method: "GET",
                     headers: {"Content-Type":"application/json",
-                        Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                        Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                     }
                 });
 
@@ -68,10 +68,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                     const randomP = data.password.toString();
                     setPassword(randomP);
                 } else {
-                    console.error('Error fetching string from the server.');
+                    console.error("Error fetching string from the server.");
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error("Error:", error);
             }
         };
         fetchData();
@@ -81,7 +81,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
                 method:"GET",
                 headers:{"Content-Type":"application/json",
-                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                    Authorization: "Bearer " + sessionStorage.getItem("accessToken")
                 },
             }).then((res) => res.json())
             .then((result) => {
@@ -90,36 +90,36 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     }, [])
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
-            <div className="createUserOverlay">
-                <div className="createUserBorder">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position='center center'>
+            <div className='createUserOverlay'>
+                <div className='createUserBorder'>
                     <form>
-                        <button className="backButton" data-testid="backArrow" onClick={popupClose}>
-                            <IoArrowBackOutline className="backIcon" />
+                        <button className='backButton' data-testid='backArrow' onClick={popupClose}>
+                            <IoArrowBackOutline className='backIcon' />
                         </button>
-                        <p className="createUserLabel">User Creation</p>
-                        <p className="nameLabel">Name</p>
-                        <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
-                        <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
-                        <p className="emailLabel">Email</p>
-                        <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                        <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
-                        <p className="roleLabel">System role</p>
+                        <p className='createUserLabel'>User Creation</p>
+                        <p className='nameLabel'>Name</p>
+                        <input className='nameInput' data-testid='nameInput' name='name' value={first_name} onChange={(e)=>setName(e.target.value)}/>
+                        <p className='surnameLabel'>Surname</p>
+                        <input className='surnameInput' data-testid='surnameInput' name='surname' value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
+                        <p className='emailLabel'>Email</p>
+                        <input className='emailInput' data-testid='emailInput' name='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <p className='passwordLabel'>Password</p>
+                        <input className='passwordInput' data-testid='passwordInput' name='password' placeholder={password} readOnly/>
+                        <p className='roleLabel'>System role</p>
                         {roleNames && roleNames.length > 0 ? (
                             <Dropdown
                                 options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
                                 values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
-                                className="role_dropdown"
-                                name="role_dropdown"
+                                className='role_dropdown'
+                                name='role_dropdown'
                                 onChange={values => setSelectedRole(values.value)}
                             />
                         ) : (
-                            <p className="loadTitle">Loading...</p>
+                            <p className='loadTitle'>Loading...</p>
                         )}
 
-                        <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
+                        <button className='createUserFinish' data-testid='createuser_finish'  onClick={handleClick}>
                             Submit
                         </button>
                     </form>

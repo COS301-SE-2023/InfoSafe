@@ -221,15 +221,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
-import '../../styling/UpdateTask.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Popup from "reactjs-popup";
+import React, {useState} from "react";
+import "../../styling/UpdateTask.css";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Dropdown from "react-dropdown";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
-const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3'];
-const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
+const TASK_ID = ["TASK 1", "TASK 2", "TASK 3"];
+const USER_LIST = ["USER A", "USER B", "USER C", "USER D"];
 export const UpdateTask = ({ task, popupClose, popupOpen }) =&gt; {
     const[values, setValues]=useState({
         task_id: task.task_id,
@@ -242,10 +242,10 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/update/' + task.task_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/update/" + task.task_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
@@ -257,38 +257,38 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) =&gt; {
 &nbsp;
     return (
         &lt;Popup open={popupOpen} closeOnDocumentClick={false}&gt;
-            &lt;div className="updateTaskOverlay"&gt;
-                &lt;div className="borderUpdateTask"&gt;
-                    &lt;button className="backButton" onClick={popupClose} data-testid="back-button"&gt;
-                        &lt;IoArrowBackOutline className="backIcon" /&gt;
+            &lt;div className='updateTaskOverlay'&gt;
+                &lt;div className='borderUpdateTask'&gt;
+                    &lt;button className='backButton' onClick={popupClose} data-testid='back-button'&gt;
+                        &lt;IoArrowBackOutline className='backIcon' /&gt;
                     &lt;/button&gt;
                     &lt;form&gt;
-                        &lt;p className="pageTitle"&gt;Update Task&lt;/p&gt;
-                        &lt;p className="inputTitle"&gt;Task ID&lt;/p&gt;
+                        &lt;p className='pageTitle'&gt;Update Task&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Task ID&lt;/p&gt;
                         &lt;Dropdown
                             options={TASK_ID}
                             value={TASK_ID[0]}
-                            className="updateTaskIDDropdown"
-                            name="updateTaskIDDropdown"
+                            className='updateTaskIDDropdown'
+                            name='updateTaskIDDropdown'
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Assignee&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Assignee&lt;/p&gt;
                         &lt;Dropdown
                             options={USER_LIST}
                             value={USER_LIST[0]}
-                            className="updateTaskAssigneeDropdown"
-                            name="updateTaskAssigneeDropdown"
+                            className='updateTaskAssigneeDropdown'
+                            name='updateTaskAssigneeDropdown'
                         /&gt;
-                        &lt;p className="inputTitle"&gt;Task Description&lt;/p&gt;
-                        &lt;textarea className="inputTextArea" /&gt;
-                        &lt;p className="inputTitle"&gt;Completion Date&lt;/p&gt;
+                        &lt;p className='inputTitle'&gt;Task Description&lt;/p&gt;
+                        &lt;textarea className='inputTextArea' /&gt;
+                        &lt;p className='inputTitle'&gt;Completion Date&lt;/p&gt;
                         &lt;input
-                            className="textboxInput"
-                            type="text"
-                            id="inputTextArea"
-                            name="completionDate"
+                            className='textboxInput'
+                            type='text'
+                            id='inputTextArea'
+                            name='completionDate'
                         /&gt;
-                        &lt;div className="updateTaskButtonDiv"&gt;
-                            &lt;button className="updateTaskSubmitButton" type="submit"&gt;
+                        &lt;div className='updateTaskButtonDiv'&gt;
+                            &lt;button className='updateTaskSubmitButton' type='submit'&gt;
                                 Submit
                             &lt;/button&gt;
                         &lt;/div&gt;
@@ -307,7 +307,7 @@ export default UpdateTask;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

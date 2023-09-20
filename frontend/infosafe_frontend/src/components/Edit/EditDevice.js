@@ -1,12 +1,12 @@
-import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
-import '../../styling/EditDevice.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
+import Popup from "reactjs-popup";
+import React, {useState} from "react";
+import "../../styling/EditDevice.css";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Dropdown from "react-dropdown";
 
-const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
-// const NEW_OPTIONS = ['YES', 'NO'];
-const AVAILABILITY_OPTIONS = ['YES', 'NO'];
+const STATUS_OPTIONS = ["CLEAN", "FULL", "BROKEN"];
+// const NEW_OPTIONS = ["YES", "NO"];
+const AVAILABILITY_OPTIONS = ["YES", "NO"];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     // const makeOptions = () => {
     //     var options = [];
@@ -29,10 +29,10 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/update/' + asset.asset_id, {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/update/" + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body:JSON.stringify(values)
         }).then(()=>{
@@ -44,53 +44,53 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
-            <div className="editDeviceOverlay">
-                <div className="borderEditDevice">
-                    <button className="backButton" onClick={popupClose} data-testid="back-button">
-                        <IoArrowBackOutline className="backIcon" />
+            <div className='editDeviceOverlay'>
+                <div className='borderEditDevice'>
+                    <button className='backButton' onClick={popupClose} data-testid='back-button'>
+                        <IoArrowBackOutline className='backIcon' />
                     </button>
                     <form onSubmit={handleSubmit}>
-                        <p className="editDeviceTitle">Edit Device</p>
+                        <p className='editDeviceTitle'>Edit Device</p>
 
-                        <div className="editDeviceDescriptionDiv">
-                            <p className="editDeviceDescriptionLabel">Description</p>
+                        <div className='editDeviceDescriptionDiv'>
+                            <p className='editDeviceDescriptionLabel'>Description</p>
                             <textarea
-                                className="editDeviceDescriptionInput"
+                                className='editDeviceDescriptionInput'
                                 defaultValue={asset.asset_description}
                                 onChange={e => setValues({...values, asset_description: e.target.value})}
                             />
                         </div>
-                        <p className = "editDeviceAvailabilityLabel">Available</p>
+                        <p className = 'editDeviceAvailabilityLabel'>Available</p>
                         <Dropdown
                             options={AVAILABILITY_OPTIONS}
                             value={asset.availability}
-                            className="editDeviceAvailableDropdown"
-                            name="status"
+                            className='editDeviceAvailableDropdown'
+                            name='status'
                             onChange={(selectedOption) => setValues({...values, availability: selectedOption.value})}
                         />
-                        <div className="editDeviceStatusDiv">
-                            <p className="editDevicestatusTitle">Status</p>
+                        <div className='editDeviceStatusDiv'>
+                            <p className='editDevicestatusTitle'>Status</p>
                             <Dropdown
                                 options={STATUS_OPTIONS}
                                 value={asset.status}
-                                className="editDeviceStatusDropdown"
-                                name="availability"
+                                className='editDeviceStatusDropdown'
+                                name='availability'
                                 onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
                             />
                         </div>
-                        <p className="editDeviceCurrentCustodianLabel">Current Custodian</p>
+                        <p className='editDeviceCurrentCustodianLabel'>Current Custodian</p>
                         <input
-                            className="editDeviceCurrentCustodianInput"
+                            className='editDeviceCurrentCustodianInput'
                             defaultValue={asset.current_assignee}
                             onChange={e => setValues({...values, current_assignee: e.target.value})}
                         />
-                        <p className="editDevicePreviousCustodianLabel">Previous Custodian</p>
+                        <p className='editDevicePreviousCustodianLabel'>Previous Custodian</p>
                         <input
-                            className="editDevicePreviousCustodianInput"
+                            className='editDevicePreviousCustodianInput'
                             value={asset.previous_assignee}
                             onChange={e => setValues({...values, previous_assignee: e.target.value})}
                         />
-                        <button className="EditDeviceButton" type="submit">
+                        <button className='EditDeviceButton' type='submit'>
                             Submit
                         </button>
                     </form>

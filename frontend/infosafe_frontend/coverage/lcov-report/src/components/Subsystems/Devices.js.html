@@ -291,8 +291,8 @@ export const Devices = <span class="cstat-no" title="statement not covered" ><sp
         const [editDeviceOpen, setEditDeviceOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("risks_edit")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="deviceEditButton"&gt;
-                    &lt;RiEditBoxFill onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditDeviceOpen(!editDeviceOpen)}</span> className="deviceEditIcon"/&gt;
+                &lt;div className='deviceEditButton'&gt;
+                    &lt;RiEditBoxFill onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditDeviceOpen(!editDeviceOpen)}</span> className='deviceEditIcon'/&gt;
                     {editDeviceOpen ? (
                         &lt;EditDevice
                             popupClose={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setEditDeviceOpen(false)}</span>
@@ -314,7 +314,7 @@ export const Devices = <span class="cstat-no" title="statement not covered" ><sp
 <span class="cstat-no" title="statement not covered" >            return (</span>
                 &lt;li key={asset.id}&gt;
                     &lt;p onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setViewDeviceOpen(!viewDeviceOpen)}</span>&gt;
-                        Asset {asset.asset_id}: {asset.asset_name}:{' '}{asset.asset_description}
+                        Asset {asset.asset_id}: {asset.asset_name}:{" "}{asset.asset_description}
                         {viewDeviceOpen &amp;&amp; (
                             &lt;ViewDevice
                                 popupClose={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setViewDeviceOpen(false)}</span>
@@ -334,9 +334,9 @@ export const Devices = <span class="cstat-no" title="statement not covered" ><sp
     const CreateDevice = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(roles.includes("devices_create")) {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-                &lt;div className="AddDeviceDiv"&gt;
+                &lt;div className='AddDeviceDiv'&gt;
                     &lt;button
-                        className="AddDeviceButton"
+                        className='AddDeviceButton'
                         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setCreateDeviceOpen(!createDeviceOpen)}</span>
                     &gt;
                         Add Device
@@ -360,21 +360,21 @@ export const Devices = <span class="cstat-no" title="statement not covered" ><sp
     );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return(</span>
-        &lt;div className="display"&gt;
-            &lt;div className="devicesBackground"&gt;
-                &lt;div className="searchDevices"&gt;
+        &lt;div className='display'&gt;
+            &lt;div className='devicesBackground'&gt;
+                &lt;div className='searchDevices'&gt;
                     &lt;input
-                        // data-testid="deviceSearch"
-                        className="deviceSearchInput"
-                        type="text"
-                        id="deviceSearchInput"
-                        name="deviceSearch"
+                        // data-testid='deviceSearch'
+                        className='deviceSearchInput'
+                        type='text'
+                        id='deviceSearchInput'
+                        name='deviceSearch'
                         // onChange={}
                     /&gt;
-                    &lt;FaSearch className="deviceSearchIcon" /&gt;
+                    &lt;FaSearch className='deviceSearchIcon' /&gt;
                 &lt;/div&gt;
-                &lt;div className="devices"&gt;
-                    &lt;ul className="deviceList"&gt;{devices}&lt;/ul&gt;
+                &lt;div className='devices'&gt;
+                    &lt;ul className='deviceList'&gt;{devices}&lt;/ul&gt;
                 &lt;/div&gt;
                 &lt;CreateDevice&gt;&lt;/CreateDevice&gt;
             &lt;/div&gt;
@@ -388,7 +388,7 @@ export const Devices = <span class="cstat-no" title="statement not covered" ><sp
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T15:13:10.321Z
+                at 2023-09-20T21:34:48.715Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

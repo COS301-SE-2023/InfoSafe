@@ -1,5 +1,5 @@
-import '../../styling/NavBar.css';
-import React, {useEffect, useState} from 'react';
+import "../../styling/NavBar.css";
+import React, {useEffect, useState} from "react";
 import {TabView} from "./TabView";
 import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {IoMenu, IoPersonCircleSharp} from "react-icons/io5";
@@ -9,7 +9,7 @@ const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
     const {roles} = AccessAndDisplay();
-    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Risks', 'Requests', 'Asset Requests'];
+    const TabNames = ["Home", "Role Creation", "Users", "Data Scopes", "Access Requests", "Compliance Matrix", "Devices", "Support Requests", "Risks", "Requests", "Asset Requests"];
 
     tabItems.push(0);
 
@@ -51,20 +51,20 @@ const NavBar = () => {
 
     const [menuVisible, setMenuVisible] = useState(false);
 
-    if (sessionStorage.getItem('accessToken') == null) {
+    if (sessionStorage.getItem("accessToken") == null) {
         window.location.href = "/";
     }
     const [settings, showSettings] = useState(false);
     const [changePassOpen, setChangePassOpen] = useState(false);
-    const [username, setUserName] = useState('');
+    const [username, setUserName] = useState("");
     const [width , setWidth] = useState(100);
     const [left,setLeft] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getUserName', {
+        fetch("http://localhost:8080/api/user/getUserName", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
         })
             .then((res) => res.json())
@@ -100,25 +100,25 @@ const NavBar = () => {
 
     const displayPage = () => {
         return (
-            <div className="navbar">
-                <div className="tabMenu" id="tabMenu">
+            <div className='navbar'>
+                <div className='tabMenu' id='tabMenu'>
                     {displayTabs({viewTabs: tabItems})}
                 </div>
 
                 <div className='shift' style={{ width: `${width}%`,left: `${left}%`}}>
-                    <div className="toolbar" id="toolbar" style={{width: `${width}%`}}>
-                        <div className="toolbarLeft">
-                            <IoMenu className="menuIcon" onClick={displayMenu}/>
-                            <p className="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
+                    <div className='toolbar' id='toolbar' style={{width: `${width}%`}}>
+                        <div className='toolbarLeft'>
+                            <IoMenu className='menuIcon' onClick={displayMenu}/>
+                            <p className='tabTitle'>{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
                         </div>
-                        <div className="toolbarRight">
-                            <p className="userDisplay" id="userDisplay">{username}</p>
-                            <IoPersonCircleSharp className="avatar" id="avatar" onClick={showDiv}/>
+                        <div className='toolbarRight'>
+                            <p className='userDisplay' id='userDisplay'>{username}</p>
+                            <IoPersonCircleSharp className='avatar' id='avatar' onClick={showDiv}/>
                             {settings &&
-                                <div className="settingsDiv">
-                                    <p className="changeLabel" onClick={() => setChangePassOpen(true)}>Change Password</p>
-                                    <p className="logoutLabel" onClick={() => {
-                                        sessionStorage.removeItem('accessToken');
+                                <div className='settingsDiv'>
+                                    <p className='changeLabel' onClick={() => setChangePassOpen(true)}>Change Password</p>
+                                    <p className='logoutLabel' onClick={() => {
+                                        sessionStorage.removeItem("accessToken");
                                         window.location.href = "/";
                                     }}>Logout</p>
                                     {changePassOpen ? (
@@ -131,7 +131,7 @@ const NavBar = () => {
                             }
                         </div>
                     </div>
-                    <div className="displayTabContent">
+                    <div className='displayTabContent'>
                         <TabView currentTab={activeTab}></TabView>
                     </div>
                 </div>
@@ -141,11 +141,11 @@ const NavBar = () => {
 
     const displayTabs = ({viewTabs}) => {
         return (
-            <ul className="tabs">
+            <ul className='tabs'>
                 {viewTabs.map((i) => (
                     <li
                         key={i}
-                        className={activeTab === i ? 'active' : ''}
+                        className={activeTab === i ? "active" : ""}
                         onClick={() => handleClick(i)}
                     >
                         {TabNames[i]}

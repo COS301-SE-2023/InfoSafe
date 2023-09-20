@@ -14,10 +14,10 @@ export const Risks = () => {
     const CreateRiskDiv = () => {
         if(roles.includes("risks_create")) {
             return (
-                <div className="CreateRiskButtonDiv">
+                <div className='CreateRiskButtonDiv'>
                     <button
-                        className="CreateRiskButton"
-                        data-testid="CreateRiskButton"
+                        className='CreateRiskButton'
+                        data-testid='CreateRiskButton'
                         onClick={() => setCreateRiskOpen(true)}
                     >
                         Create Risk
@@ -39,7 +39,7 @@ export const Risks = () => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="EditIcon">
+                <div className='EditIcon'>
                     <FaRegEdit
                         onClick={() => setEditRiskOpen(true)}
                     />
@@ -61,7 +61,7 @@ export const Risks = () => {
         const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
         if(roles.includes("risks_review")) {
             return (
-                <div className="reviewRiskButton">
+                <div className='reviewRiskButton'>
                     <button
                         onClick={() => setReviewRiskOpen(true)}>
                         Review
@@ -84,8 +84,8 @@ export const Risks = () => {
         const [viewRiskOpen, setViewRiskOpen] = useState(false);
         if (risks.includes("risk_edit") || risks.includes("risks_create") || risks.includes("risks_review"))
         return (
-            <li className="risksListItem" key={risk.risk_id}>
-                <p className="risksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
+            <li className='risksListItem' key={risk.risk_id}>
+                <p className='risksListItemName' onClick={() => setViewRiskOpen(!viewRiskOpen)}>
                     Risk {risk.risk_id}
                     {viewRiskOpen ? (
                         <ViewRisk
@@ -107,21 +107,21 @@ export const Risks = () => {
     )
 
     return(
-        <div className="display">
-            <div className="risksBackground">
-                <div className="searchRisks">
+        <div className='display'>
+            <div className='risksBackground'>
+                <div className='searchRisks'>
                     <input
-                        // data-testid="riskSearch"
-                        className="riskSearchInput"
-                        type="text"
-                        id="riskSearchInput"
-                        name="riskSearch"
+                        // data-testid='riskSearch'
+                        className='riskSearchInput'
+                        type='text'
+                        id='riskSearchInput'
+                        name='riskSearch'
                         // onChange={}
                     />
-                    <FaSearch className="deviceSearchIcon" />
+                    <FaSearch className='deviceSearchIcon' />
                 </div>
-                <div className="risks">
-                    <ul className="risksList">{risks}</ul>
+                <div className='risks'>
+                    <ul className='risksList'>{risks}</ul>
                 </div>
                 <CreateRiskDiv></CreateRiskDiv>
             </div>
