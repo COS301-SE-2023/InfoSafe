@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.service;
 
 import com.fragile.infosafe.primary.config.RDSLogin;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
@@ -12,6 +13,7 @@ import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRespon
 import com.google.gson.Gson;
 
 @Service
+@RequiredArgsConstructor
 public class AWSSecretService {
     private final String secretName = "rds_login";
     private final String region = "us-east-1";
