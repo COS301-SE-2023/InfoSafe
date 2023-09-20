@@ -9,7 +9,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="changePassOverlay">
                 <div className="borderChangePass">
-                    <button className="backButton" onClick={popupClose}>
+                    <button className="backButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <form>
@@ -29,3 +29,5 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default ChangePassword;
