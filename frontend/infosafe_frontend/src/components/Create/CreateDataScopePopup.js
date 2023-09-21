@@ -9,11 +9,9 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [ds_description, setDsDesc] = useState('')
     const [date_captured, setDateCaptured] = useState()
     const [data_custodian, setDataCustodian] = useState('')
-    const [ds_status, setStatus] = useState('Pending')
     const [role_type, setRoleType] = useState('')
     const [role_description, setRoleDesc] = useState('')
     const [ds_id, setDsId] = useState('')
-    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
     const [data, setData] =useState([])
     const [roles, setRoles] = useState(data);
     const handleInputChange = (e) => {
@@ -43,6 +41,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     };
     const handleClick = (e) => {
         e.preventDefault();
+        const ds_status = "Pending";
         const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
         const dataScopeRoles = {ds_id, role_description, role_type};
 

@@ -76,8 +76,8 @@ public class DeleteService {
             de.setStatus(entityToDelete.getStatus());
             de.setUsed(entityToDelete.getUsed());
             de.setDevice_type(entityToDelete.getDevice_type());
-            de.setCurrent_assignee(entityToDelete.getCurrent_assignee());
-            de.setPrevious_assignee(entityToDelete.getPrevious_assignee());
+            //de.setCurrent_assignee(entityToDelete.getCurrent_assignee());
+            //de.setPrevious_assignee(entityToDelete.getPrevious_assignee());
             deletedAssetRepository.save(de);
             assetRepository.delete(entityToDelete);
         }
