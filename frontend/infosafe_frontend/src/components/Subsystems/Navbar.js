@@ -1,7 +1,6 @@
 import '../../styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import {TabView} from "./TabView";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {IoMenu, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
 import {FaHome, FaProjectDiagram, FaLock, FaTasks} from 'react-icons/fa';
@@ -12,10 +11,12 @@ import {BiSupport} from 'react-icons/bi';
 import {CgDanger} from 'react-icons/cg';
 import {TbDevicesPc} from 'react-icons/tb';
 import {MdOutlineDashboardCustomize} from 'react-icons/md';
+import {useGetPerms} from "../getData/getPerms";
+
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
-    const {roles} = AccessAndDisplay();
+    const {roles} = useGetPerms();
     const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests'];
     const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaLock className="icon" />, <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <BiSupport className="icon" />, <CgDanger className="icon" />, <TbDevicesPc className="icon" />, <MdOutlineDashboardCustomize className="icon" /> ]
     tabItems.push(0);

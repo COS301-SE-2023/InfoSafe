@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styling/ViewDevice.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import ViewDataScope from "./ViewDataScope";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
@@ -9,7 +10,7 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewDeviceOverlay">
                 <div className="viewDeviceBorder">
-                    <button className="backButton" onClick={popupClose}>
+                    <button className="backButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <p className="viewDeviceLabel">View Device</p>
@@ -35,3 +36,5 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
         </Popup>
     );
 };
+
+export default ViewDevice;

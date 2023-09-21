@@ -1,30 +1,33 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/EditDevice.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import Select from "react-select";
 
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 // const NEW_OPTIONS = ['YES', 'NO'];
-const AVAILABILITY_OPTIONS = ['YES', 'NO'];
+const AVAILABILITY_OPTIONS = ['YES', 'Choose'];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
-    // const makeOptions = () => {
-    //     var options = [];
-    //     STATUS_OPTIONS.map((opt) => options.push(<option>{opt}</option>));
-    //     return options;
-    // };
+    const [users, setUsers] = useState([]);
+    const [selectedUsers, setSelectedUsers] = useState({});
 
     const[values, setValues]=useState({
         asset_id: asset.asset_id,
         asset_name: asset.asset_name,
         asset_description: asset.asset_description,
         status: asset.status,
-        availability: asset.availability,
         used: asset.used,
+        availability: asset.availability,
+        device_type: asset.device_type,
         current_assignee: asset.current_assignee,
-        previous_assignee: asset.previous_assignee,
-        device_type: asset.device_type
+        previous_assignee: asset.previous_assignee
     })
+
+
+    const handleSelect = (selectedOptions) => {
+        setSelectedUsers(selectedOptions);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,6 +44,19 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         //console.log(JSON.stringify(values))
         popupClose()
     }
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/user/getAll", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUsers(result);
+            });
+    }, []);
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -78,18 +94,24 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
                             />
                         </div>
-                        <p className="editDeviceCurrentCustodianLabel">Current Custodian</p>
-                        <input
-                            className="editDeviceCurrentCustodianInput"
-                            defaultValue={asset.current_assignee}
-                            onChange={e => setValues({...values, current_assignee: e.target.value})}
-                        />
-                        <p className="editDevicePreviousCustodianLabel">Previous Custodian</p>
-                        <input
-                            className="editDevicePreviousCustodianInput"
-                            value={asset.previous_assignee}
-                            onChange={e => setValues({...values, previous_assignee: e.target.value})}
-                        />
+                        {values.availability  === 'Choose Current custodian' && (
+                            <div>
+                                <p className="currentCustodianLabel">Current Custodian</p>
+                                {users && users.length > 0 ? (
+                                    <Select
+                                        options={users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                        value={selectedUsers}
+                                        className="datascopeDropdown"
+                                        name="datascopeDropdown"
+                                        placeholder={"Add Assignees"}
+                                        onChange={handleSelect}
+                                        isSearchable={true}
+                                    />
+                                ) : (
+                                    <p>Loading...</p>
+                                )}
+                            </div>
+                        )}
                         <button className="EditDeviceButton" type="submit">
                             Submit
                         </button>

@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
 import useRequestMaker from '../Create/useRequestMaker';
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
-
 
 export const Requests = () => {
     const SUPPORTOPTIONS = [

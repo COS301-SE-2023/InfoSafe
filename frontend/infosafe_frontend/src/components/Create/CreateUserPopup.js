@@ -9,13 +9,12 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[first_name,setName]=useState('')
     const[last_name,setSurname]=useState('')
     const[email,setEmail]=useState('')
-    // let [role,setRole]=useState('')
     const[password,setPassword]=useState('')
     const [roleNames, setRoleNames] = useState('')
-    const [selectedRole, setSelectedRole] = useState('')
+    const [selectedRole, setSelectedRole] = useState('');
     const handleClick = (e) => {
         e.preventDefault();
-        const user = { first_name, last_name, email, password, role: selectedRole };
+        const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
 
         fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
@@ -95,10 +94,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             <div className="createUserOverlay">
                 <div className="createUserBorder">
                     <form>
-                        <button className="createUserBackButton" data-testid="backArrow" onClick={popupClose}>
-                            <IoArrowBackOutline className="createUserBackIcon" />
+                        <button className="backButton" data-testid="backArrow" onClick={popupClose}>
+                            <IoArrowBackOutline className="backIcon" />
                         </button>
-                        <p className="createUserLabel">Create User</p>
+                        <p className="createUserLabel">User Creation</p>
                         <p className="nameLabel">Name</p>
                         <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
                         <p className="surnameLabel">Surname</p>
@@ -111,10 +110,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         {roleNames && roleNames.length > 0 ? (
                             <Dropdown
                                 options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
-                                values={[{ label: selectedRole, value: selectedRole }]}
+                                values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
                                 className="role_dropdown"
                                 name="role_dropdown"
-                                onChange={values => setSelectedRole(values[0].value)}
+                                onChange={values => setSelectedRole(values.value)}
                             />
                         ) : (
                             <p className="loadTitle">Loading...</p>

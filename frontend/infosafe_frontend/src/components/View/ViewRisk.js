@@ -2,6 +2,7 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../../styling/ViewRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import ViewDevice from "./ViewDevice";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
@@ -9,7 +10,7 @@ export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="viewRiskOverlay">
                 <div className="borderViewRisk">
-                    <button className="backButton" onClick={popupClose}>
+                    <button className="backButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <p className="pageTitle">View Risk</p>
@@ -30,3 +31,5 @@ export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default ViewRisk;

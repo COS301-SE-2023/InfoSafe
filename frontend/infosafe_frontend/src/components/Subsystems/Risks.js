@@ -1,15 +1,17 @@
 import React, {useState} from "react";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {ViewRisk} from "../View/ViewRisk";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditRisk} from "../Edit/EditRisk";
 import {ReviewRisk} from "../ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
 import "../../styling/Risks.css";
+import {useGetPerms} from "../getData/getPerms";
+import {useGetRisk} from "../getData/getRisk";
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const {showRisk, roles} = AccessAndDisplay()
+    const {showRisk} = useGetRisk();
+    const {roles} = useGetPerms();
 
     const CreateRiskDiv = () => {
         if(roles.includes("risks_create")) {

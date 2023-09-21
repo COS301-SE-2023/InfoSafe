@@ -4,11 +4,14 @@ import {ViewDevice} from "../View/ViewDevice";
 import {FaSearch} from "react-icons/fa";
 import {RiEditBoxFill} from "react-icons/ri";
 import EditDevice from "../Edit/EditDevice";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import "../../styling/Devices.css";
+import {useGetPerms} from "../getData/getPerms";
+import {useGetAsset} from "../getData/getAsset";
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const {showAsset, roles} = AccessAndDisplay()
+    const {showAsset} = useGetAsset();
+    const {roles} = useGetPerms();
+
 
     const EditDeviceDiv = ({asset}) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);

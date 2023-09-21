@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {ViewTask} from "../View/ViewTaskPopup";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
@@ -9,9 +8,13 @@ import {FaSearch} from "react-icons/fa";
 import {RiEditBoxFill} from "react-icons/ri";
 import EditDevice from "../Edit/EditDevice";
 import {ReviewRisk} from "../ReviewRiskPopup";
+import {useGetPerms} from "../getData/getPerms";
+import {useGetTask} from "../getData/getTask";
+
 
 export const Tasks = () => {
-    const {showTask, roles} = AccessAndDisplay()
+    const {showTask} = useGetTask()
+    const {roles} = useGetPerms();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
