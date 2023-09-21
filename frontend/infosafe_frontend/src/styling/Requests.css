@@ -91,7 +91,7 @@
     width: 100%;
     text-align: center;
     position: relative;
-    margin-top: 3%;
+    margin: 0 auto;
     left: 0;
     font-size: 16px;
 }
@@ -102,20 +102,19 @@
     text-align: center;
     font-size: 20px;
     position: relative;
-    margin-top: 3%;
+    margin: 3% auto 0;
 }
 .supportRequestDescription {
     width: 100%;
     height: 10%;
     position: relative;
-    top: -2%;
     left: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-align: left;
     border: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 0;
+
+    margin: 0 auto;
 }
 .supportRequestDescription:focus{
     border: 2px solid #9E0000;
@@ -128,14 +127,14 @@
     text-align: center;
     font-size: 20px;
     position: relative;
-    margin-top: 3%;
+    margin: 2% auto 0;
 }
 .supportRequestStatusDropdown {
     width: 100%;
     text-align: center;
     position: relative;
-    margin-top: 1%;
-    left: 0%;
+    margin: 0 auto;
+    left: 0;
     font-size: 16px;
 }
 .createSupportRequestButtonDiv {
@@ -184,7 +183,6 @@
     top: 0;
     left: 0;
     font-size: 18px;
-    margin-top: 1%;
 }
 .createAssetRequestReasonLabel {
     color: #000000;
@@ -194,14 +192,13 @@
     font-size: 20px;
     position: relative;
     top: 0;
-    margin-top: 1%;
+    margin: 2% auto 0;
 }
 .createAssetRequestReasonInput {
     background-color: #ffffffff;
     width: 100%;
     position: relative;
     top: 0;
-    margin-top: -1vh;
     left: 0%;
     height: 9vh;
     font-family: 'Roboto', sans-serif;
@@ -209,7 +206,6 @@
     font-size: 16px;
     text-align: left;
     border: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 .createAssetRequestReasonInput:focus{
@@ -218,13 +214,13 @@
 }
 .createAssetRequestDateLabel {
     color: #000000;
-    margin-top: 1%;
     font-family: 'Roboto', sans-serif;
     width: 100%;
     text-align: center;
     font-size: 20px;
     position: relative;
     top: 0;
+    margin: 2% auto 0;
 }
 .createAssetRequestDateInput {
     background-color: #ffffffff;
@@ -235,12 +231,10 @@
     top: 0;
     left: 0;
     height: 4vh;
-    margin-top: -1vh;
     font-family: 'Roboto', sans-serif;
     color: #000000;
     font-size: 20px;
     text-align: center;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .createAssetRequestDateInput:focus{
     border: 2px solid #9E0000;
@@ -254,7 +248,7 @@
     font-size: 20px;
     position: relative;
     top: 0;
-    margin-top: 1%;
+    margin: 2% auto 0;
 }
 .assetRequestStatusDropdown{
     width: 100%;
@@ -263,7 +257,6 @@
     top: 0;
     left: 0;
     font-size: 18px;
-    margin-top: -1vh;
 }
 .createAssetRequestButtonDiv {
     position: relative;
@@ -306,28 +299,26 @@
     font-family: 'Roboto', sans-serif;
     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
-    margin: 0 auto;
     text-align: center;
     font-size: 20px;
     position: relative;
     top: 0;
+    margin: 2% auto 0;
 }
 .createAccessRequestUserLabel {
     color: #000000;
     font-family: 'Roboto', sans-serif;
     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
-    margin: 0 auto;
+    margin: 2% auto 0;
     text-align: center;
     font-size: 20px;
     position: relative;
-    top: 4%;
 }
 .createAccessRequestUserDropdown{
     width: 100%;
     text-align: center;
     position: relative;
-    top: 6%;
     left: 0;
     font-size: 18px;
 }
@@ -336,17 +327,15 @@
     font-family: 'Roboto', sans-serif;
     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
-    margin: 0 auto;
+    margin: 2% auto 0;
     text-align: center;
     font-size: 20px;
     position: relative;
-    top: 8%;
 }
 .createAccessRequestReasonInput {
     background-color: #ffffffff;
     width: 100%;
     position: relative;
-    top: 10%;
     left: 0;
     height: 9vh;
     font-family: 'Roboto', sans-serif;
@@ -355,8 +344,6 @@
     text-align: left;
     outline: none;
     border: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-
 }
 .createAccessRequestReasonInput:focus{
     outline: none;
@@ -399,17 +386,15 @@
     color: #000000;
     font-family: 'Roboto', sans-serif;
     width: 100%;
-    margin: 0 auto;
+    margin: 1% auto 0;
     text-align: center;
     font-size: 20px;
     position: relative;
-    top: 12%;
 }
 .accessRequestStatusDropdown{
     width: 100%;
     text-align: center;
     position: relative;
-    top: 14%;
     left: 0;
     font-size: 18px;
 }
