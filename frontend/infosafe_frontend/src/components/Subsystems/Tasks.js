@@ -7,6 +7,7 @@ import "../../styling/Tasks.css";
 import {FaSearch} from "react-icons/fa";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
+import {RiEditBoxFill} from "react-icons/ri";
 
 export const Tasks = () => {
     const {showTask} = useGetTask()
