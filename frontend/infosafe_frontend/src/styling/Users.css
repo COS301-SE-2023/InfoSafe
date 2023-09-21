@@ -75,7 +75,7 @@
     padding: 0;
     position: relative;
     top: 50%;
-    left: 1%;
+    left: 0.5%;
     font-size: 16px
 }
 .userList li:hover {
