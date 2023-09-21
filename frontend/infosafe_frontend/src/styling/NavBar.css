@@ -3,6 +3,31 @@
     z-index: 100;
     display: flex;
 }
+/*.navbarLogo{*/
+/*    position: relative;*/
+/*    top: 0;*/
+/*    margin: 0 auto;*/
+/*    image-rendering: auto;*/
+/*    width: 50%;*/
+/*    height: 20%;*/
+/*}*/
+.icon{
+    font-size: 22px;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+.systemNameLabel{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    margin: 0 auto;
+    color: #FFFFFF;
+    text-align: center;
+    height: fit-content;
+    position: relative;
+    top: 8%;
+}
 .shift{
     position: relative;
 }
@@ -39,7 +64,6 @@
     justify-content: left;
     align-items: center;
     text-align: center;
-    letter-spacing: 1px;
     border-bottom: none;
     white-space: nowrap;
     padding-left: 0.8%;
