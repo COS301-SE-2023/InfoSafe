@@ -76,6 +76,13 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                             /> ) : (
                             <p>Loading...</p>
                         )}
+                        <p className="inputTitle">Status</p>
+                        <input
+                            className="updateTaskStatusInput"
+                            defaultValue={task.task_status}
+                            onChange={(e) => setValues({...values, task_status: e.target.value})}
+                            required
+                        />
                         <p className="inputTitle">Completion Date</p>
                         <input
                             type="date"
