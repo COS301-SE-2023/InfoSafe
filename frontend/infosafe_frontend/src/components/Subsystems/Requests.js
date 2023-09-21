@@ -21,13 +21,13 @@ export const Requests = () => {
     let permittedRequests = [];
 
     if (true) {//Support Requests
-        permittedRequests.push('SUPPORT');
+        permittedRequests.push('Create Support Request');
     }
     if (true) {//Asset Requests
-        permittedRequests.push('ASSET');
+        permittedRequests.push('Create Asset Request');
     }
     if (true) {//Access Requests
-        permittedRequests.push('ACCESS');
+        permittedRequests.push('Create Access Request');
     }
 
     const handleRequestSelect = (requestType) => {
@@ -62,9 +62,9 @@ export const Requests = () => {
                         className="supportRequestDescription"
                         onChange={handleDescriptionChange}
                         value={support_description}/>
-                    <p className="supportRequestTypeLabel">Status</p>
+                    <p className="supportRequestStatusLabel">Status</p>
                     <Dropdown
-                        className="supportRequestTypeDropdown"
+                        className="supportRequestStatusDropdown"
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={(selectedOption) => setSupportStatus(selectedOption.value)}
@@ -74,7 +74,7 @@ export const Requests = () => {
                             className="createSupportRequestButton"
                             type="submit"
                             //onClick={(e) => handleClick(e, selectedRequest)}
-                        >Log Request
+                        >Log Support Request
                         </button>
                     </div>
                 </form>
@@ -136,7 +136,7 @@ export const Requests = () => {
                             type="submit"
                             //onClick={(e) => handleClick(e, selectedRequest)}
                         >
-                            Log Request
+                            Log Access Request
                         </button>
                     </div>
                 </form>
@@ -188,9 +188,9 @@ export const Requests = () => {
                         onChange={(e) => handleDateChange(e.target.value)}
                         required
                     />
-                    <p className="createAssetRequestDeviceNameLabel">Status</p>
+                    <p className="createAssetRequestStatusLabel">Status</p>
                     <Dropdown
-                        className="assetRequestSelectDeviceDropdown"
+                        className="assetRequestStatusDropdown"
                         options={STATUS}
                         value={STATUS[0]}
                         onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
@@ -201,7 +201,7 @@ export const Requests = () => {
                             type="submit"
                             //onClick={(e) => handleClick(e, selectedRequest)}
                         >
-                            Log Request
+                            Log Asset Request
                         </button>
                     </div>
                 </form>
@@ -210,11 +210,11 @@ export const Requests = () => {
     }
 
     const RequestType = ({type}) => {
-        if (type === "SUPPORT") {
+        if (type === "Create Support Request") {
             return (<CreateSupportRequest></CreateSupportRequest>);
-        } else if (type === "ASSET") {
+        } else if (type === "Create Asset Request") {
             return (<CreateAssetRequest></CreateAssetRequest>);
-        } else if (type === "ACCESS") {
+        } else if (type === "Create Access Request") {
             return (<CreateAccessRequest></CreateAccessRequest>);
         } else {
             return null;
@@ -223,20 +223,26 @@ export const Requests = () => {
 
     return (
         <div className="display">
-            <div className="selectRequestDiv">
-                <div className="selectRequest">
-                    <p className="selectRequestLabel">SELECT REQUEST CREATION</p>
-                    <Dropdown
-                        className="selectRequestDropdown"
-                        options={permittedRequests}
-                        value={permittedRequests[0]}
-                        onChange={handleRequestSelect}
-                    />
+            <div className="requestsBackground">
+                <div className="selectRequestDiv">
+                    <div className="selectRequest">
+                        <div className="requestTypeDiv">
+                            {/*<p className="selectRequestLabel">Create request for:</p>*/}
+                            <Dropdown
+                                className="selectRequestDropdown"
+                                options={permittedRequests}
+                                value={permittedRequests[0]}
+                                onChange={handleRequestSelect}
+                            />
+                        </div>
+
+                    </div>
+                    <div className="requestDiv">
+                        <RequestType type={selectedRequest}></RequestType>
+                    </div>
                 </div>
             </div>
-            <div className="requestDiv">
-                <RequestType type={selectedRequest}></RequestType>
-            </div>
+
         </div>
     );
 }

@@ -5,8 +5,12 @@ import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 import "../../styling/Tasks.css";
 import {FaSearch} from "react-icons/fa";
+import {RiEditBoxFill} from "react-icons/ri";
+import EditDevice from "../Edit/EditDevice";
+import {ReviewRisk} from "../ReviewRiskPopup";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
+
 
 export const Tasks = () => {
     const {showTask} = useGetTask()
@@ -16,26 +20,23 @@ export const Tasks = () => {
     const [approveTaskOpen, setApproveTaskOpen] = useState(false);
 
     const EditTask = () => {
+        const [editTaskOpen, setEditTaskOpen] = useState(false);
         if(roles.includes("tasks_create")) {
             return (
-                <div className="UpdateTaskDiv">
-                    <button
-                        className="UpdateTaskButton"
-                        onClick={() => setUpdateTaskOpen(true)}
-                    >
-                        Update Task
-                    </button>
-                    {updateTaskOpen ? (
+                <div className="taskEditButton">
+                    <RiEditBoxFill onClick={() => setEditTaskOpen(!editTaskOpen)} className="taskEditIcon"/>
+                    {editTaskOpen ? (
                         <UpdateTask
-                            popupClose={() => setUpdateTaskOpen(false)}
-                            popupOpen={updateTaskOpen}
-                            task={showTask}
+                            popupClose={() => setEditTaskOpen(false)}
+                            popupOpen={editTaskOpen}
+                            //asset={}
+
                         />
                     ) : null}
                 </div>
             )
         } else {
-            return null;
+            return (null)
         }
     }
 
@@ -54,6 +55,8 @@ export const Tasks = () => {
                             />
                         ) : null}
                     </p>
+                    <ApproveTask></ApproveTask>
+                    <EditTask></EditTask>
                 </li>
             );
         } else {
@@ -85,26 +88,25 @@ export const Tasks = () => {
     }
 
     const ApproveTask = () => {
+        const [approveTaskOpen, setApproveTaskOpen] = useState(false);
         if(roles.includes("tasks_approve")) {
             return (
-                <div className="ApproveTaskDiv">
-                    <button
-                        className="ApproveTaskButton"
-                        onClick={() => setApproveTaskOpen(true)}
-                    >
-                        Task Approval
+                <div className="reviewTaskButtonDiv">
+                    <button className="reviewTaskButton"
+                        onClick={() => setApproveTaskOpen(true)}>
+                        Review
                     </button>
                     {approveTaskOpen ? (
                         <TaskApproval
                             popupClose={() => setApproveTaskOpen(false)}
                             popupOpen={approveTaskOpen}
-                            task={showTask}
+                            //task={task}
                         />
                     ) : null}
                 </div>
             )
         } else {
-            return null;
+            return (null)
         }
     }
 
@@ -132,8 +134,6 @@ export const Tasks = () => {
                 </div>
                 <div className="buttons">
                     <CreateTaskDiv></CreateTaskDiv>
-                    <EditTask></EditTask>
-                    <ApproveTask></ApproveTask>
                 </div>
             </div>
 

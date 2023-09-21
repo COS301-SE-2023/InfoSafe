@@ -142,7 +142,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                         <p className="inputTitle">Completion Date</p>
                         <input
                             type="date"
-                            className="createAssetRequestDateInput"
+                            className="createTaskDateInput"
                             onChange={(e) => handleDateChange(e.target.value)}
                             required
                         />

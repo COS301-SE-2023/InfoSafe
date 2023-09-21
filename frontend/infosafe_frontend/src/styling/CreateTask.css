@@ -138,3 +138,17 @@
      align-content: center;
      height: 4vh;
  }
+.createTaskDateInput {
+    background-color: #ffffffff;
+    width: 50%;
+    outline: none;
+    border: none;
+    position: relative;
+    top: 0;
+    left: 25%;
+    height: 4vh;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+}

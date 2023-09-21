@@ -87,6 +87,24 @@
 .tasks::-webkit-scrollbar {
     display: none;
 }
+.taskEditButton{
+    background-color: #444040;
+    width: 2.5%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    position: absolute;
+    right: 1vw;
+    height: 70%;
+    top: 15%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.taskEditIcon{
+    color: #FFFFFF;
+    width: 110%;
+    position: relative;
+}
 .buttons {
     position: relative;
     height: 20%;
@@ -117,45 +135,26 @@
     top: 40%;
     white-space: nowrap;
 }
-.UpdateTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: center;
-    letter-spacing: 1px;
+.reviewTaskButton {
+    background-color: #444040;
+    outline: none;
+    border: none;
+    border-radius: 3px;
     color: #ffffff;
-    padding: 0.5% 2%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 2% 8%;
     width: fit-content;
-    position: relative;
-    height: 30%;
-    top: 40%;
-    left: 12%;
-    white-space: nowrap;
+    height: 80%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
 }
-.ApproveTaskButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: center;
-    letter-spacing: 1px;
-    color: #ffffff;
-    padding: 0.5% 2%;
-    width: fit-content;
-    position: relative;
-    height: 30%;
-    top: 40%;
-    left: 20.5%;
-    white-space: nowrap;
+.reviewTaskButtonDiv {
+    height: 80%;
+    width: 6%;
+    position: absolute;
+    top: 50%;
+    right: 2.5vw;
+    margin: 0;
+    background-color: transparent;
 }
