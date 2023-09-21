@@ -24,7 +24,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         previous_assignee: asset.previous_assignee
     })
 
-
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
     };

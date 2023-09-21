@@ -58,10 +58,11 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                         <p className="editStatusLabel">Status</p>
                         <Dropdown
                             options={STATUS}
-                            value={STATUS[0]}
+                            //value={STATUS[0]}
                             className="editDSStatusDropdown"
                             data-testid="editDSStatusDropdown"
-                            defaultValue={datascope.status} onChange={selectedOption => setValues({...values, ds_status: selectedOption.value})}
+                            defaultValue={datascope.status}
+                            onChange={selectedOption => setValues({...values, ds_status: selectedOption.value})}
                         />
                         <button className="editdatascope_finish">
                             Submit
