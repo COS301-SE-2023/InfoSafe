@@ -2,7 +2,6 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import '../styling/TaskApproval.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import Dropdown from 'react-dropdown';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3','TASK 4','TASK 5'];
@@ -17,12 +16,7 @@ export const TaskApproval = ({ popupClose, popupOpen }) => {
                     <form>
                         <p className="pageTitle">Task Approval</p>
                         <p className="inputTitle">Task ID</p>
-                        <Dropdown
-                            options={TASK_ID}
-                            value={TASK_ID[0]}
-                            className="taskDropdown"
-                            name="taskDropdown"
-                        />
+                        <p className="displayData">Task 1234</p>
                         <p className="displayTitle">Data Scope</p>
                         <p className="displayData">Data Scope A</p>
                         <p className="displayTitle">Assigned User</p>

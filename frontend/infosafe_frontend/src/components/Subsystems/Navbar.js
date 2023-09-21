@@ -1,16 +1,16 @@
 import '../../styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import {TabView} from "./TabView";
+import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {IoMenu, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
-import {useGetPerms} from "../getData/getPerms";
 
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
     const {roles} = useGetPerms();
     const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests'];
-
+    const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaLock className="icon" />, <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <BiSupport className="icon" />, <CgDanger className="icon" />, <TbDevicesPc className="icon" />, <MdOutlineDashboardCustomize className="icon" /> ]
     tabItems.push(0);
 
     if (roles.includes("role_creation")) {//Role Creation
@@ -101,7 +101,10 @@ const NavBar = () => {
     const displayPage = () => {
         return (
             <div className="navbar">
+
                 <div className="tabMenu" id="tabMenu">
+                    {/*<img src="../../images/InfoSafe_Logo.png" alt="InfoSafeLogo" className="navbarLogo" />*/}
+                    <p className="systemNameLabel">InfoSafe</p>
                     {displayTabs({viewTabs: tabItems})}
                 </div>
 
@@ -148,6 +151,7 @@ const NavBar = () => {
                         className={activeTab === i ? 'active' : ''}
                         onClick={() => handleClick(i)}
                     >
+                        {TabIcons[i]}
                         {TabNames[i]}
                     </li>
                 ))}
