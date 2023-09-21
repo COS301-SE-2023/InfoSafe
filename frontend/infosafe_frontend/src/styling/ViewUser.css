@@ -39,10 +39,10 @@
     display: none;
 }
 .viewUserContent{
-    position: absolute;
+    position: relative;
     height: 70%;
     width: 100%;
-    top: 18%;
+    top: 0%;
 }
 .viewUserBackButton {
     background-color: #9E0000;
