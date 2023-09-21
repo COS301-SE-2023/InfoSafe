@@ -36,7 +36,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
     }
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false}>
+        <Popup risk={risk} open={popupOpen} closeOnDocumentClick={false}>
             <div className="editRiskOverlay">
                 <div className="borderEditRisk">
                     <button className="backButton" onClick={popupClose}>
@@ -44,8 +44,8 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <p className="pageTitle">Edit Risk</p>
-                        <p className="displayTitle">Data Scope</p>
-                        <p className="displayData">{risk.ds_id}</p>
+                        <p className="displayTitle">{risk.risk_id} : {risk.risk_description}</p>
+                        <p className="displayData">{risk.data_scope_id}</p>
                         <p className="inputTitle">Probability</p>
                         <Dropdown
                             options={PROBABILITY}

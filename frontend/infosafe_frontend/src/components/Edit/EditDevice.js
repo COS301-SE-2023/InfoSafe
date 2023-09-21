@@ -66,7 +66,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <p className="editDeviceTitle">Edit Device</p>
-
                         <div className="editDeviceDescriptionDiv">
                             <p className="editDeviceDescriptionLabel">Description</p>
                             <textarea
