@@ -143,7 +143,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: lighter;
     margin: 0;
     height: 100%;
     display: flex;
@@ -161,7 +161,7 @@
 .userDisplay{
     color: #000000;
     font-family: "Roboto", sans-serif;
-    font-size:16px;
+    font-size: 16px;
     text-align: center;
     width: fit-content;
     height: fit-content;
