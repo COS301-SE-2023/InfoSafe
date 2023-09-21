@@ -48,9 +48,9 @@ public class PersistenceSecondaryConfiguration {
         return DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
-                .username(login.getUsername())
-                .password(login.getPassword())
+                .url("jdbc:mysql://localhost:3306/secondarydb")//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
+                .username("root") //login.getUsername())
+                .password("") //login.getPassword())
                 .build();
     }
 

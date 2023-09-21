@@ -4,11 +4,13 @@ import ViewDataScope from "../View/ViewDataScope";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import "../../styling/DataScopes.css";
+import {useGetPerms} from "../getData/getPerms";
+import {useGetDS} from "../getData/getDs";
 export const DataScopes = () => {
 
-    const {showDatascope, roles} = AccessAndDisplay()
+    const {showDatascope, } = useGetDS()
+    const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false); // DS
 
     const EditDataScope = ({datascope}) => {
@@ -27,7 +29,7 @@ export const DataScopes = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null
         }
     }
 
@@ -40,7 +42,7 @@ export const DataScopes = () => {
 
             )
         } else {
-            return (null)
+            return null
         }
 
     }

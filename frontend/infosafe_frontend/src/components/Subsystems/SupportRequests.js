@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ViewSupportRequest from "../View/ViewSupportRequest";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
 import "../../styling/SupportRequests.css";
+import {useGetPerms} from "../getData/getPerms";
+import {useGetSR} from "../getData/getSR";
 export const SupportRequests = () => {
-    const {showMySupport, showAllSupport, roles} = AccessAndDisplay()
+    const {showMySupport, showAllSupport} = useGetSR();
+    const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
     const EditSupportRequestDiv = ({allSupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);

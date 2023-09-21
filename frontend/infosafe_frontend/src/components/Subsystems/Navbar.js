@@ -1,14 +1,14 @@
 import '../../styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import {TabView} from "./TabView";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import {IoMenu, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
+import {useGetPerms} from "../getData/getPerms";
 
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
-    const {roles} = AccessAndDisplay();
+    const {roles} = useGetPerms();
     const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests'];
 
     tabItems.push(0);

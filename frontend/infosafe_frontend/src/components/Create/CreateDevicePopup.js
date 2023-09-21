@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../styling/CreateDevicePopup.css';
+import '../../styling/CreateTask.css';
 import Popup from 'reactjs-popup';
 
 import {IoArrowBackOutline} from 'react-icons/io5';
@@ -8,7 +9,7 @@ import Select from "react-select";
 
 const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
 const NEW_OPTIONS = ['YES', 'NO'];
-const AVAILABILITY_OPTIONS = ['YES', 'NO'];
+const AVAILABILITY_OPTIONS = ['YES', 'Choose Current custodian'];
 export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         const current = new Date();
         const [asset_name, setAsset_name] = useState('')
@@ -19,8 +20,12 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         const [status, setStatus] = useState('CLEAN')
         const [device_type, setDevice_type] = useState('')
         const [users, setUsers] = useState([]);
-        const [selectedUsers1, setSelectedUsers1] = useState({});
-        const [selectedUsers2, setSelectedUsers2] = useState({});
+        const [selectedUsers, setSelectedUsers] = useState({});
+
+
+        const handleSelect = (selectedOptions) => {
+            setSelectedUsers(selectedOptions);
+        };
 
         const handleClick = (e) => {
             e.preventDefault()
@@ -47,7 +52,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             popupClose()
         }
         useEffect(() => {
-            fetch("http://localhost:8080//api/user/getAll", {
+            fetch("http://localhost:8080/api/user/getAll", {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -58,31 +63,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                     setUsers(result);
                 });
         }, []);
-        const handleSelect = (selectedOptions, dropdownIndex) => {
-            if (dropdownIndex === 1) {
-                if (!selectedUsers2[selectedOptions.value]) {
-                    setSelectedUsers1((prevSelectedUsers1) => ({
-                        ...prevSelectedUsers1,
-                        [selectedOptions.value]: selectedOptions,
-                    }));
-                }
-            } else if (dropdownIndex === 2) {
-                if (!selectedUsers1[selectedOptions.value]) {
-                    setSelectedUsers2((prevSelectedUsers2) => ({
-                        ...prevSelectedUsers2,
-                        [selectedOptions.value]: selectedOptions,
-                    }));
-                }
-            }
-        };
 
-        const selectedUsersArray1 = Object.values(selectedUsers1);
-        const selectedUsersArray2 = Object.values(selectedUsers2);
-
-        const filteredUsersForDropdown1 = users.filter((user) => {
-            const userIdsInDropdown2 = selectedUsersArray2.map((selectedUser) => selectedUser.value);
-            return !userIdsInDropdown2.includes(user.user_id);
-        });
 
         return (
             <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -113,14 +94,6 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                 name="used"
                                 onChange={(selectedOption) => setUsed(selectedOption.value)}
                             />
-                            <p className="deviceAvailabilityLabel">Available</p>
-                            <Dropdown
-                                options={AVAILABILITY_OPTIONS}
-                                value={AVAILABILITY_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
-                                className="availableDropdown"
-                                name="availability"
-                                onChange={(selectedOption) => setAvailability(selectedOption.value)}
-                            />
                             <p className="deviceStatusLabel">Status</p>
                             <Dropdown
                                 options={STATUS_OPTIONS}
@@ -130,22 +103,32 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                 onChange={(selectedOption) => setStatus(selectedOption.value)}
                             />
                             <br/>
-                            <p className="currentCustodianLabel">Current Custodian</p>
-                            {filteredUsersForDropdown1.length > 0 ? (
-                                <Select
-                                    options={filteredUsersForDropdown1.map((data) => ({
-                                        value: data.user_id,
-                                        label: data.email
-                                    }))}
-                                    value={selectedUsersArray1}
-                                    className="datascopeDropdown"
-                                    name="datascopeDropdown1"
-                                    placeholder={"Add Assignees"}
-                                    onChange={(selectedOption) => handleSelect(selectedOption, 1)}
-                                    isSearchable={true}
-                                />
-                            ) : (
-                                <p>No available users</p>
+                            <p className = "deviceAvailabilityLabel">Available</p>
+                            <Dropdown
+                                options={AVAILABILITY_OPTIONS}
+                                value={AVAILABILITY_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
+                                className="availableDropdown"
+                                name="availability"
+                                onChange={(selectedOption) => setAvailability(selectedOption.value)}
+                            />
+
+                            {availability === 'Choose Current custodian' && (
+                                <div>
+                                    <p className="currentCustodianLabel">Current Custodian</p>
+                                    {users && users.length > 0 ? (
+                                        <Select
+                                            options={users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                            value={selectedUsers}
+                                            className="datascopeDropdown"
+                                            name="datascopeDropdown"
+                                            placeholder={"Add Assignees"}
+                                            onChange={handleSelect}
+                                            isSearchable={true}
+                                        />
+                                    ) : (
+                                        <p>Loading...</p>
+                                    )}
+                                </div>
                             )}
                             <button className="createDeviceFinish" onClick={handleClick}>
                                 Submit

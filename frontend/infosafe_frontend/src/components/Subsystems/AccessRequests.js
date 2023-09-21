@@ -4,11 +4,14 @@ import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import AccessRequestApproval from "../Edit/AccessRequestApproval";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import "../../styling/AccessRequests.css";
+import {getRoles} from "@testing-library/react";
+import {useGetAr} from "../getData/getAR";
+import {useGetPerms} from "../getData/getPerms";
 
 export const AccessRequests = () => {
-    const {showAccess, roles} = AccessAndDisplay()
+    const {roles} = useGetAr();
+    const {showAccess} = useGetPerms();
 
     const EditAccessRequestDiv = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
@@ -29,7 +32,7 @@ export const AccessRequests = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null
         }
     }
 
@@ -39,7 +42,7 @@ export const AccessRequests = () => {
                 <RiDeleteBin6Fill className="DeleteIcon"/>
             )
         } else {
-            return (null)
+            return null
         }
     }
     const ViewAccessRequests = ({access}) => {
@@ -63,7 +66,7 @@ export const AccessRequests = () => {
                 </li>
             );
         } else {
-            return (null)
+            return null
         }
     };
 
@@ -88,7 +91,7 @@ export const AccessRequests = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null
         }
     }
 

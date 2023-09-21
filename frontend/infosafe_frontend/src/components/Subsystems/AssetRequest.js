@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import ViewAssetRequest from "../View/ViewAssetRequest";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import ReviewAssetRequest from "../ReviewAssetRequest";
 import "../../styling/AssetRequests.css";
 import {FaSearch} from "react-icons/fa";
+import {useGetAssAR} from "../getData/getAssAR";
+import {useGetPerms} from "../getData/getPerms";
 export const AssetRequest = () => {
-    const {showAssetRequests, roles} = AccessAndDisplay()
-
+    const {roles} = useGetPerms();
+    const {showAssetRequests} = useGetAssAR();
     const AssetRequestApproval = ({ assetRequest }) =>{
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {

@@ -4,17 +4,15 @@ import ViewUser from "../View/ViewUser";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditUser from "../Edit/EditUser";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
 import '../../styling/Users.css';
 import '../../styling/Dropdown.css';
+import {useGetPerms} from "../getData/getPerms";
+import {useGetAllUser} from "../getData/getAllUser";
 
 export const Users = () => {
-    const {
-        showUser,
-        createUserOpen,
-        setCreateUserOpen,
-        roles
-    } = AccessAndDisplay()
+    const {createUserOpen, setCreateUserOpen} = useState();
+    const {showUser} = useGetAllUser()
+    const {roles} = useGetPerms();
 
     const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);

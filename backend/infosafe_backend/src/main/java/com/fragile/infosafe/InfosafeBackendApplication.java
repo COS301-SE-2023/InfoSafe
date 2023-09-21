@@ -31,9 +31,9 @@ public class InfosafeBackendApplication {
 //            Role adminRole = roleRepository.findByRole_name("ADMIN");
 //
 //            var admin = RegisterRequest.builder()
-//                    .first_name("Robyn")
+//                    .first_name("ali")
 //                    .last_name("Ross")
-//                    .email("alistairmikeross@gmail.com")
+//                    .email("ali@gmail.com")
 //                    .password("1234")
 //                    .role(adminRole)
 //                    .build();
