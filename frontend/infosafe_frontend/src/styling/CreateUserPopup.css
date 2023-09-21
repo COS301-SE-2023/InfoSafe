@@ -1,36 +1,55 @@
 .createUserOverlay {
-    width: 50vw;
-    height: 80vh;
-    display: flex;
-    border-radius: 30px;
-    background: rgb(173, 173, 173);
-    backdrop-filter: blur(20px);
     position: fixed;
-    top: 13%;
-    right: 25%;
-    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    /*border: 3px solid #49D4D0;*/
+    margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .createUserBorder {
-    border: 2px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 72vh;
     position: relative;
-    top: 4vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .createUserBorder::-webkit-scrollbar {
     display: none;
 }
+.createUserContent{
+    position: relative;
+    height: 70%;
+    width: 100%;
+    top: 0;
+    left: 15%;
+}
 .createUserBackButton {
-    background-color: #49D4D0;
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
@@ -47,7 +66,7 @@
     width: 1.3vw;
 }
 .createUserLabel {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -57,119 +76,137 @@
     text-transform: uppercase;
     position: relative;
     top: -3vh;
-    left: 20%;
+    margin: 0 auto;
+}
+.createUserName{
+    justify-content: center;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0 auto;
 }
 .nameLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    position: relative;
-    top: 1vh;
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
 }
 .nameInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    left: 25%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.createUserSurname{
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    width: 50%;
-    height: 4vh;
+    top: 3%;
 }
 .surnameLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    position: relative;
-    top: 1vh;
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
 }
 .surnameInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    left: 25%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.createUserEmail{
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    width: 50%;
-    margin-top: 0;
-    height: 4vh;
+    top: 6%;
 }
 .emailLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    position: relative;
-    top: 1vh;
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
 }
 .emailInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    left: 25%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.createUserPassword{
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: #000;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    width: 50%;
-    margin-top: 0;
-    height: 4vh;
+    top: 9%;
 }
 .passwordLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    position: relative;
-    top: 1vh;
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
 }
 .passwordInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    left: 25%;
-    position: relative;
-    width: 50%;
-    margin-top: 0;
-    height: 4vh;
-}
-.roleLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    margin: 0 auto;
+    background-color: #ffffff;
     color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+}
+.createUserRoleLabel {
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    color: #000;
+    text-transform: none;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1vh;
+    top: 12%;
+    margin: 0;
 }
 
 .role_dropdown {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    text-align: center;
+    text-align: left;
     border: none;
-    left: 25%;
+    color: #CECECE;
     position: relative;
-    /*width: 100%;*/
-    margin-top: 1.5%;
+    width: 70%;
+    top: 12%;
 }
 .role_dropdown:after {
     transform: translateY(50%);
 }
+
+.role_dropdown .Dropdown-control{
+    background-color: #CECECE;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    padding: 1% 1%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    height: 5%;
+}
 .createUserFinish {
     width: 20%;
     height: 5%;
-    background-color: #49D4D0;
+    background-color: #383838;
     color: #ffffff;
     text-align: center;
     font-size: 18px;
@@ -182,16 +219,18 @@
     bottom: 2vh;
     padding: 0.5% 2%;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-
-    left: 40%;
     border: none;
     margin: 5% auto 0;
 }
 
 .createUserOverlay input {
-    border-radius: 20px;
-    outline: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
 }
 
 .createUserOverlay input:focus{
