@@ -1,29 +1,54 @@
 .viewUserOverlay {
-    width: 50vw;
-    height: 80vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgb(173, 173, 173);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(20px);
     margin: 0 auto;
     position: fixed;
-    top: 13%;
-    right: 25%;
+    top: 15%;
+    left: 25%;
 }
 .borderView {
-    border: 2px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 72vh;
     position: relative;
-    top: 4vh;
+    top: 4%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.borderView::-webkit-scrollbar{
+    display: none;
+}
+.viewUserContent{
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    top: 18%;
 }
 .viewUserBackButton {
-    background-color: #49D4D0;
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
@@ -39,137 +64,116 @@
     width: 1.3vw;
 }
 .viewUserTitle {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
-    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -2vh;
-    left: 20%;
+    top: -4%;
+    margin: 0 auto;
 }
 .view_name {
     justify-content: center;
-    align-content: center;
     color: #000;
-    text-align: center;
-    font-size: 25px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 4vh;
 }
 .nameDisplay {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
+    font-size: 20px;
+    width: 70%;
     margin: 0 auto;
-    text-align: center;
     border: none;
 }
 .viewName {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
 }
 .view_surname {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
     color: #000;
-    text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 2vh;
+    top: 3%;
 }
 .surnameDisplay {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
+    font-size: 18px;
+    width: 70%;
     margin: 0 auto;
-    text-align: center;
     border: none;
-    margin-top: 2vh;
 }
 .viewSurname {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
 }
 .view_email {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
     color: #000;
-    text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
+    top: 6%;
 }
 .emailDisplay {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
+    font-size: 18px;
+    width: 70%;
     margin: 0 auto;
-    text-align: center;
     border: none;
-    margin-top: 2vh;
 }
 .viewEmail {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
 }
 .view_role {
     margin: 0 auto;
     justify-content: center;
     align-content: center;
     color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 2vh;
+    top: 9%;
 }
-.roleDisplay {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
+.viewUserRoleDisplay {
+    font-size: 18px;
+    width: 70%;
     margin: 0 auto;
-    text-align: center;
     border: none;
 }
 .viewRole {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
     margin: 0 auto;
     background-color: #ffffff;
-    margin-top: 2vh;
+
 }
 .viewName, .viewSurname, .viewEmail, .viewRole {
-    border-radius: 20px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.viewName::-webkit-scrollbar, .viewSurname::-webkit-scrollbar, .viewEmail::-webkit-scrollbar, .viewRole::-webkit-scrollbar{
+    display: none;
 }
