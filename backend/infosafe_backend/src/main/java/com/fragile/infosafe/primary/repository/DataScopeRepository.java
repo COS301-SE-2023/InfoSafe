@@ -15,6 +15,6 @@ public interface DataScopeRepository extends JpaRepository<DataScope,Integer> {
     @Query("SELECT CASE WHEN COUNT(ds) > 0 THEN true ELSE false END FROM DataScope ds WHERE ds.ds_name = :name")
     boolean existsByds_name(String name);
 
-    @Query(value = "SELECT * FROM datascopes WHERE data_scope_id = :dsId", nativeQuery = true)
+    @Query(value = "SELECT * FROM data_scopes WHERE data_scope_id = :dsId", nativeQuery = true)
     Optional<DataScope> findByDataScopeId(@Param("dsId") int ds_id);
 }

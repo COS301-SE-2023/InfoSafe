@@ -48,7 +48,7 @@ public class DataScopeController {
         return 0;
     }
 
-    @GetMapping("/myNumberDs/")
+    @GetMapping("/myNumberDs")
     public int getMyNumberDataScopes(){
         return 0;
     }

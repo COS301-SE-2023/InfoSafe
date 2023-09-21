@@ -41,14 +41,20 @@ public class PersistenceSecondaryConfiguration {
 
         return em;
     }
-
+//
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.datasource.second")
+//    public DataSource secondaryDataSource() {
+//        return DataSourceBuilder.create().build();
+//
+//    }
     @Bean
     public DataSource secondaryDataSource() {
         RDSLogin login = awsSecretService.getRDSLogin();
         return DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:mysql://localhost:3306/secondarydb")//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
+                .url("jdbc:mysql://localhost:3306/seconddb")//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
                 .username("root") //login.getUsername())
                 .password("") //login.getPassword())
                 .build();
