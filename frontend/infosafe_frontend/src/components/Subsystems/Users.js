@@ -120,7 +120,6 @@ export const Users = () => {
                 </div>
                 <CreateUser></CreateUser>
             </div>
-
         </div>
     );
 }

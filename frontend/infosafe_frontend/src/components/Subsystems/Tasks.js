@@ -46,7 +46,7 @@ export const Tasks = () => {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
-                        Task {task.task_id}
+                        Task {task.task_id} : {task.task_name}
                         {viewTaskOpen ? (
                             <ViewTask
                                 popupClose={() => setViewTaskOpen(false)}
