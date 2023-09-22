@@ -7,7 +7,7 @@ const useRequestMaker = () => {
     const [support_description, setSupportDescription] = useState('')
     const [support_status, setSupportStatus] = useState('')
     // Access Requests
-    const [ds_id, setDsId] = useState('')
+    const [dataScope_id, setDataScope_id] = useState(null)
     const [status, setStatus] = useState('')
     // Asset Requests
     const [desired_date, setDesiredDate] = useState('')
@@ -23,7 +23,7 @@ const useRequestMaker = () => {
         e.preventDefault();
         console.log(selectedDevice)
         const support = {user_email , support_type, support_description, support_status}
-        const access = {user_email, ds_id, reason, status}
+        const access = {user_email, dataScope_id, reason, status}
         const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status}
         let apiUrl = "";
         let requestBody = {};
@@ -108,8 +108,8 @@ const useRequestMaker = () => {
         setSupportDescription,
         support_status,
         setSupportStatus,
-        ds_id,
-        setDsId,
+        dataScope_id,
+        setDataScope_id,
         status,
         setStatus,
         desired_date,

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
-import useRequestMaker from '../Create/useRequestMaker';
+import useRequestMaker from './useRequestMaker';
 import Select from "react-select";
 
 export const Requests = () => {
@@ -91,7 +91,7 @@ export const Requests = () => {
             handleClick,
             reason,
             setReason,
-            setDsId,
+            setDataScope_id,
             setStatus,
             datascopeData
         } = useRequestMaker();
@@ -110,7 +110,7 @@ export const Requests = () => {
                             className="accessRequestDatascopeDropdown"
                             name="datascopeDropdown"
                             placeholder={"Add DataScope"}
-                            onChange={(selectedOption) => setDsId(selectedOption.value)}
+                            onChange={(selectedOption) => setDataScope_id(selectedOption.value)}
                         />) : (
                         <p className="loadTitle">Loading...</p>
                     )}

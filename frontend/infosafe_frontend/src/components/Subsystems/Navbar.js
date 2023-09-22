@@ -4,7 +4,6 @@ import {useGetPerms} from "../getData/getPerms"
 import {TabView} from "./TabView";
 import {IoMenu, IoPeopleSharp, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
-import {useGetPerms} from "../getData/getPerms";
 import {RiUserSettingsFill} from "react-icons/ri";
 import {FaHome, FaLock, FaProjectDiagram, FaTasks} from "react-icons/fa";
 import {PiDevicesFill} from "react-icons/pi";
