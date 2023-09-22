@@ -15,7 +15,7 @@ export const Devices = () => {
 
     const EditDeviceDiv = ({asset}) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
-        if(roles.includes("risks_edit")) {
+        if(roles.includes("devices_edit")) {
             return (
                 <div className="deviceEditButton">
                     <RiEditBoxFill onClick={() => setEditDeviceOpen(!editDeviceOpen)} className="deviceEditIcon"/>
