@@ -44,4 +44,6 @@ public class DataScopeService {
     public boolean checkDataScopeExists(String name) {
         return dataScopeRepository.existsByds_name(name);
     }
+
+    public long getTotalDs() {return dataScopeRepository.count();}
 }

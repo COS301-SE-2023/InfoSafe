@@ -47,4 +47,11 @@ public class AssetService {
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
+    public long getTotalDevicesAssignedToAssignee(User assignee) {
+        return assetRepository.countByCurrentAssignee(assignee);
+    }
+
+    public List<Asset> getDevicesAssignedToUser(User assignee) {
+        return assetRepository.findByCurrentAssignee(assignee);
+    }
 }
