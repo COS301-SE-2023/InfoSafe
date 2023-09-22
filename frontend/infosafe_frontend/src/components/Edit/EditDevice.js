@@ -13,17 +13,32 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [selectedUsers, setSelectedUsers] = useState({});
 
     const[values, setValues]=useState({
-        asset_id: asset.asset_id,
-        asset_name: asset.asset_name,
-        asset_description: asset.asset_description,
-        status: asset.status,
-        used: asset.used,
-        availability: asset.availability,
-        device_type: asset.device_type,
-        current_assignee: asset.current_assignee,
-        previous_assignee: asset.previous_assignee
+        asset_id: '',
+        asset_name: '',
+        asset_description: '',
+        status: '',
+        used: '',
+        availability: '',
+        device_type: '',
+        current_assignee: '',
+        previous_assignee: ''
     })
 
+    useEffect(() => {
+        if (asset) {
+            setValues({
+                asset_id: asset.asset_id,
+                asset_name: asset.asset_name,
+                asset_description: asset.asset_description,
+                status: asset.status,
+                used: asset.used,
+                availability: asset.availability,
+                device_type: asset.device_type,
+                current_assignee: asset.current_assignee,
+                previous_assignee: asset.previous_assignee
+            });
+        }
+    }, [asset]);
 
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
@@ -67,7 +82,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <p className="editDeviceTitle">Edit Device</p>
-
                         <div className="editDeviceDescriptionDiv">
                             <p className="editDeviceDescriptionLabel">Description</p>
                             <textarea

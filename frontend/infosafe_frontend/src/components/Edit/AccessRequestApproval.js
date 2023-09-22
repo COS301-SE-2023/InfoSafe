@@ -1,12 +1,21 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useState} from 'react';
 import '../../styling/AccessRequestApproval.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 
-const AccessRequestApproval = ({ popupClose, popupOpen }) => {
+const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
+
+    const[values, setValues]=useState({
+        request_id: access.request_id,
+        user_id: access.user_id,
+        ds_id: access.ds_id,
+        status: access.status,
+        reason: access.reason
+    })
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="approveAccessRequestPopup">
@@ -18,8 +27,9 @@ const AccessRequestApproval = ({ popupClose, popupOpen }) => {
                         <p className="approveAccessRequestTitle">Access Request Approval</p>
                         <div className="approveAccessRequestDatascopeDiv">
                             <p className="approveAccessRequestDatascopeLabel">Data Scope</p>
-                            <p className="approveAccessRequestDatascopeNameDisplay">Data Scope 9</p>
+                            <p className="approveAccessRequestDatascopeNameDisplay">{access.request_id}</p>
                         </div>
+                        {/*Whats the meaning of the role*/}
                         <div className="approveAccessRequestRoleDiv">
                             <p className="approveAccessRequestRoleLabel">Role</p>
                             <p className="approveAccessRequestRoleDisplay">ISO</p>
@@ -29,12 +39,12 @@ const AccessRequestApproval = ({ popupClose, popupOpen }) => {
                             <textarea
                                 readOnly={true}
                                 className="approveAccessRequestReasonDisplay"
-                                defaultValue="Insert reason here."
+                                defaultValue={access.reason}
                             ></textarea>
                         </div>
                         <div className="approveAccessRequestStatusDiv">
                             <p className="approveAccessRequestStatusLabel">Status</p>
-                            <p className="approveAccessRequestStatusDisplay">Approved</p>
+                            <p className="approveAccessRequestStatusDisplay">Logged</p>
                         </div>
                         <div className="approveAccessRequestButtonsDiv">
                             <button className="approveAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>

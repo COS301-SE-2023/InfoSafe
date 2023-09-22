@@ -14,12 +14,14 @@ export const ViewTask = ({ task, popupClose, popupOpen }) => {
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <p className="pageTitle">View Task</p>
-                    <p className="displayTitle">Task ID</p>
-                    <p className="displayData">Task {task.task_id}</p>
+                    <p className="displayTitle">Task Name</p>
+                    <p className="displayData">Task {task.task_name}</p>
                     <p className="displayTitle">Data Scope</p>
-                    <p className="displayData">Data Scope A</p>
+                    <p className="displayData">{task.dataScope.ds_name}</p>
                     <p className="displayTitle">Task Description</p>
                     <textarea className="viewTextArea" readOnly={true} value={task.task_description}/>
+                    <p className="displayTitle">Task Status</p>
+                    <p className="displayData">{task.task_status}</p>
                     <p className="displayTitle">Completion Date</p>
                     <p className="displayData">{task.due_date}</p>
                 </div>

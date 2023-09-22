@@ -4,13 +4,15 @@ import {useGetPerms} from "../getData/getPerms"
 import {TabView} from "./TabView";
 import {IoMenu, IoPeopleSharp, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
-import {RiUserSettingsFill} from "react-icons/ri";
-import {FaHome, FaLock, FaProjectDiagram, FaTasks} from "react-icons/fa";
-import {PiDevicesFill} from "react-icons/pi";
-import {BiSupport} from "react-icons/bi";
-import {TbDevicesPc} from "react-icons/tb";
-import {CgDanger} from "react-icons/cg";
-import {MdOutlineDashboardCustomize} from "react-icons/md";
+import {FaHome, FaProjectDiagram, FaLock, FaTasks} from 'react-icons/fa';
+import {RiUserSettingsFill} from 'react-icons/ri';
+// import {IoPeopleSharp} from 'react-icons/io5';
+import {PiDevicesFill} from 'react-icons/pi';
+import {BiSupport} from 'react-icons/bi';
+import {CgDanger} from 'react-icons/cg';
+import {TbDevicesPc} from 'react-icons/tb';
+import {MdOutlineDashboardCustomize} from 'react-icons/md';
+import {useGetPerms} from "../getData/getPerms";
 
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
