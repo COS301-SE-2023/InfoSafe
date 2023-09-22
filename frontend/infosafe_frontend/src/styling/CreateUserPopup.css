@@ -204,23 +204,23 @@
     height: 5%;
 }
 .createUserFinish {
-    width: 20%;
-    height: 5%;
-    background-color: #383838;
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    position: relative;
-    align-self: center;
-    justify-self: center;
-    top: 0;
-    padding: 0.5% 2%;
+    background: #373737;
+    border: 1px solid #3a3a3a;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border: none;
-    margin: 2% auto 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    margin: 2%  0;
 }
 
 .createUserOverlay input {
