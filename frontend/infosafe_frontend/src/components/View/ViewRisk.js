@@ -16,16 +16,12 @@ export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
                     <p className="pageTitle">View Risk</p>
                     <p className="displayTitle">Risk ID</p>
                     <p className="displayData">{risk.risk_id}</p>
-                    {/*<p className="displayTitle">Data Scope</p>*/}
-                    {/*<p className="displayData">Data Scope A</p>*/}
                     <p className="displayTitle">Probability</p>
                     <p className="displayData">{risk.probability_rating}</p>
                     <p className="displayTitle">Impact</p>
                     <p className="displayData">{risk.impact_rating}</p>
                     <p className="displayTitle">Vulnerability/Threat</p>
                     <textarea className="viewTextArea" readOnly={true} value={risk.risk_description}/>
-                    {/*<p className="displayTitle">Threat</p>*/}
-                    {/*<textarea className="viewTextArea" readOnly={true} value="example of threat"/>*/}
                 </div>
             </div>
         </Popup>

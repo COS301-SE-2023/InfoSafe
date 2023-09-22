@@ -84,7 +84,7 @@ export const Risks = () => {
 
     const ViewRisks = ({ risk }) => {
         const [viewRiskOpen, setViewRiskOpen] = useState(false);
-        if (risks.includes("risk_edit") || risks.includes("risks_create") || risks.includes("risks_review"))
+        if (roles.includes("risk_edit") || roles.includes("risks_create") || roles.includes("risks_review"))
         return (
             <li className="risksListItem" key={risk.risk_id}>
                 <p className="risksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>

@@ -11,24 +11,26 @@ const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
-    const [datascope, setDataScope] = useState(null);
-    const {datascopeData, setDsId} = useRequestMaker();
-    const[impact_rating, setImpactRating] = useState('')
-    const[probability_rating, setProbabilityRating] = useState('')
+    const[risk_name, setRisk_name] = useState('')
+    const[impact_rating, setImpactRating] = useState(IMPACT[0])
+    const[probability_rating, setProbabilityRating] = useState(PROBABILITY[0])
     const[risk_description, setRiskDescription] = useState('')
-    const[risk_status, setRiskStatus] = useState('')
+    const[risk_status, setRiskStatus] = useState(STATUS[0])
     const[suggested_mitigation, setSuggestedMitigation] = useState('')
-
+    const [datascope, setDataScope] = useState(null);
+    const {datascopeData} = useRequestMaker();
     const handleDescriptionChange = (e) => {
         setRiskDescription(e.target.value);
     };
-
     const handleMitigation = (e) => {
         setSuggestedMitigation(e.target.value);
     }
+    const handleNameChange = (e) => {
+        setRisk_name(e.target.value);
+    }
     const handleClick = (e)=> {
         e.preventDefault();
-        const risk = {impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation, dataScope_id: datascope.value,};
+        const risk = {risk_name, impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation, dataScope_id: datascope.value,};
         console.log(risk);
         fetch("http://localhost:8080/api/risk/addRisk", {
             method:"POST",
@@ -51,6 +53,12 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                     </button>
                     <form>
                         <p className="pageTitle">Create Risk</p>
+                        <p className="inputTitle">Risk Name</p>
+                        <textarea
+                            className="inputTextArea"
+                            onChange={handleNameChange}
+                            value={risk_name}
+                        />
                         <p className="inputTitle">Probability</p>
                         <Dropdown
                             options={PROBABILITY}
