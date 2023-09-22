@@ -13,8 +13,6 @@ export const Tasks = () => {
     const {showTask} = useGetTask()
     const {roles} = useGetPerms();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
-    const [updateTaskOpen, setUpdateTaskOpen] = useState(false);
-    const [approveTaskOpen, setApproveTaskOpen] = useState(false);
 
     const EditTask = () => {
         const [editTaskOpen, setEditTaskOpen] = useState(false);
