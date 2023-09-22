@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import java.security.Key;
@@ -18,6 +19,7 @@ import java.util.function.Function;
 public class JwtService {
 
     private final JwtAWSFetch fetch;
+    private String cachedSecretKey;
 
     @Autowired
     public JwtService(JwtAWSFetch fetch){
@@ -82,9 +84,12 @@ public class JwtService {
                 .getBody();
     }
 
-    private Key getSignInKey() {
-        String secretKey = fetch.getSecret();
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+    @Cacheable(value="secretKey")
+    public Key getSignInKey() {
+        if (cachedSecretKey == null) {
+            cachedSecretKey = fetch.getSecret();
+        }
+        byte[] keyBytes = Decoders.BASE64.decode(cachedSecretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
