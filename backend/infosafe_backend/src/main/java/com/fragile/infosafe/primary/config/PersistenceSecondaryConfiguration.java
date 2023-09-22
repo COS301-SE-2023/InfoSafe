@@ -50,7 +50,7 @@ public class PersistenceSecondaryConfiguration {
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .url("jdbc:mysql://localhost:3306/secondarydb")//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
                 .username("root") //login.getUsername())
-                .password("") //login.getPassword())
+                .password("1234") //login.getPassword())
                 .build();
     }
 

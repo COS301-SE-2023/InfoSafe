@@ -50,7 +50,7 @@ public class PersistencePrimaryConfiguration {
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .url("jdbc:mysql://localhost:3306/infosafe")//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/" + login.getDbname())
                 .username("root")//login.getUsername())
-                .password("")//login.getPassword())
+                .password("1234")//login.getPassword())
                 .build();
     }
 
