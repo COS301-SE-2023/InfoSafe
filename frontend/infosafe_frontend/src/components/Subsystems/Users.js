@@ -10,7 +10,6 @@ import {useGetPerms} from "../getData/getPerms";
 import {useGetAllUser} from "../getData/getAllUser";
 
 export const Users = () => {
-    const {createUserOpen, setCreateUserOpen} = useState();
     const {showUser} = useGetAllUser()
     const {roles} = useGetPerms();
 
@@ -75,6 +74,7 @@ export const Users = () => {
     };
 
     const CreateUser = () => {
+        const [createUserOpen, setCreateUserOpen] = useState(false);
         if(roles.includes("user_create")) {
             return (
                 <div className="CreateUserButtonDiv">
