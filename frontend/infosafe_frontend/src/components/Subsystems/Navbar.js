@@ -12,7 +12,6 @@ import {BiSupport} from 'react-icons/bi';
 import {CgDanger} from 'react-icons/cg';
 import {TbDevicesPc} from 'react-icons/tb';
 import {MdOutlineDashboardCustomize} from 'react-icons/md';
-import {useGetPerms} from "../getData/getPerms";
 
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
