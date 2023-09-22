@@ -124,6 +124,12 @@
     height: 4%;
     border-radius: 2px;
     margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.deviceDescriptionInput::-webkit-scrollbar{
+    display: none;
 }
 .deviceNewLabel {
     font-size: 18px;
