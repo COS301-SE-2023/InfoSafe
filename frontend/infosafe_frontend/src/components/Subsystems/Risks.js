@@ -7,6 +7,7 @@ import {CreateRisk} from "../Create/CreateRiskPopup";
 import "../../styling/Risks.css";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetRisk} from "../getData/getRisk";
+import {RiEditBoxFill} from "react-icons/ri";
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
@@ -41,9 +42,9 @@ export const Risks = () => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className="EditIcon">
-                    <FaRegEdit
-                        onClick={() => setEditRiskOpen(true)}
+                <div className="taskEditButton">
+                    <RiEditBoxFill className="taskEditIcon"
+                                   onClick={() => setEditRiskOpen(true)}
                     />
                     {editRiskOpen ? (
                         <EditRisk
@@ -53,7 +54,7 @@ export const Risks = () => {
                         />
                     ) : null}
                 </div>
-            )
+            );
         } else {
             return (null)
         }
@@ -63,8 +64,8 @@ export const Risks = () => {
         const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
         if(roles.includes("risks_review")) {
             return (
-                <div className="reviewRiskButton">
-                    <button
+                <div className="reviewRiskButtonDiv">
+                    <button  className="reviewRiskButton"
                         onClick={() => setReviewRiskOpen(true)}>
                         Review
                     </button>
