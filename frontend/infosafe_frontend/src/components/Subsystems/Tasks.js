@@ -36,7 +36,7 @@ export const Tasks = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 
@@ -106,7 +106,7 @@ export const Tasks = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null;
         }
     }
 

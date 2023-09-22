@@ -6,12 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.lang.annotation.*;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="assets")
+@Table(name = "assets")
 public class Asset {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +24,22 @@ public class Asset {
     private String status;
     private String availability;
     private String used;
-    @Column(nullable = true)
-    private String current_assignee;
-    @Column(nullable = true)
-    private String previous_assignee;
+    @ManyToOne
+    @JoinColumn(name = "current_assignee_id", referencedColumnName = "user_id")
+    private User current_assignee;
+
+    @ManyToOne
+    @JoinColumn(name = "previous_assignee_id", referencedColumnName = "user_id")
+    private User previous_assignee;
+
     private String device_type;
+
+    @PreUpdate
+    @PrePersist
+    private void validateAssignees() {
+        if (current_assignee != null && current_assignee.equals(previous_assignee)) {
+            throw new IllegalArgumentException("Current assignee cannot be the same as the previous assignee.");
+        }
+    }
 }
+

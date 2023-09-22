@@ -7,13 +7,10 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [newRole, setNewRole] = useState({role: '', roledescription: ''});
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
-    const [date_captured, setDateCaptured] = useState()
     const [data_custodian, setDataCustodian] = useState('')
-    const [ds_status, setStatus] = useState('Pending')
     const [role_type, setRoleType] = useState('')
     const [role_description, setRoleDesc] = useState('')
     const [ds_id, setDsId] = useState('')
-    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
     const [data, setData] =useState([])
     const [roles, setRoles] = useState(data);
     const handleInputChange = (e) => {
@@ -29,21 +26,11 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         }
     };
 
-    const handleCaptureDate = () => {
-        var today = new Date();
-        setDateCaptured(formatDate(today));
-        console.log(date_captured);
-    };
-
-    const formatDate = (date) => {
-        const year = date.getFullYear().toString().slice(-2);
-        const month = ('0' + (date.getMonth() + 1)).slice(-2);
-        const day = ('0' + date.getDate()).slice(-2);
-        return `${year}/${month}/${day}`;
-    };
     const handleClick = (e) => {
+        const currentDate = new Date().toISOString().split('T')[0];
         e.preventDefault();
-        const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
+        const ds_status = "Pending";
+        const datascope = {data_custodian, date_captured: currentDate, ds_description, ds_name, ds_status};
         const dataScopeRoles = {ds_id, role_description, role_type};
 
         fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`,{

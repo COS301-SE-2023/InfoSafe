@@ -17,7 +17,7 @@ public class DataScopeRequest {
     private String ds_name;
     private String ds_description;
     private Date date_captured;
-    private User data_custodian;
+    private int data_custodian;
     private String ds_status;
 }
 
