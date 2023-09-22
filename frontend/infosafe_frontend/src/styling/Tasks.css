@@ -105,16 +105,6 @@
     width: 110%;
     position: relative;
 }
-.buttons {
-    position: relative;
-    height: 20%;
-    top: 0;
-    width: 90%;
-    left: 5%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
 .CreateTaskButton {
     background: #373737;
     border: 1px solid #3a3a3a;
@@ -132,8 +122,9 @@
     width: fit-content;
     position: relative;
     height: 30%;
-    top: 40%;
-    white-space: nowrap;
+    margin: 2%  0;
+    left: 5%;
+
 }
 .reviewTaskButton {
     background-color: #444040;
