@@ -17,17 +17,17 @@ export const Requests = () => {
 
 
     const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
-
+    const requestOptions = ["Support Request", "Asset Request", "Access Request"];
     let permittedRequests = [];
 
     if (true) {
-        permittedRequests.push('Support Request');
+        permittedRequests.push(requestOptions[0]);
     }
     if (true) {
-        permittedRequests.push('Asset Request');
+        permittedRequests.push(requestOptions[1]);
     }
     if (true) {
-        permittedRequests.push('Access Request');
+        permittedRequests.push(requestOptions[2]);
     }
 
     const handleRequestSelect = (requestType) => {
@@ -35,7 +35,7 @@ export const Requests = () => {
         setSelectedRequest(requestType.value);
     };
 
-    const [selectedRequest, setSelectedRequest] = useState(SUPPORTOPTIONS[0]);
+    const [selectedRequest, setSelectedRequest] = useState(requestOptions[0]);
 
 
 
@@ -168,7 +168,7 @@ export const Requests = () => {
                             className="assetRequestSelectDeviceDropdown"
                             name="assetRequestSelectDeviceDropdown"
                             placeholder={"Add Device"}
-                            value={selectedDevice}
+                            value={selectedDevice[0]}
                             onChange={(selectedOption) => setSelectedDevice(selectedOption.value)}
                         />
                     ) : (
