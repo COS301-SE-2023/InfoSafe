@@ -62,7 +62,7 @@
     margin: 0;
     padding: 0;
 }
-.risksListItem {
+.risksList li {
     position: relative;
     height: 5vh;
     color: #000000;
@@ -74,7 +74,7 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
     margin-top: 4px;
 }
-.risksListItemName {
+.risksList li p {
     font-family: 'Roboto', sans-serif;
     transform: translateY(-50%);
     margin: 0;
@@ -83,7 +83,7 @@
     top: 50%;
     left: 1%;
 }
-.risksListItem:hover {
+.risksList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }

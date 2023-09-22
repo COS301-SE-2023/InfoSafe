@@ -92,37 +92,51 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createUserOverlay">
-                <div className="createUserBorder">
-                    <form>
-                        <button className="backButton" data-testid="backArrow" onClick={popupClose}>
-                            <IoArrowBackOutline className="backIcon" />
-                        </button>
-                        <p className="createUserLabel">User Creation</p>
-                        <p className="nameLabel">Name</p>
-                        <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
-                        <p className="surnameLabel">Surname</p>
-                        <input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
-                        <p className="emailLabel">Email</p>
-                        <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                        <p className="passwordLabel">Password</p>
-                        <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
-                        <p className="roleLabel">System role</p>
-                        {roleNames && roleNames.length > 0 ? (
-                            <Dropdown
-                                options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
-                                values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
-                                className="role_dropdown"
-                                name="role_dropdown"
-                                onChange={values => setSelectedRole(values.value)}
-                            />
-                        ) : (
-                            <p className="loadTitle">Loading...</p>
-                        )}
+                <div className="popupBackground">
+                    <div className="createUserBorder">
+                        <form>
+                            <button className="createUserBackButton" data-testid="backArrow" onClick={popupClose}>
+                                <IoArrowBackOutline className="backIcon" />
+                            </button>
+                            <p className="createUserLabel">Create User</p>
+                            <div className="createUserContent">
+                                <div className="createUserName">
+                                    <p className="nameLabel">Name</p>
+                                    <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
+                                </div>
+                                <div className="createUserSurname">
+                                    <p className="surnameLabel">Surname</p>
+                                    <input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
+                                </div>
+                                <div className="createUserEmail">
+                                    <p className="emailLabel">Email</p>
+                                    <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                                </div>
+                                <div className="createUserPassword">
+                                    <p className="passwordLabel">Password</p>
+                                    <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
+                                </div>
+                                <p className="createUserRoleLabel">System role</p>
+                                {roleNames && roleNames.length > 0 ? (
+                                    <Dropdown
+                                        options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
+                                        values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
+                                        className="role_dropdown"
+                                        name="role_dropdown"
+                                        onChange={values => setSelectedRole(values.value)}
+                                    />
+                                ) : (
+                                    <p className="loadTitle">Loading...</p>
+                                )}
 
-                        <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
-                            Submit
-                        </button>
-                    </form>
+                                <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
+                                    Submit
+                                </button>
+                            </div>
+
+                        </form>
+                </div>
+
                 </div>
             </div>
         </Popup>

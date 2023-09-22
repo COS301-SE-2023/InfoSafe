@@ -1,5 +1,6 @@
 import '../../styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
+import {useGetPerms} from "../getData/getPerms"
 import {TabView} from "./TabView";
 import {IoMenu, IoPeopleSharp, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
@@ -110,7 +111,9 @@ const NavBar = () => {
             <div className="navbar">
 
                 <div className="tabMenu" id="tabMenu">
-                    {/*<img src="../../images/InfoSafe_Logo.png" alt="InfoSafeLogo" className="navbarLogo" />*/}
+                    <div className="navbarLogo">
+                        <div className="navbarImage"></div>
+                    </div>
                     <p className="systemNameLabel">InfoSafe</p>
                     {displayTabs({viewTabs: tabItems})}
                 </div>

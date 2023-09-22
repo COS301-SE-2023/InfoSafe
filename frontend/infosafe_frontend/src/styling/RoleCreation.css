@@ -18,6 +18,7 @@
     box-sizing: content-box;
     scrollbar-width: none;
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
 }
 .permissions::-webkit-scrollbar {
     display: none;
@@ -53,7 +54,7 @@
     top: 1vh;
     display: flex;
     border-radius: 12px;
-    left: 2%;
+    left: 1%;
     box-shadow: 1px 3px 2px 0 #E90000;
 
 }
@@ -101,14 +102,14 @@ input:checked{
     padding: 1px;
     position: relative;
     top: 1vh;
-    border-radius:12px;
+    border-radius: 12px;
     margin-right: 1vh;
     box-shadow: 1px 3px 2px 0 #49D4D0;
 }
 
 .permissionsDiv{
     position: relative;
-    left: 2%;
+    left: 1%;
 }
 .roleCreationButtonsDiv
 {
@@ -159,7 +160,7 @@ input:checked{
     color: #ffffff;
     padding: 0.5% 2%;
     width: fit-content;
-    margin-left: 1vh;
+    margin-left: 1%;
     height: 30%;
     position: relative;
     top: 35%;
@@ -185,15 +186,17 @@ input:checked{
     position: relative;
     height: 6vh;
     width: fit-content;
-    font-size: 18px;
+    font-size: 16px;
     top: 2.5vh;
     margin-right: 0.5vw;
 }
 .roleCreationRoleNameInput {
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
     border-radius: 4px;
     background: #CECECE;
     border: 0;
+    padding-left: 0.5%;
 }
 .roleCreationRoleNameInput:focus{
     border: 3px solid #9E0000;
