@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const useRequestMaker = () => {
-    const [user_id, setUserId] = useState('')
     const [reason, setReason] = useState('')
     // Support Requests
     const [support_type, setSupportType] = useState('')
@@ -11,19 +10,21 @@ const useRequestMaker = () => {
     const [ds_id, setDsId] = useState('')
     const [status, setStatus] = useState('')
     // Asset Requests
-    const [asset_id, setAssetId] = useState('')
     const [desired_date, setDesiredDate] = useState('')
     const [request_status, setRequestStatus] = useState('')
+    const [selectedDevice, setSelectedDevice] = useState("");
 
-    const [AvailableDevices, setAvailableDevices] = useState([]);
-    const [datascopeData, setDatascopeData] = useState([]);
+    const[user_email, setUserEmail] = useState('');
+    const [datascopeData, setDatascopeData] = useState(null);
     const [selectedAssetId, setSelectedAssetId] = useState(null);
+    const[availableDevices, setAvailableDevices] = useState([]);
 
     const handleClick = (e, selectedRequest) => {
         e.preventDefault();
-        const support = {user_id, support_type, support_description, support_status}
-        const access = {user_id, ds_id, reason, status}
-        const asset = {user_id, asset_id, reason, desired_date, request_status}
+        console.log(selectedDevice)
+        const support = {user_email , support_type, support_description, support_status}
+        const access = {user_email, ds_id, reason, status}
+        const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status}
         let apiUrl = "";
         let requestBody = {};
 
@@ -35,17 +36,17 @@ const useRequestMaker = () => {
             case 'Asset Request':
                 apiUrl = "http://localhost:8080/api/assetrequest/addAr";
                 requestBody = asset;
-                setAssetId(selectedAssetId)
                 break;
             case 'Access Request':
                 apiUrl = "http://localhost:8080/api/accessrequest/addAr";
                 requestBody = access;
                 break;
             default:
+                console.log("this happened")
                 return;
         }
         console.log(requestBody);
-        fetch(apiUrl, { // write catch
+        fetch(apiUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,20 +72,8 @@ const useRequestMaker = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getId", {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setUserId(result);
-            });
-    }, []);
-
-    useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getDs', {
+            method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             }
@@ -94,6 +83,20 @@ const useRequestMaker = () => {
                 setDatascopeData(result);
             });
     }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/user/getEmail', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUserEmail(result.email);
+            });
+    }, []);
+
 
     return {
         handleClick,
@@ -109,18 +112,17 @@ const useRequestMaker = () => {
         setDsId,
         status,
         setStatus,
-        asset_id,
-        setAssetId,
         desired_date,
         setDesiredDate,
         request_status,
         setRequestStatus,
-        AvailableDevices,
-        setAvailableDevices,
         datascopeData,
         setDatascopeData,
         selectedAssetId,
-        setSelectedAssetId
+        setSelectedAssetId,
+        setSelectedDevice,
+        availableDevices,
+        selectedDevice
     };
 };
 
