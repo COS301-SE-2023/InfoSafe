@@ -5,7 +5,7 @@ import {IoMenu, IoPeopleSharp, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
 import {FaHome, FaProjectDiagram, FaLock, FaTasks} from 'react-icons/fa';
 import {RiUserSettingsFill} from 'react-icons/ri';
-import {IoPeopleSharp} from 'react-icons/io5';
+// import {IoPeopleSharp} from 'react-icons/io5';
 import {PiDevicesFill} from 'react-icons/pi';
 import {BiSupport} from 'react-icons/bi';
 import {CgDanger} from 'react-icons/cg';

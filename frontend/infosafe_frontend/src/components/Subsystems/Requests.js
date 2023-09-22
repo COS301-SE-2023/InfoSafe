@@ -3,6 +3,7 @@ import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
 import useRequestMaker from '../Create/useRequestMaker';
+import Select from "react-select";
 
 export const Requests = () => {
     const SUPPORTOPTIONS = [
@@ -13,9 +14,10 @@ export const Requests = () => {
         'Other'
     ];
 
-    const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
-
-
+    //const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
+    const [users, setUsers] = useState([]);
+    const [requestStatus, setRequestStatus] = useState('CLEAN')
+    const [selectedUsers, setSelectedUsers] = useState(null);
     const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
     let permittedRequests = [];
@@ -29,6 +31,10 @@ export const Requests = () => {
     if (true) {//Access Requests
         permittedRequests.push('Create Access Request');
     }
+
+    const handleSelect = (selectedOptions) => {
+        setSelectedUsers(selectedOptions);
+    };
 
     const handleRequestSelect = (requestType) => {
         setSelectedRequest(requestType.value);
@@ -73,7 +79,7 @@ export const Requests = () => {
                         <button
                             className="createSupportRequestButton"
                             type="submit"
-                            //onClick={(e) => handleClick(e, selectedRequest)}
+                            onClick={(e) => handleClick(e, selectedRequest)}
                         >Log Support Request
                         </button>
                     </div>
@@ -111,12 +117,19 @@ export const Requests = () => {
                         <p className="loadTitle">Loading...</p>
                     )}
                     <p className="createAccessRequestUserLabel">User</p>
-                    <Dropdown
-                        className="createAccessRequestUserDropdown"
-                        options={USERS} //Add system users here
-                        value={USERS[0]}
-                        //onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
-                    />
+                    {users && users.length > 0 ? (
+                        <Select
+                            options={users.map((data) => ({value: data.user_id, label: data.email}))}
+                            value={selectedUsers}
+                            className="datascopeDropdown"
+                            name="datascopeDropdown"
+                            placeholder={"Add Assignees"}
+                            onChange={handleSelect}
+                            isSearchable={true}
+                        />
+                    ) : (
+                        <p>Loading...</p>
+                    )}
                     <p className="createAccessRequestReasonLabel">Reason</p>
                     <textarea
                         className="createAccessRequestReasonInput"
@@ -134,7 +147,7 @@ export const Requests = () => {
                         <button
                             className="createAccessRequestButton"
                             type="submit"
-                            //onClick={(e) => handleClick(e, selectedRequest)}
+                            onClick={(e) => handleClick(e, selectedRequest)}
                         >
                             Log Access Request
                         </button>
@@ -199,7 +212,7 @@ export const Requests = () => {
                         <button
                             className="createAssetRequestButton"
                             type="submit"
-                            //onClick={(e) => handleClick(e, selectedRequest)}
+                            onClick={(e) => handleClick(e, selectedRequest)}
                         >
                             Log Asset Request
                         </button>
