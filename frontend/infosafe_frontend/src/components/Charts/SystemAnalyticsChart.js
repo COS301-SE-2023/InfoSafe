@@ -11,7 +11,7 @@ const SystemAnalyticsChart = () => {
             data: {
                 labels: [
                     'Data Scopes',
-                    'Compliance Matrix',
+                    'Tasks',
                     'Devices',
                     'Asset Requests',
                     'Support Requests',

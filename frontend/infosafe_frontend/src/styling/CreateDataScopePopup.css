@@ -1,36 +1,55 @@
 .createDataScopeOverlay {
-    width: 60vw;
-    height: 90vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(20px);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .createDataScopeBorder {
-    border: 1px solid #ffffff;
-    width: 56vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 82vh;
     position: relative;
-    top: 4vh;
+    top: 4%;
+    left: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
 }
 .createDataScopeBorder::-webkit-scrollbar {
     display: none;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.createDataScopeBackButton {
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .backIcon {
     color: #ffffff;
@@ -39,7 +58,7 @@
     width: 1.3vw;
 }
 .datascopeLabel {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -49,169 +68,204 @@
     text-transform: uppercase;
     position: relative;
     top: -3vh;
-    left: 20%;
+    margin: 0 auto;
 }
 .datascopeNameLabel {
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+    left: 15%;
+    width: 75%;
     position: relative;
     top: 1vh;
+    margin: 0;
 }
 .datascopeNameInput {
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
+    font-size: 18px;
     border: none;
-    left: 25%;
+    left: 15%;
     position: relative;
-    width: 50%;
+    width: 70%;
+    margin-top: 2%;
 }
 .descriptionLabel {
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+    left: 15%;
+    width: 75%;
     position: relative;
-    top: 1vh;
+    top:2%;
+    margin: 0;
 }
 .createDataScopeDescriptionInput {
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: left;
+    font-size: 18px;
     border: none;
-    left: 25%;
+    left: 15%;
     position: relative;
-    width: 50%;
-    margin-top: 0;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+
 }
 .roleLabel {
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     color: #000000;
-    text-align: center;
-    text-transform: uppercase;
     width: 100%;
     position: relative;
-    top: 1vh;
+    top:2%;
+    margin: 0;
+    background-color: #FFFFFF;
 }
-.table {
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
-    border: none;
-    left: 25%;
+.datascope_roles{
+    background-color: transparent;
+    width: 70%;
     position: relative;
-    width: 50%;
-    margin-top: 0;
+    left: 15%;
+    height: fit-content;
 }
-.roles_tbl {
-    width: 50%;
-    height: 30%;
+.dataScopeRoles{
+    height: 2%;
     overflow-y: scroll;
+    scrollbar-width: none;
+}
+.dataScopeRoles::-webkit-scrollbar {
+    display: none;
+}
+.dataScopeRolesList{
+     list-style: none;
+     margin: 0;
+     padding: 0;
+}
+.dataScopeRolesList li {
     position: relative;
-    left: 0;
-    top: -2vh;
+    height: 5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #CECECE;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
 }
-.role_Header {
+.dataScopeRolesList li p {
     font-family: 'Roboto', sans-serif;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    width: 40%;
-}
-.role_descrHeader {
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    text-transform: uppercase;
-    width: 60%;
-    font-size: 20px;
-}
-.roles_tbl td {
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    width: 50%;
-    font-size: 14px;
-    height: 3%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 0.5%;
+    font-size: 16px
 }
 .AddRoleNameLabel {
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+    left: 15%;
+    width: 75%;
     position: relative;
-    top: 1vh;
+    margin-top: 1%;
+    margin-bottom: 0;
 }
 .AddRoleNameInput {
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: center;
+    font-size: 18px;
     border: none;
-    left: 25%;
+    left: 15%;
     position: relative;
-    width: 50%;
-    margin-top: 0;
-    top: 1vh;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
 }
 .AddRoleDescriptionLabel {
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+    left: 15%;
+    width: 75%;
     position: relative;
-    top: 2vh;
+    margin-top: 1%;
+    margin-bottom: 0;
 }
 
 .AddRoleDescriptionInput {
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    text-align: left;
+    font-size: 18px;
     border: none;
-    left: 25%;
+    left: 15%;
     position: relative;
-    width: 50%;
-    margin-top: 0;
-    top: 1vh;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
 }
 .AddRoleButton {
-    width: 20%;
-    height: 5%;
-    background-color: rgb(58, 57, 57);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
     position: relative;
-    border: none;
-    margin-left: 40%;
-    margin-right: 40%;
-    top: 2vh;
+    height: 30%;
+    margin: 2% 0;
 }
 .datascope_finish {
-    width: 20%;
-    height: 5%;
-    background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
     position: relative;
-    border: none;
-    top: 4vh;
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-bottom: 1vh;
+    height: 30%;
+    margin-left: 2%;
+    margin-top:  2%;
+}
+.createDataScopeOverlay input {
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.createDataScopeButtonsDiv{
+    display: flex;
+    height: 20%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 10%;
+    justify-content: left;
+    vertical-align: center;
 }

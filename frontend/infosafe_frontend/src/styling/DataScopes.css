@@ -45,8 +45,8 @@
     padding: 0;
     position: relative;
     top: 50%;
-    left: 1%;
-    width: fit-content;
+    left: 0.5%;
+    width: 80%;
 }
 .datascopesList li:hover {
     z-index: 4;
@@ -56,7 +56,7 @@
     display: flex;
     width: 100%;
     position: relative;
-    right: 4.2vw;
+    right: 5%;
     justify-content: right;
     height: 20%;
     top: 0;
@@ -73,6 +73,7 @@
     padding-left: 10px;
     position: relative;
     top: 45%;
+    font-size: 16px;
 }
 .dataScopesSearchInput:focus{
     border: 2px solid #9E0000;
@@ -80,27 +81,26 @@
 .dataScopesSearchIcon
 {
     position: absolute;
-    height: 100%;
+    height: fit-content;
     right: 0;
-    top: 0.5vh;
-    margin-right: 1%;
+    top: 48%;
+    vertical-align: center;
+    margin-right: 0.5%;
     padding-left: 2px;
     color: #9E0000;
 }
 .dataScopesEditButton{
-
     background-color: #444040;
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 4vw;
+    right: 4.5%;
     height: 70%;
     top: 15%;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .dataScopesEditIcon{
     color: #FFFFFF;
@@ -113,14 +113,13 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 1vw;
+    right: 1%;
     height: 70%;
     top: 15%;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .dataScopesDeleteIcon{
     color: #FFFFFF;
