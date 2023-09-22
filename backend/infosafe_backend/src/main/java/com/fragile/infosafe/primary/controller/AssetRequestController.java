@@ -18,8 +18,8 @@ import java.util.List;
 public class AssetRequestController {
     private final AssetRequestService service;
     @PostMapping("/addAr")
-    public ResponseEntity addAr(@RequestBody AssetRequestRequest assetrequest) {
-        ResponseEntity<String> response = service.makeAR(assetrequest);
+    public ResponseEntity addAr(@RequestBody AssetRequestRequest assetRequest) {
+        ResponseEntity<String> response = service.makeAR(assetRequest);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             log.info("Adding an asset request");

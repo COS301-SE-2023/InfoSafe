@@ -2,16 +2,15 @@ package com.fragile.infosafe.primary.controller;
 
 import com.fragile.infosafe.primary.auth.AuthenticationResponse;
 import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.model.Role;
+import com.fragile.infosafe.primary.model.Task;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.ChangePasswordRequest;
 import com.fragile.infosafe.primary.requests.DeleteRequest;
 import com.fragile.infosafe.primary.requests.RegisterRequest;
-import com.fragile.infosafe.primary.service.DeleteService;
-import com.fragile.infosafe.primary.service.EmailService;
-import com.fragile.infosafe.primary.service.TaskService;
-import com.fragile.infosafe.primary.service.UserService;
+import com.fragile.infosafe.primary.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -33,8 +32,7 @@ public class UserController {
     private final EmailService emailService;
     private final DeleteService deleteService;
     private final TaskService taskService;
-    private final UserRepository userRepository;
-
+    private final AssetService assetService;
 
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
@@ -146,14 +144,45 @@ public class UserController {
         }
     }
 
-
+    @GetMapping("/getAllTasks")
+    public ResponseEntity<List<Task>> getAllTasksOfUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            List<Task> tasks = taskService.getTasksAssociatedWithUser(authenticatedUser);
+            return ResponseEntity.ok(tasks);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @GetMapping("/dataScopeCount")
     public ResponseEntity<Integer> countDataScopesForUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            int taskCount = taskService.countDataScopesForUser(authenticatedUser);
-            return ResponseEntity.ok(taskCount);
+            int datascopeCount = taskService.countDataScopesForUser(authenticatedUser);
+            return ResponseEntity.ok(datascopeCount);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/countDevices")
+    public ResponseEntity<Long> countDevicesForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            long count = assetService.getTotalDevicesAssignedToAssignee(authenticatedUser);
+            return ResponseEntity.ok(count);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/getAllDevices")
+    public ResponseEntity<List<Asset>> getAllDevicesForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            List<Asset> count = assetService.getDevicesAssignedToUser(authenticatedUser);
+            return ResponseEntity.ok(count);
         }else {
             return ResponseEntity.notFound().build();
         }

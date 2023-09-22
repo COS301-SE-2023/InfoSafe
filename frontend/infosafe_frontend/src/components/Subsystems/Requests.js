@@ -3,7 +3,6 @@ import Dropdown from 'react-dropdown';
 import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
 import useRequestMaker from '../Create/useRequestMaker';
-import Select from "react-select";
 
 export const Requests = () => {
     const SUPPORTOPTIONS = [
@@ -14,22 +13,20 @@ export const Requests = () => {
         'Other'
     ];
 
-    //const USERS = ['User A', 'User B', 'User C', 'User D']; //Dynamically add system users for dropdown?
-    const [users, setUsers] = useState([]);
-    const [requestStatus, setRequestStatus] = useState('CLEAN')
-    const [selectedUsers, setSelectedUsers] = useState(null);
+
+
     const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
     let permittedRequests = [];
 
-    if (true) {//Support Requests
+    if (true) {
         permittedRequests.push('Create Support Request');
     }
-    if (true) {//Asset Requests
-        permittedRequests.push('Create Asset Request');
+    if (true) {
+        permittedRequests.push('Asset Request');
     }
-    if (true) {//Access Requests
-        permittedRequests.push('Create Access Request');
+    if (true) {
+        permittedRequests.push('Access Request');
     }
 
     const handleSelect = (selectedOptions) => {
@@ -37,9 +34,13 @@ export const Requests = () => {
     };
 
     const handleRequestSelect = (requestType) => {
+        console.log(requestType.value)
         setSelectedRequest(requestType.value);
     };
-    const [selectedRequest, setSelectedRequest] = useState(permittedRequests[0]);
+
+    const [selectedRequest, setSelectedRequest] = useState(SUPPORTOPTIONS[0]);
+
+
 
     const CreateSupportRequest = () => {
 
@@ -116,20 +117,6 @@ export const Requests = () => {
                         />) : (
                         <p className="loadTitle">Loading...</p>
                     )}
-                    <p className="createAccessRequestUserLabel">User</p>
-                    {users && users.length > 0 ? (
-                        <Select
-                            options={users.map((data) => ({value: data.user_id, label: data.email}))}
-                            value={selectedUsers}
-                            className="datascopeDropdown"
-                            name="datascopeDropdown"
-                            placeholder={"Add Assignees"}
-                            onChange={handleSelect}
-                            isSearchable={true}
-                        />
-                    ) : (
-                        <p>Loading...</p>
-                    )}
                     <p className="createAccessRequestReasonLabel">Reason</p>
                     <textarea
                         className="createAccessRequestReasonInput"
@@ -163,8 +150,9 @@ export const Requests = () => {
             setReason,
             setDesiredDate,
             setRequestStatus,
-            AvailableDevices,
-            setAvailableDevices
+            setSelectedDevice,
+            selectedDevice,
+            availableDevices
         } = useRequestMaker();
 
         const handleReasonChange = (e) => {
@@ -177,18 +165,19 @@ export const Requests = () => {
             <div className="createAssetRequestDiv">
                 <form>
                     <p className="createAssetRequestDeviceNameLabel">Device</p>
-                    {AvailableDevices && AvailableDevices.length > 0 ? (
+                    {availableDevices && availableDevices.length > 0 ? (
                         <Dropdown
-                            options={AvailableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
-                            value={AvailableDevices.asset_name}
+                            options={availableDevices.map((data) => ({ value: data.asset_id, label: data.asset_name }))}
                             className="assetRequestSelectDeviceDropdown"
                             name="assetRequestSelectDeviceDropdown"
                             placeholder={"Add Device"}
-                            onChange={(selectedOption) => setAvailableDevices(selectedOption.value)}
-                        />) : (
+                            value={selectedDevice}
+                            onChange={(selectedOption) => setSelectedDevice(selectedOption.value)}
+                        />
+                    ) : (
                         <p className="loadTitle">Loading...</p>
                     )}
-                    <p className="createAssetRequestReasonLabel">Reason</p>
+                        <p className="createAssetRequestReasonLabel">Reason</p>
                     <textarea
                         className="createAssetRequestReasonInput"
                         onChange={handleReasonChange}
@@ -212,8 +201,7 @@ export const Requests = () => {
                         <button
                             className="createAssetRequestButton"
                             type="submit"
-                            onClick={(e) => handleClick(e, selectedRequest)}
-                        >
+                            onClick={(e) => handleClick(e, selectedRequest)}>
                             Log Asset Request
                         </button>
                     </div>
@@ -223,11 +211,11 @@ export const Requests = () => {
     }
 
     const RequestType = ({type}) => {
-        if (type === "Create Support Request") {
+        if (type === "Support Request") {
             return (<CreateSupportRequest></CreateSupportRequest>);
-        } else if (type === "Create Asset Request") {
+        } else if (type === "Asset Request") {
             return (<CreateAssetRequest></CreateAssetRequest>);
-        } else if (type === "Create Access Request") {
+        } else if (type === "Access Request") {
             return (<CreateAccessRequest></CreateAccessRequest>);
         } else {
             return null;

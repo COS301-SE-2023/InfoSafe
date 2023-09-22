@@ -45,5 +45,5 @@ public class DataScopeService {
         return dataScopeRepository.existsByds_name(name);
     }
 
-    public long getTotalDs() {return dataScopeRepository.count(); }
+    public long getTotalDs() {return dataScopeRepository.count();}
 }

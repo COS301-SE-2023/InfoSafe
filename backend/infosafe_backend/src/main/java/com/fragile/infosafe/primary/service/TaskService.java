@@ -81,4 +81,8 @@ public class TaskService {
         }
         return uniqueDataScopes.size();
     }
+
+    public List<Task> getTasksAssociatedWithUser(User user) {
+        return taskRepository.findByUsers(user);
+    }
 }

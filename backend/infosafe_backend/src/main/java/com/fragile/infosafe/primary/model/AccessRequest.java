@@ -16,8 +16,10 @@ import lombok.NoArgsConstructor;
 public class AccessRequest {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int request_id;
-    private int user_id;
     private int ds_id;
     private String reason;
     private String status;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user_id;
 }

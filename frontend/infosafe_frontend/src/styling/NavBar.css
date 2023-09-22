@@ -3,18 +3,31 @@
     z-index: 100;
     display: flex;
 }
-/*.navbarLogo{*/
-/*    position: relative;*/
-/*    top: 0;*/
-/*    margin: 0 auto;*/
-/*    image-rendering: auto;*/
-/*    width: 50%;*/
-/*    height: 20%;*/
-/*}*/
+.navbarLogo{
+    position: relative;
+    top: 5%;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 60%;
+    height: 10%;
+    padding: 0;
+}
+.navbarImage{
+    position: relative;
+    top: 3%;
+    margin: 0 auto;
+    background-image: url("../images/InfoSafe_Logo.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 60%;
+    height: 90%;
+    padding:0;
+}
 .icon{
     font-size: 22px;
-    margin-left: 4%;
-    margin-right: 4%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .systemNameLabel{
     font-family: "Roboto", sans-serif;
@@ -143,7 +156,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: lighter;
     margin: 0;
     height: 100%;
     display: flex;
@@ -161,7 +174,7 @@
 .userDisplay{
     color: #000000;
     font-family: "Roboto", sans-serif;
-    font-size:16px;
+    font-size: 16px;
     text-align: center;
     width: fit-content;
     height: fit-content;

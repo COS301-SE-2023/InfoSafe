@@ -18,4 +18,6 @@ public interface TaskRepository extends JpaRepository<Task,Integer> {
     int countTasksByUsersContains(User user);
 
     List<Task> findDistinctTasksByUsersContains(User user);
+
+    List<Task> findByUsers(User user);
 }

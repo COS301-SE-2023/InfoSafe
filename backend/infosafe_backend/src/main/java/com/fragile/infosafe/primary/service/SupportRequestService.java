@@ -18,7 +18,6 @@ public class SupportRequestService {
     public ResponseEntity<String> makeSR(SupportRequestRequest request){
         var supportrequest = SupportRequest.builder()
                 .support_id(request.getSupport_id())
-                .user_id(request.getUser_id())
                 .support_type(request.getSupport_type())
                 .support_description(request.getSupport_description())
                 .support_status(request.getSupport_status())

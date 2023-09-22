@@ -59,61 +59,65 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
             <div className="editUserOverlay" data-testid="editUserPopup">
-                <div className="editUserBorder">
-                    <button className="editUserBackButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="editUserBackIcon" />
-                    </button>
-                    <p className="editUserTitle">Edit User</p>
-                    <form onSubmit={handleSubmit}>
-                        <div className="nameEdit">
-                            <p className="nameTitle">Name</p>
-                            <input
-                                className="editNameInput"
-                                type="text"
-                                id="editusername"
-                                name="editusername"
-                                data-testid="firstNameEdit"
-                                defaultValue={user.first_name} onChange={e => setValues({...values, first_name: e.target.value})}
-                            />
-                        </div>
-                        <div className="surnameEdit">
-                            <p className="surnameTitle">Surname</p>
-                            <input
-                                className="editSurnameInput"
-                                type="text"
-                                id="editusersurname"
-                                name="editusersurname"
-                                defaultValue={user.last_name} onChange={e => setValues({...values, last_name: e.target.value})}
-                            />
-                        </div>
-                        <div className="emailEdit">
-                            <p className="emailTitle">Email</p>
-                            <input
-                                className="editEmailInput"
-                                type="text"
-                                id="edituseremail"
-                                name="edituseremail"
-                                defaultValue={user.email} onChange={e => setValues({...values, email: e.target.value})}
-                            />
-                        </div>
-                        <div className="roleEdit">
-                            <p className="roleTitle">System Role</p>
-                            {roleNames && roleNames.length > 0 ? (
-                                <Dropdown
-                                    options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
-                                    value={selectedRole}
-                                    className="role_dropdown"
-                                    name="role_dropdown"
-                                    onChange={values => setSelectedRole(values.value)}
-                                />
-                            ) : (
-                                <p className="loadTitle">Loading...</p>
-                            )}
-                        </div>
-                        <button className="FinishButton" data-testid="finish">
-                            Finish
+                <div className="popupBackground">
+                    <div className="editUserBorder">
+                        <button className="editUserBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="editUserBackIcon" />
                         </button>
-                    </form>
+                        <p className="editUserTitle">Edit User</p>
+                        <div className="editUserContent">
+                            <form onSubmit={handleSubmit}>
+                                <div className="nameEdit">
+                                    <p className="nameTitle">Name</p>
+                                    <input
+                                        className="editNameInput"
+                                        type="text"
+                                        id="editusername"
+                                        name="editusername"
+                                        data-testid="firstNameEdit"
+                                        defaultValue={user.first_name} onChange={e => setValues({...values, first_name: e.target.value})}
+                                    />
+                                </div>
+                                <div className="surnameEdit">
+                                    <p className="surnameTitle">Surname</p>
+                                    <input
+                                        className="editSurnameInput"
+                                        type="text"
+                                        id="editusersurname"
+                                        name="editusersurname"
+                                        defaultValue={user.last_name} onChange={e => setValues({...values, last_name: e.target.value})}
+                                    />
+                                </div>
+                                <div className="emailEdit">
+                                    <p className="editUserEmailTitle">Email</p>
+                                    <input
+                                        className="editUserEmailInput"
+                                        type="text"
+                                        id="edituseremail"
+                                        name="edituseremail"
+                                        defaultValue={user.email} onChange={e => setValues({...values, email: e.target.value})}
+                                    />
+                                </div>
+                                <div className="roleEdit">
+                                    <p className="roleTitle">System Role</p>
+                                    {roleNames && roleNames.length > 0 ? (
+                                        <Dropdown
+                                            options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
+                                            value={selectedRole}
+                                            className="roleDropdown"
+                                            name="roleDropdown"
+                                            onChange={values => setSelectedRole(values.value)}
+                                        />
+                                    ) : (
+                                        <p className="loadTitle">Loading...</p>
+                                    )}
+                                </div>
+                                <button className="editUserFinishButton" data-testid="finish">
+                                    Finish
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Popup>
