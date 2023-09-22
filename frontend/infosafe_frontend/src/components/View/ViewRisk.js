@@ -14,8 +14,12 @@ export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
                         <IoArrowBackOutline className="backIcon" />
                     </button>
                     <p className="pageTitle">View Risk</p>
+                    <p className="displayTitle">Risk Name</p>
+                    <p className="displayData">MyRisk </p>
                     <p className="displayTitle">Risk ID</p>
                     <p className="displayData">{risk.risk_id}</p>
+                    <p className="displayTitle">Data Scope</p>
+                    <p className="displayData">DataScope 123</p>
                     <p className="displayTitle">Probability</p>
                     <p className="displayData">{risk.probability_rating}</p>
                     <p className="displayTitle">Impact</p>
