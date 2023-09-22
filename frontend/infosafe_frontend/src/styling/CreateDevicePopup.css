@@ -216,7 +216,7 @@
     top: -3vh;
 }
 .createDeviceFinish {
-    width: 20%;
+    width: fit-content;
     height: 5%;
     background-color: rgba(233, 0, 0, 1);
     color: #ffffff;
@@ -226,8 +226,10 @@
     letter-spacing: 0.84px;
     text-transform: uppercase;
     position: relative;
+    align-self: center;
+    justify-self: center;
+    bottom: 2vh;
     border: none;
-    bottom: 1vh;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin: 5% auto 0;
+    padding: 0.5% 1%;
 }
