@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.service.AWSSecretService;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,6 +42,14 @@ public class PersistencePrimaryConfiguration {
 
         return em;
     }
+
+//    @Primary
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.datasource")
+//    public DataSource primaryDataSource () {
+//        return DataSourceBuilder.create().build();
+//    }
+
     @Primary
     @Bean
     public DataSource primaryDataSource () {
@@ -50,7 +59,7 @@ public class PersistencePrimaryConfiguration {
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .url("jdbc:mysql://localhost:3306/infosafe")//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/" + login.getDbname())
                 .username("root")//login.getUsername())
-                .password("")//login.getPassword())
+                .password("1234")//login.getPassword())
                 .build();
     }
 

@@ -23,6 +23,9 @@ public class DataScopeController {
         return ResponseEntity.ok(service.makeDs(datascope));
     }
 
+    @GetMapping("/getTotal")
+    public long getTotalDs(){ return service.getTotalDs();}
+
     @GetMapping("/getDs")
     public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
 
@@ -48,7 +51,7 @@ public class DataScopeController {
         return 0;
     }
 
-    @GetMapping("/myNumberDs/")
+    @GetMapping("/myNumberDs")
     public int getMyNumberDataScopes(){
         return 0;
     }

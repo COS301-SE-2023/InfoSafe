@@ -31,6 +31,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                         <p className="datascopeStatus">Status</p>
                         <p className="viewDataScopeStatus">{datascope.ds_status}</p>
                     </div>
+
                     <div className="view_datascope_roles">
                         <p className="datascopeRoles">Roles</p>
                         <div className="table">

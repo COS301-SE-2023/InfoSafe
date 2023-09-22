@@ -7,11 +7,12 @@ import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import "../../styling/DataScopes.css";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetDS} from "../getData/getDs";
+import data from "bootstrap/js/src/dom/data";
 export const DataScopes = () => {
 
     const {showDatascope, } = useGetDS()
     const {roles} = useGetPerms();
-    const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false); // DS
+    const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
 
     const EditDataScope = ({datascope}) => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
@@ -49,12 +50,13 @@ export const DataScopes = () => {
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
+        console.log()
         if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete")) {
             return (
-                <li key={datascope.id}>
+                <li key={datascope.data_scope_id}>
                     <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                        Data
-                        Scope {datascope.data_scope_id}: {datascope.ds_name} ------ {datascope.ds_description} ------ {datascope.data_custodian}
+                        Data Scope {datascope.ds_name} : {datascope.data_custodian && datascope.data_custodian.first_name} {datascope.data_custodian && datascope.data_custodian.last_name} : {datascope.ds_status}
+
                         {viewDataScopeOpen && (
                             <ViewDataScope
                                 popupClose={() => setViewDataScopeOpen(false)}
@@ -68,7 +70,7 @@ export const DataScopes = () => {
                 </li>
             );
         } else {
-            return (null)
+            return null
         }
     };
 
@@ -92,7 +94,7 @@ export const DataScopes = () => {
                 </div>
             )
         } else {
-            return (null)
+            return null
         }
     }
 

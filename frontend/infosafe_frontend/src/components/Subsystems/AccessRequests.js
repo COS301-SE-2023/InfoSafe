@@ -10,8 +10,8 @@ import {useGetAr} from "../getData/getAR";
 import {useGetPerms} from "../getData/getPerms";
 
 export const AccessRequests = () => {
-    const {roles} = useGetAr();
-    const {showAccess} = useGetPerms();
+    const {roles} = useGetPerms();
+    const {showAccess} = useGetAr();
 
     const EditAccessRequestDiv = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);

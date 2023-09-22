@@ -1,7 +1,7 @@
 import '../../styling/NavBar.css';
 import React, {useEffect, useState} from 'react';
 import {TabView} from "./TabView";
-import {IoMenu, IoPersonCircleSharp} from "react-icons/io5";
+import {IoMenu, IoPeopleSharp, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
 import {FaHome, FaProjectDiagram, FaLock, FaTasks} from 'react-icons/fa';
 import {RiUserSettingsFill} from 'react-icons/ri';
