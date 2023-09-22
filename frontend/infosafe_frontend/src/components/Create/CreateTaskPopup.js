@@ -50,6 +50,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
             .catch((error) => {
                 console.error("Error adding task:", error);
             });
+        popupClose();
     };
 
     useEffect(() => {
@@ -126,12 +127,12 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                         ) : (
                             <p>Loading...</p>
                         )}
-                        <p className="createAccessRequestDataScopeLabel">Data Scope</p>
+                        <p className="inputTitle">Data Scope</p>
                         {datascopeData && datascopeData.length > 0 ? (
                             <Select
                                 options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                                 value={datascope}
-                                className="accessRequestDatascopeDropdown"
+                                className="createTaskDataScopeDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add DataScope"}
                                 onChange={(selectedOption) => setDataScope(selectedOption)}
