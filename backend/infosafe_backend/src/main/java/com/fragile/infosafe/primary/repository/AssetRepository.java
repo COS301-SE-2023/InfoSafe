@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface AssetRepository extends JpaRepository<Asset,Integer> {
-    @Query(value = "SELECT * FROM asset WHERE asset_id = :assetId", nativeQuery = true)
+    @Query(value = "SELECT * FROM assets WHERE asset_id = :assetId", nativeQuery = true)
     Optional<Asset> findByAssetId(@Param("assetId") int asset_id);
 
     @Query("SELECT COUNT(a) FROM Asset a WHERE a.current_assignee = :assignee")
