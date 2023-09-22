@@ -144,7 +144,7 @@
     display: none;
 }
 .currentRequestsInfoLabel{
-    color: #444040;
+    color: black;
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-size: 22px;
@@ -154,7 +154,7 @@
     margin: 0;
 }
 .currentRequestsInfoDisplay {
-    color: #444040;
+    color: black;
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-size: 40px;
