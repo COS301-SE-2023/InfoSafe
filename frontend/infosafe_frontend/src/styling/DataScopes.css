@@ -46,7 +46,7 @@
     position: relative;
     top: 50%;
     left: 0.5%;
-    width: fit-content;
+    width: 80%;
 }
 .datascopesList li:hover {
     z-index: 4;
