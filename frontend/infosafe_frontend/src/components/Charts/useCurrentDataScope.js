@@ -6,7 +6,7 @@ export const useCurrentDataScope = () => {
     const [dataScopeCount, setDataScopeCount] = useState();
     if(roles.includes("data_scope_create")){
         useEffect(() => {
-            fetch('http://localhost:8080/api/datascope/get', {
+            fetch('http://localhost:8080/api/datascope/getTotal', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
