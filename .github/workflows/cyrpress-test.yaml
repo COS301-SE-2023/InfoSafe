@@ -1,5 +1,5 @@
 name: Cypress Tests
-on: push
+on: [push, pull_request]
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
         run: npm run frontend
 
       - name: Wait for applications to start
-        run: sleep 30  # Adjust the duration based on how long it takes for your applications to start
+        run: sleep 45  # Adjust the duration based on how long it takes for your applications to start
 
       - name: Run Cypress tests
         run: npx cypress run
