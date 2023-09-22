@@ -9,24 +9,27 @@ export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="viewRiskOverlay">
-                <div className="borderViewRisk">
-                    <button className="backButton" onClick={popupClose} data-testid="back-button">
-                        <IoArrowBackOutline className="backIcon" />
-                    </button>
-                    <p className="pageTitle">View Risk</p>
-                    <p className="displayTitle">Risk Name</p>
-                    <p className="displayData">MyRisk </p>
-                    <p className="displayTitle">Risk ID</p>
-                    <p className="displayData">{risk.risk_id}</p>
-                    <p className="displayTitle">Data Scope</p>
-                    <p className="displayData">DataScope 123</p>
-                    <p className="displayTitle">Probability</p>
-                    <p className="displayData">{risk.probability_rating}</p>
-                    <p className="displayTitle">Impact</p>
-                    <p className="displayData">{risk.impact_rating}</p>
-                    <p className="displayTitle">Vulnerability/Threat</p>
-                    <textarea className="viewTextArea" readOnly={true} value={risk.risk_description}/>
+                <div className="popupBackground">
+                    <div className="borderViewRisk">
+                        <button className="viewRiskBackButton" onClick={popupClose} data-testid="back-button">
+                            <IoArrowBackOutline className="viewRiskBackIcon" />
+                        </button>
+                        <p className="pageTitle">View Risk</p>
+                        <p className="viewRiskPageTitle">Risk Name</p>
+                        <p className="viewRiskDisplayData">MyRisk </p>
+                        <p className="viewRiskPageTitle">Risk ID</p>
+                        <p className="viewRiskDisplayData">{risk.risk_id}</p>
+                        <p className="viewRiskPageTitle">Data Scope</p>
+                        <p className="viewRiskDisplayData">DataScope 123</p>
+                        <p className="viewRiskPageTitle">Probability</p>
+                        <p className="viewRiskDisplayData">{risk.probability_rating}</p>
+                        <p className="viewRiskPageTitle">Impact</p>
+                        <p className="viewRiskDisplayData">{risk.impact_rating}</p>
+                        <p className="viewRiskPageTitle">Vulnerability/Threat</p>
+                        <textarea className="viewRiskTextArea" readOnly={true} value={risk.risk_description}/>
+                    </div>
                 </div>
+
             </div>
         </Popup>
     );
