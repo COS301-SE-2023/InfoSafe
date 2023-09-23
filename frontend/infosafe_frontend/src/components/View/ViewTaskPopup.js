@@ -14,17 +14,19 @@ export const ViewTask = ({ task, popupClose, popupOpen }) => {
                     <button className="viewTaskBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="viewTaskBackIcon" />
                     </button>
-                    <p className="pageTitle">View Task</p>
-                    <p className="displayTitle">Task Name</p>
-                    <p className="displayData">Task {task.task_name}</p>
-                    <p className="displayTitle">Data Scope</p>
-                    <p className="displayData">{task.dataScope.ds_name}</p>
-                    <p className="displayTitle">Task Description</p>
+                    <p className="viewTaskPageTitle">View Task</p>
+                    <div className="viewTaskContent">
+                    <p className="viewTaskDisplayTitle">Task Name</p>
+                    <p className="viewTaskDisplayData">Task {task.task_name}</p>
+                    <p className="viewTaskDisplayLabel">Data Scope</p>
+                    <p className="viewTaskDisplayData">{task.dataScope.ds_name}</p>
+                    <p className="viewTaskDisplayLabels">Task Description</p>
                     <textarea className="viewTextArea" readOnly={true} value={task.task_description}/>
-                    <p className="displayTitle">Task Status</p>
-                    <p className="displayData">{task.task_status}</p>
-                    <p className="displayTitle">Completion Date</p>
-                    <p className="displayData">{task.due_date}</p>
+                    <p className="viewTaskDisplayLabel">Task Status</p>
+                    <p className="viewTaskDisplayData">{task.task_status}</p>
+                    <p className="viewTaskDisplayCompletionDate">Completion Date</p>
+                    <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>
+                </div>
                 </div>
                 </div>
             </div>
