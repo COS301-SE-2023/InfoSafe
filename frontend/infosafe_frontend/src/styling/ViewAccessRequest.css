@@ -1,37 +1,62 @@
 .viewAccessRequestPopup {
-    width: 50vw;
-    height: 75vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(20px);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .viewAccessRequestPopupBorder {
-    border: 1px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 70vh;
     position: relative;
-    top: 2.5vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .viewAccessRequestPopupBorder::-webkit-scrollbar {
     display: none;
 }
+.viewAccessRequestContent{
+    position: relative;
+    height: 70%;
+    width: 100%;
+    top: 10%;
+    left: 15%;
+}
 .viewAccessRequestBackButton {
-    background-color: rgba(233, 0, 0, 1);
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .viewAccessRequestBackIcon {
     color: #ffffff;
@@ -40,7 +65,7 @@
     width: 1.3vw;
 }
 .viewAccessRequestTitle {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -49,124 +74,94 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -3vh;
-    left: 20%;
-}
-.viewAccessRequestDatascopeDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 1vh;
-    margin-top: 6vh;
+    top: -4%;
+    margin: 0 auto;
 }
 .viewAccessRequestDatascopeLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    left: 25%;
-    margin-bottom: 1vh;
 }
 .viewAccessRequestDatascopeNameDisplay {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    position: relative;
-    left: 25%;
-    top: 8%;
-}
-.viewAccessRequestRoleDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    position: relative;
-    margin: 0 auto;
+}
+.viewAccessRequestDatascopeNameDisplay::-webkit-scrollbar{
+    display: none;
 }
 .viewAccessRequestRoleLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
-    margin-bottom: 1vh;
+    margin: 0;
     position: relative;
-    left: 25%;
 }
 .viewAccessRequestRoleDisplay {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    top: 8%;
-    position: relative;
-    left: 25%;
-}
-.viewAccessRequestReasonDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    position: relative;
-    margin: 0 auto;
+}
+.viewAccessRequestRoleDisplay::-webkit-scrollbar{
+    display: none;
 }
 .viewAccessRequestReasonLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: -1vh;
 }
 .viewAccessRequestReasonDisplay {
-    font-size: 16px;
-    width: 50%;
-    text-align: left;
-    border: none;
-    background-color: #ffffff;
-    top: 8%;
-    position: relative;
-}
-.viewAccessRequestStatusDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    position: relative;
+}
+.viewAccessRequestReasonDisplay::-webkit-scrollbar{
+    display: none;
 }
 .viewAccessRequestStatusLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
-    margin-bottom: 1vh;
+    margin: 0;
+    position: relative;
 }
 .viewAccessRequestStatusDisplay {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    top: 8%;
-    position: relative;
-    left: 25%;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+.viewAccessRequestStatusDisplay::-webkit-scrollbar{
+    display: none;
 }
