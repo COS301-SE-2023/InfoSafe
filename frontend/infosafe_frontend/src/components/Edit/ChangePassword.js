@@ -65,34 +65,36 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="changePassOverlay">
+                <div className="popupBackground">
                 <div className="borderChangePass">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
+                    <button className="changePassBackButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="changePassBackIcon" />
                     </button>
                     <form>
-                        <p className="pageTitle">Change Password</p>
-                        <p className="inputTitle">Enter Password</p>
-                        <input
-                            type="password"
-                            className="inputText"
-                            name="newPass"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                        />
-                        <p className="inputTitle">Re-Enter Password</p>
-                        <input
-                            type="password"
-                            className="inputText"
-                            name="reNewPass"
-                            value={reenteredPassword}
-                            onChange={(e) => setReenteredPassword(e.target.value)}
-                        />
-                        <div>
+                        <p className="changePassPageTitle">Change Password</p>
+                        <div className="changePassContent">
+                            <p className="changePassInputTitle">Enter Password</p>
+                            <input
+                                type="password"
+                                className="changePassInputText"
+                                name="newPass"
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                            />
+                            <p className="changePassInputTitle">Re-Enter Password</p>
+                            <input
+                                type="password"
+                                className="changePassInputText"
+                                name="reNewPass"
+                                value={reenteredPassword}
+                                onChange={(e) => setReenteredPassword(e.target.value)}
+                            />
                             <button className="submitButton" type="submit" onClick={handleClick}>
                                 Submit
                             </button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </Popup>
