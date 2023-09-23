@@ -2,14 +2,12 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/CreateDevicePopup.css';
 import '../../styling/CreateTask.css';
 import Popup from 'reactjs-popup';
-
 import {IoArrowBackOutline} from 'react-icons/io5';
 import Dropdown from "react-dropdown";
-import Select from "react-select";
-
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const NEW_OPTIONS = ['Yes', 'No'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
+
 export const CreateDevicePopup = ({popupOpen, popupClose}) => {
     const current = new Date();
     const [asset_name, setAsset_name] = useState('')
