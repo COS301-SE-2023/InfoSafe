@@ -1,36 +1,62 @@
 .viewAssetRequestOverlay {
-    width: 50vw;
-    height: 75vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .viewAssetRequestBorder {
-    border: 1px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 70vh;
     position: relative;
-    top: 2.5vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .viewAssetRequestBorder::-webkit-scrollbar{
     display: none;
 }
+.viewAssetRequestContent{
+    position: relative;
+    height: 70%;
+    width: 100%;
+    top: 0;
+    left: 15%;
+}
 .viewAssetRequestBackButton {
-    background-color: rgba(233, 0, 0, 1);
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .viewAssetRequestBackIcon {
     color: #ffffff;
@@ -39,96 +65,107 @@
     width: 1.3vw;
 }
 .viewAssetRequestLabel {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
-    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -3vh;
-    left: 20%;
+    top: -4%;
+    margin: 0 auto 5vh;
 }
 .viewAssetRequestDeviceNameLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
+    margin: 0;
+    position: relative;
 }
 .viewAssetRequestDeviceName{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
     position: relative;
-    top: 1%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+.viewAssetRequestDeviceName::-webkit-scrollbar{
+    display: none;
 }
 .viewAssetRequestUserLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 1%;
 }
 .viewAssetRequestUser{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
     position: relative;
-    top: 1%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+.viewAssetRequestUser::-webkit-scrollbar{
+    display: none;
 }
 .viewAssetRequestReasonLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 1%;
 }
 .viewAssetRequestReason{
-    font-size: 16px;
-    width: 50%;
-    text-align: left;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
     position: relative;
-    top: 1%;
-    left: 25%;
-    height: 10vh;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+.viewAssetRequestReason::-webkit-scrollbar{
+    display: none;
 }
 .viewAssetRequestDateRequiredLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 20px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 1%;
 }
 .viewAssetRequestDateRequired{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
     position: relative;
-    top: 1%;
-
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+.viewAssetRequestDateRequired::-webkit-scrollbar{
+    display: none;
 }
