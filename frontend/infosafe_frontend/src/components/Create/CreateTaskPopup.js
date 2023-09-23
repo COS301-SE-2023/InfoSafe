@@ -82,42 +82,87 @@ export const CreateTask = ({popupClose, popupOpen}) => {
         setTask_name(e.target.value);
     };
 
+    const customStyles = {
+        control: (base, state) => ({
+            ...base,
+            background: "#CECECE",
+            // match with the menu
+            borderRadius: state.isFocused ? "2px 2px 0 0" : 3,
+            // Removes weird border around container
+            boxShadow: state.isFocused ? null : null,
+            width: "70%",
+            color: 'black',
+            borderColor: state.isFocused ? "grey" : "transparent",
+            '&:hover': { borderColor: 'grey' }
+        }),
+        menu: base => ({
+            ...base,
+            // override border radius to match the box
+            borderRadius: 0,
+            // kill the gap
+            marginTop: 0,
+            width: "70%",
+        }),
+        menuList: base => ({
+            ...base,
+            // kill the white space on first and last option
+            padding: 0
+
+        }),
+        dropdownIndicator: base => ({
+            ...base,
+            color: '#999',
+        }),
+        placeholder: base => ({
+            ...base,
+            color: 'black'
+        }),
+        multiValue: base => ({
+            ...base,
+            background: "white",
+            color: 'black'
+        })
+    };
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="createTaskOverlay">
+                <div className="popupBackground">
                 <div className="borderCreateTask">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon"/>
+                    <button className="createTaskBackButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="createTaskBackIcon"/>
                     </button>
                     <form>
-                        <p className="pageTitle">Create Task</p>
-                        <p className="inputTitle">Type name</p>
+                        <p className="createTaskPageTitle">Create Task</p>
+                        <div className="createTaskContent">
+                        <p className="createTaskInputTitle">Type name</p>
                         <textarea
-                            className="inputTextArea"
+                            className="createTaskInputTextArea"
                             onChange={handleTaskNameChange}
                             value={task_name}
                         />
-                        <p className="inputTitle">Type Description</p>
+                        <p className="createTaskInputTitle">Type Description</p>
                         <textarea
-                            className="inputTextArea"
+                            className="createTaskInputTextArea"
                             onChange={handleDescriptionChange}
                             value={task_description}
                         />
-                        <p className="inputTitle">Task Status</p>
-                        <Select
+                        <p className="createTaskInputTitle">Task Status</p>
+                        <Dropdown
                             options={statusOptions}
                             value={statusOptions.find((option) => option.value === task_status)}
-                            className="datascopeDropdown"
+                            className="createTaskStatusDropdown"
                             name="taskStatusDropdown"
                             placeholder={"Select Status"}
                             onChange={(selectedOption) => setTaskStatus(selectedOption.value)}
                         />
-                        <p className="inputTitle">Assignees</p>
+                        <p className="createTaskInputTitle">Assignees</p>
                         {users && users.length > 0 ? (
                             <Select
+                                styles={customStyles}
                                 options={users.map((data) => ({value: data.user_id, label: data.email}))}
                                 value={selectedUsers}
-                                className="datascopeDropdown"
+                                className="createTaskUserDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add Assignees"}
                                 onChange={handleSelect}
@@ -127,9 +172,9 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                         ) : (
                             <p>Loading...</p>
                         )}
-                        <p className="inputTitle">Data Scope</p>
+                        <p className="createTaskInputTitle">Data Scope</p>
                         {datascopeData && datascopeData.length > 0 ? (
-                            <Select
+                            <Dropdown
                                 options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                                 value={datascope}
                                 className="createTaskDataScopeDropdown"
@@ -140,19 +185,18 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                         ) : (
                             <p className="loadTitle">Loading...</p>
                         )}
-                        <p className="inputTitle">Completion Date</p>
+                        <p className="createTaskInputTitle">Completion Date</p>
                         <input
                             type="date"
                             className="createTaskDateInput"
                             onChange={(e) => handleDateChange(e.target.value)}
                             required
-                        />
-                        <div className="createTaskButtonDiv">
-                            <button className="createTaskSubmitButton" type="submit" onClick={handleClick}>
-                                Submit
-                            </button>
+                        /><button className="createTaskSubmitButton" type="submit" onClick={handleClick}>
+                            Submit
+                        </button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </Popup>

@@ -1,233 +1,258 @@
 .viewDeviceOverlay {
-    width: 50vw;
-    height: 75vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .viewDeviceBorder {
-    border: 1px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 70vh;
     position: relative;
-    top: 2.5vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .viewDeviceBorder::-webkit-scrollbar{
     display: none;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.viewDeviceBackButton {
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-.backIcon {
+.viewDeviceBackIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
     width: 1.3vw;
 }
 .viewDeviceLabel {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
-    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -2vh;
-    left: 20%;
+    top: -3vh;
+    margin: 0 auto;
 }
 .viewDeviceNameLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
+    position: relative;
+    left: 15%;
 }
 .viewDeviceName{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 1%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDeviceTypeLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 2%;
+    left: 15%;
 }
 .viewDeviceType{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 3%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDeviceDescriptionLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 4%;
+    left: 15%;
 }
 .viewDeviceDescription{
-    font-size: 16px;
-    width: 50%;
-    height: 8vh;
-    text-align: left;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 5%;
-    left: 25%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.viewDeviceDescription::-webkit-scrollbar{
+    display: none;
 }
 .viewDeviceNewLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 5%;
+    left: 15%;
 }
 .viewDeviceNew{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 6%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDeviceNewLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 5%;
+    left: 15%;
 }
 .viewDeviceNew{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 6%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDeviceAvailabilityLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 6%;
+    left: 15%;
 }
 .viewDeviceAvailability{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 7%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDeviceStatusLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 8%;
+    left: 15%;
 }
 .viewDeviceStatus{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 9%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDeviceCurrentCustodianLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 10%;
+    left: 15%;
 }
 .viewDeviceCurrentCustodian{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 11%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }
 .viewDevicePreviousCustodianLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
+    margin: 0;
     position: relative;
-    top: 12%;
+    left: 15%;
 }
 .viewDevicePreviousCustodian{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    background-color: #ffffff;
     margin: 0 auto;
     position: relative;
-    top: 13%;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
 }

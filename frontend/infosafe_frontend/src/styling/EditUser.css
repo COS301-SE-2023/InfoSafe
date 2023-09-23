@@ -78,7 +78,7 @@
     margin:  auto;
 }
 .nameEdit {
-    font-size: 20px;
+    font-size: 18px;
     width: 70%;
     border: none;
     margin: 0;
@@ -95,7 +95,7 @@
     font-family: 'Roboto', sans-serif;
 }
 .surnameEdit {
-    font-size: 20px;
+    font-size: 18px;
     width: 70%;
     border: none;
     margin: 0;
@@ -112,7 +112,7 @@
     font-family: 'Roboto', sans-serif;
 }
 .editUserEmailTitle {
-    font-size: 20px;
+    font-size: 18px;
     width: 70%;
     border: none;
     margin: 0;
@@ -129,7 +129,7 @@
     font-family: 'Roboto', sans-serif;
 }
 .roleEdit {
-    font-size: 20px;
+    font-size: 18px;
     width: 70%;
     border: none;
     margin: 0;

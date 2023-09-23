@@ -9,20 +9,22 @@ export const TaskApproval = ({ popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="taskApprovalOverlay">
+                <div className="popupBackground">
                 <div className="borderTaskApproval">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
+                    <button className="approveTaskBackButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="approveTaskBackIcon" />
                     </button>
                     <form>
-                        <p className="pageTitle">Task Approval</p>
-                        <p className="inputTitle">Task ID</p>
-                        <p className="displayData">Task 1234</p>
-                        <p className="displayTitle">Data Scope</p>
-                        <p className="displayData">Data Scope A</p>
-                        <p className="displayTitle">Assigned User</p>
-                        <p className="displayData">User 12</p>
-                        <p className="displayTitle">Task Description</p>
-                        <textarea className="viewTextArea" readOnly={true} value="Example of a task description."/>
+                        <p className="approveTaskPageTitle">Task Approval</p>
+                        <div className="approveTaskContent">
+                        <p className="approveTaskDisplayTitle">Task ID</p>
+                        <p className="approveTaskDisplayData">Task 1234</p>
+                        <p className="approveTaskDisplayTitle">Data Scope</p>
+                        <p className="approveTaskDisplayData">Data Scope A</p>
+                        <p className="approveTaskDisplayTitle">Assigned User</p>
+                        <p className="approveTaskDisplayData">User 12</p>
+                        <p className="approveTaskDisplayTitle">Task Description</p>
+                        <textarea className="approveTaskViewTextArea" readOnly={true} value="Example of a task description."/>
                         <div className="taskApprovalButtonsDiv">
                             <button className="approveButton" type="submit" onClick={popupClose}>
                                 Accept
@@ -31,7 +33,9 @@ export const TaskApproval = ({ popupClose, popupOpen }) => {
                                 Reject
                             </button>
                         </div>
+                        </div>
                     </form>
+                </div>
                 </div>
             </div>
         </Popup>

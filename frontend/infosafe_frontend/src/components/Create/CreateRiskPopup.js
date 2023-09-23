@@ -1,6 +1,7 @@
 import Popup from 'reactjs-popup';
 import React, {useState,  useEffect } from 'react';
 import '../../styling/CreateRisk.css';
+import '../../styling/Dropdown.css'
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import useRequestMaker from "../Subsystems/useRequestMaker";
@@ -47,73 +48,75 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="createRiskOverlay">
-                <div className="borderCreateRisk">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
-                    </button>
-                    <form>
-                        <p className="pageTitle">Create Risk</p>
-                        <p className="inputTitle">Risk Name</p>
-                        <textarea
-                            className="inputTextArea"
-                            onChange={handleNameChange}
-                            value={risk_name}
-                        />
-                        <p className="inputTitle">Probability</p>
-                        <Dropdown
-                            options={PROBABILITY}
-                            value={PROBABILITY[0]}
-                            className="probabilityDropdown"
-                            name="probabilityDropdown"
-                            onChange={(selectedOption) => setProbabilityRating(selectedOption.value)}
-                        />
-                        <p className="inputTitle">Impact</p>
-                        <Dropdown
-                            options={IMPACT}
-                            value={IMPACT[0]}
-                            className="impactDropdown"
-                            name="impactDropdown"
-                            onChange={(selectedOption) => setImpactRating(selectedOption.value)}
-                        />
-                        <p className="inputTitle">Risk Description</p>
-                        <textarea
-                            className="inputTextArea"
-                            onChange={handleDescriptionChange}
-                            value={risk_description}
-                        />
-                        <p className="inputTitle">Risk Status</p>
-                        <Dropdown
-                            options={STATUS}
-                            value={STATUS[0]}
-                            className="statusDropdown"
-                            name="statusDropdown"
-                            onChange={(selectedOption) => setRiskStatus(selectedOption.value)}
-                        />
-                        <p className="inputTitle">Suggested Mitigation</p>
-                        <textarea
-                            className="inputTextArea"
-                            onChange={handleMitigation}
-                            value={suggested_mitigation}
-                        />
-                        <p className="inputTitle">Data Scope</p>
-                        {datascopeData && datascopeData.length > 0 ? (
-                            <Select
-                                options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                                value={datascope}
-                                className="accessRequestDatascopeDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add DataScope"}
-                                onChange={(selectedOption) => setDataScope(selectedOption)}
+                <div className="popupBackground">
+                    <div className="borderCreateRisk">
+                        <button className="createRiskBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="createRiskBackIcon" />
+                        </button>
+                        <form>
+                            <p className="pageTitle">Create Risk</p>
+                            <p className="riskNameLabel">Risk Name</p>
+                            <textarea
+                                className="riskNameInput"
+                                onChange={handleNameChange}
+                                value={risk_name}
                             />
-                        ) : (
-                            <p className="loadTitle">Loading...</p>
-                        )}
-                        <div>
-                            <button className="submitButton" type="submit" onClick={handleClick}>
-                                Submit
-                            </button>
-                        </div>
-                    </form>
+                            <p className="riskProbabilityLabel">Probability</p>
+                            <Dropdown
+                                options={PROBABILITY}
+                                value={PROBABILITY[0]}
+                                className="createRiskProbabilityDropdown"
+                                name="createRiskProbabilityDropdown"
+                                onChange={(selectedOption) => setProbabilityRating(selectedOption.value)}
+                            />
+                            <p className="riskImpactLabel">Impact</p>
+                            <Dropdown
+                                options={IMPACT}
+                                value={IMPACT[0]}
+                                className="riskImpactDropdown"
+                                name="riskImpactDropdown"
+                                onChange={(selectedOption) => setImpactRating(selectedOption.value)}
+                            />
+                            <p className="riskDescriptionLabel">Risk Description</p>
+                            <textarea
+                                className="riskDescriptionInput"
+                                onChange={handleDescriptionChange}
+                                value={risk_description}
+                            />
+                            <p className="riskStatusLabel">Risk Status</p>
+                            <Dropdown
+                                options={STATUS}
+                                value={STATUS[0]}
+                                className="riskStatusDropdown"
+                                name="riskStatusDropdown"
+                                onChange={(selectedOption) => setRiskStatus(selectedOption.value)}
+                            />
+                            <p className="riskSuggestedMitigationLabel">Suggested Mitigation</p>
+                            <textarea
+                                className="riskSuggestedMitigationInput"
+                                onChange={handleMitigation}
+                                value={suggested_mitigation}
+                            />
+                            <p className="riskDataScopeLabel">Data Scope</p>
+                            {datascopeData && datascopeData.length > 0 ? (
+                                <Dropdown
+                                    options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                    value={datascope}
+                                    className="riskDataScopeDropdown"
+                                    name="riskDataScopeDropdown"
+                                    placeholder={"Add DataScope"}
+                                    onChange={(selectedOption) => setDataScope(selectedOption)}
+                                />
+                            ) : (
+                                <p className="loadTitle">Loading...</p>
+                            )}
+                            <div>
+                                <button className="createRiskSubmitButton" type="submit" onClick={handleClick}>
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </Popup>

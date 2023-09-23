@@ -42,7 +42,7 @@
     position: relative;
     height: 70%;
     width: 100%;
-    top: 0%;
+    top: 10%;
 }
 .viewUserBackButton {
     background-color: #9E0000;
@@ -83,17 +83,12 @@
     position: relative;
 }
 .nameDisplay {
-    font-size: 20px;
-    width: 70%;
-    margin: 0 auto;
-    border: none;
-}
-.viewName {
     font-size: 18px;
     width: 70%;
-    border: none;
     margin: 0 auto;
-    background-color: #ffffff;
+    border: none;
+    position: relative;
+    top: -1vh;
 }
 .view_surname {
     margin: 0 auto;
@@ -103,20 +98,14 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 3%;
 }
 .surnameDisplay {
     font-size: 18px;
     width: 70%;
     margin: 0 auto;
     border: none;
-}
-.viewSurname {
-    font-size: 18px;
-    width: 70%;
-    border: none;
-    margin: 0 auto;
-    background-color: #ffffff;
+    position: relative;
+    top: -1vh;
 }
 .view_email {
     margin: 0 auto;
@@ -126,20 +115,14 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 6%;
 }
 .emailDisplay {
     font-size: 18px;
     width: 70%;
     margin: 0 auto;
     border: none;
-}
-.viewEmail {
-    font-size: 18px;
-    width: 70%;
-    border: none;
-    margin: 0 auto;
-    background-color: #ffffff;
+    position: relative;
+    top: -1vh;
 }
 .view_role {
     margin: 0 auto;
@@ -149,21 +132,14 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 9%;
 }
 .viewUserRoleDisplay {
     font-size: 18px;
     width: 70%;
     margin: 0 auto;
     border: none;
-}
-.viewRole {
-    font-size: 18px;
-    width: 70%;
-    border: none;
-    margin: 0 auto;
-    background-color: #ffffff;
-
+    position: relative;
+    top: -1vh;
 }
 .viewName, .viewSurname, .viewEmail, .viewRole {
     border-radius: 2px;
@@ -173,6 +149,12 @@
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-width: none;
+    width: 70%;
+    position: relative;
+    left: 15%;
+    top: -1vh;
+    margin: 0;
+    font-size: 18px;
 }
 .viewName::-webkit-scrollbar, .viewSurname::-webkit-scrollbar, .viewEmail::-webkit-scrollbar, .viewRole::-webkit-scrollbar{
     display: none;

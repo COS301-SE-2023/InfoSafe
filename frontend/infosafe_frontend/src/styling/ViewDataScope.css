@@ -112,6 +112,12 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     height: 4%;
     border-radius: 2px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.viewDSDescription::-webkit-scrollbar{
+    display: none;
 }
 .datascopeDate {
     font-family: 'Roboto', sans-serif;

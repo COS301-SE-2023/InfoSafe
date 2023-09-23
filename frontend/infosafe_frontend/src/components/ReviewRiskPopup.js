@@ -12,46 +12,49 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="reviewRiskOverlay">
-                <div className="borderReviewRisk">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
-                    </button>
-                    <form>
-                        <p className="pageTitle">Review Risk</p>
-                        <p className="displayTitle">Data Scope</p>
-                        <p className="displayData">Data Scope A</p>
-                        <p className="inputTitle">Probability</p>
-                        <Dropdown
-                            options={PROBABILITY}
-                            value={PROBABILITY[0]}
-                            className="probabilityDropdown"
-                            name="probabilityDropdown"
-                        />
-                        <p className="inputTitle">Impact</p>
-                        <Dropdown
-                            options={IMPACT}
-                            value={IMPACT[0]}
-                            className="impactDropdown"
-                            name="impactDropdown"
-                        />
-                        <p className="inputTitle">Vulnerability</p>
-                        <textarea className="inputTextArea" />
-                        <p className="inputTitle">Threat</p>
-                        <textarea className="inputTextArea" />
-                        <p className="inputTitle">Status</p>
-                        <Dropdown
-                            options={STATUS}
-                            value={STATUS[0]}
-                            className="reviewRiskStatusDropdown"
-                            name="reviewRiskStatusDropdown"
-                        />
-                        <div>
-                            <button className="submitButton" type="submit" onClick={popupClose}>
-                                Submit
-                            </button>
-                        </div>
-                    </form>
+                <div className="popupBackground">
+                    <div className="borderReviewRisk">
+                        <button className="reviewRiskBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="reviewRiskBackIcon" />
+                        </button>
+                        <form>
+                            <p className="pageTitle">Review Risk</p>
+                            <p className="reviewRiskLabels">Data Scope</p>
+                            <p className="reviewRiskDisplayData">Data Scope A</p>
+                            <p className="reviewRiskLabels">Probability</p>
+                            <Dropdown
+                                options={PROBABILITY}
+                                value={PROBABILITY[0]}
+                                className="reviewRiskProbabilityDropdown"
+                                name="reviewRiskProbabilityDropdown"
+                            />
+                            <p className="reviewRiskLabels">Impact</p>
+                            <Dropdown
+                                options={IMPACT}
+                                value={IMPACT[0]}
+                                className="reviewRiskImpactDropdown"
+                                name="reviewRiskImpactDropdown"
+                            />
+                            <p className="reviewRiskLabels">Vulnerability</p>
+                            <textarea className="reviewRiskTextArea" />
+                            <p className="reviewRiskLabels">Threat</p>
+                            <textarea className="reviewRiskTextArea" />
+                            <p className="reviewRiskLabels">Status</p>
+                            <Dropdown
+                                options={STATUS}
+                                value={STATUS[0]}
+                                className="reviewRiskStatusDropdown"
+                                name="reviewRiskStatusDropdown"
+                            />
+                            <div>
+                                <button className="reviewRiskSubmitButton" type="submit" onClick={popupClose}>
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </Popup>
     );

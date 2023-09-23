@@ -9,9 +9,10 @@ export const ViewTask = ({ task, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="viewTaskOverlay">
+                <div className="popupBackground">
                 <div className="borderViewTask">
-                    <button className="backButton" onClick={popupClose} data-testid="back-button">
-                        <IoArrowBackOutline className="backIcon" />
+                    <button className="viewTaskBackButton" onClick={popupClose} data-testid="back-button">
+                        <IoArrowBackOutline className="viewTaskBackIcon" />
                     </button>
                     <p className="pageTitle">View Task</p>
                     <p className="displayTitle">Task Name</p>
@@ -24,6 +25,7 @@ export const ViewTask = ({ task, popupClose, popupOpen }) => {
                     <p className="displayData">{task.task_status}</p>
                     <p className="displayTitle">Completion Date</p>
                     <p className="displayData">{task.due_date}</p>
+                </div>
                 </div>
             </div>
         </Popup>
