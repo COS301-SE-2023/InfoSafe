@@ -79,6 +79,7 @@
     position: relative;
     top: -4%;
     margin: 0 auto;
+    margin-bottom: 5vh;
 }
 
 .viewTaskDisplayTitle {
@@ -88,9 +89,31 @@
     color: black;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    position: relative;
 }
-
+.viewTaskDisplayLabel{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: -2vh;
+}
+.viewTaskDisplayLabels{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: -4vh;
+}
+.viewTaskDisplayCompletionDate{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: -6vh;
+}
 .viewTaskDisplayData {
     border-radius: 2px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
@@ -100,11 +123,46 @@
     overflow-y: hidden;
     scrollbar-width: none;
     width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
 }
 .viewTaskDisplayData::-webkit-scrollbar{
     display: none;
 }
-
+.viewTaskDisplayInfo {
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    position: relative;
+    top: -2vh;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+.viewTaskDisplayInfo::-webkit-scrollbar{
+    display: none;
+}
+.viewTaskDisplayCompletionDateData {
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -6vh;
+}
+.viewTaskDisplayCompletionDateData::-webkit-scrollbar{
+    display: none;
+}
 .viewTaskTextArea {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
@@ -115,4 +173,5 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     border-radius: 2px;
     margin-bottom: 1vh;
+    top: -4vh;
 }
