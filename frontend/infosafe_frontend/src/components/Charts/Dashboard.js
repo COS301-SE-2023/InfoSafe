@@ -1,31 +1,42 @@
-import '../styling/Dashboard.css';
+import '../../styling/Dashboard.css';
 import React, {useEffect, useState} from 'react';
 import {IoPersonCircleSharp, IoMenu} from "react-icons/io5";
-import SystemAnalyticsChart from './Charts/SystemAnalyticsChart';
-import TasksChart from './Charts/TasksChart';
+import SystemAnalyticsChart from './SystemAnalyticsChart';
+import TasksChart from './TasksChart';
 import {FaCircle} from 'react-icons/fa';
-
+import { useCurrentDataScope } from './useCurrentDataScope';
+import {useCurrentTasks} from "./useCurrentTasks.js";
+import {useGetPerms} from "../getData/getPerms";
 export const Dashboard = () => {
     const myDevicesList = ['Zenbook Pro 15', 'PowerGuardian 1500', 'QuantumTab S7', 'Device 4', 'Device 5', 'Device 6', 'Device 7', 'Device 8', 'Device 9', 'Device 10'];
     const notificationsList = ['The status for Support Request 6 has been updated.', 'The status for Support Request 4 has been updated.', 'The status for Support Request 2 has been updated.', 'You have been added to Data Scope 40.' ];
     const userTasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5', 'Task 6', 'Task 7', 'Task 8', 'Task 9'];
-    const taskDeadlines = ['1 month', '1 week', '1 day', '1 month', '1 week', '1 day', '1 month', '1 week', '1 day']
+    const taskDeadlines = ['1 month', '1 week', '1 day', '1 month', '1 week', '1 day', '1 month', '1 week', '1 day'];
+    const { dataScopeCount, myDataScopeCount, assetCount, myAssets} = useCurrentDataScope();
+    const {taskCount, myTasks} = useCurrentTasks();
+    const {roles} = useGetPerms();
+    let datascopeDisplay = 0;
 
+    if(roles.includes("data_scope_create") || roles.includes("data_scope_edit") || roles.includes("data_scope_delete")){
+        datascopeDisplay = dataScopeCount;
+    } else{
+        datascopeDisplay = myDataScopeCount;
+    }
     return (
         <div className="display">
             <div className="dashboardBackground">
                 <div className="quickFacts">
                     <div className="dataScopesInfo">  {/*Display the number of data scopes the user is involved in*/}
                         <p className="dataScopesInfoLabel">Current Data Scopes</p>
-                        <p className="dataScopesInfoDisplay">50</p>
+                        <p className="dataScopesInfoDisplay">{datascopeDisplay}</p>
                     </div>
                     <div className="currentTasksInfo">  {/*Display the number of tasks associated with the user.*/}
                         <p className="currentTasksInfoLabel">Current Tasks</p>
-                        <p className="currentTasksInfoDisplay">100</p>
+                        <p className="currentTasksInfoDisplay">{taskCount}</p>
                     </div>
                     <div className="currentDevicesInfo">  {/*Display the number of devices associated with the user.*/}
                         <p className="currentDevicesInfoLabel">Current Devices</p>
-                        <p className="currentDevicesInfoDisplay">10</p>
+                        <p className="currentDevicesInfoDisplay">{assetCount}</p>
                     </div>
                     <div className="currentRequestsInfo">  {/*Display the number of requests associated with the user.*/}
                         <p className="currentRequestsInfoLabel">Current Requests</p>

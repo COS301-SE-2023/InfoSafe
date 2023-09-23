@@ -5,9 +5,12 @@ import {UpdateTask} from "../Edit/UpdateTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 import "../../styling/Tasks.css";
 import {FaSearch} from "react-icons/fa";
+import {RiEditBoxFill} from "react-icons/ri";
+import EditDevice from "../Edit/EditDevice";
+import {ReviewRisk} from "../ReviewRiskPopup";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
-import {RiEditBoxFill} from "react-icons/ri";
+
 
 export const Tasks = () => {
     const {showTask} = useGetTask()
@@ -41,7 +44,7 @@ export const Tasks = () => {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
-                        Task {task.task_id}
+                        Task {task.task_id} : {task.task_name}
                         {viewTaskOpen ? (
                             <ViewTask
                                 popupClose={() => setViewTaskOpen(false)}

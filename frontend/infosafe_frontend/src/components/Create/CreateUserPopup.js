@@ -16,7 +16,6 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         e.preventDefault();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
-
         fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
             method: "GET",
             headers: {

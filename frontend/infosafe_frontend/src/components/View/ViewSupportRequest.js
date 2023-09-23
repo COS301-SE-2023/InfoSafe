@@ -2,8 +2,6 @@ import React from 'react';
 import '../../styling/ViewSupportRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 
 const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
     return (
@@ -20,7 +18,7 @@ const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
                     </div>
                     <div className="viewSupportRequestUserDiv">
                         <p className="viewSupportRequestUserLabel">User</p>
-                        <p className="viewSupportRequestTypeDisplay">{support.user_id}</p>
+                        <p className="viewSupportRequestTypeDisplay">{support.used_id.first_name}</p>
                     </div>
                     <div className="viewSupportRequestDescriptionDiv">
                         <p className="viewSupportRequestDescriptionLabel">Description</p>

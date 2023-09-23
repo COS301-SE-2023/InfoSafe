@@ -96,7 +96,6 @@
     border: none;
     margin: 0;
     position: relative;
-    top: -2vh;
 }
 .viewTaskDisplayLabels{
     font-size: 20px;
@@ -104,7 +103,6 @@
     border: none;
     margin: 0;
     position: relative;
-    top: -4vh;
 }
 .viewTaskDisplayCompletionDate{
     font-size: 20px;
@@ -112,7 +110,6 @@
     border: none;
     margin: 0;
     position: relative;
-    top: -6vh;
 }
 .viewTaskDisplayData {
     border-radius: 2px;
@@ -158,7 +155,6 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: -6vh;
 }
 .viewTaskDisplayCompletionDateData::-webkit-scrollbar{
     display: none;
@@ -173,5 +169,4 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     border-radius: 2px;
     margin-bottom: 1vh;
-    top: -4vh;
 }

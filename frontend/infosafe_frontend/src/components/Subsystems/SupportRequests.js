@@ -5,6 +5,7 @@ import EditSupportRequest from "../Edit/EditSupportRequest";
 import "../../styling/SupportRequests.css";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetSR} from "../getData/getSR";
+
 export const SupportRequests = () => {
     const {showMySupport, showAllSupport} = useGetSR();
     const {roles} = useGetPerms();

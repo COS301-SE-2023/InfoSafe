@@ -8,7 +8,7 @@ import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
 import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
-import {Dashboard} from "../Dashboard";
+import {Dashboard} from "../Charts/Dashboard";
 
 export const TabView = ({currentTab}) => {
     switch (currentTab){

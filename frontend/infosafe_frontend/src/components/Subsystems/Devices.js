@@ -13,7 +13,7 @@ export const Devices = () => {
     const {roles} = useGetPerms();
 
 
-    const EditDeviceDiv = ({asset}) => {
+    const EditDeviceDiv = ({ asset }) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         if(roles.includes("devices_edit")) {
             return (
@@ -49,7 +49,7 @@ export const Devices = () => {
                             />
                         )}
                     </p>
-                    <EditDeviceDiv></EditDeviceDiv>
+                    <EditDeviceDiv asset={asset}></EditDeviceDiv>
                 </li>
             );
         } else {

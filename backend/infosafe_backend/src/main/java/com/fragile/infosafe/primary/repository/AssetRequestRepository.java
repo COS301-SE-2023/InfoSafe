@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AssetRequestRepository extends JpaRepository<AssetRequest, Integer>{
-    @Query("SELECT COUNT(ar) > 0 FROM AssetRequest ar WHERE ar.user_id = :userId AND ar.asset_id = :assetId")
+    @Query("SELECT COUNT(ar) > 0 FROM AssetRequest ar WHERE ar.user.user_id = :userId AND ar.asset.asset_id = :assetId")
     boolean existsByUserIdAndAssetId(@Param("userId") int userId, @Param("assetId") int assetId);
 }

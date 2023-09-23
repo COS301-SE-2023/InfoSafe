@@ -15,8 +15,10 @@ import lombok.NoArgsConstructor;
 public class SupportRequest {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int support_id;
-    private int user_id;
     private String support_type;
     private String support_description;
     private String support_status;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user_id;
 }

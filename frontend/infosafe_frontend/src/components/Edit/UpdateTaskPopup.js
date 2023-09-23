@@ -9,115 +9,94 @@ import Select from "react-select";
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3'];
 const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
 export const UpdateTask = ({ task, popupClose, popupOpen }) => {
-    // const[values, setValues]=useState({
-    //     task_id: task.task_id,
-    //     date_completed: task.date_completed,
-    //     due_date: task.due_date,
-    //     task_description: task.task_description,
-    //     task_status: task.task_status
-    // })
+    const [users, setUsers] = useState('');
+    const [selectedUsers, setSelectedUsers] = useState('');
+    const[values, setValues]=useState({
+        task_id: task.task_id,
+        task_name: task.task_name,
+        date_created: task.date_created,
+        due_date: task.due_date,
+        task_description: task.task_description,
+        task_status: task.task_status
+    })
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(values)
-    //     fetch('http://localhost:8080/api/task/update/' + task.task_id, {
-    //         method:"PUT",
-    //         headers:{"Content-Type":"application/json",
-    //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-    //         },
-    //         body:JSON.stringify(values)
-    //     }).then(()=>{
-    //         console.log("Updated Task")
-    //     })
-    //     //console.log(JSON.stringify(values))
-    //     popupClose()
-    // }
-
-    const customStyles = {
-        control: (base, state) => ({
-            ...base,
-            background: "#CECECE",
-            // match with the menu
-            borderRadius: state.isFocused ? "2px 2px 0 0" : 3,
-            // Removes weird border around container
-            boxShadow: state.isFocused ? null : null,
-            width: "70%",
-            color: 'black',
-            borderColor: state.isFocused ? "grey" : "transparent",
-            '&:hover': { borderColor: 'grey' }
-        }),
-        menu: base => ({
-            ...base,
-            // override border radius to match the box
-            borderRadius: 0,
-            // kill the gap
-            marginTop: 0,
-            width: "70%",
-        }),
-        menuList: base => ({
-            ...base,
-            // kill the white space on first and last option
-            padding: 0
-
-        }),
-        dropdownIndicator: base => ({
-            ...base,
-            color: '#999',
-        }),
-        placeholder: base => ({
-            ...base,
-            color: 'black'
-        }),
-        multiValue: base => ({
-            ...base,
-            background: "white",
-            color: 'black'
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values)
+        fetch('http://localhost:8080/api/task/update/' + task.task_id, {
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated Task")
         })
+        //console.log(JSON.stringify(values))
+        popupClose()
+    }
+
+    const handleSelect = (selectedOptions) => {
+        setSelectedUsers(selectedOptions);
     };
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false}>
+        <Popup task={task} open={popupOpen} closeOnDocumentClick={false}>
             <div className="updateTaskOverlay">
-                <div className="popupBackground">
                 <div className="borderUpdateTask">
-                    <button className="editTaskBackButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="editTaskBackIcon" />
+                    <button className="backButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="backIcon" />
                     </button>
                     <form>
-                        <p className="editTaskPageTitle">Update Task</p>
-                        <div className="editTaskContent">
-                        <p className="editTaskInputTitle">Task ID</p>
-                        <input type="text" className="editTaskInput" defaultValue="Task 1234"/>
-                        <p className="editTaskInputTitle">Assignees</p>
-                        {/*{users && users.length > 0 ? (*/}
-                        {/*    <Select  //Dropdown*/}
-                        {/*        styles={customStyles}*/}
-                        {/*        options={users.map((data) => ({value: data.user_id, label: data.email}))}*/}
-                        {/*        value = {selectedUsers}*/}
-                        {/*        className="datascopeDropdown"*/}
-                        {/*        name="datascopeDropdown"*/}
-                        {/*        placeholder={"Add Assignees"}*/}
-                        {/*        onChange={handleSelect}*/}
-                        {/*        isSearchable={true}*/}
-                        {/*        isMulti*/}
-                        {/*    /> ) : (*/}
-                        {/*    <p>Loading...</p>*/}
-                        {/*)}*/}
-                        <p className="editTaskInputTitle">Task Description</p>
-                        <textarea className="editTaskInputTextArea" />
-                        <p className="editTaskInputTitle">Completion Date</p>
+                        <p className="pageTitle">Update Task</p>
+                        <p className="inputTitle">Task Name</p>
+                        <textarea
+                            className="displayData"
+                            defaultValue={task.task_name}
+                            onChange={e => setValues({...values, task_name: e.target.value})}
+                        />
+                        <p className="inputTitle">Task Description</p>
+                        <textarea
+                            className="inputTextArea"
+                            defaultValue={task.task_description}
+                            onChange={e => setValues({...values, task_description: e.target.value})}
+                        />
+                        <p className="inputTitle">Assignees</p>
+                        {/*Still unsure about this*/}
+                        {users && users.length > 0 ? (
+                            <Select  //Dropdown
+                                options={users.map((data) => ({value: data.user_id, label: data.email}))}
+                                value = {selectedUsers}
+                                className="datascopeDropdown"
+                                name="datascopeDropdown"
+                                placeholder={"Add Assignees"}
+                                onChange={handleSelect}
+                                isSearchable={true}
+                                isMulti
+                            /> ) : (
+                            <p>Loading...</p>
+                        )}
+                        <p className="inputTitle">Status</p>
+                        <input
+                            className="updateTaskStatusInput"
+                            defaultValue={task.task_status}
+                            onChange={(e) => setValues({...values, task_status: e.target.value})}
+                            required
+                        />
+                        <p className="inputTitle">Completion Date</p>
                         <input
                             type="date"
                             className="updateTaskDateInput"
-                            //onChange={(e) => handleDateChange(e.target.value)}
+                            defaultValue={task.due_date}
+                            onChange={(e) => setValues({...values, due_date: e.target.value})}
                             required
                         />
+                        <div className="updateTaskButtonDiv">
                             <button className="updateTaskSubmitButton" type="submit">
                                 Submit
                             </button>
                         </div>
                     </form>
-                </div>
                 </div>
             </div>
         </Popup>

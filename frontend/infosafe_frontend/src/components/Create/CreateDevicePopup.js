@@ -9,7 +9,7 @@ import Select from "react-select";
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const NEW_OPTIONS = ['Yes', 'No'];
-const AVAILABILITY_OPTIONS = ['Yes', 'Choose Current custodian'];
+const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 export const CreateDevicePopup = ({popupOpen, popupClose}) => {
     const current = new Date();
     const [asset_name, setAsset_name] = useState('')
@@ -113,7 +113,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                 onChange={(selectedOption) => setAvailability(selectedOption.value)}
                             />
 
-                            {availability === 'Choose Current custodian' && (
+                            {availability === 'No' && (
                                 <div>
                                     <p className="currentCustodianLabel">Current Custodian</p>
                                     {users && users.length > 0 ? (

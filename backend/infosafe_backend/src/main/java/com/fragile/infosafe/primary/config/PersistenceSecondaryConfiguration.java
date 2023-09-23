@@ -2,6 +2,7 @@ package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.service.AWSSecretService;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -24,7 +25,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class PersistenceSecondaryConfiguration {
 
     private final AWSSecretService awsSecretService;
-
+    private RDSLogin newLogin;
     @Bean
     public LocalContainerEntityManagerFactoryBean secondaryEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -41,13 +42,6 @@ public class PersistenceSecondaryConfiguration {
 
         return em;
     }
-//
-//    @Bean
-//    @ConfigurationProperties(prefix = "spring.datasource.second")
-//    public DataSource secondaryDataSource() {
-//        return DataSourceBuilder.create().build();
-//
-//    }
     @Bean
     public DataSource secondaryDataSource() {
         RDSLogin login = awsSecretService.getRDSLogin();

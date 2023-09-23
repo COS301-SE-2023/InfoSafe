@@ -1,11 +1,15 @@
 package com.fragile.infosafe.primary.controller;
 
+import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.model.SupportRequest;
+import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.requests.SupportRequestRequest;
 import com.fragile.infosafe.primary.service.SupportRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +34,14 @@ public class SupportRequestController {
         supportRequest.setSupport_id(support_id);
         return service.updateSupportRequest(supportRequest);
     }
-    @GetMapping("/getSrById/{id}")
-    public List<SupportRequest> supportRequestsById(@PathVariable("id") int user_id){ return service.getUserSupportRequests(user_id); }
+    @GetMapping("/getSrById")
+    public ResponseEntity<List<SupportRequest>> supportRequestsById(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            List<SupportRequest> srs = service.getUserSupportRequests(authenticatedUser.getUser_id());
+            return ResponseEntity.ok(srs);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

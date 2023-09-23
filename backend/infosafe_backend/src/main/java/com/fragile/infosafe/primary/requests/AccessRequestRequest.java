@@ -12,9 +12,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccessRequestRequest {
-    private int request_id;
-    private int user_id;
-    private int ds_id;
+    private String user_email;
+    private int dataScope_id;
     private String reason;
     private String status;
 }
