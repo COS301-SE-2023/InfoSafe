@@ -29,6 +29,7 @@ public class PersistencePrimaryConfiguration {
     @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
+        System.out.println("This happened1");
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(primaryDataSource());
         em.setPackagesToScan("com.fragile.infosafe.primary");
@@ -47,10 +48,10 @@ public class PersistencePrimaryConfiguration {
     @Bean
     public DataSource primaryDataSource () {
         RDSLogin login = awsSecretService.getRDSLogin();
+        System.out.println("This happened2");
         return DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/" + login.getDbname())
                 .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/" + login.getDbname())
                 .username(login.getUsername())//login.getUsername())
                 .password(login.getPassword())//login.getPassword())
@@ -61,6 +62,7 @@ public class PersistencePrimaryConfiguration {
     @Primary
     @Bean
     public PlatformTransactionManager primaryTransactionManager () {
+        System.out.println("This happened3");
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(primaryEntityManager().getObject());
         return transactionManager;
