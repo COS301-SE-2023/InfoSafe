@@ -23,9 +23,9 @@ public class DataScopeRoleController {
     @GetMapping("/getDataScopeRole")
     public List<DataScopeRole> list() { return dsrService.getAllDataScopeRoles(); }
 
-    @GetMapping("/getByDsId/{ds_id}")
-    public ResponseEntity<List<DataScopeRole>> getDataScopeRolesByDsId(@PathVariable int ds_id) {
-        List<DataScopeRole> dataScopeRoles = dsrService.getDataScopeRolesByDsId(ds_id);
-        return ResponseEntity.ok(dataScopeRoles);
-    }
+//    @GetMapping("/getByDsId/{ds_id}")
+//    public ResponseEntity<List<DataScopeRole>> getDataScopeRolesByDsId(@PathVariable int ds_id) {
+//        List<DataScopeRole> dataScopeRoles = dsrService.getDataScopeRolesByDsId(ds_id);
+//        return ResponseEntity.ok(dataScopeRoles);
+//    }
 }

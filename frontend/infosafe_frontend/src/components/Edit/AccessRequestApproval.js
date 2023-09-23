@@ -11,7 +11,7 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     const[values, setValues]=useState({
         request_id: access.request_id,
         user_id: access.user_id,
-        ds_id: access.ds_id,
+        dataScope_id: access.dataScope_id,
         status: access.status,
         reason: access.reason
     })

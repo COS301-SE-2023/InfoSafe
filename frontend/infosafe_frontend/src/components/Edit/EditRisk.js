@@ -11,7 +11,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
 
     const[values, setValues]=useState({
         risk_id: risk.risk_id,
-        ds_id: risk.ds_id,
+        dataScope_id: risk.dataScope_id,
         risk_description: risk.risk_description,
         impact_rating: risk.impact_rating,
         probability_rating: risk.probability_rating,

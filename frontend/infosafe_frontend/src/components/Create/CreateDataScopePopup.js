@@ -7,10 +7,9 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [newRole, setNewRole] = useState({role: '', roledescription: ''});
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
-    const [data_custodian, setDataCustodian] = useState('')
     const [role_type, setRoleType] = useState('')
     const [role_description, setRoleDesc] = useState('')
-    const [ds_id, setDsId] = useState('')
+    const [data_scope_id, setDsId] = useState('')
     const [data, setData] =useState([])
     const [roles, setRoles] = useState(data);
     const handleInputChange = (e) => {
@@ -20,10 +19,26 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
 
     const handleAddRole = (e) => {
         e.preventDefault();
+        const dataScopeRoles = {data_scope_id, role_description, role_type};
         if (newRole.role && newRole.roledescription) {
             setRoles((prevRoles) => [...prevRoles, newRole]);
             setNewRole({role: '', roledescription: ''});
         }
+
+        fetch("http://localhost:8080/api/dataScopeRole/addDataScopeRole", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+            },
+            body: JSON.stringify(dataScopeRoles),
+        })
+            .then(() => {
+                console.log("New DataScopeRole added");
+            })
+            .catch((error) => {
+                console.error("Error adding new DataScopeRole:", error);
+            });
     };
 
     const datascoperoles = ['Admin', 'Employee'];
@@ -32,8 +47,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         const currentDate = new Date().toISOString().split('T')[0];
         e.preventDefault();
         const ds_status = "Pending";
-        const datascope = {data_custodian, date_captured: currentDate, ds_description, ds_name, ds_status};
-        const dataScopeRoles = {ds_id, role_description, role_type};
+        const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status};
 
         fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`,{
             method: "GET",
@@ -62,22 +76,6 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                         .catch((error) => {
                             console.error("Error adding new DataScope:", error);
                         });
-
-                    fetch("http://localhost:8080/api/dataScopeRole/addDataScopeRole", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
-                        },
-                        body: JSON.stringify(dataScopeRoles),
-                    })
-                        .then(() => {
-                            console.log("New DataScopeRole added");
-                        })
-                        .catch((error) => {
-                            console.error("Error adding new DataScopeRole:", error);
-                        });
-
                     popupClose();
                 }
             })
@@ -96,19 +94,6 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
             .then((res) => res.json())
             .then((result) => {
                 setData(result);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/user/getId', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setDataCustodian(result);
             });
     }, []);
 
@@ -192,27 +177,3 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         </Popup>
     );
 };
-// <div className="table">
-//     <table className="roles_tbl">
-//         <thead>
-//         <tr>
-//             <th className="role_Header">Role</th>
-//             <th className="role_descrHeader">
-//                 Role Description
-//             </th>
-//         </tr>
-//         </thead>
-//         <tbody>
-//         {roles.map((role, key) => {
-//             return (
-//                 <tr key={key}>
-//                     <td>{role.role}</td>
-//                     <td className="roledescription_Table">
-//                         {role.roledescription}
-//                     </td>
-//                 </tr>
-//             );
-//         })}
-//         </tbody>
-//     </table>
-// </div>

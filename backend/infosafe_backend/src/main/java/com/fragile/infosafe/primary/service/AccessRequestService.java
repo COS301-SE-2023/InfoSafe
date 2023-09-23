@@ -49,8 +49,5 @@ public class AccessRequestService {
 
     public AccessRequest updateAccessRequest(AccessRequest accessRequest) {return accessRequestRepository.save(accessRequest);}
 
-//    public boolean checkAccessRequestExists(int userId, int dsId) {
-//        return accessRequestRepository.existsByUserIdAndDsId(userId, dsId);
-//    }
 
 }

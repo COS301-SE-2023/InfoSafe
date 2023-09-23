@@ -19,7 +19,6 @@ public class DataScopeRoleService {
 
     public ResponseEntity<String> makeDataScopeRole(DataScopeRoleRequest request){
         var dataScopeRole = DataScopeRole.builder()
-                .ds_id(request.getDs_id())
                 .role_type(request.getRole_type())
                 .role_description(request.getRole_description())
                 .build();
@@ -28,7 +27,7 @@ public class DataScopeRoleService {
         return ResponseEntity.status(HttpStatus.OK).body("Data Scope Role Added.");
     }
 
-    public List<DataScopeRole> getDataScopeRolesByDsId(int ds_id) {
-        return dsrRepository.findByDsId(ds_id);
-    }
+//    public List<DataScopeRole> getDataScopeRolesByDsId(int ds_id) {
+//        return dsrRepository.findByDsId(ds_id);
+//    }
 }

@@ -1,15 +1,21 @@
 package com.fragile.infosafe.primary.controller;
 
 import com.fragile.infosafe.primary.model.DataScope;
+import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.service.DataScopeService;
 import com.fragile.infosafe.primary.requests.DataScopeRequest;
 import com.fragile.infosafe.primary.service.DeleteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Slf4j
 @RestController
 @RequestMapping("api/datascope")
@@ -20,7 +26,11 @@ public class DataScopeController {
     @PostMapping("/addDs")
     public ResponseEntity addDs(@RequestBody DataScopeRequest datascope) {
         log.info("Adding a datascope");
-        return ResponseEntity.ok(service.makeDs(datascope));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return ResponseEntity.ok(service.makeDs(datascope, authenticatedUser));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("/getTotal")

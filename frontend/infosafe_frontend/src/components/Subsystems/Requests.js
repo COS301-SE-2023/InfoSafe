@@ -106,7 +106,7 @@ export const Requests = () => {
                     {datascopeData && datascopeData.length > 0 ? (
                         <Dropdown
                             options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                            value={datascopeData.asset_id}
+                            value={datascopeData.data_scope_id}
                             className="accessRequestDatascopeDropdown"
                             name="datascopeDropdown"
                             placeholder={"Add DataScope"}

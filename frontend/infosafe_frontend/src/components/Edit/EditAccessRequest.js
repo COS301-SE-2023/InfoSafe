@@ -11,7 +11,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     const[values, setValues]=useState({
         request_id: access.request_id,
         user_id: access.user_id,
-        ds_id: access.ds_id,
+        data_scope_id: access.data_scope_id,
         status: access.status,
         reason: access.reason
     })
@@ -43,7 +43,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
                         <p className="editAccessRequestTitle">Edit Access Request</p>
                         <div className="editAccessRequestDatascopeDiv">
                             <p className="editAccessRequestDatascopeLabel">Data Scope</p>
-                            <p className="editAccessRequestDatascopeNameDisplay">{access.ds_id}</p>
+                            <p className="editAccessRequestDatascopeNameDisplay">{access.data_scope_id}</p>
                         </div>
                         <div className="editAccessRequestRoleDiv">
                             <p className="editAccessRequestRoleLabel">Role</p>

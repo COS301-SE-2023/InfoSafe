@@ -20,19 +20,14 @@ public class DataScopeService {
     private final DataScopeRepository dataScopeRepository;
     private final UserRepository userRepository;
 
-    public ResponseEntity<String> makeDs(DataScopeRequest request){
+    public ResponseEntity<String> makeDs(DataScopeRequest request, User authenticatedUser){
         var datascope = DataScope.builder()
                 .ds_name(request.getDs_name())
                 .ds_description(request.getDs_description())
                 .date_captured(request.getDate_captured())
                 .ds_status(request.getDs_status())
+                .data_custodian(authenticatedUser)
                 .build();
-        User user = userRepository.findById(request.getData_custodian()).orElse(null);
-        if (user != null) {
-            datascope.setData_custodian(user);
-        } else {
-            log.error("User with email " + request.getData_custodian() + " not found");
-        }
         dataScopeRepository.save(datascope);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
