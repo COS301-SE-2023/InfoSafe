@@ -15,7 +15,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
     const [availability, setAvailability] = useState('')
     const [used, setUsed] = useState('')
     const [current_assignee, setCurrent_assignee] = useState('')
-    const [status, setStatus] = useState('CLEAN')
+    const [status, setStatus] = useState('Clean')
     const [device_type, setDevice_type] = useState('')
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState(null);
