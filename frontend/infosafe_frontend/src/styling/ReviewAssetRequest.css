@@ -1,37 +1,55 @@
 .reviewAssetRequestOverlay {
-    width: 50vw;
-    height: 75vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
-
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .reviewAssetRequestBorder {
-    border: 1px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 70vh;
     position: relative;
-    top: 2.5vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .reviewAssetRequestBorder::-webkit-scrollbar{
     display: none;
 }
 .reviewAssetRequestBackButton {
-    background-color: rgba(233, 0, 0, 1);
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .reviewAssetRequestBackIcon {
     color: #ffffff;
@@ -40,156 +58,192 @@
     width: 1.3vw;
 }
 .reviewAssetRequestLabel {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
-    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-size: 35px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
     top: -3vh;
-    left: 20%;
+    margin: 0 auto;
+    margin-bottom: 3vh;
 }
 .reviewAssetRequestDeviceNameLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    left: 15%;
 }
 .reviewAssetRequestDeviceName{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
+    margin: 0;
+}
+.reviewAssetRequestDeviceName::-webkit-scrollbar{
+    display: none;
 }
 .reviewAssetRequestUserLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
 }
 .reviewAssetRequestUser{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
+    margin: 0;
+}
+.reviewAssetRequestUser::-webkit-scrollbar{
+    display: none;
 }
 .reviewAssetRequestReasonLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
 }
 .reviewAssetRequestReason{
-    font-size: 16px;
-    width: 50%;
-    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
     position: relative;
-    top: 1%;
-    left: 25%;
-    height: 10vh;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 2px;
+    left: 15%;
+    margin: 0;
 }
 .reviewAssetRequestDateRequiredLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
+    top: -1vh;
 }
 .reviewAssetRequestDateRequired{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
+    margin: 0;
+    top: -1vh;
 }
 .reviewAssetRequestStatusLabel{
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
+    top: -1vh;
 }
 .reviewAssetRequestStatus{
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1%;
+    left: 15%;
+    margin: 0;
+    top: -1vh;
 }
 .reviewAssetRequestButtonsDiv{
     display: flex;
+    height: 20%;
+    width: 90%;
+    padding: 0;
     position: relative;
-    top: 10%;
+    top: 0;
+    left: 15%;
+    justify-content: left;
+    vertical-align: center;
 }
 .reviewAssetRequestApproveButton{
-    width: fit-content;
-    height: fit-content;
-    background-color: #227821;
     color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    background: green;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 0.5% 2%;
+    width: fit-content;
     position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
+    height: 30%;
+    margin: 2% 0;
     border: none;
-    padding: 0.4% 1%;
-
-
 }
 .reviewAssetRequestRejectButton{
     width: fit-content;
-    height: fit-content;
     background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
     position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
+    height: 30%;
+    margin-left: 2%;
+    margin-top:  2%;
     border: none;
-    padding: 0.4% 1%;
 }
