@@ -3,11 +3,9 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/EditDevice.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-import Select from "react-select";
-
-const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
+const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 // const NEW_OPTIONS = ['YES', 'NO'];
-const AVAILABILITY_OPTIONS = ['YES', 'Choose'];
+const AVAILABILITY_OPTIONS = ['Yes', 'Choose'];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState({});
@@ -76,61 +74,63 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="editDeviceOverlay">
-                <div className="borderEditDevice">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
-                    </button>
-                    <form onSubmit={handleSubmit}>
-                        <p className="editDeviceTitle">Edit Device</p>
-                        <div className="editDeviceDescriptionDiv">
-                            <p className="editDeviceDescriptionLabel">Description</p>
-                            <textarea
-                                className="editDeviceDescriptionInput"
-                                defaultValue={asset.asset_description}
-                                onChange={e => setValues({...values, asset_description: e.target.value})}
-                            />
-                        </div>
-                        <p className = "editDeviceAvailabilityLabel">Available</p>
-                        <Dropdown
-                            options={AVAILABILITY_OPTIONS}
-                            value={asset.availability}
-                            className="editDeviceAvailableDropdown"
-                            name="status"
-                            onChange={(selectedOption) => setValues({...values, availability: selectedOption.value})}
-                        />
-                        <div className="editDeviceStatusDiv">
-                            <p className="editDevicestatusTitle">Status</p>
-                            <Dropdown
-                                options={STATUS_OPTIONS}
-                                value={asset.status}
-                                className="editDeviceStatusDropdown"
-                                name="availability"
-                                onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
-                            />
-                        </div>
-                        {values.availability  === 'Choose Current custodian' && (
-                            <div>
-                                <p className="currentCustodianLabel">Current Custodian</p>
-                                {users && users.length > 0 ? (
-                                    <Select
-                                        options={users.map((data) => ({ value: data.user_id, label: data.email }))}
-                                        value={selectedUsers}
-                                        className="datascopeDropdown"
-                                        name="datascopeDropdown"
-                                        placeholder={"Add Assignees"}
-                                        onChange={handleSelect}
-                                        isSearchable={true}
-                                    />
-                                ) : (
-                                    <p>Loading...</p>
-                                )}
-                            </div>
-                        )}
-                        <button className="EditDeviceButton" type="submit">
-                            Submit
+                <div className="popupBackground">
+                    <div className="borderEditDevice">
+                        <button className="editDeviceBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="editDeviceBackIcon" />
                         </button>
-                    </form>
+                        <form onSubmit={handleSubmit}>
+                            <p className="editDeviceTitle">Edit Device</p>
+                            <div className="editDeviceDescriptionDiv">
+                                <p className="editDeviceDescriptionLabel">Description</p>
+                                <textarea
+                                    className="editDeviceDescriptionInput"
+                                    defaultValue={asset.asset_description}
+                                    onChange={e => setValues({...values, asset_description: e.target.value})}
+                                />
+                            </div>
+                            <p className = "editDeviceAvailabilityLabel">Available</p>
+                            <Dropdown
+                                options={AVAILABILITY_OPTIONS}
+                                value={asset.availability}
+                                className="editDeviceAvailableDropdown"
+                                name="status"
+                                onChange={(selectedOption) => setValues({...values, availability: selectedOption.value})}
+                            />
+                            <div className="editDeviceStatusDiv">
+                                <p className="editDeviceStatusLabel">Status</p>
+                                <Dropdown
+                                    options={STATUS_OPTIONS}
+                                    value={asset.status}
+                                    className="editDeviceStatusDropdown"
+                                    name="availability"
+                                    onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
+                                />
+                            </div>
+                            {values.availability  === 'Choose Current custodian' && (
+                                <div>
+                                    <p className="editDeviceCurrentCustodianLabel">Current Custodian</p>
+                                    {users && users.length > 0 ? (
+                                        <Dropdown
+                                            options={users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                            value={selectedUsers}
+                                            className="editDeviceCurrentCustodianDropdown"
+                                            name="editDeviceCurrentCustodianDropdown"
+                                            placeholder={"Select Current Custodian"}
+                                            onChange={handleSelect}
+                                        />
+                                    ) : (
+                                        <p>Loading...</p>
+                                    )}
+                                </div>
+                            )}
+                            <button className="EditDeviceButton" type="submit">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </Popup>
     );
