@@ -60,7 +60,7 @@ export const AccessRequests = () => {
                             />
                         ) : null}
                     </p>
-                    <ApproveAccessRequest></ApproveAccessRequest>
+                    <ApproveAccessRequest access={access}></ApproveAccessRequest>
                     <EditAccessRequestDiv access={access}></EditAccessRequestDiv>
                     <DeleteAccessRequest></DeleteAccessRequest>
                 </li>
@@ -70,7 +70,7 @@ export const AccessRequests = () => {
         }
     };
 
-    const ApproveAccessRequest = () => {
+    const ApproveAccessRequest = ({ access }) => {
         const [approveAccessRequestOpen, setApproveAccessRequestOpen]= useState(false);
         if(roles.includes("access_requests_approve")) {
             return (
@@ -86,6 +86,7 @@ export const AccessRequests = () => {
                         <AccessRequestApproval
                             popupClose={() => setApproveAccessRequestOpen(false)}
                             popupOpen={approveAccessRequestOpen}
+                            access={access}
                         />
                     ) : null}
                 </div>

@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/AccessRequestApproval.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
@@ -9,15 +9,27 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
 
     const[values, setValues]=useState({
-        request_id: access.request_id,
-        user_id: access.user_id,
-        dataScope_id: access.dataScope_id,
-        status: access.status,
-        reason: access.reason
-    })
+        request_id: '',
+        user_id: '',
+        dataScope_id: '',
+        status: '',
+        reason: ''
+    });
+
+    useEffect(() => {
+        if (access) {
+            setValues({
+                request_id: access.request_id,
+                user_id: access.user_id,
+                dataScope_id: access.dataScope_id,
+                status: access.status,
+                reason: access.reason
+            });
+        }
+    }, [access]);
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
+        <Popup access={access} open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="approveAccessRequestPopup">
                 <div className="approveAccessRequestPopupBorder">
                     <button className="approveAccessRequestBackButton" onClick={popupClose}>
