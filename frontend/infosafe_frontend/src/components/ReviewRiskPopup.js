@@ -20,29 +20,27 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen }) => {
                         <form>
                             <p className="pageTitle">Review Risk</p>
                             <p className="reviewRiskLabels">Data Scope</p>
-                            <p className="reviewRiskDisplayData">Data Scope A</p>
+                            <p className="reviewRiskDisplayData">{risk.dataScope.ds_name}</p>
                             <p className="reviewRiskLabels">Probability</p>
                             <Dropdown
                                 options={PROBABILITY}
-                                value={PROBABILITY[0]}
+                                value={risk.probability_rating}
                                 className="reviewRiskProbabilityDropdown"
                                 name="reviewRiskProbabilityDropdown"
                             />
                             <p className="reviewRiskLabels">Impact</p>
                             <Dropdown
                                 options={IMPACT}
-                                value={IMPACT[0]}
+                                value={risk.impact_rating}
                                 className="reviewRiskImpactDropdown"
                                 name="reviewRiskImpactDropdown"
                             />
-                            <p className="reviewRiskLabels">Vulnerability</p>
-                            <textarea className="reviewRiskTextArea" />
-                            <p className="reviewRiskLabels">Threat</p>
-                            <textarea className="reviewRiskTextArea" />
+                            <p className="reviewRiskLabels">Vulnerability/Threat</p>
+                            <textarea className="reviewRiskTextArea">{risk.risk_description}</textarea>
                             <p className="reviewRiskLabels">Status</p>
                             <Dropdown
                                 options={STATUS}
-                                value={STATUS[0]}
+                                value={risk.risk_status}
                                 className="reviewRiskStatusDropdown"
                                 name="reviewRiskStatusDropdown"
                             />

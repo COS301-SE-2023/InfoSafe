@@ -98,7 +98,7 @@ export const Risks = () => {
                         />
                     ) : null}
                 </p>
-                <ReviewRiskDiv></ReviewRiskDiv>
+                <ReviewRiskDiv risk={risk}></ReviewRiskDiv>
                 <EditRiskDiv risk={risk}></EditRiskDiv>
             </li>
         )
