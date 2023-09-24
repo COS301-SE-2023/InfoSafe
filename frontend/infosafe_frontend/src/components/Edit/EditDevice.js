@@ -5,12 +5,13 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import Select from "react-select";
 
-const STATUS_OPTIONS = ['CLEAN', 'FULL', 'BROKEN'];
+const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 // const NEW_OPTIONS = ['YES', 'NO'];
-const AVAILABILITY_OPTIONS = ['YES', 'Choose'];
+const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState({});
+    const newPreviousAssignee = asset.current_assignee;
 
     const[values, setValues]=useState({
         asset_id: '',
@@ -45,6 +46,20 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     };
 
     const handleSubmit = (e) => {
+        if (asset.current_assignee !== newPreviousAssignee)
+        {
+            setValues({
+                asset_id: asset.asset_id,
+                asset_name: asset.asset_name,
+                asset_description: asset.asset_description,
+                status: asset.status,
+                used: asset.used,
+                availability: asset.availability,
+                device_type: asset.device_type,
+                current_assignee: asset.current_assignee,
+                previous_assignee: newPreviousAssignee
+            });
+        }
         e.preventDefault();
         console.log(values)
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
@@ -108,7 +123,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
                             />
                         </div>
-                        {values.availability  === 'Choose Current custodian' && (
+                        {values.availability  === 'No' && (
                             <div>
                                 <p className="currentCustodianLabel">Current Custodian</p>
                                 {users && users.length > 0 ? (

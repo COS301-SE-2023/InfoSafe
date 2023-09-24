@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/EditAccessRequest.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
@@ -9,12 +9,24 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
 
     const[values, setValues]=useState({
-        request_id: access.request_id,
-        user_id: access.user_id,
-        data_scope_id: access.data_scope_id,
-        status: access.status,
-        reason: access.reason
-    })
+        request_id: '',
+        user_id: '',
+        data_scope_id: '',
+        status: '',
+        reason: ''
+    });
+
+    useEffect(() => {
+        if (access) {
+            setValues({
+                request_id: access.request_id,
+                user_id: access.user_id,
+                data_scope_id: access.data_scope_id,
+                status: access.status,
+                reason: access.reason
+            });
+        }
+    }, [access]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +45,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     }
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
+        <Popup access={access} open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editAccessRequestPopup">
                 <div className="editAccessRequestPopupBorder">
                     <button className="editAccessRequestBackButton" onClick={popupClose}>
