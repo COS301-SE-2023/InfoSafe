@@ -18,13 +18,13 @@ public class Asset {
     private String status;
     private String availability;
     private String used;
+    private String device_type;
     @ManyToOne
     @JoinColumn(name = "current_assignee_id", referencedColumnName = "user_id")
     private User current_assignee;
     @ManyToOne
     @JoinColumn(name = "previous_assignee_id", referencedColumnName = "user_id")
     private User previous_assignee;
-    private String device_type;
 
     @PreUpdate
     @PrePersist

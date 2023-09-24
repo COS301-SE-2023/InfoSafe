@@ -34,6 +34,7 @@ public class AssetService {
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
                 .previous_assignee(null)
+                .used(request.getUsed())
                 .build();
 
         if (!request.getCurrent_assignee().isEmpty()) {

@@ -39,7 +39,7 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
                         <p className="viewDeviceStatusLabel">Status</p>
                         <p className="viewDeviceStatus">{asset.status}</p>
                         <p className="viewDeviceCurrentCustodianLabel">Current Custodian</p>
-                        <p className="viewDeviceCurrentCustodian">{asset.current_assignee.first_name}</p>
+                        <p className="viewDeviceCurrentCustodian">{asset.current_assignee.first_name} {asset.current_assignee.last_name}</p>
                         <p className="viewDevicePreviousCustodianLabel">Previous Custodian</p>
                         <p className="viewDevicePreviousCustodian">{pAssigneeName}</p>
                     </div>
