@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 
 export const useCurrentTasks = () => {
     const [taskCount, setTaskCount] = useState(0);
-    const [myTasks, setMyTasks] = useState();
+    const [myTasks, setMyTasks] = useState([]);
     useEffect(() => {
         fetch('http://localhost:8080/api/user/taskCount', {
             method: "GET",

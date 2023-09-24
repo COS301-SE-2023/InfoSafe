@@ -22,8 +22,8 @@ public class Task {
     private String task_name;
     private String task_description;
     private String task_status;
-    private Date due_date;
-    private Date date_created;
+    private String due_date;
+    private String date_created;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "data_scope_id")
@@ -36,4 +36,6 @@ public class Task {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> users = new HashSet<>();
+    @Column(nullable = true)
+    private int daysUntilDue;
 }

@@ -90,8 +90,8 @@ public class DeleteService {
             DeletedTask de = new DeletedTask();
             de.setTask_status(entityToDelete.getTask_status());
             de.setTask_description(entityToDelete.getTask_description());
-            de.setDue_date(entityToDelete.getDue_date());
-            de.setDate_created(entityToDelete.getDate_created());
+//            de.setDue_date(entityToDelete.getDue_date());
+//            de.setDate_created(entityToDelete.getDate_created());
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
         }

@@ -3,7 +3,7 @@ import {useGetPerms} from "../getData/getPerms";
 
 export const useCurrentDataScope = () => {
     const [dataScopeCount, setDataScopeCount] = useState(0);
-    const [myDataScopeCount, setMyDataScopeCount] = useState('');
+    const [myDataScopeCount, setMyDataScopeCount] = useState(0);
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getTotal', {
             method: "GET",
@@ -28,7 +28,7 @@ export const useCurrentDataScope = () => {
     }, []);
 
     const [assetCount, setAssetCount] = useState(0);
-    const [myAssets, setMyAssets] = useState();
+    const [myAssets, setMyAssets] = useState([]);
     useEffect(() => {
         fetch('http://localhost:8080/api/user/countDevices', {
             method: "GET",

@@ -9,6 +9,7 @@ import com.fragile.infosafe.primary.repository.DataScopeRepository;
 import com.fragile.infosafe.primary.repository.TaskRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.TaskRequest;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -31,12 +32,15 @@ public class TaskService {
 
     public ResponseEntity<String> createTask(TaskRequest request) {
         try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String dueDate = dateFormat.format(request.getDue_date());
+            String dateCreated = dateFormat.format(request.getDate_created());
             Task task = Task.builder()
                     .task_name(request.getTask_name())
                     .task_description(request.getTask_description())
                     .task_status(request.getTask_status())
-                    .due_date(request.getDue_date())
-                    .date_created(request.getDate_created())
+                    .due_date(dueDate)
+                    .date_created(dateCreated)
                     .build();
 
             if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
@@ -64,7 +68,14 @@ public class TaskService {
         }
     }
 
-    public List<Task> getAllTasks() {return taskRepository.findAll();}
+    public List<Task> getAllTasks() {
+        List<Task> tasks = taskRepository.findAll();
+        for (Task task : tasks) {
+            int daysUntilDueDate = getDaysUntilDueDate(task.getTask_id());
+            task.setDaysUntilDue(daysUntilDueDate);
+        }
+        return tasks;
+    }
 
     public Task updateTask(Task task) {return taskRepository.save(task);}
 
@@ -72,6 +83,32 @@ public class TaskService {
         return taskRepository.countTasksByUsersContains(user);
     }
 
+    public int getDaysUntilDueDate(int taskId) {
+        Optional<Task> optionalTask = taskRepository.findById(taskId);
+
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            String dueDateStr = task.getDue_date();
+
+            if (dueDateStr != null) {
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date dueDate = dateFormat.parse(dueDateStr);
+                    Date currentDate = new Date();
+
+                    long timeDifferenceMillis = dueDate.getTime() - currentDate.getTime();
+
+                    return (int) (timeDifferenceMillis / (1000 * 60 * 60 * 24));
+                } catch (ParseException e) {
+                    throw new IllegalArgumentException("Error parsing due_date: " + dueDateStr, e);
+                }
+            } else {
+                throw new IllegalArgumentException("Task due_date is null for ID: " + taskId);
+            }
+        } else {
+            throw new EntityNotFoundException("Task not found with ID: " + taskId);
+        }
+    }
     public int countDataScopesForUser(User user) {
         List<Task> tasks = taskRepository.findDistinctTasksByUsersContains(user);
 
@@ -83,6 +120,12 @@ public class TaskService {
     }
 
     public List<Task> getTasksAssociatedWithUser(User user) {
-        return taskRepository.findByUsers(user);
+
+        List<Task> tasks = taskRepository.findByUsers(user);
+        for (Task task : tasks) {
+            int daysUntilDueDate = getDaysUntilDueDate(task.getTask_id());
+            task.setDaysUntilDue(daysUntilDueDate);
+        }
+        return tasks;
     }
 }

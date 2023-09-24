@@ -79,18 +79,10 @@ export const Dashboard = () => {
                         <p className="userTaskDeadlinesLabel">Approaching Deadlines</p>
                         <div className="deadlinesDiv">
                             <ul className="taskDeadlinesList">
-                                {userTasks.map((task, index) => (
+                                {myTasks.map((task, index) => (
                                     <li key={index}>
-                                        <p>{task}</p>
-                                        {taskDeadlines[index] === '1 month' && (
-                                            <div className="oneMonthDeadline">{taskDeadlines[index]}</div>
-                                        )}
-                                        {taskDeadlines[index] === '1 week' && (
-                                            <div className="oneWeekDeadline">{taskDeadlines[index]}</div>
-                                        )}
-                                        {taskDeadlines[index] === '1 day' && (
-                                            <div className="oneDayDeadline" >{taskDeadlines[index]}</div>
-                                        )}
+                                        <p>{task.task_name}</p>
+                                        <p>{`${task.daysUntilDue} days until due`}</p>
                                     </li>
                                 ))}
                             </ul>
@@ -103,9 +95,9 @@ export const Dashboard = () => {
                         <p className="myDevicesLabel">Devices in Use</p>
                         <div className="myDevicesDisplay">
                             <ul className="inUseDevicesList">
-                                {myDevicesList.map((deviceName, index) => (
+                                {myAssets.map((assets, index) => (
                                     <li key={index}>
-                                        <p>{deviceName}</p>
+                                        <p>{assets.asset_name}</p>
                                     </li>
                                 ))}
                             </ul>
