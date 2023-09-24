@@ -33,12 +33,12 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
-                .previous_assignee(null)
+                .previous_assignee(request.getPrevious_assignee())
                 .used(request.getUsed())
                 .build();
 
-        if (!request.getCurrent_assignee().isEmpty()) {
-            User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
+        if (request.getCurrent_assignee() != null) {
+            User user = userRepository.findByEmail(request.getCurrent_assignee().getEmail()).orElse(null);
             if (user != null) {
                 asset.setCurrent_assignee(user);
             } else {
@@ -46,7 +46,7 @@ public class AssetService {
             }
         }
         else{
-            asset.setCurrent_assignee(null);
+            asset.setCurrent_assignee(request.getCurrent_assignee());
         }
 
         assetRepository.save(asset);

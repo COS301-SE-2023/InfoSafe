@@ -1,4 +1,5 @@
 package com.fragile.infosafe.primary.requests;
+import com.fragile.infosafe.primary.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class AssetRequest {
     private String status;
     private String availability;
     private String used;
-    private String current_assignee;
-    private String previous_assignee;
+    private User current_assignee;
+    private User previous_assignee;
     private String device_type;
 }
