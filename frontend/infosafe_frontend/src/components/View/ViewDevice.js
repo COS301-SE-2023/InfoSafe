@@ -8,6 +8,15 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
 
     let pAssigneeName = '';
+    let cAssigneeName = '';
+    if (asset.current_assignee == null)
+    {
+        cAssigneeName = 'None';
+    }
+    else
+    {
+        cAssigneeName = asset.current_assignee.first_name + ' ' + asset.current_assignee.last_name;
+    }
     if (asset.previous_assignee == null)
     {
         pAssigneeName = 'None';
@@ -32,14 +41,14 @@ export const ViewDevice = ({ asset, popupOpen, popupClose }) => {
                         <p className="viewDeviceType">{asset.device_type}</p>
                         <p className="viewDeviceDescriptionLabel">Device Description</p>
                         <p className="viewDeviceDescription">{asset.asset_description}</p>
-                        <p className = "viewDeviceNewLabel">Condition</p>
-                        <p className = "viewDeviceNew">{asset.used}</p>
-                        <p className = "viewDeviceAvailabilityLabel">Availability</p>
-                        <p className = "viewDeviceAvailability">{asset.availability}</p>
+                        <p className="viewDeviceNewLabel">Condition</p>
+                        <p className="viewDeviceNew">{asset.used}</p>
+                        <p className="viewDeviceAvailabilityLabel">Availability</p>
+                        <p className="viewDeviceAvailability">{asset.availability}</p>
                         <p className="viewDeviceStatusLabel">Status</p>
                         <p className="viewDeviceStatus">{asset.status}</p>
                         <p className="viewDeviceCurrentCustodianLabel">Current Custodian</p>
-                        <p className="viewDeviceCurrentCustodian">{asset.current_assignee.first_name} {asset.current_assignee.last_name}</p>
+                        <p className="viewDeviceCurrentCustodian">{cAssigneeName}</p>
                         <p className="viewDevicePreviousCustodianLabel">Previous Custodian</p>
                         <p className="viewDevicePreviousCustodian">{pAssigneeName}</p>
                     </div>
