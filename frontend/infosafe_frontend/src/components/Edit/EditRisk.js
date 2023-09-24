@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/EditRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
@@ -10,14 +10,28 @@ const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 export const EditRisk = ({ risk, popupClose, popupOpen }) => {
 
     const[values, setValues]=useState({
-        risk_id: risk.risk_id,
-        dataScope_id: risk.dataScope_id,
-        risk_description: risk.risk_description,
-        impact_rating: risk.impact_rating,
-        probability_rating: risk.probability_rating,
-        suggested_mitigation: risk.suggested_mitigation,
-        risk_status: risk.risk_status
-    })
+        risk_id: '',
+        dataScope_id: '',
+        risk_description: '',
+        impact_rating: '',
+        probability_rating: '',
+        suggested_mitigation: '',
+        risk_status: ''
+    });
+
+    useEffect(() => {
+        if (risk) {
+            setValues({
+                risk_id: risk.risk_id,
+                dataScope_id: risk.dataScope_id,
+                risk_description: risk.risk_description,
+                impact_rating: risk.impact_rating,
+                probability_rating: risk.probability_rating,
+                suggested_mitigation: risk.suggested_mitigation,
+                risk_status: risk.risk_status
+            });
+        }
+    }, [risk]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,7 +43,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
             },
             body:JSON.stringify(values)
         }).then(()=>{
-            console.log("Updated Asset")
+            console.log("Updated Risk")
         })
         //console.log(JSON.stringify(values))
         popupClose()

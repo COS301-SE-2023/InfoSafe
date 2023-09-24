@@ -141,13 +141,13 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                             onChange={handleTaskNameChange}
                             value={task_name}
                         />
-                        <p className="createTaskInputTitle">Type Description</p>
+                        <p className="createTaskInputLabel">Type Description</p>
                         <textarea
-                            className="createTaskInputTextArea"
+                            className="createTaskDescriptionInputTextArea"
                             onChange={handleDescriptionChange}
                             value={task_description}
                         />
-                        <p className="createTaskInputTitle">Task Status</p>
+                        <p className="createTaskInputLabels">Task Status</p>
                         <Dropdown
                             options={statusOptions}
                             value={statusOptions.find((option) => option.value === task_status)}
@@ -156,7 +156,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                             placeholder={"Select Status"}
                             onChange={(selectedOption) => setTaskStatus(selectedOption.value)}
                         />
-                        <p className="createTaskInputTitle">Assignees</p>
+                        <p className="createTaskInputLabels">Assignees</p>
                         {users && users.length > 0 ? (
                             <Select
                                 styles={customStyles}
@@ -172,7 +172,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                         ) : (
                             <p>Loading...</p>
                         )}
-                        <p className="createTaskInputTitle">Data Scope</p>
+                        <p className="createTaskInputLabels">Data Scope</p>
                         {datascopeData && datascopeData.length > 0 ? (
                             <Dropdown
                                 options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
@@ -185,7 +185,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                         ) : (
                             <p className="loadTitle">Loading...</p>
                         )}
-                        <p className="createTaskInputTitle">Completion Date</p>
+                        <p className="createTaskInputLabels">Completion Date</p>
                         <input
                             type="date"
                             className="createTaskDateInput"

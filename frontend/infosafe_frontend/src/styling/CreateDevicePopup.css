@@ -171,7 +171,7 @@
     margin: 0;
     position: relative;
     left: 15%;
-    top: -4vh;
+    top: -3.5vh;
 }
 .availableDropdown {
     font-family: 'Roboto', sans-serif;
@@ -182,7 +182,7 @@
     position: relative;
     width: 70%;
     left: 15%;
-    top: -4vh;
+    top: -3.5vh;
 }
 .availableDropdown:after {
     transform: translateY(50%);

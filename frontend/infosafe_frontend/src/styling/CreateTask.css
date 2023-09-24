@@ -77,12 +77,29 @@
     top: -2vh;
     margin: 0 auto;
 }
+
 .createTaskInputTitle {
     font-size: 20px;
     width: 70%;
     border: none;
     margin: 0;
 
+}
+.createTaskInputLabel{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: -1vh;
+}
+.createTaskInputLabels{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: -2vh;
 }
 .createTaskInputTextArea {
     font-family: 'Roboto', sans-serif;
@@ -94,6 +111,18 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     height: 4%;
     border-radius: 2px;
+}
+.createTaskDescriptionInputTextArea{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    top: -1vh;
 }
 .textboxInput {
     font-size: 18px;
@@ -120,6 +149,7 @@
     position: relative;
     height: 30%;
     margin: 2%  0;
+    top: -2vh;
 }
 .createTaskStatusDropdown {
     font-family: 'Roboto', sans-serif;
@@ -129,7 +159,7 @@
     color: #CECECE;
     position: relative;
     width: 70%;
-    top: 12%;
+    top: -2vh;
 }
 .createTaskStatusDropdown:after {
     transform: translateY(50%);
@@ -152,7 +182,7 @@
     color: #CECECE;
     position: relative;
     width: 70%;
-    top: 12%;
+    top: -2vh;
 }
 .createTaskDataScopeDropdown:after {
     transform: translateY(50%);
@@ -174,8 +204,12 @@
     border: none;
     position: relative;
     width: 70%;
-    top: 12%;
+    top: -2vh;
     background-color: #CECECE;
     padding: 1% 1%;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+}
+.createTaskUserDropdown{
+    position: relative;
+    top: -2vh;
 }

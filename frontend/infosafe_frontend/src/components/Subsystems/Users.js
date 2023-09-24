@@ -10,7 +10,7 @@ import {useGetPerms} from "../getData/getPerms";
 import {useGetAllUser} from "../getData/getAllUser";
 
 export const Users = () => {
-    const {createUserOpen, setCreateUserOpen} = useState();
+    const [createUserOpen, setCreateUserOpen] = useState(false);
     const {showUser} = useGetAllUser()
     const {roles} = useGetPerms();
 

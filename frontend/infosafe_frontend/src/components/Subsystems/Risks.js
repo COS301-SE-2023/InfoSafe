@@ -99,7 +99,7 @@ export const Risks = () => {
                     ) : null}
                 </p>
                 <ReviewRiskDiv></ReviewRiskDiv>
-                <EditRiskDiv></EditRiskDiv>
+                <EditRiskDiv risk={risk}></EditRiskDiv>
             </li>
         )
     }

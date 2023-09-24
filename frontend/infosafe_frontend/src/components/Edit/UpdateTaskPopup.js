@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/UpdateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
@@ -12,13 +12,26 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
     const [users, setUsers] = useState('');
     const [selectedUsers, setSelectedUsers] = useState('');
     const[values, setValues]=useState({
-        task_id: task.task_id,
-        task_name: task.task_name,
-        date_created: task.date_created,
-        due_date: task.due_date,
-        task_description: task.task_description,
-        task_status: task.task_status
-    })
+        task_id: '',
+        task_name: '',
+        date_created: '',
+        due_date: '',
+        task_description: '',
+        task_status: ''
+    });
+
+    useEffect(() => {
+        if (task) {
+            setValues({
+                task_id: task.task_id,
+                task_name: task.task_name,
+                date_created: task.date_created,
+                due_date: task.due_date,
+                task_description: task.task_description,
+                task_status: task.task_status
+            });
+        }
+    }, [task]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

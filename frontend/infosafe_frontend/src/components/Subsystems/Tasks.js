@@ -17,7 +17,7 @@ export const Tasks = () => {
     const {roles} = useGetPerms();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
 
-    const EditTask = () => {
+    const EditTask = ({ task }) => {
         const [editTaskOpen, setEditTaskOpen] = useState(false);
         if(roles.includes("tasks_create")) {
             return (
@@ -27,8 +27,7 @@ export const Tasks = () => {
                         <UpdateTask
                             popupClose={() => setEditTaskOpen(false)}
                             popupOpen={editTaskOpen}
-                            //asset={}
-
+                            task={task}
                         />
                     ) : null}
                 </div>
@@ -54,7 +53,7 @@ export const Tasks = () => {
                         ) : null}
                     </p>
                     <ApproveTask></ApproveTask>
-                    <EditTask></EditTask>
+                    <EditTask task={task}></EditTask>
                 </li>
             );
         } else {
