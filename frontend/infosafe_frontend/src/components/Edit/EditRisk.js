@@ -58,8 +58,9 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <p className="pageTitle">Edit Risk</p>
-                        <p className="displayTitle">{risk.risk_id} : {risk.risk_description}</p>
-                        <p className="displayData">{risk.data_scope_id}</p>
+                        <p className="displayTitle">{risk.risk_name}</p>
+                        <p className="inputTitle">Data Scope</p>
+                        <p className="displayData">{risk.dataScope.ds_name}</p>
                         <p className="inputTitle">Probability</p>
                         <Dropdown
                             options={PROBABILITY}
