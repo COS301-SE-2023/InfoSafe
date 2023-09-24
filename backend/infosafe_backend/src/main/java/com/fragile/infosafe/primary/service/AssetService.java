@@ -33,16 +33,21 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
+                .previous_assignee(null)
                 .build();
 
         if (!request.getCurrent_assignee().isEmpty()) {
-                User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
-                if (user != null) {
-                    asset.setCurrent_assignee(user);
-                } else {
-                    log.error("User with email " + request.getCurrent_assignee() + " not found");
-                }
+            User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
+            if (user != null) {
+                asset.setCurrent_assignee(user);
+            } else {
+                log.error("User with email " + request.getCurrent_assignee() + " not found");
             }
+        }
+        else{
+            asset.setCurrent_assignee(null);
+        }
+
         assetRepository.save(asset);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
