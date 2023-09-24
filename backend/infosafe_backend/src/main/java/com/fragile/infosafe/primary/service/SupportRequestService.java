@@ -1,8 +1,6 @@
 package com.fragile.infosafe.primary.service;
 
-import com.fragile.infosafe.primary.model.Asset;
-import com.fragile.infosafe.primary.model.SupportRequest;
-import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.model.*;
 import com.fragile.infosafe.primary.repository.*;
 import com.fragile.infosafe.primary.requests.ReviewRequest;
 import com.fragile.infosafe.primary.requests.SupportRequestRequest;
@@ -24,6 +22,7 @@ public class SupportRequestService {
     private final DataScopeRepository dataScopeRepository;
     private final AssetRepository assetRepository;
     private final TaskRepository taskRepository;
+    private final DeleteService deleteService;
     public ResponseEntity<String> makeSR(SupportRequestRequest request, User authenticatedUser){
         var supportrequest = SupportRequest.builder()
                 .support_id(request.getSupport_id())
@@ -70,18 +69,44 @@ public class SupportRequestService {
 
     public ResponseEntity<String> reviewSupportRequest(ReviewRequest reviewRequest) {
         if (reviewRequest.isReview()) {
-            Optional<Asset> assetOptional = assetRepository.findByAssetId(reviewRequest.getAsset_id());
             Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());
-            if (assetOptional.isPresent() && userOptional.isPresent()) {
-                Asset asset = assetOptional.get();
-                User user = userOptional.get();
-                asset.setCurrent_assignee(user);
-                assetRepository.save(asset);
-                // delete request
-                return ResponseEntity.ok("given to user");
+            switch (reviewRequest.getSupportType()) {
+                case "DataScope Support" -> {
+                    Optional<DataScope> dataScope = dataScopeRepository.findById(reviewRequest.getDataScope_id());
+                    if (dataScope.isPresent() && userOptional.isPresent()) {
+                        dataScope.get().getUsers().add(userOptional.get());
+                        deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        return ResponseEntity.ok("User given support to datascope");
+                    } else {
+                        deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find datascope or user");
+                    }
+                }
+                case "Asset Support" -> {
+                    Optional<Asset> asset = assetRepository.findByAssetId(reviewRequest.getAsset_id());
+                    if (asset.isPresent() && userOptional.isPresent()) {
+                        asset.get().setCurrent_assignee(userOptional.get());
+                        deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        return ResponseEntity.ok("User given support to Asset");
+                    } else {
+                        deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find asset or user");
+                    }
+                }
+                case "Task Support" -> {
+                    Optional<Task> task = taskRepository.findByTaskId(reviewRequest.getTask_id());
+                    if (task.isPresent() && userOptional.isPresent()) {
+                        task.get().getUsers().add(userOptional.get());
+                        deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        return ResponseEntity.ok("User given support to Task");
+                    } else {
+                        deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find task or user");
+                    }
+                }
             }
         } else {
-            // delete request
+            deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
             return ResponseEntity.ok("rejected access");
         }
         return ResponseEntity.badRequest().build();

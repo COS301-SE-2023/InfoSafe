@@ -20,6 +20,8 @@ public class DeletedAccessRequest {
     private int request_id;
     private String reason;
     private String status;
+    private int user_id;
+    private int data_scope_id;
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
 //    private User user_id;

@@ -23,6 +23,8 @@ public class DeletedAssetRequest {
     private String reason;
     private Date desired_date;
     private String request_status;
+    private int user_id;
+    private int asset_id;
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
 //    private User user;

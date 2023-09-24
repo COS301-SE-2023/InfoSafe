@@ -28,7 +28,7 @@ public class AccessRequestService {
     private final AccessRequestRepository accessRequestRepository;
     private final UserRepository userRepository;
     private final DataScopeRepository dataScopeRepository;
-
+    private final DeleteService deleteService;
     public ResponseEntity<String> makeAR(AccessRequestRequest request, User authenticatedUser) {
         AccessRequest accessRequest = AccessRequest.builder()
                 .reason(request.getReason())
@@ -63,15 +63,15 @@ public class AccessRequestService {
                 if (!dataScope.getUsers().contains(user)) {
                     dataScope.getUsers().add(user);
                     dataScopeRepository.save(dataScope);
-                    // delete request
+                    deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                     return ResponseEntity.ok("given to user");
                 } else {
-                    // delete request
+                    deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                     return ResponseEntity.ok("user already has access");
                 }
             }
         } else {
-            // delete request
+            deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
             return ResponseEntity.ok("rejected access");
         }
         return ResponseEntity.badRequest().build();

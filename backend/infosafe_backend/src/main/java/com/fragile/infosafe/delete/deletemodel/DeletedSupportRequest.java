@@ -20,6 +20,13 @@ public class DeletedSupportRequest {
     private String support_type;
     private String support_description;
     private String support_status;
+    private int user_id;
+    @Column(nullable = true)
+    private int data_scope_id;
+    @Column(nullable = true)
+    private int asset_id;
+    @Column(nullable = true)
+    private int task_id;
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
 //    private User user_id;

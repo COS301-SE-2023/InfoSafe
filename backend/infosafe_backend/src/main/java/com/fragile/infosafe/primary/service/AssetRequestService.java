@@ -28,6 +28,7 @@ public class AssetRequestService {
     private final AssetRequestRepository assetRequestRepository;
     private final UserRepository userRepository;
     private final AssetRepository assetRepository;
+    private final DeleteService deleteService;
 
     public ResponseEntity<String> makeAR(AssetRequestRequest request, User authenticatedUser) {
         AssetRequest assetRequest = AssetRequest.builder()
@@ -70,11 +71,11 @@ public class AssetRequestService {
                 User user = userOptional.get();
                 asset.setCurrent_assignee(user);
                 assetRepository.save(asset);
-                // delete request
+                deleteService.deleteAssetAndSaveToSecondary(reviewRequest.getRequest_id());
                 return ResponseEntity.ok("given to user");
             }
         } else {
-            // delete request
+            deleteService.deleteAssetAndSaveToSecondary(reviewRequest.getRequest_id());
             return ResponseEntity.ok("rejected access");
         }
         return ResponseEntity.badRequest().build();
