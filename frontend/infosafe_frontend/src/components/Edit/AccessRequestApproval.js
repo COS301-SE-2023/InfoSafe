@@ -46,41 +46,36 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     return (
         <Popup access={access} open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="approveAccessRequestPopup">
-                <div className="approveAccessRequestPopupBorder">
-                    <button className="approveAccessRequestBackButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="approveAccessRequestBackIcon" />
-                    </button>
-                    <form onSubmit={handleSubmit}>
-                        <p className="approveAccessRequestTitle">Access Request Approval</p>
-                        <div className="approveAccessRequestDatascopeDiv">
+                <div className="popupBackground">
+                    <div className="approveAccessRequestPopupBorder">
+                        <button className="approveAccessRequestBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="approveAccessRequestBackIcon" />
+                        </button>
+                        <form onSubmit={handleSubmit}>
+                            <p className="approveAccessRequestTitle">Access Request Approval</p>
                             <p className="approveAccessRequestDatascopeLabel">Data Scope</p>
                             <p className="approveAccessRequestDatascopeNameDisplay">{access.data_scope_id.ds_name}</p>
-                        </div>
-                        {/*Whats the meaning of the role*/}
-                        <div className="approveAccessRequestRoleDiv">
+                            {/*Whats the meaning of the role*/}
                             <p className="approveAccessRequestRoleLabel">User</p>
                             <p className="approveAccessRequestRoleDisplay">{access.user_id.first_name} {access.user_id.last_name}</p>
-                        </div>
-                        <div className="approveAccessRequestReasonDiv">
                             <p className="approveAccessRequestReasonLabel">Reason</p>
                             <textarea
                                 readOnly={true}
                                 className="approveAccessRequestReasonDisplay"
                                 defaultValue={access.reason}
                             ></textarea>
-                        </div>
-                        <div className="approveAccessRequestStatusDiv">
                             <p className="approveAccessRequestStatusLabel">Status</p>
                             <p className="approveAccessRequestStatusDisplay">{access.status}</p>
-                        </div>
-                        <div className="approveAccessRequestButtonsDiv">
-                            {/*Should submit the form?*/}
-                            <button className="approveAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
-                            {/*Should not submit the form?*/}
-                            <button className="approveAccessRequestRejectButton" onClick={() => console.log("Access Request Rejected")}>Reject</button>
-                        </div>
-                    </form>
+                            <div className="approveAccessRequestButtonsDiv">
+                                {/*Should submit the form?*/}
+                                <button className="approveAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
+                                {/*Should not submit the form?*/}
+                                <button className="approveAccessRequestRejectButton" onClick={() => console.log("Access Request Rejected")}>Reject</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </Popup>
     );
