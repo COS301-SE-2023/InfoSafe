@@ -51,7 +51,7 @@ export const AccessRequests = () => {
             return (
                 <li key={access.request_id}>
                     <p onClick={() => setViewAccessRequestOpen(!viewAccessRequestOpen)}>
-                        Access Request {access.request_id}
+                        Access Request to {access.data_scope_id.ds_name}
                         {viewAccessRequestOpen ? (
                             <ViewAccessRequest
                                 popupClose={() => setViewAccessRequestOpen(false)}
