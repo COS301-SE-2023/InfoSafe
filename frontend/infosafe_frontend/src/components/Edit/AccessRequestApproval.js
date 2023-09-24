@@ -28,6 +28,21 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
         }
     }, [access]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values)
+        fetch('http://localhost:8080/api/accessrequest/reviewAccess', {
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated User")
+        })
+        popupClose()
+    }
+
     return (
         <Popup access={access} open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="approveAccessRequestPopup">
@@ -35,7 +50,7 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                     <button className="approveAccessRequestBackButton" onClick={popupClose}>
                         <IoArrowBackOutline className="approveAccessRequestBackIcon" />
                     </button>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <p className="approveAccessRequestTitle">Access Request Approval</p>
                         <div className="approveAccessRequestDatascopeDiv">
                             <p className="approveAccessRequestDatascopeLabel">Data Scope</p>
@@ -59,7 +74,9 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                             <p className="approveAccessRequestStatusDisplay">{access.status}</p>
                         </div>
                         <div className="approveAccessRequestButtonsDiv">
+                            {/*Should submit the form?*/}
                             <button className="approveAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
+                            {/*Should not submit the form?*/}
                             <button className="approveAccessRequestRejectButton" onClick={() => console.log("Access Request Rejected")}>Reject</button>
                         </div>
                     </form>

@@ -5,6 +5,7 @@ import {IoArrowBackOutline} from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import Select from 'react-select';
 import useRequestMaker from "../Subsystems/useRequestMaker";
+import {useGetTask} from "../getData/getTask";
 
 export const CreateTask = ({popupClose, popupOpen}) => {
     const [task_description, setTaskDescription] = useState('');
@@ -15,6 +16,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
     const [users, setUsers] = useState([]);
     const [task_name, setTask_name] = useState('');
     const {datascopeData, setDsId} = useRequestMaker();
+    const {showTask} = useGetTask()
 
     const statusOptions = [
         {value: 'High', label: 'High'},
