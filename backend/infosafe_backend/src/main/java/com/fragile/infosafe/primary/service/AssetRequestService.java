@@ -61,7 +61,7 @@ public class AssetRequestService {
         return assetRequestRepository.existsByUserIdAndAssetId(userId, assetId);
     }
 
-    public ResponseEntity<String> reviewAccessRequest(ReviewRequest reviewRequest) {
+    public ResponseEntity<String> reviewAssetRequest(ReviewRequest reviewRequest) {
         if (reviewRequest.isReview()) {
             Optional<Asset> assetOptional = assetRepository.findByAssetId(reviewRequest.getAsset_id());
             Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());

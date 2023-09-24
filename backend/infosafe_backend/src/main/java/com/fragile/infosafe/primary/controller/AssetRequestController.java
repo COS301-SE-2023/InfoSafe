@@ -42,6 +42,6 @@ public class AssetRequestController {
 
     @PostMapping("/reviewAsset")
     public ResponseEntity<String> reviewAssetRequest (@RequestBody ReviewRequest reviewRequest) {
-        return service.reviewAccessRequest(reviewRequest);
+        return service.reviewAssetRequest(reviewRequest);
     }
 }

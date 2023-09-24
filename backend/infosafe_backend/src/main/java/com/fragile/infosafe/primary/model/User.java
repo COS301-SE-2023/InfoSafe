@@ -32,7 +32,7 @@ public class User implements UserDetails {
     @Column(nullable = true)
     private String otp;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role_name")
     private Role role;
 

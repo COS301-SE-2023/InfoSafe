@@ -67,7 +67,7 @@ public class AccessRequestService {
                     return ResponseEntity.ok("given to user");
                 } else {
                     // delete request
-                    return ResponseEntity.ok("user already has access"); // You can customize this response as needed
+                    return ResponseEntity.ok("user already has access");
                 }
             }
         } else {

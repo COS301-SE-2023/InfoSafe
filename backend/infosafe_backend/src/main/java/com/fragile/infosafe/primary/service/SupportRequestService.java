@@ -68,7 +68,7 @@ public class SupportRequestService {
         return supportRequestRepository.findByUser_id(user_id);
     }
 
-    public ResponseEntity<String> reviewAccessRequest(ReviewRequest reviewRequest) {
+    public ResponseEntity<String> reviewSupportRequest(ReviewRequest reviewRequest) {
         if (reviewRequest.isReview()) {
             Optional<Asset> assetOptional = assetRepository.findByAssetId(reviewRequest.getAsset_id());
             Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());

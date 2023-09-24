@@ -19,11 +19,12 @@ public class AssetRequest {
     private String reason;
     private Date desired_date;
     private String request_status;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "asset_id")
     private Asset asset;
 }
