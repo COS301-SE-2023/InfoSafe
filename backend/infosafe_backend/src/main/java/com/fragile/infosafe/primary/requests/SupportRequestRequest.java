@@ -16,7 +16,7 @@ public class SupportRequestRequest {
     private String support_type;
     private String support_description;
     private String support_status;
-    private String dataScope_id;
-    private String asset_id;
-    private String task_id;
+    private int dataScope_id;
+    private int asset_id;
+    private int task_id;
 }

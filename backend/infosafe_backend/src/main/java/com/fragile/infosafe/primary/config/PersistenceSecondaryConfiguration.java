@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.service.AWSSecretService;
+import jakarta.annotation.PreDestroy;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +26,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class PersistenceSecondaryConfiguration {
 
     private final AWSSecretService awsSecretService;
-    private RDSLogin newLogin;
+
+    @PreDestroy
     @Bean
     public LocalContainerEntityManagerFactoryBean secondaryEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -42,6 +44,7 @@ public class PersistenceSecondaryConfiguration {
 
         return em;
     }
+    @PreDestroy
     @Bean
     public DataSource secondaryDataSource() {
         RDSLogin login = awsSecretService.getRDSLogin();
@@ -54,6 +57,7 @@ public class PersistenceSecondaryConfiguration {
                 .build();
     }
 
+    @PreDestroy
     @Bean
     public PlatformTransactionManager secondaryTransactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
