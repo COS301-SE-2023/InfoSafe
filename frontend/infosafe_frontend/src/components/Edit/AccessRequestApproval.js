@@ -39,12 +39,12 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                         <p className="approveAccessRequestTitle">Access Request Approval</p>
                         <div className="approveAccessRequestDatascopeDiv">
                             <p className="approveAccessRequestDatascopeLabel">Data Scope</p>
-                            <p className="approveAccessRequestDatascopeNameDisplay">{access.request_id}</p>
+                            <p className="approveAccessRequestDatascopeNameDisplay">{access.data_scope_id.ds_name}</p>
                         </div>
                         {/*Whats the meaning of the role*/}
                         <div className="approveAccessRequestRoleDiv">
-                            <p className="approveAccessRequestRoleLabel">Role</p>
-                            <p className="approveAccessRequestRoleDisplay">ISO</p>
+                            <p className="approveAccessRequestRoleLabel">User</p>
+                            <p className="approveAccessRequestRoleDisplay">{access.user_id.first_name} {access.user_id.last_name}</p>
                         </div>
                         <div className="approveAccessRequestReasonDiv">
                             <p className="approveAccessRequestReasonLabel">Reason</p>
@@ -56,7 +56,7 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                         </div>
                         <div className="approveAccessRequestStatusDiv">
                             <p className="approveAccessRequestStatusLabel">Status</p>
-                            <p className="approveAccessRequestStatusDisplay">Logged</p>
+                            <p className="approveAccessRequestStatusDisplay">{access.status}</p>
                         </div>
                         <div className="approveAccessRequestButtonsDiv">
                             <button className="approveAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
