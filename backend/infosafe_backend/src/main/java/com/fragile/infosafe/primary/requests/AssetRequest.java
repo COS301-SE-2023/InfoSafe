@@ -17,7 +17,7 @@ public class AssetRequest {
     private String status;
     private String availability;
     private String used;
-    private User current_assignee;
-    private User previous_assignee;
+    private String current_assignee;
+    private String previous_assignee;
     private String device_type;
 }

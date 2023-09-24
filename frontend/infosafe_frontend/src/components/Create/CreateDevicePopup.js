@@ -17,6 +17,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
     const [availability, setAvailability] = useState('Yes')
     const [used, setUsed] = useState('New')
     const [current_assignee, setCurrent_assignee] = useState('')
+    const [previous_assignee, setPrevious_assignee] = useState('')
     const [status, setStatus] = useState('Clean')
     const [device_type, setDevice_type] = useState('')
     const [users, setUsers] = useState([]);
@@ -34,8 +35,9 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             status,
             availability,
             used,
+            device_type,
             current_assignee: selectedUsers ? selectedUsers.label : null,
-            device_type
+            previous_assignee: null
         }
         console.log(current_assignee)
         fetch("http://localhost:8080/api/asset/addAsset", {
