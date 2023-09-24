@@ -31,7 +31,6 @@ const ReviewAssetRequest = ({asset, popupOpen, popupClose}) => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </Popup>
     );

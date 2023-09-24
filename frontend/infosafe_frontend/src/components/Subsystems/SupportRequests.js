@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import ViewSupportRequest from "../View/ViewSupportRequest";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
+import {RiEditBoxFill} from "react-icons/ri";
 import "../../styling/SupportRequests.css";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetSR} from "../getData/getSR";
@@ -14,9 +15,9 @@ export const SupportRequests = () => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
             return (
-                <div className="EditIcon">
-                    <FaRegEdit
-
+                <div className="supportRequestEditButton">
+                    <RiEditBoxFill
+                        className="supportRequestEditIcon"
                         onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
                     />
                     {editSupportRequestOpen ? (
@@ -36,9 +37,9 @@ export const SupportRequests = () => {
     const EditMySupportRequestDiv = ({mySupport}) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
             return (
-                <div className="EditIcon">
-                    <FaRegEdit
-
+                <div className="supportRequestEditButton">
+                    <RiEditBoxFill
+                        className="supportRequestEditIcon"
                         onClick={() => setEditSupportRequestOpen(!editSupportRequestOpen)}
                     />
                     {editSupportRequestOpen ? (
