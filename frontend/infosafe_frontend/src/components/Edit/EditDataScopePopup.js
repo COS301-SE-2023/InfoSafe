@@ -49,12 +49,14 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 <p className="editDatasscopeNameLabel">Name</p>
                                 <input
                                     className="editDatascopeNameInput"
-                                    defaultValue={datascope.ds_name} onChange={e => setValues({...values, ds_name: e.target.value})}
+                                    defaultValue={datascope.ds_name}
+                                    onChange={e => setValues({...values, ds_name: e.target.value})}
                                 />
                                 <p className="editDescriptionLabel">Description</p>
                                 <textarea
                                     className="editDescriptionInput"
-                                    defaultValue={datascope.description} onChange={e => setValues({...values, ds_description: e.target.value})}
+                                    defaultValue={datascope.ds_description}
+                                    onChange={e => setValues({...values, ds_description: e.target.value})}
                                 />
                                 <br />
                                 <p className="editStatusLabel">Status</p>
@@ -63,7 +65,8 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     value={STATUS[0]}
                                     className="editDSStatusDropdown"
                                     data-testid="editDSStatusDropdown"
-                                    defaultValue={datascope.status} onChange={selectedOption => setValues({...values, ds_status: selectedOption.value})}
+                                    defaultValue={datascope.status}
+                                    onChange={selectedOption => setValues({...values, ds_status: selectedOption.value})}
                                 />
                                 <button className="editdatascope_finish">
                                     Submit
