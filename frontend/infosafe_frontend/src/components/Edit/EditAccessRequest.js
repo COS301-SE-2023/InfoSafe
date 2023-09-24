@@ -58,8 +58,8 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
                             <p className="editAccessRequestDatascopeNameDisplay">{access.data_scope_id.ds_name}</p>
                         </div>
                         <div className="editAccessRequestRoleDiv">
-                            <p className="editAccessRequestRoleLabel">Role</p>
-                            <p className="editAccessRequestRoleDisplay">ISO</p>
+                            <p className="editAccessRequestRoleLabel">User</p>
+                            <p className="editAccessRequestRoleDisplay">{access.user_id.first_name} {access.user_id.last_name}</p>
                         </div>
                         <div className="editAccessRequestReasonDiv">
                             <p className="editAccessRequestReasonLabel">Reason</p>
