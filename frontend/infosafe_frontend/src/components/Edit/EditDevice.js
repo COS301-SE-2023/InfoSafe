@@ -6,11 +6,10 @@ import Dropdown from 'react-dropdown';
 import Select from "react-select";
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
-// const NEW_OPTIONS = ['YES', 'NO'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
-    const [selectedUsers, setSelectedUsers] = useState({});
+    const [selectedUser, setSelectedUser] = useState(null);
     const newPreviousAssignee = asset.current_assignee;
 
     const[values, setValues]=useState({
@@ -39,12 +38,16 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 previous_assignee: asset.previous_assignee
             });
         }
+        //console.log(asset);
     }, [asset]);
 
     const handleSelect = (selectedOptions) => {
-        setSelectedUsers(selectedOptions);
+        setSelectedUser(selectedOptions);
+        console.log(selectedOptions);
+        asset.current_assignee = selectedOptions;
         if (asset.current_assignee !== newPreviousAssignee)
         {
+            asset.previous_assignee = newPreviousAssignee;
             setValues({
                 asset_id: asset.asset_id,
                 asset_name: asset.asset_name,
@@ -53,17 +56,15 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 used: asset.used,
                 availability: asset.availability,
                 device_type: asset.device_type,
-                current_assignee: selectedUsers,
-                previous_assignee: newPreviousAssignee
+                current_assignee: asset.current_assignee,
+                previous_assignee: asset.previous_assignee
             });
         }
     };
 
     const handleSubmit = (e) => {
-        console.log('Previous assignee: ');
-        console.log(newPreviousAssignee);
         e.preventDefault();
-        console.log(values)
+        console.log("UPDATED = " + values)
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -131,11 +132,11 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 <p className="currentCustodianLabel">Current Custodian</p>
                                 {users && users.length > 0 ? (
                                     <Select
+                                        placeholder={'Change Assignee'}
                                         options={users.map((data) => ({ value: data.user_id, label: data.email }))}
-                                        value={selectedUsers}
+                                        value={selectedUser}
                                         className="datascopeDropdown"
                                         name="datascopeDropdown"
-                                        placeholder={"Add Assignees"}
                                         onChange={handleSelect}
                                         isSearchable={true}
                                     />
