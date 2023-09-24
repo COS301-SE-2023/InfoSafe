@@ -24,19 +24,19 @@ export const TaskApproval = ({ task, popupClose, popupOpen }) => {
                         <p className="approveTaskDisplayData">{task.dataScope.ds_name}</p>
                         <p className="approveTaskDisplayTitle">Assigned User</p>
                         <p className="approveTaskDisplayData">
-                            {/*{users && users.length > 0 ? (*/}
-                            {/*    <Select*/}
-                            {/*        options={users.map((data) => ({ value: data.user_id, label: data.email }))}*/}
-                            {/*        value={selectedUsers}*/}
-                            {/*        className="datascopeDropdown"*/}
-                            {/*        name="datascopeDropdown"*/}
-                            {/*        placeholder={"Add Assignees"}*/}
-                            {/*        onChange={handleSelect}*/}
-                            {/*        isSearchable={true}*/}
-                            {/*    />*/}
-                            {/*) : (*/}
-                            {/*    <p>Loading...</p>*/}
-                            {/*)}*/}
+                            {task.users && task.users.length > 0 ? (
+                                <Select
+                                    //options={task.users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                    value={task.users.map((data) => ({ value: data.first_name, label: data.email }))}
+                                    className="datascopeDropdown"
+                                    name="datascopeDropdown"
+                                    placeholder={"Add Assignees"}
+                                    //onChange={handleSelect}
+                                    isSearchable={true}
+                                />
+                            ) : (
+                                <p>Loading...</p>
+                            )}
                         </p>
                         <p className="approveTaskDisplayTitle">Task Description</p>
                         <textarea className="approveTaskViewTextArea" readOnly={true} value={task.task_description}/>
