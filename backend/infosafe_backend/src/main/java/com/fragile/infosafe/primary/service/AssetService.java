@@ -33,6 +33,7 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
+                .used(request.getUsed())
                 .build();
 
         if (!request.getCurrent_assignee().isEmpty()) {

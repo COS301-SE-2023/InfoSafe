@@ -43,9 +43,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
 
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
-    };
-
-    const handleSubmit = (e) => {
         if (asset.current_assignee !== newPreviousAssignee)
         {
             setValues({
@@ -60,6 +57,11 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 previous_assignee: newPreviousAssignee
             });
         }
+    };
+
+    const handleSubmit = (e) => {
+        console.log('Previous assignee: ');
+        console.log(newPreviousAssignee);
         e.preventDefault();
         console.log(values)
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
@@ -71,7 +73,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         }).then(()=>{
             console.log("Updated Asset")
         })
-        //console.log(JSON.stringify(values))
+        console.log(JSON.stringify(values))
         popupClose()
     }
 

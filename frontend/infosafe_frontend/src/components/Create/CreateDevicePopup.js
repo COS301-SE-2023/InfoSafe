@@ -22,7 +22,6 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState(null);
 
-
     const handleSelect = (selectedOptions) => {
         setSelectedUsers(selectedOptions);
     };
@@ -77,12 +76,14 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                             <p className="createDeviceLabel">Add Device</p>
                             <p className="deviceNameLabel">Device Name</p>
                             <input className="deviceNameInput"
-                                   value={asset_name} onChange={(e) => setAsset_name(e.target.value)}
+                                   value={asset_name}
+                                   onChange={(e) => setAsset_name(e.target.value)}
                             />
                             <p className="deviceTypeLabel">Device Type</p>
                             <input
                                 className="deviceTypeInput"
-                                value={device_type} onChange={(e) => setDevice_type(e.target.value)}
+                                value={device_type}
+                                onChange={(e) => setDevice_type(e.target.value)}
                             />
                             <p className="deviceDescriptionLabel">Device Description</p>
                             <textarea className="deviceDescriptionInput"
