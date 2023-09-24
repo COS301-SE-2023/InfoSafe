@@ -56,7 +56,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 used: asset.used,
                 availability: asset.availability,
                 device_type: asset.device_type,
-                current_assignee: asset.current_assignee,
+                current_assignee: selectedUsers,
                 previous_assignee: newPreviousAssignee
             });
         }

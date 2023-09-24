@@ -12,7 +12,6 @@ export const Devices = () => {
     const {showAsset} = useGetAsset();
     const {roles} = useGetPerms();
 
-
     const EditDeviceDiv = ({ asset }) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
         if(roles.includes("devices_edit")) {
@@ -38,16 +37,16 @@ export const Devices = () => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         if(roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {
             return (
-                <li key={asset.id}>
+                <li key={asset.asset_id}>
                     <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                        Asset {asset.asset_id}: {asset.asset_name}:{' '}{asset.asset_description}
-                        {viewDeviceOpen && (
+                        Asset {asset.asset_id}: {asset.asset_name}
+                        {viewDeviceOpen ? (
                             <ViewDevice
                                 popupClose={() => setViewDeviceOpen(false)}
                                 popupOpen={viewDeviceOpen}
                                 asset={asset}
                             />
-                        )}
+                        ) : null}
                     </p>
                     <EditDeviceDiv asset={asset}></EditDeviceDiv>
                 </li>
@@ -81,8 +80,8 @@ export const Devices = () => {
     }
 
     const devices = [];
-    showAsset.map((device) =>
-        devices.push(<ViewDeviceItem asset={device} key={device.asset_id} />)
+    showAsset.map((asset) =>
+        devices.push(<ViewDeviceItem asset={asset} key={asset.asset_id} />)
     );
 
     return(

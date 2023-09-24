@@ -17,7 +17,7 @@ export const ViewTask = ({ task, popupClose, popupOpen }) => {
                     <p className="viewTaskPageTitle">View Task</p>
                     <div className="viewTaskContent">
                     <p className="viewTaskDisplayTitle">Task Name</p>
-                    <p className="viewTaskDisplayData">Task {task.task_name}</p>
+                    <p className="viewTaskDisplayData">{task.task_name}</p>
                     <p className="viewTaskDisplayLabel">Data Scope</p>
                     <p className="viewTaskDisplayData">{task.dataScope.ds_name}</p>
                     <p className="viewTaskDisplayLabels">Task Description</p>

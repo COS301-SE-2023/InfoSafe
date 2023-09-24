@@ -8,7 +8,7 @@ import Dropdown from "react-dropdown";
 import Select from "react-select";
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
-const NEW_OPTIONS = ['Yes', 'No'];
+const NEW_OPTIONS = ['New', 'Used'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 export const CreateDevicePopup = ({popupOpen, popupClose}) => {
     const current = new Date();
@@ -87,7 +87,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                             <p className="deviceDescriptionLabel">Device Description</p>
                             <textarea className="deviceDescriptionInput"
                                       value={asset_description} onChange={(e) => setAsset_description(e.target.value)}/>
-                            <p className="deviceNewLabel">New</p>
+                            <p className="deviceNewLabel">Condition</p>
                             <Dropdown
                                 options={NEW_OPTIONS}
                                 value={NEW_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
@@ -104,7 +104,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                 onChange={(selectedOption) => setStatus(selectedOption.value)}
                             />
                             <br/>
-                            <p className="deviceAvailabilityLabel">Available</p>
+                            <p className="deviceAvailabilityLabel">Availability</p>
                             <Dropdown
                                 options={AVAILABILITY_OPTIONS}
                                 value={AVAILABILITY_OPTIONS[0]}  //onChange={(e)=>setAsset_description(e.target.value)}/>
