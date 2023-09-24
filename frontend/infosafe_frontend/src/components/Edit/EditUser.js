@@ -7,7 +7,6 @@ import Dropdown from 'react-dropdown';
 const EditUser = ({ user, popupClose, popupOpen }) => {
     const [selectedRole, setSelectedRole] = useState(user.role.role_name)
     const [roleNames, setRoleNames] = useState('')
-
     const [values, setValues] = useState({
         user_id: '',
         first_name: '',
@@ -56,6 +55,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                 setRoleNames(result);
             });
     }, [])
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
             <div className="editUserOverlay" data-testid="editUserPopup">
@@ -75,7 +75,8 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                         id="editusername"
                                         name="editusername"
                                         data-testid="firstNameEdit"
-                                        defaultValue={user.first_name} onChange={e => setValues({...values, first_name: e.target.value})}
+                                        defaultValue={user.first_name}
+                                        onChange={e => setValues({...values, first_name: e.target.value})}
                                     />
                                 </div>
                                 <div className="surnameEdit">
@@ -85,7 +86,8 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                         type="text"
                                         id="editusersurname"
                                         name="editusersurname"
-                                        defaultValue={user.last_name} onChange={e => setValues({...values, last_name: e.target.value})}
+                                        defaultValue={user.last_name}
+                                        onChange={e => setValues({...values, last_name: e.target.value})}
                                     />
                                 </div>
                                 <div className="emailEdit">
@@ -95,7 +97,8 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                         type="text"
                                         id="edituseremail"
                                         name="edituseremail"
-                                        defaultValue={user.email} onChange={e => setValues({...values, email: e.target.value})}
+                                        defaultValue={user.email}
+                                        onChange={e => setValues({...values, email: e.target.value})}
                                     />
                                 </div>
                                 <div className="roleEdit">
