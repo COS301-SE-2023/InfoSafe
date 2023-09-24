@@ -95,6 +95,9 @@
     overflow-y: hidden;
     scrollbar-width: none;
     width: 70%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }
 .approveTaskDisplayData::-webkit-scrollbar{
     display: none;
@@ -116,7 +119,7 @@
     width: 90%;
     padding: 0;
     position: relative;
-    top: 0;
+    top: -1vh;
     left: 0;
     justify-content: left;
     vertical-align: center;

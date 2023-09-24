@@ -9,20 +9,24 @@ const ViewAssetRequest = ({asset, popupOpen, popupClose}) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position= "center center">
             <div className="viewAssetRequestOverlay">
+                <div className="popupBackground">
                 <div className="viewAssetRequestBorder">
                     <button className="viewAssetRequestBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="viewAssetRequestBackIcon" />
                     </button>
                     <p className="viewAssetRequestLabel">View Asset Request</p>
+                    <div className="viewAssetRequestContent">
                     <p className="viewAssetRequestDeviceNameLabel">Device Name</p>
-                    <p className="viewAssetRequestDeviceName">{asset.asset_id}</p>
+                    <p className="viewAssetRequestDeviceName">Dell Laptop 23</p>
                     <p className="viewAssetRequestUserLabel">User</p>
-                    <p className="viewAssetRequestUser">{asset.user_id}</p>
+                    <p className="viewAssetRequestUser">User 1234</p>
                     <p className="viewAssetRequestReasonLabel">Reason</p>
                     <textarea className="viewAssetRequestReason" readOnly={true} defaultValue={asset.reason}></textarea>
                     <p className="viewAssetRequestDateRequiredLabel">Date Required</p>
                     <p className="viewAssetRequestDateRequired">{asset.desired_date}</p>
                 </div>
+                </div>
+            </div>
             </div>
         </Popup>
     );

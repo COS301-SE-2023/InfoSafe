@@ -42,7 +42,7 @@
     position: relative;
     height: 70%;
     width: 100%;
-    top: 0;
+    top: -4vh;
     left: 15%;
 }
 
@@ -91,25 +91,35 @@
     font-family: 'Roboto', sans-serif;
 }
 .viewTaskDisplayLabel{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     width: 70%;
     border: none;
     margin: 0;
     position: relative;
+    top: -2vh;
 }
-.viewTaskDisplayLabels{
-    font-size: 20px;
+.viewTaskDisplayStatus {
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
     width: 70%;
-    border: none;
     margin: 0;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    top: -2vh;
     position: relative;
 }
+
 .viewTaskDisplayCompletionDate{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     width: 70%;
     border: none;
     margin: 0;
     position: relative;
+    top: -2vh;
 }
 .viewTaskDisplayData {
     border-radius: 2px;
@@ -120,6 +130,7 @@
     overflow-y: hidden;
     scrollbar-width: none;
     width: 70%;
+    margin: 0;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
 }
@@ -137,6 +148,7 @@
     width: 70%;
     position: relative;
     top: -2vh;
+    margin: 0;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
 }
@@ -155,6 +167,7 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
+    top: -2vh;
 }
 .viewTaskDisplayCompletionDateData::-webkit-scrollbar{
     display: none;

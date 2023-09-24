@@ -105,7 +105,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                         <button className="createDataScopeBackButton" onClick={popupClose}>
                             <IoArrowBackOutline className="backIcon"/>
                         </button>
-                        <p className="datascopeLabel">Data Scope Creation</p>
+                        <p className="datascopeLabel">Create Data Scope</p>
                         <form>
                             <div className="CreateDataScopeForm">
                                 <div className="datascope_info">

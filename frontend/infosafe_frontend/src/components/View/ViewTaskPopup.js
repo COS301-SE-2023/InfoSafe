@@ -20,10 +20,10 @@ export const ViewTask = ({ task, popupClose, popupOpen }) => {
                     <p className="viewTaskDisplayData">{task.task_name}</p>
                     <p className="viewTaskDisplayLabel">Data Scope</p>
                     <p className="viewTaskDisplayData">{task.dataScope.ds_name}</p>
-                    <p className="viewTaskDisplayLabels">Task Description</p>
+                    <p className="viewTaskDisplayTitle">Task Description</p>
                     <textarea className="viewTaskTextArea" readOnly={true} value={task.task_description}/>
                     <p className="viewTaskDisplayLabel">Task Status</p>
-                    <p className="viewTaskDisplayData">{task.task_status}</p>
+                    <p className="viewTaskDisplayStatus">{task.task_status}</p>
                     <p className="viewTaskDisplayCompletionDate">Completion Date</p>
                     <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>
                 </div>
