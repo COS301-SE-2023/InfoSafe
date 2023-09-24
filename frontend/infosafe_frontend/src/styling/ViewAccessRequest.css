@@ -89,6 +89,7 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     background-color: #CECECE;
     padding: 1% 1%;
+    margin: 0;
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-width: none;
@@ -117,6 +118,7 @@
     width: 70%;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 .viewAccessRequestRoleDisplay::-webkit-scrollbar{
     display: none;
@@ -149,6 +151,8 @@
     border: none;
     margin: 0;
     position: relative;
+    top: -1vh;
+
 }
 .viewAccessRequestStatusDisplay {
     border-radius: 2px;
@@ -160,7 +164,10 @@
     scrollbar-width: none;
     width: 70%;
     font-size: 18px;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -1vh;
 }
 .viewAccessRequestStatusDisplay::-webkit-scrollbar{
     display: none;

@@ -42,7 +42,7 @@
     position: relative;
     height: 70%;
     width: 100%;
-    top: 0;
+    top: -2vh;
     left: 15%;
 }
 .viewAssetRequestBackButton {
@@ -93,6 +93,7 @@
     overflow-y: hidden;
     scrollbar-width: none;
     width: 70%;
+    margin: 0;
     position: relative;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
@@ -101,7 +102,8 @@
     display: none;
 }
 .viewAssetRequestUserLabel{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     width: 70%;
     border: none;
     margin: 0;
@@ -124,11 +126,13 @@
     display: none;
 }
 .viewAssetRequestReasonLabel{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     width: 70%;
     border: none;
     margin: 0;
     position: relative;
+    top: -2vh;
 }
 .viewAssetRequestReason{
     border-radius: 2px;
@@ -142,16 +146,20 @@
     position: relative;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    top: -2vh;
 }
 .viewAssetRequestReason::-webkit-scrollbar{
     display: none;
 }
 .viewAssetRequestDateRequiredLabel{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     width: 70%;
     border: none;
     margin: 0;
     position: relative;
+    top: -3vh;
 }
 .viewAssetRequestDateRequired{
     border-radius: 2px;
@@ -165,6 +173,7 @@
     position: relative;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
+    top: -3vh;
 }
 .viewAssetRequestDateRequired::-webkit-scrollbar{
     display: none;

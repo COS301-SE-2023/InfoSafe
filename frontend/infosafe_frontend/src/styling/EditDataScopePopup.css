@@ -120,6 +120,7 @@
     color: #000;
     font-family: 'Roboto', sans-serif;
     position: relative;
+    top: -1vh;
 
 }
 .editDSStatusDropdown {
@@ -130,8 +131,7 @@
     color: #CECECE;
     position: relative;
     width: 70%;
-    top: 12%;
-
+    top: -1vh;
 }
 .editDSStatusDropdown .Dropdown-control{
     background-color: #CECECE;
