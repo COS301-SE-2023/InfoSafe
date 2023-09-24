@@ -17,7 +17,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
         probability_rating: '',
         suggested_mitigation: '',
         risk_status: ''
-    })
+    });
 
     useEffect(() => {
         if (risk) {
@@ -43,7 +43,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
             },
             body:JSON.stringify(values)
         }).then(()=>{
-            console.log("Updated Asset")
+            console.log("Updated Risk")
         })
         //console.log(JSON.stringify(values))
         popupClose()
