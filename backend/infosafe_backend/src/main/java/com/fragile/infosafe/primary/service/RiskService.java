@@ -24,6 +24,7 @@ public class RiskService {
 
     public ResponseEntity<String> makeRisk(RiskRequest request){
         var risk = Risk.builder()
+                .risk_name(request.getRisk_name())
                 .impact_rating(request.getImpact_rating())
                 .probability_rating(request.getProbability_rating())
                 .risk_description(request.getRisk_description())

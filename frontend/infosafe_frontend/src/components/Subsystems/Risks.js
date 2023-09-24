@@ -89,7 +89,7 @@ export const Risks = () => {
         return (
             <li className="risksListItem" key={risk.risk_id}>
                 <p className="risksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
-                    Risk {risk.risk_id} : {risk.risk_description}
+                    Risk {risk.risk_id} : {risk.risk_name}
                     {viewRiskOpen ? (
                         <ViewRisk
                             popupClose={() => setViewRiskOpen(false)}

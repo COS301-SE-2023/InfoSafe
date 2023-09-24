@@ -16,11 +16,11 @@ export const ViewRisk = ({ risk, popupClose, popupOpen }) => {
                         </button>
                         <p className="pageTitle">View Risk</p>
                         <p className="viewRiskPageTitle">Risk Name</p>
-                        <p className="viewRiskDisplayData">MyRisk </p>
+                        <p className="viewRiskDisplayData">{risk.risk_name}</p>
                         <p className="viewRiskPageTitle">Risk ID</p>
                         <p className="viewRiskDisplayData">{risk.risk_id}</p>
                         <p className="viewRiskPageTitle">Data Scope</p>
-                        <p className="viewRiskDisplayData">DataScope 123</p>
+                        <p className="viewRiskDisplayData">{risk.dataScope.ds_name}</p>
                         <p className="viewRiskPageTitle">Probability</p>
                         <p className="viewRiskDisplayData">{risk.probability_rating}</p>
                         <p className="viewRiskPageTitle">Impact</p>
