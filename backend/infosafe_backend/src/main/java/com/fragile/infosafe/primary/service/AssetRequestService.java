@@ -2,11 +2,13 @@ package com.fragile.infosafe.primary.service;
 
 import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.model.AssetRequest;
+import com.fragile.infosafe.primary.model.DataScope;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.AssetRepository;
 import com.fragile.infosafe.primary.repository.AssetRequestRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.AssetRequestRequest;
+import com.fragile.infosafe.primary.requests.ReviewRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,27 +28,21 @@ public class AssetRequestService {
     private final AssetRequestRepository assetRequestRepository;
     private final UserRepository userRepository;
     private final AssetRepository assetRepository;
+    private final DeleteService deleteService;
 
-    public ResponseEntity<String> makeAR(AssetRequestRequest request){
+    public ResponseEntity<String> makeAR(AssetRequestRequest request, User authenticatedUser) {
         AssetRequest assetRequest = AssetRequest.builder()
                 .reason(request.getReason())
                 .desired_date(request.getDesired_date())
                 .request_status(request.getRequest_status())
+                .user(authenticatedUser)
                 .build();
 
-        if (!request.getUser_email().isEmpty()) {
-            User user = userRepository.findByEmail(request.getUser_email()).orElse(null);
-            if (user != null) {
-                assetRequest.setUser(user);
-            } else {
-                log.error("User with email " + request.getUser_email() + " not found");
-            }
-        }
-        if(isNumeric(request.getAsset_id())){
+        if (isNumeric(request.getAsset_id())) {
             Optional<Asset> asset = assetRepository.findByAssetId(request.getAsset_id());
-            if(asset.isPresent()){
+            if (asset.isPresent()) {
                 assetRequest.setAsset(asset.get());
-            }else {
+            } else {
                 log.error("User with email " + request.getAsset_id() + " not found");
             }
         }
@@ -54,12 +50,35 @@ public class AssetRequestService {
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-    public List<AssetRequest> getAllAssetRequests() { return assetRequestRepository.findAll(); }
+    public List<AssetRequest> getAllAssetRequests() {
+        return assetRequestRepository.findAll();
+    }
 
-    public AssetRequest updateAssetRequest(AssetRequest assetRequest) {return assetRequestRepository.save(assetRequest);}
+    public AssetRequest updateAssetRequest(AssetRequest assetRequest) {
+        return assetRequestRepository.save(assetRequest);
+    }
 
     public boolean checkAssetRequestExists(int userId, int assetId) {
         return assetRequestRepository.existsByUserIdAndAssetId(userId, assetId);
+    }
+
+    public ResponseEntity<String> reviewAssetRequest(ReviewRequest reviewRequest) {
+        if (reviewRequest.isReview()) {
+            Optional<Asset> assetOptional = assetRepository.findByAssetId(reviewRequest.getAsset_id());
+            Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());
+            if (assetOptional.isPresent() && userOptional.isPresent()) {
+                Asset asset = assetOptional.get();
+                User user = userOptional.get();
+                asset.setCurrent_assignee(user);
+                assetRepository.save(asset);
+                deleteService.deleteAssetAndSaveToSecondary(reviewRequest.getRequest_id());
+                return ResponseEntity.ok("given to user");
+            }
+        } else {
+            deleteService.deleteAssetAndSaveToSecondary(reviewRequest.getRequest_id());
+            return ResponseEntity.ok("rejected access");
+        }
+        return ResponseEntity.badRequest().build();
     }
 
 }

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import {useCurrentTasks} from "../Charts/useCurrentTasks";
+import {useCurrentDataScope} from "../Charts/useCurrentDataScope";
 
 const useRequestMaker = () => {
     const [reason, setReason] = useState('')
     // Support Requests
-    const [support_type, setSupportType] = useState('')
+    const [support_type, setSupportType] = useState('DataScope Support')
     const [support_description, setSupportDescription] = useState('')
     const [support_status, setSupportStatus] = useState('')
     // Access Requests
@@ -14,15 +16,33 @@ const useRequestMaker = () => {
     const [request_status, setRequestStatus] = useState('')
     const [selectedDevice, setSelectedDevice] = useState("");
 
-    const[user_email, setUserEmail] = useState('');
+    const [user_email, setUserEmail] = useState('');
     const [datascopeData, setDatascopeData] = useState(null);
     const [selectedAssetId, setSelectedAssetId] = useState(null);
-    const[availableDevices, setAvailableDevices] = useState([]);
-
+    const [availableDevices, setAvailableDevices] = useState([]);
+    const [task_id, setTask_id] = useState(null);
+    const [asset_id, setAsset_id] = useState(null);
+    const {myTasks} = useCurrentTasks();
+    const {myAssets} = useCurrentDataScope();
     const handleClick = (e, selectedRequest) => {
         e.preventDefault();
         console.log(selectedDevice)
-        const support = {user_email , support_type, support_description, support_status}
+        let support = {};
+        switch(support_type){
+            case 'DataScope Support':
+                support = {user_email , support_type, dataScope_id , support_description, support_status}
+                break;
+            case 'Asset Support':
+                console.log(asset_id)
+                support = {user_email , support_type, asset_id, support_description, support_status}
+                break;
+            case 'Task Support':
+                support = {user_email , support_type, task_id, support_description, support_status}
+                break;
+            case 'Other':
+                support = {user_email , support_type, support_description, support_status}
+                break;
+        }
         const access = {user_email, dataScope_id, reason, status}
         const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status}
         let apiUrl = "";
@@ -122,7 +142,11 @@ const useRequestMaker = () => {
         setSelectedAssetId,
         setSelectedDevice,
         availableDevices,
-        selectedDevice
+        selectedDevice,
+        myTasks,
+        myAssets,
+        setTask_id,
+        setAsset_id
     };
 };
 

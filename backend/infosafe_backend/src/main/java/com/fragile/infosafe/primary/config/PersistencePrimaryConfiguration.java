@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.service.AWSSecretService;
+import jakarta.annotation.PreDestroy;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.cache.annotation.Cacheable;
@@ -27,6 +28,7 @@ public class PersistencePrimaryConfiguration {
     private final AWSSecretService awsSecretService;
 
     @Primary
+    @PreDestroy
     @Bean
     public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
         System.out.println("This happened1");
@@ -45,6 +47,7 @@ public class PersistencePrimaryConfiguration {
     }
 
     @Primary
+    @PreDestroy
     @Bean
     public DataSource primaryDataSource () {
         RDSLogin login = awsSecretService.getRDSLogin();
@@ -60,6 +63,7 @@ public class PersistencePrimaryConfiguration {
 
 
     @Primary
+    @PreDestroy
     @Bean
     public PlatformTransactionManager primaryTransactionManager () {
         System.out.println("This happened3");
