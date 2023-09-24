@@ -52,7 +52,7 @@ export const Tasks = () => {
                             />
                         ) : null}
                     </p>
-                    <ApproveTask></ApproveTask>
+                    <ApproveTask task={task}></ApproveTask>
                     <EditTask task={task}></EditTask>
                 </li>
             );
@@ -84,7 +84,7 @@ export const Tasks = () => {
         }
     }
 
-    const ApproveTask = () => {
+    const ApproveTask = ({ task }) => {
         const [approveTaskOpen, setApproveTaskOpen] = useState(false);
         if(roles.includes("tasks_approve")) {
             return (
@@ -97,7 +97,7 @@ export const Tasks = () => {
                         <TaskApproval
                             popupClose={() => setApproveTaskOpen(false)}
                             popupOpen={approveTaskOpen}
-                            //task={task}
+                            task={task}
                         />
                     ) : null}
                 </div>
