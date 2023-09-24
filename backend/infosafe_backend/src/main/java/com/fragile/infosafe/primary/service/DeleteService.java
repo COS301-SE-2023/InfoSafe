@@ -9,14 +9,8 @@ import com.fragile.infosafe.delete.deleterepository.DeletedDataScopeRepository;
 import com.fragile.infosafe.delete.deleterepository.DeletedTaskRepository;
 import com.fragile.infosafe.delete.deleterepository.DeletedUserRepository;
 import com.fragile.infosafe.delete.deletemodel.DeletedUser;
-import com.fragile.infosafe.primary.model.Asset;
-import com.fragile.infosafe.primary.model.DataScope;
-import com.fragile.infosafe.primary.model.Task;
-import com.fragile.infosafe.primary.model.User;
-import com.fragile.infosafe.primary.repository.AssetRepository;
-import com.fragile.infosafe.primary.repository.DataScopeRepository;
-import com.fragile.infosafe.primary.repository.TaskRepository;
-import com.fragile.infosafe.primary.repository.UserRepository;
+import com.fragile.infosafe.primary.model.*;
+import com.fragile.infosafe.primary.repository.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,10 +25,15 @@ public class DeleteService {
     private final DataScopeRepository dataScopeRepository;
     private final AssetRepository assetRepository;
     private final TaskRepository taskRepository;
+    private final AccessRequestRepository accessRequestRepository;
+    private final AssetRequestRepository assetRequestRepository;
+    private final SupportRequestRepository supportRequestRepository;
+
     private final DeletedUserRepository deletedUserRepository;
     private final DeletedDataScopeRepository deletedDataScopeRepository;
     private final DeletedAssetRepository deletedAssetRepository;
     private final DeletedTaskRepository deletedTaskRepository;
+
     public void deleteUserAndSaveToSecondary(String email) {
         Optional<User> entityOptional = userRepository.findByEmail(email);
         if (entityOptional.isPresent()) {
@@ -94,6 +93,13 @@ public class DeleteService {
 //            de.setDate_created(entityToDelete.getDate_created());
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
+        }
+    }
+
+    public void deleteAccessRequestAndSaveToSecondary(int request_id){
+        Optional<AccessRequest> entityOptional= accessRequestRepository.findById(request_id);
+        if(entityOptional.isPresent()){
+            AccessRequest entityToDelete = entityOptional.get();
         }
     }
 }

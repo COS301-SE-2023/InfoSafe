@@ -23,7 +23,11 @@ public class SupportRequestController {
     @PostMapping("/addSr")
     public ResponseEntity addSr(@RequestBody SupportRequestRequest supportrequest) {
         log.info("Adding a support request");
-        return ResponseEntity.ok(service.makeSR(supportrequest));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return ResponseEntity.ok(service.makeSR(supportrequest, authenticatedUser));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("/getSr")
