@@ -23,7 +23,7 @@ export const AssetRequest = () => {
                         <ReviewAssetRequest
                             popupClose={() => setAssetRequestOpen(false)}
                             popupOpen={assetRequestOpen}
-                            asset={assetRequest}
+                            assetRequest={assetRequest}
                         />
                     ) : null}
                 </div>
@@ -45,7 +45,7 @@ export const AssetRequest = () => {
                             <ViewAssetRequest
                                 popupClose={() => setViewAssetRequestOpen(false)}
                                 popupOpen={viewAssetRequestOpen}
-                                asset={assetRequest}
+                                assetRequest={assetRequest}
                             />
                         ) : null}
 
