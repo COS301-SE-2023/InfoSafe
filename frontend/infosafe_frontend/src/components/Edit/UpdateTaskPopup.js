@@ -142,11 +142,11 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                             <p className="editTaskLabels">Status</p>
                             <Dropdown
                                 options={statusOptions}
-                                // value={statusOptions.find((option) => option.value === task_status)}
+                                value={statusOptions.find((option) => option.value === task.task_status)}
                                 className="editTaskStatusDropdown"
                                 name="editTaskStatusDropdown"
                                 placeholder={"Select Status"}
-                                // onChange={(selectedOption) => setTaskStatus(selectedOption.value)}
+                                onChange={(selectedOption) => setValues({...values, task_status: selectedOption.value})}
                             />
                             <p className="editTaskLabels">Completion Date</p>
                             <input
