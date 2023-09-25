@@ -82,7 +82,7 @@ export const Dashboard = () => {
                                 {myTasks.map((task, index) => (
                                     <li key={index}>
                                         <p>{task.task_name}</p>
-                                        <p>{`${task.daysUntilDue} days until due`}</p>
+                                        <p className={`deadline${(index % 3) + 1}`}>{`${task.daysUntilDue} days until due`}</p>
                                     </li>
                                 ))}
                             </ul>

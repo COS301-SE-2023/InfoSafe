@@ -1082,12 +1082,12 @@ const RoleCreation = () => {
                         Create Role
                     </button>
 
-                    <button
-                        className="clearButton"
-                        onClick={clearAll}
-                    >
-                        Clear
-                    </button>
+                    {/*<button*/}
+                    {/*    className="clearButton"*/}
+                    {/*    onClick={clearAll}*/}
+                    {/*>*/}
+                    {/*    Clear*/}
+                    {/*</button>*/}
                 </div>
 
             </div>

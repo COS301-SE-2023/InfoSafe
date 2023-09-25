@@ -29,7 +29,6 @@ export const Requests = () => {
     }
 
     const handleRequestSelect = (requestType) => {
-        console.log(requestType.value)
         setSelectedRequest(requestType.value);
     };
 

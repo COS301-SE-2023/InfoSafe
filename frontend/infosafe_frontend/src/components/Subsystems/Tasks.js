@@ -7,7 +7,7 @@ import "../../styling/Tasks.css";
 import {FaSearch} from "react-icons/fa";
 import {RiEditBoxFill} from "react-icons/ri";
 import EditDevice from "../Edit/EditDevice";
-import {ReviewRisk} from "../ReviewRiskPopup";
+import {ReviewRisk} from "../Reviews/ReviewRiskPopup";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
 

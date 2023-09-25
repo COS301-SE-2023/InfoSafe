@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 export const useGetSR = () => {
     const [showAllSupport, setShowAllSupport] = useState([]);
     const [showMySupport, setShowMySupport] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/supportrequest/getSr', {
@@ -14,17 +13,15 @@ export const useGetSR = () => {
         })
             .then((res) => {
                 if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
+                    console.log("No support request");
                 }
                 return res.json();
             })
             .then((result) => {
-                setIsLoading(false); // Data has been loaded
                 setShowAllSupport(result);
             })
             .catch((error) => {
                 console.error('Error fetching showAllSupport:', error);
-                setIsLoading(false);
             });
     }, []);
 
@@ -37,23 +34,21 @@ export const useGetSR = () => {
         })
             .then((res) => {
                 if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
+                    console.log("No personal support request");
                 }
                 return res.json();
             })
             .then((result) => {
-                setIsLoading(false); // Data has been loaded
                 setShowMySupport(result);
             })
             .catch((error) => {
                 console.error('Error fetching showMySupport:', error);
-                setIsLoading(false);
+
             })
     }, []);
 
     return {
         showAllSupport,
         showMySupport,
-        isLoading,
     };
 };
