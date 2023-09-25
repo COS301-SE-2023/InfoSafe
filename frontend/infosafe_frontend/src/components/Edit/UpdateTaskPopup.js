@@ -39,6 +39,19 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         }
     }, [task]);
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/user/getAll", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUsers(result);
+            });
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
@@ -109,7 +122,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                         <button className="editTaskBackButton" onClick={popupClose}>
                             <IoArrowBackOutline className="editTaskBackIcon" />
                         </button>
-                        <form>
+                        <form onClick={handleSubmit}>
                             <p className="editTaskPageTitle">Update Task</p>
                             <p className="editTaskInputTitle">Task Name</p>
                             <textarea
