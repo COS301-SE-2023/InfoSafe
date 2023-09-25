@@ -21,7 +21,7 @@ function Login(){
                     window.location.href = '/home';
                 });
             } else {
-                console.log("Login failed");
+                window.alert("Incorrect Login Details");
             }
         })
     };
