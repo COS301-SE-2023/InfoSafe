@@ -45,7 +45,7 @@ const useRequestMaker = () => {
                 support = {user_email , support_type, support_description, support_status}
                 break;
         }
-        const access = {user_email, availableDataScope_id, reason, status}
+        const access = {user_email, dataScope_id, reason, status}
         const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status}
         let apiUrl = "";
         let requestBody = {};

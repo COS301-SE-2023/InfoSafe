@@ -132,7 +132,7 @@ export const Requests = () => {
     }
 
     const CreateAccessRequest = () => {
-        const { handleClick, reason, setReason, setAvailableDataScope_id, setStatus } = useRequestMaker();
+        const { handleClick, reason, setReason, setDataScope_id, setStatus } = useRequestMaker();
         const accessRequests = useAccessRequests(); // Rename datascopeData to accessRequests
         const handleReasonChange = (e) => {
             setReason(e.target.value);
@@ -150,7 +150,7 @@ export const Requests = () => {
                                 className="accessRequestDatascopeDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add DataScope"}
-                                onChange={(selectedOption) => setAvailableDataScope_id(selectedOption.value)}
+                                onChange={(selectedOption) => setDataScope_id(selectedOption.value)}
                             />
                         ) : (
                             <p className="loadTitle">No available DataScopes</p>
