@@ -47,7 +47,7 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
                                 <p className="editSupportRequestTypeLabel">Type of Support Request</p>
                                 <p className="editSupportRequestTypeDisplay">{support.support_type}</p>
                                 <p className="editSupportRequestUserLabel">User</p>
-                                <p className="editSupportRequestTypeDisplay">{support.user_id}</p>
+                                <p className="editSupportRequestTypeDisplay">{support.user_id.first_name} {support.user_id.last_name}</p>
                                 <p className="editSupportRequestDescriptionLabel">Description</p>
                                 <textarea
                                     className="editSupportRequestDescriptionDisplay"

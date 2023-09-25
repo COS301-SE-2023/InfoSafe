@@ -17,7 +17,7 @@ const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
                             <p className="viewSupportRequestTypeLabel">Type of Support Request</p>
                             <p className="viewSupportRequestTypeDisplay">{support.support_type}</p>
                             <p className="viewSupportRequestUserLabel">User</p>
-                            <p className="viewSupportRequestUserDisplay">{support.user_id.first_name}</p>
+                            <p className="viewSupportRequestUserDisplay">{support.user_id.first_name} {support.user_id.last_name}</p>
                             <p className="viewSupportRequestDescriptionLabel">Description</p>
                             <textarea
                                 className="viewSupportRequestDescriptionDisplay"
