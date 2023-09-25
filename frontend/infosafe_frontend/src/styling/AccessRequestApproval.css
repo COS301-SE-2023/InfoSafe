@@ -1,35 +1,55 @@
-
 .approveAccessRequestPopup {
-    width: 50vw;
-    height: 75vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(20px);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .approveAccessRequestPopupBorder {
-    border: 1px solid #ffffff;
-    width: 46vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 70vh;
     position: relative;
-    top: 2.5vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
+.approveAccessRequestPopupBorder::-webkit-scrollbar{
+    display: none;
+}
 .approveAccessRequestBackButton {
-    background-color: rgba(233, 0, 0, 1);
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .approveAccessRequestBackIcon {
     color: #ffffff;
@@ -38,7 +58,7 @@
     width: 1.3vw;
 }
 .approveAccessRequestTitle {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -47,169 +67,147 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     position: relative;
-    top: -3vh;
-    left: 20%;
-}
-.approveAccessRequestDatascopeDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 1vh;
-    margin-top: 6vh;
+    top: -2vh;
+    margin: 0 auto;
+    margin-bottom: 4vh;
 }
 .approveAccessRequestDatascopeLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    left: 25%;
-    margin-bottom: 1vh;
+    left: 15%;
 }
 .approveAccessRequestDatascopeNameDisplay {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    position: relative;
-    left: 25%;
-    top: 8%;
-}
-.approveAccessRequestRoleDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    width: 70%;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     position: relative;
-    margin: 0 auto;
+    left: 15%;
 }
 .approveAccessRequestRoleLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    margin-bottom: 1vh;
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     position: relative;
-    left: 25%;
+    left: 15%;
 }
 .approveAccessRequestRoleDisplay {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    top: 8%;
-    position: relative;
-    left: 25%;
-}
-.approveAccessRequestReasonDiv {
-    justify-content: center;
-    align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    width: 70%;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     position: relative;
-    margin: 0 auto;
+    left: 15%;
 }
 .approveAccessRequestReasonLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
-    position: relative;
-    top: -1vh;
-}
-.approveAccessRequestReasonDisplay {
-    font-size: 16px;
-    width: 50%;
-    text-align: left;
-    border: none;
-    background-color: #ffffff;
-    top: 8%;
-    position: relative;
-}
-.approveAccessRequestStatusDiv {
     justify-content: center;
     align-content: center;
-    color: #000;
-    text-align: center;
-    font-size: 25px;
+    color: black;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
     position: relative;
+    left: 15%;
+}
+.approveAccessRequestReasonDisplay {
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    width: 70%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    position: relative;
+    left: 15%;
 }
 .approveAccessRequestStatusLabel {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
-    border: none;
-    margin-bottom: 1vh;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    left: 15%;
+    top: -0.5vh;
 }
 .approveAccessRequestStatusDisplay {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
-    border: none;
-    background-color: #ffffff;
-    top: 8%;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    width: 70%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     position: relative;
-    left: 25%;
+    left: 15%;
+    top: -0.5vh;
 }
 .approveAccessRequestButtonsDiv{
     display: flex;
-    gap: 20%;
+    height: 20%;
+    width: 90%;
+    padding: 0;
     position: relative;
-    top: 4vh;
-    width: 50%;
-    left: 25%;
-
+    left: 15%;
+    justify-content: left;
+    vertical-align: center;
+    top: -1vh;
 }
 .approveAccessRequestApproveButton{
-    width: fit-content;
-    height: fit-content;
-    background-color: #227821;
     color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    background: green;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 0.5% 2%;
+    width: fit-content;
     position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
+    height: 30%;
+    margin: 2% 0;
     border: none;
-    padding: 0.4% 1%;
-
-
 }
 .approveAccessRequestRejectButton{
     width: fit-content;
-    height: fit-content;
     background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
     position: relative;
-    align-self: center;
-    justify-self: center;
-    margin: 0 auto;
+    height: 30%;
+    margin-left: 2%;
+    margin-top:  2%;
     border: none;
-    padding: 0.4% 1%;
 }

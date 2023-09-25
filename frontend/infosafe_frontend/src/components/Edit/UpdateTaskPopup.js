@@ -8,6 +8,12 @@ import Select from "react-select";
 /* eslint-disable  no-unused-vars */
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3'];
 const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
+
+const statusOptions = [
+    {value: 'High', label: 'High'},
+    {value: 'Medium', label: 'Medium'},
+    {value: 'Low', label: 'Low'},
+];
 export const UpdateTask = ({ task, popupClose, popupOpen }) => {
     const [users, setUsers] = useState('');
     const [selectedUsers, setSelectedUsers] = useState('');
@@ -33,6 +39,19 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         }
     }, [task]);
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/user/getAll", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUsers(result);
+            });
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
@@ -53,63 +72,110 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         setSelectedUsers(selectedOptions);
     };
 
+    const customStyles = {
+        control: (base, state) => ({
+            ...base,
+            background: "#CECECE",
+            // match with the menu
+            borderRadius: state.isFocused ? "2px 2px 0 0" : 3,
+            // Removes weird border around container
+            boxShadow: state.isFocused ? null : null,
+            width: "70%",
+            color: 'black',
+            borderColor: state.isFocused ? "grey" : "transparent",
+            '&:hover': { borderColor: 'grey' }
+        }),
+        menu: base => ({
+            ...base,
+            // override border radius to match the box
+            borderRadius: 0,
+            // kill the gap
+            marginTop: 0,
+            width: "70%",
+        }),
+        menuList: base => ({
+            ...base,
+            // kill the white space on first and last option
+            padding: 0
+
+        }),
+        dropdownIndicator: base => ({
+            ...base,
+            color: '#999',
+        }),
+        placeholder: base => ({
+            ...base,
+            color: 'black'
+        }),
+        multiValue: base => ({
+            ...base,
+            background: "white",
+            color: 'black'
+        })
+    };
+
     return (
         <Popup task={task} open={popupOpen} closeOnDocumentClick={false}>
             <div className="updateTaskOverlay">
-                <div className="borderUpdateTask">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
-                    </button>
-                    <form>
-                        <p className="pageTitle">Update Task</p>
-                        <p className="inputTitle">Task Name</p>
-                        <textarea
-                            className="displayData"
-                            defaultValue={task.task_name}
-                            onChange={e => setValues({...values, task_name: e.target.value})}
-                        />
-                        <p className="inputTitle">Task Description</p>
-                        <textarea
-                            className="inputTextArea"
-                            defaultValue={task.task_description}
-                            onChange={e => setValues({...values, task_description: e.target.value})}
-                        />
-                        <p className="inputTitle">Assignees</p>
-                        {/*Still unsure about this*/}
-                        {users && users.length > 0 ? (
-                            <Select  //Dropdown
-                                options={users.map((data) => ({value: data.user_id, label: data.email}))}
-                                value = {selectedUsers}
-                                className="datascopeDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add Assignees"}
-                                onChange={handleSelect}
-                                isSearchable={true}
-                                isMulti
-                            /> ) : (
-                            <p>Loading...</p>
-                        )}
-                        <p className="inputTitle">Status</p>
-                        <input
-                            className="updateTaskStatusInput"
-                            defaultValue={task.task_status}
-                            onChange={(e) => setValues({...values, task_status: e.target.value})}
-                            required
-                        />
-                        <p className="inputTitle">Completion Date</p>
-                        <input
-                            type="date"
-                            className="updateTaskDateInput"
-                            defaultValue={task.due_date}
-                            onChange={(e) => setValues({...values, due_date: e.target.value})}
-                            required
-                        />
-                        <div className="updateTaskButtonDiv">
-                            <button className="updateTaskSubmitButton" type="submit">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
+                <div className="popupBackground">
+                    <div className="borderUpdateTask">
+                        <button className="editTaskBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="editTaskBackIcon" />
+                        </button>
+                        <form onClick={handleSubmit}>
+                            <p className="editTaskPageTitle">Update Task</p>
+                            <p className="editTaskInputTitle">Task Name</p>
+                            <textarea
+                                className="editTaskInputTextArea"
+                                defaultValue={task.task_name}
+                                onChange={e => setValues({...values, task_name: e.target.value})}
+                            />
+                            <p className="editTaskLabel">Task Description</p>
+                            <textarea
+                                className="editTaskDescriptionInput"
+                                defaultValue={task.task_description}
+                                onChange={e => setValues({...values, task_description: e.target.value})}
+                            />
+                            <p className="editTaskLabels">Assignees</p>
+                            {/*Still unsure about this*/}
+                            {users && users.length > 0 ? (
+                                <Select  //Dropdown
+                                    options={users.map((data) => ({value: data.user_id, label: data.email}))}
+                                    value = {selectedUsers}
+                                    className="editTaskAssignees"
+                                    name="editTaskAssignees"
+                                    placeholder={"Add Assignees"}
+                                    onChange={handleSelect}
+                                    isSearchable={true}
+                                    // isMulti
+                                    styles={customStyles}
+                                /> ) : (
+                                <p>Loading...</p>
+                            )}
+                            <p className="editTaskLabels">Status</p>
+                            <Dropdown
+                                options={statusOptions}
+                                value={statusOptions.find((option) => option.value === task.task_status)}
+                                className="editTaskStatusDropdown"
+                                name="editTaskStatusDropdown"
+                                placeholder={"Select Status"}
+                                onChange={(selectedOption) => setValues({...values, task_status: selectedOption.value})}
+                            />
+                            <p className="editTaskLabels">Completion Date</p>
+                            <input
+                                type="date"
+                                className="updateTaskDateInput"
+                                defaultValue={task.due_date}
+                                onChange={(e) => setValues({...values, due_date: e.target.value})}
+                                required
+                            />
+                            <div className="updateTaskButtonDiv">
+                                <button className="updateTaskSubmitButton" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </Popup>

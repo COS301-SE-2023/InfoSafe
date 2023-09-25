@@ -52,43 +52,46 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
     return (
         <Popup risk={risk} open={popupOpen} closeOnDocumentClick={false}>
             <div className="editRiskOverlay">
+                <div className="popupBackground">
                 <div className="borderEditRisk">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon" />
+                    <button className="editRiskBackButton" onClick={popupClose}>
+                        <IoArrowBackOutline className="editRiskBackIcon" />
                     </button>
                     <form onSubmit={handleSubmit}>
-                        <p className="pageTitle">Edit Risk</p>
-                        <p className="displayTitle">{risk.risk_name}</p>
-                        <p className="inputTitle">Data Scope</p>
-                        <p className="displayData">{risk.dataScope.ds_name}</p>
-                        <p className="inputTitle">Probability</p>
+                        <p className="editRiskPageTitle">Edit Risk</p>
+                        <div className="editRiskContent">
+                        <p className="editRiskInputTitle">Data Scope</p>
+                        <p className="editRiskDisplayData">{risk.dataScope.ds_name}</p>
+                        <p className="editRiskInputTitle">Probability</p>
                         <Dropdown
                             options={PROBABILITY}
                             value={risk.probability_rating}
-                            className="probabilityDropdown"
+                            className="editRiskProbabilityDropdown"
                             name="probabilityDropdown"
                             onChange={(selectedOption) => setValues({...values, probability_rating: selectedOption.value})}
                         />
-                        <p className="inputTitle">Impact</p>
+                        <p className="editRiskInputTitle">Impact</p>
                         <Dropdown
                             options={IMPACT}
                             value={risk.impact_rating}
-                            className="impactDropdown"
+                            className="editRiskImpactDropdown"
                             name="impactDropdown"
                             onChange={(selectedOption) => setValues({...values, impact_rating: selectedOption.value})}
                         />
-                        <p className="inputTitle">Vulnerability/Threat</p>
+                        <p className="editRiskInputTitle">Vulnerability/Threat</p>
                         <textarea
-                            className="inputTextArea"
+                            className="editRiskInputTextArea"
                             defaultValue={risk.risk_description}
                             onChange={e => setValues({...values, risk_description: e.target.value})}
                         />
                         <div>
-                            <button className="submitButton" type="submit">
+                            <button className="editRiskSubmitButton" type="submit">
                                 Submit
                             </button>
                         </div>
+                        </div>
                     </form>
+                </div>
                 </div>
             </div>
         </Popup>
