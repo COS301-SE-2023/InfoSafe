@@ -12,13 +12,14 @@ export const ConfirmDelete = ({popupClose, popupOpen, yesDelete}) => {
     return(
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="deleteOverlay">
-                <div className="popupBackground">
+                <div className="deleteBackground">
                     <div className="borderDelete">
-                        <p className="deleteMessage">Are you sure?</p>
-                        <div className="confirmationButtons">
-                            <button  className="yesButton" onClick={confirm}>Yes</button>
-                            <button className="noButton" onClick={popupClose}>No</button>
-                        </div>
+                        <p className="deleteTitle">Confirm Delete</p>
+                            <p className="deleteMessage">Are you sure?</p>
+                            <div className="confirmationButtons">
+                                <button  className="yesButton" onClick={confirm}>Yes</button>
+                                <button className="noButton" onClick={popupClose}>No</button>
+                            </div>
                     </div>
                 </div>
             </div>
