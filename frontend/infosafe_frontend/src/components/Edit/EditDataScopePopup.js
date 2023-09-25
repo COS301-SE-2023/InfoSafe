@@ -105,31 +105,31 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-                                <div className="datascope_addrole">
-                                    <p className="AddRoleNameLabel">Role Type</p>
-                                    <input
-                                        className="AddRoleNameInput"
-                                        data-testid="addRole"
-                                        name="role"
-                                        value={newRole.role}
-                                        onChange={handleInputChange}
-                                    />
-                                    <p className="AddRoleDescriptionLabel">Role Description</p>
-                                    <textarea
-                                        className="AddRoleDescriptionInput"
-                                        data-testid="addRoleDescription"
-                                        name="roledescription"
-                                        value={newRole.roledescription}
-                                        onChange={handleInputChange}
-                                    />
-                                    <ul>
-                                        {dataScopeRoles.map((role, index) => (
-                                            <li key={index}>{role.role_type}</li>
-                                        ))}
-                                    </ul>
-                                </div>
+
+                                <p className="AddRoleNameLabel">Role Type</p>
+                                <input
+                                    className="AddRoleNameInput"
+                                    data-testid="addRole"
+                                    name="role"
+                                    value={newRole.role}
+                                    onChange={handleInputChange}
+                                />
+                                <p className="AddRoleDescriptionLabel">Role Description</p>
+                                <textarea
+                                    className="AddRoleDescriptionInput"
+                                    data-testid="addRoleDescription"
+                                    name="roledescription"
+                                    value={newRole.roledescription}
+                                    onChange={handleInputChange}
+                                />
+                                {/*<ul>*/}
+                                {/*    {dataScopeRoles.map((role, index) => (*/}
+                                {/*        <li key={index}>{role.role_type}</li>*/}
+                                {/*    ))}*/}
+                                {/*</ul>*/}
+
                             </div>
-                            <div className="createDataScopeButtonsDiv">
+                            <div className="editDataScopeButtonsDiv">
                                 <button
                                     className="AddRoleButton"
                                     data-testid="addRoleButton"

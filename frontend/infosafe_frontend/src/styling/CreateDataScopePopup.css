@@ -162,71 +162,6 @@
     left: 0.5%;
     font-size: 16px
 }
-.AddRoleNameLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    color: #000000;
-    left: 15%;
-    width: 75%;
-    position: relative;
-    top: -1vh;
-}
-.AddRoleNameInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    border: none;
-    left: 15%;
-    position: relative;
-    width: 70%;
-    background-color: #CECECE;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
-    height: 4%;
-    border-radius: 2px;
-    top: -3vh;
-}
-.AddRoleDescriptionLabel {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    color: #000000;
-    left: 15%;
-    width: 75%;
-    position: relative;
-    top: -3vh;
-}
-
-.AddRoleDescriptionInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    border: none;
-    left: 15%;
-    position: relative;
-    width: 70%;
-    background-color: #CECECE;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
-    height: 4%;
-    border-radius: 2px;
-    margin: 0;
-    top: -5vh;
-}
-.AddRoleButton {
-    background: #373737;
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: center;
-    letter-spacing: 1px;
-    color: #ffffff;
-    padding: 0.5% 2%;
-    width: fit-content;
-    position: relative;
-    height: 30%;
-    margin: 2% 0;
-}
 .datascope_finish {
     background: #373737;
     border: 1px solid #3a3a3a;
@@ -244,8 +179,9 @@
     width: fit-content;
     position: relative;
     height: 30%;
-    margin-left: 2%;
+    margin-left: 0;
     margin-top:  2%;
+    left: 15%;
 }
 .createDataScopeOverlay input {
     border-radius: 2px;
@@ -256,15 +192,4 @@
     overflow-y: hidden;
     scrollbar-width: none;
 }
-.createDataScopeButtonsDiv{
-    display: flex;
-    height: 20%;
-    width: 90%;
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
-    top: -4vh;
-    left: 10%;
-    justify-content: left;
-    vertical-align: center;
-}
+
