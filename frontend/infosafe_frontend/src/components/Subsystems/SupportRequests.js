@@ -11,7 +11,7 @@ export const SupportRequests = () => {
     const {showMySupport, showAllSupport} = useGetSR();
     const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
-    const EditSupportRequestDiv = (supp) => {
+    const EditSupportRequestDiv = ({ supp }) => {
         console.log(supp)
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {

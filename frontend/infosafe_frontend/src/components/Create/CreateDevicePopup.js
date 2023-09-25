@@ -37,10 +37,11 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             availability,
             used,
             device_type,
-            current_assignee: selectedUsers ? selectedUsers.label : null,
-            previous_assignee: null
+            current_assignee: selectedUsers ? selectedUsers.label : '',
+            previous_assignee: ''
         }
-        console.log(current_assignee)
+        //console.log(selectedUsers);
+        // console.log(asset);
         fetch("http://localhost:8080/api/asset/addAsset", {
             method: "POST",
             headers: {
@@ -49,6 +50,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             },
             body: JSON.stringify(asset)
         }).then(() => {
+            //console.log(JSON.stringify(asset))
             console.log("New Asset added")
         })
         popupClose()

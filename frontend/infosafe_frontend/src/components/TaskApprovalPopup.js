@@ -6,6 +6,49 @@ import Select from "react-select";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3','TASK 4','TASK 5'];
+
+const customStyles = {
+    control: (base, state) => ({
+        ...base,
+        background: "#CECECE",
+        // match with the menu
+        borderRadius: state.isFocused ? "2px 2px 0 0" : 3,
+        // Removes weird border around container
+        boxShadow: state.isFocused ? null : null,
+        width: "70%",
+        color: 'black',
+        borderColor: state.isFocused ? "grey" : "transparent",
+        '&:hover': { borderColor: 'grey' }
+    }),
+    menu: base => ({
+        ...base,
+        // override border radius to match the box
+        borderRadius: 0,
+        // kill the gap
+        marginTop: 0,
+        width: "70%",
+    }),
+    menuList: base => ({
+        ...base,
+        // kill the white space on first and last option
+        padding: 0
+
+    }),
+    dropdownIndicator: base => ({
+        ...base,
+        color: '#999',
+    }),
+    placeholder: base => ({
+        ...base,
+        color: 'black'
+    }),
+    multiValue: base => ({
+        ...base,
+        background: "white",
+        color: 'black'
+    })
+};
+
 export const TaskApproval = ({ task, popupClose, popupOpen }) => {
     return (
         <Popup task={task} open={popupOpen} closeOnDocumentClick={false}>
@@ -23,21 +66,20 @@ export const TaskApproval = ({ task, popupClose, popupOpen }) => {
                         <p className="approveTaskDisplayTitle">Data Scope</p>
                         <p className="approveTaskDisplayData">{task.dataScope.ds_name}</p>
                         <p className="approveTaskDisplayTitle">Assigned User</p>
-                        <p className="approveTaskDisplayData">
-                            {task.users && task.users.length > 0 ? (
-                                <Select
-                                    //options={task.users.map((data) => ({ value: data.user_id, label: data.email }))}
-                                    value={task.users.map((data) => ({ value: data.first_name, label: data.email }))}
-                                    className="datascopeDropdown"
-                                    name="datascopeDropdown"
-                                    placeholder={"Add Assignees"}
-                                    //onChange={handleSelect}
-                                    isSearchable={true}
-                                />
-                            ) : (
-                                <p>Loading...</p>
-                            )}
-                        </p>
+                        {task.users && task.users.length > 0 ? (
+                            <Select
+                                styles={customStyles}
+                                //options={task.users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                value={task.users.map((data) => ({ value: data.first_name, label: data.email }))}
+                                className="approveTaskSelect"
+                                name="datascopeDropdown"
+                                placeholder={"Add Assignees"}
+                                //onChange={handleSelect}
+                                isSearchable={true}
+                            />
+                        ) : (
+                            <p>Loading...</p>
+                        )}
                         <p className="approveTaskDisplayTitle">Task Description</p>
                         <textarea className="approveTaskViewTextArea" readOnly={true} value={task.task_description}/>
                         <div className="taskApprovalButtonsDiv">

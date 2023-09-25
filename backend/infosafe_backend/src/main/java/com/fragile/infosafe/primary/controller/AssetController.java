@@ -27,7 +27,7 @@ public class AssetController {
     public List<Asset> assetlist() { return service.getAllAssets(); }
 
     @PutMapping("/update/{id}")
-    public Asset updateAsset (@PathVariable("id") int asset_id, @RequestBody Asset asset) {
+    public Asset updateAsset (@PathVariable("id") int asset_id, @RequestBody AssetRequest asset) {
         asset.setAsset_id(asset_id);
         return service.updateAsset(asset);
     }

@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name="asset_requests")
-public class AssetRequest {
+public class AssetRequests {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int asset_request_id;
     private String reason;
