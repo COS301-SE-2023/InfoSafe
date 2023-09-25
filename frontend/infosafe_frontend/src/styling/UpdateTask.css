@@ -202,5 +202,6 @@
 }
 .editTaskAssignees{
     position: relative;
-    top: -1vh;
+    top: -2vh;
+    left: 15%;
 }
