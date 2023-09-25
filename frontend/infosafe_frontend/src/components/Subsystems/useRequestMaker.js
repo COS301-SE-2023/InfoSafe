@@ -10,10 +10,8 @@ const useRequestMaker = () => {
     const [support_status, setSupportStatus] = useState('')
     // Access Requests
     const [dataScope_id, setDataScope_id] = useState(null)
-    const [status, setStatus] = useState('')
     // Asset Requests
     const [desired_date, setDesiredDate] = useState('')
-    const [request_status, setRequestStatus] = useState('')
     const [selectedDevice, setSelectedDevice] = useState("");
 
     const [user_email, setUserEmail] = useState('');
@@ -32,21 +30,21 @@ const useRequestMaker = () => {
         let support = {};
         switch(support_type){
             case 'DataScope Support':
-                support = {user_email , support_type, dataScope_id , support_description, support_status}
+                support = {user_email , support_type, dataScope_id , support_description, support_status: "Open"}
                 break;
             case 'Asset Support':
                 console.log(asset_id)
-                support = {user_email , support_type, asset_id, support_description, support_status}
+                support = {user_email , support_type, asset_id, support_description, support_status: "Open"}
                 break;
             case 'Task Support':
-                support = {user_email , support_type, task_id, support_description, support_status}
+                support = {user_email , support_type, task_id, support_description, support_status: "Open"}
                 break;
             case 'Other':
-                support = {user_email , support_type, support_description, support_status}
+                support = {user_email , support_type, support_description, support_status: "Open"}
                 break;
         }
-        const access = {user_email, dataScope_id, reason, status}
-        const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status}
+        const access = {user_email, dataScope_id, reason, status: "Open"}
+        const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status: "Open"}
         let apiUrl = "";
         let requestBody = {};
 
@@ -107,12 +105,8 @@ const useRequestMaker = () => {
         setSupportStatus,
         dataScope_id,
         setDataScope_id,
-        status,
-        setStatus,
         desired_date,
         setDesiredDate,
-        request_status,
-        setRequestStatus,
         selectedAssetId,
         setSelectedAssetId,
         setSelectedDevice,
