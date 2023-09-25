@@ -3,7 +3,7 @@ import ViewAccessRequest from "../View/ViewAccessRequest";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
-import AccessRequestApproval from "../Edit/AccessRequestApproval";
+import AccessRequestApproval from "../Reviews/AccessRequestApproval";
 import "../../styling/AccessRequests.css";
 import {getRoles} from "@testing-library/react";
 import {useGetAr} from "../getData/getAR";

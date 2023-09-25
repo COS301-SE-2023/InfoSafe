@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {ViewRisk} from "../View/ViewRisk";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditRisk} from "../Edit/EditRisk";
-import {ReviewRisk} from "../ReviewRiskPopup";
+import {ReviewRisk} from "../Reviews/ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
 import "../../styling/Risks.css";
 import {useGetPerms} from "../getData/getPerms";

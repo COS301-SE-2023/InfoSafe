@@ -5,11 +5,8 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
-    const [review, setReview] = useState(false);
-
     const handleReview = (reviewValue) => {
-        setReview(reviewValue);
-        const payload = {review, request_id: access.request_id, dataScope_id: access.dataScope_id, user_email: access.user_email}
+        const payload = {review: reviewValue, request_id: access.request_id, dataScope_id: access.dataScope_id, user_email: access.user_email}
         fetch('http://localhost:8080/api/accessrequest/reviewAccess', {
             method: 'POST',
             headers: {
@@ -48,12 +45,14 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                             <p className="approveAccessRequestStatusDisplay">{access.status}</p>
                             <div className="approveAccessRequestButtonsDiv">
                                 <button
+                                    type = "button"
                                     className="approveAccessRequestApproveButton"
                                     onClick={() => handleReview(true)}
                                 >
                                     Accept
                                 </button>
                                 <button
+                                    type = "button"
                                     className="approveAccessRequestRejectButton"
                                     onClick={() => handleReview(false)}
                                 >

@@ -18,12 +18,10 @@ public class SupportRequest {
     private String support_type;
     private String support_description;
     private String support_status;
-
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user_id;
-
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope_id;
 
