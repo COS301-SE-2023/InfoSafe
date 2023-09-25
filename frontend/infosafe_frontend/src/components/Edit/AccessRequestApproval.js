@@ -5,38 +5,18 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
-    const [selectedReview, setSelectedReview] = useState(null);
-    const [values, setValues] = useState({
-        request_id: '',
-        user_id: '',
-        dataScope_id: '',
-    });
-
-    useEffect(() => {
-        if (access) {
-            setValues({
-                request_id: access.request_id,
-                user_id: access.user_id,
-                dataScope_id: access.dataScope_id,
-                review: selectedReview,
-            });
-        }
-    }, [access, selectedReview]);
+    const [review, setReview] = useState(false);
 
     const handleReview = (reviewValue) => {
-        setSelectedReview(reviewValue);
-        handleSubmit(); // Trigger form submission when "Accept" or "Reject" is clicked
-    };
-
-    const handleSubmit = () => {
-        console.log(values);
+        setReview(reviewValue);
+        const payload = {review, request_id: access.request_id, dataScope_id: access.dataScope_id, user_email: access.user_email}
         fetch('http://localhost:8080/api/accessrequest/reviewAccess', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
             },
-            body: JSON.stringify(values),
+            body: JSON.stringify(payload),
         })
             .then(() => {
                 console.log('Updated User');
