@@ -67,15 +67,17 @@ public class AssetRequestService {
             Optional<Asset> assetOptional = assetRepository.findByAssetId(reviewRequest.getAsset_id());
             Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());
             if (assetOptional.isPresent() && userOptional.isPresent()) {
+                System.out.println("Doing this");
                 Asset asset = assetOptional.get();
                 User user = userOptional.get();
+                asset.setAvailability("No");
                 asset.setCurrent_assignee(user);
                 assetRepository.save(asset);
-                deleteService.deleteAssetAndSaveToSecondary(reviewRequest.getRequest_id());
+                deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                 return ResponseEntity.ok("given to user");
             }
         } else {
-            deleteService.deleteAssetAndSaveToSecondary(reviewRequest.getRequest_id());
+            deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
             return ResponseEntity.ok("rejected access");
         }
         return ResponseEntity.badRequest().build();

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ViewAssetRequest from "../View/ViewAssetRequest";
-import ReviewAssetRequest from "../ReviewAssetRequest";
+import ReviewAssetRequest from "../Reviews/ReviewAssetRequest";
 import "../../styling/AssetRequests.css";
 import {FaSearch} from "react-icons/fa";
 import {useGetAssAR} from "../getData/getAssAR";
