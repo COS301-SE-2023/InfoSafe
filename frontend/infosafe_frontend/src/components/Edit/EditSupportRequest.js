@@ -3,16 +3,19 @@ import '../../styling/EditSupportRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
+
 const STATUS = ["LOGGED","IN PROGRESS","RESOLVED"];
 const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
+    console.log(support)
     const[values, setValues]=useState({
         support_id: support.support_id,
-        user_id: support.user_id,
         support_type: support.support_type,
         support_description: support.support_description,
-        support_status: support.support_status
+        support_status: support.support_status,
+        user_id: support.user_id,
+        dataScope_id: support.dataScope_id,
+        task_id: support.task_id,
+        asset_id: support.asset_id
     })
 
     const handleSubmit = (e) => {
@@ -27,7 +30,6 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
         }).then(()=>{
             console.log("Updated AccessRequest")
         })
-        //console.log(JSON.stringify(values))
         popupClose()
     }
 
