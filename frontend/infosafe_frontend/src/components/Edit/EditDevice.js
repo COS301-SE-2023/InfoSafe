@@ -7,18 +7,13 @@ import Select from "react-select";
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
+
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
     const newPreviousAssignee = asset.current_assignee;
     let title = "Current Custodian: Not Assigned";
     let placeholder = "Add Assignee";
-
-    if(newPreviousAssignee != null){
-        title = "Current Custodian: " + newPreviousAssignee.email;
-        placeholder = "Change Assignee";
-    }
-
     const[values, setValues]=useState({
         asset_id: '',
         asset_name: '',
@@ -31,6 +26,14 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         previous_assignee: ''
     })
 
+    if(newPreviousAssignee != null){
+        const email = newPreviousAssignee.email;
+        title = "Current Custodian: " + email;
+        placeholder = "Change Assignee";
+    }
+
+
+    //Build for edit
     useEffect(() => {
         if (asset) {
             setValues({
@@ -45,16 +48,24 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 previous_assignee: asset.previous_assignee
             });
         }
-        //console.log(asset);
     }, [asset]);
 
     const handleSelect = (selectedOptions) => {
         setSelectedUser(selectedOptions);
-        console.log(selectedOptions);
-        asset.current_assignee = selectedOptions;
-        if (asset.current_assignee !== newPreviousAssignee)
+
+        let foundUser = users[0];
+
+        for(let i=0; i<users.length; i++){
+            if(users[i].user_id === selectedOptions.value){
+                foundUser = users[i];
+                asset.previous_assignee = newPreviousAssignee;
+                //asset.current_assignee = users[i];
+                break;
+            }
+        }
+
+        if (foundUser !== newPreviousAssignee)
         {
-            asset.previous_assignee = newPreviousAssignee;
             setValues({
                 asset_id: asset.asset_id,
                 asset_name: asset.asset_name,
@@ -63,15 +74,15 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 used: asset.used,
                 availability: asset.availability,
                 device_type: asset.device_type,
-                current_assignee: asset.current_assignee,
-                previous_assignee: asset.previous_assignee
+                current_assignee: foundUser ? foundUser.email: '',
+                previous_assignee: newPreviousAssignee ? newPreviousAssignee.email: ''
             });
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("UPDATED = " + values)
+
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -79,9 +90,9 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
             },
             body:JSON.stringify(values)
         }).then(()=>{
+            console.log(JSON.stringify(values))
             console.log("Updated Asset")
         })
-        console.log(JSON.stringify(values))
         popupClose()
     }
 
