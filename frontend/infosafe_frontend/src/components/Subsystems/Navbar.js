@@ -105,10 +105,12 @@ const NavBar = () => {
             // document.getElementById("backdrop").style.backgroundColor = "red";
             setWidth(88);
             setLeft(12);
+            document.getElementById("menuIcon").style.transform = "rotate(90deg)";
         } else {
             document.getElementById("tabMenu").style.display = "none";
             setWidth(100);
             setLeft(0);
+            document.getElementById("menuIcon").style.transform = "rotate(0)";
         }
     };
 
@@ -128,7 +130,7 @@ const NavBar = () => {
                 <div className='shift' style={{ width: `${width}%`,left: `${left}%`}}>
                     <div className="toolbar" id="toolbar" style={{width: `${width}%`}}>
                         <div className="toolbarLeft">
-                            <IoMenu className="menuIcon" onClick={displayMenu}/>
+                            <IoMenu className="menuIcon" id="menuIcon" onClick={displayMenu}/>
                             <p className="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
                         </div>
                         <div className="toolbarRight">
