@@ -18,7 +18,7 @@ const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
                     </div>
                     <div className="viewSupportRequestUserDiv">
                         <p className="viewSupportRequestUserLabel">User</p>
-                        <p className="viewSupportRequestTypeDisplay">{support.used_id.first_name}</p>
+                        <p className="viewSupportRequestTypeDisplay">{support.user_id.first_name}</p>
                     </div>
                     <div className="viewSupportRequestDescriptionDiv">
                         <p className="viewSupportRequestDescriptionLabel">Description</p>

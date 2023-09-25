@@ -33,14 +33,13 @@ export const AssetRequest = () => {
         }
     }
 
-
     const ViewAssetRequests = ({ assetRequest }) => {
         const [viewAssetRequestOpen, setViewAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
             return (
                 <li key={assetRequest.asset_request_id}>
                     <p onClick={() => setViewAssetRequestOpen(!viewAssetRequestOpen)}>
-                        Asset Request {assetRequest.asset_request_id}
+                        Asset Request {assetRequest.asset_request_id}{/* : {assetRequest.asset.asset_name}*/}
                         {viewAssetRequestOpen ? (
                             <ViewAssetRequest
                                 popupClose={() => setViewAssetRequestOpen(false)}
@@ -48,7 +47,6 @@ export const AssetRequest = () => {
                                 assetRequest={assetRequest}
                             />
                         ) : null}
-
                     </p>
                     <AssetRequestApproval assetRequest={assetRequest}></AssetRequestApproval>
                 </li>

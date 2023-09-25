@@ -68,7 +68,7 @@ export const SupportRequests = () => {
                             />
                         ) : null}
                     </p>
-                    <EditSupportRequestDiv></EditSupportRequestDiv>
+                    <EditSupportRequestDiv support={allSupport}></EditSupportRequestDiv>
                 </li>
             )
         } else {
@@ -90,7 +90,7 @@ export const SupportRequests = () => {
                         />
                     ) : null}
                 </p>{' '}
-                <EditMySupportRequestDiv></EditMySupportRequestDiv>
+                <EditMySupportRequestDiv support={mySupport}></EditMySupportRequestDiv>
             </li>
         )
     }
