@@ -113,6 +113,7 @@ export const SupportRequests = () => {
         if(roles.includes("support_requests_viewAll")){
             return (
                 <div className="active_support_requests" id="active_support_requests" style={{ display: `${allDisplay}`}}>
+                    <p className="listTypeHeader">All Support Requests</p>
                     <ul className="activeRequestsList">{active_requests}</ul>
                 </div>
             )
@@ -128,6 +129,7 @@ export const SupportRequests = () => {
             <div className="tables">
                 <AllSupport></AllSupport>
                 <div className="my_support_requests" id="my_support_requests" style={{ display: `${myDisplay}`}}>
+                    <p className="listTypeHeader">My Support Requests</p>
                     <ul className="myRequestsList">{my_requests}</ul>
                 </div>
             </div>
