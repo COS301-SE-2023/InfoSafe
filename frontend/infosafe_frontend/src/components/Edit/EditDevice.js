@@ -33,7 +33,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     }
 
 
-    //Build for edit
     useEffect(() => {
         if (asset) {
             setValues({
@@ -90,7 +89,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
             },
             body:JSON.stringify(values)
         }).then(()=>{
-            console.log(JSON.stringify(values))
+            console.log(values)
             console.log("Updated Asset")
         })
         popupClose()

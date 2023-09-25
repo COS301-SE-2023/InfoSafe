@@ -5,7 +5,6 @@ import com.fragile.infosafe.delete.deletemodel.*;
 import com.fragile.infosafe.delete.deleterepository.*;
 import com.fragile.infosafe.primary.model.*;
 import com.fragile.infosafe.primary.repository.*;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -133,9 +132,9 @@ public class DeleteService {
     }
 
     public void deleteAssetRequestAndSaveToSecondary(int request_id){
-        Optional<AssetRequest> entityOptional = assetRequestRepository.findById(request_id);
+        Optional<AssetRequests> entityOptional = assetRequestRepository.findById(request_id);
         if(entityOptional.isPresent()){
-            AssetRequest entityToDelete = entityOptional.get();
+            AssetRequests entityToDelete = entityOptional.get();
             DeletedAssetRequest de = new DeletedAssetRequest();
             de.setAsset_id(entityToDelete.getAsset().getAsset_id());
             de.setReason(entityToDelete.getReason());

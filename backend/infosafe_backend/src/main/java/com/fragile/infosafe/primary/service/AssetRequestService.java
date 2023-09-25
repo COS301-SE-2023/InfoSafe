@@ -1,8 +1,7 @@
 package com.fragile.infosafe.primary.service;
 
 import com.fragile.infosafe.primary.model.Asset;
-import com.fragile.infosafe.primary.model.AssetRequest;
-import com.fragile.infosafe.primary.model.DataScope;
+import com.fragile.infosafe.primary.model.AssetRequests;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.AssetRepository;
 import com.fragile.infosafe.primary.repository.AssetRequestRepository;
@@ -31,7 +30,7 @@ public class AssetRequestService {
     private final DeleteService deleteService;
 
     public ResponseEntity<String> makeAR(AssetRequestRequest request, User authenticatedUser) {
-        AssetRequest assetRequest = AssetRequest.builder()
+        AssetRequests assetRequests = AssetRequests.builder()
                 .reason(request.getReason())
                 .desired_date(request.getDesired_date())
                 .request_status(request.getRequest_status())
@@ -41,21 +40,21 @@ public class AssetRequestService {
         if (isNumeric(request.getAsset_id())) {
             Optional<Asset> asset = assetRepository.findByAssetId(request.getAsset_id());
             if (asset.isPresent()) {
-                assetRequest.setAsset(asset.get());
+                assetRequests.setAsset(asset.get());
             } else {
                 log.error("User with email " + request.getAsset_id() + " not found");
             }
         }
-        assetRequestRepository.save(assetRequest);
+        assetRequestRepository.save(assetRequests);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-    public List<AssetRequest> getAllAssetRequests() {
+    public List<AssetRequests> getAllAssetRequests() {
         return assetRequestRepository.findAll();
     }
 
-    public AssetRequest updateAssetRequest(AssetRequest assetRequest) {
-        return assetRequestRepository.save(assetRequest);
+    public AssetRequests updateAssetRequest(AssetRequests assetRequests) {
+        return assetRequestRepository.save(assetRequests);
     }
 
     public boolean checkAssetRequestExists(int userId, int assetId) {

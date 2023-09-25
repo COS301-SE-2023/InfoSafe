@@ -1,13 +1,12 @@
 package com.fragile.infosafe.primary.controller;
 
-import com.fragile.infosafe.primary.model.AssetRequest;
+import com.fragile.infosafe.primary.model.AssetRequests;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.requests.AssetRequestRequest;
 import com.fragile.infosafe.primary.requests.ReviewRequest;
 import com.fragile.infosafe.primary.service.AssetRequestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,12 +31,12 @@ public class AssetRequestController {
     }
 
     @GetMapping("/getAr")
-    public List<AssetRequest> assetrequestlist() { return service.getAllAssetRequests(); }
+    public List<AssetRequests> assetrequestlist() { return service.getAllAssetRequests(); }
 
     @PutMapping("/update/{id}")
-    public AssetRequest updateAssetRequest (@PathVariable("id") int asset_request_id, @RequestBody AssetRequest assetRequest) {
-        assetRequest.setAsset_request_id(asset_request_id);
-        return service.updateAssetRequest(assetRequest);
+    public AssetRequests updateAssetRequest (@PathVariable("id") int asset_request_id, @RequestBody AssetRequests assetRequests) {
+        assetRequests.setAsset_request_id(asset_request_id);
+        return service.updateAssetRequest(assetRequests);
     }
 
     @PostMapping("/reviewAsset")
