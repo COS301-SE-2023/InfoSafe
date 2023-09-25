@@ -4,6 +4,7 @@ import '../../styling/CreateUserPopup.css';
 import '../../styling/Dropdown.css'
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import {useGetAllUser} from "../getData/getAllUser";
 
 export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[first_name,setName]=useState('')
@@ -12,6 +13,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[password,setPassword]=useState('')
     const [roleNames, setRoleNames] = useState('')
     const [selectedRole, setSelectedRole] = useState('');
+    const {setShowUser, showUser} = useGetAllUser();
     const handleClick = (e) => {
         e.preventDefault();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
@@ -38,6 +40,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         body: JSON.stringify(user),
                     })
                         .then(() => {
+                            setShowUser([...showUser, user])
                             console.log("New User added");
                         })
                         .catch((error) => {

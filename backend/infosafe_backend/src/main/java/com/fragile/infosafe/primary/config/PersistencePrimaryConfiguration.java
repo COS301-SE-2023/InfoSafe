@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.service.AWSSecretService;
+import com.zaxxer.hikari.HikariDataSource;
 import jakarta.annotation.PreDestroy;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -52,13 +53,19 @@ public class PersistencePrimaryConfiguration {
     public DataSource primaryDataSource () {
         RDSLogin login = awsSecretService.getRDSLogin();
         System.out.println("This happened2");
-        return DataSourceBuilder
+        DataSource dataSource = DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/" + login.getDbname())
-                .username(login.getUsername())//login.getUsername())
-                .password(login.getPassword())//login.getPassword())
+                .username(login.getUsername())
+                .password(login.getPassword())
                 .build();
+
+        if (dataSource instanceof HikariDataSource hikariDataSource) {
+            hikariDataSource.setMaximumPoolSize(10);
+            hikariDataSource.setIdleTimeout(60000 * 5);
+        }
+        return dataSource;
     }
 
 

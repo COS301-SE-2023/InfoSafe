@@ -17,6 +17,7 @@ export const useGetAllUser = () => {
     }, []);
 
     return {
-        showUser
+        showUser,
+        setShowUser
     }
 }
