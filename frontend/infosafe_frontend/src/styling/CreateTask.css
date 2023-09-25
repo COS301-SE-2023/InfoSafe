@@ -77,7 +77,6 @@
     top: -2vh;
     margin: 0 auto;
 }
-
 .createTaskInputTitle {
     font-size: 20px;
     width: 70%;
@@ -164,7 +163,6 @@
 .createTaskStatusDropdown:after {
     transform: translateY(50%);
 }
-
 .createTaskStatusDropdown .Dropdown-control{
     background-color: #CECECE;
     border-radius: 2px;
@@ -187,7 +185,6 @@
 .createTaskDataScopeDropdown:after {
     transform: translateY(50%);
 }
-
 .createTaskDataScopeDropdown .Dropdown-control{
     background-color: #CECECE;
     border-radius: 2px;
