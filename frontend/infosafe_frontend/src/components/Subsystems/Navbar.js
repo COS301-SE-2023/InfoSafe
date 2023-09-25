@@ -81,6 +81,9 @@ const NavBar = () => {
             });
     }, []);
     const showDiv = () => {
+        if(menuVisible){
+            displayMenu();
+        }
         showSettings(!settings);
         if (!settings){
             document.getElementById("userDisplay").style.right = "24%";
@@ -92,7 +95,11 @@ const NavBar = () => {
     };
 
     const displayMenu = () => {
+        if(settings){
+            showDiv();
+        }
         setMenuVisible(!menuVisible);
+
         if (!menuVisible) {
             document.getElementById("tabMenu").style.display = "block";
             // document.getElementById("backdrop").style.backgroundColor = "red";
