@@ -60,4 +60,8 @@ public class AssetService {
     public List<Asset> getDevicesAssignedToUser(User assignee) {
         return assetRepository.findByCurrentAssignee(assignee);
     }
+
+    public List<Asset> getAssetsWithAvailabilityYes() {
+        return assetRepository.findAllByAvailability("Yes");
+    }
 }

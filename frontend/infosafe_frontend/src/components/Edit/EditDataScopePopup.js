@@ -1,39 +1,76 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styling/EditDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 import Dropdown from 'react-dropdown';
-import data from "bootstrap/js/src/dom/data";
 const STATUS = ['Created', 'Approved', 'Rejected', 'Revoked'];
 
-
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
-    const[values, setValues]=useState({
+    const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
+    const [dataScopeRoles, setDataScopeRoles] = useState([]);
+    const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
         data_custodian: datascope.data_custodian,
         date_captured: datascope.date_captured,
         ds_description: datascope.ds_description,
         ds_name: datascope.ds_name,
         ds_status: datascope.ds_status
-    })
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewRole((prevRole) => ({ ...prevRole, [name]: value }));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
         fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
-            method:"PUT",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
             },
-            body:JSON.stringify(values)
-        }).then(()=>{
-            console.log("Updated Datascope")
+            body: JSON.stringify(values)
+        }).then(() => {
+            console.log('Updated Datascope');
+        });
+        popupClose();
+    };
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/dataScopeRole/getDataScopeRole', {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
+            }
         })
-        //console.log(JSON.stringify(values))
-        popupClose()
-    }
+            .then((res) => res.json())
+            .then((result) => {
+                setDataScopeRoles(result);
+            });
+    }, []);
+
+    const handleAddRole = (e) => {
+        e.preventDefault();
+        const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
+
+        fetch('http://localhost:8080/api/dataScopeRole/addDataScopeRole', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
+            },
+            body: JSON.stringify(newRoleData)
+        })
+            .then(() => {
+                console.log('New DataScopeRole added');
+                setDataScopeRoles([...dataScopeRoles, newRoleData]);
+                setNewRole({ role: '', roledescription: '' });
+            })
+            .catch((error) => {
+                console.error('Error adding new DataScopeRole:', error);
+            });
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -50,13 +87,13 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 <input
                                     className="editDatascopeNameInput"
                                     defaultValue={datascope.ds_name}
-                                    onChange={e => setValues({...values, ds_name: e.target.value})}
+                                    onChange={(e) => setValues({ ...values, ds_name: e.target.value })}
                                 />
                                 <p className="editDescriptionLabel">Description</p>
                                 <textarea
                                     className="editDescriptionInput"
                                     defaultValue={datascope.ds_description}
-                                    onChange={e => setValues({...values, ds_description: e.target.value})}
+                                    onChange={(e) => setValues({ ...values, ds_description: e.target.value })}
                                 />
                                 <br />
                                 <p className="editStatusLabel">Status</p>
@@ -66,18 +103,48 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     className="editDSStatusDropdown"
                                     data-testid="editDSStatusDropdown"
                                     defaultValue={datascope.status}
-                                    onChange={selectedOption => setValues({...values, ds_status: selectedOption.value})}
+                                    onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-                                <button className="editdatascope_finish">
-                                    Submit
-                                </button>
+                                <div className="datascope_addrole">
+                                    <p className="AddRoleNameLabel">Role Type</p>
+                                    <input
+                                        className="AddRoleNameInput"
+                                        data-testid="addRole"
+                                        name="role"
+                                        value={newRole.role}
+                                        onChange={handleInputChange}
+                                    />
+                                    <p className="AddRoleDescriptionLabel">Role Description</p>
+                                    <textarea
+                                        className="AddRoleDescriptionInput"
+                                        data-testid="addRoleDescription"
+                                        name="roledescription"
+                                        value={newRole.roledescription}
+                                        onChange={handleInputChange}
+                                    />
+                                    <ul>
+                                        {dataScopeRoles.map((role, index) => (
+                                            <li key={index}>{role.role_type}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
-
+                            <div className="createDataScopeButtonsDiv">
+                                <button
+                                    className="AddRoleButton"
+                                    data-testid="addRoleButton"
+                                    onClick={handleAddRole}
+                                    type="button"
+                                >
+                                    Add Role
+                                </button>
+                                <button className="editdatascope_finish">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
-
             </div>
         </Popup>
     );
 };
+

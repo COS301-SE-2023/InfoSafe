@@ -4,6 +4,11 @@ import '../../styling/Requests.css';
 import '../../styling/Dropdown.css';
 import useRequestMaker from './useRequestMaker';
 import Select from "react-select";
+import {useCurrentDataScope} from "../Charts/useCurrentDataScope";
+import {useCurrentTasks} from "../Charts/useCurrentTasks";
+import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
+import {useAssetRequests} from "../RequestRequests/AssetRequestRequests";
+import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 
 export const Requests = () => {
     const SUPPORTOPTIONS = ['DataScope Support', 'Asset Support', 'Task Support', 'Other'];
@@ -32,9 +37,11 @@ export const Requests = () => {
 
     const CreateSupportRequest = () => {
         const {
-            handleClick, support_type,setSupportType, support_description, setSupportDescription, setSupportStatus, datascopeData, setDataScope_id, myTasks, myAssets, setTask_id, setAsset_id
+            handleClick, support_type,setSupportType, support_description, setSupportDescription, setSupportStatus, datascopeData, setDataScope_id, setTask_id, setAsset_id
         } = useRequestMaker();
-
+        const {myAssets} = useCurrentDataScope();
+        const {myTasks} = useCurrentTasks();
+        const {myDatascopes} = useSupportRequests();
         const handleDescriptionChange = (e) => {
             setSupportDescription(e.target.value);
         };
@@ -50,10 +57,10 @@ export const Requests = () => {
                 {support_type === ('DataScope Support') && (
                     <div>
                         <p className="createAccessRequestDataScopeLabel">Data Scope</p>
-                        {datascopeData && datascopeData.length > 0 ? (
+                        {myDatascopes && myDatascopes.length > 0 ? (
                             <Dropdown
-                                options={datascopeData.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
-                                value={datascopeData.data_scope_id}
+                                options={myDatascopes.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
+                                value={myDatascopes.data_scope_id}
                                 className="accessRequestDatascopeDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add DataScope"}
@@ -73,7 +80,7 @@ export const Requests = () => {
                                 value={myTasks.data_scope_id}
                                 className="accessRequestDatascopeDropdown"
                                 name="datascopeDropdown"
-                                placeholder={"Add DataScope"}
+                                placeholder={"Add Task"}
                                 onChange={(selectedOption) => setTask_id(selectedOption.value)}
                             />
                         ) : (
@@ -90,7 +97,7 @@ export const Requests = () => {
                                 value={myAssets.asset_id}
                                 className="accessRequestDatascopeDropdown"
                                 name="datascopeDropdown"
-                                placeholder={"Add DataScope"}
+                                placeholder={"Add Asset"}
                                 onChange={(selectedOption) => setAsset_id(selectedOption.value)}
                             />
                         ) : (
@@ -125,49 +132,59 @@ export const Requests = () => {
     }
 
     const CreateAccessRequest = () => {
-        const {
-            handleClick, reason, setReason, setDataScope_id, setStatus, datascopeData
-        } = useRequestMaker();
-
+        const { handleClick, reason, setReason, setDataScope_id, setStatus } = useRequestMaker();
+        const accessRequests = useAccessRequests(); // Rename datascopeData to accessRequests
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
-        return (<div className="createAccessRequestDiv">
-            <form>
-                <p className="createAccessRequestDataScopeLabel">Data Scope</p>
-                {datascopeData && datascopeData.length > 0 ? (<Dropdown
-                    options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                    value={datascopeData.data_scope_id}
-                    className="accessRequestDatascopeDropdown"
-                    name="datascopeDropdown"
-                    placeholder={"Add DataScope"}
-                    onChange={(selectedOption) => setDataScope_id(selectedOption.value)}
-                />) : (<p className="loadTitle">Loading...</p>)}
-                <p className="createAccessRequestReasonLabel">Reason</p>
-                <textarea
-                    className="createAccessRequestReasonInput"
-                    onChange={handleReasonChange}
-                    value={reason}
-                />
-                <p className="createAccessRequestStatusLabel">Status</p>
-                <Dropdown
-                    className="accessRequestStatusDropdown"
-                    options={STATUS}
-                    value={STATUS[0]}
-                    onChange={(selectedOption) => setStatus(selectedOption.value)}
-                />
-                <div className="createAccessRequestButtonDiv">
-                    <button
-                        className="createAccessRequestButton"
-                        type="submit"
-                        onClick={(e) => handleClick(e, selectedRequest)}
-                    >
-                        Log Access Request
-                    </button>
-                </div>
-            </form>
-        </div>);
+
+        return (
+            <div className="createAccessRequestDiv">
+                <form>
+                    <p className="createAccessRequestDataScopeLabel">Data Scope</p>
+                    {accessRequests ? (
+                        accessRequests.length > 0 ? (
+                            <Dropdown
+                                options={accessRequests.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
+                                value={accessRequests[0].data_scope_id} // You may need to adjust this part
+                                className="accessRequestDatascopeDropdown"
+                                name="datascopeDropdown"
+                                placeholder={"Add DataScope"}
+                                onChange={(selectedOption) => setDataScope_id(selectedOption.value)}
+                            />
+                        ) : (
+                            <p className="loadTitle">No available DataScopes</p>
+                        )
+                    ) : (
+                        <p className="loadTitle">Loading...</p>
+                    )}
+                    <p className="createAccessRequestReasonLabel">Reason</p>
+                    <textarea
+                        className="createAccessRequestReasonInput"
+                        onChange={handleReasonChange}
+                        value={reason}
+                    />
+                    <p className="createAccessRequestStatusLabel">Status</p>
+                    <Dropdown
+                        className="accessRequestStatusDropdown"
+                        options={STATUS}
+                        value={STATUS[0]}
+                        onChange={(selectedOption) => setStatus(selectedOption.value)}
+                    />
+                    <div className="createAccessRequestButtonDiv">
+                        <button
+                            className="createAccessRequestButton"
+                            type="submit"
+                            onClick={(e) => handleClick(e, selectedRequest)}
+                        >
+                            Log Access Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        );
     };
+
     const CreateAssetRequest = () => {
         const {
             handleClick,
@@ -176,9 +193,10 @@ export const Requests = () => {
             setDesiredDate,
             setRequestStatus,
             setSelectedDevice,
-            selectedDevice,
-            availableDevices
+            selectedDevice
         } = useRequestMaker();
+
+        const availableAssets = useAssetRequests();
 
         const handleReasonChange = (e) => {
             setReason(e.target.value);
@@ -189,8 +207,8 @@ export const Requests = () => {
         return (<div className="createAssetRequestDiv">
             <form>
                 <p className="createAssetRequestDeviceNameLabel">Device</p>
-                {availableDevices && availableDevices.length > 0 ? (<Dropdown
-                    options={availableDevices.map((data) => ({value: data.asset_id, label: data.asset_name}))}
+                {availableAssets && availableAssets.length > 0 ? (<Dropdown
+                    options={availableAssets.map((data) => ({value: data.asset_id, label: data.asset_name}))}
                     className="assetRequestSelectDeviceDropdown"
                     name="assetRequestSelectDeviceDropdown"
                     placeholder={"Add Device"}

@@ -4,42 +4,9 @@ import Popup from 'reactjs-popup';
 import {IoArrowBackOutline} from 'react-icons/io5';
 
 export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
-    const [newRole, setNewRole] = useState({role: '', roledescription: ''});
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
-    const [role_type, setRoleType] = useState('')
-    const [role_description, setRoleDesc] = useState('')
-    const [data_scope_id, setDsId] = useState('')
-    const [data, setData] =useState([])
-    const [roles, setRoles] = useState(data);
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setNewRole((prevRole) => ({...prevRole, [name]: value}));
-    };
 
-    const handleAddRole = (e) => {
-        e.preventDefault();
-        const dataScopeRoles = {data_scope_id, role_description, role_type};
-        if (newRole.role && newRole.roledescription) {
-            setRoles((prevRoles) => [...prevRoles, newRole]);
-            setNewRole({role: '', roledescription: ''});
-        }
-
-        fetch("http://localhost:8080/api/dataScopeRole/addDataScopeRole", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
-            },
-            body: JSON.stringify(dataScopeRoles),
-        })
-            .then(() => {
-                console.log("New DataScopeRole added");
-            })
-            .catch((error) => {
-                console.error("Error adding new DataScopeRole:", error);
-            });
-    };
 
     const datascoperoles = ['Admin', 'Employee'];
     const role_descriptions = ['Access all', 'Work'];
@@ -84,18 +51,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
             });
     };
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/getDataScopeRole', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setData(result);
-            });
-    }, []);
+
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -130,40 +86,8 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                                 ))}
                                             </ul>
                                         </div>
-
-
-
                                         </div>
                                     </div>
-                                <div className="datascope_addrole">
-                                    <p className="AddRoleNameLabel">Role Type</p>
-                                    <input
-                                        className="AddRoleNameInput"
-                                        data-testid="addRole"
-                                        name="role"
-                                        value={newRole.role_type}
-                                        onChange={handleInputChange}
-                                    />
-                                    <p className="AddRoleDescriptionLabel">Role Description</p>
-                                    <textarea
-                                        className="AddRoleDescriptionInput"
-                                        data-testid="addRoleDescription"
-                                        name="roledescription"
-                                        value={newRole.role_description}
-                                        onChange={handleInputChange}
-                                    />
-
-                                </div>
-                            </div>
-                            <div className="createDataScopeButtonsDiv">
-                                <button
-                                    className="AddRoleButton"
-                                    data-testid="addRoleButton"
-                                    onClick={handleAddRole}
-                                    type="button"
-                                >
-                                    Add Role
-                                </button>
                                 <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
                                     Submit
                                 </button>

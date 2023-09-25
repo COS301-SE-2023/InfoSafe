@@ -1,6 +1,8 @@
 package com.fragile.infosafe.primary.service;
 
+import com.fragile.infosafe.primary.model.DataScope;
 import com.fragile.infosafe.primary.model.DataScopeRole;
+import com.fragile.infosafe.primary.repository.DataScopeRepository;
 import com.fragile.infosafe.primary.repository.DataScopeRoleRepository;
 import com.fragile.infosafe.primary.requests.DataScopeRoleRequest;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import java.util.List;
 public class DataScopeRoleService {
 
     private final DataScopeRoleRepository dsrRepository;
+    private final DataScopeRepository dataScopeRepository;
 
     public List<DataScopeRole> getAllDataScopeRoles() { return dsrRepository.findAll(); }
 
@@ -22,12 +25,17 @@ public class DataScopeRoleService {
                 .role_type(request.getRole_type())
                 .role_description(request.getRole_description())
                 .build();
+
+        if (dataScopeRepository.findByDataScopeId(request.getDatascope()).isPresent()) {
+            DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDatascope()).get();
+            dataScopeRole.setDataScope(dataScope);
+        }
         dsrRepository.save(dataScopeRole);
 
         return ResponseEntity.status(HttpStatus.OK).body("Data Scope Role Added.");
     }
 
-//    public List<DataScopeRole> getDataScopeRolesByDsId(int ds_id) {
-//        return dsrRepository.findByDsId(ds_id);
-//    }
+    public List<DataScopeRole> getAllRolesByDataScopeId(int dataScopeId) {
+        return dsrRepository.findAllByDataScopeDataScopeId(dataScopeId);
+    }
 }
