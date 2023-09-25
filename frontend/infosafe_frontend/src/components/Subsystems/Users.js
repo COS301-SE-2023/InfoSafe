@@ -1,5 +1,5 @@
 import {CreateUserPopup} from "../Create/CreateUserPopup";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ViewUser from "../View/ViewUser";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditUser from "../Edit/EditUser";
@@ -38,9 +38,38 @@ export const Users = () => {
         }
     };
 
-     const deleteFunction = ( {user} ) => {
-        //perform delete here
-    }
+    const DeleteFunction = (email) => {
+        const deleteUser = {email}
+        try {
+            return fetch("http://localhost:8080/api/user/deleteUser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                },
+                body: JSON.stringify(deleteUser),
+            })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log("Delete operation successful", data);
+                    return data; // You can return data if needed
+                })
+                .catch((error) => {
+                    console.error("Error deleting user:", error);
+                    throw error;
+                });
+        } catch (error) {
+            console.error("Unexpected error:", error);
+            throw error;
+        }
+    };
+
+
 
     const DeleteUser = ({user}) => {
         const [deleteUserOpen, setDeleteUserOpen] = useState(false);
@@ -52,7 +81,7 @@ export const Users = () => {
                         <ConfirmDelete
                             popupClose={() => setDeleteUserOpen(false)}
                             popupOpen={deleteUserOpen}
-                            yesDelete={() => deleteFunction({user})}
+                            yesDelete={() => DeleteFunction(user.email)}
                         />
                     ) : null}{' '}
                 </div>

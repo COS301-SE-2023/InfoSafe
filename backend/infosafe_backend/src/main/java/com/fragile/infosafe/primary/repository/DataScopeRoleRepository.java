@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface DataScopeRoleRepository extends JpaRepository<DataScopeRole, String> {
-
-//    @Query("SELECT dsr FROM DataScopeRole dsr WHERE dsr. = :dsId")
-//    List<DataScopeRole> findByDsId(@Param("dsId") int dsId);
+    @Query("SELECT dsr FROM DataScopeRole dsr WHERE dsr.dataScope.data_scope_id = :dataScopeId")
+    List<DataScopeRole> findAllByDataScopeDataScopeId(int dataScopeId);
 }

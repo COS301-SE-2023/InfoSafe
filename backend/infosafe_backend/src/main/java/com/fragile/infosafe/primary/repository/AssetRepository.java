@@ -20,4 +20,6 @@ public interface AssetRepository extends JpaRepository<Asset,Integer> {
 
     @Query("SELECT a FROM Asset a WHERE a.current_assignee = :assignee")
     List<Asset> findByCurrentAssignee(@Param("assignee") User assignee);
+
+    List<Asset> findAllByAvailability(String availability);
 }

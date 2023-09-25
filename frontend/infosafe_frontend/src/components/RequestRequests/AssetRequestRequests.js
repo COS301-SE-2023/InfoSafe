@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
 
-export const useGetAllUser = () => {
-    const [showUser, setShowUser] = useState([]);
+
+export const useAssetRequests = () => {
+    const [availableAssets, setAvailableAssets] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getAll', {
+        fetch('http://localhost:8080/api/asset/availableAssets', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -12,12 +13,13 @@ export const useGetAllUser = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setShowUser(result);
+                setAvailableAssets(result);
             });
     }, []);
+    console.log(availableAssets)
+    return (
+        availableAssets
+    )
 
-    return {
-        showUser,
-        setShowUser
-    }
 }
+

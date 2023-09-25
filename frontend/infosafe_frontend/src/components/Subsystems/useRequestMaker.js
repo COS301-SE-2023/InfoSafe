@@ -17,13 +17,15 @@ const useRequestMaker = () => {
     const [selectedDevice, setSelectedDevice] = useState("");
 
     const [user_email, setUserEmail] = useState('');
-    const [datascopeData, setDatascopeData] = useState(null);
     const [selectedAssetId, setSelectedAssetId] = useState(null);
     const [availableDevices, setAvailableDevices] = useState([]);
     const [task_id, setTask_id] = useState(null);
     const [asset_id, setAsset_id] = useState(null);
-    const {myTasks} = useCurrentTasks();
-    const {myAssets} = useCurrentDataScope();
+
+
+    const [availableDatascopeData, setAvailableDatascopeData] = useState(null);
+    const [availableDataScope_id, setAvailableDataScope_id] = useState(null)
+
     const handleClick = (e, selectedRequest) => {
         e.preventDefault();
         console.log(selectedDevice)
@@ -43,7 +45,7 @@ const useRequestMaker = () => {
                 support = {user_email , support_type, support_description, support_status}
                 break;
         }
-        const access = {user_email, dataScope_id, reason, status}
+        const access = {user_email, availableDataScope_id, reason, status}
         const asset = {user_email , asset_id: selectedDevice , reason, desired_date, request_status}
         let apiUrl = "";
         let requestBody = {};
@@ -79,32 +81,6 @@ const useRequestMaker = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setAvailableDevices(result);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getDs', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setDatascopeData(result);
-            });
-    }, []);
-
-    useEffect(() => {
         fetch('http://localhost:8080/api/user/getEmail', {
             method: "GET",
             headers: {
@@ -116,6 +92,7 @@ const useRequestMaker = () => {
                 setUserEmail(result.email);
             });
     }, []);
+
 
 
     return {
@@ -136,17 +113,15 @@ const useRequestMaker = () => {
         setDesiredDate,
         request_status,
         setRequestStatus,
-        datascopeData,
-        setDatascopeData,
         selectedAssetId,
         setSelectedAssetId,
         setSelectedDevice,
         availableDevices,
         selectedDevice,
-        myTasks,
-        myAssets,
         setTask_id,
-        setAsset_id
+        setAsset_id,
+        availableDatascopeData,
+        setAvailableDataScope_id,
     };
 };
 

@@ -2,6 +2,7 @@ package com.fragile.infosafe.primary.auth;
 
 import com.fragile.infosafe.primary.model.Role;
 import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.repository.RoleRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.RegisterRequest;
 import com.fragile.infosafe.primary.config.JwtService;
@@ -25,14 +26,16 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final RoleRepository roleRepository;
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .first_name(request.getFirst_name())
                 .last_name(request.getLast_name())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.builder().role_name(request.getRole().getRole_name()).build())
+                .role(roleRepository.findByRole_name(request.getRole().getRole_name()))
                 .build();
+
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);

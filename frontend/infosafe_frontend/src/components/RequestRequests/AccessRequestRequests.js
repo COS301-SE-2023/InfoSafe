@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 
-export const useGetAllUser = () => {
-    const [showUser, setShowUser] = useState([]);
+export const useAccessRequests = () => {
+    const [datascopeData, setDatascopeData] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getAll', {
+        fetch('http://localhost:8080/api/datascope/availableDatascopes', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -12,12 +12,11 @@ export const useGetAllUser = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setShowUser(result);
+                setDatascopeData(result);
             });
     }, []);
+    return(
+        datascopeData
+    )
 
-    return {
-        showUser,
-        setShowUser
-    }
 }
