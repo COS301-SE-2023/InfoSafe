@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
 
-const STATUS = ["LOGGED","IN PROGRESS","RESOLVED"];
+const STATUS = ["Logged","In Progress","Resolved"];
 const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
     console.log(support)
     const[values, setValues]=useState({
