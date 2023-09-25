@@ -9,6 +9,7 @@ import {Risks} from "./Risks";
 import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
 import {Dashboard} from "../Charts/Dashboard";
+import {About} from "../About";
 
 export const TabView = ({currentTab}) => {
     switch (currentTab){
@@ -55,6 +56,10 @@ export const TabView = ({currentTab}) => {
         case 10:
         {
             return (<Requests></Requests>);
+        }
+        case 11:
+        {
+            return (<About></About>)
         }
         default:
         {
