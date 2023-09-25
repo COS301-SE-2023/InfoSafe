@@ -51,10 +51,13 @@ export const useCurrentDataScope = () => {
                 setMyAssets(result);
             });
     }, []);
+
+
     return {
         dataScopeCount,
         myDataScopeCount,
         assetCount,
-        myAssets
+        myAssets,
+
     }
 }

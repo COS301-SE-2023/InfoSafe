@@ -48,9 +48,9 @@ const NavBar = () => {
     if (roles.includes("asset_request_review")) {//Asset Requests
         tabItems.push(9);
     }
-    if (roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access")) {//Requests
+    //if (roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access")) {//Requests
         tabItems.push(10);
-    }
+    //}
 
 
     const handleClick = (NavTabIndex) => {

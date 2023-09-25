@@ -47,13 +47,17 @@ public class TaskService {
                 DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
                 log.info("This is the datascope " + dataScope);
                 task.setDataScope(dataScope);
+            } else{
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Datascope");
             }
             if (!request.getUsers_email().isEmpty()) {
                 Set<User> users = new HashSet<>();
+                DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
                 for (String userEmail : request.getUsers_email()) {
                     User user = userRepository.findByEmail(userEmail).orElse(null);
                     if (user != null) {
                         users.add(user);
+                        dataScope.getUsers().add(user);
                     } else {
                         log.error("User with email " + userEmail + " not found");
                     }

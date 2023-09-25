@@ -1,19 +1,15 @@
 import Popup from 'reactjs-popup';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styling/AccessRequestApproval.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
 
 const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
-
-    const[values, setValues]=useState({
+    const [selectedReview, setSelectedReview] = useState(null);
+    const [values, setValues] = useState({
         request_id: '',
         user_id: '',
         dataScope_id: '',
-        status: '',
-        reason: ''
     });
 
     useEffect(() => {
@@ -22,26 +18,31 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                 request_id: access.request_id,
                 user_id: access.user_id,
                 dataScope_id: access.dataScope_id,
-                status: access.status,
-                reason: access.reason
+                review: selectedReview,
             });
         }
-    }, [access]);
+    }, [access, selectedReview]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(values)
+    const handleReview = (reviewValue) => {
+        setSelectedReview(reviewValue);
+        handleSubmit(); // Trigger form submission when "Accept" or "Reject" is clicked
+    };
+
+    const handleSubmit = () => {
+        console.log(values);
         fetch('http://localhost:8080/api/accessrequest/reviewAccess', {
-            method:"PUT",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
             },
-            body:JSON.stringify(values)
-        }).then(()=>{
-            console.log("Updated User")
+            body: JSON.stringify(values),
         })
-        popupClose()
-    }
+            .then(() => {
+                console.log('Updated User');
+                popupClose();
+            });
+    };
 
     return (
         <Popup access={access} open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -51,11 +52,10 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                         <button className="approveAccessRequestBackButton" onClick={popupClose}>
                             <IoArrowBackOutline className="approveAccessRequestBackIcon" />
                         </button>
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <p className="approveAccessRequestTitle">Access Request Approval</p>
                             <p className="approveAccessRequestDatascopeLabel">Data Scope</p>
                             <p className="approveAccessRequestDatascopeNameDisplay">{access.data_scope_id.ds_name}</p>
-                            {/*Whats the meaning of the role*/}
                             <p className="approveAccessRequestRoleLabel">User</p>
                             <p className="approveAccessRequestRoleDisplay">{access.user_id.first_name} {access.user_id.last_name}</p>
                             <p className="approveAccessRequestReasonLabel">Reason</p>
@@ -67,15 +67,22 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
                             <p className="approveAccessRequestStatusLabel">Status</p>
                             <p className="approveAccessRequestStatusDisplay">{access.status}</p>
                             <div className="approveAccessRequestButtonsDiv">
-                                {/*Should submit the form?*/}
-                                <button className="approveAccessRequestApproveButton" onClick={() => console.log("Access Request Accepted")}>Accept</button>
-                                {/*Should not submit the form?*/}
-                                <button className="approveAccessRequestRejectButton" onClick={() => console.log("Access Request Rejected")}>Reject</button>
+                                <button
+                                    className="approveAccessRequestApproveButton"
+                                    onClick={() => handleReview(true)}
+                                >
+                                    Accept
+                                </button>
+                                <button
+                                    className="approveAccessRequestRejectButton"
+                                    onClick={() => handleReview(false)}
+                                >
+                                    Reject
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
-
             </div>
         </Popup>
     );

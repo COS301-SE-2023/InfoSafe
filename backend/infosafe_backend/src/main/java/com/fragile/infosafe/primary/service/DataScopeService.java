@@ -41,4 +41,12 @@ public class DataScopeService {
     }
 
     public long getTotalDs() {return dataScopeRepository.count();}
+
+    public List<DataScope> getDataScopesNotAssociatedWithUser(User user) {
+        return dataScopeRepository.findDataScopesNotAssociatedWithUser(user);
+    }
+
+    public List<DataScope> getDataScopesByUser(User user) {
+        return dataScopeRepository.findAllByUsers(user);
+    }
 }

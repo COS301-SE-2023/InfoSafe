@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeleteRequest {
     private String email;
+    private int id;
     // add other info here
 }

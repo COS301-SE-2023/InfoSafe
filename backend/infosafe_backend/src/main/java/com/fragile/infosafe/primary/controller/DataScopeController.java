@@ -5,6 +5,7 @@ import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.service.DataScopeService;
 import com.fragile.infosafe.primary.requests.DataScopeRequest;
 import com.fragile.infosafe.primary.service.DeleteService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -66,5 +67,22 @@ public class DataScopeController {
         return 0;
     }
 
+    @GetMapping("/availableDatascopes")
+    public ResponseEntity<List<DataScope>> getAllAvailableDatascopes(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return ResponseEntity.ok(service.getDataScopesNotAssociatedWithUser(authenticatedUser));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/getMyDatascopes")
+    public ResponseEntity<List<DataScope>> getAllMyDatascopes(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return ResponseEntity.ok(service.getDataScopesByUser(authenticatedUser));
+        }
+        return ResponseEntity.badRequest().build();
+    }
 
 }

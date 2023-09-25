@@ -37,4 +37,8 @@ public class AssetController {
         deleteService.deleteAssetAndSaveToSecondary(assetId);
     }
 
+    @GetMapping("/availableAssets")
+    public ResponseEntity<List<Asset>> getAllAvailableAssets(){
+        return ResponseEntity.ok(service.getAssetsWithAvailabilityYes());
+    }
 }
