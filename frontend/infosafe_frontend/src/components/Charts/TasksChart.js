@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
+import {useCurrentTasks} from "./useCurrentTasks";
 
 const TasksChart = () => {
     const chartReference = useRef(null);
 
+    const {taskCount} = useCurrentTasks();
     useEffect(() => {
         const chartContext = chartReference.current.getContext("2d");
 
@@ -14,7 +16,7 @@ const TasksChart = () => {
                 datasets: [
                     {
                         label: 'Tasks',
-                        data: [50, 50],
+                        data: [50, taskCount],
                         backgroundColor: ['#9E0000', '#444040'],
                     }
                 ]

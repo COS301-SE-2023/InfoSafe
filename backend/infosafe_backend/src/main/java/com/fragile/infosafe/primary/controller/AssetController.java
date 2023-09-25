@@ -41,4 +41,9 @@ public class AssetController {
     public ResponseEntity<List<Asset>> getAllAvailableAssets(){
         return ResponseEntity.ok(service.getAssetsWithAvailabilityYes());
     }
+
+    @GetMapping("/getTotalAssets")
+    public Long getTotalAssets() {
+        return service.getTotalDevice();
+    }
 }

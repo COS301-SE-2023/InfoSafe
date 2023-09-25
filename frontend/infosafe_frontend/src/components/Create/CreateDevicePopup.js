@@ -40,7 +40,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             current_assignee: selectedUsers ? selectedUsers.label : null,
             previous_assignee: null
         }
-        console.log(current_assignee)
+        console.log(asset)
         fetch("http://localhost:8080/api/asset/addAsset", {
             method: "POST",
             headers: {

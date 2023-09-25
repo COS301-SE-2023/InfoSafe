@@ -38,4 +38,9 @@ public class TaskController {
     public void deleteTaskAndSaveToSecondary(@PathVariable int taskId) {
         deleteService.deleteTaskAndSaveToSecondary(taskId);
     }
+
+    @GetMapping("/totalTasks")
+    public long getTotalTasks() {
+        return service.countTotalTasks();
+    }
 }

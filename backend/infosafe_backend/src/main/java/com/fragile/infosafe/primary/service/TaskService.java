@@ -132,4 +132,8 @@ public class TaskService {
         }
         return tasks;
     }
+
+    public long countTotalTasks() {
+        return taskRepository.count();
+    }
 }
