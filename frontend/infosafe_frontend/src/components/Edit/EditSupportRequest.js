@@ -36,47 +36,41 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="editSupportRequestPopup">
-                <div className="editSupportRequestPopupBorder">
-                    <button className="editSupportRequestBackButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="editSupportRequestBackIcon" />
-                    </button>
-                    <form onSubmit={handleSubmit}>
-                        <p className="editSupportRequestTitle">Edit Support Request</p>
-                        <div className="editSupportRequestTypeDiv">
-                            <p className="editSupportRequestTypeLabel">Type of Support Request</p>
-                            <p className="editSupportRequestTypeDisplay">{support.support_type}</p>
-                        </div>
-                        <div className="editSupportRequestUserDiv">
-                            <p className="editSupportRequestUserLabel">User</p>
-                            <p className="editSupportRequestTypeDisplay">{support.user_id}</p>
-                        </div>
-                        <div className="editSupportRequestDescriptionDiv">
-                            <p className="editSupportRequestDescriptionLabel">Description</p>
-                            <textarea
-                                className="editSupportRequestDescriptionDisplay"
-                                readOnly={true}
-                                defaultValue={support.support_description}
-                            ></textarea>
-                        </div>
-                        <div className="editSupportRequestStatusDiv">
-                            <p className="editSupportRequestStatusLabel">Status</p>
-                            <Dropdown
-                                options={STATUS}
-                                value={support.support_status}
-                                className="updateSupportRequestDropdown"
-                                name="updateSupportRequestDropdown"
-                                onChange={(selectedOption) => setValues({...values, support_status: selectedOption.value})}
-                            />
-                        </div>
-                        <div className="editSupportRequestButtonsDiv">
-                            <button
-                                className="updateSupportRequestStatusButton"
-                                type="submit"
-                            >
-                                Update Status
-                            </button>
-                        </div>
-                    </form>
+                <div className="popupBackground">
+                    <div className="editSupportRequestPopupBorder">
+                        <button className="editSupportRequestBackButton" onClick={popupClose}>
+                            <IoArrowBackOutline className="editSupportRequestBackIcon" />
+                        </button>
+                        <form onSubmit={handleSubmit}>
+                            <p className="editSupportRequestTitle">Edit Support Request</p>
+                            <div className="editSupportRequestContent">
+                                <p className="editSupportRequestTypeLabel">Type of Support Request</p>
+                                <p className="editSupportRequestTypeDisplay">{support.support_type}</p>
+                                <p className="editSupportRequestUserLabel">User</p>
+                                <p className="editSupportRequestTypeDisplay">{support.user_id}</p>
+                                <p className="editSupportRequestDescriptionLabel">Description</p>
+                                <textarea
+                                    className="editSupportRequestDescriptionDisplay"
+                                    readOnly={true}
+                                    defaultValue={support.support_description}
+                                ></textarea>
+                                <p className="editSupportRequestStatusLabel">Status</p>
+                                <Dropdown
+                                    options={STATUS}
+                                    value={support.support_status}
+                                    className="updateSupportRequestDropdown"
+                                    name="updateSupportRequestDropdown"
+                                    onChange={(selectedOption) => setValues({...values, support_status: selectedOption.value})}
+                                />
+                                <button
+                                    className="updateSupportRequestStatusButton"
+                                    type="submit"
+                                >
+                                    Update Status
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </Popup>
