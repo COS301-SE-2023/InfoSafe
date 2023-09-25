@@ -455,7 +455,7 @@
     padding: 0;
     width: 94%;
     position: relative;
-    left: 3%;
+    left: 2%;
 }
 
 .myNotificationsList li {
@@ -480,16 +480,16 @@
     display: flex;
     align-items: center;
     width: 100%;
+    gap: 10%;
 }
 
 .timeDisplay {
     background-color:  #49D4D0;
-    width: 10%;
+    width: 25%;
     justify-content: center;
     border-radius: 12px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
     align-items: center;
-    margin-right: 5%;
     text-align: center;
 }
 
@@ -536,7 +536,7 @@
     padding: 0;
     width: 60%;
 }
-.oneMonthDeadline {
+.deadline1 {
     background-color: #444040;
     color: #FFFFFF;
     width: 30%;
@@ -549,7 +549,7 @@
     align-content: center;
     box-sizing: content-box;
 }
-.oneWeekDeadline {
+.deadline2 {
     background-color: #49D4D0;
     width: 30%;
     justify-content: center;
@@ -561,7 +561,7 @@
     align-content: center;
     box-sizing: unset;
 }
-.oneDayDeadline {
+.deadline3{
     background-color: #9E0000;
     color: #FFFFFF;
     width: 30%;
