@@ -11,7 +11,8 @@ export const SupportRequests = () => {
     const {showMySupport, showAllSupport} = useGetSR();
     const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
-    const EditSupportRequestDiv = ({allSupport}) => {
+    const EditSupportRequestDiv = (supp) => {
+        console.log(supp)
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
             return (
@@ -24,7 +25,7 @@ export const SupportRequests = () => {
                         <EditSupportRequest
                             popupClose={() => setEditSupportRequestOpen(false)}
                             popupOpen={editSupportRequestOpen}
-                            support={allSupport}
+                            support={supp}
                         />
                     ) : null}
                 </div>
@@ -35,6 +36,7 @@ export const SupportRequests = () => {
     }
 
     const EditMySupportRequestDiv = ({mySupport}) => {
+        console.log(mySupport)
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
             return (
                 <div className="supportRequestEditButton">
@@ -55,6 +57,7 @@ export const SupportRequests = () => {
 
     const ViewAllSupport = ({ allSupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
+        console.log(allSupport)
         if(roles.includes("support_requests_viewAll")) {
             return (
                 <li key={allSupport.support_id}>
@@ -68,7 +71,7 @@ export const SupportRequests = () => {
                             />
                         ) : null}
                     </p>
-                    <EditSupportRequestDiv support={allSupport}></EditSupportRequestDiv>
+                    <EditSupportRequestDiv supp={allSupport}></EditSupportRequestDiv>
                 </li>
             )
         } else {
@@ -90,7 +93,7 @@ export const SupportRequests = () => {
                         />
                     ) : null}
                 </p>{' '}
-                <EditMySupportRequestDiv support={mySupport}></EditMySupportRequestDiv>
+                <EditMySupportRequestDiv supp={mySupport}></EditMySupportRequestDiv>
             </li>
         )
     }
@@ -136,13 +139,9 @@ export const SupportRequests = () => {
         if ( !viewMy ){
             setAllDisplay("block");
             setMyDisplay("none");
-            // document.getElementById("active_support_requests").style.display = "none";
-            // document.getElementById("my_support_requests").style.display = "block";
         }else  {
             setAllDisplay("none");
             setMyDisplay("block");
-            // document.getElementById("active_support_requests").style.display = "block";
-            // document.getElementById("my_support_requests").style.display = "none";
         }
     }
 
