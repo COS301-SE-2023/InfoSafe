@@ -8,6 +8,7 @@ import '../../styling/Users.css';
 import '../../styling/Dropdown.css';
 import {useGetPerms} from "../getData/getPerms";
 import {useGetAllUser} from "../getData/getAllUser";
+import {ConfirmDelete} from "../ConfirmDelete";
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
@@ -37,13 +38,24 @@ export const Users = () => {
         }
     };
 
-    const DeleteUser = () => {
+     const deleteFunction = ( {user} ) => {
+        //perform delete here
+    }
+
+    const DeleteUser = ({user}) => {
+        const [deleteUserOpen, setDeleteUserOpen] = useState(false);
         if(roles.includes("user_delete")) {
             return (
                 <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon"/>
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={()=> setDeleteUserOpen(true)}/>
+                    {deleteUserOpen ? (
+                        <ConfirmDelete
+                            popupClose={() => setDeleteUserOpen(false)}
+                            popupOpen={deleteUserOpen}
+                            yesDelete={() => deleteFunction({user})}
+                        />
+                    ) : null}{' '}
                 </div>
-
             )
         } else {
             return null;
@@ -66,7 +78,7 @@ export const Users = () => {
                         )}
                     </p>
                     <EditUserDiv user={user}/>
-                    <DeleteUser></DeleteUser>
+                    <DeleteUser user={user}></DeleteUser>
                 </li>
             );
         } else {
