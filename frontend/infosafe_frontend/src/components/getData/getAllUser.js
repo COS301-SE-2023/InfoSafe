@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 
 export const useGetAllUser = () => {
     const [showUser, setShowUser] = useState([]);
     const [loading, setLoading] = useState(true);
+    //const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
 
     useEffect(() => {
         const fetchData = async () => {

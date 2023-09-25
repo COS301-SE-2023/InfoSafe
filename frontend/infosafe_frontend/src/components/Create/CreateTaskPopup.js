@@ -17,6 +17,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
     const [task_name, setTask_name] = useState('');
     const {datascopeData, setDsId} = useRequestMaker();
     const {showTask} = useGetTask()
+    const refresh = () => window.location.reload(true)
 
     const statusOptions = [
         {value: 'High', label: 'High'},
@@ -52,6 +53,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
             .catch((error) => {
                 console.error("Error adding task:", error);
             });
+        refresh();
         popupClose();
     };
 
