@@ -11,6 +11,13 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
     const newPreviousAssignee = asset.current_assignee;
+    let title = "Current Custodian: Not Assigned";
+    let placeholder = "Add Assignee";
+
+    if(newPreviousAssignee != null){
+        title = "Current Custodian: " + newPreviousAssignee.email;
+        placeholder = "Change Assignee";
+    }
 
     const[values, setValues]=useState({
         asset_id: '',
@@ -167,10 +174,10 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                             />
                         {values.availability  === 'No' && (
                             <div>
-                                <p className="editCurrentCustodianLabel">Current Custodian</p>
+                                <p className="editCurrentCustodianLabel">{title}</p>
                                 {users && users.length > 0 ? (
                                     <Select
-                                        placeholder={'Change Assignee'}
+                                        placeholder={placeholder}
                                         options={users.map((data) => ({ value: data.user_id, label: data.email }))}
                                         value={selectedUser}
                                         styles={customStyles}
