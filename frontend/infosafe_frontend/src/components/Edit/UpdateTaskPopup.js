@@ -122,7 +122,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                         <button className="editTaskBackButton" onClick={popupClose}>
                             <IoArrowBackOutline className="editTaskBackIcon" />
                         </button>
-                        <form onClick={handleSubmit}>
+                        <form>
                             <p className="editTaskPageTitle">Update Task</p>
                             <p className="editTaskInputTitle">Task Name</p>
                             <textarea
@@ -170,7 +170,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                 required
                             />
                             <div className="updateTaskButtonDiv">
-                                <button className="updateTaskSubmitButton" type="submit">
+                                <button className="updateTaskSubmitButton" type="submit" onClick={handleSubmit}>
                                     Submit
                                 </button>
                             </div>
