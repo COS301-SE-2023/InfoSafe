@@ -14,9 +14,15 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const [roleNames, setRoleNames] = useState('')
     const [selectedRole, setSelectedRole] = useState('');
     const {setShowUser, showUser} = useGetAllUser();
+
     const handleClick = (e) => {
         e.preventDefault();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
+
+        if ( document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '' ) {
+            document.getElementById("createUserError").style.display = "block";
+            return;
+        }
 
         fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
             method: "GET",
@@ -104,19 +110,19 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                             <div className="createUserContent">
                                 <div className="createUserName">
                                     <p className="nameLabel">Name</p>
-                                    <input className="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
+                                    <input required className="nameInput" id="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
                                 </div>
                                 <div className="createUserSurname">
                                     <p className="surnameLabel">Surname</p>
-                                    <input className="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
+                                    <input required className="surnameInput" id="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
                                 </div>
                                 <div className="createUserEmail">
                                     <p className="emailLabel">Email</p>
-                                    <input className="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                                    <input required className="emailInput" id="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                                 </div>
                                 <div className="createUserPassword">
                                     <p className="passwordLabel">Password</p>
-                                    <input className="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
+                                    <input required className="passwordInput" id="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
                                 </div>
                                 <p className="createUserRoleLabel">System role</p>
                                 {roleNames && roleNames.length > 0 ? (
@@ -126,6 +132,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                                         className="role_dropdown"
                                         name="role_dropdown"
                                         onChange={values => setSelectedRole(values.value)}
+                                        id="selectedUserRole"
                                     />
                                 ) : (
                                     <p className="loadTitle">Loading...</p>
@@ -134,11 +141,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                                 <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
                                     Submit
                                 </button>
+                                <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
                             </div>
-
                         </form>
                 </div>
-
                 </div>
             </div>
         </Popup>
