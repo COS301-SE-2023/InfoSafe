@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import ViewRisk from "../../View/ViewRisk";
+import EditRisk from "../../Edit/EditRisk";
 
-describe("ViewRisk Component", () => {
+describe("EditRisk Component", () => {
     const risk = {
-        risk_id: "1",
+        ds_id: "1",
         probability_rating: "3",
         impact_rating: "4",
         risk_description: "Risk for datascope 1"
@@ -12,12 +12,12 @@ describe("ViewRisk Component", () => {
 
     it("renders correctly with risk data", () => {
         const { getByText } = render(
-            <ViewRisk risk={risk} popupOpen={true} popupClose={() => {}} />
+            <EditRisk risk={risk} popupOpen={true} popupClose={() => {}} />
         );
 
         // Ensure that the component renders with user data
-        expect(screen.getByText("View Risk")).toBeInTheDocument();
-        expect(screen.getByText("Risk ID")).toBeInTheDocument();
+        expect(screen.getByText("Edit Risk")).toBeInTheDocument();
+        expect(screen.getByText("Data Scope")).toBeInTheDocument();
         expect(screen.getByText("1")).toBeInTheDocument();
         expect(screen.getByText("Probability")).toBeInTheDocument();
         expect(screen.getByText("3")).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("ViewRisk Component", () => {
         const popupCloseMock = jest.fn();
 
         const { getByTestId } = render(
-            <ViewRisk risk={risk} popupOpen={true} popupClose={popupCloseMock} />
+            <EditRisk risk={risk} popupOpen={true} popupClose={popupCloseMock} />
         );
 
         // eslint-disable-next-line testing-library/prefer-screen-queries
