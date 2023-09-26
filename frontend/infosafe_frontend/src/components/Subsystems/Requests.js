@@ -14,7 +14,7 @@ export const Requests = () => {
     const SUPPORTOPTIONS = ['DataScope Support', 'Asset Support', 'Task Support', 'Other'];
 
 
-    const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
+    // const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
     const requestOptions = ["Support Request", "Asset Request", "Access Request"];
     let permittedRequests = [];
 
@@ -36,7 +36,7 @@ export const Requests = () => {
 
     const CreateSupportRequest = () => {
         const {
-            handleClick, support_type,setSupportType, support_description, setSupportDescription, setSupportStatus, datascopeData, setDataScope_id, setTask_id, setAsset_id
+            handleClick, support_type,setSupportType, support_description, setSupportDescription, setDataScope_id, setTask_id, setAsset_id
         } = useRequestMaker();
         const {myAssets} = useCurrentDataScope();
         const {myTasks} = useCurrentTasks();
@@ -109,13 +109,6 @@ export const Requests = () => {
                 className="supportRequestDescription"
                 onChange={handleDescriptionChange}
                 value={support_description}/>
-            <p className="supportRequestStatusLabel">Status</p>
-            <Dropdown
-                className="supportRequestStatusDropdown"
-                options={STATUS}
-                value={STATUS[0]}
-                onChange={(selectedOption) => setSupportStatus(selectedOption.value)}
-            />
             <div className="createSupportRequestButtonDiv">
                 <button
                     className="createSupportRequestButton"
@@ -131,7 +124,7 @@ export const Requests = () => {
     }
 
     const CreateAccessRequest = () => {
-        const { handleClick, reason, setReason, setDataScope_id, setStatus } = useRequestMaker();
+        const { handleClick, reason, setReason, setDataScope_id } = useRequestMaker();
         const accessRequests = useAccessRequests(); // Rename datascopeData to accessRequests
         const handleReasonChange = (e) => {
             setReason(e.target.value);
@@ -163,13 +156,6 @@ export const Requests = () => {
                         onChange={handleReasonChange}
                         value={reason}
                     />
-                    <p className="createAccessRequestStatusLabel">Status</p>
-                    <Dropdown
-                        className="accessRequestStatusDropdown"
-                        options={STATUS}
-                        value={STATUS[0]}
-                        onChange={(selectedOption) => setStatus(selectedOption.value)}
-                    />
                     <div className="createAccessRequestButtonDiv">
                         <button
                             className="createAccessRequestButton"
@@ -190,7 +176,6 @@ export const Requests = () => {
             reason,
             setReason,
             setDesiredDate,
-            setRequestStatus,
             setSelectedDevice,
             selectedDevice
         } = useRequestMaker();
@@ -226,13 +211,6 @@ export const Requests = () => {
                     className="createAssetRequestDateInput"
                     onChange={(e) => handleDateChange(e.target.value)}
                     required
-                />
-                <p className="createAssetRequestStatusLabel">Status</p>
-                <Dropdown
-                    className="assetRequestStatusDropdown"
-                    options={STATUS}
-                    value={STATUS[0]}
-                    onChange={(selectedOption) => setRequestStatus(selectedOption.value)}
                 />
                 <div className="createAssetRequestButtonDiv">
                     <button

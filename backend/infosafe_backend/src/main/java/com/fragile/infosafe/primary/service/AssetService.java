@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -23,7 +24,23 @@ public class AssetService {
     private final UserRepository userRepository;
     public List<Asset> getAllAssets() {return assetRepository.findAll();}
 
-    public Asset updateAsset(Asset asset) {return assetRepository.save(asset);}
+    public Asset updateAsset(AssetRequest asset) {
+        if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {
+            Asset editAsset = assetRepository.findByAssetId(asset.getAsset_id()).get();
+            User current = userRepository.findByEmail(asset.getCurrent_assignee()).get();
+            Optional<User> previous = userRepository.findByEmail(asset.getPrevious_assignee());
+            previous.ifPresent(editAsset::setPrevious_assignee);
+            editAsset.setAsset_description(asset.getAsset_description());
+            editAsset.setAsset_name(asset.getAsset_name());
+            editAsset.setAsset_description(asset.getAsset_description());
+            editAsset.setStatus(asset.getStatus());
+            editAsset.setUsed(asset.getUsed());
+            editAsset.setDevice_type(asset.getDevice_type());
+            editAsset.setCurrent_assignee(current);
+            return assetRepository.save(editAsset);
+        }
+        return null;
+    }
 
 
     public ResponseEntity<String> makeAsset(AssetRequest request){

@@ -386,7 +386,6 @@
     position: relative;
     left: 3%;
 }
-
 .inUseDevicesList li {
     position: relative;
     height: 35%;
@@ -399,12 +398,10 @@
     border: 2px solid #9E0000;
     margin-top: 3px;
     /*display: flex;*/
-
 }
 .inUseDevicesList li:nth-child(even) {
     border-color: #49D4D0;
 }
-
 .inUseDevicesList li p {
     font-family: 'Roboto', sans-serif;
     /*transform: translateY(-50%);*/
@@ -423,7 +420,6 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     border-radius: 4px;
 }
-
 .notificationsLabel {
     color: #444040;
     text-align: left;
@@ -435,7 +431,6 @@
     left: 3%;
     margin: 0;
 }
-
 .notificationsDisplay {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -444,11 +439,9 @@
     position: relative;
     top: 10%;
 }
-
 .notificationsDisplay::-webkit-scrollbar {
     display: none;
 }
-
 .myNotificationsList {
     list-style: none;
     margin: 0;
@@ -457,7 +450,6 @@
     position: relative;
     left: 2.5%;
 }
-
 .myNotificationsList li {
     display: flex;
     align-items: center;
@@ -469,7 +461,6 @@
     padding: 5px;
     margin-top: 3px;
 }
-
 .myNotificationsList li p {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -495,7 +486,6 @@
     width: 80%;
     height: fit-content;
 }
-
 .deadlinesDiv{
     height: 64%;
     overflow-y: scroll;
@@ -526,7 +516,6 @@
     padding: 5px;
     margin-top: 3px;
 }
-
 .taskDeadlinesList li p {
     font-family: 'Roboto', sans-serif;
     margin: 0;

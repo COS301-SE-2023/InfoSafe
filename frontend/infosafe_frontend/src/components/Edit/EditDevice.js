@@ -6,13 +6,14 @@ import Dropdown from 'react-dropdown';
 import Select from "react-select";
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
-// const NEW_OPTIONS = ['YES', 'NO'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
+
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
-    const [selectedUsers, setSelectedUsers] = useState({});
+    const [selectedUser, setSelectedUser] = useState(null);
     const newPreviousAssignee = asset.current_assignee;
-
+    let title = "Current Custodian: Not Assigned";
+    let placeholder = "Add Assignee";
     const[values, setValues]=useState({
         asset_id: '',
         asset_name: '',
@@ -24,6 +25,13 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         current_assignee: '',
         previous_assignee: ''
     })
+
+    if(newPreviousAssignee != null){
+        const email = newPreviousAssignee.email;
+        title = "Current Custodian: " + email;
+        placeholder = "Change Assignee";
+    }
+
 
     useEffect(() => {
         if (asset) {
@@ -42,8 +50,20 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     }, [asset]);
 
     const handleSelect = (selectedOptions) => {
-        setSelectedUsers(selectedOptions);
-        if (asset.current_assignee !== newPreviousAssignee)
+        setSelectedUser(selectedOptions);
+
+        let foundUser = users[0];
+
+        for(let i=0; i<users.length; i++){
+            if(users[i].user_id === selectedOptions.value){
+                foundUser = users[i];
+                asset.previous_assignee = newPreviousAssignee;
+                //asset.current_assignee = users[i];
+                break;
+            }
+        }
+
+        if (foundUser !== newPreviousAssignee)
         {
             setValues({
                 asset_id: asset.asset_id,
@@ -53,17 +73,15 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 used: asset.used,
                 availability: asset.availability,
                 device_type: asset.device_type,
-                current_assignee: selectedUsers,
-                previous_assignee: newPreviousAssignee
+                current_assignee: foundUser ? foundUser.email: '',
+                previous_assignee: newPreviousAssignee ? newPreviousAssignee.email: ''
             });
         }
     };
 
     const handleSubmit = (e) => {
-        console.log('Previous assignee: ');
-        console.log(newPreviousAssignee);
         e.preventDefault();
-        console.log(values)
+
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -71,9 +89,9 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
             },
             body:JSON.stringify(values)
         }).then(()=>{
+            console.log(values)
             console.log("Updated Asset")
         })
-        console.log(JSON.stringify(values))
         popupClose()
     }
 
@@ -166,15 +184,15 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                             />
                         {values.availability  === 'No' && (
                             <div>
-                                <p className="editCurrentCustodianLabel">Current Custodian</p>
+                                <p className="editCurrentCustodianLabel">{title}</p>
                                 {users && users.length > 0 ? (
                                     <Select
-                                        styles={customStyles}
+                                        placeholder={placeholder}
                                         options={users.map((data) => ({ value: data.user_id, label: data.email }))}
-                                        value={selectedUsers}
+                                        value={selectedUser}
+                                        styles={customStyles}
                                         className="userSelect"
                                         name="datascopeDropdown"
-                                        placeholder={"Add Assignees"}
                                         onChange={handleSelect}
                                         isSearchable={true}
                                     />

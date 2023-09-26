@@ -1,0 +1,41 @@
+.aboutBackground{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.aboutInfo{
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 5%;
+    left: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+.aboutTitle{
+    font-size: 40px;
+}
+.aboutData{
+    font-size: 18px;
+}
+.contactUsInfo{
+    width: 90%;
+    height: 15%;
+    position: relative;
+    top: 0;
+    left: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+.contactUsTitle{
+    font-size: 40px;
+}
+.contactUsData{
+    font-size: 18px;
+}
+.emailIcon{
+    font-size: 1.5em;
+}

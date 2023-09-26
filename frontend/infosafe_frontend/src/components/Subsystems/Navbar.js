@@ -6,7 +6,9 @@ import {IoMenu, IoPeopleSharp, IoPersonCircleSharp} from "react-icons/io5";
 import {ChangePassword} from "../Edit/ChangePassword";
 import {FaHome, FaProjectDiagram, FaLock, FaTasks} from 'react-icons/fa';
 import {RiUserSettingsFill} from 'react-icons/ri';
+import {IoInformationCircleOutline} from 'react-icons/io5';
 // import {IoPeopleSharp} from 'react-icons/io5';
+import {IoHelpCircleOutline} from 'react-icons/io5';
 import {PiDevicesFill} from 'react-icons/pi';
 import {BiSupport} from 'react-icons/bi';
 import {CgDanger} from 'react-icons/cg';
@@ -17,8 +19,8 @@ const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
     const {roles} = useGetPerms();
-    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests'];
-    const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaLock className="icon" />, <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <BiSupport className="icon" />, <CgDanger className="icon" />, <TbDevicesPc className="icon" />, <MdOutlineDashboardCustomize className="icon" /> ]
+    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests', 'About', 'Help'];
+    const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaLock className="icon" />, <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <BiSupport className="icon" />, <CgDanger className="icon" />, <TbDevicesPc className="icon" />, <MdOutlineDashboardCustomize className="icon" />, <IoInformationCircleOutline className="icon" />, <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline> ]
     tabItems.push(0);
 
     if (roles.includes("role_creation")) {//Role Creation
@@ -51,8 +53,8 @@ const NavBar = () => {
     //if (roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access")) {//Requests
         tabItems.push(10);
     //}
-
-
+    tabItems.push(11);
+    tabItems.push(12);
     const handleClick = (NavTabIndex) => {
         setActive(NavTabIndex);
     };

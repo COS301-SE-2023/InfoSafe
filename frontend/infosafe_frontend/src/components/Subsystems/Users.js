@@ -12,7 +12,7 @@ import {ConfirmDelete} from "../ConfirmDelete";
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
-    const {showUser} = useGetAllUser()
+    const {showUser, loading} = useGetAllUser()
     const {roles} = useGetPerms();
 
     const EditUserDiv = ({user}) => {
@@ -157,7 +157,11 @@ export const Users = () => {
                     <FaSearch className="userSearchIcon" />
                 </div>
                 <div className="users">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="userList">{userItems}</ul>
+                    )}
                 </div>
                 <CreateUser></CreateUser>
             </div>
