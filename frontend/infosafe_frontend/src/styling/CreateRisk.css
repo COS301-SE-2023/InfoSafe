@@ -285,5 +285,14 @@
     height: 30%;
     margin: 2%  0;
     left: 15%;
-    top: -3vh;
+    top: -1vh;
+}
+.createRiskError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
 }
