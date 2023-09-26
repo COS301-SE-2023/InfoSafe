@@ -5,9 +5,13 @@ import ViewRisk from "../../View/ViewRisk";
 describe("ViewRisk Component", () => {
     const risk = {
         risk_id: "1",
+        risk_name: "Risk1",
         probability_rating: "3",
         impact_rating: "4",
-        risk_description: "Risk for datascope 1"
+        risk_description: "Risk for datascope 1",
+        dataScope: {
+            ds_name: "datascope 1"
+        }
     };
 
     it("renders correctly with risk data", () => {
@@ -17,8 +21,12 @@ describe("ViewRisk Component", () => {
 
         // Ensure that the component renders with user data
         expect(screen.getByText("View Risk")).toBeInTheDocument();
+        expect(screen.getByText("Risk Name")).toBeInTheDocument();
+        expect(screen.getByText("Risk1")).toBeInTheDocument();
         expect(screen.getByText("Risk ID")).toBeInTheDocument();
         expect(screen.getByText("1")).toBeInTheDocument();
+        expect(screen.getByText("Data Scope")).toBeInTheDocument();
+        expect(screen.getByText("datascope 1")).toBeInTheDocument();
         expect(screen.getByText("Probability")).toBeInTheDocument();
         expect(screen.getByText("3")).toBeInTheDocument();
         expect(screen.getByText("Impact")).toBeInTheDocument();

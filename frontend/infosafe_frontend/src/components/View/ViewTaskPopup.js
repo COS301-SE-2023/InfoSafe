@@ -57,26 +57,24 @@ return (
                         <IoArrowBackOutline className="viewTaskBackIcon"/>
                     </button>
                     <p className="viewTaskPageTitle">View Task</p>
-                    <div className="viewTaskContent">
-                        <p className="viewTaskDisplayTitle">Task Name</p>
-                        <p className="viewTaskDisplayData">{task.task_name}</p>
-                        <p className="viewTaskDisplayTitle">Data Scope</p>
-                        <p className="viewTaskDisplayData">{task.dataScope.ds_name}</p>
-                        <p className="viewTaskDisplayTitle">Task Description</p>
-                        <textarea className="viewTaskTextArea" readOnly={true} value={task.task_description}/>
-                        <p className="viewTaskDisplayLabel">Task Status</p>
-                        <p className="viewTaskDisplayStatus">{task.task_status}</p>
-                        <p className="viewTaskDisplayCompletionDate">Completion Date</p>
-                        <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>
-                        <div className="viewTaskButtons">
-                            <button type="button" className="completedButton" onClick={handleCompleted}>
-                                Completed
-                            </button>
-                            <button type="button" className="incompleteButton" onClick={handleIncomplete}>
-                                Incomplete
-                            </button>
-                        </div>
+                    <p className="viewTaskDisplayTitle">Task Name</p>
+                    <p className="viewTaskDisplayData">{task.task_name}</p>
+                    <p className="viewTaskDisplayTitle">Data Scope</p>
+                    <p className="viewTaskDisplayData">{task.dataScope.ds_name}</p>
+                    <p className="viewTaskDisplayTitle">Task Description</p>
+                    <textarea className="viewTaskTextArea" readOnly={true} value={task.task_description}/>
+                    <p className="viewTaskDisplayLabel">Task Status</p>
+                    <p className="viewTaskDisplayStatus">{task.task_status}</p>
+                    <p className="viewTaskDisplayCompletionDate">Completion Date</p>
+                    <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>
 
+                    <div className="viewTaskButtons">
+                        <button type="button" className="completedButton" onClick={handleCompleted}>
+                            Completed
+                        </button>
+                        <button type="button" className="incompleteButton" onClick={handleIncomplete}>
+                            Incomplete
+                        </button>
                     </div>
                 </div>
             </div>

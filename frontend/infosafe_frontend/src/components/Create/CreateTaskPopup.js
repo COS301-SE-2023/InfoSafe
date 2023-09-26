@@ -27,6 +27,13 @@ export const CreateTask = ({popupClose, popupOpen}) => {
     ];
     const handleClick = (e) => {
         e.preventDefault();
+
+        if ( task_description === '' || task_status === '' || due_date === ''|| datascope === null || selectedUsers === [] || task_name === '') {
+            document.getElementById("createTaskError").style.display = "block";
+            return;
+        }
+
+
         const currentDate = new Date().toISOString().split('T')[0];
         const task = {
             task_name,
@@ -140,65 +147,72 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                     <form>
                         <p className="createTaskPageTitle">Create Task</p>
                         <div className="createTaskContent">
-                        <p className="createTaskInputTitle">Type name</p>
-                        <textarea
-                            className="createTaskInputTextArea"
-                            onChange={handleTaskNameChange}
-                            value={task_name}
-                        />
-                        <p className="createTaskInputLabel">Type Description</p>
-                        <textarea
-                            className="createTaskDescriptionInputTextArea"
-                            onChange={handleDescriptionChange}
-                            value={task_description}
-                        />
-                        <p className="createTaskInputLabels">Task Status</p>
-                        <Dropdown
-                            options={statusOptions}
-                            value={statusOptions.find((option) => option.value === task_status)}
-                            className="createTaskStatusDropdown"
-                            name="taskStatusDropdown"
-                            placeholder={"Select Status"}
-                            onChange={(selectedOption) => setTaskStatus(selectedOption.value)}
-                        />
-                        <p className="createTaskInputLabels">Assignees</p>
-                        {users && users.length > 0 ? (
-                            <Select
-                                styles={customStyles}
-                                options={users.map((data) => ({value: data.user_id, label: data.email}))}
-                                value={selectedUsers}
-                                className="createTaskUserDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add Assignees"}
-                                onChange={handleSelect}
-                                isSearchable={true}
-                                isMulti
+                            <p className="createTaskInputTitle">Type name</p>
+                            <textarea
+                                className="createTaskInputTextArea"
+                                onChange={handleTaskNameChange}
+                                value={task_name}
+                                id="taskNameIn"
                             />
-                        ) : (
-                            <p>Loading...</p>
-                        )}
-                        <p className="createTaskInputLabels">Data Scope</p>
-                        {myDatascopeData && myDatascopeData.length > 0 ? (
+                            <p className="createTaskInputLabel">Type Description</p>
+                            <textarea
+                                className="createTaskDescriptionInputTextArea"
+                                onChange={handleDescriptionChange}
+                                value={task_description}
+                                id="taskDescIn"
+                            />
+                            <p className="createTaskInputLabels">Task Status</p>
                             <Dropdown
-                                options={myDatascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                                value={myDatascopeData.ds_name}
-                                className="createTaskDataScopeDropdown"
-                                name="datascopeDropdown"
-                                placeholder={"Add DataScope"}
-                                onChange={(selectedOption) => setDataScope(selectedOption)}
+                                options={statusOptions}
+                                value={statusOptions.find((option) => option.value === task_status)}
+                                className="createTaskStatusDropdown"
+                                name="taskStatusDropdown"
+                                placeholder={"Select Status"}
+                                onChange={(selectedOption) => setTaskStatus(selectedOption.value)}
+                                id="taskStatusIn"
                             />
-                        ) : (
-                            <p className="loadTitle">Loading...</p>
-                        )}
-                        <p className="createTaskInputLabels">Completion Date</p>
-                        <input
-                            type="date"
-                            className="createTaskDateInput"
-                            onChange={(e) => handleDateChange(e.target.value)}
-                            required
-                        /><button className="createTaskSubmitButton" type="submit" onClick={handleClick}>
-                            Submit
-                        </button>
+                            <p className="createTaskInputLabels">Assignees</p>
+                            {users && users.length > 0 ? (
+                                <Select
+                                    styles={customStyles}
+                                    options={users.map((data) => ({value: data.user_id, label: data.email}))}
+                                    value={selectedUsers}
+                                    className="createTaskUserDropdown"
+                                    name="datascopeDropdown"
+                                    placeholder={"Add Assignees"}
+                                    onChange={handleSelect}
+                                    isSearchable={true}
+                                    isMulti
+                                    id="taskUserIn"
+                                />
+                            ) : (
+                                <p>Loading...</p>
+                            )}
+                            <p className="createTaskInputLabels">Data Scope</p>
+                            {myDatascopeData && myDatascopeData.length > 0 ? (
+                                <Dropdown
+                                    options={myDatascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                    value={myDatascopeData.ds_name}
+                                    className="createTaskDataScopeDropdown"
+                                    name="datascopeDropdown"
+                                    placeholder={"Add DataScope"}
+                                    onChange={(selectedOption) => setDataScope(selectedOption)}
+                                />
+                            ) : (
+                                <p className="loadTitle">Loading...</p>
+                            )}
+                            <p className="createTaskInputLabels">Completion Date</p>
+                            <input
+                                type="date"
+                                className="createTaskDateInput"
+                                onChange={(e) => handleDateChange(e.target.value)}
+                                required
+                                id="taskDateIn"
+                            />
+                            <p className="createTaskError" id="createTaskError">Please ensure all fields are completed.</p>
+                            <button className="createTaskSubmitButton" type="submit" onClick={handleClick}>
+                                Submit
+                            </button>
                         </div>
                     </form>
                 </div>

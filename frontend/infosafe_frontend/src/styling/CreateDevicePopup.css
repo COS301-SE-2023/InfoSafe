@@ -294,4 +294,14 @@
     overflow-y: hidden;
     scrollbar-width: none;
 }
-
+.createDeviceError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
+    top: -3vh;
+    left: 15%;
+}

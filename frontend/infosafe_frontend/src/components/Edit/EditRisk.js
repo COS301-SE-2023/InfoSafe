@@ -1,8 +1,7 @@
 import Popup from 'reactjs-popup';
 import React, {useEffect, useState} from 'react';
 import '../../styling/EditRisk.css';
-import '../../styling/Dropdown.css'
-import {IoArrowBackOutline} from 'react-icons/io5';
+import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
 import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";

@@ -17,7 +17,7 @@ const ViewAssetRequest = ({assetRequest, popupOpen, popupClose}) => {
                     <p className="viewAssetRequestLabel">View Asset Request</p>
                     <div className="viewAssetRequestContent">
                     <p className="viewAssetRequestDeviceNameLabel">Device Name</p>
-                    {/*<p className="viewAssetRequestDeviceName">{assetRequest.asset.asset_name}</p>*/}
+                    <p className="viewAssetRequestDeviceName">{assetRequest.asset.asset_name}</p>
                     <p className="viewAssetRequestUserLabel">User</p>
                     <p className="viewAssetRequestUser">{assetRequest.user.first_name} {assetRequest.user.last_name}</p>
                     <p className="viewAssetRequestReasonLabel">Reason</p>

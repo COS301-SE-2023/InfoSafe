@@ -30,6 +30,12 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
 
     const handleClick = (e) => {
         e.preventDefault()
+        if ( asset_name === '' || asset_description === '' || selectedUsers === null || device_type === '' ) {
+            document.getElementById("createDeviceError").style.display = "block";
+            return;
+        }
+
+
         const asset = {
             asset_name,
             asset_description,
@@ -136,6 +142,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                     )}
                                 </div>
                             )}
+                            <p className="createDeviceError" id="createDeviceError">Please ensure all fields are completed.</p>
                             <button className="createDeviceFinish" onClick={handleClick}>
                                 Submit
                             </button>

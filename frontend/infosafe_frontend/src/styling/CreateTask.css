@@ -210,3 +210,12 @@
     position: relative;
     top: -2vh;
 }
+.createTaskError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
+}

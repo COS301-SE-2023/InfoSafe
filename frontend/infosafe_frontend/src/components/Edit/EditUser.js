@@ -7,12 +7,12 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     const [selectedRole, setSelectedRole] = useState(user.role.role_name)
     const [roleNames, setRoleNames] = useState('')
     const [values, setValues] = useState({
-        user_id: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        password: '',
-        role: ''
+        user_id: user.user_id,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        password: user.password,
+        role: {role_name: selectedRole}
     });
 
     const handleRole = (selectedOptions) => {

@@ -13,10 +13,11 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
     const[password,setPassword]=useState('')
     const [roleNames, setRoleNames] = useState('')
     const [selectedRole, setSelectedRole] = useState('');
-    const {setShowUser, showUser} = useGetAllUser();
+    const {showUser, loading} = useGetAllUser();
 
     const handleClick = (e) => {
         e.preventDefault();
+        popupClose();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
         if ( document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '' ) {
@@ -46,13 +47,12 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         body: JSON.stringify(user),
                     })
                         .then(() => {
-                            setShowUser([...showUser, user])
+                            //setShowUser([...showUser, user])
                             console.log("New User added");
                         })
                         .catch((error) => {
                             console.error("Error adding new user:", error);
                         });
-                    popupClose();
                 }
             })
             .catch((error) => {
@@ -137,11 +137,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                                 ) : (
                                     <p className="loadTitle">Loading...</p>
                                 )}
-
+                                <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
                                 <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
                                     Submit
                                 </button>
-                                <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
                             </div>
                         </form>
                 </div>

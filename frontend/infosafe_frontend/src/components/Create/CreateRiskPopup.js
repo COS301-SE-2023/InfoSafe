@@ -29,6 +29,12 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
     }
     const handleClick = (e)=> {
         e.preventDefault();
+
+        if ( risk_name === '' || risk_description === '' || suggested_mitigation === '' || datascope === null ) {
+            document.getElementById("createRiskError").style.display = "block";
+            return;
+        }
+
         const risk = {risk_name, impact_rating, probability_rating, risk_description, risk_status: "Open", suggested_mitigation, dataScope_id: datascope.value,};
         console.log(risk);
         fetch("http://localhost:8080/api/risk/addRisk", {
@@ -81,6 +87,14 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                                 onChange={handleDescriptionChange}
                                 value={risk_description}
                             />
+                            <p className="riskStatusLabel">Risk Status</p>
+                            <Dropdown
+                                options={STATUS}
+                                value={STATUS[0]}
+                                className="riskStatusDropdown"
+                                name="riskStatusDropdown"
+                                onChange={(selectedOption) => setRiskStatus(selectedOption.value)}
+                            />
                             <p className="riskSuggestedMitigationLabel">Suggested Mitigation</p>
                             <textarea
                                 className="riskSuggestedMitigationInput"
@@ -100,11 +114,10 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                             ) : (
                                 <p className="loadTitle">Loading...</p>
                             )}
-                            <div>
-                                <button className="createRiskSubmitButton" type="submit" onClick={handleClick}>
-                                    Submit
-                                </button>
-                            </div>
+                            <p className="createRiskError" id="createRiskError">Please ensure all fields are completed.</p>
+                            <button className="createRiskSubmitButton" type="submit" onClick={handleClick}>
+                                Submit
+                            </button>
                         </form>
                     </div>
                 </div>
