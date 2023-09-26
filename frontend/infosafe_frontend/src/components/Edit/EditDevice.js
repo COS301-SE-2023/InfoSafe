@@ -120,8 +120,8 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <p className="editDeviceTitle">Edit Device</p>
-                            <p className="editDeviceTitle">Device Name</p>
-                            <input className="deviceNameInput"
+                            <p className="editDeviceDescriptionLabel">Device Name</p>
+                            <input className="editDeviceNameInput"
                                    value={asset.asset_id}
                                    />
                             <p className="editDeviceDescriptionLabel">Description</p>
