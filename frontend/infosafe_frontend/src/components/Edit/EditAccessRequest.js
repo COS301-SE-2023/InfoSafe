@@ -9,11 +9,11 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
 
     const[values, setValues]=useState({
-        request_id: '',
-        user_id: '',
-        data_scope_id: '',
-        status: '',
-        reason: ''
+        request_id: access.request_id,
+        user_id: access.user_id,
+        data_scope_id: access.data_scope_id,
+        status: access.status,
+        reason: access.reason
     });
 
     useEffect(() => {
