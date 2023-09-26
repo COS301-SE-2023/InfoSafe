@@ -1,8 +1,10 @@
 package com.fragile.infosafe.primary.config;
 
+import com.fragile.infosafe.primary.model.Permission;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,8 +15,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import software.amazon.awssdk.services.grafana.model.Role;
+import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 
 import java.util.Arrays;
+
+
 
 // import static org.springframework.http.HttpMethod.*;
 
@@ -33,7 +42,7 @@ public class SecurityConfiguration {
                 .cors(cfg -> cfg.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/api/forgot/**").permitAll()
-//                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(String.valueOf(Permission.user_create))
+                        .requestMatchers(GET,"/api/user/getAll").hasAuthority("user_create")
 //                        .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated())

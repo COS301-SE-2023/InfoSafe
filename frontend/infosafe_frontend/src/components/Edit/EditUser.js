@@ -16,7 +16,14 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         role: ''
     });
 
+    const handleRole = (selectedOptions) => {
+        console.log(selectedOptions)
+        setSelectedRole(selectedOptions);
+        console.log(selectedOptions)
+    };
+
     useEffect(() => {
+        console.log("this happened")
         if (user) {
             setValues({
                 user_id: user.user_id,
@@ -24,7 +31,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                 last_name: user.last_name,
                 email: user.email,
                 password: user.password,
-                role: {role_name: selectedRole}
+                role: {role_name: user.role.role_name}
             });
         }
     }, [user]);
@@ -109,7 +116,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                             value={selectedRole}
                                             className="roleDropdown"
                                             name="roleDropdown"
-                                            onChange={values => setSelectedRole(values.value)}
+                                            onChange={roleNames => setValues({...values, role: {role_name: roleNames.value}})}
                                         />
                                     ) : (
                                         <p className="loadTitle">Loading...</p>
