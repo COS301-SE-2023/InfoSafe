@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import ViewAssetRequest from "../../View/ViewAssetRequest";
 
 describe("ViewAsset Component", () => {
-    const asset = {
+    const assetRequest = {
         asset: {
             asset_name: "Dell XPS"
         },
@@ -17,13 +17,13 @@ describe("ViewAsset Component", () => {
 
     it("renders correctly with asset data", () => {
         const { getByText } = render(
-            <ViewAssetRequest asset={asset} popupOpen={true} popupClose={() => {}} />
+            <ViewAssetRequest assetRequest={assetRequest} popupOpen={true} popupClose={() => {}} />
         );
 
         // Ensure that the component renders with user data
         expect(screen.getByText("View Asset Request")).toBeInTheDocument();
         expect(screen.getByText("Device Name")).toBeInTheDocument();
-        // expect(screen.getByText("Dell XPS")).toBeInTheDocument();
+        expect(screen.getByText("Dell XPS")).toBeInTheDocument();
         expect(screen.getByText("User")).toBeInTheDocument();
         expect(screen.getByText("John Doe")).toBeInTheDocument();
         expect(screen.getByText("Reason")).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("ViewAsset Component", () => {
         const popupCloseMock = jest.fn();
 
         const { getByTestId } = render(
-            <ViewAssetRequest asset={asset} popupOpen={true} popupClose={popupCloseMock} />
+            <ViewAssetRequest assetRequest={assetRequest} popupOpen={true} popupClose={popupCloseMock} />
         );
 
         // eslint-disable-next-line testing-library/prefer-screen-queries
