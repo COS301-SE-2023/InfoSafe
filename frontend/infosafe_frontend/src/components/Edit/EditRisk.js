@@ -1,35 +1,38 @@
 import Popup from 'reactjs-popup';
 import React, {useEffect, useState} from 'react';
 import '../../styling/EditRisk.css';
-import { IoArrowBackOutline } from 'react-icons/io5';
+import '../../styling/Dropdown.css'
+import {IoArrowBackOutline} from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
-const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
-const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
-export const EditRisk = ({ risk, popupClose, popupOpen }) => {
+import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 
-    const[values, setValues]=useState({
-        risk_id: '',
-        dataScope_id: '',
-        risk_description: '',
+const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate', 'Unlikely', 'Rare'];
+const IMPACT = ['Insignificant', 'Minor', 'Significant', 'Major', 'Severe'];
+const STATUS = ['Open', 'In Progress', 'Resolved'];
+export const EditRisk = ({risk, popupClose, popupOpen}) => {
+    const [datascope, setDataScope] = useState(risk.dataScope.ds_name);
+    const {myDatascopeData} = useAccessRequests();
+    const [values, setValues] = useState({
+        risk_name: '',
         impact_rating: '',
         probability_rating: '',
+        risk_description: '',
         suggested_mitigation: '',
-        risk_status: ''
+        risk_status: '',
+        dataScope: '',
     });
 
     useEffect(() => {
         if (risk) {
             setValues({
-                risk_id: risk.risk_id,
-                dataScope_id: risk.dataScope_id,
-                risk_description: risk.risk_description,
+                risk_name: risk.risk_name,
                 impact_rating: risk.impact_rating,
                 probability_rating: risk.probability_rating,
+                risk_description: risk.risk_description,
                 suggested_mitigation: risk.suggested_mitigation,
-                risk_status: risk.risk_status
+                risk_status: "Open",
+                dataScope_id: risk.dataScope.data_scope_id
             });
         }
     }, [risk]);
@@ -38,12 +41,13 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
         e.preventDefault();
         console.log(values)
         fetch('http://localhost:8080/api/risk/update/' + risk.risk_id, {
-            method:"PUT",
-            headers:{"Content-Type":"application/json",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
-            body:JSON.stringify(values)
-        }).then(()=>{
+            body: JSON.stringify(values)
+        }).then(() => {
             console.log("Updated Risk")
         })
         //console.log(JSON.stringify(values))
@@ -54,45 +58,79 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
         <Popup risk={risk} open={popupOpen} closeOnDocumentClick={false}>
             <div className="editRiskOverlay">
                 <div className="popupBackground">
-                <div className="borderEditRisk">
-                    <button className="editRiskBackButton" onClick={popupClose} data-testid="back-button">
-                        <IoArrowBackOutline className="editRiskBackIcon" />
-                    </button>
-                    <form onSubmit={handleSubmit}>
-                        <p className="editRiskPageTitle">Edit Risk</p>
-                        <div className="editRiskContent">
-                        <p className="editRiskInputTitle">Data Scope</p>
-                        <p className="editRiskDisplayData">{risk.dataScope.ds_name}</p>
-                        <p className="editRiskInputTitle">Probability</p>
-                        <Dropdown
-                            options={PROBABILITY}
-                            value={risk.probability_rating}
-                            className="editRiskProbabilityDropdown"
-                            name="probabilityDropdown"
-                            onChange={(selectedOption) => setValues({...values, probability_rating: selectedOption.value})}
-                        />
-                        <p className="editRiskInputTitle">Impact</p>
-                        <Dropdown
-                            options={IMPACT}
-                            value={risk.impact_rating}
-                            className="editRiskImpactDropdown"
-                            name="impactDropdown"
-                            onChange={(selectedOption) => setValues({...values, impact_rating: selectedOption.value})}
-                        />
-                        <p className="editRiskInputTitle">Vulnerability/Threat</p>
-                        <textarea
-                            className="editRiskInputTextArea"
-                            defaultValue={risk.risk_description}
-                            onChange={e => setValues({...values, risk_description: e.target.value})}
-                        />
-                        <div>
-                            <button className="editRiskSubmitButton" type="submit">
-                                Submit
-                            </button>
-                        </div>
-                        </div>
-                    </form>
-                </div>
+                    <div className="borderEditRisk">
+                        <button className="editRiskBackButton" onClick={popupClose} data-testid="back-button">
+                            <IoArrowBackOutline className="editRiskBackIcon"/>
+                        </button>
+                        <form onSubmit={handleSubmit}>
+                            <p className="editRiskPageTitle">Edit Risk</p>
+                            <div className="editRiskContent">
+                                <p className="editRiskInputTitle">Risk Name</p>
+                                <input
+                                    className="editNameInput"
+                                    type="text"
+                                    id="editusername"
+                                    name="editusername"
+                                    data-testid="firstNameEdit"
+                                    defaultValue={risk.risk_name}
+                                    onChange={e => setValues({...values, risk_name: e.target.value})}
+                                />
+                                <p className="editRiskInputTitle">Probability</p>
+                                <Dropdown
+                                    options={PROBABILITY}
+                                    value={risk.probability_rating}
+                                    className="editRiskProbabilityDropdown"
+                                    name="probabilityDropdown"
+                                    onChange={(selectedOption) => setValues({
+                                        ...values,
+                                        probability_rating: selectedOption.value
+                                    })}
+                                />
+                                <p className="editRiskInputTitle">Impact</p>
+                                <Dropdown
+                                    options={IMPACT}
+                                    value={risk.impact_rating}
+                                    className="editRiskImpactDropdown"
+                                    name="impactDropdown"
+                                    onChange={(selectedOption) => setValues({
+                                        ...values,
+                                        impact_rating: selectedOption.value
+                                    })}
+                                />
+                                <p className="editRiskInputTitle">Vulnerability/Threat</p>
+                                <textarea
+                                    className="editRiskInputTextArea"
+                                    defaultValue={risk.risk_description}
+                                    onChange={e => setValues({...values, risk_description: e.target.value})}
+                                />
+                                <p className="riskStatusLabel">Risk Status</p>
+                                <Dropdown
+                                    options={STATUS}
+                                    value={STATUS[0]}
+                                    className="riskStatusDropdown"
+                                    name="riskStatusDropdown"
+                                    onChange={(e) => setValues({...values, risk_status: STATUS.value})}
+                                />
+                                <p className="riskDataScopeLabel">Data Scope</p>
+                                {myDatascopeData && myDatascopeData.length > 0 ? (
+                                    <Dropdown
+                                        options={myDatascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                        value={datascope}
+                                        className="riskDataScopeDropdown"
+                                        name="riskDataScopeDropdown"
+                                        onChange={(selectedOption) => setValues({...values, dataScope_id: selectedOption.value})}
+                                    />
+                                ) : (
+                                    <p className="loadTitle">Loading...</p>
+                                )}
+                                <div>
+                                    <button className="editRiskSubmitButton" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </Popup>

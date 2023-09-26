@@ -4,6 +4,7 @@ import '../../styling/EditDevice.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import Select from "react-select";
+import {customStyles} from "../CustomStyling";
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
@@ -108,47 +109,6 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
             });
     }, []);
 
-    const customStyles = {
-        control: (base, state) => ({
-            ...base,
-            background: "#CECECE",
-            // match with the menu
-            borderRadius: state.isFocused ? "2px 2px 0 0" : 3,
-            // Removes weird border around container
-            boxShadow: state.isFocused ? null : null,
-            width: "70%",
-            color: 'black',
-            borderColor: state.isFocused ? "grey" : "transparent",
-            '&:hover': { borderColor: 'grey' }
-        }),
-        menu: base => ({
-            ...base,
-            // override border radius to match the box
-            borderRadius: 0,
-            // kill the gap
-            marginTop: 0,
-            width: "70%",
-        }),
-        menuList: base => ({
-            ...base,
-            // kill the white space on first and last option
-            padding: 0
-
-        }),
-        dropdownIndicator: base => ({
-            ...base,
-            color: '#999',
-        }),
-        placeholder: base => ({
-            ...base,
-            color: 'black'
-        }),
-        multiValue: base => ({
-            ...base,
-            background: "white",
-            color: 'black'
-        })
-    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -160,6 +120,10 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                     </button>
                     <form onSubmit={handleSubmit}>
                         <p className="editDeviceTitle">Edit Device</p>
+                            <p className="editDeviceTitle">Device Name</p>
+                            <input className="deviceNameInput"
+                                   value={asset.asset_id}
+                                   />
                             <p className="editDeviceDescriptionLabel">Description</p>
                             <textarea
                                 className="editDeviceDescriptionInput"

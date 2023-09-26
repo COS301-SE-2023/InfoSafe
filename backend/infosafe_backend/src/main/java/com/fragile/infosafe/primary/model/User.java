@@ -1,5 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -70,7 +71,7 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(role.getRole_name()));
+        authorities.add(new SimpleGrantedAuthority(role.getRole_name())); // should add _ROLE
         for (Permission permission : Permission.values()) {
             if (role.hasPermission(permission)) {
                 authorities.add(new SimpleGrantedAuthority(permission.name()));

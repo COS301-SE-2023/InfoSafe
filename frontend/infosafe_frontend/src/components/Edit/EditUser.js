@@ -1,6 +1,5 @@
 import Popup from 'reactjs-popup';
 import React, {useEffect, useState} from 'react';
-import '../../styling/EditUser.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 

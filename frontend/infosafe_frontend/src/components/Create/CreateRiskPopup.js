@@ -6,20 +6,18 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import useRequestMaker from "../Subsystems/useRequestMaker";
 import Select from "react-select";
+import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
-// const DATA_SCOPES = ['DATA SCOPE 1', 'DATA SCOPE 2', 'DATA SCOPE 3', 'DATA SCOPE 4'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
-const STATUS = ['Open', 'In Progress', 'Resolved', 'Closed'];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
     const[risk_name, setRisk_name] = useState('')
     const[impact_rating, setImpactRating] = useState(IMPACT[0])
     const[probability_rating, setProbabilityRating] = useState(PROBABILITY[0])
     const[risk_description, setRiskDescription] = useState('')
-    const[risk_status, setRiskStatus] = useState(STATUS[0])
     const[suggested_mitigation, setSuggestedMitigation] = useState('')
     const [datascope, setDataScope] = useState(null);
-    const {datascopeData} = useRequestMaker();
+    const {myDatascopeData} = useAccessRequests();
     const handleDescriptionChange = (e) => {
         setRiskDescription(e.target.value);
     };
@@ -31,7 +29,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
     }
     const handleClick = (e)=> {
         e.preventDefault();
-        const risk = {risk_name, impact_rating, probability_rating, risk_description, risk_status, suggested_mitigation, dataScope_id: datascope.value,};
+        const risk = {risk_name, impact_rating, probability_rating, risk_description, risk_status: "Open", suggested_mitigation, dataScope_id: datascope.value,};
         console.log(risk);
         fetch("http://localhost:8080/api/risk/addRisk", {
             method:"POST",
@@ -83,14 +81,6 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                                 onChange={handleDescriptionChange}
                                 value={risk_description}
                             />
-                            <p className="riskStatusLabel">Risk Status</p>
-                            <Dropdown
-                                options={STATUS}
-                                value={STATUS[0]}
-                                className="riskStatusDropdown"
-                                name="riskStatusDropdown"
-                                onChange={(selectedOption) => setRiskStatus(selectedOption.value)}
-                            />
                             <p className="riskSuggestedMitigationLabel">Suggested Mitigation</p>
                             <textarea
                                 className="riskSuggestedMitigationInput"
@@ -98,9 +88,9 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                                 value={suggested_mitigation}
                             />
                             <p className="riskDataScopeLabel">Data Scope</p>
-                            {datascopeData && datascopeData.length > 0 ? (
+                            {myDatascopeData && myDatascopeData.length > 0 ? (
                                 <Dropdown
-                                    options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                    options={myDatascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                                     value={datascope}
                                     className="riskDataScopeDropdown"
                                     name="riskDataScopeDropdown"

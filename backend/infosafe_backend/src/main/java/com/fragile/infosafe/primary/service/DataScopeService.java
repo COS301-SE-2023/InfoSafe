@@ -39,7 +39,9 @@ public class DataScopeService {
 
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
 
-    public DataScope updateDataScope(DataScope dataScope) {return dataScopeRepository.save(dataScope);}
+    public DataScope updateDataScope(DataScope dataScope) {
+        return dataScopeRepository.save(dataScope);
+    }
 
     public boolean checkDataScopeExists(String name) {
         return dataScopeRepository.existsByds_name(name);
