@@ -6,6 +6,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose}) => {
 
     const handleReview = (reviewValue) => {
+        popupClose();
         const payload = {review: reviewValue, request_id: assetRequest.asset_request_id, asset_id: assetRequest.asset.asset_id, user_email: assetRequest.user.email}
         console.log(payload)
         fetch('http://localhost:8080/api/assetrequest/reviewAsset', {
@@ -18,7 +19,7 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose}) => {
         })
             .then(() => {
                 console.log('Updated User');
-                popupClose();
+                //popupClose();
             });
     };
     return (
