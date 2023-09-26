@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/EditRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import ViewDataScope from "../View/ViewDataScope";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
@@ -54,7 +55,7 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
             <div className="editRiskOverlay">
                 <div className="popupBackground">
                 <div className="borderEditRisk">
-                    <button className="editRiskBackButton" onClick={popupClose}>
+                    <button className="editRiskBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="editRiskBackIcon" />
                     </button>
                     <form onSubmit={handleSubmit}>
@@ -97,3 +98,5 @@ export const EditRisk = ({ risk, popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default EditRisk;

@@ -4,6 +4,7 @@ import '../../styling/UpdateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import Select from "react-select";
+import ViewDataScope from "../View/ViewDataScope";
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3'];
@@ -119,7 +120,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
             <div className="updateTaskOverlay">
                 <div className="popupBackground">
                     <div className="borderUpdateTask">
-                        <button className="editTaskBackButton" onClick={popupClose}>
+                        <button className="editTaskBackButton" onClick={popupClose} data-testid="back-button">
                             <IoArrowBackOutline className="editTaskBackIcon" />
                         </button>
                         <form>
@@ -181,3 +182,5 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default UpdateTask;

@@ -155,7 +155,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
             <div className="editDeviceOverlay">
                 <div className="popupBackground">
                 <div className="borderEditDevice">
-                    <button className="editDeviceBackButton" onClick={popupClose}>
+                    <button className="editDeviceBackButton" onClick={popupClose} data-testid="back-button">
                         <IoArrowBackOutline className="editDeviceBackIcon" />
                     </button>
                     <form onSubmit={handleSubmit}>

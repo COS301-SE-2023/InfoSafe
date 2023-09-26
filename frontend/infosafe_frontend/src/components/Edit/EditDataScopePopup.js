@@ -3,6 +3,7 @@ import '../../styling/EditDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import ViewDataScope from "../View/ViewDataScope";
 const STATUS = ['Created', 'Approved', 'Rejected', 'Revoked'];
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
@@ -78,7 +79,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                 <div className="popupBackground">
                     <div className="editdatascopeBorder">
                         <form onSubmit={handleSubmit}>
-                            <button className="editDataScopeBackButton" onClick={popupClose}>
+                            <button className="editDataScopeBackButton" onClick={popupClose} data-testid="back-button">
                                 <IoArrowBackOutline className="backIcon" />
                             </button>
                             <p className="editDatascopeLabel">Edit Data Scope</p>
@@ -148,3 +149,4 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     );
 };
 
+export default EditDataScopePopup;

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Popup from "reactjs-popup";
 import { IoArrowBackOutline } from "react-icons/io5";
 import '../../styling/ChangePassword.css';
+import ViewDataScope from "../View/ViewDataScope";
 
 export const ChangePassword = ({ popupClose, popupOpen }) => {
     const [userEmail, setUserEmail] = useState('');
@@ -100,3 +101,5 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default ChangePassword;

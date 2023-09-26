@@ -61,7 +61,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
             <div className="editUserOverlay" data-testid="editUserPopup">
                 <div className="popupBackground">
                     <div className="editUserBorder">
-                        <button className="editUserBackButton" onClick={popupClose}>
+                        <button className="editUserBackButton" onClick={popupClose} data-testid="back-button">
                             <IoArrowBackOutline className="editUserBackIcon" />
                         </button>
                         <p className="editUserTitle">Edit User</p>
