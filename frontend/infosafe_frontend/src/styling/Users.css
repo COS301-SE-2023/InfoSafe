@@ -1,3 +1,16 @@
+.userHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    left: 1vw;
+    top: 2vh;
+    position: absolute;
+    z-index: 1000;
+}
+.userHelpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
 .searchUsers{
     display: flex;
     width: 100%;
