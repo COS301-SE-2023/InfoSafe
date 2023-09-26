@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent} from "@testing-library/react";
-import AccessRequestApproval from "../../Edit/AccessRequestApproval";
+import AccessRequestApproval from "../../Edit/EditAccessRequest";
 
 describe("AccessRequestApproval Component", () => {
     it("calls popupClose when back button is clicked", () => {
