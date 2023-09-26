@@ -20,4 +20,7 @@ public interface TaskRepository extends JpaRepository<Task,Integer> {
     List<Task> findDistinctTasksByUsersContains(User user);
 
     List<Task> findByUsers(User user);
+
+    @Query("SELECT u.email FROM Task t join t.users u WHERE t.task_id = :taskId")
+    List<String> findUsersByTaskId(@Param("taskId") int taskId);
 }

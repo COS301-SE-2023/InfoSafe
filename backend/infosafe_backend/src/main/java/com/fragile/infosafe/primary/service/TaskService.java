@@ -84,7 +84,31 @@ public class TaskService {
         return tasks;
     }
 
-    public Task updateTask(Task task) {return taskRepository.save(task);}
+    public Task updateTask(TaskRequest taskRequest) {
+        Task task = taskRepository.findByTaskId(taskRequest.getTask_id()).get();
+        task.setTask_description(taskRequest.getTask_description());
+        task.setTask_name(taskRequest.getTask_name());
+        task.setTask_status(taskRequest.getTask_status());
+        task.setDaysUntilDue(taskRequest.getTask_id());
+        DataScope dataScope = dataScopeRepository.findByDataScopeId(taskRequest.getDataScope_id()).get();
+        task.setDataScope(dataScope);
+        Set<User> oldUsers = task.getUsers();
+        Set<User> users = new HashSet<>();
+        for (String userEmail : taskRequest.getUsers()) {
+            User user = userRepository.findByEmail(userEmail).orElse(null);
+            if (user != null) {
+                users.add(user);
+                if(!oldUsers.contains(user)){
+                    dataScope.getUsers().add(user);
+                    sendEmail(userEmail, dataScope.getDs_name(), taskRequest);
+                }
+            } else {
+                log.error("User with email " + userEmail + " not found");
+            }
+        }
+        task.setUsers(users);
+        return taskRepository.save(task);
+    }
 
     public int countTasksForUser(User user) {
         return taskRepository.countTasksByUsersContains(user);
@@ -156,5 +180,9 @@ public class TaskService {
             deleteService.deleteTaskAndSaveToSecondary(taskCompleteRequest.getTask_id(), completion);
             return "Incomplete Task removed";
         }
+    }
+
+    public List<String> findUsersOfTask(int task_id) {
+        return taskRepository.findUsersByTaskId(task_id);
     }
 }

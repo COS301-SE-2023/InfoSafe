@@ -15,8 +15,10 @@ const statusOptions = [
     {value: 'Low', label: 'Low'},
 ];
 export const UpdateTask = ({ task, popupClose, popupOpen }) => {
-    const [users, setUsers] = useState('');
-    const [selectedUsers, setSelectedUsers] = useState('');
+    const [users, setUsers] = useState([]);
+    const [selectedUsers, setSelectedUsers] = useState([]);
+    const [currentUsers, setCurrentUsers] = useState([]);
+    const [addUsers, setAddUsers] = useState([]);
     const[values, setValues]=useState({
         task_id: '',
         task_name: '',
@@ -25,8 +27,25 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         task_description: '',
         task_status: ''
     });
+    let finalUsers = [];
 
     useEffect(() => {
+        fetch("http://localhost:8080/api/task/getUsersOfTask/" + task.task_id, {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setCurrentUsers(result)
+                setAddUsers(result)
+            });
+
+    }, [task]);
+
+    useEffect(()=> {
+        console.log(task)
         if (task) {
             setValues({
                 task_id: task.task_id,
@@ -34,13 +53,15 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                 date_created: task.date_created,
                 due_date: task.due_date,
                 task_description: task.task_description,
-                task_status: task.task_status
+                task_status: task.task_status,
+                dataScope_id: task.dataScope.data_scope_id,
+                daysUntilDue: task.daysUntilDue
             });
         }
-    }, [task]);
+    },[task]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
+        fetch("http://localhost:8080/api/user/findUsersNotInTask/" + task.task_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -52,24 +73,33 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
             });
     }, []);
 
-    const handleSubmit = (e) => {
+
+    const HandleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values)
-        fetch('http://localhost:8080/api/task/update/' + task.task_id, {
-            method:"PUT",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+        let finalUsers = [...addUsers, ...selectedUsers];
+        const requestBody = {
+            ...values,
+            users: finalUsers
+        };
+        fetch("http://localhost:8080/api/task/update/" + task.task_id, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
-            body:JSON.stringify(values)
-        }).then(()=>{
+            body: JSON.stringify(requestBody)
+        }).then(() => {
             console.log("Updated Task")
         })
-        //console.log(JSON.stringify(values))
         popupClose()
     }
 
+
+
     const handleSelect = (selectedOptions) => {
-        setSelectedUsers(selectedOptions);
+        const selectedEmails = selectedOptions.map((option) => option.label);
+        setSelectedUsers(selectedEmails);
+        console.log(selectedEmails);
     };
 
     const customStyles = {
@@ -136,19 +166,29 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                 defaultValue={task.task_description}
                                 onChange={e => setValues({...values, task_description: e.target.value})}
                             />
-                            <p className="editTaskLabels">Assignees</p>
-                            {/*Still unsure about this*/}
+                            <p className="editTaskLabels">List of Users:</p>
+                            {currentUsers && currentUsers.length > 0 ? (
+                                <Select
+                                    options={currentUsers.map((email) => ({value: email, label: email}))}
+                                    placeholder={currentUsers[0]}
+                                    className="editTaskAssignees"
+                                    name="editTaskAssignees"
+                                    styles={customStyles}
+                                /> ) : (
+                                <p>Loading...</p>
+                            )}
+                            <p className="editTaskLabels">Add More Assignees</p>
                             {users && users.length > 0 ? (
-                                <Select  //Dropdown
+                                <Select
                                     options={users.map((data) => ({value: data.user_id, label: data.email}))}
-                                    value = {selectedUsers}
+                                    value={selectedUsers.map((email) => ({ label: email }))}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"
                                     placeholder={"Add Assignees"}
                                     onChange={handleSelect}
                                     isSearchable={true}
-                                    // isMulti
                                     styles={customStyles}
+                                    isMulti
                                 /> ) : (
                                 <p>Loading...</p>
                             )}
@@ -170,7 +210,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                 required
                             />
                             <div className="updateTaskButtonDiv">
-                                <button className="updateTaskSubmitButton" type="submit" onClick={handleSubmit}>
+                                <button className="updateTaskSubmitButton" type="submit" onClick={HandleSubmit}>
                                     Submit
                                 </button>
                             </div>

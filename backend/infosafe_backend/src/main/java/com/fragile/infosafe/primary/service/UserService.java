@@ -92,4 +92,8 @@ public class UserService {
         }
         return false;
     }
+
+    public List<User> findAllUsersNotInTask(int task_id) {
+        return repository.findUsersNotInTask(task_id);
+    }
 }
