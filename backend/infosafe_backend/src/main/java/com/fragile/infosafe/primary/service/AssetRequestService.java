@@ -37,12 +37,13 @@ public class AssetRequestService {
                 .user(authenticatedUser)
                 .build();
 
-        if (isNumeric(request.getAsset_id())) {
+        if (!isNumeric(request.getAsset_id())) {
+            System.out.println("here");
             Optional<Asset> asset = assetRepository.findByAssetId(request.getAsset_id());
             if (asset.isPresent()) {
                 assetRequests.setAsset(asset.get());
             } else {
-                log.error("User with email " + request.getAsset_id() + " not found");
+                log.error("Asset with " + request.getAsset_id() + " not found");
             }
         }
         assetRequestRepository.save(assetRequests);
