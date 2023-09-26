@@ -68,7 +68,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
             <div className="changePassOverlay">
                 <div className="popupBackground">
                 <div className="borderChangePass">
-                    <button className="changePassBackButton" onClick={popupClose}>
+                    <button className="changePassBackButton" onClick={popupClose} data-testid={"back-button"}>
                         <IoArrowBackOutline className="changePassBackIcon" />
                     </button>
                     <form>
