@@ -8,6 +8,8 @@ import "../../styling/DataScopes.css";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetDS} from "../getData/getDs";
 import data from "bootstrap/js/src/dom/data";
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "../HelpPopup";
 export const DataScopes = () => {
 
     const {showDatascope, } = useGetDS()
@@ -103,9 +105,22 @@ export const DataScopes = () => {
         dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
     );
 
+    const [helpOpen,setHelpOpen] = useState(false);
+    const helpMsg = "";
+
     return (
         <div className="display">
             <div className="dataScopesBackground">
+                <button  className="dsHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="dsHelpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            message={helpMsg}
+                        />
+                    ) : null}
+                </button>
                 <div className="searchDataScopes">
                     <input
                         // data-testid="datascopesSearch"

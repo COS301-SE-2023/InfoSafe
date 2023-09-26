@@ -10,6 +10,8 @@ import EditDevice from "../Edit/EditDevice";
 import {ReviewRisk} from "../Reviews/ReviewRiskPopup";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "../HelpPopup";
 
 
 export const Tasks = () => {
@@ -111,9 +113,22 @@ export const Tasks = () => {
         complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
     );
 
+    const [helpOpen,setHelpOpen] = useState(false);
+    const helpMsg = "";
+
     return(
         <div className="display">
             <div className="tasksBackground">
+                <button  className="taskHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="taskHelpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            message={helpMsg}
+                        />
+                    ) : null}
+                </button>
                 <div className="searchTasks">
                     <input
                         // data-testid="userSearch"
