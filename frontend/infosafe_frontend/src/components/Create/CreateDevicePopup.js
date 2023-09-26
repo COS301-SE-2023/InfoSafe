@@ -79,7 +79,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             <div className="createDeviceOverlay">
                 <div className="popupBackground">
                     <div className="createDeviceBorder">
-                        <button className="createDeviceBackButton" onClick={popupClose}>
+                        <button className="createDeviceBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="createDeviceBackIcon"/>
                         </button>
                         <form>
@@ -143,7 +143,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
                                 </div>
                             )}
                             <p className="createDeviceError" id="createDeviceError">Please ensure all fields are completed.</p>
-                            <button className="createDeviceFinish" onClick={handleClick}>
+                            <button className="createDeviceFinish" onClick={handleClick} data-testid={"submit-button"}>
                                 Submit
                             </button>
                         </form>
@@ -154,3 +154,5 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         </Popup>
     );
 };
+
+export default CreateDevicePopup;

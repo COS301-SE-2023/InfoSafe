@@ -62,7 +62,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
             <div className="createDataScopeOverlay">
                 <div className="popupBackground">
                     <div className="createDataScopeBorder">
-                        <button className="createDataScopeBackButton" onClick={popupClose}>
+                        <button className="createDataScopeBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="backIcon"/>
                         </button>
                         <p className="datascopeLabel">Create Data Scope</p>
@@ -103,3 +103,5 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         </Popup>
     );
 };
+
+export default CreateDataScopePopup;

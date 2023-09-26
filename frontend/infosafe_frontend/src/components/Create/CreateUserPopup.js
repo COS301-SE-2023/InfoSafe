@@ -103,7 +103,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                 <div className="popupBackground">
                     <div className="createUserBorder">
                         <form>
-                            <button className="createUserBackButton" data-testid="backArrow" onClick={popupClose}>
+                            <button className="createUserBackButton" onClick={popupClose} data-testid={"back-button"}>
                                 <IoArrowBackOutline className="backIcon" />
                             </button>
                             <p className="createUserLabel">Create User</p>
@@ -124,7 +124,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                                     <p className="passwordLabel">Password</p>
                                     <input required className="passwordInput" id="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
                                 </div>
-                                <p className="createUserRoleLabel">System role</p>
+                                <p className="createUserRoleLabel">System Role</p>
                                 {roleNames && roleNames.length > 0 ? (
                                     <Dropdown
                                         options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
@@ -149,3 +149,5 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
         </Popup>
     );
 };
+
+export default CreateUserPopup;
