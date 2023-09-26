@@ -15,15 +15,15 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     let title = "Current Custodian: Not Assigned";
     let placeholder = "Add Assignee";
     const[values, setValues]=useState({
-        asset_id: '',
-        asset_name: '',
-        asset_description: '',
-        status: '',
-        used: '',
-        availability: '',
-        device_type: '',
-        current_assignee: '',
-        previous_assignee: ''
+        asset_id: asset.asset_id,
+        asset_name: asset.asset_name,
+        asset_description: asset.asset_description,
+        status: asset.status,
+        used: asset.used,
+        availability: asset.availability,
+        device_type: asset.device_type,
+        current_assignee: asset.current_assignee,
+        previous_assignee: asset.previous_assignee
     })
 
     if(newPreviousAssignee != null){
