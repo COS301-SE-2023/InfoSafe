@@ -38,7 +38,6 @@ export const useCurrentTasks = () => {
             });
     }, []);
 
-
     return {
         taskCount,
         myTasks,

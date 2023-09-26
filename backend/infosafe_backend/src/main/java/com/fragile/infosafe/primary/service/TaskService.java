@@ -8,6 +8,7 @@ import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.DataScopeRepository;
 import com.fragile.infosafe.primary.repository.TaskRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
+import com.fragile.infosafe.primary.requests.TaskCompleteRequest;
 import com.fragile.infosafe.primary.requests.TaskRequest;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -29,7 +30,8 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final DataScopeRepository dataScopeRepository;
     private final UserRepository userRepository;
-
+    private final EmailService emailService;
+    private final DeleteService deleteService;
     public ResponseEntity<String> createTask(TaskRequest request) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,6 +60,7 @@ public class TaskService {
                     if (user != null) {
                         users.add(user);
                         dataScope.getUsers().add(user);
+                        sendEmail(userEmail, dataScope.getDs_name(), request);
                     } else {
                         log.error("User with email " + userEmail + " not found");
                     }
@@ -135,5 +138,23 @@ public class TaskService {
 
     public long countTotalTasks() {
         return taskRepository.count();
+    }
+
+    public void sendEmail(String userEmail, String dataScopeName, TaskRequest request){
+        String subject = "New Task for Datascope " + dataScopeName;
+        String body = "You have been assigned to the following Task\n" + request.getTask_name() + "\n" + request.getTask_description() + "\nDue Date: " + request.getDue_date();
+        emailService.sendEmail(userEmail, subject, body);
+    }
+
+    public String removeTask(TaskCompleteRequest taskCompleteRequest){
+        String completion = "Completed";
+        if(taskCompleteRequest.isCompletion()){
+            deleteService.deleteTaskAndSaveToSecondary(taskCompleteRequest.getTask_id(), completion);
+            return "Completed Task removed";
+        }else{
+            completion = "Incomplete";
+            deleteService.deleteTaskAndSaveToSecondary(taskCompleteRequest.getTask_id(), completion);
+            return "Incomplete Task removed";
+        }
     }
 }

@@ -78,15 +78,16 @@ public class DeleteService {
         }
     }
 
-    public void deleteTaskAndSaveToSecondary(int task_id) {
+    public void deleteTaskAndSaveToSecondary(int task_id, String completion) {
         Optional<Task> entityOptional = taskRepository.findByTaskId(task_id);
         if(entityOptional.isPresent()){
             Task entityToDelete = entityOptional.get();
             DeletedTask de = new DeletedTask();
             de.setTask_status(entityToDelete.getTask_status());
             de.setTask_description(entityToDelete.getTask_description());
-//            de.setDue_date(entityToDelete.getDue_date());
-//            de.setDate_created(entityToDelete.getDate_created());
+            de.setDue_date(entityToDelete.getDue_date());
+            de.setDate_created(entityToDelete.getDate_created());
+            de.setCompletionStatus(completion);
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
         }

@@ -12,7 +12,6 @@ export const SupportRequests = () => {
     const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
     const EditSupportRequestDiv = ({ supp }) => {
-        console.log(supp)
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
             return (
@@ -36,7 +35,6 @@ export const SupportRequests = () => {
     }
 
     const EditMySupportRequestDiv = ({mySupport}) => {
-        console.log(mySupport)
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
             return (
                 <div className="supportRequestEditButton">
@@ -57,7 +55,6 @@ export const SupportRequests = () => {
 
     const ViewAllSupport = ({ allSupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-        console.log(allSupport)
         if(roles.includes("support_requests_viewAll")) {
             return (
                 <li key={allSupport.support_id}>

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +62,37 @@ public class SupportRequestService {
 
     public List<SupportRequest> getAllSupportRequests() {return supportRequestRepository.findAll();}
 
-    public SupportRequest updateSupportRequest(SupportRequest supportRequest) {return supportRequestRepository.save(supportRequest);}
+    public SupportRequest updateSupportRequest(SupportRequestRequest supportRequest) {
+        if(supportRequest.getSupport_status().equals("Resolved")){
+            ReviewRequest request = new ReviewRequest();
+            request.setRequest_id(supportRequest.getSupport_id());
+            request.setSupportType(supportRequest.getSupport_type());
+            switch(supportRequest.getSupport_type()) {
+                case "Datascope Support" -> {
+                    request.setDataScope_id(supportRequest.getDataScope_id());
+                }
+                case "Asset Support" -> {
+                    request.setAsset_id(supportRequest.getAsset_id());
+                }
+                case  "Task Support" -> {
+                    request.setTask_id(supportRequest.getTask_id());
+                }
+            }
+            request.setUser_email(supportRequest.getUser_email());
+            request.setReview(true);
+            reviewSupportRequest(request);
+            return null;
+        }
+        SupportRequest updated = supportRequestRepository.findById(supportRequest.getSupport_id()).get();
+        updated.setSupport_description(supportRequest.getSupport_description());
+        updated.setSupport_status(supportRequest.getSupport_status());
+        updated.setSupport_type(supportRequest.getSupport_type());
+        updated.setUser_id(userRepository.findByEmail(supportRequest.getUser_email()).isPresent() ? userRepository.findByEmail(supportRequest.getUser_email()).get() :null);
+        updated.setTask_id(taskRepository.findByTaskId(supportRequest.getTask_id()).isPresent() ? taskRepository.findByTaskId(supportRequest.getTask_id()).get() : null);
+        updated.setAsset_id(assetRepository.findByAssetId(supportRequest.getAsset_id()).isPresent() ? assetRepository.findByAssetId(supportRequest.getAsset_id()).get() : null);
+        updated.setDataScope_id(dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).isPresent() ? dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).get() : null);
+        return supportRequestRepository.save(updated);
+    }
 
     public List<SupportRequest> getUserSupportRequests(int user_id) {
         return supportRequestRepository.findByUser_id(user_id);

@@ -6,16 +6,15 @@ import Dropdown from "react-dropdown";
 
 const STATUS = ["Logged","In Progress","Resolved"];
 const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
-    console.log(support)
     const[values, setValues]=useState({
         support_id: support.support_id,
         support_type: support.support_type,
         support_description: support.support_description,
         support_status: support.support_status,
-        user_id: support.user_id,
-        dataScope_id: support.dataScope_id,
-        task_id: support.task_id,
-        asset_id: support.asset_id
+        user_id: support.user_id.email,
+        dataScope_id: support.dataScope_id ? support.dataScope_id.data_scope_id : null,
+        task_id: support.task_id ? support.task_id.task_id : null,
+        asset_id: support.asset_id ? support.asset_id.asset_id : null
     })
 
     const handleSubmit = (e) => {

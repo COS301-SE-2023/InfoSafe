@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.controller;
 
 import com.fragile.infosafe.primary.model.Task;
+import com.fragile.infosafe.primary.requests.TaskCompleteRequest;
 import com.fragile.infosafe.primary.service.DeleteService;
 import com.fragile.infosafe.primary.service.TaskService;
 import com.fragile.infosafe.primary.requests.TaskRequest;
@@ -17,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService service;
-    private final DeleteService deleteService;
 
     @PostMapping("/addTask")
     public ResponseEntity addTask(@RequestBody TaskRequest Task) {
@@ -34,13 +34,13 @@ public class TaskController {
         return service.updateTask(task);
     }
 
-    @DeleteMapping("/deleteTask/{taskId}")
-    public void deleteTaskAndSaveToSecondary(@PathVariable int taskId) {
-        deleteService.deleteTaskAndSaveToSecondary(taskId);
-    }
-
     @GetMapping("/totalTasks")
     public long getTotalTasks() {
         return service.countTotalTasks();
+    }
+
+    @PostMapping("/completeTask")
+    public ResponseEntity<String> setCompletedTasks(@RequestBody TaskCompleteRequest taskCompleteRequest) {
+        return ResponseEntity.ok(service.removeTask(taskCompleteRequest));
     }
 }

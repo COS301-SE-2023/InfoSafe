@@ -52,7 +52,6 @@ export const Tasks = () => {
                             />
                         ) : null}
                     </p>
-                    <ApproveTask task={task}></ApproveTask>
                     <EditTask task={task}></EditTask>
                 </li>
             );

@@ -69,12 +69,10 @@ export const TaskApproval = ({ task, popupClose, popupOpen }) => {
                         {task.users && task.users.length > 0 ? (
                             <Select
                                 styles={customStyles}
-                                //options={task.users.map((data) => ({ value: data.user_id, label: data.email }))}
                                 value={task.users.map((data) => ({ value: data.first_name, label: data.email }))}
                                 className="approveTaskSelect"
                                 name="datascopeDropdown"
                                 placeholder={"Add Assignees"}
-                                //onChange={handleSelect}
                                 isSearchable={true}
                             />
                         ) : (
