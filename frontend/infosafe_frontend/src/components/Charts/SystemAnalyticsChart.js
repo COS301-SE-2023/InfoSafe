@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
+import {useCurrentDataScope} from "./useCurrentDataScope";
+import {useCurrentTasks} from "./useCurrentTasks";
 
 const SystemAnalyticsChart = () => {
     const chartReference = useRef(null);
 
+    const {dataScopeCount, myDataScopeCount, assetCount, totalAssets} = useCurrentDataScope();
+    const {taskCount, totalTasks} = useCurrentTasks();
     useEffect(() => {
         const chartContext = chartReference.current.getContext("2d");
         new Chart(chartContext, {
@@ -21,13 +25,13 @@ const SystemAnalyticsChart = () => {
                         label: 'System Total',
                         backgroundColor: '#49D4D0',
                         barThickness: 20,
-                        data: [200, 400, 300, 100, 250],
+                        data: [dataScopeCount, totalTasks, totalAssets, 100, 250],
                     },
                     {
                         label: 'My Total',
                         backgroundColor: '#9E0000',
                         barThickness: 20,
-                        data: [20, 50, 10, 5, 8],
+                        data: [myDataScopeCount, taskCount, assetCount, 5, 8],
                         pointStyle: 'circle',
                     },
                 ],

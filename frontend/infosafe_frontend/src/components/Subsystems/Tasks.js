@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {ViewTask} from "../View/ViewTaskPopup";
 import {CreateTask} from "../Create/CreateTaskPopup";
-import {UpdateTask} from "../Edit/UpdateTaskPopup";
+import {UpdateTask} from "../Edit/EditTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 import "../../styling/Tasks.css";
 import {FaSearch} from "react-icons/fa";
@@ -52,7 +52,6 @@ export const Tasks = () => {
                             />
                         ) : null}
                     </p>
-                    <ApproveTask task={task}></ApproveTask>
                     <EditTask task={task}></EditTask>
                 </li>
             );

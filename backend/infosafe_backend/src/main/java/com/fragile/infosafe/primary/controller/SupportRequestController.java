@@ -34,7 +34,7 @@ public class SupportRequestController {
     public List<SupportRequest> supportrequestlist() { return service.getAllSupportRequests(); }
 
     @PutMapping("/update/{id}")
-    public SupportRequest updateSupportRequest (@PathVariable("id") int support_id, @RequestBody SupportRequest supportRequest) {
+    public SupportRequest updateSupportRequest (@PathVariable("id") int support_id, @RequestBody SupportRequestRequest supportRequest) {
         supportRequest.setSupport_id(support_id);
         return service.updateSupportRequest(supportRequest);
     }

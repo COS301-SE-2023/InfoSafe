@@ -25,15 +25,6 @@ public class RoleService {
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-//    public long getRolePermissions(String role_name) throws RoleNotFoundException {
-//        Role role = repository.findByRole_name(role_name);
-//        if (role != null) {
-//            return role.getPermissions();
-//        } else {
-//            throw new RoleNotFoundException("Role not found: " + role_name);
-//        }
-//    }
-
     public List<String> getRoleNames() {
         List<Role> roles = repository.findAll();
         return roles.stream()

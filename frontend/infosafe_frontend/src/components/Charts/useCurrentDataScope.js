@@ -52,12 +52,25 @@ export const useCurrentDataScope = () => {
             });
     }, []);
 
+    const [totalAssets, setTotalAssets] = useState(0);
+    useEffect(() => {
+        fetch('http://localhost:8080/api/asset/getTotalAssets', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        }).then((res) => res.json())
+            .then((result) => {
+                setTotalAssets(result);
+            });
+    }, []);
+
 
     return {
         dataScopeCount,
         myDataScopeCount,
         assetCount,
         myAssets,
-
+        totalAssets
     }
 }

@@ -6,6 +6,7 @@ import Dropdown from 'react-dropdown';
 import Select from 'react-select';
 import useRequestMaker from "../Subsystems/useRequestMaker";
 import {useGetTask} from "../getData/getTask";
+import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 
 export const CreateTask = ({popupClose, popupOpen}) => {
     const [task_description, setTaskDescription] = useState('');
@@ -15,9 +16,9 @@ export const CreateTask = ({popupClose, popupOpen}) => {
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [users, setUsers] = useState([]);
     const [task_name, setTask_name] = useState('');
-    const {datascopeData, setDsId} = useRequestMaker();
+    const {myDatascopeData} = useAccessRequests();
     const {showTask} = useGetTask()
-    const refresh = () => window.location.reload(true)
+    //const refresh = () => window.location.reload(true)
 
     const statusOptions = [
         {value: 'High', label: 'High'},
@@ -53,7 +54,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
             .catch((error) => {
                 console.error("Error adding task:", error);
             });
-        refresh();
+        //refresh();
         popupClose();
     };
 
@@ -177,10 +178,10 @@ export const CreateTask = ({popupClose, popupOpen}) => {
                             <p>Loading...</p>
                         )}
                         <p className="createTaskInputLabels">Data Scope</p>
-                        {datascopeData && datascopeData.length > 0 ? (
+                        {myDatascopeData && myDatascopeData.length > 0 ? (
                             <Dropdown
-                                options={datascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
-                                value={datascope}
+                                options={myDatascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
+                                value={myDatascopeData.ds_name}
                                 className="createTaskDataScopeDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add DataScope"}

@@ -1,6 +1,8 @@
 package com.fragile.infosafe.primary.controller;
 
 import com.fragile.infosafe.primary.model.Task;
+import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.requests.TaskCompleteRequest;
 import com.fragile.infosafe.primary.service.DeleteService;
 import com.fragile.infosafe.primary.service.TaskService;
 import com.fragile.infosafe.primary.requests.TaskRequest;
@@ -17,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService service;
-    private final DeleteService deleteService;
 
     @PostMapping("/addTask")
     public ResponseEntity addTask(@RequestBody TaskRequest Task) {
@@ -28,14 +29,24 @@ public class TaskController {
     @GetMapping("/getTask")
     public List<Task> list() { return service.getAllTasks(); }
 
-    @PutMapping("/update/{id}")
-    public Task updateTask (@PathVariable("id") int task_id, @RequestBody Task task) {
-        task.setTask_id(task_id);
-        return service.updateTask(task);
+    @PostMapping("/update/{id}")
+    public Task updateTask (@PathVariable("id") int task_id, @RequestBody TaskRequest request) {
+        log.info(String.valueOf(request));
+        return service.updateTask(request);
     }
 
-    @DeleteMapping("/deleteTask/{taskId}")
-    public void deleteTaskAndSaveToSecondary(@PathVariable int taskId) {
-        deleteService.deleteTaskAndSaveToSecondary(taskId);
+    @GetMapping("/totalTasks")
+    public long getTotalTasks() {
+        return service.countTotalTasks();
+    }
+
+    @PostMapping("/completeTask")
+    public ResponseEntity<String> setCompletedTasks(@RequestBody TaskCompleteRequest taskCompleteRequest) {
+        return ResponseEntity.ok(service.removeTask(taskCompleteRequest));
+    }
+
+    @GetMapping("/getUsersOfTask/{id}")
+    public ResponseEntity<List<String>> getUsersOfTask(@PathVariable("id") int task_id){
+        return ResponseEntity.ok(service.findUsersOfTask(task_id));
     }
 }

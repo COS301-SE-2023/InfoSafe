@@ -24,7 +24,7 @@ public class DataScope {
     @JoinColumn(name = "user_id")
     private User data_custodian;
     private String ds_status;
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JoinTable(
             name = "data_scope_users",
             joinColumns = @JoinColumn(name = "data_scope_id"),

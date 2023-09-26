@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -21,12 +23,15 @@ public class DataScopeService {
     private final UserRepository userRepository;
 
     public ResponseEntity<String> makeDs(DataScopeRequest request, User authenticatedUser){
+        Set<User> dc = new HashSet<>();
+        dc.add(authenticatedUser);
         var datascope = DataScope.builder()
                 .ds_name(request.getDs_name())
                 .ds_description(request.getDs_description())
                 .date_captured(request.getDate_captured())
                 .ds_status(request.getDs_status())
                 .data_custodian(authenticatedUser)
+                .users(dc)
                 .build();
         dataScopeRepository.save(datascope);
         return ResponseEntity.status(HttpStatus.OK).body("added");

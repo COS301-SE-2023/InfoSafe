@@ -19,4 +19,5 @@ public class SupportRequestRequest {
     private int dataScope_id;
     private int asset_id;
     private int task_id;
+    private String user_email;
 }

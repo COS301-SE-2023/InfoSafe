@@ -81,4 +81,8 @@ public class AssetService {
     public List<Asset> getAssetsWithAvailabilityYes() {
         return assetRepository.findAllByAvailability("Yes");
     }
+
+    public long getTotalDevice() {
+        return assetRepository.count();
+    }
 }
