@@ -68,15 +68,14 @@ return (
                         <p className="viewTaskDisplayStatus">{task.task_status}</p>
                         <p className="viewTaskDisplayCompletionDate">Completion Date</p>
                         <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>
-                        <div className="viewTaskButtons">
-                            <button type="button" className="completedButton" onClick={handleCompleted}>
-                                Completed
-                            </button>
-                            <button type="button" className="incompleteButton" onClick={handleIncomplete}>
-                                Incomplete
-                            </button>
-                        </div>
-
+                    </div>
+                    <div className="viewTaskButtons">
+                        <button type="button" className="completedButton" onClick={handleCompleted}>
+                            Completed
+                        </button>
+                        <button type="button" className="incompleteButton" onClick={handleIncomplete}>
+                            Incomplete
+                        </button>
                     </div>
                 </div>
             </div>

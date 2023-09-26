@@ -40,10 +40,11 @@
 }
 .viewTaskContent{
     position: relative;
-    height: 70%;
+    height: 60%;
     width: 100%;
     top: -4vh;
     left: 15%;
+    margin: 0;
 }
 
 .viewTaskBackButton {
@@ -182,4 +183,57 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     border-radius: 2px;
     margin-bottom: 1vh;
+}
+.viewTaskButtons
+{
+    display: flex;
+    height: 20%;
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -3vh;
+    left: 15%;
+    justify-content: left;
+    vertical-align: center;
+}
+.completedButton{
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    height: 30%;
+    left: 0;
+    position: relative;
+    top: 35%;
+}
+.incompleteButton{
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    margin-left: 1%;
+    height: 30%;
+    position: relative;
+    top: 35%;
 }
