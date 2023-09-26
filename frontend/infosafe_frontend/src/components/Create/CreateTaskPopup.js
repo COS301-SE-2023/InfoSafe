@@ -141,13 +141,13 @@ export const CreateTask = ({popupClose, popupOpen}) => {
             <div className="createTaskOverlay">
                 <div className="popupBackground">
                 <div className="borderCreateTask">
-                    <button className="createTaskBackButton" onClick={popupClose}>
+                    <button className="createTaskBackButton" onClick={popupClose} data-testid={"back-button"}>
                         <IoArrowBackOutline className="createTaskBackIcon"/>
                     </button>
                     <form>
                         <p className="createTaskPageTitle">Create Task</p>
                         <div className="createTaskContent">
-                            <p className="createTaskInputTitle">Type name</p>
+                            <p className="createTaskInputTitle">Type Name</p>
                             <textarea
                                 className="createTaskInputTextArea"
                                 onChange={handleTaskNameChange}
@@ -221,3 +221,5 @@ export const CreateTask = ({popupClose, popupOpen}) => {
         </Popup>
     );
 };
+
+export default CreateTask;

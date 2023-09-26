@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import CreateDataScopePopup from "../../Create/CreateDataScopePopup.js";
 
 describe("CreateDataScope Component", () => {
-    it("renders correctly with user data", () => {
+    it("renders correctly with datascope data", () => {
         const { getByText } = render(
             <CreateDataScopePopup popupOpen={true} popupClose={() => {}} />
         );

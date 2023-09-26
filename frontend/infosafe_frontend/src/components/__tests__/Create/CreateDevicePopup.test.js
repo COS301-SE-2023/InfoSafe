@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import CreateDevicePopup from "../../Create/CreateDevicePopup.js";
 
 describe("CreateDevice Component", () => {
-    it("renders correctly with user data", () => {
+    it("renders correctly with device data", () => {
         const { getByText } = render(
             <CreateDevicePopup popupOpen={true} popupClose={() => {}} />
         );
