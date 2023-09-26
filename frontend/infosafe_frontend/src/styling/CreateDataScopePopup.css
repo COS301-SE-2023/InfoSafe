@@ -192,4 +192,13 @@
     overflow-y: hidden;
     scrollbar-width: none;
 }
-
+.createDataScopeError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
+    left: 15%;
+}

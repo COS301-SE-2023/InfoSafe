@@ -7,12 +7,16 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
 
-
-    const datascoperoles = ['Admin', 'Employee'];
-    const role_descriptions = ['Access all', 'Work'];
     const handleClick = (e) => {
         const currentDate = new Date().toISOString().split('T')[0];
         e.preventDefault();
+
+        if ( document.getElementById("dsName").value === '' || document.getElementById("dsDescription").value === '') {
+            document.getElementById("createDataScopeError").style.display = "block";
+            return;
+        }
+
+
         const ds_status = "Pending";
         const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status};
 
@@ -67,32 +71,30 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                 <div className="datascope_info">
                                     <div className="datascope_name">
                                         <p className="datascopeNameLabel">Name</p>
-                                        <input className="datascopeNameInput" data-testid="nameInput" value={ds_name}
-                                               onChange={(e) => setDsName(e.target.value)}/>
+                                        <input
+                                            className="datascopeNameInput"
+                                            data-testid="nameInput"
+                                            value={ds_name}
+                                            onChange={(e) => setDsName(e.target.value)}
+                                            id="dsName"
+                                        />
                                     </div>
                                     <div className="datascope_description">
                                         <p className="descriptionLabel">Description</p>
-                                        <textarea className="createDataScopeDescriptionInput" data-testid="Description" value={ds_description}
-                                                  onChange={(e) => setDsDesc(e.target.value)}/>
+                                        <textarea
+                                            className="createDataScopeDescriptionInput"
+                                            data-testid="Description"
+                                            value={ds_description}
+                                            onChange={(e) => setDsDesc(e.target.value)}
+                                            id="dsDescription"
+                                        />
                                     </div>
-                                    <div className="datascope_roles" data-testid="roles">
-                                        <p className="roleLabel">Data Scope Roles</p>
-                                        <div className="dataScopeRoles">
-                                            <ul className="dataScopeRolesList">
-                                                {datascoperoles.map((item, i) => (
-                                                    <li key={i}>
-                                                        <p>{item}: {role_descriptions[i]}</p>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        </div>
-                                    </div>
+                                </div>
+                                <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields are completed.</p>
                                 <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
                                     Submit
                                 </button>
                             </div>
-
                         </form>
                     </div>
                 </div>
