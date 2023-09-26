@@ -8,6 +8,8 @@ import "../../styling/AccessRequests.css";
 import {getRoles} from "@testing-library/react";
 import {useGetAr} from "../getData/getAR";
 import {useGetPerms} from "../getData/getPerms";
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "../HelpPopup";
 
 export const AccessRequests = () => {
     const {roles} = useGetPerms();
@@ -100,9 +102,22 @@ export const AccessRequests = () => {
     showAccess.map((access) =>
         accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
     );
+    const [helpOpen,setHelpOpen] = useState(false);
+    const helpMsg = "";
+
     return (
         <div className="display">
             <div className="accessRequestsBackground">
+                <button  className="accessHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="accessHelpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            message={helpMsg}
+                        />
+                    ) : null}
+                </button>
                 <div className="searchAccessRequests">
                     <input
                         // data-testid="userSearch"
