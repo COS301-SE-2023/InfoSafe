@@ -14,7 +14,7 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen }) => {
             <div className="reviewRiskOverlay">
                 <div className="popupBackground">
                     <div className="borderReviewRisk">
-                        <button className="reviewRiskBackButton" onClick={popupClose}>
+                        <button className="reviewRiskBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="reviewRiskBackIcon" />
                         </button>
                         <form>
@@ -57,3 +57,5 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default ReviewRisk;
