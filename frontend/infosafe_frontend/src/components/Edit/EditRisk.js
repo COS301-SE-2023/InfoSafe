@@ -104,7 +104,7 @@ export const EditRisk = ({risk, popupClose, popupOpen}) => {
                                 <p className="editRiskStatusLabel">Risk Status</p>
                                 <Dropdown
                                     options={STATUS}
-                                    value={STATUS[0]}
+                                    value={risk.risk_status}
                                     className="editRiskStatusDropdown"
                                     name="editRiskStatusDropdown"
                                     onChange={(e) => setValues({...values, risk_status: STATUS.value})}
