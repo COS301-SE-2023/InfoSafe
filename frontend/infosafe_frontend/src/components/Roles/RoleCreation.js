@@ -21,6 +21,7 @@ const RoleCreation = () => {
     let permissionsList = [];
     let permissions = 0;
     const [roles, setRoles] = useState([])
+    const currentRolesList = ['Admin', 'ISO', 'DISO', 'Employee'];
 
     useEffect(() => {
         fetch('http://localhost:8080/api/role/getAllRoles', {
@@ -1037,9 +1038,8 @@ const RoleCreation = () => {
                         >
                             Create Role
                         </button>
-                        <div className="changeViewBtnDiv">
-                            <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">View Roles</button>
-                        </div>
+                        <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">View Roles</button>
+
                     </div>
                 </div>
             )}
@@ -1055,24 +1055,20 @@ const RoleCreation = () => {
                             />
                         ) : null}
                     </button>
-                    <ul>
-                        {roles.map((role, index) => (
-                            <li key={index}>
-                                <p onClick={() => setViewRoleOpen(!viewRoleOpen)}>
-                                    {role.roleName}
-                                    {viewRoleOpen && (
-                                        <ViewRole
-                                            popupClose={() => setViewRoleOpen(false)}
-                                            popupOpen={viewRoleOpen}
-                                            role={roles}
-                                        />
-                                    )}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="changeViewBtnDiv">
-                        <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">View Roles</button>
+                    <div className="roleInfo">
+                        <p className="roleCreateNameLabel">Current Roles:</p>
+                    </div>
+                    <div className="permissions">
+                        <ul className="currRolesList">
+                            {currentRolesList.map((item, i) => (
+                                <li key={i}>
+                                    <p> {currentRolesList[i]}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="roleCreationButtonsDiv">
+                        <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">Create Role</button>
                     </div>
                 </div>
             )}

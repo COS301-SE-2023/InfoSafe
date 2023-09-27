@@ -159,7 +159,7 @@ input:checked{
     top: 35%;
 }
 
-.clearButton {
+.changeViewBtn {
     background: #383838;
     border: 1px solid #3a3a3a;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -215,7 +215,37 @@ input:checked{
     border: 3px solid #9E0000;
     outline: none;
 }
-
+.currRolesList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.currRolesList li {
+    position: relative;
+    height: 5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #CECECE;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
+}
+.currRolesList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 0.5%;
+    font-size: 16px
+}
+.currRolesList li:hover {
+    z-index: 4;
+    box-shadow: inset 0 0 8px rgba(68, 64, 64, 0.78);
+}
 
 
 
