@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/RoleCreation.css';
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import {ViewRole} from "./ViewRole";
 
 const RoleCreation = () => {
     const subsystems = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];
@@ -19,46 +20,59 @@ const RoleCreation = () => {
     const [role_name, setRoleName] = useState([]);
     let permissionsList = [];
     let permissions = 0;
+    const [roles, setRoles] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/role/getAllRoles', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setRoles(result);
+            });
+    }, []);
 
 
     const handleClick = (e) => {
-        submitInfo();
         e.preventDefault();
+        submitInfo();
         const role = {role_name, permissions};
 
         // add check to make sure role doesn't exist
-        fetch(`http://localhost:8080/api/role/checkName?rolename=${role_name}`,{
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
-                    },
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        if (data) {
-                            console.log("role name already exists");
-                        } else {
-                            console.log(role);
-                            fetch("http://localhost:8080/api/role/addRole", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
-                                },
-                                body: JSON.stringify(role),
-                            }).then(() => {
-                                console.log("New Role added");
-                            })
-                                .catch((error) => {
-                                    console.error("Error adding new Role:", error);
-                                });
-                        }
-                        permissions = 0;
-                        // popupClose();
-                    });
+        fetch(`http://localhost:8080/api/role/checkName?rolename=${role_name}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data) {
+                    console.log("role name already exists");
+                } else {
+                    console.log(role);
+                    fetch("http://localhost:8080/api/role/addRole", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                        },
+                        body: JSON.stringify(role),
+                    }).then(() => {
+                        console.log("New Role added");
+                    })
+                        .catch((error) => {
+                            console.error("Error adding new Role:", error);
+                        });
+                }
+                permissions = 0;
+                // popupClose();
+            });
     };
-
 
     const handleCheckboxChecked = (index, subsystem) => {
         const newCheckboxState = [...checkboxState];
@@ -69,24 +83,21 @@ const RoleCreation = () => {
         newDisplayPermission[index] = !newDisplayPermission[index];
         setDisplayPermission(newDisplayPermission);
 
-        if (newCheckboxState[index] === false && subsystem === "Users")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Users") {
             let permissionsCheckbox = document.querySelector('input.usersCreate');
             if (permissionsCheckbox.checked) {
-               handleCreate(0);
+                handleCreate(0);
 
-               if (permissionsList.includes("Create Users"))
-               {
-                   permissionsList.filter(permissionList => permissionList !== "Create Users");
-               }
+                if (permissionsList.includes("Create Users")) {
+                    permissionsList.filter(permissionList => permissionList !== "Create Users");
+                }
             }
 
             permissionsCheckbox = document.querySelector('input.usersEdit');
             if (permissionsCheckbox.checked) {
                 handleEdit(0);
 
-                if (permissionsList.includes("Edit Users"))
-                {
+                if (permissionsList.includes("Edit Users")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Users");
                 }
             }
@@ -95,21 +106,18 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleDelete(0);
 
-                if (permissionsList.includes("Delete Users"))
-                {
+                if (permissionsList.includes("Delete Users")) {
                     permissionsList.filter(permissionList => permissionList !== "Delete Users");
                 }
             }
         }
 
-        if (newCheckboxState[index] === false && subsystem === "Data Scopes")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Data Scopes") {
             let permissionsCheckbox = document.querySelector('input.dataScopesCreate');
             if (permissionsCheckbox.checked) {
                 handleCreate(1);
 
-                if (permissionsList.includes("Create Data Scopes"))
-                {
+                if (permissionsList.includes("Create Data Scopes")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Data Scopes");
                 }
             }
@@ -118,8 +126,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleEdit(1);
 
-                if (permissionsList.includes("Edit Data Scopes"))
-                {
+                if (permissionsList.includes("Edit Data Scopes")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Data Scopes");
                 }
             }
@@ -128,21 +135,18 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleDelete(1);
 
-                if (permissionsList.includes("Delete Data Scopes"))
-                {
+                if (permissionsList.includes("Delete Data Scopes")) {
                     permissionsList.filter(permissionList => permissionList !== "Delete Data Scopes");
                 }
             }
         }
 
-        if (newCheckboxState[index] === false && subsystem === "Access Requests")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Access Requests") {
             let permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
             if (permissionsCheckbox.checked) {
                 handleEdit(2);
 
-                if (permissionsList.includes("Edit Access Requests"))
-                {
+                if (permissionsList.includes("Edit Access Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Access Requests");
                 }
             }
@@ -151,23 +155,20 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleApprove(2);
 
-                if (permissionsList.includes("Approve Access Requests"))
-                {
+                if (permissionsList.includes("Approve Access Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Approve Access Requests");
                 }
             }
 
 
         }
-        if (newCheckboxState[index] === false && subsystem === "Compliance Matrix")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Compliance Matrix") {
 
             let permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
             if (permissionsCheckbox.checked) {
                 handleCreate(3);
 
-                if (permissionsList.includes("Create Tasks"))
-                {
+                if (permissionsList.includes("Create Tasks")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Tasks");
                 }
             }
@@ -176,8 +177,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleEdit(3);
 
-                if (permissionsList.includes("Edit Tasks"))
-                {
+                if (permissionsList.includes("Edit Tasks")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Tasks");
                 }
             }
@@ -186,8 +186,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleDelete(3);
 
-                if (permissionsList.includes("Delete Tasks"))
-                {
+                if (permissionsList.includes("Delete Tasks")) {
                     permissionsList.filter(permissionList => permissionList !== "Delete Tasks");
                 }
             }
@@ -196,20 +195,17 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleApprove(3);
 
-                if (permissionsList.includes("Approve Tasks"))
-                {
+                if (permissionsList.includes("Approve Tasks")) {
                     permissionsList.filter(permissionList => permissionList !== "Approve Tasks");
                 }
             }
         }
-        if (newCheckboxState[index] === false && subsystem === "Devices")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Devices") {
             let permissionsCheckbox = document.querySelector('input.devicesCreate');
             if (permissionsCheckbox.checked) {
                 handleCreate(4);
 
-                if (permissionsList.includes("Create Devices"))
-                {
+                if (permissionsList.includes("Create Devices")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Devices");
                 }
             }
@@ -218,8 +214,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleEdit(4);
 
-                if (permissionsList.includes("Edit Devices"))
-                {
+                if (permissionsList.includes("Edit Devices")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Devices");
                 }
             }
@@ -228,21 +223,18 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleDelete(4);
 
-                if (permissionsList.includes("Delete Devices"))
-                {
+                if (permissionsList.includes("Delete Devices")) {
                     permissionsList.filter(permissionList => permissionList !== "Delete Devices");
                 }
             }
         }
 
-        if (newCheckboxState[index] === false && subsystem === "Support Requests")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Support Requests") {
             let permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
             if (permissionsCheckbox.checked) {
                 handleViewAll(5);
 
-                if (permissionsList.includes("View All Support Requests"))
-                {
+                if (permissionsList.includes("View All Support Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "View All Support Requests");
                 }
             }
@@ -251,8 +243,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleEdit(5);
 
-                if (permissionsList.includes("Edit Support Requests"))
-                {
+                if (permissionsList.includes("Edit Support Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Support Requests");
                 }
             }
@@ -261,21 +252,18 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleDelete(5);
 
-                if (permissionsList.includes("Delete Support Requests"))
-                {
+                if (permissionsList.includes("Delete Support Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Delete Support Requests");
                 }
             }
         }
 
-        if (newCheckboxState[index] === false && subsystem === "Asset Requests")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Asset Requests") {
             let permissionsCheckbox = document.querySelector('input.assetRequestsReview');
             if (permissionsCheckbox.checked) {
                 handleReview(6);
 
-                if (permissionsList.includes("Review Asset Requests"))
-                {
+                if (permissionsList.includes("Review Asset Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Review Asset Requests");
                 }
             }
@@ -283,14 +271,12 @@ const RoleCreation = () => {
 
         }
 
-        if (newCheckboxState[index] === false && subsystem === "Risks")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Risks") {
             let permissionsCheckbox = document.querySelector('input.risksCreate');
             if (permissionsCheckbox.checked) {
                 handleCreate(7);
 
-                if (permissionsList.includes("Create Risks"))
-                {
+                if (permissionsList.includes("Create Risks")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Risks");
                 }
             }
@@ -299,8 +285,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleEdit(7);
 
-                if (permissionsList.includes("Edit Risks"))
-                {
+                if (permissionsList.includes("Edit Risks")) {
                     permissionsList.filter(permissionList => permissionList !== "Edit Risks");
                 }
             }
@@ -309,8 +294,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleDelete(7);
 
-                if (permissionsList.includes("Delete Risks"))
-                {
+                if (permissionsList.includes("Delete Risks")) {
                     permissionsList.filter(permissionList => permissionList !== "Delete Risks");
                 }
             }
@@ -319,21 +303,18 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleReview(7);
 
-                if (permissionsList.includes("Review Risks"))
-                {
+                if (permissionsList.includes("Review Risks")) {
                     permissionsList.filter(permissionList => permissionList !== "Review Risks");
                 }
             }
         }
 
-        if (newCheckboxState[index] === false && subsystem === "Requests")
-        {
+        if (newCheckboxState[index] === false && subsystem === "Requests") {
             let permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
             if (permissionsCheckbox.checked) {
                 handleCreateAssetRequest(8);
 
-                if (permissionsList.includes("Create Asset Requests"))
-                {
+                if (permissionsList.includes("Create Asset Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Asset Requests");
                 }
             }
@@ -342,8 +323,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleCreateSupportRequest(8);
 
-                if (permissionsList.includes("Create Support Requests"))
-                {
+                if (permissionsList.includes("Create Support Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Support Requests");
                 }
             }
@@ -352,8 +332,7 @@ const RoleCreation = () => {
             if (permissionsCheckbox.checked) {
                 handleCreateAccessRequest(8);
 
-                if (permissionsList.includes("Create Access Requests"))
-                {
+                if (permissionsList.includes("Create Access Requests")) {
                     permissionsList.filter(permissionList => permissionList !== "Create Access Requests");
                 }
             }
@@ -415,34 +394,14 @@ const RoleCreation = () => {
         createAccessRequestAllowed[index] = !createAccessRequestAllowed[index];
         setCanCreateAccessRequest(createAccessRequestAllowed);
     };
-
-    const clearAll = () =>
-    {
-        let roleName =document.querySelector('input.roleCreationRoleNameInput');
-        roleName.value = null;
-
-        // for (let i = 0; i < 9; i++)
-        // {
-        //     if (checkboxState[i])
-        //     {
-        //         for (let j = 0; j < 9; j++)
-        //         {
-        //             handleCheckboxChecked(i, subsystems[j]);
-        //         }
-        //     }
-        //
-        // }
-    }
-
     const submitInfo = () => {
 
-        let roleName =document.querySelector('input.roleCreationRoleNameInput').value;
+        let roleName = document.querySelector('input.roleCreationRoleNameInput').value;
         // Send this also to backend.
 
         let permissionsCheckbox = document.querySelector('input.usersCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Users"))
-            {
+            if (!permissionsList.includes("Create Users")) {
                 permissionsList.push("Create Users");
                 permissions += 1;
             }
@@ -451,8 +410,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.usersEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Users"))
-            {
+            if (!permissionsList.includes("Edit Users")) {
                 permissionsList.push("Edit Users");
                 permissions += 2;
             }
@@ -461,8 +419,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.usersDelete');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Delete Users"))
-            {
+            if (!permissionsList.includes("Delete Users")) {
                 permissionsList.push("Delete Users");
                 permissions += 4;
             }
@@ -471,8 +428,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.dataScopesCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Data Scopes"))
-            {
+            if (!permissionsList.includes("Create Data Scopes")) {
                 permissionsList.push("Create Data Scopes");
                 permissions += 8;
 
@@ -482,8 +438,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.dataScopesEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Data Scopes"))
-            {
+            if (!permissionsList.includes("Edit Data Scopes")) {
                 permissionsList.push("Edit Data Scopes");
                 permissions += 16;
             }
@@ -492,8 +447,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.dataScopesDelete');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Delete Data Scopes"))
-            {
+            if (!permissionsList.includes("Delete Data Scopes")) {
                 permissionsList.push("Delete Data Scopes");
                 permissions += 32;
             }
@@ -502,8 +456,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.accessRequestsEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Request Access Request"))
-            {
+            if (!permissionsList.includes("Request Access Request")) {
                 permissionsList.push("Edit Access Requests");
                 permissions += 128;
             }
@@ -512,8 +465,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.accessRequestsApprove');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Approve Access Requests"))
-            {
+            if (!permissionsList.includes("Approve Access Requests")) {
                 permissionsList.push("Approve Access Requests");
                 permissions += 64;
             }
@@ -522,8 +474,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Tasks"))
-            {
+            if (!permissionsList.includes("Create Tasks")) {
                 permissionsList.push("Create Tasks");
                 permissions += 256;
             }
@@ -532,8 +483,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Tasks"))
-            {
+            if (!permissionsList.includes("Edit Tasks")) {
                 permissionsList.push("Edit Tasks");
                 permissions += 512;
             }
@@ -542,8 +492,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Delete Tasks"))
-            {
+            if (!permissionsList.includes("Delete Tasks")) {
                 permissionsList.push("Delete Tasks");
                 permissions += 1024;
             }
@@ -552,8 +501,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Approve Tasks"))
-            {
+            if (!permissionsList.includes("Approve Tasks")) {
                 permissionsList.push("Approve Tasks");
                 permissions += 2048;
             }
@@ -562,8 +510,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.devicesCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Devices"))
-            {
+            if (!permissionsList.includes("Create Devices")) {
                 permissionsList.push("Create Devices");
                 permissions += 4096;
             }
@@ -572,8 +519,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.devicesEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Devices"))
-            {
+            if (!permissionsList.includes("Edit Devices")) {
                 permissionsList.push("Edit Devices");
                 permissions += 8192;
             }
@@ -582,8 +528,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.devicesDelete');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Delete Devices"))
-            {
+            if (!permissionsList.includes("Delete Devices")) {
                 permissionsList.push("Delete Devices");
                 permissions += 16384;
             }
@@ -592,8 +537,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.supportRequestsViewAll');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("View All Support Requests"))
-            {
+            if (!permissionsList.includes("View All Support Requests")) {
                 permissionsList.push("View All Support Requests");
                 permissions += 32768;
             }
@@ -602,8 +546,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.supportRequestsEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Support Requests"))
-            {
+            if (!permissionsList.includes("Edit Support Requests")) {
                 permissionsList.push("Edit Support Requests");
                 permissions += 65536;
             }
@@ -612,8 +555,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.supportRequestsDelete');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Delete Support Requests"))
-            {
+            if (!permissionsList.includes("Delete Support Requests")) {
                 permissionsList.push("Delete Support Requests");
                 permissions += 131072;
             }
@@ -622,8 +564,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.assetRequestsReview');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Review Asset Requests"))
-            {
+            if (!permissionsList.includes("Review Asset Requests")) {
                 permissionsList.push("Review Asset Requests");
                 permissions += 33554432;
             }
@@ -632,8 +573,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.risksCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Risks"))
-            {
+            if (!permissionsList.includes("Create Risks")) {
                 permissionsList.push("Create Risks");
                 permissions += 262144;
             }
@@ -642,8 +582,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.risksEdit');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Edit Risks"))
-            {
+            if (!permissionsList.includes("Edit Risks")) {
                 permissionsList.push("Edit Risks");
                 permissions += 524288;
             }
@@ -652,8 +591,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.risksDelete');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Delete Risks"))
-            {
+            if (!permissionsList.includes("Delete Risks")) {
                 permissionsList.push("Delete Risks");
                 permissions += 2097152;
             }
@@ -662,8 +600,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.risksReview');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Review Risks"))
-            {
+            if (!permissionsList.includes("Review Risks")) {
                 permissionsList.push("Review Risks");
                 permissions += 1048576;
             }
@@ -672,8 +609,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.requestsAssetCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Asset Requests"))
-            {
+            if (!permissionsList.includes("Create Asset Requests")) {
                 permissionsList.push("Create Asset Requests");
                 permissions += 4194304;
             }
@@ -682,8 +618,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.requestsSupportCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Support Requests"))
-            {
+            if (!permissionsList.includes("Create Support Requests")) {
                 permissionsList.push("Create Support Requests");
                 permissions += 8388608;
             }
@@ -692,8 +627,7 @@ const RoleCreation = () => {
 
         permissionsCheckbox = document.querySelector('input.requestsAccessCreate');
         if (permissionsCheckbox.checked === true) {
-            if (!permissionsList.includes("Create Access Requests"))
-            {
+            if (!permissionsList.includes("Create Access Requests")) {
                 permissionsList.push("Create Access Requests");
                 permissions += 16777216;
             }
@@ -702,413 +636,447 @@ const RoleCreation = () => {
         console.log(roleName, permissionsList)
     };
 
-    const [helpOpen,setHelpOpen] = useState(false);
+    const [helpOpen, setHelpOpen] = useState(false);
     const helpMsg = "";
+
+    const [viewRoleOpen, setViewRoleOpen] = useState(false);
+    const [showDiv1, setShowDiv1] = useState(true);
+    const [showDiv2, setShowDiv2] = useState(false);
+    const setDiv = () => {
+        setShowDiv1(!showDiv1);
+        setShowDiv2(!showDiv2);
+    };
 
     return (
         <div className="display">
-            <div className="roleBackground">
-                <button  className="roleHelpButton" onClick={() => setHelpOpen(true)}>
-                    <IoHelpCircle className="roleHelpPopupIcon"></IoHelpCircle>
-                    {helpOpen ? (
-                        <HelpPopup
-                            popupClose={() => setHelpOpen(false)}
-                            popupOpen={helpOpen}
-                            message={helpMsg}
-                        />
-                    ) : null}
-                </button>
-                <div className="roleInfo">
-                    <p className="roleCreateNameLabel">Role Name:</p>
-                    <input
-                        className="roleCreationRoleNameInput"
-                        data-testid="roleCreationTest"
-                        value={role_name}
-                        onChange={(e) => setRoleName(e.target.value)}
-                    />
-                </div>
-                <div className="permissions">
-                    <div className="permissionsList">
-                        {subsystems.map((subsystem, index) =>
-                            (
-                                <div key={index} className={`${subsystem.replace(/\s+/g, '')}Permissions`.replace(/^\w/, name => name.toLowerCase())}>
-                                    <div className="displaySubsystemDiv">
-                                        <label className="accessLabels">
-                                            <input
-                                                type="checkbox"
-                                                checked={checkboxState[index]}
-                                                className={`${subsystem.replace(/\s+/g, '')}Access`.replace(/^\w/, name => name.toLowerCase())}
-                                                onChange={() => handleCheckboxChecked(index, subsystem)}
-                                            />
-                                            {subsystem}
-                                        </label>
-                                    </div>
-                                    <div className="permissionsDiv" style={{ display: displayPermission[index] ? 'flex' : 'none' }}>
-                                        {(() => {
-                                            if (subsystem === 'Users') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreate[index]}
-                                                                    onChange={() => handleCreate(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayDeleteDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canDelete[index]}
-                                                                    onChange={() => handleDelete(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Delete {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            } else if (subsystem === 'Data Scopes') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreate[index]}
-                                                                    onChange={() => handleCreate(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayDeleteDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canDelete[index]}
-                                                                    onChange={() => handleDelete(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Delete {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }
-                                            else if (subsystem === 'Access Requests') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayApproveDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canApprove[index]}
-                                                                    onChange={() => handleApprove(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Approve {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }else if (subsystem === 'Compliance Matrix') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreate[index]}
-                                                                    onChange={() => handleCreate(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create Tasks
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit Tasks
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayDeleteDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canDelete[index]}
-                                                                    onChange={() => handleDelete(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Delete Tasks
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayApproveDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canApprove[index]}
-                                                                    onChange={() => handleApprove(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Approve Tasks
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }else if (subsystem === 'Devices') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreate[index]}
-                                                                    onChange={() => handleCreate(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayDeleteDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canDelete[index]}
-                                                                    onChange={() => handleDelete(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Delete {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }
-                                            else if (subsystem === 'Support Requests') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayViewAllDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canViewAll[index]}
-                                                                    onChange={() => handleViewAll(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}ViewAll`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                View All {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayDeleteDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canDelete[index]}
-                                                                    onChange={() => handleDelete(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Delete {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }else if (subsystem === 'Asset Requests') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayReviewDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canReview[index]}
-                                                                    onChange={() => handleReview(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Review {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }else if (subsystem === 'Risks') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreate[index]}
-                                                                    onChange={() => handleCreate(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayEditDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canEdit[index]}
-                                                                    onChange={() => handleEdit(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Edit {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayDeleteDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canDelete[index]}
-                                                                    onChange={() => handleDelete(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Delete {subsystem}
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayReviewDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canReview[index]}
-                                                                    onChange={() => handleReview(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Review {subsystem}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }
-                                            else if (subsystem === 'Requests') {
-                                                return (
-                                                    <div className="displayPermissionsDiv" >
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreateAssetRequest[index]}
-                                                                    onChange={() => handleCreateAssetRequest(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}AssetCreate`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create Asset Requests
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreateSupportRequest[index]}
-                                                                    onChange={() => handleCreateSupportRequest(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}SupportCreate`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create Support Requests
-                                                            </label>
-                                                        </div>
-                                                        <div className="displayCreateDiv">
-                                                            <label className="accessLabels">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={canCreateAccessRequest[index]}
-                                                                    onChange={() => handleCreateAccessRequest(index)}
-                                                                    className={`${subsystem.replace(/\s+/g, '')}AccessCreate`.replace(/^\w/, name => name.toLowerCase())}
-                                                                />
-                                                                Create Access Requests
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            }
-                                        })()}
-                                    </div>
-                                </div>
-                            ))}
-                    </div>
-                </div>
-
-                <div className = "roleCreationButtonsDiv">
-                    <button
-                        className="roleCreationButton"
-                        type = "submit"
-                        onClick={handleClick}
-                    >
-
-                        Create Role
+            {showDiv1 && (
+                <div className="roleBackground">
+                    <button className="roleHelpButton" onClick={() => setHelpOpen(true)}>
+                        <IoHelpCircle className="roleHelpPopupIcon"></IoHelpCircle>
+                        {helpOpen ? (
+                            <HelpPopup
+                                popupClose={() => setHelpOpen(false)}
+                                popupOpen={helpOpen}
+                                message={helpMsg}
+                            />
+                        ) : null}
                     </button>
 
-                    {/*<button*/}
-                    {/*    className="clearButton"*/}
-                    {/*    onClick={clearAll}*/}
-                    {/*>*/}
-                    {/*    Clear*/}
-                    {/*</button>*/}
+                    <div className="roleInfo">
+                        <p className="roleCreateNameLabel">Role Name:</p>
+                        <input
+                            className="roleCreationRoleNameInput"
+                            data-testid="roleCreationTest"
+                            value={role_name}
+                            onChange={(e) => setRoleName(e.target.value)}
+                        />
+                    </div>
+                    <div className="permissions">
+                        <div className="permissionsList">
+                            {subsystems.map((subsystem, index) =>
+                                (
+                                    <div key={index}
+                                         className={`${subsystem.replace(/\s+/g, '')}Permissions`.replace(/^\w/, name => name.toLowerCase())}>
+                                        <div className="displaySubsystemDiv">
+                                            <label className="accessLabels">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={checkboxState[index]}
+                                                    className={`${subsystem.replace(/\s+/g, '')}Access`.replace(/^\w/, name => name.toLowerCase())}
+                                                    onChange={() => handleCheckboxChecked(index, subsystem)}
+                                                />
+                                                {subsystem}
+                                            </label>
+                                        </div>
+                                        <div className="permissionsDiv"
+                                             style={{display: displayPermission[index] ? 'flex' : 'none'}}>
+                                            {(() => {
+                                                if (subsystem === 'Users') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreate[index]}
+                                                                        onChange={() => handleCreate(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayDeleteDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canDelete[index]}
+                                                                        onChange={() => handleDelete(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Delete {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Data Scopes') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreate[index]}
+                                                                        onChange={() => handleCreate(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayDeleteDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canDelete[index]}
+                                                                        onChange={() => handleDelete(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Delete {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Access Requests') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayApproveDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canApprove[index]}
+                                                                        onChange={() => handleApprove(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Approve {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Compliance Matrix') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreate[index]}
+                                                                        onChange={() => handleCreate(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create Tasks
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit Tasks
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayDeleteDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canDelete[index]}
+                                                                        onChange={() => handleDelete(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Delete Tasks
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayApproveDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canApprove[index]}
+                                                                        onChange={() => handleApprove(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Approve`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Approve Tasks
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Devices') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreate[index]}
+                                                                        onChange={() => handleCreate(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayDeleteDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canDelete[index]}
+                                                                        onChange={() => handleDelete(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Delete {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Support Requests') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayViewAllDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canViewAll[index]}
+                                                                        onChange={() => handleViewAll(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}ViewAll`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    View All {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayDeleteDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canDelete[index]}
+                                                                        onChange={() => handleDelete(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Delete {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Asset Requests') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayReviewDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canReview[index]}
+                                                                        onChange={() => handleReview(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Review {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Risks') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreate[index]}
+                                                                        onChange={() => handleCreate(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Create`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayEditDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canEdit[index]}
+                                                                        onChange={() => handleEdit(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Edit`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Edit {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayDeleteDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canDelete[index]}
+                                                                        onChange={() => handleDelete(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Delete`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Delete {subsystem}
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayReviewDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canReview[index]}
+                                                                        onChange={() => handleReview(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}Review`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Review {subsystem}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                } else if (subsystem === 'Requests') {
+                                                    return (
+                                                        <div className="displayPermissionsDiv">
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreateAssetRequest[index]}
+                                                                        onChange={() => handleCreateAssetRequest(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}AssetCreate`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create Asset Requests
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreateSupportRequest[index]}
+                                                                        onChange={() => handleCreateSupportRequest(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}SupportCreate`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create Support Requests
+                                                                </label>
+                                                            </div>
+                                                            <div className="displayCreateDiv">
+                                                                <label className="accessLabels">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={canCreateAccessRequest[index]}
+                                                                        onChange={() => handleCreateAccessRequest(index)}
+                                                                        className={`${subsystem.replace(/\s+/g, '')}AccessCreate`.replace(/^\w/, name => name.toLowerCase())}
+                                                                    />
+                                                                    Create Access Requests
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                            })()}
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    </div>
+                    <div className="roleCreationButtonsDiv">
+                        <button
+                            className="roleCreationButton"
+                            type="submit"
+                            onClick={handleClick}
+                        >
+                            Create Role
+                        </button>
+                        <div className="changeViewBtnDiv">
+                            <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">View Roles</button>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
-
+            )}
+            {showDiv2 && (
+                <div className="roleBackground">
+                    <button className="roleHelpButton" onClick={() => setHelpOpen(true)}>
+                        <IoHelpCircle className="roleHelpPopupIcon"></IoHelpCircle>
+                        {helpOpen ? (
+                            <HelpPopup
+                                popupClose={() => setHelpOpen(false)}
+                                popupOpen={helpOpen}
+                                message={helpMsg}
+                            />
+                        ) : null}
+                    </button>
+                    <ul>
+                        {roles.map((role, index) => (
+                            <li key={index}>
+                                <p onClick={() => setViewRoleOpen(!viewRoleOpen)}>
+                                    {role.roleName}
+                                    {viewRoleOpen && (
+                                        <ViewRole
+                                            popupClose={() => setViewRoleOpen(false)}
+                                            popupOpen={viewRoleOpen}
+                                            role={roles}
+                                        />
+                                    )}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="changeViewBtnDiv">
+                        <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">View Roles</button>
+                    </div>
+                </div>
+            )}
         </div>
-
     );
 };
 
