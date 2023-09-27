@@ -130,7 +130,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 {/*    /> ) : (*/}
                                 {/*    <p>Loading...</p>*/}
                                 {/*)}*/}
-                                <p className="editDSRoleLabel">Current Roles</p>
+                                <p className="editDSRoleLabel">Data Scope Roles</p>
                                 {dataScopeRoles && dataScopeRoles.length > 0 ? (
                                     <Select
                                         options={dataScopeRoles.map((data) => ({ value: data.role_description, label: data.role_type }))}
@@ -144,12 +144,13 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 ) : (
                                     <p className="editDSRolesLoading">Loading...</p>
                                 )}
-                                <p className="editDSRoleLabel">Current Role Description</p>
+                                <p className="editDSRoleLabel">Role Description</p>
                                 <textarea
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                     className="editDSRoleDescription"
                                 />
+                                <p className="AddRoleNameLabel">Add Role</p>
                                 <p className="AddRoleNameLabel">Role Type</p>
                                 <input
                                     className="AddRoleNameInput"

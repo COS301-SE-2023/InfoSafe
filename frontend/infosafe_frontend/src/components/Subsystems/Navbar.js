@@ -24,22 +24,17 @@ const NavBar = () => {
     const {myDataScopeCount} = useCurrentDataScope();
     const {taskCount} = useCurrentTasks();
     let notDSButHasDatascope = false;
-    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Tasks', 'Devices', 'Risks', 'Requests', 'Access Requests', 'Asset Requests', 'Support Requests', 'About', 'Help'];
-    const TabIcons = [<FaHome className="icon"/>, <RiUserSettingsFill className="icon"/>,
-        <IoPeopleSharp className="icon"/>, <FaProjectDiagram className="icon"/>, <FaTasks className="icon"/>,
-        <PiDevicesFill className="icon"/>, <CgDanger className="icon"/>,
-        <MdOutlineDashboardCustomize className="icon"/>, <FaLock className="icon"/>, <TbDevicesPc className="icon"/>,
-        <BiSupport className="icon"/>, <IoInformationCircleOutline className="icon"/>,
-        <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline>]
+    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes',  'Tasks', 'Devices', 'Risks' , 'Requests', 'Access Requests', 'Asset Requests', 'Support Requests', 'About', 'Help'];
+    const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <CgDanger className="icon" />,  <MdOutlineDashboardCustomize className="icon" />, <FaLock className="icon" />, <TbDevicesPc className="icon" />, <BiSupport className="icon" />, <IoInformationCircleOutline className="icon" />, <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline> ]
     let accessTasks = false;
     tabItems.push(0);
-    if (!roles.includes("data_scope_edit") || !roles.includes("data_scope_create") || !roles.includes("data_scope_delete")) {
-        if (myDataScopeCount > 0) {
+    if (!roles.includes("data_scope_edit") || !roles.includes("data_scope_create") || !roles.includes("data_scope_delete")){
+        if(myDataScopeCount > 0){
             notDSButHasDatascope = true;
         }
     }
-    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
-        if (taskCount > 0) {
+    if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")){
+        if(taskCount > 0){
             accessTasks = true;
         }
     }
