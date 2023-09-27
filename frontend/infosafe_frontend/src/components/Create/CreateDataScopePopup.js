@@ -126,7 +126,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                             id="taskUserIn"
                                         />
                                     ) : (
-                                        <p>Loading...</p>
+                                        <p className='createDataScopeLoadingTitle'>Loading...</p>
                                     )}
                                 </div>
                                 <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields

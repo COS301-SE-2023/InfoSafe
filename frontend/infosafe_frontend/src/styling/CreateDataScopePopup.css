@@ -214,3 +214,17 @@
 .datascopeUserSelect{
     left: 15%;
 }
+.createDataScopeLoadingTitle{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    top: 0;
+    padding: 0.5% 2%;
+    left: 15%;
+}
