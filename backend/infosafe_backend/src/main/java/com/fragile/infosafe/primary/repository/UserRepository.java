@@ -17,5 +17,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT u FROM User u WHERE u NOT IN (SELECT tu FROM Task t JOIN t.users tu WHERE t.task_id = :taskId)")
     List<User> findUsersNotInTask(@Param("taskId") int taskId);
+
+    @Query("SELECT u.email FROM User u WHERE u <> :dataCustodian")
+    List<String> findAllUserNotDataCustodian(@Param("dataCustodian") User dataCustodian);
 }
 

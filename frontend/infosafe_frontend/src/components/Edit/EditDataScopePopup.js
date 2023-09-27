@@ -4,11 +4,15 @@ import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
+import Select from "react-select";
+import {customStyles} from "../CustomStyling";
 const STATUS = ['Created', 'Approved', 'Rejected', 'Revoked'];
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
     const [dataScopeRoles, setDataScopeRoles] = useState([]);
+    const [selectedDataScopeRole, setSelectedDataScopeRole] = useState(null);
+    const [description, setDescription] = useState('');
     const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
         data_custodian: datascope.data_custodian,
@@ -21,6 +25,14 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewRole((prevRole) => ({ ...prevRole, [name]: value }));
+    };
+    const handleDataScopeRoleChange = (selectedOption) => {
+        setSelectedDataScopeRole(selectedOption);
+        if (selectedOption) {
+            setDescription(selectedOption.value);
+        } else {
+            setDescription('');
+        }
     };
 
     const handleSubmit = (e) => {
@@ -39,7 +51,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/getDataScopeRole', {
+        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -106,7 +118,26 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-
+                                <p className="editTaskLabels">Current Roles</p>
+                                {dataScopeRoles && dataScopeRoles.length > 0 ? (
+                                    <Select
+                                        options={dataScopeRoles.map((data) => ({ value: data.role_description, label: data.role_type }))}
+                                        placeholder={dataScopeRoles.label}
+                                        className="editTaskAssignees"
+                                        name="editTaskAssignees"
+                                        styles={customStyles}
+                                        value={selectedDataScopeRole}
+                                        onChange={handleDataScopeRoleChange}
+                                    />
+                                ) : (
+                                    <p>Loading...</p>
+                                )}
+                                <p className="editTaskLabels">Description</p>
+                                <textarea
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    className=""
+                                />
                                 <p className="AddRoleNameLabel">Role Type</p>
                                 <input
                                     className="AddRoleNameInput"
@@ -123,12 +154,6 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     value={newRole.roledescription}
                                     onChange={handleInputChange}
                                 />
-                                {/*<ul>*/}
-                                {/*    {dataScopeRoles.map((role, index) => (*/}
-                                {/*        <li key={index}>{role.role_type}</li>*/}
-                                {/*    ))}*/}
-                                {/*</ul>*/}
-
                             </div>
                             <div className="editDataScopeButtonsDiv">
                                 <button

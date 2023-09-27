@@ -197,4 +197,15 @@ public class UserController {
     public ResponseEntity<List<String>> getAllUsersNotAssigned(@PathVariable("asset_id") int asset_id, @PathVariable("current_assignee") String current) {
         return ResponseEntity.ok(assetService.getUnassignedUserEmails(current ,asset_id));
     }
+
+    @GetMapping("/findNotDatCustodian")
+    public ResponseEntity<List<String>> getNotDataCustodian(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            List<String> users = userService.findNotDataCustodian(authenticatedUser);
+            return ResponseEntity.ok(users);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

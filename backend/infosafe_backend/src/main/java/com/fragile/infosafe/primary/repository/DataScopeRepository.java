@@ -25,4 +25,6 @@ public interface DataScopeRepository extends JpaRepository<DataScope,Integer> {
     List<DataScope> findDataScopesNotAssociatedWithUser(@Param("user") User user);
 
     List<DataScope> findAllByUsers(User user);
+
+
 }
