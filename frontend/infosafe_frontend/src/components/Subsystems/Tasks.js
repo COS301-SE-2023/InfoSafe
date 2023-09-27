@@ -17,8 +17,9 @@ import {HelpPopup} from "../HelpPopup";
 export const Tasks = () => {
     const {showTask} = useGetTask()
     const {roles} = useGetPerms();
+    const {myTasks} = useGetTask();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
-
+    let viewMyTasks = false;
     const EditTask = ({ task }) => {
         const [editTaskOpen, setEditTaskOpen] = useState(false);
         if(roles.includes("tasks_create")) {
@@ -41,7 +42,7 @@ export const Tasks = () => {
 
     const ViewTaskItems = ({ task }) => {
         const [viewTaskOpen, setViewTaskOpen] = useState(false)
-        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
+        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve") || viewMyTasks) {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
@@ -109,9 +110,21 @@ export const Tasks = () => {
     }
 
     const complianceItems = [];
-    showTask.map((task) =>
-        complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
-    );
+    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
+        if (showTask && showTask.length > 0) {
+            showTask.map((task) =>
+                complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
+            );
+        }
+    } else {
+        if (myTasks && myTasks.length > 0) {
+            viewMyTasks = true;
+            myTasks.map((task) =>
+                complianceItems.push(<ViewTaskItems task={task} key={task.task_id} />)
+            );
+        }
+    }
+
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";

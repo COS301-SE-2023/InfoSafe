@@ -15,19 +15,27 @@ import {CgDanger} from 'react-icons/cg';
 import {TbDevicesPc} from 'react-icons/tb';
 import {MdOutlineDashboardCustomize} from 'react-icons/md';
 import {useCurrentDataScope} from "../Charts/useCurrentDataScope";
+import {useCurrentTasks} from "../Charts/useCurrentTasks";
 
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
     const {roles} = useGetPerms();
     const {myDataScopeCount} = useCurrentDataScope();
+    const {taskCount} =  useCurrentTasks();
     let notDSButHasDatascope = false;
+    let accessTasks = false;
     const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests', 'About', 'Help'];
     const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaLock className="icon" />, <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <BiSupport className="icon" />, <CgDanger className="icon" />, <TbDevicesPc className="icon" />, <MdOutlineDashboardCustomize className="icon" />, <IoInformationCircleOutline className="icon" />, <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline> ]
     tabItems.push(0);
     if (!roles.includes("data_scope_edit") || !roles.includes("data_scope_create") || !roles.includes("data_scope_delete")){
         if(myDataScopeCount > 0){
             notDSButHasDatascope = true;
+        }
+    }
+    if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")){
+        if(taskCount > 0){
+            accessTasks = true;
         }
     }
     if (roles.includes("role_creation")) {//Role Creation
@@ -42,7 +50,7 @@ const NavBar = () => {
     if (roles.includes("access_requests_approve") || roles.includes("access_requests_edit")) {//Access Requests
         tabItems.push(4);
     }
-    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
+    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve") || accessTasks) {//Compliance Matrix
         tabItems.push(5);
     }
     if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {//Devices
@@ -67,8 +75,21 @@ const NavBar = () => {
     };
 
     const [menuVisible, setMenuVisible] = useState(false);
+    let validToken = false;
 
-    if (sessionStorage.getItem('accessToken') == null) {
+    useEffect(() => {
+        fetch('http://localhost:8080/api/user/tokenValid', {
+            method: "POST",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+            body: JSON.stringify(sessionStorage.getItem('accessToken'))
+        }).then((response) => {
+            validToken = response;
+        })
+    });
+
+    if (!validToken) {
         window.location.href = "/";
     }
     const [settings, showSettings] = useState(false);
