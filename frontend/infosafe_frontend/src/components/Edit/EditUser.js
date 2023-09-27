@@ -22,7 +22,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     // };
 
     useEffect(() => {
-        console.log("this happened")
+        //console.log("this happened")
         if (user) {
             setValues({
                 user_id: user.user_id,
@@ -37,7 +37,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
+        //console.log(values)
         fetch('http://localhost:8080/api/user/update/' + user.user_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",

@@ -37,7 +37,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                 if (data) {
                     console.log("User already exists");
                 } else {
-                    console.log(user);
+                    //console.log(user);
                     fetch("http://localhost:8080/api/user/add", {
                         method: "POST",
                         headers: {
