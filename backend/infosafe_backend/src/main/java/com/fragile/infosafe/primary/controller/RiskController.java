@@ -27,4 +27,9 @@ public class RiskController {
     public Risk updateRisk (@PathVariable("id") int risk_id, @RequestBody RiskRequest risk) {
         return service.updateRisk(risk, risk_id);
     }
+
+    @PostMapping("/review/{risk_id}")
+    public ResponseEntity<Boolean> reviewRisk(@PathVariable("risk_id") int risk_id) {
+        return ResponseEntity.ok(false);
+    }
 }
