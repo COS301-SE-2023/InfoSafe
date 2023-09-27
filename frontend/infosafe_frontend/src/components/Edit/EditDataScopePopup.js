@@ -13,6 +13,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     const [dataScopeRoles, setDataScopeRoles] = useState([]);
     const [selectedDataScopeRole, setSelectedDataScopeRole] = useState(null);
     const [description, setDescription] = useState('');
+    //const [users, setUsers] = useState([]);
     const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
         data_custodian: datascope.data_custodian,
@@ -21,6 +22,19 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
         ds_name: datascope.ds_name,
         ds_status: datascope.ds_status
     });
+
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/api/user/findUsersNotInTask/" + task.task_id, {
+    //         method: "GET",
+    //         headers: {
+    //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+    //         }
+    //     })
+    //         .then((res) => res.json())
+    //         .then((result) => {
+    //             setUsers(result);
+    //         });
+    // }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -37,10 +51,12 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(datascope);
+        console.log(values);
         fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": 'application/json',
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
             },
             body: JSON.stringify(values)
@@ -118,15 +134,18 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-                                <p className="editDSUsers">Assigned Users:</p>
-                                {/*{currentUsers && currentUsers.length > 0 ? (*/}
+                                {/*<p className="editDSUsers">Assigned Users</p>*/}
+                                {/*{users && users.length > 0 ? (*/}
                                 {/*    <Select*/}
-                                {/*        options={currentUsers.map((email) => ({value: email, label: email}))}*/}
-                                {/*        value={currentUsers.map((email) => ({value: email, label: email}))}*/}
-                                {/*        placeholder={currentUsers[0]}*/}
+                                {/*        options={users.map((data) => ({value: data.user_id, label: data.email}))}*/}
+                                {/*        value={selectedUsers.map((email) => ({ label: email }))}*/}
                                 {/*        className="editTaskAssignees"*/}
                                 {/*        name="editTaskAssignees"*/}
+                                {/*        placeholder={"Add Assignees"}*/}
+                                {/*        onChange={handleSelect}*/}
+                                {/*        isSearchable={true}*/}
                                 {/*        styles={customStyles}*/}
+                                {/*        isMulti*/}
                                 {/*    /> ) : (*/}
                                 {/*    <p>Loading...</p>*/}
                                 {/*)}*/}
@@ -150,7 +169,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     onChange={(e) => setDescription(e.target.value)}
                                     className="editDSRoleDescription"
                                 />
-                                <p className="AddRoleNameLabel">Add Role</p>
+                                <p className="AddRoleNameHeading">Add New Roles:</p>
                                 <p className="AddRoleNameLabel">Role Type</p>
                                 <input
                                     className="AddRoleNameInput"

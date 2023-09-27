@@ -5,7 +5,7 @@ import Dropdown from 'react-dropdown';
 import {customStyles} from "../CustomStyling";
 import '../../styling/EditUser.css'
 
-const EditUser = ({ user, popupClose, popupOpen }) => {
+const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
     const [selectedRole, setSelectedRole] = useState(user.role.role_name)
     const [roleNames, setRoleNames] = useState('')
     const [values, setValues] = useState({
@@ -24,7 +24,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     // };
 
     useEffect(() => {
-        console.log("this happened")
+        //console.log("this happened")
         if (user) {
             setValues({
                 user_id: user.user_id,
@@ -39,7 +39,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
+        //console.log(values)
         fetch('http://localhost:8080/api/user/update/' + user.user_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -47,7 +47,8 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
             },
             body:JSON.stringify(values)
         }).then(()=>{
-            console.log("Updated User")
+            console.log("Updated User");
+            onUserEdited();
         })
         popupClose()
     }

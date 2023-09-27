@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ViewTask} from "../View/ViewTaskPopup";
 import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/EditTaskPopup";
@@ -12,13 +12,20 @@ import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import delete_icon from "../../images/delete_icon.png";
+import user_icon from "../../images/create_user_icon.png";
 
 export const Tasks = () => {
-    const {showTask, loading} = useGetTask()
+    const {showTask, loading, fetchAllTasks} = useGetTask()
     const {roles} = useGetPerms();
     const {myTasks} = useGetTask();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     let viewMyTasks = false;
+
+    useEffect(() => {
+        fetchAllTasks();
+    }, []);
+
     const EditTask = ({ task }) => {
         const [editTaskOpen, setEditTaskOpen] = useState(false);
         if(roles.includes("tasks_create")) {
@@ -30,6 +37,7 @@ export const Tasks = () => {
                             popupClose={() => setEditTaskOpen(false)}
                             popupOpen={editTaskOpen}
                             task={task}
+                            onTaskEdited={fetchAllTasks}
                         />
                     ) : null}
                 </div>
@@ -76,6 +84,7 @@ export const Tasks = () => {
                         <CreateTask
                             popupClose={() => setCreateTaskOpen(false)}
                             popupOpen={createTaskOpen}
+                            onTaskAdded={fetchAllTasks}
                         />
                     ) : null}
                 </div>
@@ -127,8 +136,12 @@ export const Tasks = () => {
     }
 
 
-    const [helpOpen,setHelpOpen] = useState(false);
-    const helpMsg = "";
+    const [helpOpen, setHelpOpen] = useState(false);
+    const helpMsg = "To view a tasks information, click on the specific field in the table." +
+        "Tasks can also be closed by clicking the Complete or Incomplete buttons in the view popup." +
+        "To edit a task, click the edit ( " + <RiEditBoxFill/> + " ) button" +
+        "To add a new task click the Create New Task ( " +
+        <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
     return(
         <div className="display">

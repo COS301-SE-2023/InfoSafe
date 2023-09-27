@@ -11,6 +11,9 @@ import {useGetAllUser} from "../getData/getAllUser";
 import {ConfirmDelete} from "../ConfirmDelete";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import edit_icon from '../../images/edit_icon.png';
+import delete_icon from '../../images/delete_icon.png';
+import user_icon from '../../images/create_user_icon.png';
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
@@ -32,6 +35,7 @@ export const Users = () => {
                                 popupClose={() => setEditUserOpen(false)}
                                 popupOpen={editUserOpen}
                                 user={user}
+                                onUserEdited={fetchAllUsers}
                             />
                         ) : null}{' '}
                     </div>
@@ -140,13 +144,17 @@ export const Users = () => {
 
     const userItems = [];
     showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
-    if (userItems.length === 0)
-    {
+    if (userItems.length === 0) {
         userItems[0] = "No Users added yet.";
     }
 
     const [helpOpen, setHelpOpen] = useState(false);
-    const helpMsg = "";
+    const helpMsg = "To view a users information, click on their field in the table." +
+        "To edit a user, click the edit ( " + <RiEditBoxFill/> + " ) button" +
+        "To delete a user you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
+        "To add a user click the Create New User ( " +
+        <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
+
 
     return (
         <div className="display">
@@ -171,6 +179,7 @@ export const Users = () => {
                         // onChange={}
                     />
                     <FaSearch className="userSearchIcon"/>
+
                 </div>
                 <div className="users">
                     {loading ? (
@@ -187,7 +196,7 @@ export const Users = () => {
                 </div>
                 <CreateUser></CreateUser>
             </div>
-
         </div>
+
     );
 }

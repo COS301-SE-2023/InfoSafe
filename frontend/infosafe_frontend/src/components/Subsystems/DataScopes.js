@@ -11,6 +11,10 @@ import data from "bootstrap/js/src/dom/data";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
 import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
+import delete_icon from "../../images/delete_icon.png";
+import edit_icon from "../../images/edit_icon.png";
+import datascope_icon from "../../images/create_datascope_icon.png";
+
 export const DataScopes = () => {
 
     const {showDatascope, myDatascopes, loading } = useGetDS();
@@ -117,14 +121,17 @@ export const DataScopes = () => {
             );
         }
     }
-    if (dataItems.length === 0)
+    if (dataItems.length === null)
     {
         dataItems[0] = "No Data Scopes added yet.";
     }
 
 
     const [helpOpen,setHelpOpen] = useState(false);
-    const helpMsg = "";
+    const helpMsg = "To view a data scopes information, click on their field in the table." +
+        "To edit a data scope, click the edit ( " + <img src={edit_icon} alt='edit icon'/> + " ) button" +
+        "To delete a data scope you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
+        "To add a data scope click the Create Data Scope ( " + <img src={datascope_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
     return (
         <div className="display">

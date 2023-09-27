@@ -205,6 +205,17 @@
     top: -2vh;
     left: 15%;
 }
+
+.AddRoleNameHeading {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #000000;
+    font-weight: bold;
+    width: 75%;
+    position: relative;
+    top: -1vh;
+    left: 15%;
+}
 .AddRoleNameInput {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;

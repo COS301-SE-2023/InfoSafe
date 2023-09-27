@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ViewRisk} from "../View/ViewRisk";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditRisk} from "../Edit/EditRisk";
@@ -13,8 +13,12 @@ import {IoHelpCircle} from 'react-icons/io5';
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const {showRisk, loading} = useGetRisk();
+    const {showRisk, loading, fetchAllRisks} = useGetRisk();
     const {roles} = useGetPerms();
+
+    useEffect(() => {
+        fetchAllRisks();
+    }, []);
 
     const CreateRiskDiv = () => {
         if(roles.includes("risks_create")) {
@@ -31,6 +35,7 @@ export const Risks = () => {
                         <CreateRisk
                             popupClose={() => setCreateRiskOpen(false)}
                             popupOpen={createRiskOpen}
+                            onRiskAdded={fetchAllRisks}
                         />
                     ) : null}
                 </div>
@@ -53,6 +58,7 @@ export const Risks = () => {
                             popupClose={() => setEditRiskOpen(false)}
                             popupOpen={editRiskOpen}
                             risk={risk}
+                            onRiskEdited={fetchAllRisks}
                         />
                     ) : null}
                 </div>

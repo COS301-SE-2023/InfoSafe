@@ -9,7 +9,7 @@ import {useGetTask} from "../getData/getTask";
 import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 import {customStyles} from "../CustomStyling";
 
-export const CreateTask = ({popupClose, popupOpen}) => {
+export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
     const [task_description, setTaskDescription] = useState('');
     const [task_status, setTaskStatus] = useState('');
     const [due_date, setDueDate] = useState('');
@@ -45,7 +45,7 @@ export const CreateTask = ({popupClose, popupOpen}) => {
             dataScope_id: datascope.value,
             users_email: selectedUsers.map((user) => user.label),
         };
-        console.log(task)
+        //console.log(task)
         fetch("http://localhost:8080/api/task/addTask", {
             method: "POST",
             headers: {
@@ -57,12 +57,12 @@ export const CreateTask = ({popupClose, popupOpen}) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log("New task added");
-                popupClose();
+                onTaskAdded();
             })
             .catch((error) => {
                 console.error("Error adding task:", error);
+
             });
-        //refresh();
         popupClose();
     };
 

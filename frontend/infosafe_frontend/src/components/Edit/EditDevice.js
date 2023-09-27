@@ -9,13 +9,21 @@ import {customStyles} from "../CustomStyling";
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 
-const EditDevice = ({ asset, popupClose, popupOpen }) => {
+
+const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    const newPreviousAssignee = asset.current_assignee.email;
+    const [userChanged, setUserChanged] = useState(false);
+    let newPreviousAssignee = '';
+    const [placeholder, setPlaceholder] = useState("New Assignee");
+    let emailValue = "None";
+
+    if(asset.current_assignee !== null){
+        newPreviousAssignee = asset.current_assignee.email;
+        emailValue = asset.current_assignee.email;
+    }
     let request = {};
-    let userChanged = false;
-    let placeholder = "Add Assignee";
+
     const[values, setValues]=useState({
         asset_id: '',
         asset_name: '',
@@ -24,7 +32,11 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         used: '',
         availability: '',
         device_type: '',
+        current_assignee: '',
+        previous_assignee: ''
     })
+
+
     useEffect(() => {
         if (asset) {
             setValues({
@@ -40,22 +52,29 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
     }, [asset]);
 
     const handleNewAssignee = (selectedOption) => {
-        console.log(selectedOption)
-        setSelectedUser(selectedOption);
         request = {
-            current_assignee: selectedOption,
-            previous_assignee: newPreviousAssignee
+            current_assignee: selectedOption.label,
+            previous_assignee: newPreviousAssignee,
         }
-        userChanged = true;
+        setPlaceholder(selectedOption.label);
+        setUserChanged(true);
+        console.log(placeholder);
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if(userChanged){
-            request = {...values, ...request};
+            request = ({...values, ...request});
         }else {
-            request = {...values};
+            request = ({...values});
         }
-        console.log(request)
+
+        if (( request.asset_name === '' || request.asset_description === '' || request.device_type === '' ) || (request.availability === 'No' && request.current_assignee === null)){
+            document.getElementById("editDeviceError").style.display = "block";
+            return;
+        }
+        console.log(request);
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -65,12 +84,13 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         }).then(()=>{
             console.log(request)
             console.log("Updated Asset")
+            onAssesEdited()
         })
         popupClose()
     }
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/findUserNotAssigned/" + asset.asset_id + "/" + asset.current_assignee.email, {
+        fetch("http://localhost:8080/api/user/findUserNotAssigned/" + asset.asset_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -120,10 +140,11 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 name="availability"
                                 onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
                             />
-                        {values.availability  === 'No' && (
+                        {values.availability  === 'No' && asset.current_assignee === null && (
                             <div>
                                 <p className="editCurrentCustodianLabel">Current Assignee</p>
-                                <p>{asset.current_assignee.email}</p>
+                                <p className="editDeviceCurrentUser">{emailValue}</p>
+                                <p className="editChangeCustodianLabel">Change Assignee</p>
                                 {users && users.length > 0 ? (
                                     <Select
                                         placeholder={placeholder}
@@ -140,6 +161,28 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                                 )}
                             </div>
                         )}
+                        {values.availability  === 'No' && asset.current_assignee !== null && (
+                            <div>
+                                <p className="editCurrentCustodianLabel">Current Assignee</p>
+                                <p className="editDeviceCurrentUser">{emailValue}</p>
+                                <p className="editChangeCustodianLabel">Change Assignee</p>
+                                {users && users.length > 0 ? (
+                                    <Select
+                                        placeholder={placeholder}
+                                        options={users.map((email) => ({ value: email, label: email }))}
+                                        value={selectedUser || null}
+                                        styles={customStyles}
+                                        className="userSelect"
+                                        name="datascopeDropdown"
+                                        onChange={handleNewAssignee}
+                                        isSearchable={true}
+                                    />
+                                ) : (
+                                    <p>Loading...</p>
+                                )}
+                            </div>
+                        )}
+                        <p className="editDeviceError" id="editDeviceError">Please ensure all fields are completed and that if an assets availability is set to "No", a user is assigned to it</p>
                         <button className="EditDeviceButton" type="submit">
                             Submit
                         </button>

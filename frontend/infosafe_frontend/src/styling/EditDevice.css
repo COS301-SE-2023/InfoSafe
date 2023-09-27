@@ -164,7 +164,27 @@
     position: relative;
     left: 15%;
 }
+.editDeviceCurrentUser{
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    font-family: 'Roboto', sans-serif;
+}
 .editCurrentCustodianLabel {
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    left: 15%;
+}
+.editChangeCustodianLabel{
     font-size: 18px;
     width: 70%;
     border: none;
@@ -179,6 +199,7 @@
     border: none;
     position: relative;
     left: 15%;
+    width: 100%;
 }
 .userSelect:after {
     transform: translateY(50%);
@@ -214,4 +235,17 @@
     scrollbar-width: none;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
+}
+
+.editDeviceError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    position: relative;
+    top: -3vh;
+    left: 1%;
 }

@@ -8,7 +8,7 @@ import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate', 'Unlikely', 'Rare'];
 const IMPACT = ['Insignificant', 'Minor', 'Significant', 'Major', 'Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved'];
-export const EditRisk = ({risk, popupClose, popupOpen}) => {
+export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
     const [datascope, setDataScope] = useState(risk.dataScope.ds_name);
     const {myDatascopeData} = useAccessRequests();
     const [values, setValues] = useState({
@@ -47,6 +47,7 @@ export const EditRisk = ({risk, popupClose, popupOpen}) => {
             body: JSON.stringify(values)
         }).then(() => {
             console.log("Updated Risk")
+            onRiskEdited()
         })
         //console.log(JSON.stringify(values))
         popupClose()

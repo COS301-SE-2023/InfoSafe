@@ -11,7 +11,7 @@ import {useGetAllUser} from "../getData/getAllUser";
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const NEW_OPTIONS = ['New', 'Used'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
-export const CreateDevicePopup = ({popupOpen, popupClose}) => {
+export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) => {
     const current = new Date();
     const [asset_name, setAsset_name] = useState('')
     const [asset_description, setAsset_description] = useState('')
@@ -30,11 +30,10 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        if ( asset_name === '' || asset_description === '' || selectedUsers === null || device_type === '' ) {
-            document.getElementById("createDeviceError").style.display = "block";
+        if (( asset_name === '' || asset_description === '' || device_type === '' ) || (availability === 'No' && selectedUsers === null)){
+                document.getElementById("createDeviceError").style.display = "block";
             return;
         }
-
 
         const asset = {
             asset_name,
@@ -48,6 +47,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         }
         //console.log(selectedUsers);
         // console.log(asset);
+        popupClose()
         fetch("http://localhost:8080/api/asset/addAsset", {
             method: "POST",
             headers: {
@@ -57,8 +57,8 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             body: JSON.stringify(asset)
         }).then(() => {
             console.log("New Asset added")
+            onAssetCreated()
         })
-        popupClose()
     }
     useEffect(() => {
         fetch("http://localhost:8080/api/user/getAll", {
