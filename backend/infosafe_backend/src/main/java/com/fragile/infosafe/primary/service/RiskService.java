@@ -19,6 +19,7 @@ import java.util.List;
 public class RiskService {
     private final RiskRepository riskRepository;
     private final DataScopeRepository dataScopeRepository;
+    private final DeleteService deleteService;
 
     public List<Risk> getAllRisks() {
         return riskRepository.findAll();
@@ -55,4 +56,8 @@ public class RiskService {
         risk.setDataScope(dataScopeRepository.findByDataScopeId(riskRequest.getDataScope_id()).get());
 
         return riskRepository.save(risk);}
+
+    public ResponseEntity<Boolean> reviewRisk(int risk_id) {
+        return ResponseEntity.ok(deleteService.deleteRiskAndSaveToSecondary(risk_id));
+    }
 }
