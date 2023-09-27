@@ -9,7 +9,7 @@ import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const AssetRequest = () => {
     const {roles} = useGetPerms();
-    const {showAssetRequests} = useGetAssAR();
+    const {showAssetRequests, loading} = useGetAssAR();
     const AssetRequestApproval = ({ assetRequest }) =>{
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
@@ -92,7 +92,11 @@ export const AssetRequest = () => {
                     <FaSearch className="deviceSearchIcon" />
                 </div>
                 <div className="assetRequests">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="assetRequestsList">{assetRequests}</ul>
+                        )}
                 </div>
             </div>
 
