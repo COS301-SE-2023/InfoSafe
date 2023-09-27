@@ -87,7 +87,7 @@ const NavBar = () => {
         })
     });
 
-    if (!validToken) {
+    if (validToken) {
         window.location.href = "/";
     }
     const [settings, showSettings] = useState(false);
