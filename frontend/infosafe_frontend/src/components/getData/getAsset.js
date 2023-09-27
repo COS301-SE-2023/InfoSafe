@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 
 export const useGetAsset = () => {
     const [showAsset, setShowAsset] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         fetch('http://localhost:8080/api/asset/getAsset', {
             method: "GET",
@@ -12,10 +14,12 @@ export const useGetAsset = () => {
             .then((res) => res.json())
             .then((result) => {
                 setShowAsset(result);
+                setLoading(false);
             });
     }, []);
 
     return {
-        showAsset
+        showAsset,
+        loading
     }
 }

@@ -9,7 +9,7 @@ import {useGetSR} from "../getData/getSR";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const SupportRequests = () => {
-    const {showMySupport, showAllSupport} = useGetSR();
+    const {showMySupport, showAllSupport, loading} = useGetSR();
     const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
     const EditSupportRequestDiv = ({ supp }) => {
@@ -101,18 +101,30 @@ export const SupportRequests = () => {
     showMySupport.map((mySupport) =>
         my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
     );
+    if (my_requests.length === 0)
+    {
+        my_requests[0] = "No Support Requests added yet.";
+    }
 
     const AllSupport = () => {
         const active_requests = [];
         showAllSupport.map((allSupport) =>
             active_requests.push(<ViewAllSupport allSupport={allSupport} key={allSupport.support_id}/>)
         );
+        if (active_requests.length === 0)
+        {
+            active_requests[0] = "No Support Requests added yet.";
+        }
 
         if(roles.includes("support_requests_viewAll")){
             return (
                 <div className="active_support_requests" id="active_support_requests" style={{ display: `${allDisplay}`}}>
                     <p className="listTypeHeader">All Support Requests</p>
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="activeRequestsList">{active_requests}</ul>
+                        )}
                 </div>
             )
         }else {
@@ -128,7 +140,11 @@ export const SupportRequests = () => {
                 <AllSupport></AllSupport>
                 <div className="my_support_requests" id="my_support_requests" style={{ display: `${myDisplay}`}}>
                     <p className="listTypeHeader">My Support Requests</p>
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="myRequestsList">{my_requests}</ul>
+                        )}
                 </div>
             </div>
         )

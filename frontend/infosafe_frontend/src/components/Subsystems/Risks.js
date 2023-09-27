@@ -13,7 +13,7 @@ import {IoHelpCircle} from 'react-icons/io5';
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const {showRisk} = useGetRisk();
+    const {showRisk, loading} = useGetRisk();
     const {roles} = useGetPerms();
 
     const CreateRiskDiv = () => {
@@ -110,8 +110,12 @@ export const Risks = () => {
     showRisk.map((risk) =>
         risks.push(<ViewRisks risk={risk} key={risk.risk_id}/>)
     )
-    const [helpOpen, setHelpOpen] = useState(false);
+    if (risks.length === 0)
+    {
+        risks[0] = "No Risks added yet.";
+    }
 
+    const [helpOpen, setHelpOpen] = useState(false);
     const helpMsg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
     return(
@@ -139,7 +143,11 @@ export const Risks = () => {
                     <FaSearch className="deviceSearchIcon" />
                 </div>
                 <div className="risks">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="risksList">{risks}</ul>
+                        )}
                 </div>
                 <CreateRiskDiv></CreateRiskDiv>
             </div>

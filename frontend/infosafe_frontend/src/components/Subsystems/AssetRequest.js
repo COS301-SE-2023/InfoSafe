@@ -9,7 +9,7 @@ import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const AssetRequest = () => {
     const {roles} = useGetPerms();
-    const {showAssetRequests} = useGetAssAR();
+    const {showAssetRequests, loading} = useGetAssAR();
     const AssetRequestApproval = ({ assetRequest }) =>{
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
@@ -62,9 +62,12 @@ export const AssetRequest = () => {
     showAssetRequests.map((assetRequest) =>
         assetRequests.push(<ViewAssetRequests assetRequest={assetRequest} key={assetRequest.asset_request_id}/>)
     );
+    if (assetRequests.length === 0)
+    {
+        assetRequests[0] = "No Asset Requests added yet.";
+    }
 
     const [helpOpen, setHelpOpen] = useState(false);
-
     const helpMsg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
     return (
@@ -92,7 +95,11 @@ export const AssetRequest = () => {
                     <FaSearch className="deviceSearchIcon" />
                 </div>
                 <div className="assetRequests">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="assetRequestsList">{assetRequests}</ul>
+                        )}
                 </div>
             </div>
 

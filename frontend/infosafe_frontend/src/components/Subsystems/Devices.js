@@ -11,7 +11,7 @@ import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const {showAsset} = useGetAsset();
+    const {showAsset, loading} = useGetAsset();
     const {roles} = useGetPerms();
 
     const EditDeviceDiv = ({ asset }) => {
@@ -85,9 +85,12 @@ export const Devices = () => {
     showAsset.map((asset) =>
         devices.push(<ViewDeviceItem asset={asset} key={asset.asset_id} />)
     );
+    if (devices.length === 0)
+    {
+        devices[0] = "No Devices added yet.";
+    }
 
     const [helpOpen, setHelpOpen] = useState(false);
-
     const helpMsg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 
@@ -116,7 +119,11 @@ export const Devices = () => {
                     <FaSearch className="deviceSearchIcon" />
                 </div>
                 <div className="devices">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="deviceList">{devices}</ul>
+                    )}
                 </div>
                 <CreateDevice></CreateDevice>
             </div>

@@ -15,7 +15,7 @@ import {HelpPopup} from "../HelpPopup";
 
 
 export const Tasks = () => {
-    const {showTask} = useGetTask()
+    const {showTask, loading} = useGetTask()
     const {roles} = useGetPerms();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
 
@@ -112,6 +112,10 @@ export const Tasks = () => {
     showTask.map((task) =>
         complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
     );
+    if (complianceItems.length === 0)
+    {
+        complianceItems[0] = "No Tasks added yet.";
+    }
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";
@@ -141,7 +145,11 @@ export const Tasks = () => {
                     <FaSearch className="userSearchIcon" />
                 </div>
                 <div className="tasks">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="taskList">{complianceItems}</ul>
+                    )}
                 </div>
                 <div className="buttons">
                     <CreateTaskDiv></CreateTaskDiv>
