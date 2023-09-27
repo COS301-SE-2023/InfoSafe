@@ -1,3 +1,16 @@
+.taskHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    left: 1vw;
+    top: 2vh;
+    position: absolute;
+    z-index: 1000;
+}
+.taskHelpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
 .tasksBackground{
     background-color: #FFFFFF;
     border-radius: 4px;

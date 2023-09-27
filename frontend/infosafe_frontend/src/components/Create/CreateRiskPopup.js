@@ -9,6 +9,7 @@ import Select from "react-select";
 import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
+const STATUS = ["Open", "In Progress", "Resolved", "Closed"];
 
 export const CreateRisk = ({ popupClose, popupOpen }) => {
     const[risk_name, setRisk_name] = useState('')
@@ -18,6 +19,8 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
     const[suggested_mitigation, setSuggestedMitigation] = useState('')
     const [datascope, setDataScope] = useState(null);
     const {myDatascopeData} = useAccessRequests();
+    const[risk_status, setRiskStatus] = useState("")
+
     const handleDescriptionChange = (e) => {
         setRiskDescription(e.target.value);
     };
@@ -54,7 +57,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
             <div className="createRiskOverlay">
                 <div className="popupBackground">
                     <div className="borderCreateRisk">
-                        <button className="createRiskBackButton" onClick={popupClose}>
+                        <button className="createRiskBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="createRiskBackIcon" />
                         </button>
                         <form>
@@ -117,3 +120,5 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default CreateRisk;

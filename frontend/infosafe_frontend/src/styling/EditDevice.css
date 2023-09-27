@@ -155,6 +155,15 @@
     font-size: 18px;
     height: 5%;
 }
+.editDeviceNameInput{
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0 auto;
+    background-color: #ffffff;
+    position: relative;
+    left: 15%;
+}
 .editCurrentCustodianLabel {
     font-size: 18px;
     width: 70%;

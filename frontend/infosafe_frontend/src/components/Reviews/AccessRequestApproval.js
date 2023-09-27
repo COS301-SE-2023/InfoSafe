@@ -26,7 +26,7 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
             <div className="approveAccessRequestPopup">
                 <div className="popupBackground">
                     <div className="approveAccessRequestPopupBorder">
-                        <button className="approveAccessRequestBackButton" onClick={popupClose}>
+                        <button className="approveAccessRequestBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="approveAccessRequestBackIcon" />
                         </button>
                         <form>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../../styling/RoleCreation.css';
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "../HelpPopup";
 
 const RoleCreation = () => {
     const subsystems = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];
@@ -700,9 +702,22 @@ const RoleCreation = () => {
         console.log(roleName, permissionsList)
     };
 
+    const [helpOpen,setHelpOpen] = useState(false);
+    const helpMsg = "";
+
     return (
         <div className="display">
             <div className="roleBackground">
+                <button  className="roleHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="roleHelpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            message={helpMsg}
+                        />
+                    ) : null}
+                </button>
                 <div className="roleInfo">
                     <p className="roleCreateNameLabel">Role Name:</p>
                     <input

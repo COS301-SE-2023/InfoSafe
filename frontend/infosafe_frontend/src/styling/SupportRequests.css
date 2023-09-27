@@ -263,3 +263,16 @@
     position: relative;
     top: -1vh;
 }
+.supportRequestsHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 1vw;
+    top: 2vh;
+    z-index:1000;
+}
+.helpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}

@@ -9,6 +9,8 @@ import '../../styling/Dropdown.css';
 import {useGetPerms} from "../getData/getPerms";
 import {useGetAllUser} from "../getData/getAllUser";
 import {ConfirmDelete} from "../ConfirmDelete";
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "../HelpPopup";
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
@@ -142,9 +144,22 @@ export const Users = () => {
     const userItems = [];
     showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
 
+    const [helpOpen,setHelpOpen] = useState(false);
+    const helpMsg = "";
+
     return (
         <div className="display">
             <div className="usersBackground">
+                <button  className="userHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="userHelpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            message={helpMsg}
+                        />
+                    ) : null}
+                </button>
                 <div className="searchUsers">
                     <input
                         // data-testid="userSearch"

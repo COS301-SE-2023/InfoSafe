@@ -127,3 +127,16 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     transform: translateY(-50%);
 }
+.assetRequestsHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 1vw;
+    top: 2vh;
+    z-index:1000;
+}
+.helpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}

@@ -5,7 +5,6 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
 import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
-
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate', 'Unlikely', 'Rare'];
 const IMPACT = ['Insignificant', 'Minor', 'Significant', 'Major', 'Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved'];
@@ -66,7 +65,7 @@ export const EditRisk = ({risk, popupClose, popupOpen}) => {
                             <div className="editRiskContent">
                                 <p className="editRiskInputTitle">Risk Name</p>
                                 <input
-                                    className="editNameInput"
+                                    className="editRiskNameInput"
                                     type="text"
                                     id="editusername"
                                     name="editusername"
@@ -102,21 +101,21 @@ export const EditRisk = ({risk, popupClose, popupOpen}) => {
                                     defaultValue={risk.risk_description}
                                     onChange={e => setValues({...values, risk_description: e.target.value})}
                                 />
-                                <p className="riskStatusLabel">Risk Status</p>
+                                <p className="editRiskStatusLabel">Risk Status</p>
                                 <Dropdown
                                     options={STATUS}
-                                    value={STATUS[0]}
-                                    className="riskStatusDropdown"
-                                    name="riskStatusDropdown"
+                                    value={risk.risk_status}
+                                    className="editRiskStatusDropdown"
+                                    name="editRiskStatusDropdown"
                                     onChange={(e) => setValues({...values, risk_status: STATUS.value})}
                                 />
-                                <p className="riskDataScopeLabel">Data Scope</p>
+                                <p className="editRiskDataScopeLabel">Data Scope</p>
                                 {myDatascopeData && myDatascopeData.length > 0 ? (
                                     <Dropdown
                                         options={myDatascopeData.map((data) => ({value: data.data_scope_id, label: data.ds_name}))}
                                         value={datascope}
-                                        className="riskDataScopeDropdown"
-                                        name="riskDataScopeDropdown"
+                                        className="editRiskDataScopeDropdown"
+                                        name="editRiskDataScopeDropdown"
                                         onChange={(selectedOption) => setValues({...values, dataScope_id: selectedOption.value})}
                                     />
                                 ) : (

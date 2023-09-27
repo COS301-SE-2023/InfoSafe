@@ -1,3 +1,16 @@
+.dsHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    left: 1vw;
+    top: 2vh;
+    position: absolute;
+    z-index: 1000;
+}
+.dsHelpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
 .dataScopesBackground{
     background-color: #FFFFFF;
     border-radius: 4px;
