@@ -47,7 +47,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                             {/*)}*/}
                             <p className="viewDSRoleDescription">Description</p>
                             <p className="viewDSCustodianLabel">Data Custodian</p>
-                            <p className="viewDSCustodian">User 1234</p>
+                            <p className="viewDSCustodian">{datascope.data_custodian.first_name} {datascope.data_custodian.last_name}</p>
                         </div>
                     </div>
                 </div>
