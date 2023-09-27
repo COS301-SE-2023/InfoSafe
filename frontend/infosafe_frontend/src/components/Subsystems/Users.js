@@ -187,7 +187,20 @@ export const Users = () => {
                     </div>
                     <CreateUser></CreateUser>
                 </div>
+                <div className="users">
+                    {loading ? (
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
 
+
+                    ) : (
+                    <ul className="userList">{userItems}</ul>
+                    )}
+                </div>
+                <CreateUser></CreateUser>
             </div>
         );
     }
