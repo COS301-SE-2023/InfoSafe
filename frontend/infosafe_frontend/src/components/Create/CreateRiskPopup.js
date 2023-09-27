@@ -57,7 +57,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
             <div className="createRiskOverlay">
                 <div className="popupBackground">
                     <div className="borderCreateRisk">
-                        <button className="createRiskBackButton" onClick={popupClose}>
+                        <button className="createRiskBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="createRiskBackIcon" />
                         </button>
                         <form>
@@ -90,14 +90,6 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                                 onChange={handleDescriptionChange}
                                 value={risk_description}
                             />
-                            <p className="riskStatusLabel">Risk Status</p>
-                            <Dropdown
-                                options={STATUS}
-                                value={STATUS[0]}
-                                className="riskStatusDropdown"
-                                name="riskStatusDropdown"
-                                onChange={(selectedOption) => setRiskStatus(selectedOption.value)}
-                            />
                             <p className="riskSuggestedMitigationLabel">Suggested Mitigation</p>
                             <textarea
                                 className="riskSuggestedMitigationInput"
@@ -128,3 +120,5 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
         </Popup>
     );
 };
+
+export default CreateRisk;

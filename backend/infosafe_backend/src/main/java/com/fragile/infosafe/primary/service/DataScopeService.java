@@ -33,6 +33,12 @@ public class DataScopeService {
                 .data_custodian(authenticatedUser)
                 .users(dc)
                 .build();
+        if(!request.getUser_email().isEmpty()){
+            for(String email : request.getUser_email()){
+                datascope.getUsers().add(userRepository.findByEmail(email).get());
+                // add email
+            }
+        }
         dataScopeRepository.save(datascope);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }

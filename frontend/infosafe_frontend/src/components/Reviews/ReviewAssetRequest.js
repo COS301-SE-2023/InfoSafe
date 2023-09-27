@@ -27,7 +27,7 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose}) => {
             <div className="reviewAssetRequestOverlay">
                 <div className="popupBackground">
                     <div className="reviewAssetRequestBorder">
-                        <button className="reviewAssetRequestBackButton" onClick={popupClose}>
+                        <button className="reviewAssetRequestBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="reviewAssetRequestBackIcon" />
                         </button>
                         <p className="reviewAssetRequestLabel">Review Asset Request</p>

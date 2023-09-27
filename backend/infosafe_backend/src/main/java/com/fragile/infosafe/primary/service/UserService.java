@@ -96,4 +96,8 @@ public class UserService {
     public List<User> findAllUsersNotInTask(int task_id) {
         return repository.findUsersNotInTask(task_id);
     }
+
+    public List<String> findNotDataCustodian(User user){
+        return repository.findAllUserNotDataCustodian(user);
+    }
 }

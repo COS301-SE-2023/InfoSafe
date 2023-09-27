@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -19,5 +21,6 @@ public class DataScopeRequest {
     private Date date_captured;
     private int data_custodian;
     private String ds_status;
+    private Set<String> user_email = new HashSet<>();
 }
 

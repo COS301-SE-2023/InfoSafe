@@ -12,28 +12,19 @@ const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 const EditDevice = ({ asset, popupClose, popupOpen }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    const newPreviousAssignee = asset.current_assignee;
-    let title = "Current Custodian: Not Assigned";
+    const newPreviousAssignee = asset.current_assignee.email;
+    let request = {};
+    let userChanged = false;
     let placeholder = "Add Assignee";
     const[values, setValues]=useState({
-        asset_id: asset.asset_id,
-        asset_name: asset.asset_name,
-        asset_description: asset.asset_description,
-        status: asset.status,
-        used: asset.used,
-        availability: asset.availability,
-        device_type: asset.device_type,
-        current_assignee: asset.current_assignee,
-        previous_assignee: asset.previous_assignee
+        asset_id: '',
+        asset_name: '',
+        asset_description: '',
+        status: '',
+        used: '',
+        availability: '',
+        device_type: '',
     })
-
-    if(newPreviousAssignee != null){
-        const email = newPreviousAssignee.email;
-        title = "Current Custodian: " + email;
-        placeholder = "Change Assignee";
-    }
-
-
     useEffect(() => {
         if (asset) {
             setValues({
@@ -44,60 +35,42 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                 used: asset.used,
                 availability: asset.availability,
                 device_type: asset.device_type,
-                current_assignee: asset.current_assignee,
-                previous_assignee: asset.previous_assignee
             });
         }
     }, [asset]);
 
-    const handleSelect = (selectedOptions) => {
-        setSelectedUser(selectedOptions);
-
-        let foundUser = users[0];
-
-        for(let i=0; i<users.length; i++){
-            if(users[i].user_id === selectedOptions.value){
-                foundUser = users[i];
-                asset.previous_assignee = newPreviousAssignee;
-                //asset.current_assignee = users[i];
-                break;
-            }
+    const handleNewAssignee = (selectedOption) => {
+        console.log(selectedOption)
+        setSelectedUser(selectedOption);
+        request = {
+            current_assignee: selectedOption,
+            previous_assignee: newPreviousAssignee
         }
-
-        if (foundUser !== newPreviousAssignee)
-        {
-            setValues({
-                asset_id: asset.asset_id,
-                asset_name: asset.asset_name,
-                asset_description: asset.asset_description,
-                status: asset.status,
-                used: asset.used,
-                availability: asset.availability,
-                device_type: asset.device_type,
-                current_assignee: foundUser ? foundUser.email: '',
-                previous_assignee: newPreviousAssignee ? newPreviousAssignee.email: ''
-            });
-        }
-    };
-
+        userChanged = true;
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        if(userChanged){
+            request = {...values, ...request};
+        }else {
+            request = {...values};
+        }
+        console.log(request)
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
-            body:JSON.stringify(values)
+            body:JSON.stringify(request)
         }).then(()=>{
-            console.log(values)
+            console.log(request)
             console.log("Updated Asset")
         })
         popupClose()
     }
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
+        fetch("http://localhost:8080/api/user/findUserNotAssigned/" + asset.asset_id + "/" + asset.current_assignee.email, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -121,8 +94,9 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                     <form onSubmit={handleSubmit}>
                         <p className="editDeviceTitle">Edit Device</p>
                             <p className="editDeviceDescriptionLabel">Device Name</p>
-                            <input className="editDeviceNameInput"
-                                   value={asset.asset_id}
+                            <input className="deviceNameInput"
+                                   defaultValue={asset.asset_name}
+                                   onChange={e => setValues({...values, asset_name: e.target.value})}
                                    />
                             <p className="editDeviceDescriptionLabel">Description</p>
                             <textarea
@@ -148,16 +122,17 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                             />
                         {values.availability  === 'No' && (
                             <div>
-                                <p className="editCurrentCustodianLabel">{title}</p>
+                                <p className="editCurrentCustodianLabel">Current Assignee</p>
+                                <p>{asset.current_assignee.email}</p>
                                 {users && users.length > 0 ? (
                                     <Select
                                         placeholder={placeholder}
-                                        options={users.map((data) => ({ value: data.user_id, label: data.email }))}
-                                        value={selectedUser}
+                                        options={users.map((email) => ({ value: email, label: email }))}
+                                        value={selectedUser || null}
                                         styles={customStyles}
                                         className="userSelect"
                                         name="datascopeDropdown"
-                                        onChange={handleSelect}
+                                        onChange={handleNewAssignee}
                                         isSearchable={true}
                                     />
                                 ) : (

@@ -2,25 +2,29 @@ import React, {useState, useEffect} from 'react';
 import '../../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import {IoArrowBackOutline} from 'react-icons/io5';
+import Select from "react-select";
+import {customStyles} from "../CustomStyling";
 
 export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
+    const [users,  setUsers] = useState([])
+    const [selectedUsers, setSelectedUsers] = useState([])
 
     const handleClick = (e) => {
         const currentDate = new Date().toISOString().split('T')[0];
         e.preventDefault();
 
-        if ( document.getElementById("dsName").value === '' || document.getElementById("dsDescription").value === '') {
+        if (document.getElementById("dsName").value === '' || document.getElementById("dsDescription").value === '') {
             document.getElementById("createDataScopeError").style.display = "block";
             return;
         }
 
 
         const ds_status = "Pending";
-        const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status};
+        const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers};
 
-        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`,{
+        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -55,14 +59,31 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
             });
     };
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/user/findNotDatCustodian", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+            },
+        }).then((res) => res.json())
+            .then((result) => {
+                setUsers(result);
+            });
+    }, []);
 
+    const handleSelect = (selectedOptions) => {
+        const selectedEmails = selectedOptions.map((option) => option.label);
+        setSelectedUsers(selectedEmails);
+        console.log(selectedEmails);
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
                 <div className="popupBackground">
                     <div className="createDataScopeBorder">
-                        <button className="createDataScopeBackButton" onClick={popupClose}>
+                        <button className="createDataScopeBackButton" onClick={popupClose} data-testid={"back-button"}>
                             <IoArrowBackOutline className="backIcon"/>
                         </button>
                         <p className="datascopeLabel">Create Data Scope</p>
@@ -89,8 +110,26 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                             id="dsDescription"
                                         />
                                     </div>
+                                    <p className="createTaskInputLabels">Assignees</p>
+                                    {users && users.length > 0 ? (
+                                        <Select
+                                            styles={customStyles}
+                                            options={users.map((email) => ({value: email, label: email}))}
+                                            value={selectedUsers.value}
+                                            className="createTaskUserDropdown"
+                                            name="datascopeDropdown"
+                                            placeholder={"Add Assignees"}
+                                            onChange={handleSelect}
+                                            isSearchable={true}
+                                            isMulti
+                                            id="taskUserIn"
+                                        />
+                                    ) : (
+                                        <p>Loading...</p>
+                                    )}
                                 </div>
-                                <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields are completed.</p>
+                                <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields
+                                    are completed.</p>
                                 <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
                                     Submit
                                 </button>
@@ -103,3 +142,5 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
         </Popup>
     );
 };
+
+export default CreateDataScopePopup;

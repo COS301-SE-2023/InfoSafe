@@ -22,4 +22,7 @@ public interface AssetRepository extends JpaRepository<Asset,Integer> {
     List<Asset> findByCurrentAssignee(@Param("assignee") User assignee);
 
     List<Asset> findAllByAvailability(String availability);
+
+    @Query("SELECT u.email FROM User u WHERE u <> :currentAssignee AND u NOT IN (SELECT a.current_assignee FROM Asset a WHERE a.asset_id = :assetId)")
+    List<String> findEmailsOfUsersNotAssignedToAsset(@Param("currentAssignee") User currentAssignee, @Param("assetId") int assetId);
 }
