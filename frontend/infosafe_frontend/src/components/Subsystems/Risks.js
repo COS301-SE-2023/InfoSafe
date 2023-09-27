@@ -82,6 +82,7 @@ export const Risks = () => {
                             popupClose={() => setReviewRiskOpen(false)}
                             popupOpen={reviewRiskOpen}
                             risk={risk}
+                            onRiskReview={fetchAllRisks}
                         />
                     ) : null}
                 </div>

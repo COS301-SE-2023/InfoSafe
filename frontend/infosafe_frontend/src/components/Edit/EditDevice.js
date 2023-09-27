@@ -150,7 +150,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
                                         isSearchable={true}
                                     />
                                 ) : (
-                                    <p>Loading...</p>
+                                    <p className="editDevicesLoading">Loading...</p>
                                 )}
                             </div>
                         )}
@@ -171,7 +171,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
                                         isSearchable={true}
                                     />
                                 ) : (
-                                    <p>Loading...</p>
+                                    <p className="editDevicesLoading">Loading...</p>
                                 )}
                             </div>
                         )}

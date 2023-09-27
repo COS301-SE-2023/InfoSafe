@@ -236,7 +236,6 @@
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
-
 .editDeviceError{
     display: none;
     color: #9E0000;
@@ -248,4 +247,18 @@
     position: relative;
     top: -3vh;
     left: 1%;
+}
+.editDevicesLoading{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    top: 0;
+    padding: 0.5% 2%;
 }
