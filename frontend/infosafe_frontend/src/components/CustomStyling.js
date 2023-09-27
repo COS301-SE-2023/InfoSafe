@@ -38,5 +38,10 @@ export const customStyles= {
         ...base,
         background: "white",
         color: 'black'
+    }),
+    input: base => ({
+        ...base,
+        color: 'transparent',
+        opacity: 0
     })
 };

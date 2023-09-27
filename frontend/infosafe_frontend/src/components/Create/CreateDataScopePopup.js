@@ -110,13 +110,13 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                                             id="dsDescription"
                                         />
                                     </div>
-                                    <p className="createTaskInputLabels">Assignees</p>
+                                    <p className="createDataScopeInputLabel">Assignees</p>
                                     {users && users.length > 0 ? (
                                         <Select
                                             styles={customStyles}
                                             options={users.map((email) => ({value: email, label: email}))}
                                             value={selectedUsers.value}
-                                            className="createTaskUserDropdown"
+                                            className="datascopeUserSelect"
                                             name="datascopeDropdown"
                                             placeholder={"Add Assignees"}
                                             onChange={handleSelect}

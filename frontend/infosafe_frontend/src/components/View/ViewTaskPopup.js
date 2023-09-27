@@ -60,14 +60,13 @@ return (
                     <p className="viewTaskDisplayTitle">Task Name</p>
                     <p className="viewTaskDisplayData">{task.task_name}</p>
                     <p className="viewTaskDisplayTitle">Data Scope</p>
-                    <p className="viewTaskDisplayData">{task.dataScope.ds_name}</p>
+                    <p className="viewTaskDisplayData">{task.data_scope_id.ds_name}</p>
                     <p className="viewTaskDisplayTitle">Task Description</p>
                     <textarea className="viewTaskTextArea" readOnly={true} value={task.task_description}/>
                     <p className="viewTaskDisplayLabel">Task Status</p>
                     <p className="viewTaskDisplayStatus">{task.task_status}</p>
                     <p className="viewTaskDisplayCompletionDate">Completion Date</p>
                     <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>
-
                     <div className="viewTaskButtons">
                         <button type="button" className="completedButton" onClick={handleCompleted}>
                             Completed
