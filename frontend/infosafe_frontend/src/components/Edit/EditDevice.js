@@ -9,13 +9,21 @@ import {customStyles} from "../CustomStyling";
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 
+
 const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
     const [userChanged, setUserChanged] = useState(false);
-    const newPreviousAssignee = "No Assignee";
+    let newPreviousAssignee = '';
+    const [placeholder, setPlaceholder] = useState("New Assignee");
+    let emailValue = "None";
+
+    if(asset.current_assignee !== null){
+        newPreviousAssignee = asset.current_assignee.email;
+        emailValue = asset.current_assignee.email;
+    }
     let request = {};
-    let placeholder = "Add Assignee";
+
     const[values, setValues]=useState({
         asset_id: '',
         asset_name: '',
@@ -24,7 +32,11 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
         used: '',
         availability: '',
         device_type: '',
+        current_assignee: '',
+        previous_assignee: ''
     })
+
+
     useEffect(() => {
         if (asset) {
             setValues({
@@ -42,19 +54,27 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     const handleNewAssignee = (selectedOption) => {
         request = {
             current_assignee: selectedOption.label,
-            previous_assignee: newPreviousAssignee
+            previous_assignee: newPreviousAssignee,
         }
-        console.log(request)
-        console.log("doing this")
+        setPlaceholder(selectedOption.label);
         setUserChanged(true);
+        console.log(placeholder);
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if(userChanged){
             request = ({...values, ...request});
         }else {
             request = ({...values});
         }
+
+        if (( request.asset_name === '' || request.asset_description === '' || request.device_type === '' ) || (request.availability === 'No' && request.current_assignee === null)){
+            document.getElementById("editDeviceError").style.display = "block";
+            return;
+        }
+        console.log(request);
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -123,7 +143,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
                         {values.availability  === 'No' && asset.current_assignee === null && (
                             <div>
                                 <p className="editCurrentCustodianLabel">Current Assignee</p>
-                                <p className="editDeviceCurrentUser">No Current Assignee</p>
+                                <p className="editDeviceCurrentUser">{emailValue}</p>
                                 <p className="editChangeCustodianLabel">Change Assignee</p>
                                 {users && users.length > 0 ? (
                                     <Select
@@ -144,7 +164,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
                         {values.availability  === 'No' && asset.current_assignee !== null && (
                             <div>
                                 <p className="editCurrentCustodianLabel">Current Assignee</p>
-                                <p className="editDeviceCurrentUser">{asset.current_assignee.email}</p>
+                                <p className="editDeviceCurrentUser">{emailValue}</p>
                                 <p className="editChangeCustodianLabel">Change Assignee</p>
                                 {users && users.length > 0 ? (
                                     <Select
@@ -162,6 +182,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
                                 )}
                             </div>
                         )}
+                        <p className="editDeviceError" id="editDeviceError">Please ensure all fields are completed and that if an assets availability is set to "No", a user is assigned to it</p>
                         <button className="EditDeviceButton" type="submit">
                             Submit
                         </button>

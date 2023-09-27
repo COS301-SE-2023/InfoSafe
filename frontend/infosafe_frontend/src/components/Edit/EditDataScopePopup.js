@@ -51,10 +51,12 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(datascope);
+        console.log(values);
         fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": 'application/json',
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
             },
             body: JSON.stringify(values)
