@@ -14,16 +14,19 @@ import {HelpPopup} from "../HelpPopup";
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
-    const {showUser, loading} = useGetAllUser();
+    const {showUser, loading, fetchAllUsers} = useGetAllUser();
     const {roles} = useGetPerms();
-
+    useEffect(() => {
+        fetchAllUsers();
+    }, []);
     const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
-        if(roles.includes("user_edit")) {
+        if (roles.includes("user_edit")) {
             return (
                 <div>
                     <div className="usersEditButton">
-                        <RiEditBoxFill data-testid="editButton" onClick={() => setEditUserOpen(true)} className="usersEditIcon" />
+                        <RiEditBoxFill data-testid="editButton" onClick={() => setEditUserOpen(true)}
+                                       className="usersEditIcon"/>
                         {editUserOpen ? (
                             <EditUser
                                 popupClose={() => setEditUserOpen(false)}
@@ -54,8 +57,7 @@ export const Users = () => {
 
             if (!response.ok) {
                 throw new Error("Network response was not ok");
-            }
-            else{
+            } else {
                 console.log("user deleted");
             }
             return response.json();
@@ -67,13 +69,12 @@ export const Users = () => {
     };
 
 
-
     const DeleteUser = ({user}) => {
         const [deleteUserOpen, setDeleteUserOpen] = useState(false);
-        if(roles.includes("user_delete")) {
+        if (roles.includes("user_delete")) {
             return (
                 <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={()=> setDeleteUserOpen(true)}/>
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDeleteUserOpen(true)}/>
                     {deleteUserOpen ? (
                         <ConfirmDelete
                             popupClose={() => setDeleteUserOpen(false)}
@@ -90,7 +91,7 @@ export const Users = () => {
 
     const ViewUserItem = ({user}) => {
         const [viewUserOpen, setViewUserOpen] = useState(false);
-        if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
+        if (roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
             return (
                 <li key={user.user_id}>
                     <p onClick={() => setViewUserOpen(!viewUserOpen)}>
@@ -113,7 +114,7 @@ export const Users = () => {
     };
 
     const CreateUser = () => {
-        if(roles.includes("user_create")) {
+        if (roles.includes("user_create")) {
             return (
                 <div className="CreateUserButtonDiv">
                     <button
@@ -125,14 +126,15 @@ export const Users = () => {
                     </button>
                     {createUserOpen ? (
                         <CreateUserPopup
-                            popupClose={() => setCreateUserOpen(false)}
                             popupOpen={createUserOpen}
+                            popupClose={() => setCreateUserOpen(false)}
+                            onUserAdded={fetchAllUsers}
                         />
                     ) : null}
                 </div>
             )
         } else {
-            return (null)
+            return null
         }
     };
 
@@ -143,13 +145,13 @@ export const Users = () => {
         userItems[0] = "No Users added yet.";
     }
 
-    const [helpOpen,setHelpOpen] = useState(false);
+    const [helpOpen, setHelpOpen] = useState(false);
     const helpMsg = "";
 
     return (
         <div className="display">
             <div className="usersBackground">
-                <button  className="userHelpButton" onClick={() => setHelpOpen(true)}>
+                <button className="userHelpButton" onClick={() => setHelpOpen(true)}>
                     <IoHelpCircle className="userHelpPopupIcon"></IoHelpCircle>
                     {helpOpen ? (
                         <HelpPopup
@@ -168,7 +170,7 @@ export const Users = () => {
                         name="userSearch"
                         // onChange={}
                     />
-                    <FaSearch className="userSearchIcon" />
+                    <FaSearch className="userSearchIcon"/>
                 </div>
                 <div className="users">
                     {loading ? (
@@ -180,7 +182,7 @@ export const Users = () => {
 
 
                     ) : (
-                    <ul className="userList">{userItems}</ul>
+                        <ul className="userList">{userItems}</ul>
                     )}
                 </div>
                 <CreateUser></CreateUser>

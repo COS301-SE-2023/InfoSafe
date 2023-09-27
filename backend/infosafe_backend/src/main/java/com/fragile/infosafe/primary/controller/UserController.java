@@ -1,7 +1,9 @@
 package com.fragile.infosafe.primary.controller;
 
+import com.fragile.infosafe.primary.auth.AuthenticationRequest;
 import com.fragile.infosafe.primary.auth.AuthenticationResponse;
 import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.config.JwtService;
 import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.model.Role;
 import com.fragile.infosafe.primary.model.Task;
@@ -28,15 +30,14 @@ import java.util.*;
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
-    @Autowired
-    private UserService userService;
-
+    private final UserService userService;
     private final AuthenticationService authService;
     private final EmailService emailService;
     private final DeleteService deleteService;
     private final TaskService taskService;
     private final AssetService assetService;
     private final DataScopeService dataScopeService;
+    private final JwtService jwtService;
 
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
@@ -58,6 +59,17 @@ public class UserController {
     public User updateUser (@PathVariable("id") int user_id, @RequestBody User user) {
         user.setUser_id(user_id);
         return userService.updateUser(user);
+    }
+
+    @PostMapping("/tokenValid")
+    public ResponseEntity<Boolean> validToken(@RequestBody AuthenticationRequest request){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            log.info("Got in here");
+            return ResponseEntity.ok(jwtService.isTokenValid(request.getToken(), authenticatedUser));
+        }
+        return ResponseEntity.ok(false);
     }
 
     @GetMapping("/getId")
