@@ -7,7 +7,7 @@ describe("ViewTaskPopup Component", () => {
         task_name: "Task 1",
         task_description: "Create new users",
         due_date: "2023-11-11",
-        dataScope: {
+        data_scope_id: {
             ds_name: "Data Scope A"
         }
     };
