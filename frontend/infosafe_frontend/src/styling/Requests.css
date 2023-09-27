@@ -372,12 +372,12 @@
 }
 .loadTitle{
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
     border: none;
-    left: 30%;
+    left: 0%;
     position: relative;
-    width: 40%;
+    width: 100%;
     margin-top: 0;
     background-color: white;
 }
