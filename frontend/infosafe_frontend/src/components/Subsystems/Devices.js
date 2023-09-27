@@ -11,7 +11,7 @@ import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const {showAsset} = useGetAsset();
+    const {showAsset, loading} = useGetAsset();
     const {roles} = useGetPerms();
 
     const EditDeviceDiv = ({ asset }) => {
@@ -116,7 +116,11 @@ export const Devices = () => {
                     <FaSearch className="deviceSearchIcon" />
                 </div>
                 <div className="devices">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="deviceList">{devices}</ul>
+                    )}
                 </div>
                 <CreateDevice></CreateDevice>
             </div>

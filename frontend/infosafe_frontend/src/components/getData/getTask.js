@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 
 export const useGetTask = () => {
     const [showTask, setShowTask] = useState([]);
+    const [loading, setLoading] = useState(true);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
 
@@ -15,6 +16,7 @@ export const useGetTask = () => {
             .then((res) => res.json())
             .then((result) => {
                 setShowTask(result);
+                setLoading(false);
             });
     }, []);
 
@@ -50,6 +52,7 @@ export const useGetTask = () => {
     // }
 
     return {
-        showTask
+        showTask,
+        loading
     }
 }
