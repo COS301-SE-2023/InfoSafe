@@ -34,7 +34,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
         }, [task]);
 
         useEffect(()=> {
-            console.log(task)
+            //console.log(task)
             if (task) {
                 setValues({
                     task_id: task.task_id,

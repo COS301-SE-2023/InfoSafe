@@ -27,7 +27,9 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         date_created: '',
         due_date: '',
         task_description: '',
-        task_status: ''
+        task_status: '',
+        data_scope_id: '',
+        daysUntilDue: ''
     });
     let finalUsers = [];
 
@@ -47,7 +49,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
     }, [task]);
 
     useEffect(()=> {
-        console.log(task)
+        //console.log(task)
         if (task) {
             setValues({
                 task_id: task.task_id,
@@ -56,7 +58,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                 due_date: task.due_date,
                 task_description: task.task_description,
                 task_status: task.task_status,
-                dataScope_id: task.data_scope_id.dataScope_id,
+                data_scope_id: task.data_scope_id.data_scope_id,
                 daysUntilDue: task.daysUntilDue
             });
         }
@@ -77,11 +79,13 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
+        popupClose()
         let finalUsers = [...addUsers, ...selectedUsers];
         const requestBody = {
             ...values,
             users: finalUsers
         };
+
         fetch("http://localhost:8080/api/task/update/" + task.task_id, {
             method: "POST",
             headers: {
@@ -92,13 +96,11 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         }).then(() => {
             console.log("Updated Task")
         })
-        popupClose()
     }
 
     const handleSelect = (selectedOptions) => {
         const selectedEmails = selectedOptions.map((option) => option.label);
         setSelectedUsers(selectedEmails);
-        console.log(selectedEmails);
     };
 
     return (

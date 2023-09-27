@@ -14,6 +14,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const handleClick = (e) => {
         const currentDate = new Date().toISOString().split('T')[0];
         e.preventDefault();
+        popupClose();
 
         if (document.getElementById("dsName").value === '' || document.getElementById("dsDescription").value === '') {
             document.getElementById("createDataScopeError").style.display = "block";
@@ -36,7 +37,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                 if (data) {
                     console.log("DataScope name already exists");
                 } else {
-                    console.log(datascope);
+                    //console.log(datascope);
                     fetch("http://localhost:8080/api/datascope/addDs", {
                         method: "POST",
                         headers: {
@@ -51,7 +52,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                         .catch((error) => {
                             console.error("Error adding new DataScope:", error);
                         });
-                    popupClose();
+
                 }
             })
             .catch((error) => {
@@ -75,7 +76,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     const handleSelect = (selectedOptions) => {
         const selectedEmails = selectedOptions.map((option) => option.label);
         setSelectedUsers(selectedEmails);
-        console.log(selectedEmails);
+        //console.log(selectedEmails);
     };
 
     return (

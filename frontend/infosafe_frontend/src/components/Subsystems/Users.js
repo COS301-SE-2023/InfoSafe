@@ -143,16 +143,16 @@ export const Users = () => {
 
     const userItems = [];
     showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
-    if (userItems.length === 0)
-    {
+    if (userItems.length === 0) {
         userItems[0] = "No Users added yet.";
     }
 
-    const [helpOpen,setHelpOpen] = useState(false);
+    const [helpOpen, setHelpOpen] = useState(false);
     const helpMsg = "To view a users information, click on their field in the table." +
-    "To edit a user, click the edit ( " + <RiEditBoxFill/> + " ) button" +
-    "To delete a user you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
-    "To add a user click the Create New User ( " + <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
+        "To edit a user, click the edit ( " + <RiEditBoxFill/> + " ) button" +
+        "To delete a user you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
+        "To add a user click the Create New User ( " +
+        <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
 
     return (
@@ -195,5 +195,7 @@ export const Users = () => {
                 </div>
                 <CreateUser></CreateUser>
             </div>
-        );
-    }
+        </div>
+
+    );
+}

@@ -45,8 +45,8 @@ public class TaskService {
                     .date_created(dateCreated)
                     .build();
 
-            if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
-                DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
+            if (dataScopeRepository.findByDataScopeId(request.getData_scope_id()).isPresent()) {
+                DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getData_scope_id()).get();
                 log.info("This is the datascope " + dataScope);
                 task.setData_scope_id(dataScope);
             } else{
@@ -54,7 +54,7 @@ public class TaskService {
             }
             if (!request.getUsers_email().isEmpty()) {
                 Set<User> users = new HashSet<>();
-                DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
+                DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getData_scope_id()).get();
                 for (String userEmail : request.getUsers_email()) {
                     User user = userRepository.findByEmail(userEmail).orElse(null);
                     if (user != null) {
@@ -90,7 +90,7 @@ public class TaskService {
         task.setTask_name(taskRequest.getTask_name());
         task.setTask_status(taskRequest.getTask_status());
         task.setDaysUntilDue(taskRequest.getTask_id());
-        DataScope dataScope = dataScopeRepository.findByDataScopeId(taskRequest.getDataScope_id()).get();
+        DataScope dataScope = dataScopeRepository.findByDataScopeId(taskRequest.getData_scope_id()).get();
         task.setData_scope_id(dataScope);
         Set<User> oldUsers = task.getUsers();
         Set<User> users = new HashSet<>();

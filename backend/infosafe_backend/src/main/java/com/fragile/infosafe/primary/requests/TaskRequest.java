@@ -22,7 +22,7 @@ public class TaskRequest {
     private String task_status;
     private Date due_date;
     private Date date_created;
-    private int dataScope_id;
+    private int data_scope_id;
     private Set<String> users_email = new HashSet<>();
     private String[] users;
 }
