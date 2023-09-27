@@ -11,7 +11,7 @@ import {useGetAllUser} from "../getData/getAllUser";
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const NEW_OPTIONS = ['New', 'Used'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
-export const CreateDevicePopup = ({popupOpen, popupClose}) => {
+export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) => {
     const current = new Date();
     const [asset_name, setAsset_name] = useState('')
     const [asset_description, setAsset_description] = useState('')
@@ -57,6 +57,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
             body: JSON.stringify(asset)
         }).then(() => {
             console.log("New Asset added")
+            onAssetCreated()
         })
     }
     useEffect(() => {

@@ -9,7 +9,7 @@ import {customStyles} from "../CustomStyling";
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 
-const EditDevice = ({ asset, popupClose, popupOpen }) => {
+const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
     const newPreviousAssignee = asset.current_assignee.email;
@@ -65,6 +65,7 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
         }).then(()=>{
             console.log(request)
             console.log("Updated Asset")
+            onAssesEdited()
         })
         popupClose()
     }
