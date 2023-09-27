@@ -36,6 +36,7 @@ public class UserController {
     private final DeleteService deleteService;
     private final TaskService taskService;
     private final AssetService assetService;
+    private final DataScopeService dataScopeService;
 
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
@@ -159,10 +160,10 @@ public class UserController {
     }
 
     @GetMapping("/dataScopeCount")
-    public ResponseEntity<Integer> countDataScopesForUser() {
+    public ResponseEntity<Long> countDataScopesForUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            int datascopeCount = taskService.countDataScopesForUser(authenticatedUser);
+            long datascopeCount = dataScopeService.countDataScopesForUser(authenticatedUser);
             return ResponseEntity.ok(datascopeCount);
         }else {
             return ResponseEntity.notFound().build();
