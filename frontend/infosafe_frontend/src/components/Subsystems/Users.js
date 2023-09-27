@@ -172,7 +172,13 @@ export const Users = () => {
                 </div>
                 <div className="users">
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
+
+
                     ) : (
                     <ul className="userList">{userItems}</ul>
                     )}

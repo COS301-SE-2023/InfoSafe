@@ -1,10 +1,53 @@
 import Popup from 'reactjs-popup';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/ViewTask.css';
 import {IoArrowBackOutline} from 'react-icons/io5';
 import ViewAccessRequest from "./ViewAccessRequest";
+import Select from "react-select";
+import {customStyles} from "../CustomStyling";
 
 export const ViewTask = ({task, popupClose, popupOpen}) => {
+    const [currentUsers, setCurrentUsers] = useState([]);
+    const [addUsers, setAddUsers] = useState([]);
+        const[values, setValues]=useState({
+            task_id: '',
+            task_name: '',
+            date_created: '',
+            due_date: '',
+            task_description: '',
+            task_status: ''
+        });
+
+        useEffect(() => {
+            fetch("http://localhost:8080/api/task/getUsersOfTask/" + task.task_id, {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                }
+            })
+                .then((res) => res.json())
+                .then((result) => {
+                    setCurrentUsers(result)
+                    setAddUsers(result)
+                });
+
+        }, [task]);
+
+        useEffect(()=> {
+            console.log(task)
+            if (task) {
+                setValues({
+                    task_id: task.task_id,
+                    task_name: task.task_name,
+                    date_created: task.date_created,
+                    due_date: task.due_date,
+                    task_description: task.task_description,
+                    task_status: task.task_status,
+                    dataScope_id: task.data_scope_id.dataScope_id,
+                    daysUntilDue: task.daysUntilDue
+                });
+            }
+        },[task]);
 
     const handleCompleted = () => {
         console.log("Complete")
@@ -63,6 +106,18 @@ return (
                     <p className="viewTaskDisplayData">{task.data_scope_id.ds_name}</p>
                     <p className="viewTaskDisplayTitle">Task Description</p>
                     <textarea className="viewTaskTextArea" readOnly={true} value={task.task_description}/>
+                    <p className="editTaskLabels">Users:</p>
+                    {currentUsers && currentUsers.length > 0 ? (
+                        <Select
+                            options={currentUsers.map((email) => ({value: email, label: email}))}
+                            value={currentUsers.map((email) => ({value: email, label: email}))}
+                            placeholder={currentUsers[0]}
+                            className="editTaskAssignees"
+                            name="editTaskAssignees"
+                            styles={customStyles}
+                        /> ) : (
+                        <p>Loading...</p>
+                    )}
                     <p className="viewTaskDisplayLabel">Task Status</p>
                     <p className="viewTaskDisplayStatus">{task.task_status}</p>
                     <p className="viewTaskDisplayCompletionDate">Completion Date</p>

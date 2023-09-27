@@ -32,23 +32,23 @@ export const TabView = ({currentTab}) => {
         }
         case 4:
         {
-            return (<AccessRequests></AccessRequests>);
+            return (<Tasks></Tasks>);
         }
         case 5:
         {
-            return (<Tasks></Tasks>);
+            return (<Devices></Devices>);
         }
         case 6:
         {
-            return (<Devices></Devices>);
+            return (<Risks></Risks>);
         }
         case 7:
         {
-            return (<SupportRequests></SupportRequests>);
+            return (<Requests></Requests>);
         }
         case 8:
         {
-            return (<Risks></Risks>);
+            return (<AccessRequests></AccessRequests>);
         }
         case 9:
         {
@@ -56,7 +56,7 @@ export const TabView = ({currentTab}) => {
         }
         case 10:
         {
-            return (<Requests></Requests>);
+            return (<SupportRequests></SupportRequests>);
         }
         case 11:
         {

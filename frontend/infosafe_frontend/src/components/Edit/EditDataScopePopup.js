@@ -6,7 +6,7 @@ import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
 import Select from "react-select";
 import {customStyles} from "../CustomStyling";
-const STATUS = ['Created', 'Approved', 'Rejected', 'Revoked'];
+const STATUS = ['Pending', 'Approved', 'Revoked'];
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
@@ -112,7 +112,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 <p className="editStatusLabel">Status</p>
                                 <Dropdown
                                     options={STATUS}
-                                    value={STATUS[0]}
+                                    value={datascope.ds_status}
                                     className="editDSStatusDropdown"
                                     data-testid="editDSStatusDropdown"
                                     defaultValue={datascope.status}
