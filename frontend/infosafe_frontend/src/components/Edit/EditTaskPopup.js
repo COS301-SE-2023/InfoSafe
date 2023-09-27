@@ -56,7 +56,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                 due_date: task.due_date,
                 task_description: task.task_description,
                 task_status: task.task_status,
-                dataScope_id: task.dataScope.data_scope_id,
+                dataScope_id: task.data_scope_id.dataScope_id,
                 daysUntilDue: task.daysUntilDue
             });
         }
@@ -126,14 +126,16 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                 defaultValue={task.task_description}
                                 onChange={e => setValues({...values, task_description: e.target.value})}
                             />
-                            <p className="editTaskLabels">List of Users:</p>
+                            <p className="editTaskLabels">Remove Users:</p>
                             {currentUsers && currentUsers.length > 0 ? (
                                 <Select
                                     options={currentUsers.map((email) => ({value: email, label: email}))}
+                                    value={currentUsers.map((email) => ({value: email, label: email}))}
                                     placeholder={currentUsers[0]}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"
                                     styles={customStyles}
+                                    isMulti
                                 /> ) : (
                                 <p>Loading...</p>
                             )}
