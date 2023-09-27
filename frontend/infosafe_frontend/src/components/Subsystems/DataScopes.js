@@ -13,11 +13,10 @@ import {HelpPopup} from "../HelpPopup";
 import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 export const DataScopes = () => {
 
-    const {showDatascope, } = useGetDS();
-    const {myDataScopes} = useSupportRequests();
+    const {showDatascope, myDatascopes } = useGetDS();
     const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
-
+    let viewDatascope = false;
     const EditDataScope = ({datascope}) => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         if(roles.includes("data_scope_edit")) {
@@ -55,7 +54,7 @@ export const DataScopes = () => {
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         console.log()
-        if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete")) {
+        if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete") || viewDatascope) {
             return (
                 <li key={datascope.data_scope_id}>
                     <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
@@ -103,14 +102,20 @@ export const DataScopes = () => {
     }
 
     const dataItems = [];
-    if(roles.includes("data_scope_create") || roles.includes("data_scope_edit") || roles.includes ("data_scope_delete")){
-        showDatascope.map((datascope) =>
-            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
-        );
-    }else {
-        myDataScopes.map((datascope) =>
-            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
-        )
+    if (roles.includes("data_scope_create") || roles.includes("data_scope_edit") || roles.includes("data_scope_delete")) {
+        if (showDatascope && showDatascope.length > 0) {
+            showDatascope.map((datascope) =>
+                dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+            );
+        }
+    } else {
+        if (myDatascopes && myDatascopes.length > 0) {
+            viewDatascope = true;
+            console.log(viewDatascope)
+            myDatascopes.map((datascope) =>
+                dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+            );
+        }
     }
 
 

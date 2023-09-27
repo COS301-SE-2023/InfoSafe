@@ -26,5 +26,5 @@ public interface DataScopeRepository extends JpaRepository<DataScope,Integer> {
 
     List<DataScope> findAllByUsers(User user);
 
-
+    Long countDataScopesByUsersContains(User user);
 }

@@ -62,4 +62,8 @@ public class DataScopeService {
     public List<DataScope> getDataScopesByUser(User user) {
         return dataScopeRepository.findAllByUsers(user);
     }
+
+    public long countDataScopesForUser(User user){
+        return dataScopeRepository.countDataScopesByUsersContains(user);
+    }
 }
