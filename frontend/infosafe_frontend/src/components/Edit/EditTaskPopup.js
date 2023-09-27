@@ -126,7 +126,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                 defaultValue={task.task_description}
                                 onChange={e => setValues({...values, task_description: e.target.value})}
                             />
-                            <p className="editTaskLabels">Remove Users:</p>
+                            <p className="editTaskLabels">Assigned Users:</p>
                             {currentUsers && currentUsers.length > 0 ? (
                                 <Select
                                     options={currentUsers.map((email) => ({value: email, label: email}))}
@@ -135,7 +135,6 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"
                                     styles={customStyles}
-                                    isMulti
                                 /> ) : (
                                 <p>Loading...</p>
                             )}
