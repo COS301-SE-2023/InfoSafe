@@ -30,11 +30,10 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        if ( asset_name === '' || asset_description === '' || selectedUsers === null || device_type === '' ) {
-            document.getElementById("createDeviceError").style.display = "block";
+        if (( asset_name === '' || asset_description === '' || device_type === '' ) || (availability === 'No' && selectedUsers === null)){
+                document.getElementById("createDeviceError").style.display = "block";
             return;
         }
-
 
         const asset = {
             asset_name,
@@ -48,6 +47,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         }
         //console.log(selectedUsers);
         // console.log(asset);
+        popupClose()
         fetch("http://localhost:8080/api/asset/addAsset", {
             method: "POST",
             headers: {
@@ -58,7 +58,6 @@ export const CreateDevicePopup = ({popupOpen, popupClose}) => {
         }).then(() => {
             console.log("New Asset added")
         })
-        popupClose()
     }
     useEffect(() => {
         fetch("http://localhost:8080/api/user/getAll", {
