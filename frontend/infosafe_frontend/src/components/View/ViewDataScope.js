@@ -5,9 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 
 const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
-    const ROLES = [];
-    const datascoperoles = ['Admin', 'Employee'];
-    const role_descriptions = ['Access all', 'Work'];
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="viewDataScopeOverlay">
@@ -35,16 +33,21 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                         </div>
 
                         <div className="view_datascope_roles">
-                            <p className="viewDatascopeRoles">Roles</p>
-                            <div className="viewDataScopeRoles">
-                                <ul className="viewDataScopeRolesList">
-                                    {datascoperoles.map((item, i) => (
-                                        <li key={i}>
-                                            <p>{item}: {role_descriptions[i]}</p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            <p className="viewDSRoles">Available Roles</p>
+                            {/*{currentUsers && currentUsers.length > 0 ? (*/}
+                            {/*    <Select*/}
+                            {/*        options={currentUsers.map((email) => ({value: email, label: email}))}*/}
+                            {/*        value={currentUsers.map((email) => ({value: email, label: email}))}*/}
+                            {/*        placeholder={currentUsers[0]}*/}
+                            {/*        className="editTaskAssignees"*/}
+                            {/*        name="editTaskAssignees"*/}
+                            {/*        styles={customStyles}*/}
+                            {/*    /> ) : (*/}
+                            {/*    <p>Loading...</p>*/}
+                            {/*)}*/}
+                            <p className="viewDSRoleDescription">Description</p>
+                            <p className="viewDSCustodianLabel">Data Custodian</p>
+                            <p className="viewDSCustodian">User 1234</p>
                         </div>
                     </div>
                 </div>

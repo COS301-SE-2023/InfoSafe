@@ -70,6 +70,61 @@
    margin: 0 auto;
     text-transform: uppercase;
 }
+.viewDSRoles{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    left: 15%;
+    width: 75%;
+    position: relative;
+    margin: 0;
+    top: -1vh;
+}
+.viewDSRoleDescription{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 2px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    background-color: #CECECE;
+    padding: 1% 1%;
+}
+.viewDSRoleDescription::-webkit-scrollbar{
+    display: none;
+}
+.viewDSCustodianLabel{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    left: 15%;
+    width: 75%;
+    position: relative;
+    margin: 0;
+}
+.viewDSCustodian{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 2px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    background-color: #CECECE;
+    padding: 1% 1%;
+}
+.viewDSCustodian::-webkit-scrollbar{
+    display: none;
+}
 .datascopeName {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
@@ -166,56 +221,9 @@
     margin: 0;
     top: -3vh;
 }
-
-.viewDatascopeRoles {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    color: #000000;
-    left: 15%;
-    width: 70%;
+.view_datascope_roles{
     position: relative;
-    top: -3vh;
-    margin: 0;
-}
-.viewDataScopeRoles{
-    height: 2%;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    position: relative;
-    top: -3vh;
-}
-.viewDataScopeRoles::-webkit-scrollbar {
-    display: none;
-}
-.viewDataScopeRolesList{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 70%;
-    position: relative;
-    left: 15%;
-}
-.viewDataScopeRolesList li {
-    position: relative;
-    height: 5vh;
-    color: #000000;
-    width: 100%;
-    text-transform: none;
-    background-color: #CECECE;
-    padding: 5px;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
-    margin-top: 4px;
-}
-.viewDataScopeRolesList li p {
-    font-family: 'Roboto', sans-serif;
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 50%;
-    left: 0.5%;
-    font-size: 16px
+    top: -2vh;
 }
 .viewDataScopeRolesList:last-child{
     margin-bottom: 4vh;
