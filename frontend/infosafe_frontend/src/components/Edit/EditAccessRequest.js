@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 /* eslint-disable react/prop-types */
 /* eslint-disable  no-unused-vars */
 
-const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
+const EditAccessRequest = ({ access, popupClose, popupOpen, onArEdited }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
 
     const[values, setValues]=useState({
@@ -39,6 +39,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen }) => {
             body:JSON.stringify(values)
         }).then(()=>{
             console.log("Updated AccessRequest")
+            onArEdited()
         })
         //console.log(JSON.stringify(values))
         popupClose()

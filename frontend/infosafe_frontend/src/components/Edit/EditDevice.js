@@ -16,13 +16,13 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     const [userChanged, setUserChanged] = useState(false);
     let newPreviousAssignee = '';
     const [placeholder, setPlaceholder] = useState("New Assignee");
+    const [request, setRequest] = useState({});
     let emailValue = "None";
 
     if(asset.current_assignee !== null){
         newPreviousAssignee = asset.current_assignee.email;
         emailValue = asset.current_assignee.email;
     }
-    let request = {};
 
     const[values, setValues]=useState({
         asset_id: '',
@@ -52,24 +52,17 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     }, [asset]);
 
     const handleNewAssignee = (selectedOption) => {
-        request = {
-            current_assignee: selectedOption.label,
-            previous_assignee: newPreviousAssignee,
-        }
+        setRequest({current_assignee: selectedOption.label,
+            previous_assignee: newPreviousAssignee})
         setPlaceholder(selectedOption.label);
         setUserChanged(true);
-        console.log(placeholder);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if(userChanged){
-            request = ({...values, ...request});
-        }else {
-            request = ({...values});
-        }
-
+        console.log(request)
+        let mergedRequest = userChanged ? { ...values, ...request } : { ...values };
+        console.log(mergedRequest)
         if (( request.asset_name === '' || request.asset_description === '' || request.device_type === '' ) || (request.availability === 'No' && request.current_assignee === null)){
             document.getElementById("editDeviceError").style.display = "block";
             return;
@@ -80,7 +73,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
-            body:JSON.stringify(request)
+            body:JSON.stringify(mergedRequest)
         }).then(()=>{
             console.log(request)
             console.log("Updated Asset")

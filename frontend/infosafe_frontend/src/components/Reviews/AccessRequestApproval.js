@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../../styling/AccessRequestApproval.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
+const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) => {
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
     const handleReview = (reviewValue) => {
         const payload = {review: reviewValue, request_id: access.request_id, dataScope_id: access.dataScope_id, user_email: access.user_email}
@@ -16,7 +16,8 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen }) => {
             body: JSON.stringify(payload),
         })
             .then(() => {
-                console.log('Updated User');
+                console.log('Approved');
+                onArApprove()
                 popupClose();
             });
     };
