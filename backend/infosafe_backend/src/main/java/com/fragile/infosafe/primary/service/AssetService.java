@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -84,5 +85,9 @@ public class AssetService {
 
     public long getTotalDevice() {
         return assetRepository.count();
+    }
+
+    public List<String> getUnassignedUserEmails(String currentAssignee, int assetId) {
+        return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(currentAssignee).get(), assetId);
     }
 }

@@ -192,4 +192,9 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsersNotInTask(@PathVariable("task_id") int task_id) {
         return ResponseEntity.ok(userService.findAllUsersNotInTask(task_id));
     }
+
+    @GetMapping("/findUserNotAssigned/{asset_id}/{current_assignee}")
+    public ResponseEntity<List<String>> getAllUsersNotAssigned(@PathVariable("asset_id") int asset_id, @PathVariable("current_assignee") String current) {
+        return ResponseEntity.ok(assetService.getUnassignedUserEmails(current ,asset_id));
+    }
 }

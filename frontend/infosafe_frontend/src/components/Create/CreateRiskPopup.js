@@ -87,14 +87,6 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
                                 onChange={handleDescriptionChange}
                                 value={risk_description}
                             />
-                            <p className="riskStatusLabel">Risk Status</p>
-                            <Dropdown
-                                options={STATUS}
-                                value={STATUS[0]}
-                                className="riskStatusDropdown"
-                                name="riskStatusDropdown"
-                                onChange={(selectedOption) => setRiskStatus(selectedOption.value)}
-                            />
                             <p className="riskSuggestedMitigationLabel">Suggested Mitigation</p>
                             <textarea
                                 className="riskSuggestedMitigationInput"
