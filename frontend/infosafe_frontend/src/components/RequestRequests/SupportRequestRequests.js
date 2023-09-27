@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 
 
 export const useSupportRequests = () => {
-    const [myDatascopes, setMyDatascopes] = useState([]);
+    const [myDataScopes, setMyDataScopes] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/datascope/getMyDatascopes', {
@@ -13,12 +13,15 @@ export const useSupportRequests = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                    setMyDatascopes(result);
+                setMyDataScopes(result);
             })
             .catch((error) => {
                 console.error("Error fetching DataScopes:", error);
             });
     }, []);
 
-    return myDatascopes;
+    console.log(myDataScopes)
+    return (
+        myDataScopes)
 }
+

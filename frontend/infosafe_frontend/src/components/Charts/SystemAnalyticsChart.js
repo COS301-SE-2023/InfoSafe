@@ -74,7 +74,9 @@ const SystemAnalyticsChart = () => {
             ];
 
             try {
-                // Once all data is fetched, set it in state
+                const responses = await Promise.all(fetchPromises);
+                const data = await Promise.all(responses.map((res) => res.json()));
+
                 const [dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal] = data;
                 setChartData({dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal});
                 setDataLoaded(true);

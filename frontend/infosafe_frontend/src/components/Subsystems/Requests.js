@@ -41,7 +41,23 @@ export const Requests = () => {
         } = useRequestMaker();
         const {myAssets} = useCurrentDataScope();
         const {myTasks} = useCurrentTasks();
-        const {myDatascopes} = useSupportRequests();
+        const [myDataScopes, setMyDataScopes] = useState([]);
+
+        useEffect(() => {
+            fetch('http://localhost:8080/api/datascope/getMyDatascopes', {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                }
+            })
+                .then((res) => res.json())
+                .then((result) => {
+                    setMyDataScopes(result);
+                })
+                .catch((error) => {
+                    console.error("Error fetching DataScopes:", error);
+                });
+        }, []);
         const handleDescriptionChange = (e) => {
             setSupportDescription(e.target.value);
         };
@@ -57,10 +73,10 @@ export const Requests = () => {
                 {support_type === ('DataScope Support') && (
                     <div>
                         <p className="createAccessRequestDataScopeLabel">Data Scope</p>
-                        {myDatascopes && myDatascopes.length > 0 ? (
+                        {myDataScopes && myDataScopes.length > 0 ? (
                             <Dropdown
-                                options={myDatascopes.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
-                                value={myDatascopes.data_scope_id}
+                                options={myDataScopes.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
+                                value={myDataScopes.data_scope_id}
                                 className="accessRequestDatascopeDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add DataScope"}
@@ -126,7 +142,7 @@ export const Requests = () => {
 
     const CreateAccessRequest = () => {
         const { handleClick, reason, setReason, setDataScope_id } = useRequestMaker();
-        const accessRequests = useAccessRequests(); // Rename datascopeData to accessRequests
+        const {datascopeData} = useAccessRequests(); // Rename datascopeData to accessRequests
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
@@ -135,11 +151,11 @@ export const Requests = () => {
             <div className="createAccessRequestDiv">
                 <form>
                     <p className="createAccessRequestDataScopeLabel">Data Scope</p>
-                    {accessRequests ? (
-                        accessRequests.length > 0 ? (
+                    {datascopeData ? (
+                        datascopeData.length > 0 ? (
                             <Dropdown
-                                options={accessRequests.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
-                                value={accessRequests[0].data_scope_id} // You may need to adjust this part
+                                options={datascopeData.map((data) => ({ value: data.data_scope_id, label: data.ds_name }))}
+                                value={datascopeData[0].ds_name}
                                 className="accessRequestDatascopeDropdown"
                                 name="datascopeDropdown"
                                 placeholder={"Add DataScope"}

@@ -3,7 +3,8 @@ import { Chart } from "chart.js/auto";
 
 const TasksChart = () => {
     const chartReference = useRef(null);
-    const [taskCount, setTaskCount] = useState(0); // Initialize taskCount
+    const [taskCount, setTaskCount] = useState(0);
+    const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/taskCount', {
@@ -22,8 +23,12 @@ const TasksChart = () => {
     }, []);
 
     useEffect(() => {
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
         const chartContext = chartReference.current.getContext("2d");
-        new Chart(chartContext, {
+        const newChartInstance = new Chart(chartContext, {
             type: "doughnut",
             data: {
                 labels: ['Tasks Completed', 'Tasks Left'],
@@ -44,6 +49,8 @@ const TasksChart = () => {
                 },
             }
         });
+
+        setChartInstance(newChartInstance);
     }, [taskCount]);
 
     return (
@@ -54,4 +61,3 @@ const TasksChart = () => {
 };
 
 export default TasksChart;
-
