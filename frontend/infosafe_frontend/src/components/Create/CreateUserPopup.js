@@ -4,18 +4,17 @@ import '../../styling/CreateUserPopup.css';
 import '../../styling/Dropdown.css'
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import {useGetAllUser} from "../getData/getAllUser";
 
-export const CreateUserPopup = ({ popupOpen, popupClose }) => {
+
+export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     const[first_name,setName]=useState('')
     const[last_name,setSurname]=useState('')
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('')
     const [roleNames, setRoleNames] = useState('')
     const [selectedRole, setSelectedRole] = useState('');
-    const {showUser, loading} = useGetAllUser();
 
-    const handleClick = (e) => {
+    const useHandleClick = (e) => {
         e.preventDefault();
         popupClose();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
@@ -46,9 +45,11 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                         },
                         body: JSON.stringify(user),
                     })
-                        .then(() => {
-                            //setShowUser([...showUser, user])
-                            console.log("New User added");
+                        .then((response) => {
+                            if(response.ok) {
+                                console.log("New User added");
+                                onUserAdded();
+                            }
                         })
                         .catch((error) => {
                             console.error("Error adding new user:", error);
@@ -58,6 +59,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
             .catch((error) => {
                 console.error("Error checking email:", error);
             });
+
     };
 
 
@@ -138,7 +140,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose }) => {
                                     <p className="loadTitle">Loading...</p>
                                 )}
                                 <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
-                                <button className="createUserFinish" data-testid="createuser_finish"  onClick={handleClick}>
+                                <button className="createUserFinish" data-testid="createuser_finish"  onClick={useHandleClick}>
                                     Submit
                                 </button>
                             </div>

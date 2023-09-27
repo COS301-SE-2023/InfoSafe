@@ -56,7 +56,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                 due_date: task.due_date,
                 task_description: task.task_description,
                 task_status: task.task_status,
-                dataScope_id: task.dataScope.data_scope_id,
+                dataScope_id: task.data_scope_id.dataScope_id,
                 daysUntilDue: task.daysUntilDue
             });
         }

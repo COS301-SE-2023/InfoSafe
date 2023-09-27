@@ -28,9 +28,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
-    @Autowired
-    private UserService userService;
-
+    private final UserService userService;
     private final AuthenticationService authService;
     private final EmailService emailService;
     private final DeleteService deleteService;
