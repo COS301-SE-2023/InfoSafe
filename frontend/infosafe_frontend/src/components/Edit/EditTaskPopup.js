@@ -94,7 +94,6 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
             },
             body: JSON.stringify(requestBody)
         }).then(() => {
-            console.log(requestBody)
             console.log("Updated Task")
             onTaskEdited();
         })

@@ -75,7 +75,6 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
             },
             body:JSON.stringify(mergedRequest)
         }).then(()=>{
-            console.log(request)
             console.log("Updated Asset")
             onAssesEdited()
         })
