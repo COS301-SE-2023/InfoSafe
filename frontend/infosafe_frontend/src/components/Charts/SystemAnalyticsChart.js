@@ -1,152 +1,68 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Chart} from "chart.js/auto";
+import React, { useEffect, useRef } from "react";
+import { Chart } from "chart.js/auto";
+import {useCurrentDataScope} from "./useCurrentDataScope";
+import {useCurrentTasks} from "./useCurrentTasks";
 
 const SystemAnalyticsChart = () => {
     const chartReference = useRef(null);
-    const [dataLoaded, setDataLoaded] = useState(false);
-    const [chartData, setChartData] = useState(null);
 
+    const {dataScopeCount, myDataScopeCount, assetCount, totalAssets} = useCurrentDataScope();
+    const {taskCount, totalTasks} = useCurrentTasks();
     useEffect(() => {
-        const fetchData = async () => {
-            const accessToken = sessionStorage.getItem('accessToken');
-
-            const fetchPromises = [
-                await fetch('http://localhost:8080/api/datascope/getTotal', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
+        const chartContext = chartReference.current.getContext("2d");
+        new Chart(chartContext, {
+            type: "bar",
+            data: {
+                labels: [
+                    'Data Scopes',
+                    'Tasks',
+                    'Devices',
+                    'Asset Requests',
+                    'Support Requests',
+                ],
+                datasets: [
+                    {
+                        label: 'System Total',
+                        backgroundColor: '#49D4D0',
+                        barThickness: 20,
+                        data: [dataScopeCount, totalTasks, totalAssets, 100, 250],
                     },
-                }),
-                await fetch('http://localhost:8080/api/user/dataScopeCount', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
+                    {
+                        label: 'My Total',
+                        backgroundColor: '#9E0000',
+                        barThickness: 20,
+                        data: [myDataScopeCount, taskCount, assetCount, 5, 8],
+                        pointStyle: 'circle',
                     },
-                }),
-                await fetch('http://localhost:8080/api/user/countDevices', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/asset/getTotalAssets', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/user/taskCount', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/task/totalTasks', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/supportrequest/getTotal', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/supportrequest/getMyTotal', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/assetrequest/getTotal', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-                await fetch('http://localhost:8080/api/assetrequest/getMyTotal', {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + accessToken,
-                    },
-                }),
-            ];
-
-            try {
-                // Once all data is fetched, set it in state
-                const [dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal] = data;
-                setChartData({dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal});
-                setDataLoaded(true);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        if (dataLoaded && chartData) {
-            const {dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal} = chartData;
-
-            const chartContext = chartReference.current.getContext("2d");
-            new Chart(chartContext, {
-                type: "bar",
-                data: {
-                    labels: [
-                        'Data Scopes',
-                        'Tasks',
-                        'Devices',
-                        'Support Requests',
-                        'Asset Requests'
-                    ],
-                    datasets: [
-                        {
-                            label: 'System Total',
-                            backgroundColor: '#49D4D0',
-                            barThickness: 20,
-                            data: [dataScopeCount, totalTasks, totalAssets, suppTotal, assetTotal],
-                        },
-                        {
-                            label: 'My Total',
-                            backgroundColor: '#9E0000',
-                            barThickness: 20,
-                            data: [myDataScopeCount, myTotalTasks, assetCount, mySuppTotal, myAssetTotal],
-                            pointStyle: 'circle',
-                        },
-                    ],
-                },
-                options: {
-                    scales: {
-                        x: {
-                            stacked: false,
-                            grid: {
-                                display: false,
-                                color: '#CECECE',
-                            },
-                        },
-                        y: {
-                            stacked: false,
-                        },
-                    },
-                    plugins: {
-                        legend: {
+                ],
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: false,
+                        grid: {
                             display: false,
+                            color: '#CECECE',
                         },
                     },
+                    y: {
+                        stacked: false,
+                    },
                 },
-            });
-        }
-    }, [dataLoaded, chartData]);
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            },
+        });
+    }, []);
 
     return (
         <div className="systemAnalyticsChartDiv">
-            <canvas className="barChart" ref={chartReference}/>
+            <canvas className="barChart" ref={chartReference} />
         </div>
     );
 };
 
 export default SystemAnalyticsChart;
-
-

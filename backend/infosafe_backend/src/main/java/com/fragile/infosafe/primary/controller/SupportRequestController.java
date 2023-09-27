@@ -48,18 +48,4 @@ public class SupportRequestController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @GetMapping("/getTotal")
-    public ResponseEntity<Long> getTotalSupportRequests() {
-        return ResponseEntity.ok(service.getTotalSupportRequests());
-    }
-
-    @GetMapping("/getMyTotal")
-    public ResponseEntity<Long> getMyTotalSupportRequests() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            return ResponseEntity.ok(service.getMyTotalSupportRequests(authenticatedUser));
-        }
-        return ResponseEntity.ok(0L);
-    }
 }

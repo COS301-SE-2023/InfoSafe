@@ -1,28 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
+import {useCurrentTasks} from "./useCurrentTasks";
 
 const TasksChart = () => {
     const chartReference = useRef(null);
-    const [taskCount, setTaskCount] = useState(0); // Initialize taskCount
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/user/taskCount', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setTaskCount(result);
-            })
-            .catch((error) => {
-                console.error("Error fetching taskCount:", error);
-            });
-    }, []);
-
+    const {taskCount} = useCurrentTasks();
     useEffect(() => {
         const chartContext = chartReference.current.getContext("2d");
+
         new Chart(chartContext, {
             type: "doughnut",
             data: {
@@ -30,12 +16,13 @@ const TasksChart = () => {
                 datasets: [
                     {
                         label: 'Tasks',
-                        data: [15, taskCount],
+                        data: [50, taskCount],
                         backgroundColor: ['#9E0000', '#444040'],
                     }
                 ]
             },
             options: {
+
                 hoverOffset: 6,
                 plugins: {
                     legend: {
@@ -44,7 +31,7 @@ const TasksChart = () => {
                 },
             }
         });
-    }, [taskCount]);
+    }, []);
 
     return (
         <div className="tasksChartDiv">
@@ -54,4 +41,3 @@ const TasksChart = () => {
 };
 
 export default TasksChart;
-

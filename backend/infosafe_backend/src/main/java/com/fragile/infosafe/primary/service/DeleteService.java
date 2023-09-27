@@ -141,7 +141,7 @@ public class DeleteService {
             de.setReason(entityToDelete.getReason());
             de.setUser_id(entityToDelete.getUser().getUser_id());
             de.setRequest_status(entityToDelete.getRequest_status());
-            // de.setDesired_date(entityToDelete.getDesired_date());
+            de.setDesired_date(entityToDelete.getDesired_date());
             deletedAssetRequestRepository.save(de);
             assetRequestRepository.delete(entityToDelete);
 

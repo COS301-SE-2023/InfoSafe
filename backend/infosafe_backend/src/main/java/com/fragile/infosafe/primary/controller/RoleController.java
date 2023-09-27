@@ -2,7 +2,6 @@ package com.fragile.infosafe.primary.controller;
 
 import com.fragile.infosafe.primary.model.Permission;
 import com.fragile.infosafe.primary.model.Role;
-import com.fragile.infosafe.primary.model.RolePermissionDto;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.requests.RoleRequest;
 import com.fragile.infosafe.primary.service.RoleService;
@@ -57,10 +56,5 @@ public class RoleController {
     public ResponseEntity<Boolean> checkEmailExists(@RequestParam("rolename") String name) {
         boolean nameExists = service.checkRoleExists(name);
         return ResponseEntity.ok(nameExists);
-    }
-
-    @GetMapping("/getAllRoles")
-    public ResponseEntity<List<RolePermissionDto>> getAllRoles() {
-        return ResponseEntity.ok(service.getAllRolesWithPermissions());
     }
 }

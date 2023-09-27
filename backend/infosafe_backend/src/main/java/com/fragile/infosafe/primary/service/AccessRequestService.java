@@ -29,10 +29,6 @@ public class AccessRequestService {
     private final UserRepository userRepository;
     private final DataScopeRepository dataScopeRepository;
     private final DeleteService deleteService;
-
-    private final EmailService emailService;
-
-    private final NotificationsService notificationsService;
     public ResponseEntity<String> makeAR(AccessRequestRequest request, User authenticatedUser) {
         AccessRequest accessRequest = AccessRequest.builder()
                 .reason(request.getReason())
@@ -68,8 +64,6 @@ public class AccessRequestService {
                     dataScope.getUsers().add(user);
                     dataScopeRepository.save(dataScope);
                     deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                    emailUser(reviewRequest.getUser_email(), dataScope.getDs_name(), "Approved");
-                    notificationsService.makeNotification("Added to Datascope " + dataScope.getDs_name(), user);
                     return ResponseEntity.ok("given to user");
                 } else {
                     deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
@@ -78,23 +72,10 @@ public class AccessRequestService {
             }
         } else {
             deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-            emailUser(reviewRequest.getUser_email(), "", "Denied");
             return ResponseEntity.ok("rejected access");
         }
         return ResponseEntity.badRequest().build();
     }
 
-    private void emailUser(String email, String ds_name, String status){
-        String subject = "Access Request response";
-        String body = "Your request to access the Datascope: " + ds_name + "was " + status;
-        emailService.sendEmail(email, subject, body);
-    }
 
-    public Long getTotalAccessRequests() {
-        return accessRequestRepository.count();
-    }
-
-    public Long getMyTotalAccessRequests(User user) {
-        return accessRequestRepository.countAccessRequestsByUser(user);
-    }
 }
