@@ -22,8 +22,8 @@ const NavBar = () => {
     const {roles} = useGetPerms();
     const {myDataScopeCount} = useCurrentDataScope();
     let notDSButHasDatascope = false;
-    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Risks',  'Asset Requests', 'Requests', 'About', 'Help'];
-    const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaLock className="icon" />, <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <BiSupport className="icon" />, <CgDanger className="icon" />, <TbDevicesPc className="icon" />, <MdOutlineDashboardCustomize className="icon" />, <IoInformationCircleOutline className="icon" />, <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline> ]
+    const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes',  'Tasks', 'Devices', 'Risks' , 'Requests', 'Access Requests', 'Asset Requests', 'Support Requests', 'About', 'Help'];
+    const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <CgDanger className="icon" />,  <MdOutlineDashboardCustomize className="icon" />, <FaLock className="icon" />, <TbDevicesPc className="icon" />, <BiSupport className="icon" />, <IoInformationCircleOutline className="icon" />, <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline> ]
     tabItems.push(0);
     if (!roles.includes("data_scope_edit") || !roles.includes("data_scope_create") || !roles.includes("data_scope_delete")){
         if(myDataScopeCount > 0){
@@ -39,29 +39,27 @@ const NavBar = () => {
     if (roles.includes("data_scope_edit") || roles.includes("data_scope_create") || roles.includes("data_scope_delete") || notDSButHasDatascope) {//Data Scopes
         tabItems.push(3);
     }
-    if (roles.includes("access_requests_approve") || roles.includes("access_requests_edit")) {//Access Requests
+    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
         tabItems.push(4);
     }
-    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
+    if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {//Devices
         tabItems.push(5);
     }
-    if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {//Devices
+    if (roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review")) {//Risks
         tabItems.push(6);
     }
-    if (roles.includes("support_requests_viewAll") || roles.includes("support_requests_edit") || roles.includes("support_requests_delete") || roles.includes("request_support")) {//Support Requests
-        tabItems.push(7);
-    }
-    if (roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review")) {//Risks
+    tabItems.push(7);
+    if (roles.includes("access_requests_approve") || roles.includes("access_requests_edit")) {//Access Requests
         tabItems.push(8);
     }
     if (roles.includes("asset_request_review")) {//Asset Requests
         tabItems.push(9);
     }
-    //if (roles.includes("request_asset") || roles.includes("request_support") || roles.includes("request_access")) {//Requests
+    if (roles.includes("support_requests_viewAll") || roles.includes("support_requests_edit") || roles.includes("support_requests_delete") || roles.includes("request_support")) {//Support Requests
         tabItems.push(10);
-    //}
-    tabItems.push(11);
-    tabItems.push(12);
+    }
+        tabItems.push(11);
+        tabItems.push(12);
     const handleClick = (NavTabIndex) => {
         setActive(NavTabIndex);
     };
