@@ -106,6 +106,7 @@
     width: 75%;
     position: relative;
     margin: 0;
+    top: -2vh;
 }
 .viewDSCustodian{
     font-family: 'Roboto', sans-serif;
@@ -121,6 +122,7 @@
     scrollbar-width: none;
     background-color: #CECECE;
     padding: 1% 1%;
+    top: -2vh;
 }
 .viewDSCustodian::-webkit-scrollbar{
     display: none;
