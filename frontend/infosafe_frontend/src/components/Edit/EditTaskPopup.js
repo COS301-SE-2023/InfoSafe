@@ -145,7 +145,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                                     name="editTaskAssignees"
                                     styles={customStyles}
                                 /> ) : (
-                                <p>Loading...</p>
+                                <p className="editTaskLoading">Loading...</p>
                             )}
                             <p className="editTaskLabels">Add More Assignees</p>
                             {users && users.length > 0 ? (
@@ -160,7 +160,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                                     styles={customStyles}
                                     isMulti
                                 /> ) : (
-                                <p>Loading...</p>
+                                <p className="editTaskLoading">Loading...</p>
                             )}
                             <p className="editTaskLabels">Status</p>
                             <Dropdown
