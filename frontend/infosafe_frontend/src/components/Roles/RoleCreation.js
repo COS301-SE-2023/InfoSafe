@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../styling/RoleCreation.css';
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import role_icon from '../../images/create_role_icon.png';
 
 const RoleCreation = () => {
     const subsystems = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];
@@ -703,7 +704,9 @@ const RoleCreation = () => {
     };
 
     const [helpOpen,setHelpOpen] = useState(false);
-    const helpMsg = "";
+    const helpMsg = "Roles are created and defined on this page. At the top of the page in the text field you can give your new role a name." +
+    "Then using the checkboxes, you can specify for which subsystems and functions this new role may have permissions for." +
+    "Lastly to create this role, click the Create Role ( " + <img src={role_icon} alt='edit icon'/> + " ) button at the bottom of the page.";
 
     return (
         <div className="display">
