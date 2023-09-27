@@ -11,7 +11,7 @@ const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
 const STATUS = ["Open", "In Progress", "Resolved", "Closed"];
 
-export const CreateRisk = ({ popupClose, popupOpen }) => {
+export const CreateRisk = ({ popupClose, popupOpen, onRiskAdded }) => {
     const[risk_name, setRisk_name] = useState('')
     const[impact_rating, setImpactRating] = useState(IMPACT[0])
     const[probability_rating, setProbabilityRating] = useState(PROBABILITY[0])
@@ -48,6 +48,7 @@ export const CreateRisk = ({ popupClose, popupOpen }) => {
             body:JSON.stringify(risk)
         }).then(()=>{
             console.log("New risk added")
+            onRiskAdded()
         })
         popupClose()
     };

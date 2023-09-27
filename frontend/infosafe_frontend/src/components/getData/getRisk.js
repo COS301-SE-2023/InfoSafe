@@ -4,22 +4,32 @@ export const useGetRisk = () => {
     const [showRisk, setShowRisk] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/risk/getRisk', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowRisk(result);
-                setLoading(false);
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/risk/getRisk', {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                }
             });
-    }, []);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const result = await response.json();
+            setShowRisk(result);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchAllRisks = () => {
+        fetchData();
+    };
 
     return {
         showRisk,
-        loading
+        loading,
+        fetchAllRisks
     }
 }
