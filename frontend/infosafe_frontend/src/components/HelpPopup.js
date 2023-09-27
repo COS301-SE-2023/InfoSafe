@@ -2,7 +2,7 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import {IoArrowBackOutlin, IoArrowBackOutline, IoInformationCircleOutline} from "react-icons/io5";
 import "../styling/HelpPopup.css"
-export const HelpPopup = ({message, popupOpen, popupClose}) => {
+export const HelpPopup = ({message, popupOpen, popupClose, image}) => {
 
     return(
         <Popup open={popupOpen} closeOnDocumentClick={false}>
@@ -16,6 +16,7 @@ export const HelpPopup = ({message, popupOpen, popupClose}) => {
                         <div className="helpContent">
                             <p  className="helpTitle"><IoInformationCircleOutline></IoInformationCircleOutline></p>
                             <p className="helpMessage">{message}</p>
+                            <img src={image} alt='icon'/>
                         </div>
                     </div>
                 </div>

@@ -147,7 +147,7 @@ export const Users = () => {
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "To view a users information, click on their field in the table." +
-    "To edit a user, click the edit ( " + <img src={edit_icon} alt='edit icon'/> + " ) button" +
+    "To edit a user, click the edit ( " + <RiEditBoxFill/> + " ) button" +
     "To delete a user you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
     "To add a user click the Create New User ( " + <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
@@ -162,6 +162,7 @@ export const Users = () => {
                                 popupClose={() => setHelpOpen(false)}
                                 popupOpen={helpOpen}
                                 message={helpMsg}
+                                image={edit_icon}
                             />
                         ) : null}
 
