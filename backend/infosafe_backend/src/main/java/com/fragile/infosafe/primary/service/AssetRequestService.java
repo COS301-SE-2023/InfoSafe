@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +31,11 @@ public class AssetRequestService {
     private final DeleteService deleteService;
 
     public ResponseEntity<String> makeAR(AssetRequestRequest request, User authenticatedUser) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dueDate = dateFormat.format(request.getDesired_date());
         AssetRequests assetRequests = AssetRequests.builder()
                 .reason(request.getReason())
-                .desired_date(request.getDesired_date())
+                .desired_date(dueDate)
                 .request_status(request.getRequest_status())
                 .user(authenticatedUser)
                 .build();

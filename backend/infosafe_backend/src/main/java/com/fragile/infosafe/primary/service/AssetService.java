@@ -23,12 +23,18 @@ import java.util.stream.Collectors;
 public class AssetService {
     private final AssetRepository assetRepository;
     private final UserRepository userRepository;
+    private final EmailService emailService;
+    private final NotificationsService notificationsService;
     public List<Asset> getAllAssets() {return assetRepository.findAll();}
 
     public Asset updateAsset(AssetRequest asset) {
         if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {
             Asset editAsset = assetRepository.findByAssetId(asset.getAsset_id()).get();
             User current = userRepository.findByEmail(asset.getCurrent_assignee()).get();
+            if(current != editAsset.getCurrent_assignee()){
+                sendEmail(current.getEmail(), editAsset.getAsset_name());
+                notificationsService.makeNotification("Assigned Asset: " + editAsset.getAsset_name(), current);
+            }
             Optional<User> previous = userRepository.findByEmail(asset.getPrevious_assignee());
             previous.ifPresent(editAsset::setPrevious_assignee);
             editAsset.setAsset_description(asset.getAsset_description());
@@ -51,7 +57,6 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
-                //.previous_assignee(request.getPrevious_assignee())
                 .used(request.getUsed())
                 .build();
 
@@ -59,6 +64,8 @@ public class AssetService {
             User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
             if (user != null) {
                 asset.setCurrent_assignee(user);
+                sendEmail(user.getEmail(), request.getAsset_name());
+                notificationsService.makeNotification("Assigned Asset: " + request.getAsset_name(), user);
             } else {
                 log.error("User with email " + request.getCurrent_assignee() + " not found");
             }
@@ -90,4 +97,11 @@ public class AssetService {
     public List<String> getUnassignedUserEmails(String currentAssignee, int assetId) {
         return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(currentAssignee).get(), assetId);
     }
+
+    private void sendEmail(String email, String assetName){
+        String subject = "Asset Assigned";
+        String body = "You were assigned the asset :" + assetName;
+        emailService.sendEmail(email, subject, body);
+    }
+
 }
