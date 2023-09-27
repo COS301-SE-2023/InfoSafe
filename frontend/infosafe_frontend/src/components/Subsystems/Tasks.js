@@ -13,7 +13,6 @@ import {useGetTask} from "../getData/getTask";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
 
-
 export const Tasks = () => {
     const {showTask, loading} = useGetTask()
     const {roles} = useGetPerms();
@@ -164,6 +163,7 @@ export const Tasks = () => {
                         </div>
                     ) : (
                     <ul className="taskList">{complianceItems}</ul>
+                    )}
                 </div>
                 <div className="buttons">
                     <CreateTaskDiv></CreateTaskDiv>
