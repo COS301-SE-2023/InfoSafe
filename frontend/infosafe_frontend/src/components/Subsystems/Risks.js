@@ -13,7 +13,7 @@ import {IoHelpCircle} from 'react-icons/io5';
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const {showRisk} = useGetRisk();
+    const {showRisk, loading} = useGetRisk();
     const {roles} = useGetPerms();
 
     const CreateRiskDiv = () => {
@@ -139,7 +139,11 @@ export const Risks = () => {
                     <FaSearch className="deviceSearchIcon" />
                 </div>
                 <div className="risks">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="risksList">{risks}</ul>
+                        )}
                 </div>
                 <CreateRiskDiv></CreateRiskDiv>
             </div>

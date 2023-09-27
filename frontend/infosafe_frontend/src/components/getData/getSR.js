@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 export const useGetSR = () => {
     const [showAllSupport, setShowAllSupport] = useState([]);
     const [showMySupport, setShowMySupport] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/supportrequest/getSr', {
@@ -19,9 +20,11 @@ export const useGetSR = () => {
             })
             .then((result) => {
                 setShowAllSupport(result);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error('Error fetching showAllSupport:', error);
+                setLoading(false);
             });
     }, []);
 
@@ -40,15 +43,17 @@ export const useGetSR = () => {
             })
             .then((result) => {
                 setShowMySupport(result);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error('Error fetching showMySupport:', error);
-
+                setLoading(false);
             })
     }, []);
 
     return {
         showAllSupport,
         showMySupport,
+        loading
     };
 };

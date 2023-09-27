@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 
 export const useGetRisk = () => {
     const [showRisk, setShowRisk] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/risk/getRisk', {
@@ -13,10 +14,12 @@ export const useGetRisk = () => {
             .then((res) => res.json())
             .then((result) => {
                 setShowRisk(result);
+                setLoading(false);
             });
     }, []);
 
     return {
-        showRisk
+        showRisk,
+        loading
     }
 }

@@ -9,7 +9,7 @@ import {useGetSR} from "../getData/getSR";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const SupportRequests = () => {
-    const {showMySupport, showAllSupport} = useGetSR();
+    const {showMySupport, showAllSupport, loading} = useGetSR();
     const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
     const EditSupportRequestDiv = ({ supp }) => {
@@ -112,7 +112,11 @@ export const SupportRequests = () => {
             return (
                 <div className="active_support_requests" id="active_support_requests" style={{ display: `${allDisplay}`}}>
                     <p className="listTypeHeader">All Support Requests</p>
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="activeRequestsList">{active_requests}</ul>
+                        )}
                 </div>
             )
         }else {
@@ -128,7 +132,11 @@ export const SupportRequests = () => {
                 <AllSupport></AllSupport>
                 <div className="my_support_requests" id="my_support_requests" style={{ display: `${myDisplay}`}}>
                     <p className="listTypeHeader">My Support Requests</p>
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="myRequestsList">{my_requests}</ul>
+                        )}
                 </div>
             </div>
         )
