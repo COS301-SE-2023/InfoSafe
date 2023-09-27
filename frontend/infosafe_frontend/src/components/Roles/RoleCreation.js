@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/RoleCreation.css';
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
-import {ViewRole} from "./ViewRole";
 
 const RoleCreation = () => {
     const subsystems = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];
@@ -639,8 +638,6 @@ const RoleCreation = () => {
 
     const [helpOpen, setHelpOpen] = useState(false);
     const helpMsg = "";
-
-    const [viewRoleOpen, setViewRoleOpen] = useState(false);
     const [showDiv1, setShowDiv1] = useState(true);
     const [showDiv2, setShowDiv2] = useState(false);
     const setDiv = () => {
