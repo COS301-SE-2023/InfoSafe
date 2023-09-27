@@ -5,55 +5,57 @@ export const useGetSR = () => {
     const [showMySupport, setShowMySupport] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/supportrequest/getSr', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => {
-                if (!res.ok) {
-                    console.log("No support request");
+    const fetchAllData = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/supportrequest/getSr', {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
                 }
-                return res.json();
             })
-            .then((result) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+                const result = await response.json();
                 setShowAllSupport(result);
                 setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching showAllSupport:', error);
-                setLoading(false);
-            });
-    }, []);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/supportrequest/getSrById', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => {
-                if (!res.ok) {
-                    console.log("No personal support request");
+    const fetchAllSupport = () => {
+        fetchAllData();
+    };
+
+    const fetchMyData = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/supportrequest/getSrById', {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
                 }
-                return res.json();
-            })
-            .then((result) => {
+            });
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const result = await response.json();
                 setShowMySupport(result);
                 setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching showMySupport:', error);
-                setLoading(false);
-            })
-    }, []);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchMySupport = () => {
+        fetchMyData();
+    };
 
     return {
         showAllSupport,
         showMySupport,
-        loading
+        loading,
+        fetchMySupport,
+        fetchAllSupport
     };
 };

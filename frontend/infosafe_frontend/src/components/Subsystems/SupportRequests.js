@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ViewSupportRequest from "../View/ViewSupportRequest";
 import {FaSearch} from "react-icons/fa";
 import EditSupportRequest from "../Edit/EditSupportRequest";
@@ -9,9 +9,15 @@ import {useGetSR} from "../getData/getSR";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const SupportRequests = () => {
-    const {showMySupport, showAllSupport, loading} = useGetSR();
+    const {showMySupport, showAllSupport, loading, fetchAllSupport, fetchMySupport} = useGetSR();
     const {roles} = useGetPerms();
     const [viewMy, setViewMy] = useState(false);
+
+    useEffect(() => {
+        fetchMySupport();
+        fetchAllSupport();
+    }, []);
+
     const EditSupportRequestDiv = ({ supp }) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
         if(roles.includes("support_requests_edit")) {
@@ -26,6 +32,7 @@ export const SupportRequests = () => {
                             popupClose={() => setEditSupportRequestOpen(false)}
                             popupOpen={editSupportRequestOpen}
                             support={supp}
+                            editAllSupport={fetchAllSupport}
                         />
                     ) : null}
                 </div>
@@ -48,6 +55,7 @@ export const SupportRequests = () => {
                             popupClose={() => setEditSupportRequestOpen(false)}
                             popupOpen={editSupportRequestOpen}
                             support={mySupport}
+                            editMySupport={fetchMySupport}
                         />
                     ) : null}
                 </div>

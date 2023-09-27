@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
 
 const STATUS = ["Logged","In Progress","Resolved"];
-const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
+const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, editMySupport }) => {
     const[values, setValues]=useState({
         support_id: support.support_id,
         support_type: support.support_type,
@@ -28,6 +28,8 @@ const EditSupportRequest = ({ support, popupOpen, popupClose }) => {
             body:JSON.stringify(values)
         }).then(()=>{
             console.log("Updated AccessRequest")
+            editAllSupport()
+            editMySupport()
         })
         popupClose()
     }
