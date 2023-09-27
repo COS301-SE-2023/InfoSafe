@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ViewTask} from "../View/ViewTaskPopup";
 import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/EditTaskPopup";
@@ -16,11 +16,16 @@ import delete_icon from "../../images/delete_icon.png";
 import user_icon from "../../images/create_user_icon.png";
 
 export const Tasks = () => {
-    const {showTask, loading} = useGetTask()
+    const {showTask, loading, fetchAllTasks} = useGetTask()
     const {roles} = useGetPerms();
     const {myTasks} = useGetTask();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
     let viewMyTasks = false;
+
+    useEffect(() => {
+        fetchAllTasks();
+    }, []);
+
     const EditTask = ({ task }) => {
         const [editTaskOpen, setEditTaskOpen] = useState(false);
         if(roles.includes("tasks_create")) {
@@ -32,6 +37,7 @@ export const Tasks = () => {
                             popupClose={() => setEditTaskOpen(false)}
                             popupOpen={editTaskOpen}
                             task={task}
+                            onTaskEdited={fetchAllTasks}
                         />
                     ) : null}
                 </div>
@@ -78,6 +84,7 @@ export const Tasks = () => {
                         <CreateTask
                             popupClose={() => setCreateTaskOpen(false)}
                             popupOpen={createTaskOpen}
+                            onTaskAdded={fetchAllTasks}
                         />
                     ) : null}
                 </div>

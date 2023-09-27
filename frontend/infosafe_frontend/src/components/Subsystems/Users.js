@@ -35,6 +35,7 @@ export const Users = () => {
                                 popupClose={() => setEditUserOpen(false)}
                                 popupOpen={editUserOpen}
                                 user={user}
+                                onUserEdited={fetchAllUsers}
                             />
                         ) : null}{' '}
                     </div>

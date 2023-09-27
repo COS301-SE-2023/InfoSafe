@@ -16,7 +16,7 @@ const statusOptions = [
     {value: 'Medium', label: 'Medium'},
     {value: 'Low', label: 'Low'},
 ];
-export const UpdateTask = ({ task, popupClose, popupOpen }) => {
+export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [currentUsers, setCurrentUsers] = useState([]);
@@ -94,7 +94,9 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
             },
             body: JSON.stringify(requestBody)
         }).then(() => {
+            console.log(requestBody)
             console.log("Updated Task")
+            onTaskEdited();
         })
     }
 

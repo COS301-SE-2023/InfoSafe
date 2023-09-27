@@ -1,5 +1,5 @@
 import {CreateDevicePopup} from "../Create/CreateDevicePopup";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ViewDevice} from "../View/ViewDevice";
 import {FaSearch} from "react-icons/fa";
 import {RiEditBoxFill} from "react-icons/ri";
@@ -11,8 +11,12 @@ import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
-    const {showAsset, loading} = useGetAsset();
+    const {showAsset, loading, fetchAllAssets} = useGetAsset();
     const {roles} = useGetPerms();
+
+    useEffect(() => {
+        fetchAllAssets();
+    }, []);
 
     const EditDeviceDiv = ({ asset }) => {
         const [editDeviceOpen, setEditDeviceOpen] = useState(false);
@@ -25,7 +29,7 @@ export const Devices = () => {
                             popupClose={() => setEditDeviceOpen(false)}
                             popupOpen={editDeviceOpen}
                             asset={asset}
-
+                            onAssesEdited={fetchAllAssets}
                         />
                     ) : null}
                 </div>
@@ -72,6 +76,7 @@ export const Devices = () => {
                         <CreateDevicePopup
                             popupClose={() => setCreateDeviceOpen(false)}
                             popupOpen={createDeviceOpen}
+                            onAssetCreated={fetchAllAssets}
                         />
                     ) : null}
                 </div>

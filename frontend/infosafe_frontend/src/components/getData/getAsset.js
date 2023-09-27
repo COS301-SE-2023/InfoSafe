@@ -4,22 +4,32 @@ export const useGetAsset = () => {
     const [showAsset, setShowAsset] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getAsset', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowAsset(result);
-                setLoading(false);
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/asset/getAsset', {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                }
             });
-    }, []);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const result = await response.json();
+            setShowAsset(result);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchAllAssets = () => {
+        fetchData();
+    };
 
     return {
         showAsset,
-        loading
+        loading,
+        fetchAllAssets
     }
 }

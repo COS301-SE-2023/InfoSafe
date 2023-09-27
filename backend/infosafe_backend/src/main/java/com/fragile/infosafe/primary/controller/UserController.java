@@ -209,9 +209,9 @@ public class UserController {
         return ResponseEntity.ok(userService.findAllUsersNotInTask(task_id));
     }
 
-    @GetMapping("/findUserNotAssigned/{asset_id}/{current_assignee}")
-    public ResponseEntity<List<String>> getAllUsersNotAssigned(@PathVariable("asset_id") int asset_id, @PathVariable("current_assignee") String current) {
-        return ResponseEntity.ok(assetService.getUnassignedUserEmails(current ,asset_id));
+    @GetMapping("/findUserNotAssigned/{asset_id}")
+    public ResponseEntity<List<String>> getAllUsersNotAssigned(@PathVariable("asset_id") int asset_id) {
+        return ResponseEntity.ok(assetService.getUnassignedUserEmails(asset_id));
     }
 
     @GetMapping("/findNotDatCustodian")

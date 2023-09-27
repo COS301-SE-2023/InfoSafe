@@ -13,6 +13,7 @@
 }
 .searchUsers{
     display: flex;
+    /*align-items: center;*/
     width: 100%;
     position: relative;
     right: 5%;
@@ -40,12 +41,9 @@
 .userSearchIcon
 {
     position: absolute;
-    height: fit-content;
-    right: 0;
-    top: 50%;
-    vertical-align: center;
-    margin-right: 0.5%;
-    padding-left: 2px;
+    right: 10px;
+    top: 54%;
+    transform: translateY(-50%);
     color: #9E0000;
 }
 .users {
