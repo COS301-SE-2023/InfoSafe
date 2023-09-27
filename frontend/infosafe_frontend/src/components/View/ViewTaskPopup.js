@@ -116,7 +116,7 @@ return (
                             name="editTaskAssignees"
                             styles={customStyles}
                         /> ) : (
-                        <p>Loading...</p>
+                        <p className='viewTaskLoadLabel'>Loading...</p>
                     )}
                     <p className="viewTaskDisplayLabel">Task Status</p>
                     <p className="viewTaskDisplayStatus">{task.task_status}</p>
