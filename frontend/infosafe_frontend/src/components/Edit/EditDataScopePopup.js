@@ -167,7 +167,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     onChange={(e) => setDescription(e.target.value)}
                                     className="editDSRoleDescription"
                                 />
-                                <p className="AddRoleNameLabel">Add Role</p>
+                                <p className="AddRoleNameHeading">Add New Roles:</p>
                                 <p className="AddRoleNameLabel">Role Type</p>
                                 <input
                                     className="AddRoleNameInput"
