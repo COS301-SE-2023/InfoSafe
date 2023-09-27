@@ -118,7 +118,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-                                <p className="editDSUsers">Remove Users:</p>
+                                <p className="editDSUsers">Assigned Users:</p>
                                 {/*{currentUsers && currentUsers.length > 0 ? (*/}
                                 {/*    <Select*/}
                                 {/*        options={currentUsers.map((email) => ({value: email, label: email}))}*/}
@@ -127,7 +127,6 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 {/*        className="editTaskAssignees"*/}
                                 {/*        name="editTaskAssignees"*/}
                                 {/*        styles={customStyles}*/}
-                                {/*        isMulti*/}
                                 {/*    /> ) : (*/}
                                 {/*    <p>Loading...</p>*/}
                                 {/*)}*/}
