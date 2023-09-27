@@ -21,6 +21,7 @@ public class DeleteService {
     private final AccessRequestRepository accessRequestRepository;
     private final AssetRequestRepository assetRequestRepository;
     private final SupportRequestRepository supportRequestRepository;
+    private final RiskRepository riskRepository;
 
     private final DeletedUserRepository deletedUserRepository;
     private final DeletedDataScopeRepository deletedDataScopeRepository;
@@ -29,6 +30,7 @@ public class DeleteService {
     private final DeletedAssetRequestRepository deletedAssetRequestRepository;
     private final DeletedAccessRequestRepository deletedAccessRequestRepository;
     private final DeletedSupportRequestRepository deletedSupportRequestRepository;
+    private final DeletedRiskRepository deletedRiskRepository;
 
     public void deleteUserAndSaveToSecondary(String email) {
         Optional<User> entityOptional = userRepository.findByEmail(email);
@@ -146,6 +148,26 @@ public class DeleteService {
             assetRequestRepository.delete(entityToDelete);
 
         }
+    }
+
+    public boolean deleteRiskAndSaveToSecondary(int risk_id) {
+        Optional<Risk> entityOptional = riskRepository.findRiskByRiskId(risk_id);
+        if(entityOptional.isPresent()){
+            Risk entityToDelete = entityOptional.get();
+            var de = DeletedRisk.builder()
+                    .risk_name(entityToDelete.getRisk_name())
+                    .risk_description(entityToDelete.getRisk_description())
+                    .impact_rating(entityToDelete.getImpact_rating())
+                    .suggested_mitigation(entityToDelete.getSuggested_mitigation())
+                    .risk_status(entityToDelete.getRisk_status())
+                    .probability_rating(entityToDelete.getProbability_rating())
+                    .dataScope_id(entityToDelete.getDataScope().getData_scope_id())
+                    .build();
+            deletedRiskRepository.save(de);
+            riskRepository.delete(entityToDelete);
+            return true;
+        }
+        return false;
     }
 }
 

@@ -95,7 +95,7 @@ public class SupportRequestService {
     }
 
     public List<SupportRequest> getUserSupportRequests(int user_id) {
-        return supportRequestRepository.findByUser_id(user_id);
+        return supportRequestRepository.findAllByUserId(user_id);
     }
 
     public ResponseEntity<String> reviewSupportRequest(ReviewRequest reviewRequest) {
