@@ -136,6 +136,17 @@
     top: -1vh;
     left: 15%;
 }
+.editDSUsers{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -1vh;
+    left: 15%;
+}
 .editDSStatusDropdown .Dropdown-control{
     background-color: #CECECE;
     border-radius: 2px;

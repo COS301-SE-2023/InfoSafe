@@ -13,12 +13,12 @@ import {useGetTask} from "../getData/getTask";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
 
-
 export const Tasks = () => {
     const {showTask, loading} = useGetTask()
     const {roles} = useGetPerms();
+    const {myTasks} = useGetTask();
     const [createTaskOpen, setCreateTaskOpen] = useState(false);
-
+    let viewMyTasks = false;
     const EditTask = ({ task }) => {
         const [editTaskOpen, setEditTaskOpen] = useState(false);
         if(roles.includes("tasks_create")) {
@@ -41,7 +41,7 @@ export const Tasks = () => {
 
     const ViewTaskItems = ({ task }) => {
         const [viewTaskOpen, setViewTaskOpen] = useState(false)
-        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
+        if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve") || viewMyTasks) {
             return (
                 <li key={task.task_id}>
                     <p onClick={() => setViewTaskOpen(!viewTaskOpen)}>
@@ -109,13 +109,23 @@ export const Tasks = () => {
     }
 
     const complianceItems = [];
-    showTask.map((task) =>
-        complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
-    );
-    if (complianceItems.length === 0)
-    {
-        complianceItems[0] = "No Tasks added yet.";
+    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {
+        if (showTask && showTask.length > 0) {
+            showTask.map((task) =>
+                complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
+            );
+        } else {
+            complianceItems[0] = "No Tasks added yet.";
+        }
+    } else {
+        if (myTasks && myTasks.length > 0) {
+            viewMyTasks = true;
+            myTasks.map((task) =>
+                complianceItems.push(<ViewTaskItems task={task} key={task.task_id} />)
+            );
+        }
     }
+
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";
@@ -146,7 +156,11 @@ export const Tasks = () => {
                 </div>
                 <div className="tasks">
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
                     ) : (
                     <ul className="taskList">{complianceItems}</ul>
                     )}

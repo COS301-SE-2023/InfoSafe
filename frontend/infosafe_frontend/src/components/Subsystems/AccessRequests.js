@@ -136,7 +136,11 @@ export const AccessRequests = () => {
                 </div>
                 <div className="accessRequests">
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
                     ) : (
                     <ul className="accessrequestsList">{accessRequests}</ul>
                     )}

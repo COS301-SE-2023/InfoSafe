@@ -17,9 +17,11 @@ import user_icon from '../../images/create_user_icon.png';
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
-    const {showUser, loading} = useGetAllUser();
+    const {showUser, loading, fetchAllUsers} = useGetAllUser();
     const {roles} = useGetPerms();
-
+    useEffect(() => {
+        fetchAllUsers();
+    }, []);
     const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
         if (roles.includes("user_edit")) {
@@ -127,14 +129,15 @@ export const Users = () => {
                     </button>
                     {createUserOpen ? (
                         <CreateUserPopup
-                            popupClose={() => setCreateUserOpen(false)}
                             popupOpen={createUserOpen}
+                            popupClose={() => setCreateUserOpen(false)}
+                            onUserAdded={fetchAllUsers}
                         />
                     ) : null}
                 </div>
             )
         } else {
-            return (null)
+            return null
         }
     };
 
@@ -152,40 +155,30 @@ export const Users = () => {
     "To add a user click the Create New User ( " + <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
 
-        return (
-            <div className="display">
-                <div className="usersBackground">
-                    <button className="userHelpButton" onClick={() => setHelpOpen(true)}>
-                        <IoHelpCircle className="userHelpPopupIcon"></IoHelpCircle>
-                        {helpOpen ? (
-                            <HelpPopup
-                                popupClose={() => setHelpOpen(false)}
-                                popupOpen={helpOpen}
-                                message={helpMsg}
-                                image={edit_icon}
-                            />
-                        ) : null}
-
-                    </button>
-                    <div className="searchUsers">
-                        <input
-                            // data-testid="userSearch"
-                            className="userSearchInput"
-                            type="text"
-                            id="userSearchInput"
-                            name="userSearch"
-                            // onChange={}
+    return (
+        <div className="display">
+            <div className="usersBackground">
+                <button className="userHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="userHelpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            message={helpMsg}
                         />
-                        <FaSearch className="userSearchIcon"/>
-                    </div>
-                    <div className="users">
-                        {loading ? (
-                            <p>Loading...</p> // Display a loading message while data is being fetched
-                        ) : (
-                            <ul className="userList">{userItems}</ul>
-                        )}
-                    </div>
-                    <CreateUser></CreateUser>
+                    ) : null}
+                </button>
+                <div className="searchUsers">
+                    <input
+                        // data-testid="userSearch"
+                        className="userSearchInput"
+                        type="text"
+                        id="userSearchInput"
+                        name="userSearch"
+                        // onChange={}
+                    />
+                    <FaSearch className="userSearchIcon"/>
+
                 </div>
                 <div className="users">
                     {loading ? (
@@ -197,7 +190,7 @@ export const Users = () => {
 
 
                     ) : (
-                    <ul className="userList">{userItems}</ul>
+                        <ul className="userList">{userItems}</ul>
                     )}
                 </div>
                 <CreateUser></CreateUser>

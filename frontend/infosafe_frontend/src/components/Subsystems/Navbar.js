@@ -15,19 +15,27 @@ import {CgDanger} from 'react-icons/cg';
 import {TbDevicesPc} from 'react-icons/tb';
 import {MdOutlineDashboardCustomize} from 'react-icons/md';
 import {useCurrentDataScope} from "../Charts/useCurrentDataScope";
+import {useCurrentTasks} from "../Charts/useCurrentTasks";
 
 const NavBar = () => {
     const [activeTab, setActive] = useState(0);
     let tabItems = [];
     const {roles} = useGetPerms();
     const {myDataScopeCount} = useCurrentDataScope();
+    const {taskCount} = useCurrentTasks();
     let notDSButHasDatascope = false;
     const TabNames = ['Home', 'Role Creation', 'Users', 'Data Scopes',  'Tasks', 'Devices', 'Risks' , 'Requests', 'Access Requests', 'Asset Requests', 'Support Requests', 'About', 'Help'];
     const TabIcons = [<FaHome className="icon" />, <RiUserSettingsFill className="icon" />, <IoPeopleSharp className="icon" />, <FaProjectDiagram className="icon" />,  <FaTasks  className="icon" />, <PiDevicesFill className="icon" />, <CgDanger className="icon" />,  <MdOutlineDashboardCustomize className="icon" />, <FaLock className="icon" />, <TbDevicesPc className="icon" />, <BiSupport className="icon" />, <IoInformationCircleOutline className="icon" />, <IoHelpCircleOutline className="helpIcon"></IoHelpCircleOutline> ]
+    let accessTasks = false;
     tabItems.push(0);
     if (!roles.includes("data_scope_edit") || !roles.includes("data_scope_create") || !roles.includes("data_scope_delete")){
         if(myDataScopeCount > 0){
             notDSButHasDatascope = true;
+        }
+    }
+    if(roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")){
+        if(taskCount > 0){
+            accessTasks = true;
         }
     }
     if (roles.includes("role_creation")) {//Role Creation
@@ -42,7 +50,7 @@ const NavBar = () => {
     if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
         tabItems.push(4);
     }
-    if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {//Devices
+    if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete") || accessTasks) {//Devices
         tabItems.push(5);
     }
     if (roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review")) {//Risks
@@ -58,22 +66,48 @@ const NavBar = () => {
     if (roles.includes("support_requests_viewAll") || roles.includes("support_requests_edit") || roles.includes("support_requests_delete") || roles.includes("request_support")) {//Support Requests
         tabItems.push(10);
     }
-        tabItems.push(11);
-        tabItems.push(12);
+    tabItems.push(11);
+    tabItems.push(12);
     const handleClick = (NavTabIndex) => {
         setActive(NavTabIndex);
     };
 
     const [menuVisible, setMenuVisible] = useState(false);
 
-    if (sessionStorage.getItem('accessToken') == null) {
-        window.location.href = "/";
-    }
+    useEffect(() => {
+        const payload = {token: sessionStorage.getItem('accessToken')};
+
+        fetch('http://localhost:8080/api/user/tokenValid', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken'),
+                'Content-Type': 'application/json', // Set content type
+            },
+            body: JSON.stringify(payload),
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .then(data => {
+                if (!data) {
+                    window.location.href = "/";
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    }, []);
+
+
     const [settings, showSettings] = useState(false);
     const [changePassOpen, setChangePassOpen] = useState(false);
     const [username, setUserName] = useState('');
-    const [width , setWidth] = useState(100);
-    const [left,setLeft] = useState(0);
+    const [width, setWidth] = useState(100);
+    const [left, setLeft] = useState(0);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/user/getUserName', {
@@ -88,21 +122,21 @@ const NavBar = () => {
             });
     }, []);
     const showDiv = () => {
-        if(menuVisible){
+        if (menuVisible) {
             displayMenu();
         }
         showSettings(!settings);
-        if (!settings){
+        if (!settings) {
             document.getElementById("userDisplay").style.right = "24%";
             document.getElementById("avatar").style.right = "22%";
-        }else{
-            document.getElementById("userDisplay").style.right= "4%";
+        } else {
+            document.getElementById("userDisplay").style.right = "4%";
             document.getElementById("avatar").style.right = "2%";
         }
     };
 
     const displayMenu = () => {
-        if(settings){
+        if (settings) {
             showDiv();
         }
         setMenuVisible(!menuVisible);
@@ -134,7 +168,7 @@ const NavBar = () => {
                     {displayTabs({viewTabs: tabItems})}
                 </div>
 
-                <div className='shift' style={{ width: `${width}%`,left: `${left}%`}}>
+                <div className='shift' style={{width: `${width}%`, left: `${left}%`}}>
                     <div className="toolbar" id="toolbar" style={{width: `${width}%`}}>
                         <div className="toolbarLeft">
                             <IoMenu className="menuIcon" id="menuIcon" onClick={displayMenu}/>
@@ -145,7 +179,8 @@ const NavBar = () => {
                             <IoPersonCircleSharp className="avatar" id="avatar" onClick={showDiv}/>
                             {settings &&
                                 <div className="settingsDiv">
-                                    <p className="changeLabel" onClick={() => setChangePassOpen(true)}>Change Password</p>
+                                    <p className="changeLabel" onClick={() => setChangePassOpen(true)}>Change
+                                        Password</p>
                                     <p className="logoutLabel" onClick={() => {
                                         sessionStorage.removeItem('accessToken');
                                         window.location.href = "/";

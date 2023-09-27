@@ -123,7 +123,8 @@ const EditDevice = ({ asset, popupClose, popupOpen }) => {
                         {values.availability  === 'No' && (
                             <div>
                                 <p className="editCurrentCustodianLabel">Current Assignee</p>
-                                <p>{asset.current_assignee.email}</p>
+                                <p className="editDeviceCurrentUser">{asset.current_assignee.email}</p>
+                                <p className="editChangeCustodianLabel">Change Assignee</p>
                                 {users && users.length > 0 ? (
                                     <Select
                                         placeholder={placeholder}

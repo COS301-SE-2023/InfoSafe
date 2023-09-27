@@ -121,7 +121,11 @@ export const SupportRequests = () => {
                 <div className="active_support_requests" id="active_support_requests" style={{ display: `${allDisplay}`}}>
                     <p className="listTypeHeader">All Support Requests</p>
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
                     ) : (
                     <ul className="activeRequestsList">{active_requests}</ul>
                         )}
@@ -141,7 +145,11 @@ export const SupportRequests = () => {
                 <div className="my_support_requests" id="my_support_requests" style={{ display: `${myDisplay}`}}>
                     <p className="listTypeHeader">My Support Requests</p>
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
                     ) : (
                     <ul className="myRequestsList">{my_requests}</ul>
                         )}

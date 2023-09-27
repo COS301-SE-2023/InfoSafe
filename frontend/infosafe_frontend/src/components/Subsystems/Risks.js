@@ -144,7 +144,11 @@ export const Risks = () => {
                 </div>
                 <div className="risks">
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
                     ) : (
                     <ul className="risksList">{risks}</ul>
                         )}

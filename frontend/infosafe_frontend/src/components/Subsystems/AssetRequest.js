@@ -96,7 +96,11 @@ export const AssetRequest = () => {
                 </div>
                 <div className="assetRequests">
                     {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
                     ) : (
                     <ul className="assetRequestsList">{assetRequests}</ul>
                         )}

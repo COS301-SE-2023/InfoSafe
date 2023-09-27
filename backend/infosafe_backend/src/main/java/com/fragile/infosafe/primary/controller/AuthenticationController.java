@@ -3,11 +3,16 @@ package com.fragile.infosafe.primary.controller;
 import com.fragile.infosafe.primary.auth.AuthenticationRequest;
 import com.fragile.infosafe.primary.auth.AuthenticationResponse;
 import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.config.JwtService;
+import com.fragile.infosafe.primary.model.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -17,9 +22,11 @@ import java.io.IOException;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 @CrossOrigin
+@Slf4j
 public class AuthenticationController {
 
     private final AuthenticationService service;
+    private final JwtService jwtService;
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
