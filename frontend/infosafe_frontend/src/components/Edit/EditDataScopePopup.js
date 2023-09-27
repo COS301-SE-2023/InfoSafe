@@ -118,25 +118,38 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-                                <p className="editTaskLabels">Current Roles</p>
+                                <p className="editDSUsers">Remove Users:</p>
+                                {/*{currentUsers && currentUsers.length > 0 ? (*/}
+                                {/*    <Select*/}
+                                {/*        options={currentUsers.map((email) => ({value: email, label: email}))}*/}
+                                {/*        value={currentUsers.map((email) => ({value: email, label: email}))}*/}
+                                {/*        placeholder={currentUsers[0]}*/}
+                                {/*        className="editTaskAssignees"*/}
+                                {/*        name="editTaskAssignees"*/}
+                                {/*        styles={customStyles}*/}
+                                {/*        isMulti*/}
+                                {/*    /> ) : (*/}
+                                {/*    <p>Loading...</p>*/}
+                                {/*)}*/}
+                                <p className="editDSRoleLabel">Current Roles</p>
                                 {dataScopeRoles && dataScopeRoles.length > 0 ? (
                                     <Select
                                         options={dataScopeRoles.map((data) => ({ value: data.role_description, label: data.role_type }))}
                                         placeholder={dataScopeRoles.label}
-                                        className="editTaskAssignees"
+                                        className="editDSRoles"
                                         name="editTaskAssignees"
                                         styles={customStyles}
                                         value={selectedDataScopeRole}
                                         onChange={handleDataScopeRoleChange}
                                     />
                                 ) : (
-                                    <p>Loading...</p>
+                                    <p className="editDSRolesLoading">Loading...</p>
                                 )}
-                                <p className="editTaskLabels">Current Role Description</p>
+                                <p className="editDSRoleLabel">Current Role Description</p>
                                 <textarea
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
-                                    className=""
+                                    className="editDSRoleDescription"
                                 />
                                 <p className="AddRoleNameLabel">Role Type</p>
                                 <input
