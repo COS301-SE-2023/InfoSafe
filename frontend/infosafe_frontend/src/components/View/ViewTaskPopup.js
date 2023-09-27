@@ -106,7 +106,7 @@ return (
                     <p className="viewTaskDisplayData">{task.data_scope_id.ds_name}</p>
                     <p className="viewTaskDisplayTitle">Task Description</p>
                     <textarea className="viewTaskTextArea" readOnly={true} value={task.task_description}/>
-                    <p className="editTaskLabels">Users:</p>
+                    <p className="editTaskLabels">Users</p>
                     {currentUsers && currentUsers.length > 0 ? (
                         <Select
                             options={currentUsers.map((email) => ({value: email, label: email}))}

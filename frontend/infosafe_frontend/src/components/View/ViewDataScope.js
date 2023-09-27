@@ -58,7 +58,22 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                             <p className="datascopeStatus">Status</p>
                             <p className="viewDataScopeStatus">{datascope.ds_status}</p>
                         </div>
-
+                        <div className="view_datascope_roles">
+                            <p className="viewDSRoles">Assigned Users</p>
+                            {datascope.users && datascope.users.length > 0 ? (
+                                <Select
+                                    options={datascope.users.map((data) => ({ value: data.first_name + ' ' + data.last_name, label: data.first_name + ' ' + data.last_name }))}
+                                    placeholder={dataScopeRoles.label}
+                                    className="editDSRoles"
+                                    name="editTaskAssignees"
+                                    styles={customStyles}
+                                    defaultValue={datascope.users[0].first_name + ' ' + datascope.users[0].last_name}
+                                    //onChange={handleDataScopeRoleChange}
+                                />
+                            ) : (
+                                <p className="editDSRolesLoading">Loading...</p>
+                            )}
+                        </div>
                         <div className="view_datascope_roles">
                             <p className="viewDSRoles">Data Scope Roles</p>
                             {dataScopeRoles && dataScopeRoles.length > 0 ? (
