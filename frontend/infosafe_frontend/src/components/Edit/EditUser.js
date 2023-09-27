@@ -114,6 +114,7 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
                                         name="edituseremail"
                                         defaultValue={user.email}
                                         onChange={e => setValues({...values, email: e.target.value})}
+                                        readOnly={true}
                                     />
                                 </div>
                                 <div className="roleEdit">
