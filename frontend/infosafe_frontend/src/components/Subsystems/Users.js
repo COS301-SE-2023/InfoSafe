@@ -14,7 +14,7 @@ import {HelpPopup} from "../HelpPopup";
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
-    const {showUser, loading} = useGetAllUser()
+    const {showUser, loading} = useGetAllUser();
     const {roles} = useGetPerms();
 
     const EditUserDiv = ({user}) => {
@@ -40,33 +40,28 @@ export const Users = () => {
         }
     };
 
-    const DeleteFunction = (email) => {
+    const DeleteFunction = async (email) => {
         const deleteUser = {email}
         try {
-            return fetch("http://localhost:8080/api/user/deleteUser", {
+            const response = await fetch("http://localhost:8080/api/user/deleteUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
                 },
                 body: JSON.stringify(deleteUser),
-            })
-                .then((res) => {
-                    if (!res.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return res.json();
-                })
-                .then((data) => {
-                    console.log("Delete operation successful", data);
-                    return data; // You can return data if needed
-                })
-                .catch((error) => {
-                    console.error("Error deleting user:", error);
-                    throw error;
-                });
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            else{
+                console.log("user deleted");
+            }
+            return response.json();
+
         } catch (error) {
-            console.error("Unexpected error:", error);
+            console.error("Error deleting user:", error);
             throw error;
         }
     };

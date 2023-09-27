@@ -15,11 +15,11 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
         role: {role_name: selectedRole}
     });
 
-    const handleRole = (selectedOptions) => {
-        console.log(selectedOptions)
-        setSelectedRole(selectedOptions);
-        console.log(selectedOptions)
-    };
+    // const handleRole = (selectedOptions) => {
+    //     console.log(selectedOptions)
+    //     setSelectedRole(selectedOptions);
+    //     console.log(selectedOptions)
+    // };
 
     useEffect(() => {
         console.log("this happened")
@@ -51,16 +51,23 @@ const EditUser = ({ user, popupClose, popupOpen }) => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/role/getRoleNames", {
-            method:"GET",
-            headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            },
-        }).then((res) => res.json())
-            .then((result) => {
-                setRoleNames(result);
+        async function fetchRoles() {
+            const response = await fetch("http://localhost:8080/api/role/getRoleNames", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                },
             });
-    }, [])
+            // }).then((res) => res.json())
+            //     .then((result) => {
+            //         setRoleNames(result);
+            //     });
+            const roles = await response.json();
+            setRoleNames(roles);
+        }
+        fetchRoles();
+    }, []);
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
