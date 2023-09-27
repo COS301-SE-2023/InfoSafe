@@ -10,9 +10,11 @@ import {useGetDS} from "../getData/getDs";
 import data from "bootstrap/js/src/dom/data";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 export const DataScopes = () => {
 
-    const {showDatascope, } = useGetDS()
+    const {showDatascope, } = useGetDS();
+    const {myDataScopes} = useSupportRequests();
     const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
 
@@ -101,9 +103,16 @@ export const DataScopes = () => {
     }
 
     const dataItems = [];
-    showDatascope.map((datascope) =>
-        dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
-    );
+    if(roles.includes("data_scope_create") || roles.includes("data_scope_edit") || roles.includes ("data_scope_delete")){
+        showDatascope.map((datascope) =>
+            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+        );
+    }else {
+        myDataScopes.map((datascope) =>
+            dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+        )
+    }
+
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";

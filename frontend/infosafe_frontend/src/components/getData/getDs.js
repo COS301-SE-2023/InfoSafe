@@ -14,6 +14,8 @@ export const  useGetDS = () => {
                 setShowDatascope(result);
             });
     }, []);
+
+
     return {
         showDatascope
     }

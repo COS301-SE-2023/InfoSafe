@@ -2,6 +2,8 @@ import Popup from 'reactjs-popup';
 import React, {useEffect, useState} from 'react';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
+import {customStyles} from "../CustomStyling";
+import '../../styling/EditUser.css'
 
 const EditUser = ({ user, popupClose, popupOpen }) => {
     const [selectedRole, setSelectedRole] = useState(user.role.role_name)
