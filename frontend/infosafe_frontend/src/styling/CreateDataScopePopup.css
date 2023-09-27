@@ -202,3 +202,15 @@
     position: relative;
     left: 15%;
 }
+.createDataScopeInputLabel{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    left: 15%;
+    width: 75%;
+    position: relative;
+    margin: 0;
+}
+.datascopeUserSelect{
+    left: 15%;
+}
