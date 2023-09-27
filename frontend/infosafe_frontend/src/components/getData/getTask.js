@@ -6,19 +6,24 @@ export const useGetTask = () => {
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/task/getTask', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setShowTask(result);
-                setLoading(false);
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/task/getTask', {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                },
             });
-    }, []);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const result = await response.json();
+            setShowTask(result);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     // useEffect(() => {
     //     async function getTasks() {
@@ -51,8 +56,13 @@ export const useGetTask = () => {
     //     return <div>Error: {error.message}</div>;
     // }
 
+    const fetchAllTasks = () => {
+        fetchData();
+    };
+
     return {
         showTask,
-        loading
+        loading,
+        fetchAllTasks
     }
 }
