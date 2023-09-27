@@ -75,7 +75,6 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
             });
     }, []);
 
-
     const HandleSubmit = async (e) => {
         e.preventDefault();
         let finalUsers = [...addUsers, ...selectedUsers];
@@ -95,8 +94,6 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
         })
         popupClose()
     }
-
-
 
     const handleSelect = (selectedOptions) => {
         const selectedEmails = selectedOptions.map((option) => option.label);
@@ -120,6 +117,14 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) => {
                                 defaultValue={task.task_name}
                                 onChange={e => setValues({...values, task_name: e.target.value})}
                             />
+                            <p className="viewTaskDisplayTitle">Data Scope</p>
+                            <textarea
+                                className="editTaskInputTextArea"
+                                defaultValue={task.data_scope_id.ds_name}
+                                // onChange={e => setValues({...values, dataScope_id: e.target.value})}
+                                readOnly={true}
+                            />
+                            {/*<p className="viewTaskDisplayData">{task.data_scope_id.ds_name}</p>*/}
                             <p className="editTaskLabel">Task Description</p>
                             <textarea
                                 className="editTaskDescriptionInput"
