@@ -121,7 +121,7 @@ export const DataScopes = () => {
             );
         }
     }
-    if (dataItems.length === 0)
+    if (dataItems.length === null)
     {
         dataItems[0] = "No Data Scopes added yet.";
     }

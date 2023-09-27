@@ -236,3 +236,16 @@
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
+
+.editDeviceError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    position: relative;
+    top: -3vh;
+    left: 1%;
+}
