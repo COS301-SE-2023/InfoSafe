@@ -1,10 +1,37 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/ViewDataScope.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import Select from "react-select";
+import {customStyles} from "../CustomStyling";
 /* eslint-disable react/prop-types */
 
 const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
+    const [dataScopeRoles, setDataScopeRoles] = useState([]);
+    const [description, setDescription] = useState('');
+    const [selectedDataScopeRole, setSelectedDataScopeRole] = useState(null);
+
+    const handleDataScopeRoleChange = (selectedOption) => {
+        setSelectedDataScopeRole(selectedOption);
+        if (selectedOption) {
+            setDescription(selectedOption.value);
+        } else {
+            setDescription('');
+        }
+    };
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setDataScopeRoles(result);
+            });
+    }, []);
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -33,19 +60,26 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                         </div>
 
                         <div className="view_datascope_roles">
-                            <p className="viewDSRoles">Available Roles</p>
-                            {/*{currentUsers && currentUsers.length > 0 ? (*/}
-                            {/*    <Select*/}
-                            {/*        options={currentUsers.map((email) => ({value: email, label: email}))}*/}
-                            {/*        value={currentUsers.map((email) => ({value: email, label: email}))}*/}
-                            {/*        placeholder={currentUsers[0]}*/}
-                            {/*        className="editTaskAssignees"*/}
-                            {/*        name="editTaskAssignees"*/}
-                            {/*        styles={customStyles}*/}
-                            {/*    /> ) : (*/}
-                            {/*    <p>Loading...</p>*/}
-                            {/*)}*/}
-                            <p className="viewDSRoleDescription">Description</p>
+                            <p className="viewDSRoles">Data Scope Roles</p>
+                            {dataScopeRoles && dataScopeRoles.length > 0 ? (
+                                <Select
+                                    options={dataScopeRoles.map((data) => ({ value: data.role_description, label: data.role_type }))}
+                                    placeholder={dataScopeRoles.label}
+                                    className="editDSRoles"
+                                    name="editTaskAssignees"
+                                    styles={customStyles}
+                                    value={selectedDataScopeRole}
+                                    onChange={handleDataScopeRoleChange}
+                                />
+                            ) : (
+                                <p className="editDSRolesLoading">Loading...</p>
+                            )}
+                            <p className="viewDSRoles">Role Description</p>
+                            <textarea
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                className="editDSRoleDescription"
+                            />
                             <p className="viewDSCustodianLabel">Data Custodian</p>
                             <p className="viewDSCustodian">{datascope.data_custodian.first_name} {datascope.data_custodian.last_name}</p>
                         </div>
