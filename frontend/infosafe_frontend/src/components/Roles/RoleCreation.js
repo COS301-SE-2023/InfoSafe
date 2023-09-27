@@ -1068,7 +1068,7 @@ const RoleCreation = () => {
                         </ul>
                     </div>
                     <div className="roleCreationButtonsDiv">
-                        <button className="changeViewBtn" onClick={setDiv} id="changeViewBtn">Create Role</button>
+                        <button className="changeViewBtn2" onClick={setDiv} id="changeViewBtn">Create Role</button>
                     </div>
                 </div>
             )}

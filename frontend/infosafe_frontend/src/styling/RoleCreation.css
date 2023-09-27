@@ -180,7 +180,26 @@ input:checked{
     top: 35%;
 
 }
+.changeViewBtn2 {
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    height: 30%;
+    position: relative;
+    top: 35%;
 
+}
 .roleInfo{
     display: flex;
     height: 10%;
