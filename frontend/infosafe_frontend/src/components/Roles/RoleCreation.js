@@ -5,7 +5,7 @@ import {HelpPopup} from "../HelpPopup";
 import role_icon from '../../images/create_role_icon.png';
 
 const RoleCreation = () => {
-    const subsystems = ['Users', 'Data Scopes', 'Access Requests', 'Compliance Matrix', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];
+    const subsystems = ['Users', 'Data Scopes', 'Access Requests', 'Tasks', 'Devices', 'Support Requests', 'Asset Requests', 'Risks', 'Requests'];
     const [checkboxState, setCheckboxState] = useState(subsystems.map(() => false));
     const [canCreate, setCanCreate] = useState(new Array(subsystems.length).fill(false));
     const [canEdit, setCanEdit] = useState(new Array(subsystems.length).fill(false));
@@ -160,10 +160,10 @@ const RoleCreation = () => {
 
 
         }
-        if (newCheckboxState[index] === false && subsystem === "Compliance Matrix")
+        if (newCheckboxState[index] === false && subsystem === "Tasks")
         {
 
-            let permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
+            let permissionsCheckbox = document.querySelector('input.tasksCreate');
             if (permissionsCheckbox.checked) {
                 handleCreate(3);
 
@@ -173,7 +173,7 @@ const RoleCreation = () => {
                 }
             }
 
-            permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
+            permissionsCheckbox = document.querySelector('input.tasksEdit');
             if (permissionsCheckbox.checked) {
                 handleEdit(3);
 
@@ -183,7 +183,7 @@ const RoleCreation = () => {
                 }
             }
 
-            permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
+            permissionsCheckbox = document.querySelector('input.tasksDelete');
             if (permissionsCheckbox.checked) {
                 handleDelete(3);
 
@@ -193,7 +193,7 @@ const RoleCreation = () => {
                 }
             }
 
-            permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
+            permissionsCheckbox = document.querySelector('input.tasksApprove');
             if (permissionsCheckbox.checked) {
                 handleApprove(3);
 
@@ -521,7 +521,7 @@ const RoleCreation = () => {
 
         }
 
-        permissionsCheckbox = document.querySelector('input.complianceMatrixCreate');
+        permissionsCheckbox = document.querySelector('input.tasksCreate');
         if (permissionsCheckbox.checked === true) {
             if (!permissionsList.includes("Create Tasks"))
             {
@@ -531,7 +531,7 @@ const RoleCreation = () => {
 
         }
 
-        permissionsCheckbox = document.querySelector('input.complianceMatrixEdit');
+        permissionsCheckbox = document.querySelector('input.tasksEdit');
         if (permissionsCheckbox.checked === true) {
             if (!permissionsList.includes("Edit Tasks"))
             {
@@ -541,7 +541,7 @@ const RoleCreation = () => {
 
         }
 
-        permissionsCheckbox = document.querySelector('input.complianceMatrixDelete');
+        permissionsCheckbox = document.querySelector('input.tasksDelete');
         if (permissionsCheckbox.checked === true) {
             if (!permissionsList.includes("Delete Tasks"))
             {
@@ -551,7 +551,7 @@ const RoleCreation = () => {
 
         }
 
-        permissionsCheckbox = document.querySelector('input.complianceMatrixApprove');
+        permissionsCheckbox = document.querySelector('input.tasksApprove');
         if (permissionsCheckbox.checked === true) {
             if (!permissionsList.includes("Approve Tasks"))
             {
@@ -852,7 +852,7 @@ const RoleCreation = () => {
                                                         </div>
                                                     </div>
                                                 );
-                                            }else if (subsystem === 'Compliance Matrix') {
+                                            }else if (subsystem === 'Tasks') {
                                                 return (
                                                     <div className="displayPermissionsDiv" >
                                                         <div className="displayCreateDiv">
