@@ -235,3 +235,18 @@
     cursor: pointer;
     padding: 2%;
 }
+#tabTitle{
+    animation: shake 1s forwards;
+    animation-delay: 0s;
+}
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    12.5% { transform: rotate(5deg); }
+    25% {transform: rotate(0deg);}
+    37.5% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+    62.5% { transform: rotate(5deg); }
+    75% {transform: rotate(0deg);}
+    87.5% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}

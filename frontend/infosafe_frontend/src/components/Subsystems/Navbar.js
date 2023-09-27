@@ -69,6 +69,7 @@ const NavBar = () => {
     tabItems.push(11);
     tabItems.push(12);
     const handleClick = (NavTabIndex) => {
+        document.getElementById('tabTitle').style.animation = "shake 1.5s forwards";
         setActive(NavTabIndex);
     };
 
@@ -172,7 +173,7 @@ const NavBar = () => {
                     <div className="toolbar" id="toolbar" style={{width: `${width}%`}}>
                         <div className="toolbarLeft">
                             <IoMenu className="menuIcon" id="menuIcon" onClick={displayMenu}/>
-                            <p className="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
+                            <p className="tabTitle" id="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
                         </div>
                         <div className="toolbarRight">
                             <p className="userDisplay" id="userDisplay">{username}</p>
