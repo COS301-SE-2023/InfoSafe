@@ -145,7 +145,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
                                     id="taskUserIn"
                                 />
                             ) : (
-                                <p>Loading...</p>
+                                <p className="createTaskLoadTitle">Loading...</p>
                             )}
                             <p className="createTaskInputLabels">Data Scope</p>
                             {myDatascopeData && myDatascopeData.length > 0 ? (
@@ -158,9 +158,9 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
                                     onChange={(selectedOption) => setDataScope(selectedOption)}
                                 />
                             ) : (
-                                <p className="loadTitle">Loading...</p>
+                                <p className="createTaskLoadTitle">Loading...</p>
                             )}
-                            <p className="createTaskInputLabels">Completion Date</p>
+                            <p className="createTaskDateLabel">Completion Date</p>
                             <input
                                 type="date"
                                 className="createTaskDateInput"
