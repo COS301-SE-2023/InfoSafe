@@ -11,6 +11,9 @@ import {useGetAllUser} from "../getData/getAllUser";
 import {ConfirmDelete} from "../ConfirmDelete";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import edit_icon from '../../images/edit_icon.png';
+import delete_icon from '../../images/delete_icon.png';
+import user_icon from '../../images/create_user_icon.png';
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
@@ -19,11 +22,12 @@ export const Users = () => {
 
     const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
-        if(roles.includes("user_edit")) {
+        if (roles.includes("user_edit")) {
             return (
                 <div>
                     <div className="usersEditButton">
-                        <RiEditBoxFill data-testid="editButton" onClick={() => setEditUserOpen(true)} className="usersEditIcon" />
+                        <RiEditBoxFill data-testid="editButton" onClick={() => setEditUserOpen(true)}
+                                       className="usersEditIcon"/>
                         {editUserOpen ? (
                             <EditUser
                                 popupClose={() => setEditUserOpen(false)}
@@ -54,8 +58,7 @@ export const Users = () => {
 
             if (!response.ok) {
                 throw new Error("Network response was not ok");
-            }
-            else{
+            } else {
                 console.log("user deleted");
             }
             return response.json();
@@ -67,13 +70,12 @@ export const Users = () => {
     };
 
 
-
     const DeleteUser = ({user}) => {
         const [deleteUserOpen, setDeleteUserOpen] = useState(false);
-        if(roles.includes("user_delete")) {
+        if (roles.includes("user_delete")) {
             return (
                 <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={()=> setDeleteUserOpen(true)}/>
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDeleteUserOpen(true)}/>
                     {deleteUserOpen ? (
                         <ConfirmDelete
                             popupClose={() => setDeleteUserOpen(false)}
@@ -90,7 +92,7 @@ export const Users = () => {
 
     const ViewUserItem = ({user}) => {
         const [viewUserOpen, setViewUserOpen] = useState(false);
-        if(roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
+        if (roles.includes("user_create") || roles.includes("user_delete") || roles.includes(("user_edit"))) {
             return (
                 <li key={user.user_id}>
                     <p onClick={() => setViewUserOpen(!viewUserOpen)}>
@@ -113,7 +115,7 @@ export const Users = () => {
     };
 
     const CreateUser = () => {
-        if(roles.includes("user_create")) {
+        if (roles.includes("user_create")) {
             return (
                 <div className="CreateUserButtonDiv">
                     <button
@@ -144,42 +146,47 @@ export const Users = () => {
     }
 
     const [helpOpen,setHelpOpen] = useState(false);
-    const helpMsg = "";
+    let helpMsg = "To view a users information, click on their field in the table." +
+    "To edit a user, click the edit ( " + <img src={edit_icon} alt='edit icon'/> + " ) button" +
+    "To delete a user you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
+    "To add a user click the Create New User ( " + <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
-    return (
-        <div className="display">
-            <div className="usersBackground">
-                <button  className="userHelpButton" onClick={() => setHelpOpen(true)}>
-                    <IoHelpCircle className="userHelpPopupIcon"></IoHelpCircle>
-                    {helpOpen ? (
-                        <HelpPopup
-                            popupClose={() => setHelpOpen(false)}
-                            popupOpen={helpOpen}
-                            message={helpMsg}
+
+        return (
+            <div className="display">
+                <div className="usersBackground">
+                    <button className="userHelpButton" onClick={() => setHelpOpen(true)}>
+                        <IoHelpCircle className="userHelpPopupIcon"></IoHelpCircle>
+                        {helpOpen ? (
+                            <HelpPopup
+                                popupClose={() => setHelpOpen(false)}
+                                popupOpen={helpOpen}
+                                message={helpMsg}
+                            />
+                        ) : null}
+
+                    </button>
+                    <div className="searchUsers">
+                        <input
+                            // data-testid="userSearch"
+                            className="userSearchInput"
+                            type="text"
+                            id="userSearchInput"
+                            name="userSearch"
+                            // onChange={}
                         />
-                    ) : null}
-                </button>
-                <div className="searchUsers">
-                    <input
-                        // data-testid="userSearch"
-                        className="userSearchInput"
-                        type="text"
-                        id="userSearchInput"
-                        name="userSearch"
-                        // onChange={}
-                    />
-                    <FaSearch className="userSearchIcon" />
+                        <FaSearch className="userSearchIcon"/>
+                    </div>
+                    <div className="users">
+                        {loading ? (
+                            <p>Loading...</p> // Display a loading message while data is being fetched
+                        ) : (
+                            <ul className="userList">{userItems}</ul>
+                        )}
+                    </div>
+                    <CreateUser></CreateUser>
                 </div>
-                <div className="users">
-                    {loading ? (
-                        <p>Loading...</p> // Display a loading message while data is being fetched
-                    ) : (
-                    <ul className="userList">{userItems}</ul>
-                    )}
-                </div>
-                <CreateUser></CreateUser>
-            </div>
 
-        </div>
-    );
-}
+            </div>
+        );
+    }
