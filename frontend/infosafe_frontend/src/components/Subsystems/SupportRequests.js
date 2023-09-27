@@ -101,12 +101,20 @@ export const SupportRequests = () => {
     showMySupport.map((mySupport) =>
         my_requests.push(<ViewMySupport mySupport={mySupport} key={mySupport.support_id}/>)
     );
+    if (my_requests.length === 0)
+    {
+        my_requests[0] = "No Support Requests added yet.";
+    }
 
     const AllSupport = () => {
         const active_requests = [];
         showAllSupport.map((allSupport) =>
             active_requests.push(<ViewAllSupport allSupport={allSupport} key={allSupport.support_id}/>)
         );
+        if (active_requests.length === 0)
+        {
+            active_requests[0] = "No Support Requests added yet.";
+        }
 
         if(roles.includes("support_requests_viewAll")){
             return (

@@ -138,6 +138,10 @@ export const Users = () => {
 
     const userItems = [];
     showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
+    if (userItems.length === 0)
+    {
+        userItems[0] = "No Users added yet.";
+    }
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";
