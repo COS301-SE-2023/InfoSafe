@@ -13,6 +13,6 @@ import java.util.List;
 public interface NotificationsRepository extends JpaRepository<Notifications, String> {
     void deleteByCreatedAtBefore(LocalDateTime dateTime);
 
-    @Query("SELECT n FROM Notifications n WHERE n.user.user_id = :userId")
+    @Query("SELECT n FROM Notifications n JOIN FETCH n.user u WHERE u.user_id = :userId")
     List<Notifications> findByUserUserId(@Param("userId") int userId);
 }
