@@ -16,8 +16,8 @@ export const useGetAr = () => {
                 throw new Error("Network response was not ok");
             }
             const result = await response.json();
-                setShowAccess(result);
-                setLoading(false);
+            setShowAccess(result);
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching data:", error);
         }

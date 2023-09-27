@@ -3,7 +3,7 @@ import '../../styling/ReviewAssetRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose}) => {
+const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}) => {
 
     const handleReview = (reviewValue) => {
         popupClose();
@@ -18,7 +18,8 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose}) => {
             body: JSON.stringify(payload),
         })
             .then(() => {
-                console.log('Updated User');
+                console.log('Approved');
+                onAssApproval()
                 //popupClose();
             });
     };

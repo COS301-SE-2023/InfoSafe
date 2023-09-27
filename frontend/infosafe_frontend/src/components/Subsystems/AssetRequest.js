@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ViewAssetRequest from "../View/ViewAssetRequest";
 import ReviewAssetRequest from "../Reviews/ReviewAssetRequest";
 import "../../styling/AssetRequests.css";
@@ -9,7 +9,12 @@ import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
 export const AssetRequest = () => {
     const {roles} = useGetPerms();
-    const {showAssetRequests, loading} = useGetAssAR();
+    const {showAssetRequests, loading, fetchAllAssets} = useGetAssAR();
+
+    useEffect(() => {
+        fetchAllAssets();
+    }, []);
+
     const AssetRequestApproval = ({ assetRequest }) =>{
         const [assetRequestOpen,setAssetRequestOpen] = useState(false);
         if(roles.includes("asset_request_review")) {
@@ -26,6 +31,7 @@ export const AssetRequest = () => {
                             popupClose={() => setAssetRequestOpen(false)}
                             popupOpen={assetRequestOpen}
                             assetRequest={assetRequest}
+                            onAssApproval={fetchAllAssets}
                         />
                     ) : null}
                 </div>
