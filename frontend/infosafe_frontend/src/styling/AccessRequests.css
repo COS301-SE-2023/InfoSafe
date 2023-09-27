@@ -46,14 +46,11 @@
 .accessRequestsSearchInput:focus{
     border: 2px solid #9E0000;
 }
-.accessRequestsSearchIcon
-{
+.accessRequestsSearchIcon {
     position: absolute;
-    height: 100%;
-    right: 0;
-    top: 0.5vh;
-    margin-right: 1%;
-    padding-left: 2px;
+    right: 10px;
+    top: 54%;
+    transform: translateY(-50%);
     color: #9E0000;
 }
 .accessRequests {
