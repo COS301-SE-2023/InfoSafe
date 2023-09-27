@@ -6,7 +6,9 @@ export const useGetAllUser = () => {
     //const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
 
     useEffect(() => {
-        const fetchData = async () => {
+        async function fetchData() {
+
+            //async function fetchData() {
             try {
                 const response = await fetch("http://localhost:8080/api/user/getAll", {
                     method: "GET",
@@ -27,10 +29,11 @@ export const useGetAllUser = () => {
                 console.error("Error fetching data:", error);
                 setLoading(false); // Set loading to false in case of an error
             }
-        };
+        }
 
         fetchData();
     }, []);
+
 
     return {
         showUser,

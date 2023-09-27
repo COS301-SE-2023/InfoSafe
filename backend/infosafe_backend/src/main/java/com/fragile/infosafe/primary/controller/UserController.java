@@ -13,6 +13,7 @@ import com.fragile.infosafe.primary.requests.RegisterRequest;
 import com.fragile.infosafe.primary.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -27,7 +28,9 @@ import java.util.*;
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
+
     private final AuthenticationService authService;
     private final EmailService emailService;
     private final DeleteService deleteService;

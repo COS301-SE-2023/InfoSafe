@@ -27,7 +27,7 @@ public class Task {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "data_scope_id")
-    private DataScope dataScope;
+    private DataScope data_scope_id;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
