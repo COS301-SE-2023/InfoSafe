@@ -87,7 +87,13 @@ public class AssetService {
         return assetRepository.count();
     }
 
-    public List<String> getUnassignedUserEmails(String currentAssignee, int assetId) {
-        return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(currentAssignee).get(), assetId);
+    public List<String> getUnassignedUserEmails(int assetId) {
+        Asset asset = assetRepository.findByAssetId(assetId).get();
+        if(asset.getCurrent_assignee() == null){
+            return userRepository.getAllEmails();
+        }else{
+            return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(asset.getCurrent_assignee().getEmail()).get(), assetId);
+        }
+
     }
 }

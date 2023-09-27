@@ -12,9 +12,9 @@ const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    const newPreviousAssignee = asset.current_assignee.email;
+    const [userChanged, setUserChanged] = useState(false);
+    const newPreviousAssignee = "No Assignee";
     let request = {};
-    let userChanged = false;
     let placeholder = "Add Assignee";
     const[values, setValues]=useState({
         asset_id: '',
@@ -40,22 +40,21 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     }, [asset]);
 
     const handleNewAssignee = (selectedOption) => {
-        console.log(selectedOption)
-        setSelectedUser(selectedOption);
         request = {
-            current_assignee: selectedOption,
+            current_assignee: selectedOption.label,
             previous_assignee: newPreviousAssignee
         }
-        userChanged = true;
+        console.log(request)
+        console.log("doing this")
+        setUserChanged(true);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         if(userChanged){
-            request = {...values, ...request};
+            request = ({...values, ...request});
         }else {
-            request = {...values};
+            request = ({...values});
         }
-        console.log(request)
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -71,7 +70,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/findUserNotAssigned/" + asset.asset_id + "/" + asset.current_assignee.email, {
+        fetch("http://localhost:8080/api/user/findUserNotAssigned/" + asset.asset_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -121,7 +120,28 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
                                 name="availability"
                                 onChange={(selectedOption) => setValues({...values, status: selectedOption.value})}
                             />
-                        {values.availability  === 'No' && (
+                        {values.availability  === 'No' && asset.current_assignee === null && (
+                            <div>
+                                <p className="editCurrentCustodianLabel">Current Assignee</p>
+                                <p className="editDeviceCurrentUser">No Current Assignee</p>
+                                <p className="editChangeCustodianLabel">Change Assignee</p>
+                                {users && users.length > 0 ? (
+                                    <Select
+                                        placeholder={placeholder}
+                                        options={users.map((email) => ({ value: email, label: email }))}
+                                        value={selectedUser || null}
+                                        styles={customStyles}
+                                        className="userSelect"
+                                        name="datascopeDropdown"
+                                        onChange={handleNewAssignee}
+                                        isSearchable={true}
+                                    />
+                                ) : (
+                                    <p>Loading...</p>
+                                )}
+                            </div>
+                        )}
+                        {values.availability  === 'No' && asset.current_assignee !== null && (
                             <div>
                                 <p className="editCurrentCustodianLabel">Current Assignee</p>
                                 <p className="editDeviceCurrentUser">{asset.current_assignee.email}</p>
