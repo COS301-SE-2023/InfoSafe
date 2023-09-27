@@ -108,7 +108,7 @@ export const CreateRisk = ({ popupClose, popupOpen, onRiskAdded }) => {
                                     onChange={(selectedOption) => setDataScope(selectedOption)}
                                 />
                             ) : (
-                                <p className="loadTitle">Loading...</p>
+                                <p className="createRiskLoadTitle">Loading...</p>
                             )}
                             <p className="createRiskError" id="createRiskError">Please ensure all fields are completed.</p>
                             <button className="createRiskSubmitButton" type="submit" onClick={handleClick}>
