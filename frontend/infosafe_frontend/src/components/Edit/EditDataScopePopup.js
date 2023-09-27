@@ -132,7 +132,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
                                 ) : (
                                     <p>Loading...</p>
                                 )}
-                                <p className="editTaskLabels">Description</p>
+                                <p className="editTaskLabels">Current Role Description</p>
                                 <textarea
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}

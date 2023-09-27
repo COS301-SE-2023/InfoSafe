@@ -10,12 +10,13 @@ import {useGetDS} from "../getData/getDs";
 import data from "bootstrap/js/src/dom/data";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 export const DataScopes = () => {
 
-    const {showDatascope, } = useGetDS()
+    const {showDatascope, myDatascopes } = useGetDS();
     const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
-
+    let viewDatascope = false;
     const EditDataScope = ({datascope}) => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         if(roles.includes("data_scope_edit")) {
@@ -53,7 +54,7 @@ export const DataScopes = () => {
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
         console.log()
-        if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete")) {
+        if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete") || viewDatascope) {
             return (
                 <li key={datascope.data_scope_id}>
                     <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
@@ -101,9 +102,22 @@ export const DataScopes = () => {
     }
 
     const dataItems = [];
-    showDatascope.map((datascope) =>
-        dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
-    );
+    if (roles.includes("data_scope_create") || roles.includes("data_scope_edit") || roles.includes("data_scope_delete")) {
+        if (showDatascope && showDatascope.length > 0) {
+            showDatascope.map((datascope) =>
+                dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+            );
+        }
+    } else {
+        if (myDatascopes && myDatascopes.length > 0) {
+            viewDatascope = true;
+            console.log(viewDatascope)
+            myDatascopes.map((datascope) =>
+                dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
+            );
+        }
+    }
+
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";

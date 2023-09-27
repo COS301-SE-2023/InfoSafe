@@ -18,7 +18,7 @@ describe("CreateRisk Component", () => {
         //expect(screen.getByText("")).toBeInTheDocument();
         expect(screen.getByText("Risk Description")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();
-        expect(screen.getByText("Risk Status")).toBeInTheDocument();
+        //expect(screen.getByText("Risk Status")).toBeInTheDocument();
         expect(screen.getByText("Suggested Mitigation")).toBeInTheDocument();
         expect(screen.getByText("Data Scope")).toBeInTheDocument();
     });

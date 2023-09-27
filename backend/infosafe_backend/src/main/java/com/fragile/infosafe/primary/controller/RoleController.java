@@ -23,17 +23,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoleController {
     private final RoleService service;
-    private List<String> userPermissionList = new ArrayList<>();
 
-    @Cacheable(value = "userPermissionList")
     @GetMapping("/getPermissions")
     public List<String> getUserPermissions() {
-        if(!userPermissionList.isEmpty()){
-            return userPermissionList;
-        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            userPermissionList = new ArrayList<>();
+            List<String> userPermissionList  = new ArrayList<>();
             long userPermissions = authenticatedUser.getRole().getPermissions();
             for (Permission permission : Permission.values()) {
                 if ((userPermissions & permission.getMask()) != 0) {

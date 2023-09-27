@@ -48,7 +48,7 @@ public class TaskService {
             if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
                 DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
                 log.info("This is the datascope " + dataScope);
-                task.setDataScope(dataScope);
+                task.setData_scope_id(dataScope);
             } else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Datascope");
             }
@@ -91,7 +91,7 @@ public class TaskService {
         task.setTask_status(taskRequest.getTask_status());
         task.setDaysUntilDue(taskRequest.getTask_id());
         DataScope dataScope = dataScopeRepository.findByDataScopeId(taskRequest.getDataScope_id()).get();
-        task.setDataScope(dataScope);
+        task.setData_scope_id(dataScope);
         Set<User> oldUsers = task.getUsers();
         Set<User> users = new HashSet<>();
         for (String userEmail : taskRequest.getUsers()) {
@@ -145,7 +145,7 @@ public class TaskService {
 
         Set<DataScope> uniqueDataScopes = new HashSet<>();
         for (Task task : tasks) {
-            uniqueDataScopes.add(task.getDataScope());
+            uniqueDataScopes.add(task.getData_scope_id());
         }
         return uniqueDataScopes.size();
     }
