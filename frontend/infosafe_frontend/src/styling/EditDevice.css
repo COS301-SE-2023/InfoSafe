@@ -245,7 +245,7 @@
     font-size: 22px;
     text-align: center;
     position: relative;
-    top: -3vh;
+    top: 0vh;
     left: 1%;
 }
 .editDevicesLoading{

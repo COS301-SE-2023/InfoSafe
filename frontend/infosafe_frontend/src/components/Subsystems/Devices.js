@@ -9,6 +9,8 @@ import {useGetPerms} from "../getData/getPerms";
 import {useGetAsset} from "../getData/getAsset";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
+import delete_icon from "../../images/delete_icon.png";
+import user_icon from "../../images/create_user_icon.png";
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const {showAsset, loading, fetchAllAssets} = useGetAsset();
@@ -96,8 +98,11 @@ export const Devices = () => {
     }
 
     const [helpOpen, setHelpOpen] = useState(false);
-    const helpMsg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
+    const helpMsg = "To view an assets information, click on its field in the table.  " +
+        "To edit an asset, click the edit ( " + <RiEditBoxFill/> + " ) button.  " +
+        "To delete an asset you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button.  " +
+        "To add an asset click the Add Device ( " +
+        <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
 
     return(
         <div className="display">

@@ -20,27 +20,21 @@ describe("Dashboard Component", () => {
 
         // Ensure that the component renders with user data
         expect(screen.getByText("Current Data Scopes")).toBeInTheDocument();
-        expect(screen.getByText("2")).toBeInTheDocument();
-        expect(screen.getByDisplayValue("John")).toBeInTheDocument();
-        expect(screen.getByText("Surname")).toBeInTheDocument();
-        expect(screen.getByDisplayValue("Doe")).toBeInTheDocument();
-        expect(screen.getByText("Email")).toBeInTheDocument();
-        expect(screen.getByDisplayValue("john.doe@example.com")).toBeInTheDocument();
-        expect(screen.getByText("System Role")).toBeInTheDocument();
+        //expect(screen.getByText("2")).toBeInTheDocument();
+        expect(screen.getByText("Current Tasks")).toBeInTheDocument();
+        expect(screen.getByText("Current Devices")).toBeInTheDocument();
+        expect(screen.getByText("Current Requests")).toBeInTheDocument();
+        expect(screen.getByText("System Analytics")).toBeInTheDocument();
+        expect(screen.getByText("System Total")).toBeInTheDocument();
+        expect(screen.getByText("My Total")).toBeInTheDocument();
+        expect(screen.getByText("System Analytics")).toBeInTheDocument();
+        expect(screen.getByText("System Total")).toBeInTheDocument();
+        expect(screen.getByText("My Total")).toBeInTheDocument();
+        expect(screen.getByText("Tasks")).toBeInTheDocument();
+        expect(screen.getByText("Tasks Left")).toBeInTheDocument();
+        expect(screen.getByText("Tasks Completed")).toBeInTheDocument();
+        expect(screen.getByText("Approaching Deadlines")).toBeInTheDocument();
+        expect(screen.getByText("Devices in Use")).toBeInTheDocument();
+        expect(screen.getByText("Notifications")).toBeInTheDocument();
     });
-
-    // it("calls popupClose when back button is clicked", () => {
-    //     const popupCloseMock = jest.fn();
-    //
-    //     const { getByTestId } = render(
-    //         <EditUser user={user} popupOpen={true} popupClose={popupCloseMock} />
-    //     );
-    //
-    //     // eslint-disable-next-line testing-library/prefer-screen-queries
-    //     const backButton = getByTestId("back-button"); // Select the button by test ID
-    //     fireEvent.click(backButton);
-    //
-    //     // Ensure that popupClose was called when the back button is clicked
-    //     expect(popupCloseMock).toHaveBeenCalled();
-    // });
 });
