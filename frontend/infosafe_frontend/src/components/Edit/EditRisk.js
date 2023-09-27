@@ -120,7 +120,7 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
                                         onChange={(selectedOption) => setValues({...values, dataScope_id: selectedOption.value})}
                                     />
                                 ) : (
-                                    <p className="loadTitle">Loading...</p>
+                                    <p className="editRiskLoadTitle">Loading...</p>
                                 )}
                                 <div>
                                     <button className="editRiskSubmitButton" type="submit">
