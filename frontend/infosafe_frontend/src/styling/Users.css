@@ -174,3 +174,45 @@
     position: relative;
     margin: 0 auto;
 }
+.loadingScreen{
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.loadingDiv{
+    position: relative;
+    top: 45%;
+    margin: 0 auto;
+    height: 8%;
+    width: 30%;
+    border: 4px solid #9E0000;
+    border-radius: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
+}
+.loadingDiv .loading{
+    position: absolute;
+    background-color: #bbbbbb;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    animation: loading 4s infinite linear;
+}
+@keyframes loading{
+    0%{
+        width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
