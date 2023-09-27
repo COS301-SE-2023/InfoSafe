@@ -19,9 +19,11 @@ export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const {showUser, loading, fetchAllUsers} = useGetAllUser();
     const {roles} = useGetPerms();
+
     useEffect(() => {
         fetchAllUsers();
     }, []);
+
     const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
         if (roles.includes("user_edit")) {

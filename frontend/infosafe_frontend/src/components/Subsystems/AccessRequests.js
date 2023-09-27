@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ViewAccessRequest from "../View/ViewAccessRequest";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import EditAccessRequest from "../Edit/EditAccessRequest";
@@ -13,7 +13,11 @@ import {HelpPopup} from "../HelpPopup";
 
 export const AccessRequests = () => {
     const {roles} = useGetPerms();
-    const {showAccess, loading} = useGetAr();
+    const {showAccess, loading, fetchAllAr} = useGetAr();
+
+    useEffect(() => {
+        fetchAllAr();
+    }, []);
 
     const EditAccessRequestDiv = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
@@ -29,6 +33,7 @@ export const AccessRequests = () => {
                             popupClose={() => setEditAccessRequestOpen(false)}
                             popupOpen={editAccessRequestOpen}
                             access={access}
+                            onArEdited={fetchAllAr}
                         />
                     ) : null}
                 </div>
@@ -89,6 +94,7 @@ export const AccessRequests = () => {
                             popupClose={() => setApproveAccessRequestOpen(false)}
                             popupOpen={approveAccessRequestOpen}
                             access={access}
+                            onArApprove={fetchAllAr}
                         />
                     ) : null}
                 </div>
