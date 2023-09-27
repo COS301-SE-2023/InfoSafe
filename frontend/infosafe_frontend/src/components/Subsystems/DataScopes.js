@@ -117,6 +117,10 @@ export const DataScopes = () => {
             );
         }
     }
+    if (dataItems.length === 0)
+    {
+        dataItems[0] = "No Data Scopes added yet.";
+    }
 
 
     const [helpOpen,setHelpOpen] = useState(false);

@@ -102,6 +102,11 @@ export const AccessRequests = () => {
     showAccess.map((access) =>
         accessRequests.push(<ViewAccessRequests access={access} key={access.request_id}/>)
     );
+    if (accessRequests.length === 0)
+    {
+        accessRequests[0] = "No Access Requests added yet.";
+    }
+
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";
 

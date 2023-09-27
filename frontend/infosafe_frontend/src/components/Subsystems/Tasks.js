@@ -112,6 +112,10 @@ export const Tasks = () => {
     showTask.map((task) =>
         complianceItems.push(<ViewTaskItems task={task} key={task.task_id}/>)
     );
+    if (complianceItems.length === 0)
+    {
+        complianceItems[0] = "No Tasks added yet.";
+    }
 
     const [helpOpen,setHelpOpen] = useState(false);
     const helpMsg = "";
