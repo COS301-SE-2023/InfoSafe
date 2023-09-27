@@ -137,7 +137,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                                         id="selectedUserRole"
                                     />
                                 ) : (
-                                    <p className="loadTitle">Loading...</p>
+                                    <p className="createUserLoadTitle">Loading...</p>
                                 )}
                                 <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
                                 <button className="createUserFinish" data-testid="createuser_finish"  onClick={useHandleClick}>
