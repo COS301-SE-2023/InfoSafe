@@ -13,7 +13,7 @@ import {HelpPopup} from "../HelpPopup";
 
 export const AccessRequests = () => {
     const {roles} = useGetPerms();
-    const {showAccess} = useGetAr();
+    const {showAccess, loading} = useGetAr();
 
     const EditAccessRequestDiv = ({access}) => {
         const [editAccessRequestOpen, setEditAccessRequestOpen] = useState(false);
@@ -130,7 +130,11 @@ export const AccessRequests = () => {
                     <FaSearch className="accessRequestsSearchIcon" />
                 </div>
                 <div className="accessRequests">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="accessrequestsList">{accessRequests}</ul>
+                    )}
                 </div>
             </div>
         </div>

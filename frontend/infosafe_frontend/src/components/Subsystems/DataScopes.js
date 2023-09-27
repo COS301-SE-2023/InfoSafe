@@ -13,7 +13,7 @@ import {HelpPopup} from "../HelpPopup";
 import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 export const DataScopes = () => {
 
-    const {showDatascope, myDatascopes } = useGetDS();
+    const {showDatascope, myDatascopes, loading } = useGetDS();
     const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     let viewDatascope = false;
@@ -147,7 +147,11 @@ export const DataScopes = () => {
                     <FaSearch className="dataScopesSearchIcon" />
                 </div>
                 <div className="datascopes">
+                    {loading ? (
+                        <p>Loading...</p> // Display a loading message while data is being fetched
+                    ) : (
                     <ul className="datascopesList">{dataItems}</ul>
+                    )}
                 </div>
                 <CreateDataScope></CreateDataScope>
             </div>

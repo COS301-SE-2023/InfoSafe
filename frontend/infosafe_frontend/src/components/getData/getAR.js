@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 
 export const useGetAr = () => {
     const [showAccess, setShowAccess] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/accessrequest/getAr', {
@@ -13,10 +14,12 @@ export const useGetAr = () => {
             .then((res) => res.json())
             .then((result) => {
                 setShowAccess(result);
+                setLoading(false);
             });
     }, []);
 
     return {
-        showAccess
+        showAccess,
+        loading
     };
 };
