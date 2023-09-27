@@ -86,4 +86,11 @@ public class AssetRequestService {
         return ResponseEntity.badRequest().build();
     }
 
+    public Long getTotalAssetRequests() {
+        return assetRequestRepository.count();
+    }
+
+    public Long getMyTotalAssetRequests(User user) {
+        return assetRequestRepository.countAssetRequestsByUser(user);
+    }
 }

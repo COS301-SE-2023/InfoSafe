@@ -89,4 +89,12 @@ public class AccessRequestService {
         String body = "Your request to access the Datascope: " + ds_name + "was " + status;
         emailService.sendEmail(email, subject, body);
     }
+
+    public Long getTotalAccessRequests() {
+        return accessRequestRepository.count();
+    }
+
+    public Long getMyTotalAccessRequests(User user) {
+        return accessRequestRepository.countAccessRequestsByUser(user);
+    }
 }

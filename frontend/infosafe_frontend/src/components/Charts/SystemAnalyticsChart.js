@@ -47,15 +47,36 @@ const SystemAnalyticsChart = () => {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
+                await fetch('http://localhost:8080/api/supportrequest/getTotal', {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + accessToken,
+                    },
+                }),
+                await fetch('http://localhost:8080/api/supportrequest/getMyTotal', {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + accessToken,
+                    },
+                }),
+                await fetch('http://localhost:8080/api/assetrequest/getTotal', {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + accessToken,
+                    },
+                }),
+                await fetch('http://localhost:8080/api/assetrequest/getMyTotal', {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + accessToken,
+                    },
+                }),
             ];
 
             try {
-                const responses = await Promise.all(fetchPromises);
-                const data = await Promise.all(responses.map((res) => res.json()));
-
                 // Once all data is fetched, set it in state
-                const [dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks] = data;
-                setChartData({dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks});
+                const [dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal] = data;
+                setChartData({dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal});
                 setDataLoaded(true);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -67,7 +88,7 @@ const SystemAnalyticsChart = () => {
 
     useEffect(() => {
         if (dataLoaded && chartData) {
-            const {dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks} = chartData;
+            const {dataScopeCount, myDataScopeCount, assetCount, totalAssets, myTotalTasks, totalTasks, suppTotal, mySuppTotal, assetTotal, myAssetTotal} = chartData;
 
             const chartContext = chartReference.current.getContext("2d");
             new Chart(chartContext, {
@@ -77,21 +98,21 @@ const SystemAnalyticsChart = () => {
                         'Data Scopes',
                         'Tasks',
                         'Devices',
-                        'Asset Requests',
                         'Support Requests',
+                        'Asset Requests'
                     ],
                     datasets: [
                         {
                             label: 'System Total',
                             backgroundColor: '#49D4D0',
                             barThickness: 20,
-                            data: [dataScopeCount, totalTasks, totalAssets],
+                            data: [dataScopeCount, totalTasks, totalAssets, suppTotal, assetTotal],
                         },
                         {
                             label: 'My Total',
                             backgroundColor: '#9E0000',
                             barThickness: 20,
-                            data: [myDataScopeCount, myTotalTasks, assetCount],
+                            data: [myDataScopeCount, myTotalTasks, assetCount, mySuppTotal, myAssetTotal],
                             pointStyle: 'circle',
                         },
                     ],

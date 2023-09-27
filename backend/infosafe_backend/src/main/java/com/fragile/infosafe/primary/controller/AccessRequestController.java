@@ -44,4 +44,18 @@ public class AccessRequestController {
         return service.reviewAccessRequest(reviewRequest);
     }
 
+    @GetMapping("/getTotal")
+    public ResponseEntity<Long> getTotalAccessRequests() {
+        return ResponseEntity.ok(service.getTotalAccessRequests());
+    }
+
+    @GetMapping("/getMyTotal")
+    public ResponseEntity<Long> getMyTotalAccessRequests() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return ResponseEntity.ok(service.getMyTotalAccessRequests(authenticatedUser));
+        }
+        return ResponseEntity.ok(0L);
+    }
+
 }
