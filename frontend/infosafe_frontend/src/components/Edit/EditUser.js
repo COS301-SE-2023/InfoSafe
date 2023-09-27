@@ -129,7 +129,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
                                             onChange={roleNames => setValues({...values, role: {role_name: roleNames.value}})}
                                         />
                                     ) : (
-                                        <p className="loadTitle">Loading...</p>
+                                        <p className="editUserRolesLoading">Loading...</p>
                                     )}
                                 </div>
                                 <button className="editUserFinishButton" data-testid="finish">
