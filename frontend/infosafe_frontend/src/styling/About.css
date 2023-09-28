@@ -16,9 +16,6 @@
     text-align: center;
     overflow-y: scroll;
 }
-.aboutInfo::-webkit-scrollbar{
-    display: none;
-}
 .aboutTitle{
     font-size: 40px;
 }
