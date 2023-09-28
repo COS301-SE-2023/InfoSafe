@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 public class AssetService {
     private final AssetRepository assetRepository;
     private final UserRepository userRepository;
+    private final EmailService emailService;
+    private final NotificationsService notificationsService;
     public List<Asset> getAllAssets() {return assetRepository.findAll();}
 
     public Asset updateAsset(AssetRequest asset) {
@@ -59,6 +61,8 @@ public class AssetService {
             User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
             if (user != null) {
                 asset.setCurrent_assignee(user);
+                emailUser(user.getEmail(), asset.getAsset_name());
+                notificationsService.makeNotification("Assigned Asset " + asset.getAsset_name(), user);
             } else {
                 log.error("User with email " + request.getCurrent_assignee() + " not found");
             }
@@ -94,6 +98,11 @@ public class AssetService {
         }else{
             return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(asset.getCurrent_assignee().getEmail()).get(), assetId);
         }
+    }
 
+    private void emailUser(String email, String asset_name){
+        String subject = "New Asset";
+        String body = "You were assigned the Asset:\n" + asset_name;
+        emailService.sendEmail(email, subject, body);
     }
 }

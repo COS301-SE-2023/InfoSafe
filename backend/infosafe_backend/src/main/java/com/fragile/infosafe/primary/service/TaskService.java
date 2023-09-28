@@ -32,11 +32,13 @@ public class TaskService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final DeleteService deleteService;
+    private final NotificationsService notificationsService;
     public ResponseEntity<String> createTask(TaskRequest request) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String dueDate = dateFormat.format(request.getDue_date());
             String dateCreated = dateFormat.format(request.getDate_created());
+            log.info(String.valueOf(request));
             Task task = Task.builder()
                     .task_name(request.getTask_name())
                     .task_description(request.getTask_description())
@@ -58,9 +60,11 @@ public class TaskService {
                 for (String userEmail : request.getUsers_email()) {
                     User user = userRepository.findByEmail(userEmail).orElse(null);
                     if (user != null) {
+                        log.info("this is a user " + user);
                         users.add(user);
                         dataScope.getUsers().add(user);
                         sendEmail(userEmail, dataScope.getDs_name(), request);
+                        //notificationsService.makeNotification("Assigned Task: " + task.getTask_name(), user);
                     } else {
                         log.error("User with email " + userEmail + " not found");
                     }
@@ -94,7 +98,7 @@ public class TaskService {
         task.setData_scope_id(dataScope);
         Set<User> oldUsers = task.getUsers();
         Set<User> users = new HashSet<>();
-        for (String userEmail : taskRequest.getUsers()) {
+        for (String userEmail : taskRequest.getUsers_email()) {
             User user = userRepository.findByEmail(userEmail).orElse(null);
             if (user != null) {
                 users.add(user);

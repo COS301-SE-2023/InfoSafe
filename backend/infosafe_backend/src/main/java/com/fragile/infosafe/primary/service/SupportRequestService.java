@@ -24,6 +24,8 @@ public class SupportRequestService {
     private final AssetRepository assetRepository;
     private final TaskRepository taskRepository;
     private final DeleteService deleteService;
+    private final EmailService emailService;
+    private final NotificationsService notificationsService;
     public ResponseEntity<String> makeSR(SupportRequestRequest request, User authenticatedUser){
         var supportrequest = SupportRequest.builder()
                 .support_id(request.getSupport_id())
@@ -107,9 +109,13 @@ public class SupportRequestService {
                     if (dataScope.isPresent() && userOptional.isPresent()) {
                         dataScope.get().getUsers().add(userOptional.get());
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
+                        notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Resolved", userOptional.get());
                         return ResponseEntity.ok("User given support to datascope");
                     } else {
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
+                        notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Unsuccessful", userOptional.get());
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find datascope or user");
                     }
                 }
@@ -118,9 +124,13 @@ public class SupportRequestService {
                     if (asset.isPresent() && userOptional.isPresent()) {
                         asset.get().setCurrent_assignee(userOptional.get());
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
+                        notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Resolved", userOptional.get());
                         return ResponseEntity.ok("User given support to Asset");
                     } else {
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
+                        notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Unsuccessful", userOptional.get());
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find asset or user");
                     }
                 }
@@ -129,9 +139,13 @@ public class SupportRequestService {
                     if (task.isPresent() && userOptional.isPresent()) {
                         task.get().getUsers().add(userOptional.get());
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
+                        notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Resolved", userOptional.get());
                         return ResponseEntity.ok("User given support to Task");
                     } else {
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
+                        notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Unsuccessful", userOptional.get());
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find task or user");
                     }
                 }
@@ -149,5 +163,11 @@ public class SupportRequestService {
 
     public Long getMyTotalSupportRequests(User user) {
         return supportRequestRepository.countSupportRequestByUser(user);
+    }
+
+    private void emailUser(String email, int id, String description, String status){
+        String subject = "Support Request Response";
+        String body = "Your request\nRequest ID: " + id + "\nRequest Description:\n" + description + "\nHas been:" + status;
+        emailService.sendEmail(email, subject, body);
     }
 }

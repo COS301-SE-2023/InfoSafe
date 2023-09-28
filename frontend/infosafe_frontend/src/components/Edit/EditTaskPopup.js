@@ -85,7 +85,6 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
             ...values,
             users: finalUsers
         };
-
         fetch("http://localhost:8080/api/task/update/" + task.task_id, {
             method: "POST",
             headers: {

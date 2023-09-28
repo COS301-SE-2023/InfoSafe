@@ -42,10 +42,10 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
             task_status,
             due_date,
             date_created: currentDate,
-            dataScope_id: datascope.value,
+            data_scope_id: datascope.value,
             users_email: selectedUsers.map((user) => user.label),
         };
-        //console.log(task)
+        console.log(task)
         fetch("http://localhost:8080/api/task/addTask", {
             method: "POST",
             headers: {

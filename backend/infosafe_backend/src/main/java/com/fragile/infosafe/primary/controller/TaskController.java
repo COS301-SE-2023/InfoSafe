@@ -13,17 +13,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Slf4j
 @RestController
 @RequestMapping("api/task")
 @RequiredArgsConstructor
+@Slf4j
 public class TaskController {
     private final TaskService service;
 
     @PostMapping("/addTask")
-    public ResponseEntity addTask(@RequestBody TaskRequest Task) {
+    public ResponseEntity addTask(@RequestBody TaskRequest task) {
         log.info("Adding a task");
-        return ResponseEntity.ok(service.createTask(Task));
+        log.info(String.valueOf(task));
+        return ResponseEntity.ok(service.createTask(task));
     }
 
     @GetMapping("/getTask")

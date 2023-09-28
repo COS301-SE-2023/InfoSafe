@@ -24,5 +24,4 @@ public class TaskRequest {
     private Date date_created;
     private int data_scope_id;
     private Set<String> users_email = new HashSet<>();
-    private String[] users;
 }

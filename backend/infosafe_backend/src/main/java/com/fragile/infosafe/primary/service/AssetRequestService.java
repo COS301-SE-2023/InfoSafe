@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import software.amazon.awssdk.services.identitystore.model.Email;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -29,6 +30,8 @@ public class AssetRequestService {
     private final UserRepository userRepository;
     private final AssetRepository assetRepository;
     private final DeleteService deleteService;
+    private final EmailService emailService;
+    private final NotificationsService notificationsService;
 
     public ResponseEntity<String> makeAR(AssetRequestRequest request, User authenticatedUser) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -76,11 +79,15 @@ public class AssetRequestService {
                 asset.setAvailability("No");
                 asset.setCurrent_assignee(user);
                 assetRepository.save(asset);
+                emailUser(reviewRequest.getUser_email(), asset.getAsset_name(), "Approved");
+                notificationsService.makeNotification("Received Asset " + asset.getAsset_name(), user);
                 deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                 return ResponseEntity.ok("given to user");
             }
         } else {
             deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
+            emailUser(reviewRequest.getUser_email(), "", "Denied");
+            notificationsService.makeNotification("Asset Request Denied", userRepository.findByEmail(reviewRequest.getUser_email()).get());
             return ResponseEntity.ok("rejected access");
         }
         return ResponseEntity.badRequest().build();
@@ -92,5 +99,11 @@ public class AssetRequestService {
 
     public Long getMyTotalAssetRequests(User user) {
         return assetRequestRepository.countAssetRequestsByUser(user);
+    }
+
+    private void emailUser(String email, String asset_name, String status){
+        String subject = "Asset Request response";
+        String body = "Your request to get an asset \n" + asset_name + "\nwas " + status;
+        emailService.sendEmail(email, subject, body);
     }
 }

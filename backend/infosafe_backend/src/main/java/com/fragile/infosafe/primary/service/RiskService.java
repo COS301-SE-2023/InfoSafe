@@ -2,6 +2,7 @@ package com.fragile.infosafe.primary.service;
 
 import com.fragile.infosafe.primary.model.DataScope;
 import com.fragile.infosafe.primary.model.Risk;
+import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.DataScopeRepository;
 import com.fragile.infosafe.primary.repository.RiskRepository;
 import com.fragile.infosafe.primary.requests.RiskRequest;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import software.amazon.awssdk.services.identitystore.model.Email;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ public class RiskService {
     private final RiskRepository riskRepository;
     private final DataScopeRepository dataScopeRepository;
     private final DeleteService deleteService;
+    private final EmailService emailService;
+    private final NotificationsService notificationsService;
 
     public List<Risk> getAllRisks() {
         return riskRepository.findAll();
@@ -37,9 +41,12 @@ public class RiskService {
 
         if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
             DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
-            if (dataScope != null) {
-                risk.setDataScope(dataScope);
+            risk.setDataScope(dataScope);
+            for(User user : dataScope.getUsers()){
+                emailUser(user.getEmail(), risk.getRisk_name(), dataScope.getDs_name());
+                notificationsService.makeNotification("New risk: " + risk.getRisk_name(), user);
             }
+
         }
         riskRepository.save(risk);
         return ResponseEntity.status(HttpStatus.OK).body("added");
@@ -59,5 +66,11 @@ public class RiskService {
 
     public ResponseEntity<Boolean> reviewRisk(int risk_id) {
         return ResponseEntity.ok(deleteService.deleteRiskAndSaveToSecondary(risk_id));
+    }
+
+    private void emailUser(String email, String risk_name, String ds_name){
+        String subject = "New Risk Alert";
+        String body = "A new risk named:\n" + risk_name + "\nHas been found in connection to Datascope:\n" + ds_name;
+        emailService.sendEmail(email, subject, body);
     }
 }

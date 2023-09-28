@@ -31,7 +31,6 @@ public class AccessRequestService {
     private final DeleteService deleteService;
 
     private final EmailService emailService;
-
     private final NotificationsService notificationsService;
     public ResponseEntity<String> makeAR(AccessRequestRequest request, User authenticatedUser) {
         AccessRequest accessRequest = AccessRequest.builder()

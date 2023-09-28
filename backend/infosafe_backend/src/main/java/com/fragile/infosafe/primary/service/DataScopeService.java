@@ -21,6 +21,8 @@ import java.util.Set;
 public class DataScopeService {
     private final DataScopeRepository dataScopeRepository;
     private final UserRepository userRepository;
+    private final EmailService emailService;
+    private final NotificationsService notificationsService;
 
     public ResponseEntity<String> makeDs(DataScopeRequest request, User authenticatedUser){
         Set<User> dc = new HashSet<>();
@@ -36,7 +38,8 @@ public class DataScopeService {
         if(!request.getUser_email().isEmpty()){
             for(String email : request.getUser_email()){
                 datascope.getUsers().add(userRepository.findByEmail(email).get());
-                // add email
+                emailUser(email, datascope.getDs_name());
+                notificationsService.makeNotification("Assign to Datascope: " + datascope.getDs_name(), userRepository.findByEmail(email).get());
             }
         }
         dataScopeRepository.save(datascope);
@@ -65,5 +68,11 @@ public class DataScopeService {
 
     public long countDataScopesForUser(User user){
         return dataScopeRepository.countDataScopesByUsersContains(user);
+    }
+
+    private void emailUser(String email, String ds_name){
+        String subject = "Assigned to Datascope";
+        String body = "You were assigned to the Datascope:\n" + ds_name;
+        emailService.sendEmail(email, subject, body);
     }
 }
