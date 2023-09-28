@@ -43,4 +43,18 @@ public class AssetRequestController {
     public ResponseEntity<String> reviewAssetRequest (@RequestBody ReviewRequest reviewRequest) {
         return service.reviewAssetRequest(reviewRequest);
     }
+
+    @GetMapping("/getTotal")
+    public ResponseEntity<Long> getTotalAssetRequests() {
+        return ResponseEntity.ok(service.getTotalAssetRequests());
+    }
+
+    @GetMapping("/getMyTotal")
+    public ResponseEntity<Long> getMyTotalAssetRequests() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            return ResponseEntity.ok(service.getMyTotalAssetRequests(authenticatedUser));
+        }
+        return ResponseEntity.ok(0L);
+    }
 }

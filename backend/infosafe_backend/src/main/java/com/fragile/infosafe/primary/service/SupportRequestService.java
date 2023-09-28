@@ -142,4 +142,12 @@ public class SupportRequestService {
         }
         return ResponseEntity.badRequest().build();
     }
+
+    public Long getTotalSupportRequests() {
+        return supportRequestRepository.count();
+    }
+
+    public Long getMyTotalSupportRequests(User user) {
+        return supportRequestRepository.countSupportRequestByUser(user);
+    }
 }

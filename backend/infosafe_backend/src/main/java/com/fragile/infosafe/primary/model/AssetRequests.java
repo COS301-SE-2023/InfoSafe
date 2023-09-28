@@ -17,7 +17,7 @@ public class AssetRequests {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int asset_request_id;
     private String reason;
-    private Date desired_date;
+    private String desired_date;
     private String request_status;
     @ManyToOne
     @JoinColumn(name = "user_id")
