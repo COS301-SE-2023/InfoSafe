@@ -2405,7 +2405,7 @@ const RoleCreation = () =&gt; {
         const role = <span class="cstat-no" title="statement not covered" >{role_name, permissions};</span>
 &nbsp;
         // add check to make sure role doesn't exist
-<span class="cstat-no" title="statement not covered" >        fetch(`https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/checkName?rolename=${role_name}`,{</span>
+<span class="cstat-no" title="statement not covered" >        fetch(`http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/checkName?rolename=${role_name}`,{</span>
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -2418,7 +2418,7 @@ const RoleCreation = () =&gt; {
 <span class="cstat-no" title="statement not covered" >                            console.log("role name already exists");</span>
                         } else {
                             //console.log(role);
-<span class="cstat-no" title="statement not covered" >                            fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/addRole", {</span>
+<span class="cstat-no" title="statement not covered" >                            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/addRole", {</span>
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
@@ -2438,7 +2438,7 @@ const RoleCreation = () =&gt; {
     };
 &nbsp;
     useEffect(() =&gt; {
-        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
             method:"GET",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

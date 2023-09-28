@@ -509,7 +509,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     });
 &nbsp;
     // useEffect(() =&gt; {
-    //     fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUsersNotInTask/" + task.task_id, {
+    //     fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUsersNotInTask/" + task.task_id, {
     //         method: "GET",
     //         headers: {
     //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -538,7 +538,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         //console.log(datascope);
         //console.log(values);
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'PUT',
             headers: {
                 "Content-Type": 'application/json',
@@ -553,7 +553,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     };
 &nbsp;
     useEffect(() =&gt; {
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -569,7 +569,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
         const newRoleData = <span class="cstat-no" title="statement not covered" >{ datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/addDataScopeRole', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/addDataScopeRole', {</span>
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

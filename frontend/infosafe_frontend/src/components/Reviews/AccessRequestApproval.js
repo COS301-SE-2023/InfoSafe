@@ -7,7 +7,7 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) =
     const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
     const handleReview = (reviewValue) => {
         const payload = {review: reviewValue, request_id: access.request_id, dataScope_id: access.dataScope_id, user_email: access.user_email}
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/reviewAccess', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/reviewAccess', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

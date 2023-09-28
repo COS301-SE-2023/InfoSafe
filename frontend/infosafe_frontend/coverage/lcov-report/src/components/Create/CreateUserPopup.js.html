@@ -399,7 +399,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) =&gt; {
 <span class="cstat-no" title="statement not covered" >            return;</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        fetch(`https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/checkEmail?email=${email}`, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch(`http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/checkEmail?email=${email}`, {</span>
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -412,7 +412,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) =&gt; {
 <span class="cstat-no" title="statement not covered" >                    console.log("User already exists");</span>
                 } else {
                     //console.log(user);
-<span class="cstat-no" title="statement not covered" >                    fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/add", {</span>
+<span class="cstat-no" title="statement not covered" >                    fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/add", {</span>
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -441,7 +441,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) =&gt; {
     useEffect(() =&gt; {
         const fetchData = async () =&gt; {
             try {
-                const response = await fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/randPass/generate", {
+                const response = await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/randPass/generate", {
                     method: "GET",
                     headers: {"Content-Type":"application/json",
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -463,7 +463,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) =&gt; {
     }, []);
 &nbsp;
     useEffect(() =&gt; {
-            fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
+            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
                 method:"GET",
                 headers:{"Content-Type":"application/json",
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

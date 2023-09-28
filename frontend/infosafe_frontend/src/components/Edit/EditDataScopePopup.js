@@ -24,7 +24,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     });
 
     // useEffect(() => {
-    //     fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUsersNotInTask/" + task.task_id, {
+    //     fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUsersNotInTask/" + task.task_id, {
     //         method: "GET",
     //         headers: {
     //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -53,7 +53,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         //console.log(datascope);
         //console.log(values);
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'PUT',
             headers: {
                 "Content-Type": 'application/json',
@@ -68,7 +68,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     };
 
     useEffect(() => {
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -84,7 +84,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
 
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/addDataScopeRole', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/addDataScopeRole', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
