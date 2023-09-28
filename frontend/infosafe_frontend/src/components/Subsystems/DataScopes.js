@@ -92,7 +92,6 @@ export const DataScopes = () => {
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-        console.log()
         if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete") || viewDatascope) {
             return (
                 <li key={datascope.data_scope_id}>

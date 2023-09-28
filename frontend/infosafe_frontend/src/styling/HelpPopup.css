@@ -74,26 +74,33 @@
     vertical-align: middle;
     height: 80%;
     position: relative;
+    align-items: center;
     display: flex;
-}
-.helpMessage{
-    height: 80%;
-    font-family: 'Roboto', sans-serif;
-    color: #000000;
-    font-size: 18px;
-    width: 80%;
-    border: none;
-    margin: 0 2vw 0 2vw;
-    text-align: center;
-    position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
-    top: 2vh;
 }
-.helpMessage::-webkit-scrollbar{
+.helpContent::-webkit-scrollbar{
     display: none;
 }
+/*.helpMessage{*/
+/*    height: 80%;*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    color: #000000;*/
+/*    font-size: 18px;*/
+/*    width: 80%;*/
+/*    border: none;*/
+/*    margin: 0 2vw 0 2vw;*/
+/*    text-align: center;*/
+/*    position: relative;*/
+/*    overflow-x: hidden;*/
+/*    overflow-y: scroll;*/
+/*    scrollbar-width: none;*/
+/*    top: 2vh;*/
+/*}*/
+/*.helpMessage::-webkit-scrollbar{*/
+/*    display: none;*/
+/*}*/
 .helpTitle{
     position: relative;
     height: 10%;
@@ -103,4 +110,12 @@
     font-size: 3em;
     color: #9E0000;
     margin: 0 0 0 1.5vw;
+}
+.helpImage{
+    width: 80%;
+    height: 100%;
+    position: relative;
+    top: -4vh;
+    left: 7%;
+
 }
