@@ -6,14 +6,15 @@
     position: relative;
     margin: 0 auto;
 }
-.helpButton{
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-.helpPopupIcon {
-    font-size: 2em;
-    color: #9E0000;
+.helpInfo{
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    left: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow-y: scroll;
 }
 .helpTitle{
     font-size: 40px;
