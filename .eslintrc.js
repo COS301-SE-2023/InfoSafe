@@ -30,7 +30,6 @@ module.exports = {
                 "react/jsx-uses-vars": "error",
                 "react/prop-types": "off",
                 "react/react-in-jsx-scope": "error",
-                "react/jsx-curly-brace-presence": ["error", "never"],
             },
         },
 
