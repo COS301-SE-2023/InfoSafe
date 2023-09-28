@@ -32,7 +32,7 @@ module.exports = {
                 "react/prop-types": "off",
                 "react/react-in-jsx-scope": "error",
                 "react/jsx-curly-brace-presence": ["error", "never"],
-                "jsx-quotes": ["error", "prefer-single"],
+                "jsx-quotes": ["error", "prefer-double"],
             },
         },
 
