@@ -20,7 +20,7 @@ export const useSupportRequests = () => {
             });
     }, []);
 
-    console.log(myDataScopes)
+    //console.log(myDataScopes)
     return (
         myDataScopes)
 }

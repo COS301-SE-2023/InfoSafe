@@ -26,14 +26,14 @@ const useRequestMaker = () => {
 
     const handleClick = (e, selectedRequest) => {
         e.preventDefault();
-        console.log(selectedDevice)
+        //console.log(selectedDevice)
         let support = {};
         switch(support_type){
             case 'DataScope Support':
                 support = {user_email , support_type, dataScope_id , support_description, support_status: "Open"}
                 break;
             case 'Asset Support':
-                console.log(asset_id)
+                //console.log(asset_id)
                 support = {user_email , support_type, asset_id, support_description, support_status: "Open"}
                 break;
             case 'Task Support':
@@ -65,7 +65,7 @@ const useRequestMaker = () => {
                 console.log("this happened")
                 return;
         }
-        console.log(requestBody);
+        //console.log(requestBody);
         fetch(apiUrl, {
             method: "POST",
             headers: {

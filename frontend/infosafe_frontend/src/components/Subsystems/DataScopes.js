@@ -151,7 +151,7 @@ export const DataScopes = () => {
     } else {
         if (myDatascopes && myDatascopes.length > 0) {
             viewDatascope = true;
-            console.log(viewDatascope)
+            //console.log(viewDatascope)
             myDatascopes.map((datascope) =>
                 dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
             );

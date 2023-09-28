@@ -45,7 +45,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
             data_scope_id: datascope.value,
             users_email: selectedUsers.map((user) => user.label),
         };
-        console.log(task)
+        //console.log(task)
         fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/addTask", {
             method: "POST",
             headers: {

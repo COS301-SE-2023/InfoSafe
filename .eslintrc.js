@@ -14,7 +14,6 @@ module.exports = {
     ],
     plugins: ["react"],
     rules: {
-        quotes: ["error", "double"],
     },
     ignorePatterns: ["**/*.java", "**/*.cy.js"],
     overrides: [
@@ -32,7 +31,6 @@ module.exports = {
                 "react/prop-types": "off",
                 "react/react-in-jsx-scope": "error",
                 "react/jsx-curly-brace-presence": ["error", "never"],
-                "jsx-quotes": ["error", "prefer-double"],
             },
         },
 

@@ -28,7 +28,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
             .then((data) => {
                 if (data.email) {
                     setUserEmail(data.email);
-                    console.log(data.email);
+                    //console.log(data.email);
                 } else {
                     console.error("Email not found in response");
                 }
