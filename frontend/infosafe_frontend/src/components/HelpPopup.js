@@ -14,9 +14,9 @@ export const HelpPopup = ({message, popupOpen, popupClose, image}) => {
                         </button>
                         <p className="pageTitle">Help</p>
                         <div className="helpContent">
-                            <p  className="helpTitle"><IoInformationCircleOutline></IoInformationCircleOutline></p>
+                            <p  className="helpTitle"></p>
                             <p className="helpMessage">{message}</p>
-                            <img src={image} alt={"Help Image"}/>
+                            <img src={image} alt={"Help Image"} className="helpImage"/>
                         </div>
                     </div>
                 </div>
