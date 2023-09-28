@@ -23,6 +23,7 @@
     width: 60%;
     height: 90%;
     padding:0;
+    cursor: pointer;
 }
 .icon{
     font-size: 22px;
@@ -46,6 +47,7 @@
     position: relative;
     top: 8%;
     overflow-x: hidden;
+    cursor: pointer;
 }
 .shift{
     position: relative;
@@ -92,6 +94,7 @@
     /*margin-top: 1vh;*/
     margin: 0 auto;
     height: 5vh;
+    cursor: pointer;
 }
 .tabs li:not(.active) {
     /*border-bottom: none;*/
@@ -170,7 +173,6 @@
     align-items: center;
     position: relative;
     left: 8%;
-
 }
 .toolbarRight{
     display: flex;
