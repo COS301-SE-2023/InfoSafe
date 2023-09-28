@@ -24,6 +24,7 @@ public class DataScope {
     @JoinColumn(name = "user_id")
     private User data_custodian;
     private String ds_status;
+
     @ManyToMany
     @JoinTable(
             name = "data_scope_users",

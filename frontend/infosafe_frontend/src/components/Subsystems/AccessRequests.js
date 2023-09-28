@@ -59,7 +59,7 @@ export const AccessRequests = () => {
                         ) : null}
                     </p>
                     <ApproveAccessRequest access={access}></ApproveAccessRequest>
-                    <EditAccessRequestDiv access={access}></EditAccessRequestDiv>
+                    {/*<EditAccessRequestDiv access={access}></EditAccessRequestDiv>*/}
                 </li>
             );
         } else {
@@ -119,7 +119,7 @@ export const AccessRequests = () => {
                     ) : null}
                 </button>
                 <div className="searchAccessRequests">
-                    <input
+                    {/*<input
                         // data-testid="userSearch"
                         className="accessRequestsSearchInput"
                         type="text"
@@ -127,7 +127,7 @@ export const AccessRequests = () => {
                         name="accessRequestsSearch"
                         // onChange={}
                     />
-                    <FaSearch className="accessRequestsSearchIcon" />
+                    <FaSearch className="accessRequestsSearchIcon" />*/}
                 </div>
                 <div className="accessRequests">
                     {loading ? (

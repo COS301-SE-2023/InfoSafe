@@ -17,10 +17,29 @@ export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
     const {showUser, loading, fetchAllUsers} = useGetAllUser();
     const {roles} = useGetPerms();
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filteredUsers, setFilteredUsers] = useState(showUser);
 
     useEffect(() => {
         fetchAllUsers();
     }, []);
+
+    const handleSearchInputChange = (event) => {
+        const query = event.target.value;
+        setSearchQuery(query);
+
+        const filtered = query
+            ? showUser.filter((user) =>
+                user.first_name.toLowerCase().includes(query.toLowerCase()) ||
+                user.last_name.toLowerCase().includes(query.toLowerCase())
+            )
+            : showUser; // Use showUser when query is empty
+        setFilteredUsers(filtered);
+    };
+
+    useEffect(() => {
+        setFilteredUsers(showUser);
+    }, [showUser]);
 
     const EditUserDiv = ({user}) => {
         const [editUserOpen, setEditUserOpen] = useState(false);
@@ -50,7 +69,7 @@ export const Users = () => {
     const DeleteFunction = async (email) => {
         const deleteUser = {email}
         try {
-            const response = await fetch("http://infosafe.live:8080/api/user/deleteUser", {
+            const response = await fetch("http://localhost:8080/api/user/deleteUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -142,11 +161,9 @@ export const Users = () => {
         }
     };
 
-    const userItems = [];
-    showUser.map((user) => userItems.push(<ViewUserItem user={user} key={user.user_id}/>));
-    if (userItems.length === 0) {
-        userItems[0] = "No Users added yet.";
-    }
+    const userItems = filteredUsers.length > 0
+        ? filteredUsers.map((user) => <ViewUserItem user={user} key={user.user_id} />)
+        : ["No Users found."];
 
     const [helpOpen, setHelpOpen] = useState(false);
 
@@ -167,12 +184,12 @@ export const Users = () => {
                 </button>
                 <div className="searchUsers">
                     <input
-                        // data-testid="userSearch"
                         className="userSearchInput"
                         type="text"
                         id="userSearchInput"
                         name="userSearch"
-                        // onChange={}
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
                     />
                     <FaSearch className="userSearchIcon"/>
 
@@ -187,7 +204,7 @@ export const Users = () => {
 
 
                     ) : (
-                        <ul className="userList">{userItems}</ul>
+                        <ul className="userList">{filteredUsers.length > 0 ? userItems : <li>No Users found.</li>}</ul>
                     )}
                 </div>
                 <CreateUser></CreateUser>

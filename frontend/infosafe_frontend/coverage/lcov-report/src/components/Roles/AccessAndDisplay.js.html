@@ -471,7 +471,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     const [roles, setRoles] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/datascope/getDs", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/datascope/getDs", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -484,7 +484,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/asset/getAsset", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/asset/getAsset", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -498,7 +498,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/user/getAll", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/user/getAll", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -511,7 +511,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/accessrequest/getAr", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/accessrequest/getAr", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -537,7 +537,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/risk/getRisk", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/risk/getRisk", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -550,7 +550,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/task/getTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/task/getTask", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -563,7 +563,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/supportrequest/getSr", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/supportrequest/getSr", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -576,7 +576,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/user/getId", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/user/getId", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -586,7 +586,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
             .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt; {
                 const id = <span class="cstat-no" title="statement not covered" >result;</span> // Store the id in a local variable
                 // Use the id in the second fetch request
-<span class="cstat-no" title="statement not covered" >                fetch("http://infosafe.live:8080/api/supportrequest/getSrById/" + id, {</span>
+<span class="cstat-no" title="statement not covered" >                fetch("http://localhost:8080/api/supportrequest/getSrById/" + id, {</span>
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -600,7 +600,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/assetrequest/getAr", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/assetrequest/getAr", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -613,7 +613,7 @@ const AccessAndDisplay = <span class="cstat-no" title="statement not covered" ><
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/role/getPermissions", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/role/getPermissions", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")

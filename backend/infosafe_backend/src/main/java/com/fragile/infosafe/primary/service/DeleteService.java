@@ -22,6 +22,7 @@ public class DeleteService {
     private final AssetRequestRepository assetRequestRepository;
     private final SupportRequestRepository supportRequestRepository;
     private final RiskRepository riskRepository;
+    private final DataScopeRoleRepository dataScopeRoleRepository;
 
     private final DeletedUserRepository deletedUserRepository;
     private final DeletedDataScopeRepository deletedDataScopeRepository;
@@ -56,7 +57,7 @@ public class DeleteService {
             de.setDs_description(entityToDelete.getDs_description());
             de.setDs_status(entityToDelete.getDs_status());
             de.setDate_captured(entityToDelete.getDate_captured());
-            //de.setData_custodian(entityToDelete.());
+            dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
             dataScopeRepository.delete(entityToDelete);
         }
@@ -146,7 +147,6 @@ public class DeleteService {
             de.setDesired_date(entityToDelete.getDesired_date());
             deletedAssetRequestRepository.save(de);
             assetRequestRepository.delete(entityToDelete);
-
         }
     }
 

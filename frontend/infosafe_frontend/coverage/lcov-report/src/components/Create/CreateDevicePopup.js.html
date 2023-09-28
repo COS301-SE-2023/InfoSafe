@@ -429,7 +429,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) =&gt;
         //console.log(selectedUsers);
         // console.log(asset);
 <span class="cstat-no" title="statement not covered" >        popupClose()</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/asset/addAsset", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/asset/addAsset", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -442,7 +442,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) =&gt;
         })
     }
     useEffect(() =&gt; {
-        fetch("http://infosafe.live:8080/api/user/getAll", {
+        fetch("http://localhost:8080/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

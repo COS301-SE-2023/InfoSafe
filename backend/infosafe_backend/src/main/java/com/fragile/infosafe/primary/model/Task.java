@@ -25,11 +25,11 @@ public class Task {
     private String due_date;
     private String date_created;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "data_scope_id")
     private DataScope data_scope_id;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(
             name = "task_users",
             joinColumns = @JoinColumn(name = "task_id"),

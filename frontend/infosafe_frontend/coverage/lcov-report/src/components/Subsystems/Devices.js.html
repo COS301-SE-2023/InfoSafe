@@ -480,7 +480,7 @@ export const Devices = <span class="cstat-no" title="statement not covered" ><sp
 &nbsp;
     const DeleteFunction = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (asset_id) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        try {</span>
-            const response = <span class="cstat-no" title="statement not covered" >await fetch("http://infosafe.live:8080/api/asset/deleteAsset/"+asset_id, {</span>
+            const response = <span class="cstat-no" title="statement not covered" >await fetch("http://localhost:8080/api/asset/deleteAsset/"+asset_id, {</span>
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

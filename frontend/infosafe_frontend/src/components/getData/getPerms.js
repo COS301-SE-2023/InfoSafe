@@ -4,7 +4,7 @@ export const useGetPerms = () => {
     const [roles, setRoles] = useState([]);
 
     useEffect(() => {
-        fetch('http://infosafe.live:8080/api/role/getPermissions', {
+        fetch('http://localhost:8080/api/role/getPermissions', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

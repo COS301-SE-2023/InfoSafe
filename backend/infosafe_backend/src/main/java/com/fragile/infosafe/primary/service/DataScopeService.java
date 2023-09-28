@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -48,8 +49,17 @@ public class DataScopeService {
 
     public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
 
-    public DataScope updateDataScope(DataScope dataScope) {
-        return dataScopeRepository.save(dataScope);
+    public DataScope updateDataScope(DataScopeRequest request) {
+        Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(request.getData_scope_id());
+        if(entityOptional.isPresent()){
+            DataScope datascope = entityOptional.get();
+            datascope.setDs_name(request.getDs_name());
+            datascope.setDs_description(request.getDs_description());
+            datascope.setDs_status(request.getDs_status());
+            datascope.setData_custodian(userRepository.findById(request.getData_custodian()).get());
+            return dataScopeRepository.save(datascope);
+        }
+        return null;
     }
 
     public boolean checkDataScopeExists(String name) {

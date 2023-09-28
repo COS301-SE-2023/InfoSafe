@@ -45,7 +45,7 @@ export const Requests = () => {
         const [myDataScopes, setMyDataScopes] = useState([]);
 
         useEffect(() => {
-            fetch('http://infosafe.live:8080/api/datascope/getMyDatascopes', {
+            fetch('http://localhost:8080/api/datascope/getMyDatascopes', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

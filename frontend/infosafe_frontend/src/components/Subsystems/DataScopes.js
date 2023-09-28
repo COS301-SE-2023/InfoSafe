@@ -49,7 +49,7 @@ export const DataScopes = () => {
 
     const DeleteFunction = async (data_scope_id) => {
         try {
-            const response = await fetch("http://infosafe.live:8080/api/datascope/deleteDataScope/"+data_scope_id, {
+            const response = await fetch("http://localhost:8080/api/datascope/deleteDataScope/"+data_scope_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -180,7 +180,7 @@ export const DataScopes = () => {
                     ) : null}
                 </button>
                 <div className="searchDataScopes">
-                    <input
+                    {/*<input
                         // data-testid="datascopesSearch"
                         className="dataScopesSearchInput"
                         type="text"
@@ -188,7 +188,7 @@ export const DataScopes = () => {
                         name="dataScopesSearch"
                         // onChange={}
                     />
-                    <FaSearch className="dataScopesSearchIcon" />
+                    <FaSearch className="dataScopesSearchIcon" />*/}
                 </div>
                 <div className="datascopes">
                     {loading ? (

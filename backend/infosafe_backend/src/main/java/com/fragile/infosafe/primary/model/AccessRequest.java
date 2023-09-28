@@ -19,11 +19,11 @@ public class AccessRequest {
     private String reason;
     private String status;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id")
     private User user_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "data_scope_id")
     private DataScope data_scope_id;
 }

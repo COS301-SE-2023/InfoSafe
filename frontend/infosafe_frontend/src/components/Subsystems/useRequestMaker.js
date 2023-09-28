@@ -50,15 +50,15 @@ const useRequestMaker = () => {
 
         switch (selectedRequest) {
             case 'Support Request':
-                apiUrl = "http://infosafe.live:8080/api/supportrequest/addSr";
+                apiUrl = "http://localhost:8080/api/supportrequest/addSr";
                 requestBody = support;
                 break;
             case 'Asset Request':
-                apiUrl = "http://infosafe.live:8080/api/assetrequest/addAr";
+                apiUrl = "http://localhost:8080/api/assetrequest/addAr";
                 requestBody = asset;
                 break;
             case 'Access Request':
-                apiUrl = "http://infosafe.live:8080/api/accessrequest/addAr";
+                apiUrl = "http://localhost:8080/api/accessrequest/addAr";
                 requestBody = access;
                 break;
             default:
@@ -79,7 +79,7 @@ const useRequestMaker = () => {
     };
 
     useEffect(() => {
-        fetch('http://infosafe.live:8080/api/user/getEmail', {
+        fetch('http://localhost:8080/api/user/getEmail', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

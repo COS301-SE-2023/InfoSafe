@@ -11,61 +11,61 @@ const SystemAnalyticsChart = () => {
             const accessToken = sessionStorage.getItem('accessToken');
 
             const fetchPromises = [
-                await fetch('http://infosafe.live:8080/api/datascope/getTotal', {
+                await fetch('http://localhost:8080/api/datascope/getTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/user/dataScopeCount', {
+                await fetch('http://localhost:8080/api/user/dataScopeCount', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/user/countDevices', {
+                await fetch('http://localhost:8080/api/user/countDevices', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/asset/getTotalAssets', {
+                await fetch('http://localhost:8080/api/asset/getTotalAssets', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/user/taskCount', {
+                await fetch('http://localhost:8080/api/user/taskCount', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/task/totalTasks', {
+                await fetch('http://localhost:8080/api/task/totalTasks', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/supportrequest/getTotal', {
+                await fetch('http://localhost:8080/api/supportrequest/getTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/supportrequest/getMyTotal', {
+                await fetch('http://localhost:8080/api/supportrequest/getMyTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/assetrequest/getTotal', {
+                await fetch('http://localhost:8080/api/assetrequest/getTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://infosafe.live:8080/api/assetrequest/getMyTotal', {
+                await fetch('http://localhost:8080/api/assetrequest/getMyTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,

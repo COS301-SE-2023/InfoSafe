@@ -45,7 +45,7 @@ export const SupportRequests = () => {
         }
     }
 
-    const EditMySupportRequestDiv = ({mySupport}) => {
+    const EditMySupportRequestDiv = ({ mySupport }) => {
         const [editSupportRequestOpen, setEditSupportRequestOpen] = useState(false);
             return (
                 <div className="supportRequestEditButton">
@@ -58,7 +58,7 @@ export const SupportRequests = () => {
                             popupClose={() => setEditSupportRequestOpen(false)}
                             popupOpen={editSupportRequestOpen}
                             support={mySupport}
-                            editAllSupport={fetchAllSupport()}
+                            editAllSupport={null}
                             editMySupport={fetchMySupport}
                         />
                     ) : null}
@@ -103,7 +103,7 @@ export const SupportRequests = () => {
                         />
                     ) : null}
                 </p>{' '}
-                <EditMySupportRequestDiv supp={mySupport}></EditMySupportRequestDiv>
+                <EditMySupportRequestDiv mySupport={mySupport}></EditMySupportRequestDiv>
             </li>
         )
     }
@@ -198,7 +198,7 @@ export const SupportRequests = () => {
                     ) : null}
                 </button>
                 <div className="searchSupportRequests">
-                    <input
+                    {/*<input
                         // data-testid="supportRequestSearch"
                         className="supportRequestSearchInput"
                         type="text"
@@ -206,7 +206,7 @@ export const SupportRequests = () => {
                         name="supportRequestSearch"
                         // onChange={}
                     />
-                    <FaSearch className="supportRequestSearchIcon" />
+                    <FaSearch className="supportRequestSearchIcon" />*/}
                 </div>
                 <ViewSupportRequests></ViewSupportRequests>
                 {roles.includes("support_requests_viewAll") &&

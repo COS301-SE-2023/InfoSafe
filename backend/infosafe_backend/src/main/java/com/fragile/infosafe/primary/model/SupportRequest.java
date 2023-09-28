@@ -25,11 +25,11 @@ public class SupportRequest {
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope_id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "task_id")
     private Task task_id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "asset_id")
     private Asset asset_id;
 }

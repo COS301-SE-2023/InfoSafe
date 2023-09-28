@@ -270,7 +270,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen, onArEdited }) =&gt; 
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
         //console.log(values)
-<span class="cstat-no" title="statement not covered" >        fetch('http://infosafe.live:8080/api/accessrequest/update/' + access.request_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://localhost:8080/api/accessrequest/update/' + access.request_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

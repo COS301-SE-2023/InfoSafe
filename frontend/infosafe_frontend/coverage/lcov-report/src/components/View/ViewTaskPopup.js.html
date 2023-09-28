@@ -366,7 +366,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) =&gt; {
         });
 &nbsp;
         useEffect(() =&gt; {
-            fetch("http://infosafe.live:8080/api/task/getUsersOfTask/" + task.task_id, {
+            fetch("http://localhost:8080/api/task/getUsersOfTask/" + task.task_id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -399,7 +399,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) =&gt; {
     const handleCompleted = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log("Complete")</span>
         const request = <span class="cstat-no" title="statement not covered" >{completion: true, task_id: task.task_id};</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/task/completeTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/task/completeTask", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -420,7 +420,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) =&gt; {
     const handleIncomplete = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log("Incomplete")</span>
         const request = <span class="cstat-no" title="statement not covered" >{completion: false, task_id: task.task_id};</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/task/completeTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/task/completeTask", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

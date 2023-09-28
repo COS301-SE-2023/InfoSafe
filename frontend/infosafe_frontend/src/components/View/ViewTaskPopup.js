@@ -19,7 +19,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
         });
 
         useEffect(() => {
-            fetch("http://infosafe.live:8080/api/task/getUsersOfTask/" + task.task_id, {
+            fetch("http://localhost:8080/api/task/getUsersOfTask/" + task.task_id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -52,7 +52,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
     const handleCompleted = () => {
         console.log("Complete")
         const request = {completion: true, task_id: task.task_id};
-        fetch("http://infosafe.live:8080/api/task/completeTask", {
+        fetch("http://localhost:8080/api/task/completeTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
     const handleIncomplete = () => {
         console.log("Incomplete")
         const request = {completion: false, task_id: task.task_id};
-        fetch("http://infosafe.live:8080/api/task/completeTask", {
+        fetch("http://localhost:8080/api/task/completeTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -47,10 +47,10 @@ const NavBar = () => {
     if (roles.includes("data_scope_edit") || roles.includes("data_scope_create") || roles.includes("data_scope_delete") || notDSButHasDatascope) {//Data Scopes
         tabItems.push(3);
     }
-    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve")) {//Compliance Matrix
+    if (roles.includes("tasks_create") || roles.includes("tasks_edit") || roles.includes("tasks_delete") || roles.includes("tasks_approve") || accessTasks) {//Compliance Matrix
         tabItems.push(4);
     }
-    if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete") || accessTasks) {//Devices
+    if (roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {//Devices
         tabItems.push(5);
     }
     if (roles.includes("risks_create") || roles.includes("risks_edit") || roles.includes("risks_review")) {//Risks
@@ -78,7 +78,7 @@ const NavBar = () => {
     useEffect(() => {
         const payload = {token: sessionStorage.getItem('accessToken')};
 
-        fetch('http://infosafe.live:8080/api/user/tokenValid', {
+        fetch('http://localhost:8080/api/user/tokenValid', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken'),
@@ -111,7 +111,7 @@ const NavBar = () => {
     const [left, setLeft] = useState(0);
 
     useEffect(() => {
-        fetch('http://infosafe.live:8080/api/user/getUserName', {
+        fetch('http://localhost:8080/api/user/getUserName', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

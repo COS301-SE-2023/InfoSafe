@@ -379,7 +379,7 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://infosafe.live:8080/api/risk/update/' + risk.risk_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://localhost:8080/api/risk/update/' + risk.risk_id, {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

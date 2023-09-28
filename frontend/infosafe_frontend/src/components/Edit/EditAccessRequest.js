@@ -31,7 +31,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen, onArEdited }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         //console.log(values)
-        fetch('http://infosafe.live:8080/api/accessrequest/update/' + access.request_id, {
+        fetch('http://localhost:8080/api/accessrequest/update/' + access.request_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

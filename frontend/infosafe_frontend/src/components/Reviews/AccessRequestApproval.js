@@ -4,10 +4,10 @@ import '../../styling/AccessRequestApproval.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) => {
-    const ACCESSREQUESTSTATUSOPTIONS = ['LOGGED', 'APPROVED', 'REJECTED'];
+
     const handleReview = (reviewValue) => {
-        const payload = {review: reviewValue, request_id: access.request_id, dataScope_id: access.dataScope_id, user_email: access.user_email}
-        fetch('http://infosafe.live:8080/api/accessrequest/reviewAccess', {
+        const payload = {review: reviewValue, request_id: access.request_id, asset_id: null, user_email: access.user.email}
+        fetch('http://localhost:8080/api/accessrequest/reviewAccess', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,11 +15,20 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) =
             },
             body: JSON.stringify(payload),
         })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(() => {
                 console.log('Approved');
-                onArApprove()
+                onArApprove();
                 popupClose();
-            });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            })
     };
 
     return (

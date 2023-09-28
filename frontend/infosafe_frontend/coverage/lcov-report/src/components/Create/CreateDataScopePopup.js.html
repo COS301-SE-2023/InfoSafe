@@ -386,7 +386,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) =&gt; {
         const ds_status = <span class="cstat-no" title="statement not covered" >"Pending";</span>
         const datascope = <span class="cstat-no" title="statement not covered" >{date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        fetch(`http://infosafe.live:8080/api/datascope/checkName?dsname=${ds_name}`, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`, {</span>
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -399,7 +399,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) =&gt; {
 <span class="cstat-no" title="statement not covered" >                    console.log("DataScope name already exists");</span>
                 } else {
                     //console.log(datascope);
-<span class="cstat-no" title="statement not covered" >                    fetch("http://infosafe.live:8080/api/datascope/addDs", {</span>
+<span class="cstat-no" title="statement not covered" >                    fetch("http://localhost:8080/api/datascope/addDs", {</span>
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -423,7 +423,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) =&gt; {
     };
 &nbsp;
     useEffect(() =&gt; {
-        fetch("http://infosafe.live:8080/api/user/findNotDatCustodian", {
+        fetch("http://localhost:8080/api/user/findNotDatCustodian", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

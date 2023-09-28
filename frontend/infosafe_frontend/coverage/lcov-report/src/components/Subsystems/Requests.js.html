@@ -686,7 +686,7 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
         const [myDataScopes, setMyDataScopes] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            fetch('http://infosafe.live:8080/api/datascope/getMyDatascopes', {</span>
+<span class="cstat-no" title="statement not covered" >            fetch('http://localhost:8080/api/datascope/getMyDatascopes', {</span>
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

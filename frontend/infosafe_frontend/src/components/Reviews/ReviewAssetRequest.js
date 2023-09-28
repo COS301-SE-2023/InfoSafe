@@ -7,9 +7,9 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}
 
     const handleReview = (reviewValue) => {
         popupClose();
-        const payload = {review: reviewValue, request_id: assetRequest.asset_request_id, asset_id: assetRequest.asset.asset_id, user_email: assetRequest.user.email}
+        const payload = {review: reviewValue, request_id: assetRequest.request_id, asset_id: assetRequest.asset.asset_id, user_email: assetRequest.user.email}
         //console.log(payload)
-        fetch('http://infosafe.live:8080/api/assetrequest/reviewAsset', {
+        fetch('http://localhost:8080/api/assetrequest/reviewAsset', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

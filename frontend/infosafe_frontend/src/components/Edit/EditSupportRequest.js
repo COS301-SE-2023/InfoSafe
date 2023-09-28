@@ -20,7 +20,7 @@ const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, ed
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
-        fetch('http://infosafe.live:8080/api/supportrequest/update/' + support.support_id, {
+        fetch('http://localhost:8080/api/supportrequest/update/' + support.support_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

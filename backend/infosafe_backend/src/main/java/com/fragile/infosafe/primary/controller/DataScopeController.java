@@ -40,9 +40,8 @@ public class DataScopeController {
     @GetMapping("/getDs")
     public List<DataScope> datascopelist() { return service.getAllDatascopes(); }
 
-    @PutMapping("/update/{id}")
-    public DataScope updateDataScope (@PathVariable("id") int ds_id, @RequestBody DataScope datascope) {
-        datascope.setData_scope_id(ds_id);
+    @PostMapping("/update/{id}")
+    public DataScope updateDataScope (@PathVariable("id") int ds_id, @RequestBody DataScopeRequest datascope) {
         return service.updateDataScope(datascope);
     }
 

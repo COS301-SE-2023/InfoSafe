@@ -91,7 +91,7 @@ export const AssetRequest = () => {
                     ) : null}
                 </button>
                 <div className="searchAssetRequests">
-                    <input
+                    {/*<input
                         // data-testid="assetRequestSearch"
                         className="assetRequestSearchInput"
                         type="text"
@@ -99,7 +99,7 @@ export const AssetRequest = () => {
                         name="assetRequestSearch"
                         // onChange={}
                     />
-                    <FaSearch className="deviceSearchIcon" />
+                    <FaSearch className="deviceSearchIcon" />*/}
                 </div>
                 <div className="assetRequests">
                     {loading ? (

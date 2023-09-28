@@ -595,7 +595,7 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
         const payload = <span class="cstat-no" title="statement not covered" >{token: sessionStorage.getItem('accessToken')};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        fetch('http://infosafe.live:8080/api/user/tokenValid', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://localhost:8080/api/user/tokenValid', {</span>
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken'),
@@ -628,7 +628,7 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
     const [left, setLeft] = <span class="cstat-no" title="statement not covered" >useState(0);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://infosafe.live:8080/api/user/getUserName', {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://localhost:8080/api/user/getUserName', {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
