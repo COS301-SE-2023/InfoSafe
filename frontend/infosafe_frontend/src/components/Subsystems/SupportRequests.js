@@ -34,6 +34,8 @@ export const SupportRequests = () => {
                             popupOpen={editSupportRequestOpen}
                             support={supp}
                             editAllSupport={fetchAllSupport}
+                            editMySupport={fetchMySupport}
+
                         />
                     ) : null}
                 </div>
@@ -56,6 +58,7 @@ export const SupportRequests = () => {
                             popupClose={() => setEditSupportRequestOpen(false)}
                             popupOpen={editSupportRequestOpen}
                             support={mySupport}
+                            editAllSupport={fetchAllSupport()}
                             editMySupport={fetchMySupport}
                         />
                     ) : null}

@@ -24,6 +24,22 @@ const ViewSupportRequest = ({ support, popupOpen, popupClose }) => {
                                 readOnly={true}
                                 defaultValue={support.support_description}
                             ></textarea>
+                            {support.support_type === "DataScope Support" ? (
+                                <>
+                                    <p className="viewSupportRequestUserLabel">DataScope</p>
+                                    <p className="viewSupportRequestUserDisplay">{support.dataScope_id.ds_name}</p>
+                                </>
+                            ) : support.support_type === "Asset Support" ? (
+                                <>
+                                    <p className="viewSupportRequestUserLabel">Asset</p>
+                                    <p className="viewSupportRequestUserDisplay">{support.asset_id.asset_name}</p>
+                                </>
+                            ) : support.support_type === "Task Support" ? (
+                                <>
+                                    <p className="viewSupportRequestUserLabel">Task</p>
+                                    <p className="viewSupportRequestUserDisplay">{support.task_id.task_name}</p>
+                                </>
+                            ) : null}
                         </div>
                     </div>
                 </div>

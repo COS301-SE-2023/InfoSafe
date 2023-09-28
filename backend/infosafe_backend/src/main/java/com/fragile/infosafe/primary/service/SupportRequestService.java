@@ -34,8 +34,8 @@ public class SupportRequestService {
                 .build();
 
         switch (request.getSupport_type()) {
-            case "Datascope Support" -> {
-                if (dataScopeRepository.findById(request.getDataScope_id()).isPresent()) {
+            case "DataScope Support" -> {
+                if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
                     supportrequest.setDataScope_id(dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get());
                 } else {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find datascope");
