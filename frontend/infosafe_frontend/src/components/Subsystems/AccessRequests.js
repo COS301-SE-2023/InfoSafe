@@ -10,6 +10,7 @@ import {useGetAr} from "../getData/getAR";
 import {useGetPerms} from "../getData/getPerms";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
+import accessrequest_help from "../../images/accessrequest_help.png";
 
 export const AccessRequests = () => {
     const {roles} = useGetPerms();
@@ -103,7 +104,6 @@ export const AccessRequests = () => {
     }
 
     const [helpOpen,setHelpOpen] = useState(false);
-    const helpMsg = "";
 
     return (
         <div className="display">
@@ -114,7 +114,7 @@ export const AccessRequests = () => {
                         <HelpPopup
                             popupClose={() => setHelpOpen(false)}
                             popupOpen={helpOpen}
-                            message={helpMsg}
+                            image={accessrequest_help}
                         />
                     ) : null}
                 </button>
