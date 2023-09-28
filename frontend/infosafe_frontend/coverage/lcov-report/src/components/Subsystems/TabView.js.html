@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -127,7 +127,19 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,6 +154,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -196,13 +216,15 @@ import RoleCreation from "../Roles/RoleCreation";
 import {Users} from "./Users";
 import {DataScopes} from "./DataScopes";
 import {AccessRequests} from "./AccessRequests";
-import {ComplianceMatrix} from "./ComplianceMatrix";
+import {Tasks} from "./Tasks";
 import {Devices} from "./Devices";
 import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
 import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
-import {Dashboard} from "../Dashboard";
+import {Dashboard} from "../Charts/Dashboard";
+import {About} from "../About";
+import {Help} from "../Help";
 &nbsp;
 export const TabView = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span>currentTab}) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    switch (currentTab){</span>
@@ -224,31 +246,39 @@ export const TabView = <span class="cstat-no" title="statement not covered" ><sp
         }
         case 4:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;AccessRequests&gt;&lt;/AccessRequests&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;Tasks&gt;&lt;/Tasks&gt;);</span>
         }
         case 5:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;ComplianceMatrix&gt;&lt;/ComplianceMatrix&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;Devices&gt;&lt;/Devices&gt;);</span>
         }
         case 6:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;Devices&gt;&lt;/Devices&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;Risks&gt;&lt;/Risks&gt;);</span>
         }
         case 7:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;SupportRequests&gt;&lt;/SupportRequests&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;Requests&gt;&lt;/Requests&gt;);</span>
         }
         case 8:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;Risks&gt;&lt;/Risks&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;AccessRequests&gt;&lt;/AccessRequests&gt;);</span>
         }
         case 9:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;Requests&gt;&lt;/Requests&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;AssetRequest&gt;&lt;/AssetRequest&gt;);</span>
         }
         case 10:
         {
-<span class="cstat-no" title="statement not covered" >            return (&lt;AssetRequest&gt;&lt;/AssetRequest&gt;);</span>
+<span class="cstat-no" title="statement not covered" >            return (&lt;SupportRequests&gt;&lt;/SupportRequests&gt;);</span>
+        }
+        case 11:
+        {
+<span class="cstat-no" title="statement not covered" >            return (&lt;About&gt;&lt;/About&gt;)</span>
+        }
+        case 12:
+        {
+<span class="cstat-no" title="statement not covered" >            return (&lt;Help&gt;&lt;/Help&gt;)</span>
         }
         default:
         {
@@ -262,7 +292,7 @@ export const TabView = <span class="cstat-no" title="statement not covered" ><sp
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T21:34:48.715Z
+                at 2023-09-28T09:53:26.530Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

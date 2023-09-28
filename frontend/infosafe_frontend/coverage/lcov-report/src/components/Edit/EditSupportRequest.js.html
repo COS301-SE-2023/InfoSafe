@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
@@ -144,11 +144,7 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,6 +160,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -175,7 +174,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -207,11 +207,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -230,84 +225,80 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from "react";
-import "../../styling/EditSupportRequest.css";
-import Popup from "reactjs-popup";
-import { IoArrowBackOutline } from "react-icons/io5";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from 'react';
+import '../../styling/EditSupportRequest.css';
+import Popup from 'reactjs-popup';
+import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
-const STATUS = ["LOGGED","IN PROGRESS","RESOLVED"];
-const EditSupportRequest = ({ support, popupOpen, popupClose }) =&gt; {
+&nbsp;
+const STATUS = ["Logged","In Progress","Resolved"];
+const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, editMySupport }) =&gt; {
     const[values, setValues]=useState({
         support_id: support.support_id,
-        user_id: support.user_id,
         support_type: support.support_type,
         support_description: support.support_description,
-        support_status: support.support_status
+        support_status: support.support_status,
+        user_id: support.user_id.email,
+        dataScope_id: support.dataScope_id ? <span class="branch-0 cbranch-no" title="branch not covered" >support.dataScope_id.data_scope_id </span>: null,
+        task_id: support.task_id ? <span class="branch-0 cbranch-no" title="branch not covered" >support.task_id.task_id </span>: null,
+        asset_id: support.asset_id ? <span class="branch-0 cbranch-no" title="branch not covered" >support.asset_id.asset_id </span>: null
     })
 &nbsp;
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/update/" + support.support_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/update/' + support.support_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
-                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
             body:JSON.stringify(values)
         }).then(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
 <span class="cstat-no" title="statement not covered" >            console.log("Updated AccessRequest")</span>
+<span class="cstat-no" title="statement not covered" >            editAllSupport()</span>
+<span class="cstat-no" title="statement not covered" >            editMySupport()</span>
         })
-        //console.log(JSON.stringify(values))
 <span class="cstat-no" title="statement not covered" >        popupClose()</span>
     }
 &nbsp;
     return (
-        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position='center center'&gt;
-            &lt;div className='editSupportRequestPopup'&gt;
-                &lt;div className='editSupportRequestPopupBorder'&gt;
-                    &lt;button className='editSupportRequestBackButton' onClick={popupClose} data-testid='back-button'&gt;
-                        &lt;IoArrowBackOutline className='editSupportRequestBackIcon' /&gt;
-                    &lt;/button&gt;
-                    &lt;form onSubmit={handleSubmit}&gt;
-                        &lt;p className='editSupportRequestTitle'&gt;Edit Support Request&lt;/p&gt;
-                        &lt;div className='editSupportRequestTypeDiv'&gt;
-                            &lt;p className='editSupportRequestTypeLabel'&gt;Type of Support Request&lt;/p&gt;
-                            &lt;p className='editSupportRequestTypeDisplay'&gt;{support.support_type}&lt;/p&gt;
-                        &lt;/div&gt;
-                        &lt;div className='editSupportRequestUserDiv'&gt;
-                            &lt;p className='editSupportRequestUserLabel'&gt;User&lt;/p&gt;
-                            &lt;p className='editSupportRequestTypeDisplay'&gt;{support.user_id}&lt;/p&gt;
-                        &lt;/div&gt;
-                        &lt;div className='editSupportRequestDescriptionDiv'&gt;
-                            &lt;p className='editSupportRequestDescriptionLabel'&gt;Description&lt;/p&gt;
-                            &lt;textarea
-                                className='editSupportRequestDescriptionDisplay'
-                                readOnly={true}
-                                defaultValue={support.support_description}
-                            &gt;&lt;/textarea&gt;
-                        &lt;/div&gt;
-                        &lt;div className='editSupportRequestStatusDiv'&gt;
-                            &lt;p className='editSupportRequestStatusLabel'&gt;Status&lt;/p&gt;
-                            &lt;Dropdown
-                                options={STATUS}
-                                value={support.support_status}
-                                className='updateSupportRequestDropdown'
-                                name='updateSupportRequestDropdown'
-                                onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, support_status: selectedOption.value})}</span>
-                            /&gt;
-                        &lt;/div&gt;
-                        &lt;div className='editSupportRequestButtonsDiv'&gt;
-                            &lt;button
-                                className='updateSupportRequestStatusButton'
-                                type='submit'
-                            &gt;
-                                Update Status
-                            &lt;/button&gt;
-                        &lt;/div&gt;
-                    &lt;/form&gt;
+        &lt;Popup open={popupOpen} closeOnDocumentClick={false} position="center center"&gt;
+            &lt;div className="editSupportRequestPopup"&gt;
+                &lt;div className="popupBackground"&gt;
+                    &lt;div className="editSupportRequestPopupBorder"&gt;
+                        &lt;button className="editSupportRequestBackButton" onClick={popupClose} data-testid="back-button"&gt;
+                            &lt;IoArrowBackOutline className="editSupportRequestBackIcon" /&gt;
+                        &lt;/button&gt;
+                        &lt;form onSubmit={handleSubmit}&gt;
+                            &lt;p className="editSupportRequestTitle"&gt;Edit Support Request&lt;/p&gt;
+                            &lt;div className="editSupportRequestContent"&gt;
+                                &lt;p className="editSupportRequestTypeLabel"&gt;Type of Support Request&lt;/p&gt;
+                                &lt;p className="editSupportRequestTypeDisplay"&gt;{support.support_type}&lt;/p&gt;
+                                &lt;p className="editSupportRequestUserLabel"&gt;User&lt;/p&gt;
+                                &lt;p className="editSupportRequestTypeDisplay"&gt;{support.user_id.first_name} {support.user_id.last_name}&lt;/p&gt;
+                                &lt;p className="editSupportRequestDescriptionLabel"&gt;Description&lt;/p&gt;
+                                &lt;textarea
+                                    className="editSupportRequestDescriptionDisplay"
+                                    readOnly={true}
+                                    defaultValue={support.support_description}
+                                &gt;&lt;/textarea&gt;
+                                &lt;p className="editSupportRequestStatusLabel"&gt;Status&lt;/p&gt;
+                                &lt;Dropdown
+                                    options={STATUS}
+                                    value={support.support_status}
+                                    className="updateSupportRequestDropdown"
+                                    name="updateSupportRequestDropdown"
+                                    onChange={<span class="fstat-no" title="function not covered" >(s</span>electedOption) =&gt; <span class="cstat-no" title="statement not covered" >setValues({...values, support_status: selectedOption.value})}</span>
+                                /&gt;
+                                &lt;button
+                                    className="updateSupportRequestStatusButton"
+                                    type="submit"
+                                &gt;
+                                    Update Status
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                        &lt;/form&gt;
+                    &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/Popup&gt;
@@ -322,7 +313,7 @@ export default EditSupportRequest;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-20T21:34:48.715Z
+                at 2023-09-28T09:53:26.530Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
