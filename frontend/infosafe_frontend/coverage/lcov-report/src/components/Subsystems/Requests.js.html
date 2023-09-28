@@ -686,7 +686,7 @@ export const Requests = <span class="cstat-no" title="statement not covered" ><s
         const [myDataScopes, setMyDataScopes] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getMyDatascopes', {</span>
+<span class="cstat-no" title="statement not covered" >            fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getMyDatascopes', {</span>
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -24,7 +24,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
             return;
         }
 
-        fetch(`http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/checkEmail?email=${email}`, {
+        fetch(`https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/checkEmail?email=${email}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                     console.log("User already exists");
                 } else {
                     //console.log(user);
-                    fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/add", {
+                    fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/add", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/randPass/generate", {
+                const response = await fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/randPass/generate", {
                     method: "GET",
                     headers: {"Content-Type":"application/json",
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -88,7 +88,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     }, []);
 
     useEffect(() => {
-            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
+            fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
                 method:"GET",
                 headers:{"Content-Type":"application/json",
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

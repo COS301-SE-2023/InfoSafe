@@ -379,7 +379,7 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/update/' + risk.risk_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/update/' + risk.risk_id, {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

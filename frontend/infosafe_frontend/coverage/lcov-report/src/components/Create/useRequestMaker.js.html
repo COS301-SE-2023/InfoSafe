@@ -346,16 +346,16 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        switch (selectedRequest) {</span>
             case "Support Request":
-<span class="cstat-no" title="statement not covered" >                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/addSr";</span>
+<span class="cstat-no" title="statement not covered" >                apiUrl = "https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/addSr";</span>
 <span class="cstat-no" title="statement not covered" >                requestBody = support;</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
             case "Asset Request":
-<span class="cstat-no" title="statement not covered" >                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/addAr";</span>
+<span class="cstat-no" title="statement not covered" >                apiUrl = "https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/addAr";</span>
 <span class="cstat-no" title="statement not covered" >                requestBody = asset;</span>
 <span class="cstat-no" title="statement not covered" >                setAssetId(selectedAssetId)</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
             case "Access Request":
-<span class="cstat-no" title="statement not covered" >                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/addAr";</span>
+<span class="cstat-no" title="statement not covered" >                apiUrl = "https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/addAr";</span>
 <span class="cstat-no" title="statement not covered" >                requestBody = access;</span>
 <span class="cstat-no" title="statement not covered" >                break;</span>
             default:
@@ -375,7 +375,7 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/getAsset", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -388,7 +388,7 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getId", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
@@ -401,7 +401,7 @@ const useRequestMaker = <span class="cstat-no" title="statement not covered" ><s
     }, []);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs", {</span>
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             }
