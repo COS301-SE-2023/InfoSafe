@@ -25,7 +25,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
         const ds_status = "Pending";
         const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers};
 
-        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`, {
+        fetch(`https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/checkName?dsname=${ds_name}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                     console.log("DataScope name already exists");
                 } else {
                     //console.log(datascope);
-                    fetch("http://localhost:8080/api/datascope/addDs", {
+                    fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/addDs", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/findNotDatCustodian", {
+        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findNotDatCustodian", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

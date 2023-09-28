@@ -49,7 +49,7 @@ export const DataScopes = () => {
 
     const DeleteFunction = async (data_scope_id) => {
         try {
-            const response = await fetch("http://localhost:8080/api/datascope/deleteDataScope/"+data_scope_id, {
+            const response = await fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/deleteDataScope/"+data_scope_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
