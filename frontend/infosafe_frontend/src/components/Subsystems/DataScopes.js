@@ -1,5 +1,5 @@
 import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
@@ -12,13 +12,20 @@ import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
 import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 import datascope_help from "../../images/datascope_help.png";
+import {ConfirmDelete} from "../ConfirmDelete";
 
 export const DataScopes = () => {
 
-    const {showDatascope, myDatascopes, loading } = useGetDS();
+    const {showDatascope, myDatascopes, loading , fetchMyDatascopes, fetchAllDatascopes} = useGetDS();
     const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     let viewDatascope = false;
+
+    useEffect(() => {
+        fetchAllDatascopes();
+        fetchMyDatascopes();
+    }, []);
+
     const EditDataScope = ({datascope}) => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         if(roles.includes("data_scope_edit")) {
@@ -30,6 +37,7 @@ export const DataScopes = () => {
                             popupClose={() => setEditDataScopeOpen(false)}
                             popupOpen={editDataScopeOpen}
                             datascope={datascope}
+                            onDsEdited={fetchAllDatascopes}
                         />
                     ) : null}{' '}
                 </div>
@@ -39,18 +47,47 @@ export const DataScopes = () => {
         }
     }
 
-    const DeleteDataScope = () => {
+    const DeleteFunction = async (data_scope_id) => {
+        try {
+            const response = await fetch("http://localhost:8080/api/datascope/deleteDataScope/"+data_scope_id, {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            } else {
+                console.log("datascope deleted");
+                fetchAllDatascopes();
+            }
+            //return response.json();
+
+        } catch (error) {
+            console.error("Error deleting datascope:", error);
+            throw error;
+        }
+    };
+
+    const DeleteDataScope = ({datascope}) => {
+        const [dataScopeDelete, setDataScopeDelete] = useState(false);
         if(roles.includes("data_scope_delete")) {
             return (
-                <div className="dataScopesDeleteButton">
-                    <RiDeleteBin6Fill className="dataScopesDeleteIcon"/>
+                <div className="usersDeleteButton">
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDataScopeDelete(true)}/>
+                    {dataScopeDelete ? (
+                        <ConfirmDelete
+                            popupClose={() => setDataScopeDelete(false)}
+                            popupOpen={dataScopeDelete}
+                            yesDelete={() => DeleteFunction(datascope.data_scope_id)}
+                        />
+                    ) : null}{' '}
                 </div>
-
             )
         } else {
             return null
         }
-
     }
 
     const ViewDataScopeItem = ({ datascope }) => {
@@ -71,7 +108,7 @@ export const DataScopes = () => {
                         )}
                     </p>
                     <EditDataScope datascope={datascope}></EditDataScope>
-                    <DeleteDataScope></DeleteDataScope>
+                    <DeleteDataScope datascope={datascope}></DeleteDataScope>
                 </li>
             );
         } else {
@@ -94,6 +131,7 @@ export const DataScopes = () => {
                         <CreateDataScopePopup
                             popupClose={() => setCreateDataScopeOpen(false)}
                             popupOpen={createDataScopeOpen}
+                            onDsAdded={fetchAllDatascopes}
                         />
                     ) : null}
                 </div>

@@ -42,16 +42,6 @@ export const AccessRequests = () => {
             return null
         }
     }
-
-    const DeleteAccessRequest = () => {
-        if(roles.includes("access_request_delete")) {
-            return (
-                <RiDeleteBin6Fill className="DeleteIcon"/>
-            )
-        } else {
-            return null
-        }
-    }
     const ViewAccessRequests = ({access}) => {
         const [viewAccessRequestOpen, setViewAccessRequestOpen] = useState(false); // ISO DISO
         if(roles.includes("access_requests_edit") || roles.includes("access_requests_approve")) {
@@ -69,7 +59,6 @@ export const AccessRequests = () => {
                     </p>
                     <ApproveAccessRequest access={access}></ApproveAccessRequest>
                     <EditAccessRequestDiv access={access}></EditAccessRequestDiv>
-                    <DeleteAccessRequest></DeleteAccessRequest>
                 </li>
             );
         } else {

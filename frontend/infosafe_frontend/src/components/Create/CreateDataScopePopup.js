@@ -5,7 +5,7 @@ import {IoArrowBackOutline} from 'react-icons/io5';
 import Select from "react-select";
 import {customStyles} from "../CustomStyling";
 
-export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
+export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
     const [users,  setUsers] = useState([])
@@ -48,6 +48,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                     })
                         .then(() => {
                             console.log("New DataScope added");
+                            onDsAdded()
                         })
                         .catch((error) => {
                             console.error("Error adding new DataScope:", error);
