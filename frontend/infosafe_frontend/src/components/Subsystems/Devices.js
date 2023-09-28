@@ -9,8 +9,9 @@ import {useGetPerms} from "../getData/getPerms";
 import {useGetAsset} from "../getData/getAsset";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
-import delete_icon from "../../images/delete_icon.png";
-import user_icon from "../../images/create_user_icon.png";
+import asset_help from "../../images/asset_help.png";
+
+
 export const Devices = () => {
     const [createDeviceOpen, setCreateDeviceOpen] = useState(false);
     const {showAsset, loading, fetchAllAssets} = useGetAsset();
@@ -98,11 +99,7 @@ export const Devices = () => {
     }
 
     const [helpOpen, setHelpOpen] = useState(false);
-    const helpMsg = "To view an assets information, click on its field in the table.  " +
-        "To edit an asset, click the edit ( " + <RiEditBoxFill/> + " ) button.  " +
-        "To delete an asset you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button.  " +
-        "To add an asset click the Add Device ( " +
-        <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
+
 
     return(
         <div className="display">
@@ -113,7 +110,7 @@ export const Devices = () => {
                         <HelpPopup
                             popupClose={() => setHelpOpen(false)}
                             popupOpen={helpOpen}
-                            message={helpMsg}
+                            image={asset_help}
                         />
                     ) : null}
                 </button>
