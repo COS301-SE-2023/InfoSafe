@@ -55,28 +55,13 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000/")); //""
+        configuration.setAllowedOrigins(Arrays.asList("http://ec2-52-91-180-105.compute-1.amazonaws.com", "http://infosafe.live", "http://localhost:3000")); //""
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/api/**", configuration);
         return source;
     }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:8080") // Replace with your frontend URL
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
-            }
-        };
-    }
-
-
-
 }
 
 

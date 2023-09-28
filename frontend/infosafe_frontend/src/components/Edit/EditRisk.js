@@ -37,8 +37,9 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(values)
-        fetch('http://localhost:8080/api/risk/update/' + risk.risk_id, {
+
+        console.log(values)
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/update/' + risk.risk_id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

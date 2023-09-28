@@ -151,7 +151,7 @@ export const Tasks = () => {
                     ) : null}
                 </button>
                 <div className="searchTasks">
-                    <input
+                    {/*<input
                         // data-testid="userSearch"
                         className="taskSearchInput"
                         type="text"
@@ -159,7 +159,7 @@ export const Tasks = () => {
                         name="taskSearch"
                         // onChange={}
                     />
-                    <FaSearch className="userSearchIcon" />
+                    <FaSearch className="userSearchIcon" />*/}
                 </div>
                 <div className="tasks">
                     {loading ? (

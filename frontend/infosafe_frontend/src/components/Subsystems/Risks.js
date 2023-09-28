@@ -139,7 +139,7 @@ export const Risks = () => {
                     ) : null}
                 </button>
                 <div className="searchRisks">
-                    <input
+                    {/*<input
                         // data-testid="riskSearch"
                         className="riskSearchInput"
                         type="text"
@@ -147,7 +147,7 @@ export const Risks = () => {
                         name="riskSearch"
                         // onChange={}
                     />
-                    <FaSearch className="deviceSearchIcon" />
+                    <FaSearch className="deviceSearchIcon" />*/}
                 </div>
                 <div className="risks">
                     {loading ? (

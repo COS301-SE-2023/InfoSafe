@@ -43,7 +43,7 @@ export const Devices = () => {
 
     const DeleteFunction = async (asset_id) => {
         try {
-            const response = await fetch("http://localhost:8080/api/asset/deleteAsset/"+asset_id, {
+            const response = await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/deleteAsset/"+asset_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -158,7 +158,7 @@ export const Devices = () => {
                     ) : null}
                 </button>
                 <div className="searchDevices">
-                    <input
+                    {/*<input
                         // data-testid="deviceSearch"
                         className="deviceSearchInput"
                         type="text"
@@ -166,7 +166,7 @@ export const Devices = () => {
                         name="deviceSearch"
                         // onChange={}
                     />
-                    <FaSearch className="deviceSearchIcon" />
+                    <FaSearch className="deviceSearchIcon" />*/}
                 </div>
                 <div className="devices">
                     {loading ? (

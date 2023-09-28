@@ -16,7 +16,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     //const [users, setUsers] = useState([]);
     const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
-        data_custodian: datascope.data_custodian,
+        data_custodian: datascope.data_custodian.user_id,
         date_captured: datascope.date_captured,
         ds_description: datascope.ds_description,
         ds_name: datascope.ds_name,
@@ -24,7 +24,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     });
 
     // useEffect(() => {
-    //     fetch("http://localhost:8080/api/user/findUsersNotInTask/" + task.task_id, {
+    //     fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUsersNotInTask/" + task.task_id, {
     //         method: "GET",
     //         headers: {
     //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -53,8 +53,9 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         //console.log(datascope);
         //console.log(values);
-        fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
-            method: 'PUT',
+
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+            method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -68,7 +69,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -84,7 +85,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
 
-        fetch('http://localhost:8080/api/dataScopeRole/addDataScopeRole', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/addDataScopeRole', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

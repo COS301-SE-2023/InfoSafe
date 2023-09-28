@@ -101,9 +101,13 @@ public class AssetRequestService {
         return assetRequestRepository.countAssetRequestsByUser(user);
     }
 
-    private void emailUser(String email, String asset_name, String status){
-        String subject = "Asset Request response";
-        String body = "Your request to get an asset \n" + asset_name + "\nwas " + status;
-        emailService.sendEmail(email, subject, body);
+    private void emailUser(String email, String asset_name, String status) {
+        try {
+            String subject = "Asset Request response";
+            String body = "Your request to get an asset \n" + asset_name + "\nwas " + status;
+            emailService.sendEmail(email, subject, body);
+        } catch (Exception e) {
+            throw (e);
+        }
     }
 }

@@ -16,7 +16,7 @@ public class DataScopeRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int role_id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope;
     private String role_type;

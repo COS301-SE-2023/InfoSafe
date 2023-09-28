@@ -19,8 +19,9 @@ const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, ed
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         //console.log(values)
-        fetch('http://localhost:8080/api/supportrequest/update/' + support.support_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/update/' + support.support_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

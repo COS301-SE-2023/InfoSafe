@@ -50,15 +50,15 @@ const useRequestMaker = () => {
 
         switch (selectedRequest) {
             case 'Support Request':
-                apiUrl = "http://localhost:8080/api/supportrequest/addSr";
+                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/addSr";
                 requestBody = support;
                 break;
             case 'Asset Request':
-                apiUrl = "http://localhost:8080/api/assetrequest/addAr";
+                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/addAr";
                 requestBody = asset;
                 break;
             case 'Access Request':
-                apiUrl = "http://localhost:8080/api/accessrequest/addAr";
+                apiUrl = "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/addAr";
                 requestBody = access;
                 break;
             default:
@@ -79,7 +79,7 @@ const useRequestMaker = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getEmail', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getEmail', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

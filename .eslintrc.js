@@ -14,7 +14,6 @@ module.exports = {
     ],
     plugins: ["react"],
     rules: {
-        quotes: ["error", "double"],
     },
     ignorePatterns: ["**/*.java", "**/*.cy.js"],
     overrides: [
@@ -27,12 +26,12 @@ module.exports = {
                 "plugin:react/recommended"
             ],
             rules: {
-                "react/jsx-uses-react": "error",
-                "react/jsx-uses-vars": "error",
+                "react/jsx-uses-react": "off",
+                "react/jsx-uses-vars": "off",
                 "react/prop-types": "off",
-                "react/react-in-jsx-scope": "error",
-                "react/jsx-curly-brace-presence": ["error", "never"],
-                "jsx-quotes": ["error", "prefer-single"],
+                "react/react-in-jsx-scope": "off",
+                "react/no-unescaped-entities": "off",
+                "react/jsx-key":"off"
             },
         },
 
