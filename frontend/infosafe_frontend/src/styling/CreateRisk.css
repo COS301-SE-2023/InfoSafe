@@ -296,11 +296,11 @@
     font-size: 22px;
     position: relative;
 }
-.createRiskLoadError{
+.createRiskLoadTitle{
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     border: none;
-    left: 0;
+    left: 15%;
     position: relative;
     width: 70%;
     background-color: #CECECE;

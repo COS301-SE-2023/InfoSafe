@@ -75,7 +75,8 @@
     text-transform: uppercase;
     position: relative;
     top: -3vh;
-    margin:  auto;
+    margin: 0 auto;
+    margin-bottom: -3vh;
 }
 .editAccessRequestDatascopeLabel {
     font-size: 20px;
