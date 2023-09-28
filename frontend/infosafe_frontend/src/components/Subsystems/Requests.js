@@ -287,3 +287,5 @@ export const Requests = () => {
         </div>
     </div>);
 }
+
+export default Requests;
