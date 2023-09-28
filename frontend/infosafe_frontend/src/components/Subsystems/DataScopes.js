@@ -11,9 +11,7 @@ import data from "bootstrap/js/src/dom/data";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
 import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
-import delete_icon from "../../images/delete_icon.png";
-import edit_icon from "../../images/edit_icon.png";
-import datascope_icon from "../../images/create_datascope_icon.png";
+import datascope_help from "../../images/datascope_help.png";
 
 export const DataScopes = () => {
 
@@ -128,10 +126,7 @@ export const DataScopes = () => {
 
 
     const [helpOpen,setHelpOpen] = useState(false);
-    const helpMsg = "To view a data scopes information, click on their field in the table." +
-        "To edit a data scope, click the edit ( " + <img src={edit_icon} alt='edit icon'/> + " ) button" +
-        "To delete a data scope you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
-        "To add a data scope click the Create Data Scope ( " + <img src={datascope_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
+
 
     return (
         <div className="display">
@@ -142,7 +137,7 @@ export const DataScopes = () => {
                         <HelpPopup
                             popupClose={() => setHelpOpen(false)}
                             popupOpen={helpOpen}
-                            message={helpMsg}
+                            image={datascope_help}
                         />
                     ) : null}
                 </button>
