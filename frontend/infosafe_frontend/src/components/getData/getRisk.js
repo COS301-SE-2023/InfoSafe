@@ -6,7 +6,7 @@ export const useGetRisk = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/risk/getRisk', {
+            const response = await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/getRisk', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

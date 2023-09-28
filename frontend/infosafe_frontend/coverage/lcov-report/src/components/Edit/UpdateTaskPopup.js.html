@@ -242,7 +242,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen }) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        console.log(values)</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/task/update/" + task.task_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/update/" + task.task_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")

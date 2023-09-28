@@ -7,7 +7,7 @@ export const  useGetDS = () => {
 
     const fetchAllData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/datascope/getDs', {
+            const response = await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getDs', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -26,7 +26,7 @@ export const  useGetDS = () => {
 
     const fetchMyData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/datascope/getMyDatascopes', {
+            const response = await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getMyDatascopes', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

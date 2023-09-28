@@ -6,12 +6,14 @@ import com.fragile.infosafe.delete.deleterepository.*;
 import com.fragile.infosafe.primary.model.*;
 import com.fragile.infosafe.primary.repository.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DeleteService {
 
     private final UserRepository userRepository;
@@ -36,6 +38,7 @@ public class DeleteService {
     public void deleteUserAndSaveToSecondary(String email) {
         Optional<User> entityOptional = userRepository.findByEmail(email);
         if (entityOptional.isPresent()) {
+            log.info("Deleting user");
             User entityToDelete = entityOptional.get();
             DeletedUser de = new DeletedUser();
             de.setEmail(entityToDelete.getEmail());
@@ -51,6 +54,7 @@ public class DeleteService {
     public void deleteDataScopeAndSaveToSecondary(int datascope_id) {
         Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(datascope_id);
         if(entityOptional.isPresent()) {
+            log.info("Deleting datascope");
             DataScope entityToDelete = entityOptional.get();
             DeletedDataScope de = new DeletedDataScope();
             de.setDs_name(entityToDelete.getDs_name());
@@ -66,6 +70,7 @@ public class DeleteService {
     public void deleteAssetAndSaveToSecondary(int asset_id) {
         Optional<Asset> entityOptional = assetRepository.findByAssetId(asset_id);
         if(entityOptional.isPresent()) {
+            log.info("Deleting Asset");
             Asset entityToDelete = entityOptional.get();
             DeletedAsset de = new DeletedAsset();
             de.setAsset_description(entityToDelete.getAsset_description());
@@ -84,6 +89,7 @@ public class DeleteService {
     public void deleteTaskAndSaveToSecondary(int task_id, String completion) {
         Optional<Task> entityOptional = taskRepository.findByTaskId(task_id);
         if(entityOptional.isPresent()){
+            log.info("Deleting task");
             Task entityToDelete = entityOptional.get();
             DeletedTask de = new DeletedTask();
             de.setTask_status(entityToDelete.getTask_status());
@@ -94,11 +100,13 @@ public class DeleteService {
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
         }
+
     }
 
     public void deleteAccessRequestAndSaveToSecondary(int request_id){
         Optional<AccessRequest> entityOptional = accessRequestRepository.findById(request_id);
         if(entityOptional.isPresent()){
+            log.info("Deleting AccessRequest");
             AccessRequest entityToDelete = entityOptional.get();
             DeletedAccessRequest de = new DeletedAccessRequest();
             de.setReason(entityToDelete.getReason());
@@ -137,7 +145,10 @@ public class DeleteService {
 
     public void deleteAssetRequestAndSaveToSecondary(int request_id){
         Optional<AssetRequests> entityOptional = assetRequestRepository.findById(request_id);
+        log.info(String.valueOf(entityOptional.isPresent()));
+        log.info(String.valueOf(entityOptional.get()));
         if(entityOptional.isPresent()){
+            log.info("Deleting AssetRequest");
             AssetRequests entityToDelete = entityOptional.get();
             DeletedAssetRequest de = new DeletedAssetRequest();
             de.setAsset_id(entityToDelete.getAsset().getAsset_id());
@@ -153,6 +164,7 @@ public class DeleteService {
     public boolean deleteRiskAndSaveToSecondary(int risk_id) {
         Optional<Risk> entityOptional = riskRepository.findRiskByRiskId(risk_id);
         if(entityOptional.isPresent()){
+            log.info("Deleting Risk");
             Risk entityToDelete = entityOptional.get();
             var de = DeletedRisk.builder()
                     .risk_name(entityToDelete.getRisk_name())

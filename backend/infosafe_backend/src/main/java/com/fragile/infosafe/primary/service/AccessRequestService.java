@@ -56,6 +56,8 @@ public class AccessRequestService {
     }
 
     public ResponseEntity<String> reviewAccessRequest(ReviewRequest reviewRequest) {
+        log.info(String.valueOf(reviewRequest));
+        log.info(String.valueOf(reviewRequest.isReview()));
         if (reviewRequest.isReview()) {
             Optional<DataScope> dataScopeOptional = dataScopeRepository.findByDataScopeId(reviewRequest.getDataScope_id());
             Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());
@@ -78,15 +80,21 @@ public class AccessRequestService {
         } else {
             deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
             emailUser(reviewRequest.getUser_email(), "", "Denied");
-            return ResponseEntity.ok("rejected access");
+            String message = "rejected access";
+            return ResponseEntity.ok(message);
         }
         return ResponseEntity.badRequest().build();
     }
 
     private void emailUser(String email, String ds_name, String status){
-        String subject = "Access Request response";
-        String body = "Your request to access the Datascope: " + ds_name + "was " + status;
-        emailService.sendEmail(email, subject, body);
+        try{
+            String subject = "Access Request response";
+            String body = "Your request to access the Datascope: " + ds_name + "was " + status;
+            emailService.sendEmail(email, subject, body);
+        } catch (Exception e){
+            throw (e);
+        }
+
     }
 
     public Long getTotalAccessRequests() {

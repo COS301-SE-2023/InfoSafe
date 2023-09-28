@@ -18,7 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping("api/accessrequest")
 @RequiredArgsConstructor
-//@CrossOrigin
 public class AccessRequestController {
     private final AccessRequestService service;
     @PostMapping("/addAr")
@@ -41,6 +40,7 @@ public class AccessRequestController {
 
     @PostMapping("/reviewAccess")
     public ResponseEntity<String> reviewAccessRequest(@RequestBody ReviewRequest reviewRequest) {
+        log.info(String.valueOf(reviewRequest));
         return service.reviewAccessRequest(reviewRequest);
     }
 

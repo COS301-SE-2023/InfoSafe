@@ -6,8 +6,9 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) => {
 
     const handleReview = (reviewValue) => {
-        const payload = {review: reviewValue, request_id: access.request_id, asset_id: null, user_email: access.user.email}
-        fetch('http://localhost:8080/api/accessrequest/reviewAccess', {
+        const payload = {review: reviewValue, request_id: access.request_id, user_email: access.user_id.email, dataScope_id: access.data_scope_id.data_scope_id}
+        //console.log(payload)
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/reviewAccess', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +20,6 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) =
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
             })
             .then(() => {
                 console.log('Approved');

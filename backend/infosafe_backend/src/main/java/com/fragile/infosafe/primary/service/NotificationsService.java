@@ -28,14 +28,18 @@ public class NotificationsService {
     }
 
     public void makeNotification(String message, User user){
-        String timeMade = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        Notifications notification = Notifications.builder()
-                .createdAt(LocalDateTime.now())
-                .notification(message)
-                .user(user)
-                .timeMade(timeMade)
-                .build();
-        notificationsRepository.save(notification);
+        try {
+            String timeMade = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            Notifications notification = Notifications.builder()
+                    .createdAt(LocalDateTime.now())
+                    .notification(message)
+                    .user(user)
+                    .timeMade(timeMade)
+                    .build();
+            notificationsRepository.save(notification);
+        }catch(Exception e){
+            throw (e);
+        }
     }
 
     public List<Notifications> getNotifications(User user) {
