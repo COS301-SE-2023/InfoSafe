@@ -2,13 +2,14 @@ import {CreateDevicePopup} from "../Create/CreateDevicePopup";
 import React, {useEffect, useState} from "react";
 import {ViewDevice} from "../View/ViewDevice";
 import {FaSearch} from "react-icons/fa";
-import {RiEditBoxFill} from "react-icons/ri";
+import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import EditDevice from "../Edit/EditDevice";
 import "../../styling/Devices.css";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetAsset} from "../getData/getAsset";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
+import {ConfirmDelete} from "../ConfirmDelete";
 import delete_icon from "../../images/delete_icon.png";
 import user_icon from "../../images/create_user_icon.png";
 export const Devices = () => {
@@ -41,6 +42,49 @@ export const Devices = () => {
         }
     }
 
+    const DeleteFunction = async (asset_id) => {
+        try {
+            const response = await fetch("http://localhost:8080/api/asset/deleteAsset/"+asset_id, {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            } else {
+                console.log("asset deleted");
+                fetchAllAssets();
+            }
+            //return response.json();
+
+        } catch (error) {
+            console.error("Error deleting asset:", error);
+            throw error;
+        }
+    };
+
+    const DeleteDevice = ({asset}) => {
+        const [deleteDeviceOpen, setDeleteDeviceOpen] = useState(false);
+        if (roles.includes("devices_delete")) {
+            return (
+                <div className="usersDeleteButton">
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDeleteDeviceOpen(true)}/>
+                    {deleteDeviceOpen ? (
+                        <ConfirmDelete
+                            popupClose={() => setDeleteDeviceOpen(false)}
+                            popupOpen={deleteDeviceOpen}
+                            yesDelete={() => DeleteFunction(asset.asset_id)}
+                        />
+                    ) : null}{' '}
+                </div>
+            )
+        } else {
+            return null;
+        }
+    }
+
     const ViewDeviceItem = ({ asset }) => {
         const [viewDeviceOpen, setViewDeviceOpen] = useState(false);
         if(roles.includes("devices_create") || roles.includes("devices_edit") || roles.includes("devices_delete")) {
@@ -57,6 +101,7 @@ export const Devices = () => {
                         ) : null}
                     </p>
                     <EditDeviceDiv asset={asset}></EditDeviceDiv>
+                    <DeleteDevice asset={asset}></DeleteDevice>
                 </li>
             );
         } else {
