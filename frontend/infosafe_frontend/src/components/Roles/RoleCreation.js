@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/RoleCreation.css';
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
@@ -20,7 +20,7 @@ const RoleCreation = () => {
     const [role_name, setRoleName] = useState([]);
     let permissionsList = [];
     let permissions = 0;
-    const currentRolesList = ['Admin', 'ISO', 'DISO', 'Employee'];
+    const [roleNames, setRoleNames] = useState('');
 
     const handleClick = (e) => {
         submitInfo();
@@ -60,6 +60,22 @@ const RoleCreation = () => {
                     });
     };
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/role/getRoleNames", {
+            method:"GET",
+            headers:{"Content-Type":"application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+        }).then((res) => res.json())
+            .then((result) => {
+                setRoleNames(result);
+            });
+    }, [])
+
+    const roleItems = [];
+    for (let i = 0 ; i < roleNames.length ; i++){
+        roleItems.push(<li key={i}><p>{roleNames[i]}</p></li>)
+    }
 
     const handleCheckboxChecked = (index, subsystem) => {
         const newCheckboxState = [...checkboxState];
@@ -1125,11 +1141,7 @@ const RoleCreation = () => {
                         </div>
                         <div className="permissions">
                             <ul className="currRolesList">
-                                {currentRolesList.map((item, i) => (
-                                    <li key={i}>
-                                        <p> {currentRolesList[i]}</p>
-                                    </li>
-                                ))}
+                                {roleItems}
                             </ul>
                         </div>
                         <div className="roleCreationButtonsDiv">
