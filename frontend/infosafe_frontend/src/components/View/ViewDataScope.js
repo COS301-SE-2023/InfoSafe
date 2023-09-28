@@ -21,7 +21,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
     };
 
     useEffect(() => {
-        fetch('https://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')

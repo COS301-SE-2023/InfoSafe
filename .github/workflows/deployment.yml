@@ -52,8 +52,8 @@ jobs:
       - name: Build backend
         run: mvn -B package --file backend/infosafe_backend/pom.xml
 
-      - name: Execute backend
-        run: sudo kill -9 sudo lsof -t -i:8080 & sudo java -jar /home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/backend/infosafe_backend/target/infosafe_backend-0.0.1-SNAPSHOT.jar &
+#      - name: Execute backend
+#        run: sudo kill -9 sudo lsof -t -i:8080 & sudo java -jar /home/ubuntu/actions-runner/_work/InfoSafe/InfoSafe/backend/infosafe_backend/target/infosafe_backend-0.0.1-SNAPSHOT.jar &
 
 #      - name: Publish to GitHub Packages Apache Maven
 #        run: |
