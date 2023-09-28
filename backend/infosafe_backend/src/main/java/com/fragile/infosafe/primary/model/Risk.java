@@ -21,7 +21,7 @@ public class Risk {
     private String risk_description;
     private String suggested_mitigation;
     private String risk_status;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope;
 }

@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.controller;
 
 import com.fragile.infosafe.primary.model.Risk;
+import com.fragile.infosafe.primary.requests.ReviewRiskRequest;
 import com.fragile.infosafe.primary.requests.RiskRequest;
 import com.fragile.infosafe.primary.service.RiskService;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +29,9 @@ public class RiskController {
         return service.updateRisk(risk, risk_id);
     }
 
-    @PostMapping("/review/{risk_id}")
-    public ResponseEntity<Boolean> reviewRisk(@PathVariable("risk_id") int risk_id) {
-        return ResponseEntity.ok(false);
+    @PostMapping("/review")
+    public ResponseEntity<Boolean> reviewRisk(@RequestBody ReviewRiskRequest risk) {
+        service.reviewRisk(risk);
+        return ResponseEntity.ok(true);
     }
 }

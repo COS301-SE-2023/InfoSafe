@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/ReviewRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
@@ -7,8 +7,42 @@ import Dropdown from 'react-dropdown';
 /* eslint-disable  no-unused-vars */
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
 const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
-const STATUS = ['Accept','Avoid','Transfer','Mitigate'];
+const STATUS = ['Open','Accept','Avoid','Transfer','Mitigate'];
+
 export const ReviewRisk = ({ risk, popupClose, popupOpen, onRiskReview }) => {
+    const [currentStatus, setCurrentStatus] = useState(STATUS[0]);
+    const [newStatus, setNewStatus] = useState('');
+
+    const handleReview = () => {
+        popupClose();
+        if (newStatus !== currentStatus) {
+            const payload = {
+                risk_id: risk.risk_id,
+                risk_status: newStatus,
+                risk_name: risk.risk_name,
+                ds_id: risk.dataScope.data_scope_id
+            };
+            if (newStatus !== "OPEN") {
+                fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/review', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
+                    },
+                    body: JSON.stringify(payload),
+                })
+                    .then(() => {
+                        console.log('Done');
+                        onRiskReview();
+                    });
+            }
+        }
+    };
+
+    useEffect(() => {
+        setCurrentStatus(risk.risk_status);
+    }, [risk.risk_status]);
+
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false}>
             <div className="reviewRiskOverlay">
@@ -35,27 +69,24 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen, onRiskReview }) => {
                                 className="reviewRiskImpactDropdown"
                                 name="reviewRiskImpactDropdown"
                             />
-                            <p className="reviewRiskLabels">Vulnerability/Threat</p>
-                            <textarea className="reviewRiskTextArea">{risk.risk_description}</textarea>
                             <p className="reviewRiskLabels">Status</p>
                             <Dropdown
                                 options={STATUS}
-                                value={risk.risk_status}
+                                value={newStatus}
+                                placeholder={"Open"}
                                 className="reviewRiskStatusDropdown"
                                 name="reviewRiskStatusDropdown"
+                                onChange={(selectedOption) => setNewStatus(selectedOption.value)}
                             />
                             <div>
-                                <button className="reviewRiskSubmitButton" type="submit" onClick={popupClose}>
+                                <button className="reviewRiskSubmitButton" type="button" onClick={handleReview}>
                                     Submit
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-
             </div>
         </Popup>
     );
 };
-
-export default ReviewRisk;
