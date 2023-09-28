@@ -54,7 +54,7 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://ec2-174-129-77-195.compute-1.amazonaws.com:423/")); //""
+        configuration.setAllowedOrigins(Arrays.asList("https://ec2-174-129-77-195.compute-1.amazonaws.com:443/")); //""
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
