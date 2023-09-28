@@ -26,6 +26,12 @@ module.exports = {
                 "plugin:react/recommended"
             ],
             rules: {
+                "react/jsx-uses-react": "off",
+                "react/jsx-uses-vars": "off",
+                "react/prop-types": "off",
+                "react/react-in-jsx-scope": "off",
+                "react/no-unescaped-entities": "off",
+                "react/react/jsx-key":"off"
             },
         },
 
