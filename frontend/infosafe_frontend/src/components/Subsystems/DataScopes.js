@@ -92,7 +92,6 @@ export const DataScopes = () => {
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
-        console.log()
         if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete") || viewDatascope) {
             return (
                 <li key={datascope.data_scope_id}>
@@ -151,7 +150,7 @@ export const DataScopes = () => {
     } else {
         if (myDatascopes && myDatascopes.length > 0) {
             viewDatascope = true;
-            console.log(viewDatascope)
+            //console.log(viewDatascope)
             myDatascopes.map((datascope) =>
                 dataItems.push(<ViewDataScopeItem datascope={datascope} key={datascope.data_scope_id} />)
             );

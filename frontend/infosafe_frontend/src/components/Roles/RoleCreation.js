@@ -40,7 +40,7 @@ const RoleCreation = () => {
                         if (data) {
                             console.log("role name already exists");
                         } else {
-                            console.log(role);
+                            //console.log(role);
                             fetch("http://localhost:8080/api/role/addRole", {
                                 method: "POST",
                                 headers: {
@@ -716,7 +716,7 @@ const RoleCreation = () => {
             }
 
         }
-        console.log(roleName, permissionsList)
+        //console.log(roleName, permissionsList)
     };
 
     const [helpOpen,setHelpOpen] = useState(false);

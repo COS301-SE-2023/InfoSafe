@@ -51,8 +51,8 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(datascope);
-        console.log(values);
+        //console.log(datascope);
+        //console.log(values);
         fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'PUT',
             headers: {

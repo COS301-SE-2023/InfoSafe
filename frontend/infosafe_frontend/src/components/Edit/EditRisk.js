@@ -37,7 +37,7 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
+        //console.log(values)
         fetch('http://localhost:8080/api/risk/update/' + risk.risk_id, {
             method: "POST",
             headers: {

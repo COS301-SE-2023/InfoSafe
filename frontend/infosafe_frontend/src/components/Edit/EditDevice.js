@@ -60,14 +60,14 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(request)
+        //console.log(request)
         let mergedRequest = userChanged ? { ...values, ...request } : { ...values };
-        console.log(mergedRequest)
+        //console.log(mergedRequest)
         if (( request.asset_name === '' || request.asset_description === '' || request.device_type === '' ) || (request.availability === 'No' && request.current_assignee === null)){
             document.getElementById("editDeviceError").style.display = "block";
             return;
         }
-        console.log(request);
+        //console.log(request);
         fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
