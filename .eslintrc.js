@@ -31,7 +31,7 @@ module.exports = {
                 "react/prop-types": "off",
                 "react/react-in-jsx-scope": "off",
                 "react/no-unescaped-entities": "off",
-                "react/react/jsx-key":"off"
+                "react/jsx-key":"off"
             },
         },
 
