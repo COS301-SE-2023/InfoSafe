@@ -15,6 +15,9 @@ jobs:
       packages: write
 
     steps:
+      - name: Clean workspace
+        run: rm -rf $GITHUB_WORKSPACE/*
+
       - name: Checkout code
         uses: actions/checkout@v3
 
