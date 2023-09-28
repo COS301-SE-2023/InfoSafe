@@ -81,24 +81,24 @@ export const ForgotPassword = () => {
         <div className='background'>
             <div className='inputPanel'>
                 <div className='emailPanel' id='emailPanel'>
-                    <p>Enter your E-Mail:</p>
-                    <input type='text' value={email} onChange={handleEmailChange} />
+                    <p className="emailTitle">Enter your E-Mail:</p>
+                    <input type='text' value={email} onChange={handleEmailChange} className="forgotEmail"/>
                     <button className='submit' onClick={handleClick}>
                         Submit
                     </button>
                 </div>
                 <div className='otpPanel' id='otpPanel'>
-                    <p>Enter OTP:</p>
-                    <input type='text' value={otp} onChange={handleOtpChange} />
+                    <p className="otpTitle">Enter OTP:</p>
+                    <input type='text' value={otp} onChange={handleOtpChange} className="forgotOTP"/>
                     <button className='submit' onClick={otpState}>
                         Submit
                     </button>
                 </div>
                 <div className='passwordPanel' id='passwordPanel'>
-                    <p>Enter new password:</p>
-                    <input type='text' value={newPassword} onChange={handleNewPasswordChange} />
-                    <p>Re-enter new password:</p>
-                    <input type='text' />
+                    <p className="passTitle">Enter new password:</p>
+                    <input type='text' value={newPassword} onChange={handleNewPasswordChange} className="forgotPass"/>
+                    <p className="rePassTitle">Re-enter new password:</p>
+                    <input type='text' className="forgotRePass"/>
                     <button className='submit' onClick={handleSecondClick}>
                         Submit
                     </button>
