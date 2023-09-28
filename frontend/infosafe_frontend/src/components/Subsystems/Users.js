@@ -11,9 +11,7 @@ import {useGetAllUser} from "../getData/getAllUser";
 import {ConfirmDelete} from "../ConfirmDelete";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "../HelpPopup";
-import edit_icon from '../../images/edit_icon.png';
-import delete_icon from '../../images/delete_icon.png';
-import user_icon from '../../images/create_user_icon.png';
+import user_help from '../../images/user_help.png';
 
 export const Users = () => {
     const [createUserOpen, setCreateUserOpen] = useState(false);
@@ -151,11 +149,7 @@ export const Users = () => {
     }
 
     const [helpOpen, setHelpOpen] = useState(false);
-    const helpMsg = "To view a users information, click on their field in the table." +
-        "To edit a user, click the edit ( " + <RiEditBoxFill/> + " ) button" +
-        "To delete a user you can click the ( " + <img src={delete_icon} alt='edit icon'/> + " ) button." +
-        "To add a user click the Create New User ( " +
-        <img src={user_icon} alt='edit icon'/> + " ) button and then fill in all the relevant information.";
+
 
 
     return (
@@ -167,7 +161,7 @@ export const Users = () => {
                         <HelpPopup
                             popupClose={() => setHelpOpen(false)}
                             popupOpen={helpOpen}
-                            message={helpMsg}
+                            image={user_help}
                         />
                     ) : null}
                 </button>
