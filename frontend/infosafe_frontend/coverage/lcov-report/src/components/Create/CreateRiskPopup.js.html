@@ -355,7 +355,7 @@ export const CreateRisk = ({ popupClose, popupOpen, onRiskAdded }) =&gt; {
 &nbsp;
         const risk = <span class="cstat-no" title="statement not covered" >{risk_name, impact_rating, probability_rating, risk_description, risk_status: "Open", suggested_mitigation, dataScope_id: datascope.value,};</span>
         //console.log(risk);
-<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/addRisk", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/risk/addRisk", {</span>
             method:"POST",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

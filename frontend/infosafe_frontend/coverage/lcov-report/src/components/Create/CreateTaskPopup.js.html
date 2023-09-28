@@ -479,7 +479,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) =&gt; {
             users_email: selectedUsers.map(<span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; <span class="cstat-no" title="statement not covered" >user.label)</span>,
         };
         //console.log(task)
-<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/addTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/addTask", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -500,7 +500,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) =&gt; {
     };
 &nbsp;
     useEffect(() =&gt; {
-        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

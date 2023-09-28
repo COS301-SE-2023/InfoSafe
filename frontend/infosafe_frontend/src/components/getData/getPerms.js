@@ -4,7 +4,7 @@ export const useGetPerms = () => {
     const [roles, setRoles] = useState([]);
 
     useEffect(() => {
-        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getPermissions', {
+        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getPermissions', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

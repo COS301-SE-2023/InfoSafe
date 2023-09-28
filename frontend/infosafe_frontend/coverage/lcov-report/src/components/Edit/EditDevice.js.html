@@ -511,7 +511,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) =&gt; {
 <span class="cstat-no" title="statement not covered" >            return;</span>
         }
 <span class="cstat-no" title="statement not covered" >        console.log(request);</span>
-<span class="cstat-no" title="statement not covered" >        fetch('https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/update/' + asset.asset_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/asset/update/' + asset.asset_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -525,7 +525,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) =&gt; {
     }
 &nbsp;
     useEffect(() =&gt; {
-        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUserNotAssigned/" + asset.asset_id, {
+        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/findUserNotAssigned/" + asset.asset_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

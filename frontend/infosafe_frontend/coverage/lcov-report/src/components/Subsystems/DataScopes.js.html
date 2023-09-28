@@ -532,7 +532,7 @@ export const DataScopes = <span class="cstat-no" title="statement not covered" >
 &nbsp;
     const DeleteFunction = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (data_scope_id) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        try {</span>
-            const response = <span class="cstat-no" title="statement not covered" >await fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/deleteDataScope/"+data_scope_id, {</span>
+            const response = <span class="cstat-no" title="statement not covered" >await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/deleteDataScope/"+data_scope_id, {</span>
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

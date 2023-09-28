@@ -46,9 +46,7 @@ public class SecurityConfiguration {
                 .authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .requiresChannel(channel -> channel
-                        .anyRequest().requiresSecure());
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -56,28 +54,13 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://infosafe.live")); //""
+        configuration.setAllowedOrigins(Arrays.asList("https://ec2-174-129-77-195.compute-1.amazonaws.com:80")); //""
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/api/**", configuration);
         return source;
     }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins("https://ec2-174-129-77-195.compute-1.amazonaws.com:80")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
-            }
-        };
-    }
-
-
-
 }
 
 
