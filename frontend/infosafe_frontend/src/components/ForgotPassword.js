@@ -1,10 +1,10 @@
 import "../styling/ForgotPassword.css"
-import {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 export const ForgotPassword = () => {
-    const [email, setEmail] = useState('');
-    const [otp, setOtp] = useState('');
-    const [newPassword, setNewPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState("");
+    const [newPassword, setNewPassword] = useState("");
     const handleClick = (e) => {
         emailState()
         e.preventDefault();
@@ -14,7 +14,7 @@ export const ForgotPassword = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body: JSON.stringify(forgot)
         }).then((response) => {
@@ -38,7 +38,7 @@ export const ForgotPassword = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body: JSON.stringify(forgot)
         }).then((response) => {
@@ -78,28 +78,28 @@ export const ForgotPassword = () => {
     };
 
     return (
-        <div className="background">
-            <div className="inputPanel">
-                <div className="emailPanel" id="emailPanel">
+        <div className='background'>
+            <div className='inputPanel'>
+                <div className='emailPanel' id='emailPanel'>
                     <p>Enter your E-Mail:</p>
-                    <input type="text" value={email} onChange={handleEmailChange} />
-                    <button className="submit" onClick={handleClick}>
+                    <input type='text' value={email} onChange={handleEmailChange} />
+                    <button className='submit' onClick={handleClick}>
                         Submit
                     </button>
                 </div>
-                <div className="otpPanel" id="otpPanel">
+                <div className='otpPanel' id='otpPanel'>
                     <p>Enter OTP:</p>
-                    <input type="text" value={otp} onChange={handleOtpChange} />
-                    <button className="submit" onClick={otpState}>
+                    <input type='text' value={otp} onChange={handleOtpChange} />
+                    <button className='submit' onClick={otpState}>
                         Submit
                     </button>
                 </div>
-                <div className="passwordPanel" id="passwordPanel">
+                <div className='passwordPanel' id='passwordPanel'>
                     <p>Enter new password:</p>
-                    <input type="text" value={newPassword} onChange={handleNewPasswordChange} />
+                    <input type='text' value={newPassword} onChange={handleNewPasswordChange} />
                     <p>Re-enter new password:</p>
-                    <input type="text" />
-                    <button className="submit" onClick={handleSecondClick}>
+                    <input type='text' />
+                    <button className='submit' onClick={handleSecondClick}>
                         Submit
                     </button>
                 </div>
