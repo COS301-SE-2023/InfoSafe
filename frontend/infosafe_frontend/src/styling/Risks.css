@@ -11,7 +11,7 @@
     display: flex;
     width: 100%;
     position: relative;
-    right: 4.2vw;
+    right: 5%;
     justify-content: right;
     height: 20%;
     top: 0;
@@ -28,20 +28,17 @@
     padding-left: 10px;
     position: relative;
     top: 45%;
+    font-size: 16px;
 }
 .riskSearchInput:focus{
     border: 2px solid #9E0000;
 }
-.riskSearchIcon
-{
+.riskSearchIcon {
     position: absolute;
-    height: 100%;
-    right: 0;
-    top: 0.5vh;
-    margin-right: 1%;
-    padding-left: 2px;
+    right: 10px;
+    top: 54%;
+    transform: translateY(-50%);
     color: #9E0000;
-
 }
 .risks {
     background-color: transparent;
@@ -62,7 +59,7 @@
     margin: 0;
     padding: 0;
 }
-.risksListItem {
+.risksList li {
     position: relative;
     height: 5vh;
     color: #000000;
@@ -74,33 +71,41 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
     margin-top: 4px;
 }
-.risksListItemName {
+.risksList li p {
     font-family: 'Roboto', sans-serif;
     transform: translateY(-50%);
     margin: 0;
     padding: 0;
     position: relative;
     top: 50%;
-    left: 1%;
+    left: 0.5%;
 }
-.risksListItem:hover {
+.risksList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
 .reviewRiskButton {
+    background-color: #444040;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    font-weight: bold;
-    color: #000000;
-    text-transform: uppercase;
-    height: 80%;
+    padding: 2% 8%;
     width: fit-content;
+    height: 85%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
+}
+.reviewRiskButtonDiv {
+    height: 80%;
+    width: 6%;
     position: absolute;
     top: 50%;
-    right: 2.5vw;
-    transform: translateY(-50%);
-    background-color: #bbbbbb;
-    border: 1px solid #000000;
+    right: 3%;
+    margin: 0;
+    background-color: transparent;
 }
 .CreateRiskButton {
     background: #373737;
@@ -130,11 +135,75 @@
     padding: 0;
     margin: 0;
 }
-.EditIcon{
+.riskEditButton{
+    background-color: #444040;
+    width: 2.5%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 2vw;
+    right: 1%;
+    height: 70%;
+    top: 15%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.riskEditIcon{
+    color: #FFFFFF;
+    width: 110%;
+    position: relative;
+}
+.risksHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 1vw;
+    top: 2vh;
+    z-index:1000;
+}
+.helpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
+.loadingScreen{
+    background-color: #FFFFFF;
+    width: 100%;
     height: 100%;
-    z-index: 5;
+    border-radius: 4px;
+}
+.loadingDiv{
+    position: relative;
+    top: 45%;
+    margin: 0 auto;
+    height: 8%;
+    width: 30%;
+    border: 4px solid #9E0000;
+    border-radius: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
+}
+.loadingDiv .loading{
+    position: absolute;
+    background-color: #bbbbbb;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    animation: loading 4s infinite linear;
+}
+@keyframes loading{
+    0%{
+        width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -22,4 +24,11 @@ public class DataScope {
     @JoinColumn(name = "user_id")
     private User data_custodian;
     private String ds_status;
+    @ManyToMany
+    @JoinTable(
+            name = "data_scope_users",
+            joinColumns = @JoinColumn(name = "data_scope_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> users = new HashSet<>();
 }

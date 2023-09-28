@@ -3,16 +3,21 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import ViewAssetRequest from "../../View/ViewAssetRequest";
 
 describe("ViewAsset Component", () => {
-    const asset = {
-        asset_id: "Dell XPS",
-        user_id: "John Doe",
+    const assetRequest = {
+        asset: {
+            asset_name: "Dell XPS"
+        },
+        user: {
+            first_name: "John",
+            last_name: "Doe"
+        },
         reason: "Need new Laptop",
         desired_date: "2023-11-11"
     };
 
     it("renders correctly with asset data", () => {
         const { getByText } = render(
-            <ViewAssetRequest asset={asset} popupOpen={true} popupClose={() => {}} />
+            <ViewAssetRequest assetRequest={assetRequest} popupOpen={true} popupClose={() => {}} />
         );
 
         // Ensure that the component renders with user data
@@ -31,7 +36,7 @@ describe("ViewAsset Component", () => {
         const popupCloseMock = jest.fn();
 
         const { getByTestId } = render(
-            <ViewAssetRequest asset={asset} popupOpen={true} popupClose={popupCloseMock} />
+            <ViewAssetRequest assetRequest={assetRequest} popupOpen={true} popupClose={popupCloseMock} />
         );
 
         // eslint-disable-next-line testing-library/prefer-screen-queries

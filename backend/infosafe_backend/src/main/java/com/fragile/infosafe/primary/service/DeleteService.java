@@ -1,23 +1,10 @@
 package com.fragile.infosafe.primary.service;
 
 
-import com.fragile.infosafe.delete.deletemodel.DeletedAsset;
-import com.fragile.infosafe.delete.deletemodel.DeletedDataScope;
-import com.fragile.infosafe.delete.deletemodel.DeletedTask;
-import com.fragile.infosafe.delete.deleterepository.DeletedAssetRepository;
-import com.fragile.infosafe.delete.deleterepository.DeletedDataScopeRepository;
-import com.fragile.infosafe.delete.deleterepository.DeletedTaskRepository;
-import com.fragile.infosafe.delete.deleterepository.DeletedUserRepository;
-import com.fragile.infosafe.delete.deletemodel.DeletedUser;
-import com.fragile.infosafe.primary.model.Asset;
-import com.fragile.infosafe.primary.model.DataScope;
-import com.fragile.infosafe.primary.model.Task;
-import com.fragile.infosafe.primary.model.User;
-import com.fragile.infosafe.primary.repository.AssetRepository;
-import com.fragile.infosafe.primary.repository.DataScopeRepository;
-import com.fragile.infosafe.primary.repository.TaskRepository;
-import com.fragile.infosafe.primary.repository.UserRepository;
-import lombok.Data;
+import com.fragile.infosafe.delete.deletemodel.*;
+import com.fragile.infosafe.delete.deleterepository.*;
+import com.fragile.infosafe.primary.model.*;
+import com.fragile.infosafe.primary.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,10 +18,20 @@ public class DeleteService {
     private final DataScopeRepository dataScopeRepository;
     private final AssetRepository assetRepository;
     private final TaskRepository taskRepository;
+    private final AccessRequestRepository accessRequestRepository;
+    private final AssetRequestRepository assetRequestRepository;
+    private final SupportRequestRepository supportRequestRepository;
+    private final RiskRepository riskRepository;
+
     private final DeletedUserRepository deletedUserRepository;
     private final DeletedDataScopeRepository deletedDataScopeRepository;
     private final DeletedAssetRepository deletedAssetRepository;
     private final DeletedTaskRepository deletedTaskRepository;
+    private final DeletedAssetRequestRepository deletedAssetRequestRepository;
+    private final DeletedAccessRequestRepository deletedAccessRequestRepository;
+    private final DeletedSupportRequestRepository deletedSupportRequestRepository;
+    private final DeletedRiskRepository deletedRiskRepository;
+
     public void deleteUserAndSaveToSecondary(String email) {
         Optional<User> entityOptional = userRepository.findByEmail(email);
         if (entityOptional.isPresent()) {
@@ -76,14 +73,14 @@ public class DeleteService {
             de.setStatus(entityToDelete.getStatus());
             de.setUsed(entityToDelete.getUsed());
             de.setDevice_type(entityToDelete.getDevice_type());
-            de.setCurrent_assignee(entityToDelete.getCurrent_assignee());
-            de.setPrevious_assignee(entityToDelete.getPrevious_assignee());
+            //de.setCurrent_assignee(entityToDelete.getCurrent_assignee());
+            //de.setPrevious_assignee(entityToDelete.getPrevious_assignee());
             deletedAssetRepository.save(de);
             assetRepository.delete(entityToDelete);
         }
     }
 
-    public void deleteTaskAndSaveToSecondary(int task_id) {
+    public void deleteTaskAndSaveToSecondary(int task_id, String completion) {
         Optional<Task> entityOptional = taskRepository.findByTaskId(task_id);
         if(entityOptional.isPresent()){
             Task entityToDelete = entityOptional.get();
@@ -92,9 +89,85 @@ public class DeleteService {
             de.setTask_description(entityToDelete.getTask_description());
             de.setDue_date(entityToDelete.getDue_date());
             de.setDate_created(entityToDelete.getDate_created());
+            de.setCompletionStatus(completion);
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
         }
+    }
+
+    public void deleteAccessRequestAndSaveToSecondary(int request_id){
+        Optional<AccessRequest> entityOptional = accessRequestRepository.findById(request_id);
+        if(entityOptional.isPresent()){
+            AccessRequest entityToDelete = entityOptional.get();
+            DeletedAccessRequest de = new DeletedAccessRequest();
+            de.setReason(entityToDelete.getReason());
+            de.setUser_id(entityToDelete.getUser_id().getUser_id());
+            de.setStatus(entityToDelete.getStatus());
+            de.setData_scope_id(entityToDelete.getData_scope_id().getData_scope_id());
+            deletedAccessRequestRepository.save(de);
+            accessRequestRepository.delete(entityToDelete);
+        }
+    }
+
+    public void deleteSupportRequestAndSaveToSecondary(int request_id){
+        Optional<SupportRequest> entityOptional = supportRequestRepository.findById(request_id);
+        if(entityOptional.isPresent()){
+            SupportRequest entityToDelete = entityOptional.get();
+            DeletedSupportRequest de = new DeletedSupportRequest();
+            de.setSupport_type(entityToDelete.getSupport_type());
+            de.setSupport_description(entityToDelete.getSupport_description());
+            de.setSupport_status(entityToDelete.getSupport_status());
+            de.setUser_id(entityToDelete.getSupport_id());
+            switch (entityToDelete.getSupport_type()) {
+                case "DataScope Support":
+                        de.setData_scope_id(entityToDelete.getDataScope_id().getData_scope_id());
+                    break;
+                case "Asset Support":
+                        de.setAsset_id(entityToDelete.getAsset_id().getAsset_id());
+                    break;
+                case "Task Support":
+                        de.setTask_id(entityToDelete.getTask_id().getTask_id());
+                    break;
+            }
+            deletedSupportRequestRepository.save(de);
+            supportRequestRepository.delete(entityToDelete);
+        }
+    }
+
+    public void deleteAssetRequestAndSaveToSecondary(int request_id){
+        Optional<AssetRequests> entityOptional = assetRequestRepository.findById(request_id);
+        if(entityOptional.isPresent()){
+            AssetRequests entityToDelete = entityOptional.get();
+            DeletedAssetRequest de = new DeletedAssetRequest();
+            de.setAsset_id(entityToDelete.getAsset().getAsset_id());
+            de.setReason(entityToDelete.getReason());
+            de.setUser_id(entityToDelete.getUser().getUser_id());
+            de.setRequest_status(entityToDelete.getRequest_status());
+            de.setDesired_date(entityToDelete.getDesired_date());
+            deletedAssetRequestRepository.save(de);
+            assetRequestRepository.delete(entityToDelete);
+
+        }
+    }
+
+    public boolean deleteRiskAndSaveToSecondary(int risk_id) {
+        Optional<Risk> entityOptional = riskRepository.findRiskByRiskId(risk_id);
+        if(entityOptional.isPresent()){
+            Risk entityToDelete = entityOptional.get();
+            var de = DeletedRisk.builder()
+                    .risk_name(entityToDelete.getRisk_name())
+                    .risk_description(entityToDelete.getRisk_description())
+                    .impact_rating(entityToDelete.getImpact_rating())
+                    .suggested_mitigation(entityToDelete.getSuggested_mitigation())
+                    .risk_status(entityToDelete.getRisk_status())
+                    .probability_rating(entityToDelete.getProbability_rating())
+                    .dataScope_id(entityToDelete.getDataScope().getData_scope_id())
+                    .build();
+            deletedRiskRepository.save(de);
+            riskRepository.delete(entityToDelete);
+            return true;
+        }
+        return false;
     }
 }
 

@@ -1,7 +1,10 @@
 package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.service.AWSSecretService;
+import com.zaxxer.hikari.HikariDataSource;
+import jakarta.annotation.PreDestroy;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -25,6 +28,7 @@ public class PersistenceSecondaryConfiguration {
 
     private final AWSSecretService awsSecretService;
 
+    @PreDestroy
     @Bean
     public LocalContainerEntityManagerFactoryBean secondaryEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -41,19 +45,25 @@ public class PersistenceSecondaryConfiguration {
 
         return em;
     }
-
+    @PreDestroy
     @Bean
     public DataSource secondaryDataSource() {
         RDSLogin login = awsSecretService.getRDSLogin();
-        return DataSourceBuilder
+        DataSource dataSource = DataSourceBuilder
                 .create()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
-                .username(login.getUsername())
-                .password(login.getPassword())
+                .url("jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())//"jdbc:" + login.getEngine() + "://" + login.getHost() + ":" + login.getPort() + "/secondary_database") //+ login.getDbname())
+                .username(login.getUsername()) //login.getUsername())
+                .password(login.getPassword()) //login.getPassword())
                 .build();
+        if (dataSource instanceof HikariDataSource hikariDataSource) {
+            hikariDataSource.setMaximumPoolSize(10);
+            hikariDataSource.setIdleTimeout(60000 * 5);
+        }
+        return dataSource;
     }
 
+    @PreDestroy
     @Bean
     public PlatformTransactionManager secondaryTransactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();

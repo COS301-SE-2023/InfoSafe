@@ -1,5 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +12,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -25,13 +28,14 @@ public class User implements UserDetails {
     private int user_id;
     private String first_name;
     private String last_name;
+    @Column(unique = true)
     private String email;
     private String password;
 
     @Column(nullable = true)
     private String otp;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role_name")
     private Role role;
 
@@ -66,7 +70,15 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.getRole_name()));
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(role.getRole_name())); // should add _ROLE
+        for (Permission permission : Permission.values()) {
+            if (role.hasPermission(permission)) {
+                authorities.add(new SimpleGrantedAuthority(permission.name()));
+            }
+        }
+
+        return authorities;
     }
 
     @Override

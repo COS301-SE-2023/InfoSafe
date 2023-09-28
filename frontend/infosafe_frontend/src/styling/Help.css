@@ -1,0 +1,17 @@
+.helpBackground{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.helpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.helpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}

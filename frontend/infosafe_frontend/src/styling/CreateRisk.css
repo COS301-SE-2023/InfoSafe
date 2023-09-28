@@ -1,36 +1,57 @@
 .createRiskOverlay {
-    width: 60vw;
-    height: 90vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(20px);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .borderCreateRisk {
-    border: 1px solid #ffffff;
-    width: 56vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 82vh;
     position: relative;
-    top: 4vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.borderCreateRisk::-webkit-scrollbar{
+    display: none;
+}
+.createRiskBackButton {
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-.backIcon {
+.createRiskBackIcon {
     color: #ffffff;
     margin: 0 auto;
     height: 3vh;
@@ -49,81 +70,243 @@
     top: -3vh;
     left: 20%;
 }
-.inputTitle {
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    color: #000000;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+.riskNameLabel {
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
     position: relative;
-    top: 1vh;
+    left: 15%;
 }
-.inputTextArea {
+.riskProbabilityLabel, .riskImpactLabel, .riskDescriptionLabel{
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    left: 15%;
+    top: -1vh;
+}
+.riskStatusLabel, .riskSuggestedMitigationLabel{
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    left: 15%;
+    top: -2vh;
+}
+.riskDataScopeLabel{
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    position: relative;
+    left: 15%;
+    top: -3vh;
+}
+.riskNameInput {
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.riskDescriptionInput{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    top: -1vh;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.riskSuggestedMitigationInput{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    top: -2vh;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.riskSuggestedMitigationInput::-webkit-scrollbar{
+    display: none;
+}
+.riskNameInput::-webkit-scrollbar{
+    display: none;
+}
+.riskDescriptionInput::-webkit-scrollbar{
+    display: none;
+}
+/*.riskSuggestedMitigationInput:focus{*/
+/*    outline: none;*/
+/*}*/
+/*.riskNameInput:focus{*/
+/*    outline: none;*/
+/*}*/
+.createRiskProbabilityDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     text-align: left;
     border: none;
-    left: 25%;
+    color: #CECECE;
     position: relative;
-    width: 50%;
-    margin-top: 0;
+    width: 70%;
+    left: 15%;
+    top: -1vh;
 }
-.probabilityDropdown{
+.createRiskProbabilityDropdown:after {
+    transform: translateY(50%);
+}
+
+.createRiskProbabilityDropdown .Dropdown-control{
+    background-color: #CECECE;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    padding: 1% 1%;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    text-align: center;
-    border: none;
-    left: 25%;
-    position: relative;
-    width: 50%;
-    margin-top: 1.5%;
-}
-.impactDropdown{
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    text-align: center;
-    border: none;
-    left: 25%;
-    position: relative;
-    width: 50%;
-    margin-top: 1.5%;
-}
-.statusDropdown{
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    text-align: center;
-    border: none;
-    left: 25%;
-    position: relative;
-    width: 50%;
-    margin-top: 1.5%;
-}
-.datascopeDropdown{
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    text-align: center;
-    border: none;
-    left: 25%;
-    position: relative;
-    width: 50%;
-    margin-top: 1.5%;
-}
-.submitButton {
-    width: 20%;
     height: 5%;
-    background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+}
+.riskImpactDropdown{
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
-    position: relative;
-    align-self: center;
-    justify-self: center;
-    bottom: 2vh;
-    left: 40%;
+    font-size: 18px;
+    text-align: left;
     border: none;
-    margin: 5% auto 0;
+    color: #CECECE;
+    position: relative;
+    width: 70%;
+    left: 15%;
+    top: -1vh;
+}
+.riskImpactDropdown:after {
+    transform: translateY(50%);
+}
+
+.riskImpactDropdown .Dropdown-control{
+    background-color: #CECECE;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    padding: 1% 1%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    height: 5%;
+}
+.riskStatusDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    color: #CECECE;
+    position: relative;
+    width: 70%;
+    left: 15%;
+    top: -2vh;
+}
+.riskStatusDropdown:after {
+    transform: translateY(50%);
+}
+
+.riskStatusDropdown .Dropdown-control{
+    background-color: #CECECE;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    padding: 1% 1%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    height: 5%;
+}
+.riskDataScopeDropdown{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    color: #CECECE;
+    position: relative;
+    width: 70%;
+    left: 15%;
+    top: -3vh;
+}
+.riskDataScopeDropdown:after {
+    transform: translateY(50%);
+}
+
+.riskDataScopeDropdown .Dropdown-control{
+    background-color: #CECECE;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    padding: 1% 1%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    height: 5%;
+}
+.createRiskSubmitButton {
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    margin: 2%  0;
+    left: 15%;
+    top: -1vh;
+}
+.createRiskError{
+    display: none;
+    color: #9E0000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
+}
+.createRiskLoadTitle{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    padding: 0.5% 2%;
+    top: -2vh;
 }

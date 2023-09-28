@@ -23,9 +23,13 @@ public class RiskController {
     @GetMapping("/getRisk")
     public List<Risk> list() { return service.getAllRisks(); }
 
-    @PutMapping("/update/{id}")
-    public Risk updateRisk (@PathVariable("id") Long risk_id, @RequestBody Risk risk) {
-        risk.setRisk_id(risk_id);
-        return service.updateRisk(risk);
+    @PostMapping("/update/{id}")
+    public Risk updateRisk (@PathVariable("id") int risk_id, @RequestBody RiskRequest risk) {
+        return service.updateRisk(risk, risk_id);
+    }
+
+    @PostMapping("/review/{risk_id}")
+    public ResponseEntity<Boolean> reviewRisk(@PathVariable("risk_id") int risk_id) {
+        return ResponseEntity.ok(false);
     }
 }

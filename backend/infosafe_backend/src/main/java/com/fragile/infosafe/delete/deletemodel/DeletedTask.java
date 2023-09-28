@@ -20,7 +20,8 @@ public class DeletedTask {
     private int task_id;
     private String task_description;
     private String task_status;
-    private Date due_date;
-    private Date date_created;
+    private String due_date;
+    private String date_created;
+    private String completionStatus;
 
 }

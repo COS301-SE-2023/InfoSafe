@@ -3,13 +3,15 @@ import RoleCreation from "../Roles/RoleCreation";
 import {Users} from "./Users";
 import {DataScopes} from "./DataScopes";
 import {AccessRequests} from "./AccessRequests";
-import {ComplianceMatrix} from "./ComplianceMatrix";
+import {Tasks} from "./Tasks";
 import {Devices} from "./Devices";
 import {SupportRequests} from "./SupportRequests";
 import {Risks} from "./Risks";
 import {Requests} from "./Requests";
 import {AssetRequest} from "./AssetRequest";
-import {Dashboard} from "../Dashboard";
+import {Dashboard} from "../Charts/Dashboard";
+import {About} from "../About";
+import {Help} from "../Help";
 
 export const TabView = ({currentTab}) => {
     switch (currentTab){
@@ -31,31 +33,39 @@ export const TabView = ({currentTab}) => {
         }
         case 4:
         {
-            return (<AccessRequests></AccessRequests>);
+            return (<Tasks></Tasks>);
         }
         case 5:
         {
-            return (<ComplianceMatrix></ComplianceMatrix>);
+            return (<Devices></Devices>);
         }
         case 6:
         {
-            return (<Devices></Devices>);
+            return (<Risks></Risks>);
         }
         case 7:
         {
-            return (<SupportRequests></SupportRequests>);
+            return (<Requests></Requests>);
         }
         case 8:
         {
-            return (<Risks></Risks>);
+            return (<AccessRequests></AccessRequests>);
         }
         case 9:
         {
-            return (<Requests></Requests>);
+            return (<AssetRequest></AssetRequest>);
         }
         case 10:
         {
-            return (<AssetRequest></AssetRequest>);
+            return (<SupportRequests></SupportRequests>);
+        }
+        case 11:
+        {
+            return (<About></About>)
+        }
+        case 12:
+        {
+            return (<Help></Help>)
         }
         default:
         {

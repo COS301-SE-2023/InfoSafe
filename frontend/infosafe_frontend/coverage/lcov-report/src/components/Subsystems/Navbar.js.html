@@ -446,7 +446,7 @@ const NavBar = <span class="cstat-no" title="statement not covered" ><span class
     const [left,setLeft] = <span class="cstat-no" title="statement not covered" >useState(0);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/user/getUserName", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getUserName", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")

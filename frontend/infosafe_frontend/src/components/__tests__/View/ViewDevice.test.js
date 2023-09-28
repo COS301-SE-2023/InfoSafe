@@ -10,8 +10,14 @@ describe("ViewDevice Component", () => {
         used: "Yes",
         availability: "No",
         status: "Cleaned",
-        current_assignee: "John Doe",
-        previous_assignee: "Jane Doe"
+        current_assignee: {
+            first_name: "John",
+            last_name: "Doe"
+        },
+        previous_assignee: {
+            first_name: "Jane",
+            last_name: "Doe"
+        }
     };
 
     it("renders correctly with asset data", () => {
@@ -27,9 +33,9 @@ describe("ViewDevice Component", () => {
         expect(screen.getByText("Laptop")).toBeInTheDocument();
         expect(screen.getByText("Device Description")).toBeInTheDocument();
         expect(screen.getByText("Portable Computer")).toBeInTheDocument();
-        expect(screen.getByText("New")).toBeInTheDocument();
+        expect(screen.getByText("Condition")).toBeInTheDocument();
         expect(screen.getByText("Yes")).toBeInTheDocument();
-        expect(screen.getByText("Available")).toBeInTheDocument();
+        expect(screen.getByText("Availability")).toBeInTheDocument();
         expect(screen.getByText("No")).toBeInTheDocument();
         expect(screen.getByText("Status")).toBeInTheDocument();
         expect(screen.getByText("Cleaned")).toBeInTheDocument();

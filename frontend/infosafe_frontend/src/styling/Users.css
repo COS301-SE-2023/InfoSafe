@@ -1,8 +1,22 @@
+.userHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    left: 1vw;
+    top: 2vh;
+    position: absolute;
+    z-index: 1000;
+}
+.userHelpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
 .searchUsers{
     display: flex;
+    /*align-items: center;*/
     width: 100%;
     position: relative;
-    right: 4.2vw;
+    right: 5%;
     justify-content: right;
     height: 20%;
     top: 0;
@@ -19,6 +33,7 @@
     padding-left: 10px;
     position: relative;
     top: 45%;
+    font-size: 16px;
 }
 .userSearchInput:focus{
     border: 2px solid #9E0000;
@@ -26,13 +41,10 @@
 .userSearchIcon
 {
     position: absolute;
-    height: 100%;
-    right: 0;
-    top: 0.5vh;
-    margin-right: 1%;
-    padding-left: 2px;
+    right: 10px;
+    top: 54%;
+    transform: translateY(-50%);
     color: #9E0000;
-
 }
 .users {
     background-color: transparent;
@@ -45,7 +57,6 @@
     overflow-y: scroll;
     box-sizing: content-box;
     scrollbar-width: none;
-
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
 }
 .users::-webkit-scrollbar {
@@ -75,7 +86,8 @@
     padding: 0;
     position: relative;
     top: 50%;
-    left: 1%;
+    left: 0.5%;
+    font-size: 16px
 }
 .userList li:hover {
     z-index: 4;
@@ -116,7 +128,7 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 4vw;
+    right: 4.5%;
     height: 70%;
     top: 15%;
     border-radius: 4px;
@@ -137,7 +149,7 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 1vw;
+    right: 1%;
     height: 70%;
     top: 15%;
     border-radius: 4px;
@@ -160,3 +172,45 @@
     position: relative;
     margin: 0 auto;
 }
+.loadingScreen{
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.loadingDiv{
+    position: relative;
+    top: 45%;
+    margin: 0 auto;
+    height: 8%;
+    width: 30%;
+    border: 4px solid #9E0000;
+    border-radius: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
+}
+.loadingDiv .loading{
+    position: absolute;
+    background-color: #bbbbbb;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    animation: loading 4s infinite linear;
+}
+@keyframes loading{
+    0%{
+        width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+

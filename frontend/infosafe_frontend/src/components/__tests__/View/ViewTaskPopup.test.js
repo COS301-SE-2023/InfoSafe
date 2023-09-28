@@ -4,9 +4,12 @@ import ViewTask from "../../View/ViewTaskPopup";
 
 describe("ViewTaskPopup Component", () => {
     const task = {
-        task_id: "1",
+        task_name: "Task 1",
         task_description: "Create new users",
-        due_date: "2023-11-11"
+        due_date: "2023-11-11",
+        data_scope_id: {
+            ds_name: "Data Scope A"
+        }
     };
 
     it("renders correctly with task popup data", () => {
@@ -16,7 +19,7 @@ describe("ViewTaskPopup Component", () => {
 
         // Ensure that the component renders with user data
         expect(screen.getByText("View Task")).toBeInTheDocument();
-        expect(screen.getByText("Task ID")).toBeInTheDocument();
+        expect(screen.getByText("Task Name")).toBeInTheDocument();
         expect(screen.getByText("Task 1")).toBeInTheDocument();
         expect(screen.getByText("Data Scope")).toBeInTheDocument();
         expect(screen.getByText("Data Scope A")).toBeInTheDocument();

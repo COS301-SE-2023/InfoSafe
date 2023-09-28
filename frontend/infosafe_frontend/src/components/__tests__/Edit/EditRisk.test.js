@@ -4,11 +4,17 @@ import EditRisk from "../../Edit/EditRisk";
 
 describe("EditRisk Component", () => {
     const risk = {
-        ds_id: "1",
+        //ds_id: "1",
+        risk_name: "Risk 1",
         probability_rating: "3",
         impact_rating: "4",
-        risk_description: "Risk for datascope 1"
+        risk_description: "Risk for datascope 1",
+        dataScope: {
+            ds_name: "datascope 1"
+        },
+        risk_status: "In progress"
     };
+    const datascope = 'datascope 1';
 
     it("renders correctly with risk data", () => {
         const { getByText } = render(
@@ -17,14 +23,18 @@ describe("EditRisk Component", () => {
 
         // Ensure that the component renders with user data
         expect(screen.getByText("Edit Risk")).toBeInTheDocument();
-        expect(screen.getByText("Data Scope")).toBeInTheDocument();
-        expect(screen.getByText("1")).toBeInTheDocument();
+        expect(screen.getByText("Risk Name")).toBeInTheDocument();
+        expect(screen.getByDisplayValue("Risk 1")).toBeInTheDocument();
         expect(screen.getByText("Probability")).toBeInTheDocument();
         expect(screen.getByText("3")).toBeInTheDocument();
         expect(screen.getByText("Impact")).toBeInTheDocument();
         expect(screen.getByText("4")).toBeInTheDocument();
         expect(screen.getByText("Vulnerability/Threat")).toBeInTheDocument();
         expect(screen.getByText("Risk for datascope 1")).toBeInTheDocument();
+        expect(screen.getByText("Risk Status")).toBeInTheDocument();
+        expect(screen.getByText("In progress")).toBeInTheDocument();
+        expect(screen.getByText("Data Scope")).toBeInTheDocument();
+        //expect(screen.getByDisplayValue("datascope 1")).toBeInTheDocument();
     });
 
     it("calls popupClose when back button is clicked", () => {

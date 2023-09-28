@@ -14,13 +14,14 @@ import lombok.NoArgsConstructor;
 @Table(name="risks")
 public class Risk {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long risk_id;
+    private int risk_id;
+    private String risk_name;
     private String impact_rating;
     private String probability_rating;
     private String risk_description;
     private String suggested_mitigation;
     private String risk_status;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope;
 }

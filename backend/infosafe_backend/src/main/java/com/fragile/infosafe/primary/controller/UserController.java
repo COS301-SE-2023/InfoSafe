@@ -1,19 +1,21 @@
 package com.fragile.infosafe.primary.controller;
 
+import com.fragile.infosafe.primary.auth.AuthenticationRequest;
 import com.fragile.infosafe.primary.auth.AuthenticationResponse;
 import com.fragile.infosafe.primary.auth.AuthenticationService;
+import com.fragile.infosafe.primary.config.JwtService;
+import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.model.Role;
+import com.fragile.infosafe.primary.model.Task;
 import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.ChangePasswordRequest;
 import com.fragile.infosafe.primary.requests.DeleteRequest;
 import com.fragile.infosafe.primary.requests.RegisterRequest;
-import com.fragile.infosafe.primary.service.DeleteService;
-import com.fragile.infosafe.primary.service.EmailService;
-import com.fragile.infosafe.primary.service.TaskService;
-import com.fragile.infosafe.primary.service.UserService;
+import com.fragile.infosafe.primary.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -33,8 +35,9 @@ public class UserController {
     private final EmailService emailService;
     private final DeleteService deleteService;
     private final TaskService taskService;
-    private final UserRepository userRepository;
-
+    private final AssetService assetService;
+    private final DataScopeService dataScopeService;
+    private final JwtService jwtService;
 
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
@@ -56,6 +59,17 @@ public class UserController {
     public User updateUser (@PathVariable("id") int user_id, @RequestBody User user) {
         user.setUser_id(user_id);
         return userService.updateUser(user);
+    }
+
+    @PostMapping("/tokenValid")
+    public ResponseEntity<Boolean> validToken(@RequestBody AuthenticationRequest request){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            log.info("Got in here");
+            return ResponseEntity.ok(jwtService.isTokenValid(request.getToken(), authenticatedUser));
+        }
+        return ResponseEntity.ok(false);
     }
 
     @GetMapping("/getId")
@@ -146,14 +160,66 @@ public class UserController {
         }
     }
 
-
-
-    @GetMapping("/dataScopeCount")
-    public ResponseEntity<Integer> countDataScopesForUser() {
+    @GetMapping("/getAllTasks")
+    public ResponseEntity<List<Task>> getAllTasksOfUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            int taskCount = taskService.countDataScopesForUser(authenticatedUser);
-            return ResponseEntity.ok(taskCount);
+            List<Task> tasks = taskService.getTasksAssociatedWithUser(authenticatedUser);
+            return ResponseEntity.ok(tasks);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/dataScopeCount")
+    public ResponseEntity<Long> countDataScopesForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            long datascopeCount = dataScopeService.countDataScopesForUser(authenticatedUser);
+            return ResponseEntity.ok(datascopeCount);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/countDevices")
+    public ResponseEntity<Long> countDevicesForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            long count = assetService.getTotalDevicesAssignedToAssignee(authenticatedUser);
+            return ResponseEntity.ok(count);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/getAllDevices")
+    public ResponseEntity<List<Asset>> getAllDevicesForUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            List<Asset> count = assetService.getDevicesAssignedToUser(authenticatedUser);
+            return ResponseEntity.ok(count);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/findUsersNotInTask/{task_id}")
+    public ResponseEntity<List<User>> getAllUsersNotInTask(@PathVariable("task_id") int task_id) {
+        return ResponseEntity.ok(userService.findAllUsersNotInTask(task_id));
+    }
+
+    @GetMapping("/findUserNotAssigned/{asset_id}")
+    public ResponseEntity<List<String>> getAllUsersNotAssigned(@PathVariable("asset_id") int asset_id) {
+        return ResponseEntity.ok(assetService.getUnassignedUserEmails(asset_id));
+    }
+
+    @GetMapping("/findNotDatCustodian")
+    public ResponseEntity<List<String>> getNotDataCustodian(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            List<String> users = userService.findNotDataCustodian(authenticatedUser);
+            return ResponseEntity.ok(users);
         }else {
             return ResponseEntity.notFound().build();
         }

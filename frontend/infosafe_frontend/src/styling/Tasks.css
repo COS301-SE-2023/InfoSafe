@@ -1,0 +1,202 @@
+.taskHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    left: 1vw;
+    top: 2vh;
+    position: absolute;
+    z-index: 1000;
+}
+.taskHelpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
+.tasksBackground{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.searchTasks{
+    display: flex;
+    width: 100%;
+    position: relative;
+    right: 5%;
+    justify-content: right;
+    height: 20%;
+    top: 0;
+}
+.taskSearchInput{
+    background-color: #CECECE;
+    height: 3vh;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    color: #383838;
+    padding-right: 0;
+    padding-left: 10px;
+    position: relative;
+    top: 45%;
+    font-size: 16px;
+}
+.taskSearchInput:focus{
+    border: 2px solid #9E0000;
+}
+.taskSearchIcon {
+    position: absolute;
+    right: 10px;
+    top: 54%;
+    transform: translateY(-50%);
+    color: #9E0000;
+}
+.tasks {
+    background-color: transparent;
+    width: 90%;
+    margin: 0 auto;
+    height: 60%;
+    position: relative;
+    top: 0;
+    overflow-y: scroll;
+    box-sizing: content-box;
+    scrollbar-width: none;
+}
+.taskList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.taskList li {
+    position: relative;
+    height: 5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #CECECE;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
+}
+.taskList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 0.5%;
+}
+.taskList li:hover {
+    z-index: 4;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+.tasks::-webkit-scrollbar {
+    display: none;
+}
+.taskEditButton{
+    background-color: #444040;
+    width: 2.5%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    position: absolute;
+    right: 1%;
+    height: 70%;
+    top: 15%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.taskEditIcon{
+    color: #FFFFFF;
+    width: 110%;
+    position: relative;
+}
+.CreateTaskButton {
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    margin: 2%  0;
+    left: 5%;
+
+}
+.reviewTaskButton {
+    background-color: #444040;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 2% 8%;
+    width: fit-content;
+    height: 85%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%);
+}
+.reviewTaskButtonDiv {
+    height: 80%;
+    width: 6%;
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    margin: 0;
+    background-color: transparent;
+}
+.loadingScreen{
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.loadingDiv{
+    position: relative;
+    top: 45%;
+    margin: 0 auto;
+    height: 8%;
+    width: 30%;
+    border: 4px solid #9E0000;
+    border-radius: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
+}
+.loadingDiv .loading{
+    position: absolute;
+    background-color: #bbbbbb;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    animation: loading 4s infinite linear;
+}
+@keyframes loading{
+    0%{
+        width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+}

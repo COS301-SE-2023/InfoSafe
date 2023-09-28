@@ -1,38 +1,55 @@
 .editDataScopeOverlay {
-    width: 50vw;
-    height: 80vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.popupBackground{
+    width: 50%;
+    height: 70%;
     flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(173, 173, 173, 0.69);
-    backdrop-filter: blur(20px);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
-    scroll-behavior: auto;
+    position: fixed;
+    top: 15%;
+    left: 25%;
 }
 .editdatascopeBorder {
-    border: 1px solid #ffffff;
-    width: 47vw;
+    border: 2px solid #858585;
+    width: 94%;
+    height: 92%;
     margin: 0 auto;
-    height: 75vh;
     position: relative;
-    top: 2.5vh;
-    overflow-y: scroll;
+    top: 4%;
+    left: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .editdatascopeBorder::-webkit-scrollbar{
     display: none;
 }
-.backButton {
-    background-color: rgba(233, 0, 0, 1);
+.editDataScopeBackButton {
+    background-color: #9E0000;
     border: none;
     position: relative;
-    height: 4vh;
+    height: 6%;
     width: 2.5vw;
     align-content: center;
     border-radius: 5px;
     top: 2vh;
     left: 1vw;
     color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .backIcon {
     color: #ffffff;
@@ -41,7 +58,7 @@
     width: 1.3vw;
 }
 .editDatascopeLabel {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
     color: #000000;
     text-align: center;
@@ -51,91 +68,284 @@
     text-transform: uppercase;
     position: relative;
     top: -2vh;
-    left: 20%;
+    margin: 0 auto;
+    margin-bottom: 2vh;
 }
 .editDatasscopeNameLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
     color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    left: 15%;
 }
 .editDatascopeNameInput {
-    font-size: 22px;
-    width: 50%;
-    text-align: center;
+    font-size: 18px;
+    width: 70%;
     border: none;
-    margin-top: 2vh;
-    left: 25%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
     position: relative;
+    left: 15%;
 }
 .editDescriptionLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
     color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    top: 1.5vh;
-    margin-top: 1.5vh;
+    left: 15%;
 }
 .editDescriptionInput {
-    font-size: 22px;
-    width: 50%;
-    height: 12vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     border: none;
-    margin-top: 2vh;
-    left: 25%;
     position: relative;
-    text-wrap: initial;
-    resize: none;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    left: 15%;
 }
 .editStatusLabel {
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
     color: #000;
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     position: relative;
-    margin-top: 1.5vh;
+    top: -1vh;
+    left: 15%;
 }
 .editDSStatusDropdown {
-    text-transform: uppercase;
-    font-size: 22px;
-    width: 50%;
-    margin-top: 1vh;
-    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: left;
     border: none;
-    align-content: center;
-    height: 10%;
-    left: 25%;
+    color: #CECECE;
     position: relative;
+    width: 70%;
+    top: -1vh;
+    left: 15%;
+}
+.editDSUsers{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -1vh;
+    left: 15%;
+}
+.editDSStatusDropdown .Dropdown-control{
+    background-color: #CECECE;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    padding: 1% 1%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    height: 5%;
+}
+.editDataScopeButtonsDiv{
+    display: flex;
+    height: 20%;
+    width: 90%;
+    padding: 0;
+    position: relative;
+    top: -5vh;
+    left: 15%;
+    justify-content: left;
+    vertical-align: center;
 }
 .editdatascope_finish {
-    width: 20%;
-    height: 5%;
-    background-color: rgba(233, 0, 0, 1);
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.84px;
-    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
     position: relative;
-    border: none;
-    left: 40%;
-    margin-top: 2vh;
+    height: 30%;
+    margin: 2%  0;
+    margin-left: 2%;
+}
+.editDataScopeOverlay input{
+    border-radius: 2px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    background-color: #CECECE;
+    padding: 1% 1%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.AddRoleNameLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #000000;
+    width: 75%;
+    position: relative;
+    top: -2vh;
+    left: 15%;
 }
 
+.AddRoleNameHeading {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #000000;
+    font-weight: bold;
+    width: 75%;
+    position: relative;
+    top: -1vh;
+    left: 15%;
+}
+.AddRoleNameInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    top: -4vh;
+}
+.AddRoleDescriptionLabel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #000000;
+    left: 15%;
+    width: 75%;
+    position: relative;
+    top: -4vh;
+}
+
+.AddRoleDescriptionInput {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    margin: 0;
+    top: -6vh;
+}
+.editDSRoleLabel{
+    font-size: 20px;
+    width: 70%;
+    border: none;
+    margin: 0;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    left: 15%;
+    top: -1vh;
+}
+.editDSRoleDescription{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    left: 15%;
+    top: -1vh;
+}
+.AddRoleButton {
+    background: #373737;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    position: relative;
+    height: 30%;
+    margin: 2%  0;
+}
+.dataScopeRoles{
+    height: 2%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.dataScopeRoles::-webkit-scrollbar {
+    display: none;
+}
+.dataScopeRolesList{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.dataScopeRolesList li {
+    position: relative;
+    height: 5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #CECECE;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
+}
+.dataScopeRolesList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 0.5%;
+    font-size: 16px
+}
+.editDSRoles{
+    left: 15%;
+    top: -1vh;
+}
+.editDSRolesLoading{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    left: 15%;
+    position: relative;
+    width: 70%;
+    background-color: #CECECE;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
+    height: 4%;
+    border-radius: 2px;
+    top: -1vh;
+    padding: 0.5% 2%;
+}

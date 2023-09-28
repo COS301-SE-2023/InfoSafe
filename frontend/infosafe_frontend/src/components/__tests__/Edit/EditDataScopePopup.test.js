@@ -5,7 +5,7 @@ import EditDataScopePopup from "../../Edit/EditDataScopePopup";
 describe("EditDataScope Component", () => {
     const datascope = {
         ds_name: "Datascope 1",
-        description: "Data scope for time management",
+        ds_description: "Data scope for time management",
         status: "Approved"
     };
 
@@ -19,7 +19,7 @@ describe("EditDataScope Component", () => {
         expect(screen.getByText("Name")).toBeInTheDocument();
         expect(screen.getByDisplayValue("Datascope 1")).toBeInTheDocument();
         expect(screen.getByText("Description")).toBeInTheDocument();
-        expect(screen.getByText("Data scope for time management")).toBeInTheDocument();
+        expect(screen.getByDisplayValue("Data scope for time management")).toBeInTheDocument();
         expect(screen.getByText("Status")).toBeInTheDocument();
         //expect(screen.getByTestId("editDSStatusDropdown")).toBeInTheDocument(); Need to fix this
     });

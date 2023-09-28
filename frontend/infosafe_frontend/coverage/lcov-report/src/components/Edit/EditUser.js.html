@@ -360,7 +360,7 @@ const EditUser = ({ user, popupClose, popupOpen }) =&gt; {
     }
 &nbsp;
     useEffect(() =&gt; {
-        fetch("http://localhost:8080/api/role/getRoleNames", {
+        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
             method:"GET",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")

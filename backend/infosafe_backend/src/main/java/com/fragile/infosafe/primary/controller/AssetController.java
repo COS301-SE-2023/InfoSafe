@@ -27,7 +27,7 @@ public class AssetController {
     public List<Asset> assetlist() { return service.getAllAssets(); }
 
     @PutMapping("/update/{id}")
-    public Asset updateAsset (@PathVariable("id") int asset_id, @RequestBody Asset asset) {
+    public Asset updateAsset (@PathVariable("id") int asset_id, @RequestBody AssetRequest asset) {
         asset.setAsset_id(asset_id);
         return service.updateAsset(asset);
     }
@@ -37,4 +37,13 @@ public class AssetController {
         deleteService.deleteAssetAndSaveToSecondary(assetId);
     }
 
+    @GetMapping("/availableAssets")
+    public ResponseEntity<List<Asset>> getAllAvailableAssets(){
+        return ResponseEntity.ok(service.getAssetsWithAvailabilityYes());
+    }
+
+    @GetMapping("/getTotalAssets")
+    public Long getTotalAssets() {
+        return service.getTotalDevice();
+    }
 }

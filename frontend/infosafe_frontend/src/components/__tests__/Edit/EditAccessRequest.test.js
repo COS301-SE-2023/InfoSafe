@@ -6,7 +6,14 @@ describe("EditAccessRequest Component", () => {
     const access = {
         ds_id: "1",
         reason: "User moved to new Datascope",
-        status: "Pending"
+        status: "Pending",
+        data_scope_id: {
+            ds_name: "datascope 1"
+        },
+        user_id: {
+            first_name: "John",
+            last_name: "Doe"
+        }
     };
 
     it("renders correctly with access request data", () => {
@@ -17,9 +24,9 @@ describe("EditAccessRequest Component", () => {
         // Ensure that the component renders with user data
         expect(screen.getByText("Edit Access Request")).toBeInTheDocument();
         expect(screen.getByText("Data Scope")).toBeInTheDocument();
-        expect(screen.getByText("1")).toBeInTheDocument();
-        expect(screen.getByText("Role")).toBeInTheDocument();
-        expect(screen.getByText("ISO")).toBeInTheDocument();
+        expect(screen.getByText("datascope 1")).toBeInTheDocument();
+        expect(screen.getByText("User")).toBeInTheDocument();
+        expect(screen.getByText("John Doe")).toBeInTheDocument();
         expect(screen.getByText("Reason")).toBeInTheDocument();
         expect(screen.getByText("User moved to new Datascope")).toBeInTheDocument();
         expect(screen.getByText("Status")).toBeInTheDocument();

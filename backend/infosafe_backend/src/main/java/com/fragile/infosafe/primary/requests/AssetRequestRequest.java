@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class AssetRequestRequest {
     private int asset_request_id;
-    private int user_id;
+    private String user_email;
     private int asset_id;
     private String reason;
     private Date desired_date;

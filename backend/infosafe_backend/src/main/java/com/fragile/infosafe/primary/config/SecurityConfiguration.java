@@ -1,8 +1,10 @@
 package com.fragile.infosafe.primary.config;
 
+import com.fragile.infosafe.primary.model.Permission;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,8 +15,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import static org.springframework.http.HttpMethod.GET;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
+
+
 
 // import static org.springframework.http.HttpMethod.*;
 
@@ -33,7 +40,7 @@ public class SecurityConfiguration {
                 .cors(cfg -> cfg.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/api/forgot/**").permitAll()
-//                        .requestMatchers(POST, "/api/user/add").hasAnyAuthority(String.valueOf(Permission.user_create))
+                        .requestMatchers(GET,"/api/user/getAll").hasAuthority("user_create")
 //                        .requestMatchers(GET, "/api/user/getAll").hasAnyAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated())
@@ -47,7 +54,7 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://ec2-174-129-77-195.compute-1.amazonaws.com")); //""
+        configuration.setAllowedOrigins(Arrays.asList("https://ec2-174-129-77-195.compute-1.amazonaws.com:423/")); //""
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -55,6 +62,17 @@ public class SecurityConfiguration {
         return source;
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/api/**")
+                        .allowedOrigins("https://ec2-174-129-77-195.compute-1.amazonaws.com:80")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+            }
+        };
+    }
 
 
 

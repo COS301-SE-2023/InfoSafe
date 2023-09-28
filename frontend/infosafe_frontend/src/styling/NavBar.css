@@ -3,12 +3,56 @@
     z-index: 100;
     display: flex;
 }
+.navbarLogo{
+    position: relative;
+    top: 5%;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 60%;
+    height: 10%;
+    padding: 0;
+}
+.navbarImage{
+    position: relative;
+    top: 3%;
+    margin: 0 auto;
+    background-image: url("../images/InfoSafe_Logo.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 60%;
+    height: 90%;
+    padding:0;
+}
+.icon{
+    font-size: 22px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.helpIcon{
+    font-size: 22px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.systemNameLabel{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    margin: 0 auto;
+    color: #FFFFFF;
+    text-align: center;
+    height: fit-content;
+    position: relative;
+    top: 8%;
+    overflow-x: hidden;
+}
 .shift{
     position: relative;
 }
 .tabMenu
 {
-    background-color: #E90000;
+    background-color: #9E0000;
     width: 12%;
     height: 100%;
     position: absolute;
@@ -29,6 +73,7 @@
     height: 80%;
     padding: 0;
     color: #FFFFFF;
+    overflow-x: hidden;
 }
 .tabs li {
     color: #ffffff;
@@ -39,7 +84,6 @@
     justify-content: left;
     align-items: center;
     text-align: center;
-    letter-spacing: 1px;
     border-bottom: none;
     white-space: nowrap;
     padding-left: 0.8%;
@@ -119,7 +163,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: lighter;
     margin: 0;
     height: 100%;
     display: flex;
@@ -137,7 +181,7 @@
 .userDisplay{
     color: #000000;
     font-family: "Roboto", sans-serif;
-    font-size:16px;
+    font-size: 16px;
     text-align: center;
     width: fit-content;
     height: fit-content;
@@ -190,4 +234,19 @@
     color: white;
     cursor: pointer;
     padding: 2%;
+}
+#tabTitle{
+    animation: shake 1s forwards;
+    animation-delay: 0s;
+}
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    12.5% { transform: rotate(5deg); }
+    25% {transform: rotate(0deg);}
+    37.5% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+    62.5% { transform: rotate(5deg); }
+    75% {transform: rotate(0deg);}
+    87.5% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
 }

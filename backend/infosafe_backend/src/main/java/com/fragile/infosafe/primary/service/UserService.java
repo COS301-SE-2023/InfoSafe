@@ -3,6 +3,7 @@ package com.fragile.infosafe.primary.service;
 import com.fragile.infosafe.primary.exceptions.UserNotFoundException;
 import com.fragile.infosafe.primary.model.Role;
 import com.fragile.infosafe.primary.model.User;
+import com.fragile.infosafe.primary.repository.RoleRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +18,7 @@ public class UserService {
     private final UserRepository repository;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
     public List<User> getAllUsers() {
         return repository.findAll();
@@ -27,6 +29,7 @@ public class UserService {
     }
 
     public User updateUser(User user) {
+        user.setRole(roleRepository.findByRole_name(user.getRole().getRole_name()));
         return repository.save(user);
     }
 
@@ -88,5 +91,13 @@ public class UserService {
             return user.getOtp().equals(otp);
         }
         return false;
+    }
+
+    public List<User> findAllUsersNotInTask(int task_id) {
+        return repository.findUsersNotInTask(task_id);
+    }
+
+    public List<String> findNotDataCustodian(User user){
+        return repository.findAllUserNotDataCustodian(user);
     }
 }

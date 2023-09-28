@@ -1,4 +1,5 @@
 package com.fragile.infosafe.primary.requests;
+import com.fragile.infosafe.primary.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

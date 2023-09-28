@@ -13,8 +13,11 @@ import java.util.Date;
 @NoArgsConstructor
 public class SupportRequestRequest {
     private int support_id;
-    private int user_id;
     private String support_type;
     private String support_description;
     private String support_status;
+    private int dataScope_id;
+    private int asset_id;
+    private int task_id;
+    private String user_email;
 }

@@ -5,7 +5,10 @@ import EditSupportRequest from "../../Edit/EditSupportRequest";
 describe("EditSupportRequest Component", () => {
     const support = {
         support_type: "Software",
-        user_id: "3",
+        user_id: {
+            first_name: "John",
+            last_name: "Doe"
+        },
         support_description: "Microsoft office support",
         support_status: "Pending"
     };
@@ -20,7 +23,7 @@ describe("EditSupportRequest Component", () => {
         expect(screen.getByText("Type of Support Request")).toBeInTheDocument();
         expect(screen.getByText("Software")).toBeInTheDocument();
         expect(screen.getByText("User")).toBeInTheDocument();
-        expect(screen.getByText("3")).toBeInTheDocument();
+        expect(screen.getByText("John Doe")).toBeInTheDocument();
         expect(screen.getByText("Description")).toBeInTheDocument();
         expect(screen.getByText("Microsoft office support")).toBeInTheDocument();
         expect(screen.getByText("Status")).toBeInTheDocument();

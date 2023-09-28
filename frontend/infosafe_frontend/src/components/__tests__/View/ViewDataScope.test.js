@@ -11,6 +11,14 @@ describe("ViewDataScope Component", () => {
         roles: {
             role: "User",
             roledescription: "Regular User"
+        },
+        data_custodian: {
+            first_name: "John",
+            last_name: "Doe"
+        },
+        users: {
+            first_name: "Jane",
+            last_name: "Deen"
         }
     };
 
@@ -29,11 +37,14 @@ describe("ViewDataScope Component", () => {
         expect(screen.getByText("2023-06-06")).toBeInTheDocument();
         expect(screen.getByText("Status")).toBeInTheDocument();
         expect(screen.getByText("Approved")).toBeInTheDocument();
-        expect(screen.getByText("Roles")).toBeInTheDocument();
-        expect(screen.getByText("Role")).toBeInTheDocument();
+        expect(screen.getByText("Assigned Users")).toBeInTheDocument();
+        //expect(screen.getByText("Jane Deen")).toBeInTheDocument();
+        //expect(screen.getByText("Role")).toBeInTheDocument();
         //expect(screen.getByText("User")).toBeInTheDocument();
-        expect(screen.getByText("Role Description")).toBeInTheDocument();
+        //expect(screen.getByText("Role Description")).toBeInTheDocument();
         //expect(screen.getByText("Regular User")).toBeInTheDocument();
+        expect(screen.getByText("Data Custodian")).toBeInTheDocument();
+        expect(screen.getByText("John Doe")).toBeInTheDocument();
     });
 
     it("calls popupClose when back button is clicked", () => {

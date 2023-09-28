@@ -412,7 +412,7 @@ export const CreateTask = <span class="cstat-no" title="statement not covered" >
             users_email: selectedUsers.map(<span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; <span class="cstat-no" title="statement not covered" >user.label)</span>,
         };
 <span class="cstat-no" title="statement not covered" >        console.log(task)</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/task/addTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/addTask", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -431,7 +431,7 @@ export const CreateTask = <span class="cstat-no" title="statement not covered" >
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://localhost:8080/api/user/getAll", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAll", {</span>
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")

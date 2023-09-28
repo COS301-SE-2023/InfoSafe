@@ -1,17 +1,14 @@
 package com.fragile.infosafe.primary.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="assets")
+@Table(name = "assets")
 public class Asset {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +18,20 @@ public class Asset {
     private String status;
     private String availability;
     private String used;
-    private String current_assignee;
-    @Column(nullable = true)
-    private String previous_assignee;
     private String device_type;
+    @ManyToOne
+    @JoinColumn(name = "current_assignee_id", referencedColumnName = "user_id")
+    private User current_assignee;
+    @ManyToOne
+    @JoinColumn(name = "previous_assignee_id", referencedColumnName = "user_id")
+    private User previous_assignee;
 
+    @PreUpdate
+    @PrePersist
+    private void validateAssignees() {
+        if (current_assignee != null && current_assignee.equals(previous_assignee)) {
+            throw new IllegalArgumentException("Current assignee cannot be the same as the previous assignee.");
+        }
+    }
 }
+

@@ -1,23 +1,33 @@
-import React, {useState} from "react";
-import AccessAndDisplay from "../Roles/AccessAndDisplay";
+import React, {useEffect, useState} from "react";
 import {ViewRisk} from "../View/ViewRisk";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditRisk} from "../Edit/EditRisk";
-import {ReviewRisk} from "../ReviewRiskPopup";
+import {ReviewRisk} from "../Reviews/ReviewRiskPopup";
 import {CreateRisk} from "../Create/CreateRiskPopup";
 import "../../styling/Risks.css";
+import {useGetPerms} from "../getData/getPerms";
+import {useGetRisk} from "../getData/getRisk";
+import {RiEditBoxFill} from "react-icons/ri";
+import {HelpPopup} from "../HelpPopup";
+import {IoHelpCircle} from 'react-icons/io5';
+import risk_help from "../../images/risk_help.png";
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
-    const {showRisk, roles} = AccessAndDisplay()
+    const {showRisk, loading, fetchAllRisks} = useGetRisk();
+    const {roles} = useGetPerms();
+
+    useEffect(() => {
+        fetchAllRisks();
+    }, []);
 
     const CreateRiskDiv = () => {
         if(roles.includes("risks_create")) {
             return (
-                <div className='CreateRiskButtonDiv'>
+                <div className="CreateRiskButtonDiv">
                     <button
-                        className='CreateRiskButton'
-                        data-testid='CreateRiskButton'
+                        className="CreateRiskButton"
+                        data-testid="CreateRiskButton"
                         onClick={() => setCreateRiskOpen(true)}
                     >
                         Create Risk
@@ -26,6 +36,7 @@ export const Risks = () => {
                         <CreateRisk
                             popupClose={() => setCreateRiskOpen(false)}
                             popupOpen={createRiskOpen}
+                            onRiskAdded={fetchAllRisks}
                         />
                     ) : null}
                 </div>
@@ -39,19 +50,20 @@ export const Risks = () => {
         const [editRiskOpen, setEditRiskOpen] = useState(false);
         if(roles.includes("risks_edit")) {
             return (
-                <div className='EditIcon'>
-                    <FaRegEdit
-                        onClick={() => setEditRiskOpen(true)}
+                <div className="taskEditButton">
+                    <RiEditBoxFill className="taskEditIcon"
+                                   onClick={() => setEditRiskOpen(true)}
                     />
                     {editRiskOpen ? (
                         <EditRisk
                             popupClose={() => setEditRiskOpen(false)}
                             popupOpen={editRiskOpen}
                             risk={risk}
+                            onRiskEdited={fetchAllRisks}
                         />
                     ) : null}
                 </div>
-            )
+            );
         } else {
             return (null)
         }
@@ -61,8 +73,8 @@ export const Risks = () => {
         const [reviewRiskOpen, setReviewRiskOpen] = useState(false);
         if(roles.includes("risks_review")) {
             return (
-                <div className='reviewRiskButton'>
-                    <button
+                <div className="reviewRiskButtonDiv">
+                    <button  className="reviewRiskButton"
                         onClick={() => setReviewRiskOpen(true)}>
                         Review
                     </button>
@@ -71,6 +83,7 @@ export const Risks = () => {
                             popupClose={() => setReviewRiskOpen(false)}
                             popupOpen={reviewRiskOpen}
                             risk={risk}
+                            onRiskReview={fetchAllRisks}
                         />
                     ) : null}
                 </div>
@@ -82,11 +95,11 @@ export const Risks = () => {
 
     const ViewRisks = ({ risk }) => {
         const [viewRiskOpen, setViewRiskOpen] = useState(false);
-        if (risks.includes("risk_edit") || risks.includes("risks_create") || risks.includes("risks_review"))
+        if (roles.includes("risk_edit") || roles.includes("risks_create") || roles.includes("risks_review"))
         return (
-            <li className='risksListItem' key={risk.risk_id}>
-                <p className='risksListItemName' onClick={() => setViewRiskOpen(!viewRiskOpen)}>
-                    Risk {risk.risk_id}
+            <li className="risksListItem" key={risk.risk_id}>
+                <p className="risksListItemName" onClick={() => setViewRiskOpen(!viewRiskOpen)}>
+                    Risk {risk.risk_id} : {risk.risk_name}
                     {viewRiskOpen ? (
                         <ViewRisk
                             popupClose={() => setViewRiskOpen(false)}
@@ -95,8 +108,8 @@ export const Risks = () => {
                         />
                     ) : null}
                 </p>
-                <ReviewRiskDiv></ReviewRiskDiv>
-                <EditRiskDiv></EditRiskDiv>
+                <ReviewRiskDiv risk={risk}></ReviewRiskDiv>
+                <EditRiskDiv risk={risk}></EditRiskDiv>
             </li>
         )
     }
@@ -105,23 +118,47 @@ export const Risks = () => {
     showRisk.map((risk) =>
         risks.push(<ViewRisks risk={risk} key={risk.risk_id}/>)
     )
+    if (risks.length === 0)
+    {
+        risks[0] = "No Risks added yet.";
+    }
+
+    const [helpOpen, setHelpOpen] = useState(false);
 
     return(
-        <div className='display'>
-            <div className='risksBackground'>
-                <div className='searchRisks'>
+        <div className="display">
+            <div className="risksBackground">
+                <button  className="risksHelpButton" onClick={() => setHelpOpen(true)}>
+                    <IoHelpCircle className="helpPopupIcon"></IoHelpCircle>
+                    {helpOpen ? (
+                        <HelpPopup
+                            popupClose={() => setHelpOpen(false)}
+                            popupOpen={helpOpen}
+                            image={risk_help}
+                        />
+                    ) : null}
+                </button>
+                <div className="searchRisks">
                     <input
-                        // data-testid='riskSearch'
-                        className='riskSearchInput'
-                        type='text'
-                        id='riskSearchInput'
-                        name='riskSearch'
+                        // data-testid="riskSearch"
+                        className="riskSearchInput"
+                        type="text"
+                        id="riskSearchInput"
+                        name="riskSearch"
                         // onChange={}
                     />
-                    <FaSearch className='deviceSearchIcon' />
+                    <FaSearch className="deviceSearchIcon" />
                 </div>
-                <div className='risks'>
-                    <ul className='risksList'>{risks}</ul>
+                <div className="risks">
+                    {loading ? (
+                        <div className="loadingScreen">
+                            <div className="loadingDiv">
+                                <div className="loading"></div>
+                            </div>
+                        </div>
+                    ) : (
+                    <ul className="risksList">{risks}</ul>
+                        )}
                 </div>
                 <CreateRiskDiv></CreateRiskDiv>
             </div>

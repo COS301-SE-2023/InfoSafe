@@ -12,10 +12,15 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task,Integer> {
-    @Query(value = "SELECT * FROM task WHERE task_id = :taskId", nativeQuery = true)
+    @Query(value = "SELECT * FROM tasks WHERE task_id = :taskId", nativeQuery = true)
     Optional<Task> findByTaskId(@Param("taskId") int task_id);
 
     int countTasksByUsersContains(User user);
 
     List<Task> findDistinctTasksByUsersContains(User user);
+
+    List<Task> findByUsers(User user);
+
+    @Query("SELECT u.email FROM Task t join t.users u WHERE t.task_id = :taskId")
+    List<String> findUsersByTaskId(@Param("taskId") int taskId);
 }
