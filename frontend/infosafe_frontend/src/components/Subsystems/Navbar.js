@@ -207,9 +207,9 @@ const NavBar = () => {
     const displayTabs = ({viewTabs}) => {
         return (
             <ul className="tabs">
-                {viewTabs.map((i, index) => (
+                {viewTabs.map((i) => (
                     <li
-                        key={index}
+                        key={i}
                         className={activeTab === i ? 'active' : ''}
                         onClick={() => handleClick(i)}
                     >
