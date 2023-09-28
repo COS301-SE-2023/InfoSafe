@@ -1,5 +1,5 @@
 import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
 import {FaRegEdit, FaSearch} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
@@ -17,10 +17,16 @@ import datascope_icon from "../../images/create_datascope_icon.png";
 
 export const DataScopes = () => {
 
-    const {showDatascope, myDatascopes, loading } = useGetDS();
+    const {showDatascope, myDatascopes, loading , fetchMyDatascopes, fetchAllDatascopes} = useGetDS();
     const {roles} = useGetPerms();
     const [createDataScopeOpen, setCreateDataScopeOpen] = useState(false);
     let viewDatascope = false;
+
+    useEffect(() => {
+        fetchAllDatascopes();
+        fetchMyDatascopes();
+    }, []);
+
     const EditDataScope = ({datascope}) => {
         const [editDataScopeOpen, setEditDataScopeOpen] = useState(false);
         if(roles.includes("data_scope_edit")) {
@@ -32,6 +38,7 @@ export const DataScopes = () => {
                             popupClose={() => setEditDataScopeOpen(false)}
                             popupOpen={editDataScopeOpen}
                             datascope={datascope}
+                            onDsEdited={fetchMyDatascopes}
                         />
                     ) : null}{' '}
                 </div>
@@ -96,6 +103,7 @@ export const DataScopes = () => {
                         <CreateDataScopePopup
                             popupClose={() => setCreateDataScopeOpen(false)}
                             popupOpen={createDataScopeOpen}
+                            onDsAdded={fetchMyDatascopes}
                         />
                     ) : null}
                 </div>

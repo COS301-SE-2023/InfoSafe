@@ -8,7 +8,7 @@ import Select from "react-select";
 import {customStyles} from "../CustomStyling";
 const STATUS = ['Pending', 'Approved', 'Revoked'];
 
-export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
+export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdited }) => {
     const [newRole, setNewRole] = useState({ role: '', roledescription: '' });
     const [dataScopeRoles, setDataScopeRoles] = useState([]);
     const [selectedDataScopeRole, setSelectedDataScopeRole] = useState(null);
@@ -62,6 +62,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose }) => {
             body: JSON.stringify(values)
         }).then(() => {
             console.log('Updated Datascope');
+            onDsEdited()
         });
         popupClose();
     };
