@@ -10,6 +10,7 @@ import {useGetRisk} from "../getData/getRisk";
 import {RiEditBoxFill} from "react-icons/ri";
 import {HelpPopup} from "../HelpPopup";
 import {IoHelpCircle} from 'react-icons/io5';
+import risk_help from "../../images/risk_help.png";
 
 export const Risks = () => {
     const [createRiskOpen, setCreateRiskOpen] = useState(false);
@@ -123,7 +124,6 @@ export const Risks = () => {
     }
 
     const [helpOpen, setHelpOpen] = useState(false);
-    const helpMsg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
     return(
         <div className="display">
@@ -134,7 +134,7 @@ export const Risks = () => {
                         <HelpPopup
                             popupClose={() => setHelpOpen(false)}
                             popupOpen={helpOpen}
-                            message={helpMsg}
+                            image={risk_help}
                         />
                     ) : null}
                 </button>
