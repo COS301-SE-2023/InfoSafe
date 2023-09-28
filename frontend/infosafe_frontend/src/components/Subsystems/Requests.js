@@ -45,7 +45,7 @@ export const Requests = () => {
         const [myDataScopes, setMyDataScopes] = useState([]);
 
         useEffect(() => {
-            fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/getMyDatascopes', {
+            fetch('http://infosafe.live:8080/api/datascope/getMyDatascopes', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -250,7 +250,7 @@ function <span class="fstat-no" title="function not covered" >Login(</span>){
     const handleLogin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        e.preventDefault()</span>
         const login = <span class="cstat-no" title="statement not covered" >{email, password}</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/auth/login", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("http://infosafe.live:8080/api/auth/login", {</span>
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)

@@ -346,7 +346,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) =&gt; {
     };
 &nbsp;
     useEffect(() =&gt; {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://infosafe.live:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')

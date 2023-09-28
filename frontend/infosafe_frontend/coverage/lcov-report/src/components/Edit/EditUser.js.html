@@ -399,7 +399,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) =&gt; {
     const handleSubmit = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        e.preventDefault();</span>
         //console.log(values)
-<span class="cstat-no" title="statement not covered" >        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/update/' + user.user_id, {</span>
+<span class="cstat-no" title="statement not covered" >        fetch('http://infosafe.live:8080/api/user/update/' + user.user_id, {</span>
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -414,7 +414,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) =&gt; {
 &nbsp;
     useEffect(() =&gt; {
         async function fetchRoles() {
-            const response = await fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
+            const response = await fetch("http://infosafe.live:8080/api/role/getRoleNames", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

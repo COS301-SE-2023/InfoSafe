@@ -7,7 +7,7 @@ function Login(){
     const handleLogin = (e) => {
         e.preventDefault()
         const login = {email, password}
-        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/auth/login", {
+        fetch("http://infosafe.live:8080/api/auth/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)

@@ -5,7 +5,7 @@ export const useCurrentTasks = () => {
     const [myTasks, setMyTasks] = useState([]);
     const [totalTasks, setTotalTasks] = useState(0);
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/taskCount', {
+        fetch('http://infosafe.live:8080/api/user/taskCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -16,7 +16,7 @@ export const useCurrentTasks = () => {
             });
     }, []);
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getAllTasks', {
+        fetch('http://infosafe.live:8080/api/user/getAllTasks', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -27,7 +27,7 @@ export const useCurrentTasks = () => {
             });
     }, []);
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/totalTasks', {
+        fetch('http://infosafe.live:8080/api/task/totalTasks', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
