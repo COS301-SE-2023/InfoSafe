@@ -366,7 +366,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) =&gt; {
         });
 &nbsp;
         useEffect(() =&gt; {
-            fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/getUsersOfTask/" + task.task_id, {
+            fetch("https://infosafe.live/api/task/getUsersOfTask/" + task.task_id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -399,7 +399,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) =&gt; {
     const handleCompleted = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log("Complete")</span>
         const request = <span class="cstat-no" title="statement not covered" >{completion: true, task_id: task.task_id};</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/completeTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://infosafe.live/api/task/completeTask", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -420,7 +420,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) =&gt; {
     const handleIncomplete = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log("Incomplete")</span>
         const request = <span class="cstat-no" title="statement not covered" >{completion: false, task_id: task.task_id};</span>
-<span class="cstat-no" title="statement not covered" >        fetch("http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/task/completeTask", {</span>
+<span class="cstat-no" title="statement not covered" >        fetch("https://infosafe.live/api/task/completeTask", {</span>
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

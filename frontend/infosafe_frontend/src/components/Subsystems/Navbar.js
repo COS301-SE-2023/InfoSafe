@@ -78,7 +78,7 @@ const NavBar = () => {
     useEffect(() => {
         const payload = {token: sessionStorage.getItem('accessToken')};
 
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/tokenValid', {
+        fetch('https://infosafe.live/api/user/tokenValid', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken'),
@@ -111,7 +111,7 @@ const NavBar = () => {
     const [left, setLeft] = useState(0);
 
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/getUserName', {
+        fetch('https://infosafe.live/api/user/getUserName', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
