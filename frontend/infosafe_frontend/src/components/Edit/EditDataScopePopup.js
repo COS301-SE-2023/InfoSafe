@@ -53,6 +53,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         //console.log(datascope);
         //console.log(values);
+
         fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'POST',
             headers: {

@@ -6,12 +6,22 @@
     position: relative;
     margin: 0 auto;
 }
-.helpButton{
-    background-color: transparent;
-    border: none;
-    outline: none;
+.helpInfo{
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    left: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow-y: scroll;
 }
-.helpPopupIcon {
-    font-size: 2em;
-    color: #9E0000;
+.helpTitle{
+    font-size: 40px;
+}
+.helpSubTitle{
+    font-size: 24px;
+}
+.helpData{
+    font-size: 18px;
 }
