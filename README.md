@@ -89,6 +89,7 @@ I am proficient in:
 #### Profiles:
 <a href="https://github.com/P3TROOS"><img src="documentation/images/GitHub.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="documentation/images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
+
 <hr>
 
 - ### Chris Mittendorf
@@ -106,6 +107,7 @@ I am proficient in:
 
 #### Profiles:
 <a href="https://github.com/ChrisMitt"><img src="documentation/images/GitHub.jpeg" alt="chris github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="documentation/images/Linkedin.png" alt="chris linkedin" width="30" height="30"></a>
+
 
 <hr>
 
@@ -145,6 +147,7 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 #### Profiles:
 <a href="https://github.com/KarelSmit"><img src="documentation/images/GitHub.jpeg" alt="karel github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="documentation/images/Linkedin.png" alt="karel linkedin" width="30" height="30"></a>
 
+
 <hr>
 
 - ### Alistair Ross
@@ -161,3 +164,4 @@ I am proficient in:
 
 #### Profiles:
 <a href="https://github.com/AlistairMRoss"><img src="documentation/images/GitHub.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="documentation/images/Linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
+
