@@ -8,6 +8,7 @@
 [![Issues](https://img.shields.io/github/issues/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/issues)
 [![Commit Activity](https://img.shields.io/github/commit-activity/y/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe/graphs/commit-activity)
 
+[![codecov](https://codecov.io/gh/COS301-SE-2023/InfoSafe/branch/dev/graph/badge.svg?token=7T6WCYXEIO)](https://codecov.io/gh/COS301-SE-2023/infosafe)
 [![Languages](https://img.shields.io/github/languages/count/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe)
 
 [![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2045.1%25)](https://www.javascript.com)
@@ -47,18 +48,20 @@ Users will be assigned certain roles when their profile has been created on the 
 - :vhs: [Demo 3](https://drive.google.com/file/d/1Byp2w_3blPnhIuS8_RPcRq3NpRkeo-R9/view?usp=drive_link)
 
 
-### SRS Documentation:
-- :book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
-- :book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
-- :book: [Version 3](https://drive.google.com/file/d/1gsfEIISYS6TjLWlR5U_ChzInj6DKuebH/view?usp=drive_link)
+### Systems Requirements and Specifications Documentation:
+- :blue_book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
+- :green_book: [Version 2](https://drive.google.com/file/d/1Oa8bjlcI5w0uFtQGIbiPc1iHjV5Xj-s7/view?usp=drive_link)
+- :orange_book: [Version 3](https://drive.google.com/file/d/1gsfEIISYS6TjLWlR5U_ChzInj6DKuebH/view?usp=drive_link)
+- :closed_book: [Version 4](https://drive.google.com/file/d/1PH0oyDoa9nUwE1L9Cu7blbRQAmjbsBtP/view?usp=drive_link)
 
 ### Supporting Documentation:
-- :cd: [Installation Guide](https://drive.google.com/file/d/1dknsxkSdO7IuFwLEQOQQMyryFXCjHErY/view?usp=drive_link)
-- :scroll: [User Manual](https://drive.google.com/file/d/1kwUym9M0jMED1HV_6snhC9W_sWb0qIHg/view?usp=drive_link)
-- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1pAsGk5qfdi2SdU56Sl2BqYO98z9Tmzfh/view?usp=drive_link)
-- :floppy_disk: [Database Design](https://drive.google.com/file/d/19lEQfhf-AGBNxfh5Ta0vYNW8SyThgfeI/view?usp=drive_link)
-- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1Mq1ZA1fK-0AXT2SZCbgqIrSisEyAUX6P/view?usp=drive_link)
-- :memo: [Team Contributions](https://drive.google.com/file/d/13r8slHJgSczPNC0pmyFKHnAvALqjSeCp/view?usp=drive_link)
+- :cd: [Installation Guide](https://drive.google.com/file/d/125hVZvrzfT5g-fSAJtC2lvuoXEt2QXdl/view?usp=drive_link)
+- :scroll: [User Manual](https://drive.google.com/file/d/1I3YdViR5jbR4gqQQjGEcjIQmcQFEhaRv/view?usp=drive_link)
+- :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1imZXfUnqDkVMFoVG3KLTdezh4MdND6yX/view?usp=drive_link)
+- :test_tube: [Testing Policy](https://drive.google.com/file/d/1OaNACeGeoWsiuj7rx3519Z2q8MjpRZz5/view?usp=drive_link)
+- :floppy_disk: [Database Design](https://drive.google.com/file/d/1l1JDXrADDrWAG31QOSZ7N1B5cr5oR-vK/view?usp=drive_link)
+- :chart_with_upwards_trend: [Coding Standards](https://drive.google.com/file/d/1_sKT6zhU0sPqjddguFlqAj6KHSsFdvM5/view?usp=drive_link)
+- :memo: [Team Contributions](https://drive.google.com/file/d/1b7-6Zc-ByUvRKBeV02A9hv8H-e-NqnMR/view?usp=drive_link)
 
 ### GitHub Links:
 - :bar_chart: [Organization](https://github.com/COS301-SE-2023/InfoSafe/wiki/GitHub-Structure,-Organization-and-Management)
@@ -70,7 +73,7 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Meet the Team
 
 - ### Christof Steyn
-<img src="https://media.licdn.com/dms/image/D4D03AQHehQ3YMx8yWQ/profile-displayphoto-shrink_800_800/0/1683743759293?e=1691625600&v=beta&t=9AOJa6g2gy_BmB0lFrIQCtQco2I7g4KJHQUSXyehDhk" alt="Christof Steyn Profile Image" width="250" height="250">
+<img src="documentation/images/cs.png" alt="Christof Steyn Profile Image" width="250" height="250">
 
 I am a third year BSc Information and Knowledge Systems (Software Development) student. I have a huge passion for technology and the influence it has on the evolving world around us. I have experience in both software development and informatics (system design and analysis). I am familiar with most front-end technologies but, I have a great interest and understanding in back-end/server-side technologies. As our team leader I value efficient team organisation and strong communication as well as effective time management and leadership.
 
@@ -84,12 +87,13 @@ I am proficient in:
 
 
 #### Profiles:
-<a href="https://github.com/P3TROOS"><img src="documentation/images/Github.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="documentation/images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
+<a href="https://github.com/P3TROOS"><img src="documentation/images/GitHub.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/christof-steyn-631420218/"><img src="documentation/images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
+
 
 <hr>
 
 - ### Chris Mittendorf
-<img src="https://media.licdn.com/dms/image/D4E03AQFSkj8GapYPUw/profile-displayphoto-shrink_800_800/0/1683400924640?e=1691625600&v=beta&t=hLkiOZ15V7tKsKeiSzKOQKyTUweiLDNrfuZ6KfwxBQc" alt="Chris Mittendorf Profile Image" width="250" height="250">
+<img src="documentation/images/cm.png" alt="Chris Mittendorf Profile Image" width="250" height="250">
 
 I am a third year BSc Computer Science student. I found my passion for technology and programming completing my first degree in BSc Geography. I enjoy creating programmes to work in real world applications and have an interest in organisation and database management. I have experience in the MVC framework development which will benefit this project. I consider myself to be quite creative and want to explore more work in frontend development but currently do more work on the backend side of projects. I work very well in teams and believe in efficient communication throughout a team in order to maximise its potential.
 
@@ -102,12 +106,13 @@ I am proficient in:
 - [![ASP.Net (MVC)](https://img.shields.io/badge/ASP.Net-lightblue.svg)](https://en.wikipedia.org/wiki/ASP.NET)
 
 #### Profiles:
-<a href="https://github.com/ChrisMitt"><img src="documentation/images/github.jpeg" alt="chris github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="documentation/images/linkedin.png" alt="chris linkedin" width="30" height="30"></a>
+<a href="https://github.com/ChrisMitt"><img src="documentation/images/GitHub.jpeg" alt="chris github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/chris-mittendorf-078542275/"><img src="documentation/images/Linkedin.png" alt="chris linkedin" width="30" height="30"></a>
+
 
 <hr>
 
 - ### Yané van der Westhuizen
-<img src="https://media.licdn.com/dms/image/D4D03AQHSS6zHo0Ky7Q/profile-displayphoto-shrink_800_800/0/1683385602245?e=1691625600&v=beta&t=qdPfvUw5_r_RG8rk8Y9sV6yo00Ej2df1N3cwa5WJS1Q" alt="Yané van der Westhuizen Profile Image" width="250" height="250">
+<img src="documentation/images/yvdw.png" alt="Yané van der Westhuizen Profile Image" width="250" height="250">
 
 I am a third year BSc Computer Science student. I have always been very fascinated by technology and how it is ever-evolving. I have experience in full-stack development, with a particular interest in front-end development and web development. I am also well-versed in databases, including SQL and NoSQL databases and various different database management systems. I pride myself in being very organised and diligent.
 
@@ -122,12 +127,12 @@ I am proficient in:
 - [![NoSQL](https://img.shields.io/badge/NoSQL-8f2c3e.svg)](https://en.wikipedia.org/wiki/NoSQL)
 
 #### Profiles:
-<a href="https://github.com/yanevdw19021209"><img src="documentation/images/github.jpeg" alt="yane github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/"><img src="documentation/images/linkedin.png" alt="yane linkedin" width="30" height="30"></a>
+<a href="https://github.com/yanevdw19021209"><img src="documentation/images/GitHub.jpeg" alt="yane github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/yan%C3%A9-van-der-westhuizen-232359226/"><img src="documentation/images/Linkedin.png" alt="yane linkedin" width="30" height="30"></a>
 
 <hr>
 
 - ### Karel Smit
-<img src="https://media.licdn.com/dms/image/D5603AQHxHV-T81QDVA/profile-displayphoto-shrink_800_800/0/1683460016768?e=1691625600&v=beta&t=gEmqC8fRVJdFnZ0b58m2IcV_y4sj-549eaeAHDr8DM4" alt="Karel Smit Profile Image" width="250" height="250">
+<img src="documentation/images/ks.png" alt="Karel Smit Profile Image" width="250" height="250">
 
 Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-solving and a third year BSc Computer Science student. He is proficient in front-end and back-end development, with a focus on web-based development. He is proficient in various programming languages, and able to use many popular, industry standard development tools. He is adaptable, good at communicating and is a quick learner, which along with his strong work ethic makes him a reliable member of any team. 
 
@@ -140,12 +145,13 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 - [![PHP](https://img.shields.io/badge/PHP-purple.svg)](https://en.wikipedia.org/wiki/PHP)
 
 #### Profiles:
-<a href="https://github.com/KarelSmit"><img src="documentation/images/github.jpeg" alt="karel github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="documentation/images/linkedin.png" alt="karel linkedin" width="30" height="30"></a>
+<a href="https://github.com/KarelSmit"><img src="documentation/images/GitHub.jpeg" alt="karel github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/karel-smit-9a7929275/"><img src="documentation/images/Linkedin.png" alt="karel linkedin" width="30" height="30"></a>
+
 
 <hr>
 
 - ### Alistair Ross
-<img src="https://media.licdn.com/dms/image/D4D03AQGi1YjpFqNmyA/profile-displayphoto-shrink_800_800/0/1679551842570?e=1691625600&v=beta&t=ycWVM9ce85zRdr8zGZY0FZwaFosFyc1celrZVQq9cVQ" alt="Alistair Ross Profile Image" width="250" height="250">
+<img src="documentation/images/ar.png" alt="Alistair Ross Profile Image" width="250" height="250">
 
 I am a third year Computer Science student. I am particularly interested in software development with a focus on problem-solving algorithms and data structures.  I value organisation and thus have a great appreciation for the use of git as well as its correct set up. I work hard and put in the effort until the end to get the job done.
 
@@ -157,4 +163,5 @@ I am proficient in:
 - [![SQL](https://img.shields.io/badge/SQL-a7f77e.svg)](https://en.wikipedia.org/wiki/SQL)
 
 #### Profiles:
-<a href="https://github.com/AlistairMRoss"><img src="documentation/images/github.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="documentation/images/linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
+<a href="https://github.com/AlistairMRoss"><img src="documentation/images/GitHub.jpeg" alt="alistair github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.linkedin.com/in/alistair-ross-1b647a204/"><img src="documentation/images/Linkedin.png" alt="alistair linkedin" width="30" height="30"></a>
+

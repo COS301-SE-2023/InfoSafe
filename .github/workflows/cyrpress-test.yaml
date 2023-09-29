@@ -16,9 +16,6 @@ jobs:
       - name: Install Cypress dependencies
         run: npm install
 
-      - name: Start backend and frontend applications
-        run: npm run frontend
-
       - name: Wait for applications to start
         run: sleep 30  # Adjust the duration based on how long it takes for your applications to start
 

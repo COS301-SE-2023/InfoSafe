@@ -1,0 +1,27 @@
+.helpBackground{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.helpInfo{
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    left: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow-y: scroll;
+}
+.helpTitle{
+    font-size: 40px;
+}
+.helpSubTitle{
+    font-size: 24px;
+}
+.helpData{
+    font-size: 18px;
+}

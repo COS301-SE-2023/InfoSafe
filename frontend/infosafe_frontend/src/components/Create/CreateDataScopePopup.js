@@ -2,62 +2,30 @@ import React, {useState, useEffect} from 'react';
 import '../../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
 import {IoArrowBackOutline} from 'react-icons/io5';
+import Select from "react-select";
+import {customStyles} from "../CustomStyling";
 
-// const data = [
-//     {
-//         role: 'Administrator',
-//         roledescription: 'Manage users, manage data scope, edit permissions.'
-//     },
-//     {
-//         role: 'General User',
-//         roledescription: 'Access data scope, complete tasks within data scopes.'
-//     }
-// ];
-
-export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
-    const [newRole, setNewRole] = useState({role: '', roledescription: ''});
+export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
     const [ds_name, setDsName] = useState('')
     const [ds_description, setDsDesc] = useState('')
-    const [date_captured, setDateCaptured] = useState()
-    const [data_custodian, setDataCustodian] = useState('')
-    const [ds_status, setStatus] = useState('Pending')
-    const [role_type, setRoleType] = useState('')
-    const [role_description, setRoleDesc] = useState('')
-    const [ds_id, setDsId] = useState('')
-    // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-    const [data, setData] =useState([])
-    const [roles, setRoles] = useState(data);
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setNewRole((prevRole) => ({...prevRole, [name]: value}));
-    };
+    const [users,  setUsers] = useState([])
+    const [selectedUsers, setSelectedUsers] = useState([])
 
-    const handleAddRole = (e) => {
-        e.preventDefault();
-        if (newRole.role && newRole.roledescription) {
-            setRoles((prevRoles) => [...prevRoles, newRole]);
-            setNewRole({role: '', roledescription: ''});
-        }
-    };
-
-    const handleCaptureDate = () => {
-        var today = new Date();
-        setDateCaptured(formatDate(today));
-        console.log(date_captured);
-    };
-
-    const formatDate = (date) => {
-        const year = date.getFullYear().toString().slice(-2);
-        const month = ('0' + (date.getMonth() + 1)).slice(-2);
-        const day = ('0' + date.getDate()).slice(-2);
-        return `${year}/${month}/${day}`;
-    };
     const handleClick = (e) => {
+        const currentDate = new Date().toISOString().split('T')[0];
         e.preventDefault();
-        const datascope = {data_custodian, date_captured, ds_description, ds_name, ds_status};
-        const dataScopeRoles = {ds_id, role_description, role_type};
+        popupClose();
 
-        fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`,{
+        if (document.getElementById("dsName").value === '' || document.getElementById("dsDescription").value === '') {
+            document.getElementById("createDataScopeError").style.display = "block";
+            return;
+        }
+
+
+        const ds_status = "Pending";
+        const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers};
+
+        fetch(`http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/datascope/checkName?dsname=${ds_name}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -69,8 +37,8 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                 if (data) {
                     console.log("DataScope name already exists");
                 } else {
-                    console.log(datascope);
-                    fetch("http://localhost:8080/api/datascope/addDs", {
+                    //console.log(datascope);
+                    fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/datascope/addDs", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -80,27 +48,12 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
                     })
                         .then(() => {
                             console.log("New DataScope added");
+                            onDsAdded()
                         })
                         .catch((error) => {
                             console.error("Error adding new DataScope:", error);
                         });
 
-                    fetch("http://localhost:8080/api/dataScopeRole/addDataScopeRole", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
-                        },
-                        body: JSON.stringify(dataScopeRoles),
-                    })
-                        .then(() => {
-                            console.log("New DataScopeRole added");
-                        })
-                        .catch((error) => {
-                            console.error("Error adding new DataScopeRole:", error);
-                        });
-
-                    popupClose();
                 }
             })
             .catch((error) => {
@@ -109,114 +62,87 @@ export const CreateDataScopePopup = ({popupOpen, popupClose}) => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/getDataScopeRole', {
+        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/findNotDatCustodian", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+            },
+        }).then((res) => res.json())
             .then((result) => {
-                setData(result);
+                setUsers(result);
             });
     }, []);
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/user/getId', {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setDataCustodian(result);
-            });
-    }, []);
+    const handleSelect = (selectedOptions) => {
+        const selectedEmails = selectedOptions.map((option) => option.label);
+        setSelectedUsers(selectedEmails);
+        //console.log(selectedEmails);
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="createDataScopeOverlay">
-                <div className="createDataScopeBorder">
-                    <button className="backButton" onClick={popupClose}>
-                        <IoArrowBackOutline className="backIcon"/>
-                    </button>
-                    <p className="datascopeLabel">Data Scope Creation</p>
-                    <form>
-                        <div className="CreateDataScopeForm">
-                            <div className="datascope_info">
-                                <div className="datascope_name">
-                                    <p className="datascopeNameLabel">Name</p>
-                                    <input className="datascopeNameInput" data-testid="nameInput" value={ds_name}
-                                           onChange={(e) => setDsName(e.target.value)}/>
-                                </div>
-                                <div className="datascope_description">
-                                    <p className="descriptionLabel">Description</p>
-                                    <textarea className="createDataScopeDescriptionInput" data-testid="Description" value={ds_description}
-                                              onChange={(e) => setDsDesc(e.target.value)}/>
-                                </div>
-                                <div className="datascope_roles" data-testid="roles">
-                                    <p className="roleLabel">Data Scope Roles</p>
-                                    <div className="table">
-                                        <table className="roles_tbl">
-                                            <thead>
-                                            <tr>
-                                                <th className="role_Header">Role</th>
-                                                <th className="role_descrHeader">
-                                                    Role Description
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {roles.map((role, key) => {
-                                                return (
-                                                    <tr key={key}>
-                                                        <td>{role.role}</td>
-                                                        <td className="roledescription_Table">
-                                                            {role.roledescription}
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                            </tbody>
-                                        </table>
+                <div className="popupBackground">
+                    <div className="createDataScopeBorder">
+                        <button className="createDataScopeBackButton" onClick={popupClose} data-testid={"back-button"}>
+                            <IoArrowBackOutline className="backIcon"/>
+                        </button>
+                        <p className="datascopeLabel">Create Data Scope</p>
+                        <form>
+                            <div className="CreateDataScopeForm">
+                                <div className="datascope_info">
+                                    <div className="datascope_name">
+                                        <p className="datascopeNameLabel">Name</p>
+                                        <input
+                                            className="datascopeNameInput"
+                                            data-testid="nameInput"
+                                            value={ds_name}
+                                            onChange={(e) => setDsName(e.target.value)}
+                                            id="dsName"
+                                        />
                                     </div>
+                                    <div className="datascope_description">
+                                        <p className="descriptionLabel">Description</p>
+                                        <textarea
+                                            className="createDataScopeDescriptionInput"
+                                            data-testid="Description"
+                                            value={ds_description}
+                                            onChange={(e) => setDsDesc(e.target.value)}
+                                            id="dsDescription"
+                                        />
+                                    </div>
+                                    <p className="createDataScopeInputLabel">Assignees</p>
+                                    {users && users.length > 0 ? (
+                                        <Select
+                                            styles={customStyles}
+                                            options={users.map((email) => ({value: email, label: email}))}
+                                            value={selectedUsers.value}
+                                            className="datascopeUserSelect"
+                                            name="datascopeDropdown"
+                                            placeholder={"Add Assignees"}
+                                            onChange={handleSelect}
+                                            isSearchable={true}
+                                            isMulti
+                                            id="taskUserIn"
+                                        />
+                                    ) : (
+                                        <p className='createDataScopeLoadingTitle'>Loading...</p>
+                                    )}
                                 </div>
-                            </div>
-
-                            <div className="datascope_addrole">
-                                <p className="AddRoleNameLabel">Role Type</p>
-                                <input
-                                    className="AddRoleNameInput"
-                                    data-testid="addRole"
-                                    name="role"
-                                    value={newRole.role_type}
-                                    onChange={handleInputChange}
-                                />
-                                <p className="AddRoleDescriptionLabel">Role Description</p>
-                                <textarea
-                                    className="AddRoleDescriptionInput"
-                                    data-testid="addRoleDescription"
-                                    name="roledescription"
-                                    value={newRole.role_description}
-                                    onChange={handleInputChange}
-                                />
-                                <button
-                                    className="AddRoleButton"
-                                    data-testid="addRoleButton"
-                                    onClick={handleAddRole}
-                                    type="button"
-                                >
-                                    Add Role
+                                <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields
+                                    are completed.</p>
+                                <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
+                                    Submit
                                 </button>
                             </div>
-                        </div>
-                        <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
-                            Submit
-                        </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </Popup>
     );
 };
+
+export default CreateDataScopePopup;

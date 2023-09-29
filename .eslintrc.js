@@ -1,29 +1,23 @@
 module.exports = {
     root: true,
     env: {
-        browser: true, // Add browser environment for frontend (React) code
-        node: true, // Add node environment for backend (Spring Boot) code
+        browser: true,
+        node: true,
     },
     parserOptions: {
-        ecmaVersion: 2021, // Adjust this based on your ECMAScript version
+        ecmaVersion: 2021,
         sourceType: "module",
     },
     extends: [
-        "eslint:recommended",
-        "plugin:react/recommended", // For React-specific rules
+        "react-app",
+        "plugin:react/recommended",
     ],
     plugins: ["react"],
     rules: {
-        // Add any general rules here that apply to both frontend and backend code
-        // ...
-
-        // Example rule: Enforce using double quotes for strings
-        quotes: ["error", "double"],
     },
     ignorePatterns: ["**/*.java", "**/*.cy.js"],
     overrides: [
         {
-            // Frontend (React) code in frontend/ directory
             files: ["frontend/**/*.js"],
             env: {
                 browser: true,
@@ -32,12 +26,12 @@ module.exports = {
                 "plugin:react/recommended"
             ],
             rules: {
-                "react/jsx-uses-react": "error",
-                "react/jsx-uses-vars": "error",
+                "react/jsx-uses-react": "off",
+                "react/jsx-uses-vars": "off",
                 "react/prop-types": "off",
-                "react/react-in-jsx-scope": "error",
-                "react/jsx-curly-brace-presence": ["error", "never"],
-                "jsx-quotes": ["error", "prefer-single"],
+                "react/react-in-jsx-scope": "off",
+                "react/no-unescaped-entities": "off",
+                "react/jsx-key":"off"
             },
         },
 

@@ -1,0 +1,271 @@
+.roleBackground{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    height: 90%;
+    width: 98%;
+    position: relative;
+    margin: 0 auto;
+}
+.permissions {
+    background-color: transparent;
+    width: 90%;
+    margin: 0 auto;
+    height: 60%;
+    position: relative;
+    top: 0;
+    overflow-y: scroll;
+    box-sizing: content-box;
+    scrollbar-width: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+.permissions::-webkit-scrollbar {
+    display: none;
+}
+
+.roleHelpButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    left: 1vw;
+    top: 2vh;
+    margin-bottom: 4vh;
+}
+.roleHelpPopupIcon {
+    font-size: 2em;
+    color: #9E0000;
+}
+
+.permissionsList {
+    margin: 0;
+    padding: 0;
+}
+
+.usersPermissions, .accessRequestsPermissions, .devicesPermissions, .assetRequestsPermissions, .requestsPermissions, .dataScopesPermissions, .tasksPermissions, .supportRequestsPermissions, .risksPermissions
+{
+    background-color: #CECECE;
+    width: 100%;
+    min-height: 5vh;
+    height: fit-content;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #000000;
+    text-transform: none;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.displaySubsystemDiv
+{
+    background-color: #ffffff;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    top: 1vh;
+    display: flex;
+    border-radius: 12px;
+    left: 1%;
+    box-shadow: 1px 3px 2px 0 #E90000;
+
+}
+
+.accessLabels{
+    display: flex;
+    align-items: center;
+    margin-right: 1vw;
+    height: fit-content;
+    position: relative;
+    padding: 0;
+    vertical-align: center;
+
+}
+
+.accessLabels input {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+input:checked{
+    accent-color: #E90000;
+}
+
+.permissionsDiv input:checked{
+    accent-color: #49D4D0;
+}
+
+.displayPermissionsDiv{
+    background: transparent;
+    align-items: center;
+    height: 6vh;
+    box-shadow: none;
+    border: none;
+    z-index: 10;
+    position: relative;
+    margin-bottom: 1vh;
+    display:flex;
+}
+
+.displayCreateDiv, .displayEditDiv, .displayDeleteDiv, .displayApproveDiv, .displayReviewDiv, .displayViewAllDiv{
+    background-color: #ffffff;
+    height: fit-content;
+    width: fit-content;
+    padding: 1px;
+    position: relative;
+    top: 1vh;
+    border-radius: 12px;
+    margin-right: 1vh;
+    box-shadow: 1px 3px 2px 0 #49D4D0;
+}
+
+.permissionsDiv{
+    position: relative;
+    left: 1%;
+}
+.roleCreationButtonsDiv
+{
+    display: flex;
+    height: 20%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: left;
+    vertical-align: center;
+}
+.roleCreationButton {
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    height: 30%;
+    left: 0;
+    position: relative;
+    top: 35%;
+}
+
+.changeViewBtn {
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    margin-left: 1%;
+    height: 30%;
+    position: relative;
+    top: 35%;
+
+}
+.changeViewBtn2 {
+    background: #383838;
+    border: 1px solid #3a3a3a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 0.5% 2%;
+    width: fit-content;
+    height: 30%;
+    position: relative;
+    top: 35%;
+
+}
+.roleInfo{
+    display: flex;
+    height: 10%;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    padding: 0;
+}
+
+.roleCreateNameLabel
+{
+    color: #000000;
+    font-family: "Roboto", sans-serif;
+    text-transform: none;
+    position: relative;
+    height: 6vh;
+    width: fit-content;
+    font-size: 16px;
+    top: 2.5vh;
+    margin-right: 0.5vw;
+}
+.roleCreationRoleNameInput {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+    background: #CECECE;
+    border: 0;
+    padding-left: 0.5%;
+}
+.roleCreationRoleNameInput:focus{
+    border: 3px solid #9E0000;
+    outline: none;
+}
+.currRolesList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.currRolesList li {
+    position: relative;
+    height: 5vh;
+    color: #000000;
+    width: 100%;
+    text-transform: none;
+    background-color: #CECECE;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
+    margin-top: 4px;
+}
+.currRolesList li p {
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 0.5%;
+    font-size: 16px
+}
+.currRolesList li:hover {
+    z-index: 4;
+    box-shadow: inset 0 0 8px rgba(68, 64, 64, 0.78);
+}
+
+
+
+
