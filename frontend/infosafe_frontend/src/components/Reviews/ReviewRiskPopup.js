@@ -90,3 +90,5 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen, onRiskReview }) => {
         </Popup>
     );
 };
+
+export default ReviewRisk;
