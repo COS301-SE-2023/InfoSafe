@@ -1,7 +1,7 @@
 describe("Visits the backend", () => {
   it("returns 403 Forbidden", () => {
     cy.request({
-      url: "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/",
+      url: "http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/",
       failOnStatusCode: false,
     }).then((response) => {
       expect(response.status).to.equal(403);
@@ -13,7 +13,7 @@ describe("Login", () => {
     const email = "ali@gmail.com";
     const password = "1234";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit("https://ec2-52-91-180-105.compute-1.amazonaws.com:3000");
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
@@ -41,7 +41,7 @@ describe("Login", () => {
     const email = "invalid@example.com";
     const password = "incorrect";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit("https://ec2-52-91-180-105.compute-1.amazonaws.com:3000");
 
 
     cy.get("input[data-testid=\"userIn\"]").should("exist");
@@ -52,7 +52,7 @@ describe("Login", () => {
 
     cy.get("button[data-testid=\"btnTest\"]").click();
 
-    cy.url().should("eq", "https://ec2-174-129-77-195.compute-1.amazonaws.com:3000/");
+    cy.url().should("eq", "https://ec2-52-91-180-105.compute-1.amazonaws.com:3000/");
 });
 });
 
@@ -61,7 +61,7 @@ describe("It Navigates to users tab", () => {
     const email1 = "ali@gmail.com";
     const password = "1234";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit("https://ec2-52-91-180-105.compute-1.amazonaws.com:3000");
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
@@ -153,7 +153,7 @@ describe("It Navigates to dataScopes tab", () => {
     const email1 = "alistairmikeross@gmail.com";
     const password = "1234";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit("https://ec2-52-91-180-105.compute-1.amazonaws.com:3000");
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
