@@ -97,9 +97,9 @@ describe("It Navigates to users tab", () => {
       expect(has403Error).to.be.true;
     });
       cy.contains("Users").click();
-      const firstname3 = "TestRob";
+      const firstname3 = "ali";
       const lastname3 = "Ross";
-      const email = "robross@gmail.com"
+      const email = "ali@gmail.com"
 
       cy.get("button[data-testid=\"CreateUserButton\"]").should("exist");
       cy.get("button[data-testid=\"CreateUserButton\"]").click();
@@ -159,7 +159,7 @@ describe("It Navigates to dataScopes tab", () => {
     cy.get("input[data-testid=\"passIn\"]").type(userpassword);
 
     cy.get("button[data-testid=\"btnTest\"]").click();
-
+    cy.contains("Data Scopes").click();
     cy.wait(1000);
 
     cy.get("button[data-testid=\"dataScopeMake\"]").should("exist");
