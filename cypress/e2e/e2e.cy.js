@@ -68,7 +68,8 @@ describe("It Navigates to users tab", () => {
 
     cy.get("input[data-testid=\"passIn\"]").type(userpassword);
 
-    cy.get("button[data-testid=\"btnTest\"]").click();
+    cy.get('[data-testid="btnTest"]').click();
+    cy.wait(3000)
     cy.contains("Users").click();
 
     const firstname1 = "Bob";
@@ -158,7 +159,8 @@ describe("It Navigates to dataScopes tab", () => {
 
     cy.get("input[data-testid=\"passIn\"]").type(userpassword);
 
-    cy.get("button[data-testid=\"btnTest\"]").click();
+    cy.get('[data-testid="btnTest"]').click();
+    cy.wait(3000)
     cy.contains("Data Scopes").click();
     cy.wait(1000);
 
