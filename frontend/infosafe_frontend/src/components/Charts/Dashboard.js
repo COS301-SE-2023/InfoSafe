@@ -22,25 +22,25 @@ export const Dashboard = () => {
                 const accessToken = sessionStorage.getItem('accessToken');
 
                 const fetchPromises = [
-                    await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/notifications/getNotifications', {
+                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/notifications/getNotifications', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/supportrequest/getMyTotal', {
+                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/supportrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/accessrequest/getMyTotal', {
+                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/accessrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/assetrequest/getMyTotal', {
+                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/assetrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,

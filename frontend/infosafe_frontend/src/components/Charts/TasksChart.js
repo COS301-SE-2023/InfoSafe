@@ -7,7 +7,7 @@ const TasksChart = () => {
     const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
-        fetch('http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/api/user/taskCount', {
+        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/taskCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
