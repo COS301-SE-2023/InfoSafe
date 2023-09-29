@@ -1,7 +1,11 @@
+const sendurl = "http://infosafe.live/";
+const useremail = "ali@gmail.com";
+const  userpassword = "1234";
+
 describe("Visits the backend", () => {
   it("returns 403 Forbidden", () => {
     cy.request({
-      url: "http://ec2-174-129-77-195.compute-1.amazonaws.com:8080/",
+      url: "http://infosafe.live:8080/",
       failOnStatusCode: false,
     }).then((response) => {
       expect(response.status).to.equal(403);
@@ -10,20 +14,17 @@ describe("Visits the backend", () => {
 });
 describe("Login", () => {
   it("Logs in successfully with valid credentials", () => {
-    const email = "ali@gmail.com";
-    const password = "1234";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit(sendurl);
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
 
-    cy.get("input[data-testid=\"userIn\"]").type(email);
+    cy.get("input[data-testid=\"userIn\"]").type(useremail);
 
     cy.wait(3000)
 
-
-    cy.get("input[data-testid=\"passIn\"]").type(password);
+    cy.get("input[data-testid=\"passIn\"]").type(userpassword);
 
     cy.get("button[data-testid=\"btnTest\"]").click();
 
@@ -38,39 +39,34 @@ describe("Login", () => {
   });
 
   it("Displays an error message with invalid credentials", () => {
-    const email = "invalid@example.com";
-    const password = "incorrect";
+    const emailError = "invalid@example.com";
+    const passwordError = "incorrect";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
-
+    cy.visit(sendurl);
 
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
-    cy.get("input[data-testid=\"userIn\"]").type(email);
+    cy.get("input[data-testid=\"userIn\"]").type(emailError);
     cy.wait(3000)
-    cy.get("input[data-testid=\"passIn\"]").type(password);
+    cy.get("input[data-testid=\"passIn\"]").type(passwordError);
 
     cy.get("button[data-testid=\"btnTest\"]").click();
 
-    cy.url().should("eq", "https://ec2-174-129-77-195.compute-1.amazonaws.com:3000/");
+    cy.url().should("eq", sendurl);
 });
 });
 
 describe("It Navigates to users tab", () => {
   it("Logs in and goes to tab", () => {
-    const email1 = "ali@gmail.com";
-    const password = "1234";
-
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit(sendurl);
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
-    cy.get("input[data-testid=\"userIn\"]").type(email1);
+    cy.get("input[data-testid=\"userIn\"]").type(useremail);
 
     cy.wait(1000)
 
-
-    cy.get("input[data-testid=\"passIn\"]").type(password);
+    cy.get("input[data-testid=\"passIn\"]").type(userpassword);
 
     cy.get("button[data-testid=\"btnTest\"]").click();
     cy.contains("Users").click();
@@ -101,9 +97,9 @@ describe("It Navigates to users tab", () => {
       expect(has403Error).to.be.true;
     });
       cy.contains("Users").click();
-      const firstname3 = "Ali";
+      const firstname3 = "TestRob";
       const lastname3 = "Ross";
-      const email = "ali@gmail.com"
+      const email = "robross@gmail.com"
 
       cy.get("button[data-testid=\"CreateUserButton\"]").should("exist");
       cy.get("button[data-testid=\"CreateUserButton\"]").click();
@@ -150,20 +146,17 @@ describe("It Navigates to users tab", () => {
 
 describe("It Navigates to dataScopes tab", () => {
   it("Creates a datascope", () => {
-    const email1 = "alistairmikeross@gmail.com";
-    const password = "1234";
 
-    cy.visit("https://ec2-174-129-77-195.compute-1.amazonaws.com:3000");
+    cy.visit(sendurl);
     cy.get("input[data-testid=\"userIn\"]").should("exist");
     cy.get("input[data-testid=\"passIn\"]").should("exist");
 
 
-    cy.get("input[data-testid=\"userIn\"]").type(email1);
+    cy.get("input[data-testid=\"userIn\"]").type(useremail);
 
     cy.wait(1000)
 
-
-    cy.get("input[data-testid=\"passIn\"]").type(password);
+    cy.get("input[data-testid=\"passIn\"]").type(userpassword);
 
     cy.get("button[data-testid=\"btnTest\"]").click();
 
