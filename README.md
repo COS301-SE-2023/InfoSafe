@@ -42,11 +42,13 @@ Users will be assigned certain roles when their profile has been created on the 
 
 ## Resources
 
+### Website Link:
+- http://www.infosafe.live
+
 ### Demo Videos:
 - :vhs: [Demo 1](https://drive.google.com/file/d/1ITE_PmSBuUV0yr15rl-cxy_T7-QDalcL/view?usp=drive_link)
 - :vhs: [Demo 2](https://drive.google.com/file/d/1ZGrzbsJevsbJFgryFvfZMmA00x-Y2ty9/view?usp=drive_link)
 - :vhs: [Demo 3](https://drive.google.com/file/d/1Byp2w_3blPnhIuS8_RPcRq3NpRkeo-R9/view?usp=drive_link)
-
 
 ### Systems Requirements and Specifications Documentation:
 - :blue_book: [version 1](https://drive.google.com/file/d/12gjxXfBSKLG_F2ungz51kjOnD9s0LEy1/view?usp=drive_link)
