@@ -2,8 +2,6 @@ name: Deploy to EC2
 on:
   push:
     branches: [dev] #[dev-ops/minor-fixes]
-  pull_request:
-    branches: [main]
   release:
     types: [created]
 
