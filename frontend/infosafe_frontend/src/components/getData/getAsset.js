@@ -6,7 +6,7 @@ export const useGetAsset = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/asset/getAsset', {
+            const response = await fetch('http://infosafe.live/api/asset/getAsset', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -43,7 +43,7 @@ export const Devices = () => {
 
     const DeleteFunction = async (asset_id) => {
         try {
-            const response = await fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/asset/deleteAsset/"+asset_id, {
+            const response = await fetch("http://infosafe.live/api/asset/deleteAsset/"+asset_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -24,7 +24,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
             return;
         }
 
-        fetch(`http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/checkEmail?email=${email}`, {
+        fetch(`http://infosafe.live/api/user/checkEmail?email=${email}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                     console.log("User already exists");
                 } else {
                     //console.log(user);
-                    fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/add", {
+                    fetch("http://infosafe.live/api/user/add", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/randPass/generate", {
+                const response = await fetch("http://infosafe.live/api/randPass/generate", {
                     method: "GET",
                     headers: {"Content-Type":"application/json",
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -88,7 +88,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     }, []);
 
     useEffect(() => {
-            fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
+            fetch("http://infosafe.live/api/role/getRoleNames", {
                 method:"GET",
                 headers:{"Content-Type":"application/json",
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

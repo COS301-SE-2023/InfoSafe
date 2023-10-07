@@ -47,7 +47,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
         };
         //console.log(task)
 
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/addTask", {
+        fetch("http://infosafe.live/api/task/addTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
     };
 
     useEffect(() => {
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/getAll", {
+        fetch("http://infosafe.live/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

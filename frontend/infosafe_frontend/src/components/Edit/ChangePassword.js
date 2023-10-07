@@ -12,7 +12,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
 
     useEffect(() => {
 
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/getEmail', {
+        fetch('http://infosafe.live/api/user/getEmail', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
         }
 
         try {
-            await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/changePassword', {
+            await fetch('http://infosafe.live/api/user/changePassword', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
