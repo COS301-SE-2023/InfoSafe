@@ -9,7 +9,7 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}
         popupClose();
         const payload = {review: reviewValue, request_id: assetRequest.asset_request_id, asset_id: assetRequest.asset.asset_id, user_email: assetRequest.user.email}
         //console.log(payload)
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/assetrequest/reviewAsset', {
+        fetch('http://localhost:8080/api/assetrequest/reviewAsset', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

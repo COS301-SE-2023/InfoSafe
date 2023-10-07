@@ -21,7 +21,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
     };
 
     useEffect(() => {
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')

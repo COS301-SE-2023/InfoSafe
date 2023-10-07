@@ -69,7 +69,7 @@ export const Users = () => {
     const DeleteFunction = async (email) => {
         const deleteUser = {email}
         try {
-            const response = await fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/deleteUser", {
+            const response = await fetch("http://localhost:8080/api/user/deleteUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
