@@ -34,7 +34,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
     let finalUsers = [];
 
     useEffect(() => {
-        fetch("http://infosafe.live/api/task/getUsersOfTask/" + task.task_id, {
+        fetch("https://infosafe.live/api/task/getUsersOfTask/" + task.task_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -65,7 +65,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
     },[task]);
 
     useEffect(() => {
-        fetch("http://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
+        fetch("https://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -85,7 +85,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
             ...values,
             users: finalUsers
         };
-        fetch("http://infosafe.live/api/task/update/" + task.task_id, {
+        fetch("https://infosafe.live/api/task/update/" + task.task_id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

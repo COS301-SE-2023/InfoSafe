@@ -8,7 +8,7 @@ const AccessRequestApproval = ({ access, popupClose, popupOpen, onArApprove }) =
     const handleReview = (reviewValue) => {
         const payload = {review: reviewValue, request_id: access.request_id, user_email: access.user_id.email, dataScope_id: access.data_scope_id.data_scope_id}
         //console.log(payload)
-        fetch('http://infosafe.live/api/accessrequest/reviewAccess', {
+        fetch('https://infosafe.live/api/accessrequest/reviewAccess', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

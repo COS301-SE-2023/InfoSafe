@@ -5,7 +5,7 @@ export const useCurrentTasks = () => {
     const [myTasks, setMyTasks] = useState([]);
     const [totalTasks, setTotalTasks] = useState(0);
     useEffect(() => {
-        fetch('http://infosafe.live/api/user/taskCount', {
+        fetch('https://infosafe.live/api/user/taskCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -16,7 +16,7 @@ export const useCurrentTasks = () => {
             });
     }, []);
     useEffect(() => {
-        fetch('http://infosafe.live/api/user/getAllTasks', {
+        fetch('https://infosafe.live/api/user/getAllTasks', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -27,7 +27,7 @@ export const useCurrentTasks = () => {
             });
     }, []);
     useEffect(() => {
-        fetch('http://infosafe.live/api/task/totalTasks', {
+        fetch('https://infosafe.live/api/task/totalTasks', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -48,7 +48,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) => {
         //console.log(selectedUsers);
         // console.log(asset);
         popupClose()
-        fetch("http://infosafe.live/api/asset/addAsset", {
+        fetch("https://infosafe.live/api/asset/addAsset", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) => {
         })
     }
     useEffect(() => {
-        fetch("http://infosafe.live/api/user/getAll", {
+        fetch("https://infosafe.live/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

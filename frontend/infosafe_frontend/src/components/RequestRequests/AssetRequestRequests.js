@@ -5,7 +5,7 @@ export const useAssetRequests = () => {
     const [availableAssets, setAvailableAssets] = useState(null);
 
     useEffect(() => {
-        fetch('http://infosafe.live/api/asset/availableAssets', {
+        fetch('https://infosafe.live/api/asset/availableAssets', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

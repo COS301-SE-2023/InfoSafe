@@ -24,7 +24,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
             return;
         }
 
-        fetch(`http://infosafe.live/api/user/checkEmail?email=${email}`, {
+        fetch(`https://infosafe.live/api/user/checkEmail?email=${email}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                     console.log("User already exists");
                 } else {
                     //console.log(user);
-                    fetch("http://infosafe.live/api/user/add", {
+                    fetch("https://infosafe.live/api/user/add", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://infosafe.live/api/randPass/generate", {
+                const response = await fetch("https://infosafe.live/api/randPass/generate", {
                     method: "GET",
                     headers: {"Content-Type":"application/json",
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -88,7 +88,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     }, []);
 
     useEffect(() => {
-            fetch("http://infosafe.live/api/role/getRoleNames", {
+            fetch("https://infosafe.live/api/role/getRoleNames", {
                 method:"GET",
                 headers:{"Content-Type":"application/json",
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

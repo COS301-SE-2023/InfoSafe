@@ -6,7 +6,7 @@ export const useGetAr = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://infosafe.live/api/accessrequest/getAr', {
+            const response = await fetch('https://infosafe.live/api/accessrequest/getAr', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

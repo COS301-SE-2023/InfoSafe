@@ -5,7 +5,7 @@ export const useCurrentDataScope = () => {
     const [dataScopeCount, setDataScopeCount] = useState(0);
     const [myDataScopeCount, setMyDataScopeCount] = useState(0);
     useEffect(() => {
-        fetch('http://infosafe.live/api/datascope/getTotal', {
+        fetch('https://infosafe.live/api/datascope/getTotal', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -16,7 +16,7 @@ export const useCurrentDataScope = () => {
             });
     }, []);
     useEffect(() => {
-        fetch('http://infosafe.live/api/user/dataScopeCount', {
+        fetch('https://infosafe.live/api/user/dataScopeCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -30,7 +30,7 @@ export const useCurrentDataScope = () => {
     const [assetCount, setAssetCount] = useState(0);
     const [myAssets, setMyAssets] = useState([]);
     useEffect(() => {
-        fetch('http://infosafe.live/api/user/countDevices', {
+        fetch('https://infosafe.live/api/user/countDevices', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -41,7 +41,7 @@ export const useCurrentDataScope = () => {
             });
     }, []);
     useEffect(() => {
-        fetch('http://infosafe.live/api/user/getAllDevices', {
+        fetch('https://infosafe.live/api/user/getAllDevices', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -54,7 +54,7 @@ export const useCurrentDataScope = () => {
 
     const [totalAssets, setTotalAssets] = useState(0);
     useEffect(() => {
-        fetch('http://infosafe.live/api/asset/getTotalAssets', {
+        fetch('https://infosafe.live/api/asset/getTotalAssets', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

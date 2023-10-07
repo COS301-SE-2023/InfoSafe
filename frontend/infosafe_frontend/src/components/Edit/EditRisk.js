@@ -39,7 +39,7 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
         e.preventDefault();
 
         console.log(values)
-        fetch('http://infosafe.live/api/risk/update/' + risk.risk_id, {
+        fetch('https://infosafe.live/api/risk/update/' + risk.risk_id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

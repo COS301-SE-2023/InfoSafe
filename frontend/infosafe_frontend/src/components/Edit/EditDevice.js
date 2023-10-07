@@ -69,7 +69,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
         }
 
         //console.log(request);
-        fetch('http://infosafe.live/api/asset/update/' + asset.asset_id, {
+        fetch('https://infosafe.live/api/asset/update/' + asset.asset_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -83,7 +83,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     }
 
     useEffect(() => {
-        fetch("http://infosafe.live/api/user/findUserNotAssigned/" + asset.asset_id, {
+        fetch("https://infosafe.live/api/user/findUserNotAssigned/" + asset.asset_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

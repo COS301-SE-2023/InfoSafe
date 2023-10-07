@@ -5,7 +5,7 @@ export const useSupportRequests = () => {
     const [myDataScopes, setMyDataScopes] = useState([]);
 
     useEffect(() => {
-        fetch('http://infosafe.live/api/datascope/getMyDatascopes', {
+        fetch('https://infosafe.live/api/datascope/getMyDatascopes', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

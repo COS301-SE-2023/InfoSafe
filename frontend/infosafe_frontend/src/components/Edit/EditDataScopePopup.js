@@ -24,7 +24,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     });
 
     // useEffect(() => {
-    //     fetch("http://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
+    //     fetch("https://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
     //         method: "GET",
     //         headers: {
     //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -54,7 +54,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         //console.log(datascope);
         //console.log(values);
 
-        fetch('http://infosafe.live/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/datascope/update/' + datascope.data_scope_id, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
@@ -69,7 +69,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     };
 
     useEffect(() => {
-        fetch('http://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -85,7 +85,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
 
-        fetch('http://infosafe.live/api/dataScopeRole/addDataScopeRole', {
+        fetch('https://infosafe.live/api/dataScopeRole/addDataScopeRole', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

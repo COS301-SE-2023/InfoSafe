@@ -10,7 +10,7 @@ export const ForgotPassword = () => {
         e.preventDefault();
         const forgot = {email, otp, newPassword};
 
-        fetch("http://infosafe.live/api/forgot/request-reset", {
+        fetch("https://infosafe.live/api/forgot/request-reset", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const ForgotPassword = () => {
     }
     const handleSecondClick = (e) => {
         const forgot = {email, otp, newPassword};
-        fetch("http://http://infosafe.live/api/forgot/reset-password", {
+        fetch("http://https://infosafe.live/api/forgot/reset-password", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

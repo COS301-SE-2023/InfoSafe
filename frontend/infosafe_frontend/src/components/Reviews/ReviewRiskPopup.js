@@ -23,7 +23,7 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen, onRiskReview }) => {
                 ds_id: risk.dataScope.data_scope_id
             };
             if (newStatus !== "OPEN") {
-                fetch('http://infosafe.live/api/risk/review', {
+                fetch('https://infosafe.live/api/risk/review', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

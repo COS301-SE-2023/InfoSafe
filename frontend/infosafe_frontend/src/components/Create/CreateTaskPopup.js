@@ -47,7 +47,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
         };
         //console.log(task)
 
-        fetch("http://infosafe.live/api/task/addTask", {
+        fetch("https://infosafe.live/api/task/addTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
     };
 
     useEffect(() => {
-        fetch("http://infosafe.live/api/user/getAll", {
+        fetch("https://infosafe.live/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -41,7 +41,7 @@ export const CreateRisk = ({ popupClose, popupOpen, onRiskAdded }) => {
         const risk = {risk_name, impact_rating, probability_rating, risk_description, risk_status: "Open", suggested_mitigation, dataScope_id: datascope.value,};
         //console.log(risk);
 
-        fetch("http://infosafe.live/api/risk/addRisk", {
+        fetch("https://infosafe.live/api/risk/addRisk", {
             method:"POST",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
