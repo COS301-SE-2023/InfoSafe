@@ -35,7 +35,7 @@ public class User implements UserDetails {
     @Column(nullable = true)
     private String otp;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "role_name")
     private Role role;
 
@@ -77,7 +77,6 @@ public class User implements UserDetails {
                 authorities.add(new SimpleGrantedAuthority(permission.name()));
             }
         }
-
         return authorities;
     }
 

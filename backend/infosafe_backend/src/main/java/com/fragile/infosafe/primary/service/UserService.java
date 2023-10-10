@@ -6,9 +6,11 @@ import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.RoleRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.Cipher;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,17 +21,24 @@ public class UserService {
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final EncryptionService encryptionService;
 
     public List<User> getAllUsers() {
-        return repository.findAll();
-    }
-
-    public Optional<User> getUser(Integer user_id) {
-        return repository.findById(user_id);
+        List<User> users = repository.findAll();
+        for (User user : users) {
+            user.setFirst_name(encryptionService.decryptString(user.getFirst_name()));
+            user.setLast_name(encryptionService.decryptString(user.getLast_name()));
+            user.setEmail(encryptionService.decryptString(user.getEmail()));
+        }
+        return users;
     }
 
     public User updateUser(User user) {
         user.setRole(roleRepository.findByRole_name(user.getRole().getRole_name()));
+        user.setFirst_name(encryptionService.decryptString(user.getFirst_name()));
+        user.setLast_name(encryptionService.decryptString(user.getLast_name()));
+        user.setEmail(encryptionService.decryptString(user.getEmail()));
+        user.setPassword(encryptionService.decryptString(user.getPassword()));
         return repository.save(user);
     }
 
@@ -39,7 +48,7 @@ public class UserService {
 
 
     public void changePassword(User user, String newPassword) {
-        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setPassword(encryptionService.encryptString(passwordEncoder.encode(newPassword)));
         repository.save(user);
     }
 
@@ -73,7 +82,6 @@ public class UserService {
             user.setOtp(otp);
             repository.save(user);
             emailService.sendEmail(user.getEmail(), "Forgot Password", "Your OTP is:\n" + otp);
-        } else {
         }
     }
 

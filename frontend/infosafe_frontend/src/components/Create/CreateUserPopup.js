@@ -17,48 +17,31 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     const useHandleClick = (e) => {
         e.preventDefault();
         popupClose();
-        const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
+        const user = { first_name, last_name, email, password, role: {role_name: selectedRole} };
 
         if ( document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '' ) {
             document.getElementById("createUserError").style.display = "block";
             return;
         }
 
-        fetch(`http://localhost:8080/api/user/checkEmail?email=${email}`, {
-            method: "GET",
+        fetch("http://localhost:8080/api/user/add", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
             },
+            body: JSON.stringify(user),
         })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data) {
-                    console.log("User already exists");
-                } else {
-                    //console.log(user);
-                    fetch("http://localhost:8080/api/user/add", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
-                        },
-                        body: JSON.stringify(user),
-                    })
-                        .then((response) => {
-                            if(response.ok) {
-                                console.log("New User added");
-                                onUserAdded();
-                            }
-                        })
-                        .catch((error) => {
-                            console.error("Error adding new user:", error);
-                        });
+            .then((response) => {
+                if (response.ok) {
+                    console.log("New User added");
+                    onUserAdded();
                 }
             })
             .catch((error) => {
-                console.error("Error checking email:", error);
+                console.error("Error adding new user:", error);
             });
+
 
     };
 

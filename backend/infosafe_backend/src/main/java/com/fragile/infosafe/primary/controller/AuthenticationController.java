@@ -35,13 +35,14 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-    @PostMapping("/refresh-token")
-    public void refreshToken(
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws IOException {
-        service.refreshToken(request, response);
-    }
+//    @PostMapping("/refresh-token")
+//    public void refreshToken(
+//            HttpServletRequest request,
+//            HttpServletResponse response
+//    ) throws IOException {
+//        service.refreshToken(request, response);
+//    }
+    
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request) {
         AuthenticationResponse response = service.authenticate(request);
