@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../../styling/ReviewAssetRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}) => {
+const ReviewAssetRequest = ({ assetRequest, popupOpen, popupClose, onAssApproval }) => {
 
     const handleReview = (reviewValue) => {
         popupClose();
-        const payload = {review: reviewValue, request_id: assetRequest.asset_request_id, asset_id: assetRequest.asset.asset_id, user_email: assetRequest.user.email}
+        const payload = {
+            review: reviewValue,
+            request_id: assetRequest.asset_request_id,
+            asset_id: assetRequest.asset.asset_id,
+            user_email: assetRequest.user.email
+        };
         //console.log(payload)
         fetch('http://localhost:8080/api/assetrequest/reviewAsset', {
             method: 'POST',
@@ -19,12 +24,15 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}
         })
             .then(() => {
                 console.log('Done');
-                onAssApproval()
-                //popupClose();
+                onAssApproval();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
             });
     };
+
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position= "center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
             <div className="reviewAssetRequestOverlay">
                 <div className="popupBackground">
                     <div className="reviewAssetRequestBorder">
@@ -44,13 +52,13 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}
                         <p className="reviewAssetRequestStatus">{assetRequest.request_status}</p>
                         <div className="reviewAssetRequestButtonsDiv">
                             <button
-                                type = "button"
+                                type="button"
                                 className="reviewAssetRequestApproveButton"
                                 onClick={() => handleReview(true)}>
                                 Accept
                             </button>
                             <button
-                                type = "button"
+                                type="button"
                                 className="reviewAssetRequestRejectButton"
                                 onClick={() => handleReview(false)}>
                                 Reject
@@ -61,7 +69,6 @@ const ReviewAssetRequest = ({assetRequest, popupOpen, popupClose, onAssApproval}
             </div>
         </Popup>
     );
-
 }
 
 export default ReviewAssetRequest;
