@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import '../../styling/CreateUserPopup.css';
 import '../../styling/Dropdown.css'
@@ -7,19 +7,19 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 
 
 export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
-    const[first_name,setName]=useState('')
-    const[last_name,setSurname]=useState('')
-    const[email,setEmail]=useState('')
-    const[password,setPassword]=useState('')
-    const [roleNames, setRoleNames] = useState('')
+    const [first_name, setName] = useState('');
+    const [last_name, setSurname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [roleNames, setRoleNames] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
 
     const useHandleClick = (e) => {
         e.preventDefault();
         popupClose();
-        const user = { first_name, last_name, email, password, role: {role_name: selectedRole} };
+        const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
-        if ( document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '' ) {
+        if (document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '') {
             document.getElementById("createUserError").style.display = "block";
             return;
         }
@@ -40,6 +40,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
             })
             .catch((error) => {
                 console.error("Error adding new user:", error);
+                // Handle the error here
             });
 
 
@@ -51,7 +52,8 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
             try {
                 const response = await fetch("http://localhost:8080/api/randPass/generate", {
                     method: "GET",
-                    headers: {"Content-Type":"application/json",
+                    headers: {
+                        "Content-Type": "application/json",
                         Authorization: "Bearer " + sessionStorage.getItem('accessToken')
                     }
                 });
@@ -71,14 +73,20 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     }, []);
 
     useEffect(() => {
-            fetch("http://localhost:8080/api/role/getRoleNames", {
-                method:"GET",
-                headers:{"Content-Type":"application/json",
-                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-                },
-            }).then((res) => res.json())
+        fetch("http://localhost:8080/api/role/getRoleNames", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+        })
+            .then((res) => res.json())
             .then((result) => {
                 setRoleNames(result);
+            })
+            .catch((error) => {
+                console.error('Error fetching role names:', error);
+                // Handle the error here
             });
     }, [])
 
@@ -95,25 +103,25 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                             <div className="createUserContent">
                                 <div className="createUserName">
                                     <p className="nameLabel">Name</p>
-                                    <input required className="nameInput" id="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e)=>setName(e.target.value)}/>
+                                    <input required className="nameInput" id="nameInput" data-testid="nameInput" name="name" value={first_name} onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className="createUserSurname">
                                     <p className="surnameLabel">Surname</p>
-                                    <input required className="surnameInput" id="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e)=>setSurname(e.target.value)}/>
+                                    <input required className="surnameInput" id="surnameInput" data-testid="surnameInput" name="surname" value={last_name} onChange={(e) => setSurname(e.target.value)} />
                                 </div>
                                 <div className="createUserEmail">
                                     <p className="emailLabel">Email</p>
-                                    <input required className="emailInput" id="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                                    <input required className="emailInput" id="emailInput" data-testid="emailInput" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className="createUserPassword">
                                     <p className="passwordLabel">Password</p>
-                                    <input required className="passwordInput" id="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly/>
+                                    <input required className="passwordInput" id="passwordInput" data-testid="passwordInput" name="password" placeholder={password} readOnly />
                                 </div>
                                 <p className="createUserRoleLabel">System Role</p>
                                 {roleNames && roleNames.length > 0 ? (
                                     <Dropdown
                                         options={roleNames.map(roleName => ({ label: roleName, value: roleName }))}
-                                        values={selectedRole  ? [{ label: selectedRole, value: selectedRole  }] : []}
+                                        values={selectedRole ? [{ label: selectedRole, value: selectedRole }] : []}
                                         className="role_dropdown"
                                         name="role_dropdown"
                                         onChange={values => setSelectedRole(values.value)}
@@ -123,12 +131,12 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                                     <p className="createUserLoadTitle">Loading...</p>
                                 )}
                                 <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
-                                <button className="createUserFinish" data-testid="createuser_finish"  onClick={useHandleClick}>
+                                <button className="createUserFinish" data-testid="createuser_finish" onClick={useHandleClick}>
                                     Submit
                                 </button>
                             </div>
                         </form>
-                </div>
+                    </div>
                 </div>
             </div>
         </Popup>
