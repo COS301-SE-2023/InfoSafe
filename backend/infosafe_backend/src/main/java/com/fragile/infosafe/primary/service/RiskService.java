@@ -48,7 +48,7 @@ public class RiskService {
             DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
             risk.setDataScope(dataScope);
             for(User user : dataScope.getUsers()){
-                emailUser(encryptionService.encryptString(user.getEmail()), risk.getRisk_name(), dataScope.getDs_name());
+                emailUser(encryptionService.decryptString(user.getEmail()), risk.getRisk_name(), dataScope.getDs_name());
                 notificationsService.makeNotification("New risk: " + risk.getRisk_name(), user);
             }
 
@@ -63,7 +63,7 @@ public class RiskService {
         if(optionalDataScope.isPresent()) {
             DataScope ds = optionalDataScope.get();
             for (User user : ds.getUsers()) {
-                reviewEmail(encryptionService.encryptString(user.getEmail()), riskRequest.getRisk_name(), ds.getDs_name(), riskRequest.getRisk_status());
+                reviewEmail(encryptionService.decryptString(user.getEmail()), riskRequest.getRisk_name(), ds.getDs_name(), riskRequest.getRisk_status());
                 notificationsService.makeNotification("Risk: " + riskRequest.getRisk_name() + "set to " + riskRequest.getRisk_status(), user);
             }
             if (riskRequest.getRisk_status().equals("Accept") || riskRequest.getRisk_status().equals("Avoid")) {

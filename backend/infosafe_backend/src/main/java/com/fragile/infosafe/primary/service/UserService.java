@@ -35,6 +35,12 @@ public class UserService {
         return users;
     }
 
+    public List<String> getAllUsersEmails() {
+        List<String> emails = repository.getAllEmails();
+        emails.replaceAll(encryptionService::decryptString);
+        return emails;
+    }
+
     public User updateUser(User user) {
         user.setRole(roleRepository.findByRole_name(user.getRole().getRole_name()));
         user.setFirst_name(encryptionService.decryptString(user.getFirst_name()));
