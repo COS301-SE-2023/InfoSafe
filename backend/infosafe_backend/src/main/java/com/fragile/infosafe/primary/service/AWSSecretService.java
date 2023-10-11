@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.service;
 
+import com.amazonaws.auth.AWSCredentialsProvider;
 import com.fragile.infosafe.primary.config.RDSLogin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,8 +16,6 @@ import com.google.gson.Gson;
 @Service
 @RequiredArgsConstructor
 public class AWSSecretService {
-    private final String secretName = "rds_login";
-    private final String region = "us-east-1";
 
     @Value("${AWS_ACCESS_KEY_ID}")
     private String awsAccessKeyId;
@@ -27,11 +26,13 @@ public class AWSSecretService {
     private final Gson gson = new Gson();
 
     public RDSLogin getRDSLogin() {
+        String region = "us-east-1";
         SecretsManagerClient client = SecretsManagerClient.builder()
                 .region(Region.of(region))
                 .credentialsProvider(createCredentialsProvider())
                 .build();
 
+        String secretName = "rds_login";
         GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
                 .secretId(secretName)
                 .build();
@@ -42,7 +43,7 @@ public class AWSSecretService {
         return gson.fromJson(secret, RDSLogin.class);
     }
 
-    private AwsCredentialsProvider createCredentialsProvider() {
+    public AwsCredentialsProvider createCredentialsProvider() {
         return new AwsCredentialsProvider() {
             @Override
             public AwsCredentials resolveCredentials() {
