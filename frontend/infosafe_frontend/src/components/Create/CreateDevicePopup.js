@@ -142,7 +142,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose, onAssetCreated }) => 
                                     <p className="currentCustodianLabel">Current Custodian</p>
                                     {users && users.length > 0 ? (
                                         <Dropdown
-                                            options={users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                            options={users.map((email) => ({ value: email, label: email }))}
                                             value={selectedUsers}
                                             className="createDeviceCurrentCustodianDropdown"
                                             name="createDeviceCurrentCustodianDropdown"
