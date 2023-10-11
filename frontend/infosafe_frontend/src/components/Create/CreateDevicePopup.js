@@ -68,7 +68,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose, onAssetCreated }) => 
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAll", {
+        fetch("http://localhost:8080/api/user/getAllEmails", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),

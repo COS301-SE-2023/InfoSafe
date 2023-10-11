@@ -11,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -93,11 +90,13 @@ public class AssetService {
 
     public List<String> getUnassignedUserEmails(int assetId) {
         Asset asset = assetRepository.findByAssetId(assetId).get();
+        List<String> emails = new ArrayList<>();
         if(asset.getCurrent_assignee() == null){
-            return userRepository.getAllEmails();
+            emails = userRepository.getAllEmails();
         }else{
-            return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(encryptionService.encryptString(asset.getCurrent_assignee().getEmail())).get(), assetId);
-        }
+            emails = assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(encryptionService.encryptString(asset.getCurrent_assignee().getEmail())).get(), assetId);
+        } emails.replaceAll(encryptionService::decryptString);
+        return emails;
     }
 
     private void emailUser(String email, String asset_name){

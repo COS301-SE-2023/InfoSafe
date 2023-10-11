@@ -195,6 +195,11 @@ public class UserController {
         }
     }
 
+    @GetMapping("/getAllEmails")
+    public ResponseEntity<List<String>> getAllUserEmails() {
+        return ResponseEntity.ok(userService.getAllUsersEmails());
+    }
+
     @GetMapping("/findUsersNotInTask/{task_id}")
     public ResponseEntity<List<String>> getAllUsersNotInTask(@PathVariable("task_id") int task_id) {
         return ResponseEntity.ok(userService.findAllUsersNotInTask(task_id));
