@@ -33,6 +33,7 @@ public class TaskService {
     private final EmailService emailService;
     private final DeleteService deleteService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
     public ResponseEntity<String> createTask(TaskRequest request) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,13 +59,13 @@ public class TaskService {
                 Set<User> users = new HashSet<>();
                 DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getData_scope_id()).get();
                 for (String userEmail : request.getUsers_email()) {
-                    User user = userRepository.findByEmail(userEmail).orElse(null);
+                    User user = userRepository.findByEmail(encryptionService.encryptString(userEmail)).orElse(null);
                     if (user != null) {
                         log.info("this is a user " + user);
                         users.add(user);
                         dataScope.getUsers().add(user);
                         sendEmail(userEmail, dataScope.getDs_name(), request);
-                        //notificationsService.makeNotification("Assigned Task: " + task.getTask_name(), user);
+                        notificationsService.makeNotification("Assigned Task: " + task.getTask_name(), user);
                     } else {
                         log.error("User with email " + userEmail + " not found");
                     }
@@ -99,7 +100,7 @@ public class TaskService {
         Set<User> oldUsers = task.getUsers();
         Set<User> users = new HashSet<>();
         for (String userEmail : taskRequest.getUsers_email()) {
-            User user = userRepository.findByEmail(userEmail).orElse(null);
+            User user = userRepository.findByEmail(encryptionService.encryptString(userEmail)).orElse(null);
             if (user != null) {
                 users.add(user);
                 if(!oldUsers.contains(user)){
@@ -133,7 +134,7 @@ public class TaskService {
 
                     long timeDifferenceMillis = dueDate.getTime() - currentDate.getTime();
 
-                    return (int) (timeDifferenceMillis / (1000 * 60 * 60 * 24));
+                    return (int) (timeDifferenceMillis / (1000 * 60 * 60 * 24)) + 1;
                 } catch (ParseException e) {
                     throw new IllegalArgumentException("Error parsing due_date: " + dueDateStr, e);
                 }
@@ -187,6 +188,8 @@ public class TaskService {
     }
 
     public List<String> findUsersOfTask(int task_id) {
-        return taskRepository.findUsersByTaskId(task_id);
+        List<String> userEmails = taskRepository.findUsersByTaskId(task_id);
+        userEmails.replaceAll(encryptionService::decryptString);
+        return userEmails;
     }
 }

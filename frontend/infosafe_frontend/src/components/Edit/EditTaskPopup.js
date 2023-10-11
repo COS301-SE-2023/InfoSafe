@@ -87,7 +87,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
         let finalUsers = [...addUsers, ...selectedUsers];
         const requestBody = {
             ...values,
-            users: finalUsers
+            users_email: finalUsers
         };
         fetch("http://localhost:8080/api/task/update/" + task.task_id, {
             method: "POST",
@@ -149,7 +149,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                             {currentUsers && currentUsers.length > 0 ? (
                                 <Select
                                     options={currentUsers.map((email) => ({ value: email, label: email }))}
-                                    value={currentUsers.map((email) => ({ value: email, label: email }))}
+                                    value={currentUsers.length > 0 ? [{ value: currentUsers[0], label: currentUsers[0] }] : null}
                                     placeholder={currentUsers[0]}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"
@@ -161,7 +161,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                             <p className="editTaskLabels">Add More Assignees</p>
                             {users && users.length > 0 ? (
                                 <Select
-                                    options={users.map((data) => ({ value: data.user_id, label: data.email }))}
+                                    options={users.map((email) => ({ value: email, label: email }))}
                                     value={selectedUsers.map((email) => ({ label: email }))}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"

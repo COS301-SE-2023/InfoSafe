@@ -23,7 +23,6 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose, onDsAdded }) => {
 
         const ds_status = "Pending";
         const datascope = { date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers };
-
         fetch(`http://localhost:8080/api/datascope/checkName?dsname=${ds_name}`, {
             method: "GET",
             headers: {

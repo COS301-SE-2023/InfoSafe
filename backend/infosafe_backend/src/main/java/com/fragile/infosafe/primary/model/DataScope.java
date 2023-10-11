@@ -22,7 +22,7 @@ public class DataScope {
     private Date date_captured;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User data_custodian;
+    private User dataCustodian;
     private String ds_status;
 
     @ManyToMany

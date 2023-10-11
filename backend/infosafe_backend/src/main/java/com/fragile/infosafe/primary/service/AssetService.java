@@ -25,12 +25,13 @@ public class AssetService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
     public List<Asset> getAllAssets() {return assetRepository.findAll();}
 
     public Asset updateAsset(AssetRequest asset) {
         if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {
             Asset editAsset = assetRepository.findByAssetId(asset.getAsset_id()).get();
-            User current = userRepository.findByEmail(asset.getCurrent_assignee()).get();
+            User current = userRepository.findByEmail(encryptionService.encryptString(asset.getCurrent_assignee())).get();
             Optional<User> previous = userRepository.findByEmail(asset.getPrevious_assignee());
             previous.ifPresent(editAsset::setPrevious_assignee);
             editAsset.setAsset_description(asset.getAsset_description());
@@ -53,12 +54,11 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
-                //.previous_assignee(request.getPrevious_assignee())
                 .used(request.getUsed())
                 .build();
 
         if (request.getCurrent_assignee() != null) {
-            User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
+            User user = userRepository.findByEmail(encryptionService.encryptString(request.getCurrent_assignee())).orElse(null);
             if (user != null) {
                 asset.setCurrent_assignee(user);
                 emailUser(user.getEmail(), asset.getAsset_name());
@@ -96,7 +96,7 @@ public class AssetService {
         if(asset.getCurrent_assignee() == null){
             return userRepository.getAllEmails();
         }else{
-            return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(asset.getCurrent_assignee().getEmail()).get(), assetId);
+            return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(encryptionService.encryptString(asset.getCurrent_assignee().getEmail())).get(), assetId);
         }
     }
 

@@ -25,6 +25,7 @@ public class DeleteService {
     private final SupportRequestRepository supportRequestRepository;
     private final RiskRepository riskRepository;
     private final DataScopeRoleRepository dataScopeRoleRepository;
+    private final EncryptionService encryptionService;
 
     private final DeletedUserRepository deletedUserRepository;
     private final DeletedDataScopeRepository deletedDataScopeRepository;
@@ -36,7 +37,7 @@ public class DeleteService {
     private final DeletedRiskRepository deletedRiskRepository;
 
     public void deleteUserAndSaveToSecondary(String email) {
-        Optional<User> entityOptional = userRepository.findByEmail(email);
+        Optional<User> entityOptional = userRepository.findByEmail(encryptionService.encryptString(email));
         if (entityOptional.isPresent()) {
             log.info("Deleting user");
             User entityToDelete = entityOptional.get();

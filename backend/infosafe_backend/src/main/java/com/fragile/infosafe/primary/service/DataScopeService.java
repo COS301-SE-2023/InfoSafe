@@ -5,16 +5,14 @@ import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.DataScopeRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import com.fragile.infosafe.primary.requests.DataScopeRequest;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +22,7 @@ public class DataScopeService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
 
     public ResponseEntity<String> makeDs(DataScopeRequest request, User authenticatedUser){
         Set<User> dc = new HashSet<>();
@@ -33,14 +32,14 @@ public class DataScopeService {
                 .ds_description(request.getDs_description())
                 .date_captured(request.getDate_captured())
                 .ds_status(request.getDs_status())
-                .data_custodian(authenticatedUser)
+                .dataCustodian(authenticatedUser)
                 .users(dc)
                 .build();
         if(!request.getUser_email().isEmpty()){
             for(String email : request.getUser_email()){
-                datascope.getUsers().add(userRepository.findByEmail(email).get());
+                datascope.getUsers().add(userRepository.findByEmail(encryptionService.encryptString(email)).get());
                 emailUser(email, datascope.getDs_name());
-                notificationsService.makeNotification("Assign to Datascope: " + datascope.getDs_name(), userRepository.findByEmail(email).get());
+                notificationsService.makeNotification("Assign to Datascope: " + datascope.getDs_name(), userRepository.findByEmail(encryptionService.encryptString(email)).get());
             }
         }
         dataScopeRepository.save(datascope);
@@ -56,7 +55,7 @@ public class DataScopeService {
             datascope.setDs_name(request.getDs_name());
             datascope.setDs_description(request.getDs_description());
             datascope.setDs_status(request.getDs_status());
-            datascope.setData_custodian(userRepository.findById(request.getData_custodian()).get());
+            datascope.setDataCustodian(userRepository.findById(request.getData_custodian()).get());
             return dataScopeRepository.save(datascope);
         }
         return null;
@@ -70,6 +69,27 @@ public class DataScopeService {
 
     public List<DataScope> getDataScopesNotAssociatedWithUser(User user) {
         return dataScopeRepository.findDataScopesNotAssociatedWithUser(user);
+    }
+
+    public List<String> getAllUsersOfDatascope(int ds_id){
+        Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(ds_id);
+        if(entityOptional.isPresent()){
+            DataScope dataScope = entityOptional.get();
+            List<String> emails = new ArrayList<>();
+            for(User user : dataScope.getUsers()){
+                emails.add(encryptionService.decryptString(user.getEmail()));
+            }
+            return emails;
+        }
+        return null;
+    }
+
+    public String getDataCustodian(int ds_id){
+        Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(ds_id);
+        if(entityOptional.isPresent()){
+            return encryptionService.decryptString(entityOptional.get().getDataCustodian().getEmail());
+        }
+        return null;
     }
 
     public List<DataScope> getDataScopesByUser(User user) {

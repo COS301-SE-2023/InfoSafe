@@ -6,6 +6,7 @@ import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.RoleRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
     private final UserRepository repository;
     private final EmailService emailService;
@@ -101,8 +103,10 @@ public class UserService {
         return false;
     }
 
-    public List<User> findAllUsersNotInTask(int task_id) {
-        return repository.findUsersNotInTask(task_id);
+    public List<String> findAllUsersNotInTask(int task_id) {
+        List<String> userEmails = repository.findUsersNotInTask(task_id);
+        userEmails.replaceAll(encryptionService::decryptString);
+        return userEmails;
     }
 
     public List<String> findNotDataCustodian(User user){

@@ -31,11 +31,7 @@ import java.util.Base64;
 @Slf4j
 public class ApplicationConfig {
     private final UserRepository repository;
-    private final AWSSecretService awsSecretService;
-    private String encryptionKeyString;
-    private String encryptionIV;
-    private String decryptionKeyString;
-    private String decryptionIV;
+
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> repository.findByEmail(username)
@@ -60,46 +56,7 @@ public class ApplicationConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    @Cacheable(value = {"encryptionKeyString", "encryptionIV"})
-    public Cipher encryptionCipher() throws Exception {
-        if(encryptionKeyString == null){
-            encryptionKeyString  = awsSecretService.getEncryptionKey();
-        }
-        if(encryptionIV == null){
-            encryptionIV = awsSecretService.getIV();
-        }
-        log.info(encryptionIV);
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-        byte[] encryptionKeyBytes = Base64.getDecoder().decode(encryptionKeyString);
-        Key encryptionKey = new SecretKeySpec(encryptionKeyBytes, "AES");
-        byte[] ivBytes = Base64.getDecoder().decode(encryptionIV);
-        IvParameterSpec ivSpec = new IvParameterSpec(ivBytes);
-        cipher.init(Cipher.ENCRYPT_MODE, encryptionKey, ivSpec);
-        return cipher;
-    }
 
-
-
-    @Bean
-    @Cacheable(value = {"decryptionKeyString", "decryptionIV"})
-    public Cipher decryptionCipher() throws Exception {
-        if(decryptionKeyString == null){
-            decryptionKeyString  = awsSecretService.getEncryptionKey();
-        }
-        if(decryptionIV == null){
-            decryptionIV = awsSecretService.getIV();
-        }
-
-        byte[] encryptionKeyBytes = Base64.getDecoder().decode(decryptionKeyString);
-        Key encryptionKey = new SecretKeySpec(encryptionKeyBytes, "AES");
-        byte[] ivBytes = Base64.getDecoder().decode(decryptionIV);
-
-        IvParameterSpec ivSpec = new IvParameterSpec(ivBytes);
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, encryptionKey, ivSpec);
-        return cipher;
-    }
 
 
 
