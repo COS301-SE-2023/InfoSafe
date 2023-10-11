@@ -109,14 +109,14 @@ export const CreateTask = ({ popupClose, popupOpen, onTaskAdded }) => {
                         <form>
                             <p className="createTaskPageTitle">Create Task</p>
                             <div className="createTaskContent">
-                                <p className="createTaskInputTitle">Type Name</p>
+                                <p className="createTaskInputTitle">Task Name</p>
                                 <textarea
                                     className="createTaskInputTextArea"
                                     onChange={handleTaskNameChange}
                                     value={task_name}
                                     id="taskNameIn"
                                 />
-                                <p className="createTaskInputLabel">Type Description</p>
+                                <p className="createTaskInputLabel">Task Description</p>
                                 <textarea
                                     className="createTaskDescriptionInputTextArea"
                                     onChange={handleDescriptionChange}
