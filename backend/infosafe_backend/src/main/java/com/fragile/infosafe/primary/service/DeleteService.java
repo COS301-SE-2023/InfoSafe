@@ -5,6 +5,7 @@ import com.fragile.infosafe.delete.deletemodel.*;
 import com.fragile.infosafe.delete.deleterepository.*;
 import com.fragile.infosafe.primary.model.*;
 import com.fragile.infosafe.primary.repository.*;
+import com.fragile.infosafe.primary.requests.AssetRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,19 @@ public class DeleteService {
             de.setFirst_name(entityToDelete.getFirst_name());
             de.setLast_name(entityToDelete.getLast_name());
             de.setRole(entityToDelete.getRole().getRole_name());
+            for(AccessRequest access : entityToDelete.getAccessRequests()){
+                deleteAssetRequestAndSaveToSecondary(access.getRequest_id());
+            }
+            for(AssetRequests assetRequest : entityToDelete.getAssetRequests()){
+                deleteAssetRequestAndSaveToSecondary(assetRequest.getAsset_request_id());
+            }
+            for(SupportRequest support : entityToDelete.getSupportRequests()){
+                deleteAssetRequestAndSaveToSecondary(support.getSupport_id());
+            }
+            for(Asset asset : entityToDelete.getAssets()){
+                deleteAssetRequestAndSaveToSecondary(asset.getAsset_id());
+            }
+
             deletedUserRepository.save(de);
             userRepository.delete(entityToDelete);
         }

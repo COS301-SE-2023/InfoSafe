@@ -53,6 +53,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<AccessRequest> accessRequests;
 
+
     public int getUser_id() {
         return user_id;
     }
