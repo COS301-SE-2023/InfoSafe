@@ -96,9 +96,9 @@ export const ForgotPassword = () => {
                 </div>
                 <div className='passwordPanel' id='passwordPanel'>
                     <p className="passTitle">Enter new password:</p>
-                    <input type='text' value={newPassword} onChange={handleNewPasswordChange} className="forgotPass"/>
+                    <input type='password' value={newPassword} onChange={handleNewPasswordChange} className="forgotPass"/>
                     <p className="rePassTitle">Re-enter new password:</p>
-                    <input type='text' className="forgotRePass"/>
+                    <input type='password' className="forgotRePass"/>
                     <button className='submit' onClick={handleSecondClick}>
                         Submit
                     </button>
