@@ -49,18 +49,17 @@ public class DeleteService {
             de.setLast_name(entityToDelete.getLast_name());
             de.setRole(entityToDelete.getRole().getRole_name());
             for(AccessRequest access : entityToDelete.getAccessRequests()){
-                deleteAssetRequestAndSaveToSecondary(access.getRequest_id());
+                deleteAccessRequestAndSaveToSecondary(access.getRequest_id());
             }
             for(AssetRequests assetRequest : entityToDelete.getAssetRequests()){
                 deleteAssetRequestAndSaveToSecondary(assetRequest.getAsset_request_id());
             }
             for(SupportRequest support : entityToDelete.getSupportRequests()){
-                deleteAssetRequestAndSaveToSecondary(support.getSupport_id());
+                deleteSupportRequestAndSaveToSecondary(support.getSupport_id());
             }
             for(Asset asset : entityToDelete.getAssets()){
-                deleteAssetRequestAndSaveToSecondary(asset.getAsset_id());
+                deleteAssetAndSaveToSecondary(asset.getAsset_id());
             }
-
             deletedUserRepository.save(de);
             userRepository.delete(entityToDelete);
         }
@@ -76,6 +75,16 @@ public class DeleteService {
             de.setDs_description(entityToDelete.getDs_description());
             de.setDs_status(entityToDelete.getDs_status());
             de.setDate_captured(entityToDelete.getDate_captured());
+            for(AccessRequest access : entityToDelete.getAccessRequests()){
+                deleteAccessRequestAndSaveToSecondary(access.getRequest_id());
+            }
+            for(Risk risk : entityToDelete.getRisks()){
+                deleteRiskAndSaveToSecondary(risk.getRisk_id());
+            }
+            for(Task task : entityToDelete.getTasks()){
+                // completion status needs to be sent to the function below as secondary parameter
+                //deleteTaskAndSaveToSecondary(task.getTask_id());
+            }
             dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
             dataScopeRepository.delete(entityToDelete);

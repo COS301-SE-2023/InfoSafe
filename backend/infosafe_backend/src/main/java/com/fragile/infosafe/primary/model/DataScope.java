@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,4 +33,13 @@ public class DataScope {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> users = new HashSet<>();
+
+    @OneToMany(mappedBy = "data_scopes", cascade = CascadeType.REMOVE)
+    private List<Task> tasks;
+
+    @OneToMany(mappedBy = "data_scopes", cascade = CascadeType.REMOVE)
+    private List<Risk> risks;
+
+    @OneToMany(mappedBy = "data_scopes", cascade = CascadeType.REMOVE)
+    private List<AccessRequest> accessRequests;
 }
