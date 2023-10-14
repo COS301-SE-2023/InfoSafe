@@ -36,7 +36,7 @@ const TasksChart = () => {
                     {
                         label: 'Tasks',
                         data: [15, taskCount],
-                        backgroundColor: ['#9E0000', '#444040'],
+                        backgroundColor: ['#00003E', '#444040'],
                     }
                 ]
             },

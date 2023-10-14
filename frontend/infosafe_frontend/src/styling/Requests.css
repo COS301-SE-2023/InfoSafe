@@ -117,7 +117,7 @@
     margin: 0 auto;
 }
 .supportRequestDescription:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
     outline: none;
 }
 .supportRequestStatusLabel{
@@ -209,7 +209,7 @@
 
 }
 .createAssetRequestReasonInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
     outline: none;
 }
 .createAssetRequestDateLabel {
@@ -237,7 +237,7 @@
     text-align: center;
 }
 .createAssetRequestDateInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
     outline: none;
 }
 .createAssetRequestStatusLabel {
@@ -347,7 +347,7 @@
 }
 .createAccessRequestReasonInput:focus{
     outline: none;
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
 }
 .createAccessRequestButtonDiv {
     position: relative;
@@ -409,5 +409,5 @@
 }
 .helpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }

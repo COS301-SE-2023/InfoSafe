@@ -106,13 +106,13 @@ const SystemAnalyticsChart = () => {
                     datasets: [
                         {
                             label: 'System Total',
-                            backgroundColor: '#49D4D0',
+                            backgroundColor: '#50C9CE',
                             barThickness: 20,
                             data: [dataScopeCount, totalTasks, totalAssets, suppTotal, assetTotal],
                         },
                         {
                             label: 'My Total',
-                            backgroundColor: '#9E0000',
+                            backgroundColor: '#00003E',
                             barThickness: 20,
                             data: [myDataScopeCount, myTotalTasks, assetCount, mySuppTotal, myAssetTotal],
                             pointStyle: 'circle',

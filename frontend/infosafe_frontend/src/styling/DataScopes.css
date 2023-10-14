@@ -9,7 +9,7 @@
 }
 .dsHelpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }
 .dataScopesBackground{
     background-color: #FFFFFF;
@@ -90,7 +90,7 @@
     font-size: 16px;
 }
 .dataScopesSearchInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
 }
 .dataScopesSearchIcon
 {
@@ -98,7 +98,7 @@
     right: 10px;
     top: 54%;
     transform: translateY(-50%);
-    color: #9E0000;
+    color: #00003E;
 }
 .dataScopesEditButton{
     background-color: #444040;
@@ -178,7 +178,7 @@
     margin: 0 auto;
     height: 8%;
     width: 30%;
-    border: 4px solid #9E0000;
+    border: 4px solid #00003E;
     border-radius: 20px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
 }
