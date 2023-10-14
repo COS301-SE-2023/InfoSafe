@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 @RequiredArgsConstructor
 @Slf4j
 public class AWSSecretService {
-    private final String secretName = "rds_login";
+    private final String secretName = "rds_login_creds";
 
     private final String encryptionName = "client_encryption";
     private final String IVName = "IV";
