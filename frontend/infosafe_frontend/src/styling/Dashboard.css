@@ -13,7 +13,7 @@
     display: flex;
 }
 .dataScopesInfo{
-    background: #9E0000;
+    background: #00003E;
     width: 22%;
     height: 100%;
     border-radius: 4px;
@@ -233,7 +233,7 @@
     justify-content: center;
 }
 .myTotalIcon{
-    color: #9E0000;
+    color: #00003E;
     align-self: center;
 }
 .systemTotalLabel, .myTotalLabel{
@@ -314,7 +314,7 @@
 }
 
 .tasksCompletedIcon {
-    color: #9E0000;
+    color: #00003E;
     margin: 0 auto;
 }
 
@@ -395,7 +395,7 @@
     background-color: transparent;
     /*padding: 5px;*/
     border-radius: 4px;
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
     margin-top: 3px;
     /*display: flex;*/
 }
@@ -548,7 +548,7 @@
     box-sizing: unset;
 }
 .deadline3{
-    background-color: #9E0000;
+    background-color: #00003E;
     color: #FFFFFF;
     width: 30%;
     justify-content: center;
