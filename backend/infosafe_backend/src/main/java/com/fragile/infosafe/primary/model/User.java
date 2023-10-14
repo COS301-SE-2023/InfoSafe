@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import software.amazon.awssdk.services.redshift.model.SupportedPlatform;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -38,6 +40,18 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "role_name")
     private Role role;
+
+    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE)
+    private List<Asset> assets;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<AssetRequests> assetRequests;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<SupportRequest> supportRequests;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<AccessRequest> accessRequests;
 
     public int getUser_id() {
         return user_id;

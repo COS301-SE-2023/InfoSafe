@@ -111,9 +111,9 @@ public class DeleteService {
             AccessRequest entityToDelete = entityOptional.get();
             DeletedAccessRequest de = new DeletedAccessRequest();
             de.setReason(entityToDelete.getReason());
-            de.setUser_id(entityToDelete.getUser_id().getUser_id());
+            de.setUser_id(entityToDelete.getUser().getUser_id());
             de.setStatus(entityToDelete.getStatus());
-            de.setData_scope_id(entityToDelete.getData_scope_id().getData_scope_id());
+            de.setData_scope_id(entityToDelete.getData_scope().getData_scope_id());
             deletedAccessRequestRepository.save(de);
             accessRequestRepository.delete(entityToDelete);
         }
@@ -130,13 +130,13 @@ public class DeleteService {
             de.setUser_id(entityToDelete.getSupport_id());
             switch (entityToDelete.getSupport_type()) {
                 case "DataScope Support":
-                        de.setData_scope_id(entityToDelete.getDataScope_id().getData_scope_id());
+                        de.setData_scope_id(entityToDelete.getDataScope().getData_scope_id());
                     break;
                 case "Asset Support":
-                        de.setAsset_id(entityToDelete.getAsset_id().getAsset_id());
+                        de.setAsset_id(entityToDelete.getAsset().getAsset_id());
                     break;
                 case "Task Support":
-                        de.setTask_id(entityToDelete.getTask_id().getTask_id());
+                        de.setTask_id(entityToDelete.getTask().getTask_id());
                     break;
             }
             deletedSupportRequestRepository.save(de);

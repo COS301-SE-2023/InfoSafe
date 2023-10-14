@@ -37,12 +37,12 @@ public class AccessRequestService {
         AccessRequest accessRequest = AccessRequest.builder()
                 .reason(request.getReason())
                 .status(request.getStatus())
-                .user_id(authenticatedUser)
+                .user(authenticatedUser)
                 .build();
 
         if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
             DataScope dataScope = dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get();
-            accessRequest.setData_scope_id(dataScope);
+            accessRequest.setData_scope(dataScope);
         }
         accessRequestRepository.save(accessRequest);
         return ResponseEntity.status(HttpStatus.OK).body("added");

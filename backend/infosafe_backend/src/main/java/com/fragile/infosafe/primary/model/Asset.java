@@ -3,6 +3,8 @@ package com.fragile.infosafe.primary.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -25,6 +27,9 @@ public class Asset {
     @ManyToOne
     @JoinColumn(name = "previous_assignee_id", referencedColumnName = "user_id")
     private User previous_assignee;
+
+    @OneToMany(mappedBy = "asset", cascade = CascadeType.REMOVE)
+    private List<AssetRequests> assetRequestsList;
 
     @PreUpdate
     @PrePersist
