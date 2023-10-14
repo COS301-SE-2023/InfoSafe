@@ -34,12 +34,12 @@ public class DataScope {
     )
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "data_scopes", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "data_scope_id", cascade = CascadeType.REMOVE)
     private List<Task> tasks;
 
-    @OneToMany(mappedBy = "data_scopes", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "dataScope", cascade = CascadeType.REMOVE)
     private List<Risk> risks;
 
-    @OneToMany(mappedBy = "data_scopes", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "data_scope", cascade = CascadeType.REMOVE)
     private List<AccessRequest> accessRequests;
 }
