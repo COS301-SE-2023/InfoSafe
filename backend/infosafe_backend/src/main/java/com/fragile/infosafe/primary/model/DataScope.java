@@ -40,6 +40,6 @@ public class DataScope {
     @OneToMany(mappedBy = "dataScope", cascade = CascadeType.REMOVE)
     private List<Risk> risks;
 
-    @OneToMany(mappedBy = "data_scope", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "data_scope_id", cascade = CascadeType.REMOVE)
     private List<AccessRequest> accessRequests;
 }

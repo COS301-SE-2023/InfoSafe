@@ -33,27 +33,27 @@ public class SupportRequestService {
                 .support_type(request.getSupport_type())
                 .support_description(request.getSupport_description())
                 .support_status(request.getSupport_status())
-                .user(authenticatedUser)
+                .user_id(authenticatedUser)
                 .build();
 
         switch (request.getSupport_type()) {
             case "DataScope Support" -> {
                 if (dataScopeRepository.findByDataScopeId(request.getDataScope_id()).isPresent()) {
-                    supportrequest.setDataScope(dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get());
+                    supportrequest.setDataScope_id(dataScopeRepository.findByDataScopeId(request.getDataScope_id()).get());
                 } else {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find datascope");
                 }
             }
             case "Asset Support" -> {
                 if (assetRepository.findByAssetId(request.getAsset_id()).isPresent()) {
-                    supportrequest.setAsset(assetRepository.findByAssetId(request.getAsset_id()).get());
+                    supportrequest.setAsset_id(assetRepository.findByAssetId(request.getAsset_id()).get());
                 } else {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find asset");
                 }
             }
             case "Task Support" -> {
                 if (taskRepository.findByTaskId(request.getTask_id()).isPresent()) {
-                    supportrequest.setTask(taskRepository.findByTaskId(request.getTask_id()).get());
+                    supportrequest.setTask_id(taskRepository.findByTaskId(request.getTask_id()).get());
                 } else {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find task");
                 }
@@ -90,10 +90,10 @@ public class SupportRequestService {
         updated.setSupport_description(supportRequest.getSupport_description());
         updated.setSupport_status(supportRequest.getSupport_status());
         updated.setSupport_type(supportRequest.getSupport_type());
-        updated.setUser(userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).isPresent() ? userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).get() :null);
-        updated.setTask(taskRepository.findByTaskId(supportRequest.getTask_id()).isPresent() ? taskRepository.findByTaskId(supportRequest.getTask_id()).get() : null);
-        updated.setAsset(assetRepository.findByAssetId(supportRequest.getAsset_id()).isPresent() ? assetRepository.findByAssetId(supportRequest.getAsset_id()).get() : null);
-        updated.setDataScope(dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).isPresent() ? dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).get() : null);
+        updated.setUser_id(userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).isPresent() ? userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).get() :null);
+        updated.setTask_id(taskRepository.findByTaskId(supportRequest.getTask_id()).isPresent() ? taskRepository.findByTaskId(supportRequest.getTask_id()).get() : null);
+        updated.setAsset_id(assetRepository.findByAssetId(supportRequest.getAsset_id()).isPresent() ? assetRepository.findByAssetId(supportRequest.getAsset_id()).get() : null);
+        updated.setDataScope_id(dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).isPresent() ? dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).get() : null);
         return supportRequestRepository.save(updated);
     }
 

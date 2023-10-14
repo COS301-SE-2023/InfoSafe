@@ -47,10 +47,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<AssetRequests> assetRequests;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE)
     private List<SupportRequest> supportRequests;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE)
     private List<AccessRequest> accessRequests;
 
 

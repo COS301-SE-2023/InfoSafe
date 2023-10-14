@@ -21,9 +21,9 @@ public class AccessRequest {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user_id;
 
     @ManyToOne
     @JoinColumn(name = "data_scope_id")
-    private DataScope data_scope;
+    private DataScope data_scope_id;
 }

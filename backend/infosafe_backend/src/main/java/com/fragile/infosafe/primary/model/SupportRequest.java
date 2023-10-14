@@ -20,16 +20,16 @@ public class SupportRequest {
     private String support_status;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user_id;
     @ManyToOne
     @JoinColumn(name = "data_scope_id")
-    private DataScope dataScope;
+    private DataScope dataScope_id;
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    private Task task;
+    private Task task_id;
 
     @ManyToOne
     @JoinColumn(name = "asset_id")
-    private Asset asset;
+    private Asset asset_id;
 }
