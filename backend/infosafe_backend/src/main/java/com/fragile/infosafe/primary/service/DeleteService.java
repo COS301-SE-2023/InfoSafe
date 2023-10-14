@@ -82,8 +82,7 @@ public class DeleteService {
                 deleteRiskAndSaveToSecondary(risk.getRisk_id());
             }
             for(Task task : entityToDelete.getTasks()){
-                // completion status needs to be sent to the function below as secondary parameter
-                //deleteTaskAndSaveToSecondary(task.getTask_id());
+                deleteTaskAndSaveToSecondary(task.getTask_id(), "Completed");
             }
             dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
