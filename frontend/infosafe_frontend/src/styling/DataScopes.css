@@ -29,11 +29,12 @@
     top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
-    scrollbar-width: none;
+    overflow-x: hidden;
+    /*scrollbar-width: none;*/
 }
-.datascopes::-webkit-scrollbar {
-    display: none;
-}
+/*.datascopes::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
 .datascopesList {
     list-style: none;
     margin: 0;

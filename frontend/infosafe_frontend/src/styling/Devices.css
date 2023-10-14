@@ -49,11 +49,12 @@
     top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
+    overflow-x: hidden;
 }
-.devices::-webkit-scrollbar {
-    display: none;
-}
+/*.devices::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
 .deviceList {
     list-style: none;
     margin: 0;

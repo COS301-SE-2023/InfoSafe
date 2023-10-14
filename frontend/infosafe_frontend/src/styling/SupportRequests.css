@@ -47,12 +47,13 @@
     height: 60%;
     position: relative;
     top: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
 }
-.tables::-webkit-scrollbar{
-    display: none;
-}
+/*.tables::-webkit-scrollbar{*/
+/*    display: none;*/
+/*}*/
 .active_support_requests {
     background-color: transparent;
     width: 100%;

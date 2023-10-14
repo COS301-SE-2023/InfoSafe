@@ -60,9 +60,10 @@
     height: 60%;
     position: relative;
     top: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
     box-sizing: content-box;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
 }
 .taskList {
     list-style: none;

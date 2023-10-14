@@ -49,11 +49,13 @@
     top: 0;
     overflow-y: scroll;
     box-sizing: content-box;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
+    overflow-x: hidden;
 }
-.risks::-webkit-scrollbar {
-    display: none;
-}
+
+/*.risks::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
 .risksList {
     list-style: none;
     margin: 0;
