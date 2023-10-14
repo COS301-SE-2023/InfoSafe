@@ -175,10 +175,13 @@
     left: 8%;
 }
 .toolbarRight{
+
+    position: absolute;
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 20%;
     justify-content: right;
+    right: 0;
 }
 .userDisplay{
     color: #000000;
@@ -189,21 +192,22 @@
     height: fit-content;
     margin: 0;
     position: relative;
-    right: 4%;
+    right: 12%;
+    white-space: nowrap;
 }
 .avatar {
     height: 4%;
     fill: #383838;
     font-size: 2.4rem;
     position: relative;
-    right: 4%;
+    right: 6%;
     margin-right: 0.5vw;
 }
 
 .settingsDiv
 {
-    position: absolute;
-    top: 1vh;
+    position: relative;
+    top: 0.7vh;
     width: fit-content;
     text-align: center;
     font-family: "Roboto", sans-serif;
