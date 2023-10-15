@@ -30,11 +30,17 @@
     overflow-y: scroll;
     box-sizing: content-box;
     overflow-x: hidden;
-    /*scrollbar-width: none;*/
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
 }
-/*.datascopes::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
+.datascopes::-webkit-scrollbar {
+    width: 8px;
+}
+.datascopes::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
+}
 .datascopesList {
     list-style: none;
     margin: 0;

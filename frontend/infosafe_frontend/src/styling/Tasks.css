@@ -63,7 +63,16 @@
     overflow-x: hidden;
     overflow-y: scroll;
     box-sizing: content-box;
-    /*scrollbar-width: none;*/
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
+}
+.tasks::-webkit-scrollbar {
+    width: 8px;
+}
+.tasks::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
 }
 .taskList {
     list-style: none;

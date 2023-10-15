@@ -51,10 +51,17 @@
     box-sizing: content-box;
     /*scrollbar-width: none;*/
     overflow-x: hidden;
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
 }
-/*.devices::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
+.devices::-webkit-scrollbar {
+    width: 8px;
+}
+.devices::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
+}
 .deviceList {
     list-style: none;
     margin: 0;
