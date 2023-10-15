@@ -23,7 +23,7 @@ export const ForgotPassword = () => {
         const forgot = {
             email: email
         };
-        fetch("https://infosafe.live/api/forgot/request-reset", {
+        fetch("http://localhost:8080/api/forgot/request-reset", {
             method: "POST",
             body: JSON.stringify(forgot),
             headers: {
@@ -46,7 +46,7 @@ export const ForgotPassword = () => {
 
     const verifyOtp = () => {
         const otpData = { email: email, otp: otp };
-        fetch("https://infosafe.live/api/forgot/verify-otp", {
+        fetch("http://localhost:8080/api/forgot/verify-otp", {
             method: "POST",
             body: JSON.stringify(otpData),
             headers: {
@@ -81,7 +81,7 @@ export const ForgotPassword = () => {
             return;
         }
         const forgot = { email: email, otp: otp, newPassword: newPassword };
-        fetch("https://infosafe.live/api/forgot/reset-password", {
+        fetch("http://localhost:8080/api/forgot/reset-password", {
             method: "POST",
             body: JSON.stringify(forgot),
             headers: {

@@ -39,7 +39,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('https://infosafe.live/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
@@ -63,7 +63,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     };
 
     useEffect(() => {
-        fetch('https://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -82,7 +82,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
 
-        fetch('https://infosafe.live/api/dataScopeRole/addDataScopeRole', {
+        fetch('http://localhost:8080/api/dataScopeRole/addDataScopeRole', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

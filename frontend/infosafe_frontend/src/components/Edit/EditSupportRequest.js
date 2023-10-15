@@ -21,7 +21,7 @@ const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, ed
         e.preventDefault();
 
         //console.log(values)
-        fetch('https://infosafe.live/api/supportrequest/update/' + support.support_id, {
+        fetch('http://localhost:8080/api/supportrequest/update/' + support.support_id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

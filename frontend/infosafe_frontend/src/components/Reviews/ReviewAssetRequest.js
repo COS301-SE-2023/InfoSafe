@@ -14,7 +14,7 @@ const ReviewAssetRequest = ({ assetRequest, popupOpen, popupClose, onAssApproval
             user_email: assetRequest.user.email
         };
         //console.log(payload)
-        fetch('https://infosafe.live/api/assetrequest/reviewAsset', {
+        fetch('http://localhost:8080/api/assetrequest/reviewAsset', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

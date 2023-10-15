@@ -5,7 +5,7 @@ export const useGetAllUser = () => {
     const [loading, setLoading] = useState(true);
         const fetchData = async () => {
                 try {
-                    const response = await fetch("https://infosafe.live/api/user/getAll", {
+                    const response = await fetch("http://localhost:8080/api/user/getAll", {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
