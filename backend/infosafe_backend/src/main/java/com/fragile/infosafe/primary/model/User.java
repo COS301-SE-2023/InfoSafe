@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
@@ -41,16 +42,20 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_name")
     private Role role;
 
-    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Asset> assets;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<AssetRequests> assetRequests;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<SupportRequest> supportRequests;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<AccessRequest> accessRequests;
 
 

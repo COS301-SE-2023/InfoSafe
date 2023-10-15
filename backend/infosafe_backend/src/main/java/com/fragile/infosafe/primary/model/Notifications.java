@@ -21,7 +21,7 @@ public class Notifications {
     private LocalDateTime createdAt;
     private String notification;
     private String timeMade;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 }

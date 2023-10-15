@@ -16,10 +16,10 @@ public class SupportRequestTest {
                 .support_type("Type")
                 .support_description("Description")
                 .support_status("Status")
-                .user(new User())
-                .dataScope(new DataScope())
-                .task(new Task())
-                .asset(new Asset())
+                .user_id(new User())
+                .dataScope_id(new DataScope())
+                .task_id(new Task())
+                .asset_id(new Asset())
                 .build();
 
         // Assert that the SupportRequest is not null
@@ -33,13 +33,13 @@ public class SupportRequestTest {
         // Assert that the support_status is set correctly
         assertEquals("Status", supportRequest.getSupport_status());
         // Assert that the user_id is set correctly
-        assertNotNull(supportRequest.getUser());
+        assertNotNull(supportRequest.getUser_id());
         // Assert that the dataScope_id is set correctly
-        assertNotNull(supportRequest.getDataScope());
+        assertNotNull(supportRequest.getDataScope_id());
         // Assert that the task_id is set correctly
-        assertNotNull(supportRequest.getTask());
+        assertNotNull(supportRequest.getTask_id());
         // Assert that the asset_id is set correctly
-        assertNotNull(supportRequest.getAsset());
+        assertNotNull(supportRequest.getAsset_id());
     }
 
     // Create a SupportRequest with optional fields
@@ -67,13 +67,13 @@ public class SupportRequestTest {
         // Assert that the support_status is set correctly
         assertEquals("Status", supportRequest.getSupport_status());
         // Assert that the user_id is set correctly
-        assertNotNull(supportRequest.getUser());
+        assertNotNull(supportRequest.getUser_id());
         // Assert that the dataScope_id is set correctly
-        assertNotNull(supportRequest.getDataScope());
+        assertNotNull(supportRequest.getDataScope_id());
         // Assert that the task_id is set correctly
-        assertNotNull(supportRequest.getTask());
+        assertNotNull(supportRequest.getTask_id());
         // Assert that the asset_id is set correctly
-        assertNotNull(supportRequest.getAsset());
+        assertNotNull(supportRequest.getAsset_id());
     }
 
     // Update a SupportRequest with all fields

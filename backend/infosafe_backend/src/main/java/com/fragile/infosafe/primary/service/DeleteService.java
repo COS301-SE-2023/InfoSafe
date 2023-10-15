@@ -82,7 +82,7 @@ public class DeleteService {
                 deleteRiskAndSaveToSecondary(risk.getRisk_id());
             }
             for(Task task : entityToDelete.getTasks()){
-                deleteTaskAndSaveToSecondary(task.getTask_id(), "Completed");
+                deleteTaskAndSaveToSecondary(task.getTask_id(), "DatascopeDeleted");
             }
             dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
