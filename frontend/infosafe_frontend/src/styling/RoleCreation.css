@@ -15,14 +15,16 @@
     position: relative;
     top: 0;
     overflow-y: scroll;
+    overflow-x: hidden;
     box-sizing: content-box;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
     font-family: "Roboto", sans-serif;
     font-size: 16px;
 }
-.permissions::-webkit-scrollbar {
-    display: none;
-}
+/*.permissions::-webkit-scrollbar {*/
+/*    !*display: none;*!*/
+/*    !*margin-left: 1%;*!*/
+/*}*/
 
 .roleHelpButton{
     background-color: transparent;
@@ -35,7 +37,7 @@
 }
 .roleHelpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }
 
 .permissionsList {
@@ -69,7 +71,7 @@
     display: flex;
     border-radius: 12px;
     left: 1%;
-    box-shadow: 1px 3px 2px 0 #E90000;
+    box-shadow: 1px 3px 2px 0 #00003E;
 
 }
 
@@ -90,11 +92,11 @@
 }
 
 input:checked{
-    accent-color: #E90000;
+    accent-color: #00003E;
 }
 
 .permissionsDiv input:checked{
-    accent-color: #49D4D0;
+    accent-color: #50C9CE;
 }
 
 .displayPermissionsDiv{
@@ -118,7 +120,7 @@ input:checked{
     top: 1vh;
     border-radius: 12px;
     margin-right: 1vh;
-    box-shadow: 1px 3px 2px 0 #49D4D0;
+    box-shadow: 1px 3px 2px 0 #50C9CE;
 }
 
 .permissionsDiv{
@@ -231,7 +233,7 @@ input:checked{
     padding-left: 0.5%;
 }
 .roleCreationRoleNameInput:focus{
-    border: 3px solid #9E0000;
+    border: 3px solid #00003E;
     outline: none;
 }
 .currRolesList {

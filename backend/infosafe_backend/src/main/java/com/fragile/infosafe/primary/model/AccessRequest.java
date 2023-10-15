@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="access_requests")
+@Table(name="access_requests", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "data_scope_id"})})
 public class AccessRequest {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int request_id;

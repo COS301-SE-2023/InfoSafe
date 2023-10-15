@@ -1,13 +1,12 @@
 import Popup from 'reactjs-popup';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styling/ReviewRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-/* eslint-disable react/prop-types */
-/* eslint-disable  no-unused-vars */
-const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate','Unlikely','Rare'];
-const IMPACT = ['Insignificant','Minor','Significant','Major','Severe'];
-const STATUS = ['Open','Accept','Avoid','Transfer','Mitigate'];
+
+const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate', 'Unlikely', 'Rare'];
+const IMPACT = ['Insignificant', 'Minor', 'Significant', 'Major', 'Severe'];
+const STATUS = ['Open', 'Accept', 'Avoid', 'Transfer', 'Mitigate'];
 
 export const ReviewRisk = ({ risk, popupClose, popupOpen, onRiskReview }) => {
     const [currentStatus, setCurrentStatus] = useState(STATUS[0]);
@@ -34,6 +33,10 @@ export const ReviewRisk = ({ risk, popupClose, popupOpen, onRiskReview }) => {
                     .then(() => {
                         console.log('Done');
                         onRiskReview();
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        // Handle the error here (e.g., show a message to the user)
                     });
             }
         }

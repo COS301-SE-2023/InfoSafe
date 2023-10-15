@@ -3,6 +3,8 @@ package com.fragile.infosafe.primary.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -19,12 +21,16 @@ public class Asset {
     private String availability;
     private String used;
     private String device_type;
+
     @ManyToOne
     @JoinColumn(name = "current_assignee_id", referencedColumnName = "user_id")
     private User current_assignee;
     @ManyToOne
     @JoinColumn(name = "previous_assignee_id", referencedColumnName = "user_id")
     private User previous_assignee;
+
+    @OneToMany(mappedBy = "asset", cascade = CascadeType.REMOVE)
+    private List<AssetRequests> assetRequestsList;
 
     @PreUpdate
     @PrePersist

@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="asset_requests")
+@Table(name="asset_requests", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "asset_id"})})
 public class AssetRequests {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int asset_request_id;

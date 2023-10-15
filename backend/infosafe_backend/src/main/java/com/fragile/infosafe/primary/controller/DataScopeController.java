@@ -84,4 +84,14 @@ public class DataScopeController {
         return ResponseEntity.badRequest().build();
     }
 
+    @GetMapping("/getDC/{dataScopeId}")
+    public ResponseEntity<String> getDataCustodian(@PathVariable int dataScopeId){
+        return ResponseEntity.ok(service.getDataCustodian(dataScopeId));
+    }
+
+    @GetMapping("/getDSUsersEmails/{dataScopeId}")
+    public ResponseEntity<List<String>> getDSUsersEmails(@PathVariable int dataScopeId){
+        return ResponseEntity.ok(service.getAllUsersOfDatascope(dataScopeId));
+    }
+
 }

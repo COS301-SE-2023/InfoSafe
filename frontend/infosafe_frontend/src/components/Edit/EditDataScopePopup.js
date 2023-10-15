@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
 import Select from "react-select";
-import {customStyles} from "../CustomStyling";
+import { customStyles } from "../CustomStyling";
 const STATUS = ['Pending', 'Approved', 'Revoked'];
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdited }) => {
@@ -16,25 +16,12 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     //const [users, setUsers] = useState([]);
     const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
-        data_custodian: datascope.data_custodian.user_id,
+        data_custodian: datascope.dataCustodian.user_id,
         date_captured: datascope.date_captured,
         ds_description: datascope.ds_description,
         ds_name: datascope.ds_name,
         ds_status: datascope.ds_status
     });
-
-    // useEffect(() => {
-    //     fetch("https://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
-    //         method: "GET",
-    //         headers: {
-    //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-    //         }
-    //     })
-    //         .then((res) => res.json())
-    //         .then((result) => {
-    //             setUsers(result);
-    //         });
-    // }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -51,8 +38,6 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(datascope);
-        //console.log(values);
 
         fetch('https://infosafe.live/api/datascope/update/' + datascope.data_scope_id, {
             method: 'POST',
@@ -61,10 +46,19 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
             },
             body: JSON.stringify(values)
-        }).then(() => {
-            console.log('Updated Datascope');
-            onDsEdited()
-        });
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Updated Datascope');
+                    onDsEdited();
+                } else {
+                    console.error('Error updating Datascope:', response.status);
+                }
+            })
+            .catch((error) => {
+                console.error('Error updating Datascope:', error);
+            });
+
         popupClose();
     };
 
@@ -78,6 +72,9 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
             .then((res) => res.json())
             .then((result) => {
                 setDataScopeRoles(result);
+            })
+            .catch((error) => {
+                console.error('Error fetching DataScopeRoles:', error);
             });
     }, []);
 
@@ -93,10 +90,14 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
             },
             body: JSON.stringify(newRoleData)
         })
-            .then(() => {
-                console.log('New DataScopeRole added');
-                setDataScopeRoles([...dataScopeRoles, newRoleData]);
-                setNewRole({ role: '', roledescription: '' });
+            .then((response) => {
+                if (response.ok) {
+                    console.log('New DataScopeRole added');
+                    setDataScopeRoles([...dataScopeRoles, newRoleData]);
+                    setNewRole({ role: '', roledescription: '' });
+                } else {
+                    console.error('Error adding new DataScopeRole:', response.status);
+                }
             })
             .catch((error) => {
                 console.error('Error adding new DataScopeRole:', error);
@@ -136,21 +137,6 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
-                                {/*<p className="editDSUsers">Assigned Users</p>*/}
-                                {/*{users && users.length > 0 ? (*/}
-                                {/*    <Select*/}
-                                {/*        options={users.map((data) => ({value: data.user_id, label: data.email}))}*/}
-                                {/*        value={selectedUsers.map((email) => ({ label: email }))}*/}
-                                {/*        className="editTaskAssignees"*/}
-                                {/*        name="editTaskAssignees"*/}
-                                {/*        placeholder={"Add Assignees"}*/}
-                                {/*        onChange={handleSelect}*/}
-                                {/*        isSearchable={true}*/}
-                                {/*        styles={customStyles}*/}
-                                {/*        isMulti*/}
-                                {/*    /> ) : (*/}
-                                {/*    <p>Loading...</p>*/}
-                                {/*)}*/}
                                 <p className="editDSRoleLabel">Data Scope Roles</p>
                                 {dataScopeRoles && dataScopeRoles.length > 0 ? (
                                     <Select

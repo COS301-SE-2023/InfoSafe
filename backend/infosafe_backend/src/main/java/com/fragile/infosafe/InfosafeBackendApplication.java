@@ -25,16 +25,14 @@ public class InfosafeBackendApplication {
     //Uncomment the below code if this is your first time use
     //This will create an admin role in the system and create your first profile
 
-//    @Autowired
-//    private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 //
 //    @Bean
 //    public CommandLineRunner cr (AuthenticationService service){
 //        return args -> {
-//            //Check if it exists
 //            Role admin = roleRepository.findByRole_name("ADMIN");
 //
-//            //Create role if it doesn't exist
 //            if (admin == null){
 //                admin = new Role();
 //                admin.setRole_Name("ADMIN");
@@ -51,8 +49,11 @@ public class InfosafeBackendApplication {
 //    @Bean
 //    public CommandLineRunner commandLineRunner(AuthenticationService service) {
 //        return args -> {
-//            Role adminRole = roleRepository.findByRole_name("ADMIN");
-//
+//            var adminRole = roleRepository.findByRole_name("ADMIN");
+//            if (adminRole == null) {
+//                System.err.println("'ADMIN' role not found in the database.");
+//                return;
+//            }
 //            var admin = RegisterRequest.builder()
 //                    .first_name("John")
 //                    .last_name("Smith")
