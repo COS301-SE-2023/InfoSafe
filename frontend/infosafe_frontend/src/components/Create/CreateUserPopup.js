@@ -13,16 +13,22 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     const [password, setPassword] = useState('');
     const [roleNames, setRoleNames] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
-
+    const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    const [errMsg , setErrMsg] = useState("");
     const useHandleClick = (e) => {
         e.preventDefault();
+
+        if (document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '') {
+            setErrMsg("Please ensure that all fields are completed.");
+            return;
+        }else if ( !emailRegex.test(email) ){
+            setErrMsg("Invalid email format");
+            return;
+        }
+
         popupClose();
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
-        if (document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '') {
-            document.getElementById("createUserError").style.display = "block";
-            return;
-        }
 
         fetch("http://localhost:8080/api/user/add", {
             method: "POST",
@@ -130,7 +136,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                                 ) : (
                                     <p className="createUserLoadTitle">Loading...</p>
                                 )}
-                                <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
+                                <p className="createUserError" id="createUserError">{errMsg}</p>
                                 <button className="createUserFinish" data-testid="createuser_finish" onClick={useHandleClick}>
                                     Submit
                                 </button>

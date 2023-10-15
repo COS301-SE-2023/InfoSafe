@@ -31,14 +31,14 @@
     font-size: 16px;
 }
 .supportRequestSearchInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
 }
 .supportRequestSearchIcon {
     position: absolute;
     right: 10px;
     top: 54%;
     transform: translateY(-50%);
-    color: #9E0000;
+    color: #00003E;
 }
 .tables {
     background-color: transparent;
@@ -47,12 +47,13 @@
     height: 60%;
     position: relative;
     top: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
 }
-.tables::-webkit-scrollbar{
-    display: none;
-}
+/*.tables::-webkit-scrollbar{*/
+/*    display: none;*/
+/*}*/
 .active_support_requests {
     background-color: transparent;
     width: 100%;
@@ -269,7 +270,7 @@
 }
 .helpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }
 .loadingScreen{
     background-color: #FFFFFF;
@@ -283,7 +284,7 @@
     margin: 0 auto;
     height: 8%;
     width: 30%;
-    border: 4px solid #9E0000;
+    border: 4px solid #00003E;
     border-radius: 20px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
 }

@@ -39,7 +39,7 @@
     display: none;
 }
 .helpBackButton{
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;
@@ -108,7 +108,7 @@
     padding: 0;
     text-align: center;
     font-size: 3em;
-    color: #9E0000;
+    color: #00003E;
     margin: 0 0 0 1.5vw;
 }
 .helpImage{
