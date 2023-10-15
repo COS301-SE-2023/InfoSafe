@@ -32,7 +32,7 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/api/user/update/' + user.user_id, {
+        fetch('https://infosafe.live/api/user/update/' + user.user_id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
     useEffect(() => {
         async function fetchRoles() {
             try {
-                const response = await fetch("http://localhost:8080/api/role/getRoleNames", {
+                const response = await fetch("https://infosafe.live/api/role/getRoleNames", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

@@ -8,7 +8,7 @@ export const useGetTask = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/task/getTask', {
+            const response = await fetch('https://infosafe.live/api/task/getTask', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -28,7 +28,7 @@ export const useGetTask = () => {
     // useEffect(() => {
     //     async function getTasks() {
     //         try {
-    //             const data = await fetch('http://localhost:8080/api/task/getTask', {
+    //             const data = await fetch('https://infosafe.live/api/task/getTask', {
     //                 method: "GET",
     //                 headers: {
     //                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

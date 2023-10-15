@@ -43,7 +43,7 @@ export const CreateRisk = ({ popupClose, popupOpen, onRiskAdded }) => {
             dataScope_id: datascope.value,
         };
 
-        fetch('http://localhost:8080/api/risk/addRisk', {
+        fetch('https://infosafe.live/api/risk/addRisk', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

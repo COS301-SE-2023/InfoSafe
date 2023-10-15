@@ -12,7 +12,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
 
     useEffect(() => {
 
-        fetch('http://localhost:8080/api/user/getEmail', {
+        fetch('https://infosafe.live/api/user/getEmail', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
         }
 
         try {
-            await fetch('http://localhost:8080/api/user/changePassword', {
+            await fetch('https://infosafe.live/api/user/changePassword', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

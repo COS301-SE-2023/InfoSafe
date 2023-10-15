@@ -5,7 +5,7 @@ export const useAccessRequests = () => {
     const [myDatascopeData, setMyDatascopeData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/availableDatascopes', {
+        fetch('https://infosafe.live/api/datascope/availableDatascopes', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
@@ -21,7 +21,7 @@ export const useAccessRequests = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getMyDatascopes', {
+        fetch('https://infosafe.live/api/datascope/getMyDatascopes', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),

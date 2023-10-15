@@ -50,7 +50,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose, onAssetCreated }) => 
 
         popupClose();
 
-        fetch("http://localhost:8080/api/asset/addAsset", {
+        fetch("https://infosafe.live/api/asset/addAsset", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const CreateDevicePopup = ({ popupOpen, popupClose, onAssetCreated }) => 
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/getAllEmails", {
+        fetch("https://infosafe.live/api/user/getAllEmails", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),

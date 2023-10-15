@@ -71,7 +71,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
             return;
         }
 
-        fetch('http://localhost:8080/api/asset/update/' + asset.asset_id, {
+        fetch('https://infosafe.live/api/asset/update/' + asset.asset_id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const EditDevice = ({ asset, popupClose, popupOpen, onAssesEdited }) => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/user/findUserNotAssigned/" + asset.asset_id, {
+        fetch("https://infosafe.live/api/user/findUserNotAssigned/" + asset.asset_id, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

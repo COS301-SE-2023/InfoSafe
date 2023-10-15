@@ -30,7 +30,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
 
-        fetch("http://localhost:8080/api/user/add", {
+        fetch("https://infosafe.live/api/user/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/randPass/generate", {
+                const response = await fetch("https://infosafe.live/api/randPass/generate", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/role/getRoleNames", {
+        fetch("https://infosafe.live/api/role/getRoleNames", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

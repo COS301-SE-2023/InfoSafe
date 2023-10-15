@@ -23,7 +23,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -36,7 +36,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
     }, []);
 
     useEffect( () => {
-        fetch('http://localhost:8080/api/datascope/getDC/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/datascope/getDC/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -49,7 +49,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
     }, []);
 
     useEffect( () => {
-        fetch('http://localhost:8080/api/datascope/getDSUsersEmails/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/datascope/getDSUsersEmails/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')

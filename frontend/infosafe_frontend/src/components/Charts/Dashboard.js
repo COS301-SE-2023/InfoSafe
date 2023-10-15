@@ -22,25 +22,25 @@ export const Dashboard = () => {
                 const accessToken = sessionStorage.getItem('accessToken');
 
                 const fetchPromises = [
-                    await fetch('http://localhost:8080/api/notifications/getNotifications', {
+                    await fetch('https://infosafe.live/api/notifications/getNotifications', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://localhost:8080/api/supportrequest/getMyTotal', {
+                    await fetch('https://infosafe.live/api/supportrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://localhost:8080/api/accessrequest/getMyTotal', {
+                    await fetch('https://infosafe.live/api/accessrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://localhost:8080/api/assetrequest/getMyTotal', {
+                    await fetch('https://infosafe.live/api/assetrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,

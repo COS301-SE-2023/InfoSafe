@@ -30,7 +30,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen, onArEdited }) => {
         e.preventDefault();
         //console.log(values)
 
-        fetch('http://localhost:8080/api/accessrequest/update/' + access.request_id, {
+        fetch('https://infosafe.live/api/accessrequest/update/' + access.request_id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
