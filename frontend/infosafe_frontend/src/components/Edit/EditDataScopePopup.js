@@ -16,7 +16,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     //const [users, setUsers] = useState([]);
     const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
-        data_custodian: datascope.data_custodian.user_id,
+        data_custodian: datascope.dataCustodian.user_id,
         date_captured: datascope.date_captured,
         ds_description: datascope.ds_description,
         ds_name: datascope.ds_name,
