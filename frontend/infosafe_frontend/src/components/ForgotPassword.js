@@ -7,8 +7,17 @@ export const ForgotPassword = () => {
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isOtpVerified, setIsOtpVerified] = useState(false);
+    const [otpError, setOTPError] = useState("");
+    const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    const [emailError, setEmailError] = useState("");
     const handleClick = (e) => {
         e.preventDefault();
+
+        if ( !emailRegex.test(email) ){
+            setEmailError("Invalid email format");
+            return;
+        }
+
         emailState();
 
         const forgot = {
@@ -60,6 +69,7 @@ export const ForgotPassword = () => {
             .catch((error) => {
                 console.error(error);
                 console.log("OTP verification failed");
+                setOTPError("OTP is not valid");
             });
     }
 
@@ -119,9 +129,11 @@ export const ForgotPassword = () => {
     return (
         <div className='background'>
             <div className='inputPanel'>
+                <p className="forgotPageTitle">Forgot Password</p>
                 <div className='emailPanel' id='emailPanel'>
                     <p className="emailTitle">Enter your E-Mail:</p>
                     <input type='email' value={email} onChange={handleEmailChange} className="forgotEmail"/>
+                    <p className="emailError">{emailError}</p>
                     <button className='submit' onClick={handleClick}>
                         Submit
                     </button>
@@ -129,6 +141,7 @@ export const ForgotPassword = () => {
                 <div className='otpPanel' id='otpPanel'>
                     <p className="otpTitle">Enter OTP:</p>
                     <input type='text' value={otp} onChange={handleOtpChange} className="forgotOTP"/>
+                    <p className="otpError">{otpError}</p>
                     <button className='submit' onClick={otpState}>
                         Submit
                     </button>
