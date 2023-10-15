@@ -21,6 +21,7 @@ public class Asset {
     private String availability;
     private String used;
     private String device_type;
+
     @ManyToOne
     @JoinColumn(name = "current_assignee_id", referencedColumnName = "user_id")
     private User current_assignee;

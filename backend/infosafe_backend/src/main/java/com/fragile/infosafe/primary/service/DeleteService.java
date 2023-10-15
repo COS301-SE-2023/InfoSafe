@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.Optional;
 
 @Service
@@ -123,7 +124,6 @@ public class DeleteService {
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
         }
-
     }
 
     public void deleteAccessRequestAndSaveToSecondary(int request_id){

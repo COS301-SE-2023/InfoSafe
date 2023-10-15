@@ -42,20 +42,16 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_name")
     private Role role;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Asset> assets;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<AssetRequests> assetRequests;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<SupportRequest> supportRequests;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<AccessRequest> accessRequests;
 
 
