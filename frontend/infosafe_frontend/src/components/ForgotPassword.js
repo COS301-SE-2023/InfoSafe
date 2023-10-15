@@ -5,53 +5,89 @@ export const ForgotPassword = () => {
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
     const [newPassword, setNewPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [isOtpVerified, setIsOtpVerified] = useState(false);
     const handleClick = (e) => {
-        emailState()
         e.preventDefault();
-        const forgot = {email, otp, newPassword};
+        emailState();
 
+        const forgot = {
+            email: email
+        };
         fetch("http://localhost:8080/api/forgot/request-reset", {
             method: "POST",
+            body: JSON.stringify(forgot),
             headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
-            },
-            body: JSON.stringify(forgot)
-        }).then((response) => {
-            if (response.ok) {
-                console.log("Email sent");
-                // need to add success message
-            } else {
-                response.text().then((errorMessage) => {
-                    // error message here
-                    console.error(errorMessage);
-                });
+                "Content-Type": "application/json"
             }
         })
+            .then((response) => {
+                if (response.ok) {
+                    console.log("Email sent");
+                } else {
+                    response.text().then((errorMessage) => {
+                        console.error(errorMessage);
+                    });
+                }
+            })
             .catch((error) => {
                 console.error(error);
             });
     }
-    const handleSecondClick = (e) => {
-        const forgot = {email, otp, newPassword};
-        fetch("http://http://localhost:8080/api/forgot/reset-password", {
+
+    const verifyOtp = () => {
+        const otpData = { email: email, otp: otp };
+        fetch("http://localhost:8080/api/forgot/verify-otp", {
             method: "POST",
+            body: JSON.stringify(otpData),
             headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem("accessToken")
-            },
-            body: JSON.stringify(forgot)
-        }).then((response) => {
-            if (response.ok) {
-                console.log("Password changed");
-                // need to add success message
-            } else {
-                response.text().then((errorMessage) => {
-                    // error message here
-                    console.error(errorMessage);
-                });
+                "Content-Type": "application/json"
             }
         })
+            .then((response) => {
+                if (response.ok) {
+                    console.log("OTP verified");
+                    setIsOtpVerified(true);
+                    document.getElementById("otpPanel").style.display = "none";
+                    document.getElementById("passwordPanel").style.display = "inline";
+                } else {
+                    response.text().then((errorMessage) => {
+                        console.error(errorMessage);
+                        console.log("OTP not valid");
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                console.log("OTP verification failed");
+            });
+    }
+
+    const handleSecondClick = (e) => {
+        e.preventDefault();
+
+        if (newPassword !== confirmPassword) {
+            console.log("Passwords do not match.");
+            return;
+        }
+        const forgot = { email: email, otp: otp, newPassword: newPassword };
+        fetch("http://localhost:8080/api/forgot/reset-password", {
+            method: "POST",
+            body: JSON.stringify(forgot),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log("Password changed");
+                    window.location.href = "/";
+                } else {
+                    response.text().then((errorMessage) => {
+                        console.error(errorMessage);
+                    });
+                }
+            })
             .catch((error) => {
                 console.error(error);
             });
@@ -61,8 +97,7 @@ export const ForgotPassword = () => {
         document.getElementById("otpPanel").style.display = "inline";
     }
     const otpState = () => {
-        document.getElementById("otpPanel").style.display = "none";
-        document.getElementById("passwordPanel").style.display = "inline";
+        verifyOtp()
     }
 
     const handleEmailChange = (event) => {
@@ -77,12 +112,16 @@ export const ForgotPassword = () => {
         setNewPassword(event.target.value);
     };
 
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+    }
+
     return (
         <div className='background'>
             <div className='inputPanel'>
                 <div className='emailPanel' id='emailPanel'>
                     <p className="emailTitle">Enter your E-Mail:</p>
-                    <input type='text' value={email} onChange={handleEmailChange} className="forgotEmail"/>
+                    <input type='email' value={email} onChange={handleEmailChange} className="forgotEmail"/>
                     <button className='submit' onClick={handleClick}>
                         Submit
                     </button>
@@ -96,9 +135,9 @@ export const ForgotPassword = () => {
                 </div>
                 <div className='passwordPanel' id='passwordPanel'>
                     <p className="passTitle">Enter new password:</p>
-                    <input type='text' value={newPassword} onChange={handleNewPasswordChange} className="forgotPass"/>
+                    <input type='password' value={newPassword} onChange={handleNewPasswordChange} className="forgotPass"/>
                     <p className="rePassTitle">Re-enter new password:</p>
-                    <input type='text' className="forgotRePass"/>
+                    <input type='password' value={confirmPassword} onChange={handleConfirmPasswordChange} className="forgotRePass"/>
                     <button className='submit' onClick={handleSecondClick}>
                         Submit
                     </button>
@@ -106,7 +145,6 @@ export const ForgotPassword = () => {
             </div>
         </div>
     );
-
 }
 
 export default ForgotPassword;
