@@ -1,7 +1,10 @@
 package com.fragile.infosafe.primary.config;
 
 import com.fragile.infosafe.primary.repository.UserRepository;
+import com.fragile.infosafe.primary.service.AWSSecretService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,13 +15,20 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+import java.security.Key;
+import java.util.Base64;
 
 @Configuration
 @RequiredArgsConstructor
 @EnableCaching
+@Slf4j
 public class ApplicationConfig {
     private final UserRepository repository;
 
@@ -45,6 +55,10 @@ public class ApplicationConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
+
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,11 +26,11 @@ public class Task {
     private String due_date;
     private String date_created;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "data_scope_id")
     private DataScope data_scope_id;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany
     @JoinTable(
             name = "task_users",
             joinColumns = @JoinColumn(name = "task_id"),

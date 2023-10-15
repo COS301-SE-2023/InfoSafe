@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
@@ -10,9 +11,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import software.amazon.awssdk.services.redshift.model.SupportedPlatform;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -35,9 +38,22 @@ public class User implements UserDetails {
     @Column(nullable = true)
     private String otp;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "role_name")
     private Role role;
+
+    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Asset> assets;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<AssetRequests> assetRequests;
+
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<SupportRequest> supportRequests;
+
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<AccessRequest> accessRequests;
+
 
     public int getUser_id() {
         return user_id;
@@ -77,7 +93,6 @@ public class User implements UserDetails {
                 authorities.add(new SimpleGrantedAuthority(permission.name()));
             }
         }
-
         return authorities;
     }
 

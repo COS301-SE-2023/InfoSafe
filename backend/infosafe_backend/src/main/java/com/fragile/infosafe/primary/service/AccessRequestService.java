@@ -32,6 +32,7 @@ public class AccessRequestService {
 
     private final EmailService emailService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
     public ResponseEntity<String> makeAR(AccessRequestRequest request, User authenticatedUser) {
         AccessRequest accessRequest = AccessRequest.builder()
                 .reason(request.getReason())
@@ -60,7 +61,7 @@ public class AccessRequestService {
         log.info(String.valueOf(reviewRequest.isReview()));
         if (reviewRequest.isReview()) {
             Optional<DataScope> dataScopeOptional = dataScopeRepository.findByDataScopeId(reviewRequest.getDataScope_id());
-            Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());
+            Optional<User> userOptional = userRepository.findByEmail(encryptionService.encryptString(reviewRequest.getUser_email()));
             if (dataScopeOptional.isPresent() && userOptional.isPresent()) {
                 DataScope dataScope = dataScopeOptional.get();
                 User user = userOptional.get();

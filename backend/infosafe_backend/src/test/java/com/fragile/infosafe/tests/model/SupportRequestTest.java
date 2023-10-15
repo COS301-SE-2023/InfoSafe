@@ -50,10 +50,10 @@ public class SupportRequestTest {
                 .support_type("Type")
                 .support_description("Description")
                 .support_status("Status")
-                .user_id(new User())
-                .dataScope_id(new DataScope())
-                .task_id(new Task())
-                .asset_id(new Asset())
+                .user(new User())
+                .dataScope(new DataScope())
+                .task(new Task())
+                .asset(new Asset())
                 .build();
 
         // Assert that the SupportRequest is not null
@@ -84,20 +84,20 @@ public class SupportRequestTest {
                 .support_type("Type")
                 .support_description("Description")
                 .support_status("Status")
-                .user_id(new User())
-                .dataScope_id(new DataScope())
-                .task_id(new Task())
-                .asset_id(new Asset())
+                .user(new User())
+                .dataScope(new DataScope())
+                .task(new Task())
+                .asset(new Asset())
                 .build();
 
         // Update the SupportRequest with new values
         supportRequest.setSupport_type("New Type");
         supportRequest.setSupport_description("New Description");
         supportRequest.setSupport_status("New Status");
-        supportRequest.setUser_id(new User());
-        supportRequest.setDataScope_id(new DataScope());
-        supportRequest.setTask_id(new Task());
-        supportRequest.setAsset_id(new Asset());
+        supportRequest.setUser(new User());
+        supportRequest.setDataScope(new DataScope());
+        supportRequest.setTask(new Task());
+        supportRequest.setAsset(new Asset());
 
         // Assert that the support_type is updated correctly
         assertEquals("New Type", supportRequest.getSupport_type());
@@ -106,13 +106,13 @@ public class SupportRequestTest {
         // Assert that the support_status is updated correctly
         assertEquals("New Status", supportRequest.getSupport_status());
         // Assert that the user_id is updated correctly
-        assertNotNull(supportRequest.getUser_id());
+        assertNotNull(supportRequest.getUser());
         // Assert that the dataScope_id is updated correctly
-        assertNotNull(supportRequest.getDataScope_id());
+        assertNotNull(supportRequest.getDataScope());
         // Assert that the task_id is updated correctly
-        assertNotNull(supportRequest.getTask_id());
+        assertNotNull(supportRequest.getTask());
         // Assert that the asset_id is updated correctly
-        assertNotNull(supportRequest.getAsset_id());
+        assertNotNull(supportRequest.getAsset());
     }
 
     // Create a SupportRequest with invalid user_id
@@ -123,10 +123,10 @@ public class SupportRequestTest {
                 .support_type("Type")
                 .support_description("Description")
                 .support_status("Status")
-                .user_id(null)
-                .dataScope_id(new DataScope())
-                .task_id(new Task())
-                .asset_id(new Asset())
+                .user(null)
+                .dataScope(new DataScope())
+                .task(new Task())
+                .asset(new Asset())
                 .build();
 
         // Assert that the SupportRequest is not null
@@ -140,13 +140,13 @@ public class SupportRequestTest {
         // Assert that the support_status is set correctly
         assertEquals("Status", supportRequest.getSupport_status());
         // Assert that the user_id is null
-        assertNull(supportRequest.getUser_id());
+        assertNull(supportRequest.getUser());
         // Assert that the dataScope_id is set correctly
-        assertNotNull(supportRequest.getDataScope_id());
+        assertNotNull(supportRequest.getDataScope());
         // Assert that the task_id is set correctly
-        assertNotNull(supportRequest.getTask_id());
+        assertNotNull(supportRequest.getTask());
         // Assert that the asset_id is set correctly
-        assertNotNull(supportRequest.getAsset_id());
+        assertNotNull(supportRequest.getAsset());
     }
 
     // Create a SupportRequest with invalid dataScope_id
@@ -157,10 +157,10 @@ public class SupportRequestTest {
                 .support_type("Type")
                 .support_description("Description")
                 .support_status("Status")
-                .user_id(new User())
-                .dataScope_id(null)
-                .task_id(new Task())
-                .asset_id(new Asset())
+                .user(new User())
+                .dataScope(null)
+                .task(new Task())
+                .asset(new Asset())
                 .build();
 
         // Assert that the SupportRequest is not null
@@ -174,13 +174,13 @@ public class SupportRequestTest {
         // Assert that the support_status is set correctly
         assertEquals("Status", supportRequest.getSupport_status());
         // Assert that the user_id is set correctly
-        assertNotNull(supportRequest.getUser_id());
+        assertNotNull(supportRequest.getUser());
         // Assert that the dataScope_id is null
-        assertNull(supportRequest.getDataScope_id());
+        assertNull(supportRequest.getDataScope());
         // Assert that the task_id is set correctly
-        assertNotNull(supportRequest.getTask_id());
+        assertNotNull(supportRequest.getTask());
         // Assert that the asset_id is set correctly
-        assertNotNull(supportRequest.getAsset_id());
+        assertNotNull(supportRequest.getAsset());
     }
 
 }

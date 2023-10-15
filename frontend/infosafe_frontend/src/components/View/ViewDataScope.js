@@ -10,6 +10,8 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
     const [dataScopeRoles, setDataScopeRoles] = useState([]);
     const [description, setDescription] = useState('');
     const [selectedDataScopeRole, setSelectedDataScopeRole] = useState(null);
+    const [userEmails, setUserEmails] = useState([]);
+    const [dcEmail, setDcEmail] = useState("");
 
     const handleDataScopeRoleChange = (selectedOption) => {
         setSelectedDataScopeRole(selectedOption);
@@ -30,6 +32,32 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
             .then((res) => res.json())
             .then((result) => {
                 setDataScopeRoles(result);
+            });
+    }, []);
+
+    useEffect( () => {
+        fetch('https://infosafe.live/api/datascope/getDC/' + datascope.data_scope_id, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.text())
+            .then((result) => {
+                setDcEmail(result);
+            });
+    }, []);
+
+    useEffect( () => {
+        fetch('https://infosafe.live/api/datascope/getDSUsersEmails/' + datascope.data_scope_id, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setUserEmails(result);
             });
     }, []);
 
@@ -60,15 +88,14 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                         </div>
                         <div className="view_datascope_roles">
                             <p className="viewDSRoles">Assigned Users</p>
-                            {datascope.users && datascope.users.length > 0 ? (
+                            {userEmails && userEmails.length > 0 ? (
                                 <Select
-                                    options={datascope.users.map((data) => ({ value: data.first_name + ' ' + data.last_name, label: data.first_name + ' ' + data.last_name }))}
-                                    placeholder={dataScopeRoles.label}
+                                    options={userEmails.map((email) => ({ value: email, label: email }))}
+                                    value={userEmails.length > 0 ? [{ value: userEmails[0], label: userEmails[0] }] : null}
+                                    placeholder={userEmails[0]}
                                     className="editDSRoles"
                                     name="editTaskAssignees"
                                     styles={customStyles}
-                                    defaultValue={datascope.users[0].first_name + ' ' + datascope.users[0].last_name}
-                                    //onChange={handleDataScopeRoleChange}
                                 />
                             ) : (
                                 <p className="editDSRolesLoading">Loading...</p>
@@ -96,7 +123,7 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
                                 className="editDSRoleDescription"
                             />
                             <p className="viewDSCustodianLabel">Data Custodian</p>
-                            <p className="viewDSCustodian">{datascope.data_custodian.first_name} {datascope.data_custodian.last_name}</p>
+                            <p className="viewDSCustodian">{dcEmail}</p>
                         </div>
                     </div>
                 </div>
@@ -105,26 +132,5 @@ const ViewDataScope = ({ datascope, popupClose, popupOpen }) => {
         </Popup>
     );
 };
-// <div className="table">
-//     <table className="viewRolesTable">
-//         <thead>
-//         <tr>
-//             <th className="roleHeader">Role</th>
-//             <th className="roledescrHeader">Role Description</th>
-//         </tr>
-//         </thead>
-//         <tbody>
-//         {ROLES.map((roles, key) => {
-//             return (
-//                 <tr key={key}>
-//                     <td>{roles.role}</td>
-//                     <td className="roledescriptionTable">
-//                         {roles.roledescription}
-//                     </td>
-//                 </tr>
-//             );
-//         })}
-//         </tbody>
-//     </table>
-// </div>
+
 export default ViewDataScope;

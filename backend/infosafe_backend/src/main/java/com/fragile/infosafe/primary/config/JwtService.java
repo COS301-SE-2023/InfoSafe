@@ -1,14 +1,20 @@
 package com.fragile.infosafe.primary.config;
 
+import com.fragile.infosafe.primary.service.EncryptionService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.codec.Hex;
 import org.springframework.stereotype.Service;
+import software.amazon.awssdk.services.controltower.model.EnableControlRequest;
+
+import javax.crypto.Cipher;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,17 +22,15 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
 
     private final JwtAWSFetch fetch;
     private String cachedSecretKey;
-
-    @Autowired
-    public JwtService(JwtAWSFetch fetch){
-        this.fetch = fetch;
-    }
     private final int jwtExpiration = 86400000;
     private final int refreshExpiration = 604800000;
+
+    private final EncryptionService encryptionService;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -45,26 +49,20 @@ public class JwtService {
         return buildToken(extractClaims, userDetails, jwtExpiration);
     }
 
-    public String generateRefreshToken(
-            UserDetails userDetails
-    ) {
-        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
-    }
-
     private String buildToken(Map<String, Object> extractClaims, UserDetails userDetails, long expiration) {
         return Jwts
                 .builder()
                 .setClaims(extractClaims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(encryptionService.decryptString(userDetails.getUsername()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 600 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+        return (username.equals(encryptionService.decryptString(userDetails.getUsername()))) && !isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token) {
@@ -92,4 +90,5 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(cachedSecretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
 }

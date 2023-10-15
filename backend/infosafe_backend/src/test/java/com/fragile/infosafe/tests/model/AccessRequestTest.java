@@ -31,7 +31,7 @@ public class AccessRequestTest {
                 .ds_name("Scope 1")
                 .ds_description("Description 1")
                 .date_captured(new Date())
-                .data_custodian(user)
+                .dataCustodian(user)
                 .ds_status("Active")
                 .build();
 
@@ -39,15 +39,15 @@ public class AccessRequestTest {
                 .request_id(1)
                 .reason("Reason 1")
                 .status("Pending")
-                .user_id(user)
-                .data_scope_id(dataScope)
+                .user(user)
+                .data_scope(dataScope)
                 .build();
 
         assertEquals(1, accessRequest.getRequest_id());
         assertEquals("Reason 1", accessRequest.getReason());
         assertEquals("Pending", accessRequest.getStatus());
-        assertEquals(user, accessRequest.getUser_id());
-        assertEquals(dataScope, accessRequest.getData_scope_id());
+        assertEquals(user, accessRequest.getUser());
+        assertEquals(dataScope, accessRequest.getData_scope());
     }
 
     // Set a reason and status for an AccessRequest object, and check if they are set correctly.
@@ -55,8 +55,8 @@ public class AccessRequestTest {
     public void test_setReasonAndStatus() {
         AccessRequest accessRequest = AccessRequest.builder()
                 .request_id(1)
-                .user_id(User.builder().user_id(1).build())
-                .data_scope_id(DataScope.builder().data_scope_id(1).build())
+                .user(User.builder().user_id(1).build())
+                .data_scope(DataScope.builder().data_scope_id(1).build())
                 .build();
 
         accessRequest.setReason("Reason 2");

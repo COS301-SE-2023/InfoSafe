@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styling/CreateDataScopePopup.css';
 import Popup from 'reactjs-popup';
-import {IoArrowBackOutline} from 'react-icons/io5';
+import { IoArrowBackOutline } from 'react-icons/io5';
 import Select from "react-select";
-import {customStyles} from "../CustomStyling";
+import { customStyles } from "../CustomStyling";
 
-export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
-    const [ds_name, setDsName] = useState('')
-    const [ds_description, setDsDesc] = useState('')
-    const [users,  setUsers] = useState([])
-    const [selectedUsers, setSelectedUsers] = useState([])
+export const CreateDataScopePopup = ({ popupOpen, popupClose, onDsAdded }) => {
+    const [ds_name, setDsName] = useState('');
+    const [ds_description, setDsDesc] = useState('');
+    const [users, setUsers] = useState([]);
+    const [selectedUsers, setSelectedUsers] = useState([]);
 
     const handleClick = (e) => {
         const currentDate = new Date().toISOString().split('T')[0];
@@ -21,10 +21,8 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
             return;
         }
 
-
         const ds_status = "Pending";
-        const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers};
-
+        const datascope = { date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers };
         fetch(`https://infosafe.live/api/datascope/checkName?dsname=${ds_name}`, {
             method: "GET",
             headers: {
@@ -37,7 +35,6 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                 if (data) {
                     console.log("DataScope name already exists");
                 } else {
-                    //console.log(datascope);
                     fetch("https://infosafe.live/api/datascope/addDs", {
                         method: "POST",
                         headers: {
@@ -48,12 +45,11 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                     })
                         .then(() => {
                             console.log("New DataScope added");
-                            onDsAdded()
+                            onDsAdded();
                         })
                         .catch((error) => {
                             console.error("Error adding new DataScope:", error);
                         });
-
                 }
             })
             .catch((error) => {
@@ -68,16 +64,19 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
             },
-        }).then((res) => res.json())
+        })
+            .then((res) => res.json())
             .then((result) => {
                 setUsers(result);
+            })
+            .catch((error) => {
+                console.error("Error fetching users:", error);
             });
     }, []);
 
     const handleSelect = (selectedOptions) => {
         const selectedEmails = selectedOptions.map((option) => option.label);
         setSelectedUsers(selectedEmails);
-        //console.log(selectedEmails);
     };
 
     return (
@@ -86,7 +85,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                 <div className="popupBackground">
                     <div className="createDataScopeBorder">
                         <button className="createDataScopeBackButton" onClick={popupClose} data-testid={"back-button"}>
-                            <IoArrowBackOutline className="backIcon"/>
+                            <IoArrowBackOutline className="backIcon" />
                         </button>
                         <p className="datascopeLabel">Create Data Scope</p>
                         <form>
@@ -116,7 +115,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                                     {users && users.length > 0 ? (
                                         <Select
                                             styles={customStyles}
-                                            options={users.map((email) => ({value: email, label: email}))}
+                                            options={users.map((email) => ({ value: email, label: email }))}
                                             value={selectedUsers.value}
                                             className="datascopeUserSelect"
                                             name="datascopeDropdown"
@@ -130,8 +129,7 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                                         <p className='createDataScopeLoadingTitle'>Loading...</p>
                                     )}
                                 </div>
-                                <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields
-                                    are completed.</p>
+                                <p className="createDataScopeError" id="createDataScopeError">Please ensure all fields are completed.</p>
                                 <button className="datascope_finish" data-testid="addDataScope" onClick={handleClick}>
                                     Submit
                                 </button>
@@ -139,7 +137,6 @@ export const CreateDataScopePopup = ({popupOpen, popupClose, onDsAdded}) => {
                         </form>
                     </div>
                 </div>
-
             </div>
         </Popup>
     );
