@@ -16,22 +16,11 @@ export const Help = () => {
                     </p>
                     </div>
                     <div>
-                    <p className="helpSubTitle">Entity Creation and Editing</p>
+                    <p className="helpSubTitle">Entity Management</p>
                     <p className="helpData">
-                        When creating or editing entities (users, assets, datascopes etc.) ensure all relevant fields are filled in correctly.
-                    </p>
-                    </div>
-                    <div>
-                    <p className="helpSubTitle">Entity Deletion</p>
-                    <p className="helpData">
+                        When creating or editing entities (users, assets, data scopes etc.) ensure all relevant fields are filled in correctly.
                         When deleting entities from the system be very sure they will not be needed again as they cannot be restored.
                         Your system administrator will have access to the secondary "delete" database where deleted entities are stored in but this information is not made available to the system.
-                    </p>
-                    </div>
-                    <div>
-                    <p className="helpSubTitle">Manage your Risks</p>
-                    <p className="helpData">
-                        Make sure you keep an eye on your logged risks in the system. You don't want them to catch you off guard if their status is elevated and they can potentially lead to an incident or failure.
                     </p>
                     </div>
                     <div>
@@ -39,12 +28,6 @@ export const Help = () => {
                     <p className="helpData">
                         The requests tab is a very powerful tool within the system. You can use it to create and manage a variety of requests relating to the system, such as assets, access to datascopes or support for anything that may be giving you problems. Don't suffer alone when a colleague can suffer with you!
                      </p>
-                    </div>
-                    <div>
-                    <p className="helpSubTitle">Patience</p>
-                    <p className="helpData">
-                        Patience is sometimes the best solution. If a page is taking long to load, chances are it is retrieving a lot of data from the database and it may take some time to render.
-                    </p>
                     </div>
                     <div>
                     <p className="helpTitle">User Manual</p>
@@ -55,9 +38,6 @@ export const Help = () => {
                         productivity and efficiency within the InfoSafe system.
                     </p>
                     </div>
-                    <a href="https://drive.google.com/file/d/1I3YdViR5jbR4gqQQjGEcjIQmcQFEhaRv/view?usp=drive_link">
-                        <img src={user_manual} alt="user manaul image"/>
-                    </a>
                 </div>
             </div>
         </div>
