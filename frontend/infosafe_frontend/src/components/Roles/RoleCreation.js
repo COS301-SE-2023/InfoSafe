@@ -437,18 +437,6 @@ const RoleCreation = () => {
     {
         let roleName =document.querySelector('input.roleCreationRoleNameInput');
         roleName.value = null;
-
-        // for (let i = 0; i < 9; i++)
-        // {
-        //     if (checkboxState[i])
-        //     {
-        //         for (let j = 0; j < 9; j++)
-        //         {
-        //             handleCheckboxChecked(i, subsystems[j]);
-        //         }
-        //     }
-        //
-        // }
     }
 
     const submitInfo = () => {
@@ -716,7 +704,6 @@ const RoleCreation = () => {
             }
 
         }
-        //console.log(roleName, permissionsList)
     };
 
     const [helpOpen,setHelpOpen] = useState(false);
