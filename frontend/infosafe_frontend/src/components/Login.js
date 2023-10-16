@@ -4,18 +4,10 @@ import React, {useState} from "react";
 function Login(){
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
-    const [errMsg , setErrMsg] = useState("");
-    const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
     const handleLogin = (e) => {
         e.preventDefault()
-
-        if ( !emailRegex.test(email) ){
-            setErrMsg("Invalid email format");
-            return;
-        }
-
         const login = {email, password}
-        fetch("http://localhost:8080/api/auth/login", {
+        fetch("https://infosafe.live/api/auth/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)
@@ -29,7 +21,7 @@ function Login(){
                     window.location.href = "/home";
                 });
             } else {
-                setErrMsg("Invalid login credentials");
+                window.alert("Incorrect Login Details");
             }
         })
     };
@@ -82,7 +74,6 @@ function Login(){
                                     onKeyPress={submitLogin}
                                 ></input>
                             </div>
-                            <p className="loginError" id="loginError">{errMsg}</p>
                         </div>
                         <href className='forgot' onClick={forgot} >Forgot Password?</href>
                         <button data-testid='btnTest'  id='btnLogin' className='btnLogin' onClick={handleLogin}>

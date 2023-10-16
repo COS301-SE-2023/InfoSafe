@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import '../../styling/EditSupportRequest.css';
 import Popup from 'reactjs-popup';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from "react-dropdown";
 
-const STATUS = ["Logged", "In Progress", "Resolved"];
+const STATUS = ["Logged","In Progress","Resolved"];
 const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, editMySupport }) => {
-    const [values, setValues] = useState({
+    const[values, setValues]=useState({
         support_id: support.support_id,
         support_type: support.support_type,
         support_description: support.support_description,
@@ -21,28 +21,18 @@ const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, ed
         e.preventDefault();
 
         //console.log(values)
-        fetch('http://localhost:8080/api/supportrequest/update/' + support.support_id, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
+        fetch('https://infosafe.live/api/supportrequest/update/' + support.support_id, {
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
-            body: JSON.stringify(values)
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated AccessRequest")
+            editAllSupport()
+            editMySupport()
         })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Updated AccessRequest");
-                    editAllSupport();
-                    editMySupport();
-                } else {
-                    throw new Error("Network response was not ok");
-                }
-            })
-            .catch(error => {
-                console.error("Error updating support request:", error);
-            });
-
-        popupClose();
+        popupClose()
     }
 
     return (
@@ -72,7 +62,7 @@ const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, ed
                                     value={support.support_status}
                                     className="updateSupportRequestDropdown"
                                     name="updateSupportRequestDropdown"
-                                    onChange={(selectedOption) => setValues({ ...values, support_status: selectedOption.value })}
+                                    onChange={(selectedOption) => setValues({...values, support_status: selectedOption.value})}
                                 />
                                 <button
                                     className="updateSupportRequestStatusButton"

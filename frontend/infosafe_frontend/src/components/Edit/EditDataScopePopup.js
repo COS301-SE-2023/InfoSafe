@@ -5,7 +5,7 @@ import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
 import Select from "react-select";
-import { customStyles } from "../CustomStyling";
+import {customStyles} from "../CustomStyling";
 const STATUS = ['Pending', 'Approved', 'Revoked'];
 
 export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdited }) => {
@@ -23,6 +23,19 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         ds_status: datascope.ds_status
     });
 
+    // useEffect(() => {
+    //     fetch("https://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
+    //         method: "GET",
+    //         headers: {
+    //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+    //         }
+    //     })
+    //         .then((res) => res.json())
+    //         .then((result) => {
+    //             setUsers(result);
+    //         });
+    // }, []);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewRole((prevRole) => ({ ...prevRole, [name]: value }));
@@ -38,32 +51,25 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        //console.log(datascope);
+        //console.log(values);
 
-        fetch('http://localhost:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/datascope/update/' + datascope.data_scope_id, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
             },
             body: JSON.stringify(values)
-        })
-            .then((response) => {
-                if (response.ok) {
-                    console.log('Updated Datascope');
-                    onDsEdited();
-                } else {
-                    console.error('Error updating Datascope:', response.status);
-                }
-            })
-            .catch((error) => {
-                console.error('Error updating Datascope:', error);
-            });
-
+        }).then(() => {
+            console.log('Updated Datascope');
+            onDsEdited()
+        });
         popupClose();
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -72,9 +78,6 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
             .then((res) => res.json())
             .then((result) => {
                 setDataScopeRoles(result);
-            })
-            .catch((error) => {
-                console.error('Error fetching DataScopeRoles:', error);
             });
     }, []);
 
@@ -82,7 +85,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
 
-        fetch('http://localhost:8080/api/dataScopeRole/addDataScopeRole', {
+        fetch('https://infosafe.live/api/dataScopeRole/addDataScopeRole', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,14 +93,10 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
             },
             body: JSON.stringify(newRoleData)
         })
-            .then((response) => {
-                if (response.ok) {
-                    console.log('New DataScopeRole added');
-                    setDataScopeRoles([...dataScopeRoles, newRoleData]);
-                    setNewRole({ role: '', roledescription: '' });
-                } else {
-                    console.error('Error adding new DataScopeRole:', response.status);
-                }
+            .then(() => {
+                console.log('New DataScopeRole added');
+                setDataScopeRoles([...dataScopeRoles, newRoleData]);
+                setNewRole({ role: '', roledescription: '' });
             })
             .catch((error) => {
                 console.error('Error adding new DataScopeRole:', error);
@@ -137,6 +136,21 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
                                     defaultValue={datascope.status}
                                     onChange={(selectedOption) => setValues({ ...values, ds_status: selectedOption.value })}
                                 />
+                                {/*<p className="editDSUsers">Assigned Users</p>*/}
+                                {/*{users && users.length > 0 ? (*/}
+                                {/*    <Select*/}
+                                {/*        options={users.map((data) => ({value: data.user_id, label: data.email}))}*/}
+                                {/*        value={selectedUsers.map((email) => ({ label: email }))}*/}
+                                {/*        className="editTaskAssignees"*/}
+                                {/*        name="editTaskAssignees"*/}
+                                {/*        placeholder={"Add Assignees"}*/}
+                                {/*        onChange={handleSelect}*/}
+                                {/*        isSearchable={true}*/}
+                                {/*        styles={customStyles}*/}
+                                {/*        isMulti*/}
+                                {/*    /> ) : (*/}
+                                {/*    <p>Loading...</p>*/}
+                                {/*)}*/}
                                 <p className="editDSRoleLabel">Data Scope Roles</p>
                                 {dataScopeRoles && dataScopeRoles.length > 0 ? (
                                     <Select

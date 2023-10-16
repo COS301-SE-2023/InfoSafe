@@ -6,7 +6,7 @@ export const useGetRisk = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/risk/getRisk', {
+            const response = await fetch('https://infosafe.live/api/risk/getRisk', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
