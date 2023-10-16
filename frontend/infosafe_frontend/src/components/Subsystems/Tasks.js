@@ -55,6 +55,7 @@ export const Tasks = () => {
                                 popupClose={() => setViewTaskOpen(false)}
                                 popupOpen={viewTaskOpen}
                                 task={task}
+                                onTaskView={fetchAllTasks}
                             />
                         ) : null}
                     </p>
