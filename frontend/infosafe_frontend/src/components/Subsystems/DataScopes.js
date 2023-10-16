@@ -110,15 +110,15 @@ export const DataScopes = () => {
                     </p>
                     <EditDataScope datascope={datascope}></EditDataScope>
                     <DeleteDataScope datascope={datascope}></DeleteDataScope>
-                    <div className="viewFiles">
-                        <button className="filesButton" onClick={() => setViewFilesOpen(true)}>Files</button>
-                        {viewFilesOpen ? (
-                            <FilePopup datascope={datascope}
-                                       popupClose={() => setViewFilesOpen(false)}
-                                       popupOpen={viewFilesOpen}
-                            />
-                        ) : null}{' '}
-                    </div>
+                    {/*<div className="viewFiles">*/}
+                    {/*    <button className="filesButton" onClick={() => setViewFilesOpen(true)}>Files</button>*/}
+                    {/*    {viewFilesOpen ? (*/}
+                    {/*        <FilePopup datascope={datascope}*/}
+                    {/*                   popupClose={() => setViewFilesOpen(false)}*/}
+                    {/*                   popupOpen={viewFilesOpen}*/}
+                    {/*        />*/}
+                    {/*    ) : null}{' '}*/}
+                    {/*</div>*/}
                 </li>
             );
         } else {
