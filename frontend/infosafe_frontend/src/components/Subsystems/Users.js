@@ -128,7 +128,9 @@ export const Users = () => {
                         )}
                     </p>
                     <EditUserDiv user={user}/>
-                    <DeleteUser user={user}></DeleteUser>
+                    {user.role.role_name !== "ADMIN" ? (
+                        <DeleteUser user={user}></DeleteUser>
+                    ) : null}
                 </li>
             );
         } else {
