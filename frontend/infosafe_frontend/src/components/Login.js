@@ -2,7 +2,7 @@ import "../styling/Login.css";
 import React, {useState} from "react";
 import {IoHelpCircle} from "react-icons/io5";
 import {HelpPopup} from "./HelpPopup";
-import task_help from "../images/task_help.png";
+import task_help from "../images/login_help.png";
 
 function Login(){
     const[email,setEmail]=useState("")
