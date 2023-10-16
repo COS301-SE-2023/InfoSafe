@@ -25,7 +25,7 @@ public class AWSSecretService {
     private final String encryptionName = "client_encryption";
     private final String IVName = "IV";
     private final String region = "us-east-1";
-
+    
     @Value("${AWS_ACCESS_KEY_ID}")
     private String awsAccessKeyId;
 
