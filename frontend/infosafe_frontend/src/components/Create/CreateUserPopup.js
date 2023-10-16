@@ -31,7 +31,7 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
         const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
 
-        fetch("http://localhost:8080/api/user/add", {
+        fetch("https://infosafe.live/api/user/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

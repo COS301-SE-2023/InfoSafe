@@ -41,7 +41,6 @@ public class AWSSecretService {
                 .credentialsProvider(createCredentialsProvider())
                 .build();
 
-        String secretName = "rds_login";
         GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
                 .secretId(secretName)
                 .build();

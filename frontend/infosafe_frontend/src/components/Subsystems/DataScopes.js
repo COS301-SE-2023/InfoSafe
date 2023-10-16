@@ -50,7 +50,7 @@ export const DataScopes = () => {
 
     const DeleteFunction = async (data_scope_id) => {
         try {
-            const response = await fetch("http://localhost:8080/api/datascope/deleteDataScope/"+data_scope_id, {
+            const response = await fetch("https://infosafe.live/api/datascope/deleteDataScope/"+data_scope_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

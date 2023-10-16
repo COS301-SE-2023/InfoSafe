@@ -23,20 +23,32 @@ public class AssetService {
     private final EmailService emailService;
     private final NotificationsService notificationsService;
     private final EncryptionService encryptionService;
+
     public List<Asset> getAllAssets() {
-        List<Asset> ass = assetRepository.findAll();
-        for(Asset as : ass){
-            if(as.getCurrent_assignee() != null){
-                as.getCurrent_assignee().setFirst_name(encryptionService.decryptString(as.getCurrent_assignee().getFirst_name()));
-                as.getCurrent_assignee().setLast_name(encryptionService.decryptString(as.getCurrent_assignee().getLast_name()));
+        List<Asset> assets = assetRepository.findAll();
+        for (Asset asset : assets) {
+            if (asset.getCurrent_assignee() != null) {
+                User currentAssignee = asset.getCurrent_assignee();
+                User decryptedCurrentAssignee = new User();
+                decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+                decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+                decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+                decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+                asset.setCurrent_assignee(decryptedCurrentAssignee);
             }
-            if(as.getPrevious_assignee() != null){
-                as.getPrevious_assignee().setFirst_name(encryptionService.decryptString(as.getPrevious_assignee().getFirst_name()));
-                as.getPrevious_assignee().setLast_name(encryptionService.decryptString(as.getPrevious_assignee().getLast_name()));
+            if (asset.getPrevious_assignee() != null) {
+                User previousAssignee = asset.getPrevious_assignee();
+                User decryptedPreviousAssignee = new User();
+                decryptedPreviousAssignee.setUser_id(previousAssignee.getUser_id());
+                decryptedPreviousAssignee.setFirst_name(encryptionService.decryptString(previousAssignee.getFirst_name()));
+                decryptedPreviousAssignee.setLast_name(encryptionService.decryptString(previousAssignee.getLast_name()));
+                decryptedPreviousAssignee.setRole(previousAssignee.getRole());
+                asset.setPrevious_assignee(decryptedPreviousAssignee);
             }
         }
-        return ass;
+        return assets;
     }
+
 
     public Asset updateAsset(AssetRequest asset) {
         if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {
