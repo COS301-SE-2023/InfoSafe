@@ -23,7 +23,6 @@ public class Risk {
     private String suggested_mitigation;
     private String risk_status;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope;
