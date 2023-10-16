@@ -1,6 +1,6 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import {IoArrowBackOutlin, IoArrowBackOutline, IoInformationCircleOutline} from "react-icons/io5";
+import {IoArrowBackOutline} from "react-icons/io5";
 import "../styling/HelpPopup.css"
 export const HelpPopup = ({message, popupOpen, popupClose, image}) => {
 
