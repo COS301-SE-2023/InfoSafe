@@ -48,7 +48,7 @@
     position: relative;
     top: 0;
     overflow-x: hidden;
-    /*overflow-y: scroll;*/
+    /*overflow-y: auto;*/
     /*scrollbar-width: none;*/
 }
 /*.tables::-webkit-scrollbar{*/
@@ -61,7 +61,7 @@
     height: 100%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: none;
     scrollbar-width: auto;
     scrollbar-color: #CECECE #CECECE;
@@ -116,7 +116,7 @@
     height: 100%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: auto;
     scrollbar-color: #CECECE #CECECE;
     padding-right: 1vw;

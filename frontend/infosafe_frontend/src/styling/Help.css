@@ -14,10 +14,7 @@
     left: 5%;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    overflow-y: hidden;
-}
-.helpInfo::-webkit-scrollbar{
-    display: none;
+    overflow-y: auto;
 }
 .helpTitle{
     font-size: 45px;

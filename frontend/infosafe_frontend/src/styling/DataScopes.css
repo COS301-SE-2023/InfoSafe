@@ -27,7 +27,7 @@
     height: 60%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     box-sizing: content-box;
     overflow-x: hidden;
     scrollbar-width: auto;

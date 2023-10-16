@@ -14,10 +14,7 @@
     left: 5%;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    overflow-y: hidden;
-}
-.aboutInfo::-webkit-scrollbar{
-    display: none;
+    overflow-y: auto;
 }
 .aboutTitle{
     font-size: 45px;
