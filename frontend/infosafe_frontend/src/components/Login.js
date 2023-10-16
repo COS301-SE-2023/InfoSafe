@@ -1,5 +1,8 @@
 import "../styling/Login.css";
 import React, {useState} from "react";
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "./HelpPopup";
+import task_help from "../images/task_help.png";
 
 function Login(){
     const[email,setEmail]=useState("")
@@ -38,13 +41,21 @@ function Login(){
         window.location.href = "/ForgotPassword";
     }
 
+    const [helpOpen, setHelpOpen] = useState(false);
 
     return (
         <div className='background'>
-            {/*<div className='flipPanel'>*/}
-            {/*    <div className='panel'>*/}
-            {/*        <div className='panelFront'></div>*/}
                     <div className='panelBack'>
+                        <button  className="taskHelpButton" onClick={() => setHelpOpen(true)}>
+                            <IoHelpCircle className="taskHelpPopupIcon"></IoHelpCircle>
+                            {helpOpen ? (
+                                <HelpPopup
+                                    popupClose={() => setHelpOpen(false)}
+                                    popupOpen={helpOpen}
+                                    image={task_help}
+                                />
+                            ) : null}
+                        </button>
                         <div className='title'>
                             <p className='loginTitle'>Login</p>
                         </div>
