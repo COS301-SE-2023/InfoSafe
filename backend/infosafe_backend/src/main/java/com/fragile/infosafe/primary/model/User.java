@@ -43,7 +43,7 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_name")
     private Role role;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "current_assignee", fetch = FetchType.LAZY)
     private List<Asset> assets;
 
