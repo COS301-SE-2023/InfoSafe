@@ -83,7 +83,7 @@ public class AssetRequestService {
                 asset.setAvailability("No");
                 asset.setCurrent_assignee(user);
                 assetRepository.save(asset);
-                emailUser(reviewRequest.getUser_email(), asset.getAsset_name(), "Approved");
+                emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), asset.getAsset_name(), "Approved");
                 notificationsService.makeNotification("Received Asset " + asset.getAsset_name(), user);
                 deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                 return ResponseEntity.ok("given to user");

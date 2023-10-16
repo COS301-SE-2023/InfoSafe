@@ -59,7 +59,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
             body: JSON.stringify(request),
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((data) => {
                 console.log("Task marked as completed");
                 popupClose();
@@ -80,7 +80,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
             body: JSON.stringify(request),
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((data) => {
                 console.log("Task marked as incomplete");
                 popupClose();

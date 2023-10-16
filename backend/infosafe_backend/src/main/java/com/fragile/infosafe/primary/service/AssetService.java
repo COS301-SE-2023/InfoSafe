@@ -23,7 +23,20 @@ public class AssetService {
     private final EmailService emailService;
     private final NotificationsService notificationsService;
     private final EncryptionService encryptionService;
-    public List<Asset> getAllAssets() {return assetRepository.findAll();}
+    public List<Asset> getAllAssets() {
+        List<Asset> ass = assetRepository.findAll();
+        for(Asset as : ass){
+            if(as.getCurrent_assignee() != null){
+                as.getCurrent_assignee().setFirst_name(encryptionService.decryptString(as.getCurrent_assignee().getFirst_name()));
+                as.getCurrent_assignee().setLast_name(encryptionService.decryptString(as.getCurrent_assignee().getLast_name()));
+            }
+            if(as.getPrevious_assignee() != null){
+                as.getPrevious_assignee().setFirst_name(encryptionService.decryptString(as.getPrevious_assignee().getFirst_name()));
+                as.getPrevious_assignee().setLast_name(encryptionService.decryptString(as.getPrevious_assignee().getLast_name()));
+            }
+        }
+        return ass;
+    }
 
     public Asset updateAsset(AssetRequest asset) {
         if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {

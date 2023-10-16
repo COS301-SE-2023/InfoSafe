@@ -63,7 +63,7 @@ public class AccessRequestService {
         log.info(String.valueOf(reviewRequest.isReview()));
         if (reviewRequest.isReview()) {
             Optional<DataScope> dataScopeOptional = dataScopeRepository.findByDataScopeId(reviewRequest.getDataScope_id());
-            Optional<User> userOptional = userRepository.findByEmail(encryptionService.encryptString(reviewRequest.getUser_email()));
+            Optional<User> userOptional = userRepository.findByEmail(reviewRequest.getUser_email());
             if (dataScopeOptional.isPresent() && userOptional.isPresent()) {
                 DataScope dataScope = dataScopeOptional.get();
                 User user = userOptional.get();
@@ -72,7 +72,7 @@ public class AccessRequestService {
                     dataScope.getUsers().add(user);
                     dataScopeRepository.save(dataScope);
                     deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                    emailUser(reviewRequest.getUser_email(), dataScope.getDs_name(), "Approved");
+                    emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), dataScope.getDs_name(), "Approved");
                     notificationsService.makeNotification("Added to Datascope " + dataScope.getDs_name(), user);
                     return ResponseEntity.ok("given to user");
                 } else {

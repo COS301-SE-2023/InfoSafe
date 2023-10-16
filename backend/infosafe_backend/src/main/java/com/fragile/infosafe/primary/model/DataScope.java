@@ -52,4 +52,16 @@ public class DataScope {
     @OneToMany(mappedBy = "dataScope_id")
     private List<SupportRequest> supportRequests;
 
+    @Override
+    public String toString() {
+        return "DataScope{" +
+                "data_scope_id=" + data_scope_id +
+                ", ds_name='" + ds_name + '\'' +
+                ", ds_description='" + ds_description + '\'' +
+                ", date_captured=" + date_captured +
+                ", dataCustodian=" + dataCustodian +
+                ", ds_status='" + ds_status + '\'' +
+                ", users=" + users +
+                '}';
+    }
 }
