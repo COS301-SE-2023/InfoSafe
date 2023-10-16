@@ -1,11 +1,11 @@
-const sendurl = "https://infosafe.live/";
+const sendurl = "http://localhost:8080/";
 const useremail = "ali@gmail.com";
 const  userpassword = "1234";
 
 describe("Visits the backend", () => {
   it("returns 403 Forbidden", () => {
     cy.request({
-      url: "https://infosafe.live:8080/",
+      url: "http://localhost:8080:8080/",
       failOnStatusCode: false,
     }).then((response) => {
       expect(response.status).to.equal(403);

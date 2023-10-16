@@ -1,27 +1,27 @@
 import Popup from 'reactjs-popup';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/UpdateTask.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import Select from "react-select";
 import ViewDataScope from "../View/ViewDataScope";
-import { customStyles } from "../CustomStyling";
-
+import {customStyles} from "../CustomStyling";
+/* eslint-disable react/prop-types */
+/* eslint-disable  no-unused-vars */
 const TASK_ID = ['TASK 1', 'TASK 2', 'TASK 3'];
 const USER_LIST = ['USER A', 'USER B', 'USER C', 'USER D'];
 
 const statusOptions = [
-    { value: 'High', label: 'High' },
-    { value: 'Medium', label: 'Medium' },
-    { value: 'Low', label: 'Low' },
+    {value: 'High', label: 'High'},
+    {value: 'Medium', label: 'Medium'},
+    {value: 'Low', label: 'Low'},
 ];
-
 export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [currentUsers, setCurrentUsers] = useState([]);
     const [addUsers, setAddUsers] = useState([]);
-    const [values, setValues] = useState({
+    const[values, setValues]=useState({
         task_id: '',
         task_name: '',
         date_created: '',
@@ -44,13 +44,12 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
             .then((result) => {
                 setCurrentUsers(result)
                 setAddUsers(result)
-            })
-            .catch((error) => {
-                console.error("Error fetching current users:", error);
             });
+
     }, [task]);
 
-    useEffect(() => {
+    useEffect(()=> {
+        //console.log(task)
         if (task) {
             setValues({
                 task_id: task.task_id,
@@ -63,7 +62,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                 daysUntilDue: task.daysUntilDue
             });
         }
-    }, [task]);
+    },[task]);
 
     useEffect(() => {
         fetch("https://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
@@ -75,19 +74,16 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
             .then((res) => res.json())
             .then((result) => {
                 setUsers(result);
-            })
-            .catch((error) => {
-                console.error("Error fetching users not in task:", error);
             });
     }, []);
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
-        popupClose();
+        popupClose()
         let finalUsers = [...addUsers, ...selectedUsers];
         const requestBody = {
             ...values,
-            users_email: finalUsers
+            users: finalUsers
         };
         fetch("https://infosafe.live/api/task/update/" + task.task_id, {
             method: "POST",
@@ -96,18 +92,10 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken")
             },
             body: JSON.stringify(requestBody)
+        }).then(() => {
+            console.log("Updated Task")
+            onTaskEdited();
         })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Updated Task");
-                    onTaskEdited();
-                } else {
-                    throw new Error("Network response was not ok");
-                }
-            })
-            .catch(error => {
-                console.error("Error updating task:", error);
-            });
     }
 
     const handleSelect = (selectedOptions) => {
@@ -129,7 +117,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                             <textarea
                                 className="editTaskInputTextArea"
                                 defaultValue={task.task_name}
-                                onChange={e => setValues({ ...values, task_name: e.target.value })}
+                                onChange={e => setValues({...values, task_name: e.target.value})}
                             />
                             <p className="viewTaskDisplayTitle">Data Scope</p>
                             <textarea
@@ -143,25 +131,24 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                             <textarea
                                 className="editTaskDescriptionInput"
                                 defaultValue={task.task_description}
-                                onChange={e => setValues({ ...values, task_description: e.target.value })}
+                                onChange={e => setValues({...values, task_description: e.target.value})}
                             />
                             <p className="editTaskLabels">Assigned Users:</p>
                             {currentUsers && currentUsers.length > 0 ? (
                                 <Select
-                                    options={currentUsers.map((email) => ({ value: email, label: email }))}
-                                    value={currentUsers.length > 0 ? [{ value: currentUsers[0], label: currentUsers[0] }] : null}
+                                    options={currentUsers.map((email) => ({value: email, label: email}))}
+                                    value={currentUsers.map((email) => ({value: email, label: email}))}
                                     placeholder={currentUsers[0]}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"
                                     styles={customStyles}
-                                />
-                            ) : (
+                                /> ) : (
                                 <p className="editTaskLoading">Loading...</p>
                             )}
                             <p className="editTaskLabels">Add More Assignees</p>
                             {users && users.length > 0 ? (
                                 <Select
-                                    options={users.map((email) => ({ value: email, label: email }))}
+                                    options={users.map((data) => ({value: data.user_id, label: data.email}))}
                                     value={selectedUsers.map((email) => ({ label: email }))}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"
@@ -170,8 +157,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                                     isSearchable={true}
                                     styles={customStyles}
                                     isMulti
-                                />
-                            ) : (
+                                /> ) : (
                                 <p className="editTaskLoading">Loading...</p>
                             )}
                             <p className="editTaskLabels">Status</p>
@@ -181,14 +167,14 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                                 className="editTaskStatusDropdown"
                                 name="editTaskStatusDropdown"
                                 placeholder={"Select Status"}
-                                onChange={(selectedOption) => setValues({ ...values, task_status: selectedOption.value })}
+                                onChange={(selectedOption) => setValues({...values, task_status: selectedOption.value})}
                             />
                             <p className="editTaskLabels">Completion Date</p>
                             <input
                                 type="date"
                                 className="updateTaskDateInput"
                                 defaultValue={task.due_date}
-                                onChange={(e) => setValues({ ...values, due_date: e.target.value })}
+                                onChange={(e) => setValues({...values, due_date: e.target.value})}
                                 required
                             />
                             <div className="updateTaskButtonDiv">

@@ -56,7 +56,7 @@ public class UserService {
 
 
     public void changePassword(User user, String newPassword) {
-        user.setPassword(encryptionService.encryptString(passwordEncoder.encode(newPassword)));
+        user.setPassword(passwordEncoder.encode(newPassword));
         repository.save(user);
     }
 

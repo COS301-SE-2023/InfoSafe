@@ -31,7 +31,8 @@
     position: relative;
     top: 10%;
     left: 5%;
-    background-color: #CECECE;
+    border: 3px solid #444040;
+    background-color: white;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25) inset;
     border-radius: 4px;
 }
@@ -53,6 +54,7 @@
     top: 0;
     left: 15%;
     font-size: 16px;
+    border: 3px solid #444040;
 }
 .requestDiv {
     width: 60%;
@@ -62,8 +64,9 @@
     left: 10%;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25) inset;
     border-radius: 4px;
-    background-color: #CECECE;
-    overflow-y: scroll;
+    border: 3px solid #444040;
+    background-color: white;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
 }
@@ -94,6 +97,7 @@
     margin: 0 auto;
     left: 0;
     font-size: 16px;
+    border: 3px solid #444040;
 }
 .supportRequestDescriptionLabel {
     color: #000000;
@@ -112,8 +116,8 @@
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-align: left;
-    border: none;
-
+    border: 3px solid #444040;
+    background-color: white;
     margin: 0 auto;
 }
 .supportRequestDescription:focus{
@@ -136,6 +140,7 @@
     margin: 0 auto;
     left: 0;
     font-size: 16px;
+    border: 3px solid #444040;
 }
 .createSupportRequestButtonDiv {
     position: relative;
@@ -183,6 +188,7 @@
     top: 0;
     left: 0;
     font-size: 18px;
+    border: 3px solid #444040;
 }
 .createAssetRequestReasonLabel {
     color: #000000;
@@ -205,7 +211,7 @@
     color: #000000;
     font-size: 16px;
     text-align: left;
-    border: none;
+    border: 3px solid #444040;
 
 }
 .createAssetRequestReasonInput:focus{
@@ -226,7 +232,7 @@
     background-color: #ffffffff;
     width: 100%;
     outline: none;
-    border: none;
+    border: 3px solid #444040;
     position: relative;
     top: 0;
     left: 0;
@@ -257,6 +263,7 @@
     top: 0;
     left: 0;
     font-size: 18px;
+    border: 3px solid #444040;
 }
 .createAssetRequestButtonDiv {
     position: relative;
@@ -293,6 +300,7 @@
     top: 2%;
     left: 0;
     font-size: 18px;
+    border: 3px solid #444040;
 }
 .createAccessRequestDataScopeLabel {
     color: #000000;
@@ -321,6 +329,7 @@
     position: relative;
     left: 0;
     font-size: 18px;
+    border: 3px solid #444040;
 }
 .createAccessRequestReasonLabel {
     color: #000000;
@@ -343,7 +352,7 @@
     font-size: 16px;
     text-align: left;
     outline: none;
-    border: none;
+    border: 3px solid #444040;
 }
 .createAccessRequestReasonInput:focus{
     outline: none;
@@ -397,6 +406,7 @@
     position: relative;
     left: 0;
     font-size: 18px;
+    border: 3px solid #444040;
 }
 .requestsHelpButton{
     background-color: transparent;

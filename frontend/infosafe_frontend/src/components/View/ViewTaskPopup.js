@@ -6,7 +6,7 @@ import ViewAccessRequest from "./ViewAccessRequest";
 import Select from "react-select";
 import {customStyles} from "../CustomStyling";
 
-export const ViewTask = ({task, popupClose, popupOpen}) => {
+export const ViewTask = ({task, popupClose, popupOpen, onTaskView}) => {
     const [currentUsers, setCurrentUsers] = useState([]);
     const [addUsers, setAddUsers] = useState([]);
         const[values, setValues]=useState({
@@ -59,9 +59,10 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
             body: JSON.stringify(request),
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((data) => {
                 console.log("Task marked as completed");
+                onTaskView();
                 popupClose();
             })
             .catch((error) => {
@@ -80,9 +81,10 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
             body: JSON.stringify(request),
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((data) => {
                 console.log("Task marked as incomplete");
+                onTaskView();
                 popupClose();
             })
             .catch((error) => {

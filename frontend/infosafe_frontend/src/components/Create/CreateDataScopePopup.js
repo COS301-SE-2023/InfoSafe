@@ -22,7 +22,8 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose, onDsAdded }) => {
         }
 
         const ds_status = "Pending";
-        const datascope = { date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers };
+        const datascope = {date_captured: currentDate, ds_description, ds_name, ds_status, user_email: selectedUsers};
+
         fetch(`https://infosafe.live/api/datascope/checkName?dsname=${ds_name}`, {
             method: "GET",
             headers: {
@@ -35,6 +36,7 @@ export const CreateDataScopePopup = ({ popupOpen, popupClose, onDsAdded }) => {
                 if (data) {
                     console.log("DataScope name already exists");
                 } else {
+                    //console.log(datascope);
                     fetch("https://infosafe.live/api/datascope/addDs", {
                         method: "POST",
                         headers: {

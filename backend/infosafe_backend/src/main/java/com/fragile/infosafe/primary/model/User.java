@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
@@ -42,18 +43,34 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_name")
     private Role role;
 
-    @OneToMany(mappedBy = "current_assignee", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "current_assignee", fetch = FetchType.LAZY)
     private List<Asset> assets;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<AssetRequests> assetRequests;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
     private List<SupportRequest> supportRequests;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
     private List<AccessRequest> accessRequests;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", otp='" + otp + '\'' +
+                ", role=" + (role != null ? role.getRole_name() : "null") +
+                '}';
+    }
 
     public int getUser_id() {
         return user_id;

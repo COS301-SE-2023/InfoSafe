@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="deleted_ risks")
+@Table(name="deleted_risks")
 public class DeletedRisk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

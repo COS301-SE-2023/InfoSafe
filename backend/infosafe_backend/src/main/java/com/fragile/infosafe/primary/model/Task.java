@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -39,4 +40,19 @@ public class Task {
     private Set<User> users = new HashSet<>();
     @Column(nullable = true)
     private int daysUntilDue;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "task_id=" + task_id +
+                ", task_name='" + task_name + '\'' +
+                ", task_description='" + task_description + '\'' +
+                ", task_status='" + task_status + '\'' +
+                ", due_date='" + due_date + '\'' +
+                ", date_created='" + date_created + '\'' +
+                ", data_scope_id=" + data_scope_id +
+                ", users=" + users +
+                ", daysUntilDue=" + daysUntilDue +
+                '}';
+    }
 }
