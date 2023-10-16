@@ -379,12 +379,12 @@
 }
 
 .inUseDevicesList {
-    list-style: none;
+    list-style-type: square;
     margin: 0;
     padding: 0;
     width: 94%;
     position: relative;
-    left: 3%;
+    left: 5.5%;
 }
 .inUseDevicesList li {
     position: relative;
