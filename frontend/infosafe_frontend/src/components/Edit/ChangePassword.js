@@ -8,36 +8,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
     const [userEmail, setUserEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [reenteredPassword, setReenteredPassword] = useState(''); // Added state for re-entered password
-    const change = { userEmail, newPassword };
-
-    useEffect(() => {
-
-        fetch('http://localhost:8080/api/user/getEmail', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-            },
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (data.email) {
-                    setUserEmail(data.email);
-                    //console.log(data.email);
-                } else {
-                    console.error("Email not found in response");
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching email:', error);
-            });
-    }, []);
-
+    const change = {newPassword: newPassword };
     const handleClick = async (e) => {
         e.preventDefault();
 
@@ -45,7 +16,6 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
             alert("Passwords do not match. Please re-enter.");
             return;
         }
-
         try {
             await fetch('http://localhost:8080/api/user/changePassword', {
                 method: "POST",
@@ -55,8 +25,6 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
                 },
                 body: JSON.stringify(change)
             });
-
-            console.log("Updated AccessRequest");
             popupClose();
         } catch (error) {
             console.error('Error changing password:', error);

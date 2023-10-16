@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,8 @@ public class Risk {
     private String risk_description;
     private String suggested_mitigation;
     private String risk_status;
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "data_scope_id")
     private DataScope dataScope;

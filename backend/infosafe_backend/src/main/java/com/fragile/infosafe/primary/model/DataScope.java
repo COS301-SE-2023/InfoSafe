@@ -1,6 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,14 +37,19 @@ public class DataScope {
     private Set<User> users = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "data_scope_id", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "data_scope_id")
     private List<Task> tasks;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "dataScope", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "dataScope")
     private List<Risk> risks;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "data_scope_id", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "data_scope_id")
     private List<AccessRequest> accessRequests;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "dataScope_id")
+    private List<SupportRequest> supportRequests;
+
 }

@@ -63,7 +63,14 @@ public class SupportRequestService {
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-    public List<SupportRequest> getAllSupportRequests() {return supportRequestRepository.findAll();}
+    public List<SupportRequest> getAllSupportRequests() {
+        List<SupportRequest> sr = supportRequestRepository.findAll();
+        for(SupportRequest supportRequest : sr){
+            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
+            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+        }
+        return sr;
+    }
 
     public SupportRequest updateSupportRequest(SupportRequestRequest supportRequest) {
         if(supportRequest.getSupport_status().equals("Resolved")){
@@ -98,7 +105,12 @@ public class SupportRequestService {
     }
 
     public List<SupportRequest> getUserSupportRequests(int user_id) {
-        return supportRequestRepository.findAllByUserId(user_id);
+        List<SupportRequest> sr = supportRequestRepository.findAllByUserId(user_id);
+        for(SupportRequest supportRequest : sr){
+            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
+            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+        }
+        return sr;
     }
 
     public ResponseEntity<String> reviewSupportRequest(ReviewRequest reviewRequest) {

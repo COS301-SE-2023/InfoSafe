@@ -16,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -49,7 +46,12 @@ public class AccessRequestService {
     }
 
     public List<AccessRequest> getAllAccessRequests() {
-        return accessRequestRepository.findAll();
+        List<AccessRequest> ar = accessRequestRepository.findAll();
+        for(AccessRequest accessRequest : ar){
+            accessRequest.getUser_id().setFirst_name(encryptionService.decryptString(accessRequest.getUser_id().getFirst_name()));
+            accessRequest.getUser_id().setLast_name(encryptionService.decryptString(accessRequest.getUser_id().getLast_name()));
+        }
+        return ar;
     }
 
     public AccessRequest updateAccessRequest(AccessRequest accessRequest) {

@@ -90,7 +90,8 @@ export const SupportRequests = () => {
     }
 
     const ViewMySupport = ({ mySupport }) => {
-        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false); // ISO DISO Employee AM
+        const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
+        console.log(mySupport)
         return(
             <li key={mySupport.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
