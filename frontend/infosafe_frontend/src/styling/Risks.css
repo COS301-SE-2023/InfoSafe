@@ -47,15 +47,21 @@
     height: 60%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     box-sizing: content-box;
     /*scrollbar-width: none;*/
     overflow-x: hidden;
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
 }
-
-/*.risks::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
+.risks::-webkit-scrollbar {
+    width: 8px;
+}
+.risks::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
+}
 .risksList {
     list-style: none;
     margin: 0;
@@ -67,7 +73,8 @@
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #CECECE;
+    border: 3px solid #444040;
+    background-color: white;
     padding: 5px;
     border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;

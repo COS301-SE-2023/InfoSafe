@@ -32,7 +32,7 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .borderHelp::-webkit-scrollbar{
@@ -77,7 +77,7 @@
     align-items: center;
     display: flex;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .helpContent::-webkit-scrollbar{
@@ -94,7 +94,7 @@
 /*    text-align: center;*/
 /*    position: relative;*/
 /*    overflow-x: hidden;*/
-/*    overflow-y: scroll;*/
+/*    overflow-y: auto;*/
 /*    scrollbar-width: none;*/
 /*    top: 2vh;*/
 /*}*/
