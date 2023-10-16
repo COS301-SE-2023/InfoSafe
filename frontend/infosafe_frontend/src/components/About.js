@@ -16,11 +16,11 @@ export const About = () => {
                     </p>
                     <p className="aboutTitle">Terms of Service and Use</p>
                     <p className="aboutData">
-                        Please find our Terms of Service and Use <a href={termsDoc} target="_blank">here</a>.
+                        Please find our Terms of Service and Use <a href={termsDoc} target="_blank" rel="noreferrer">here</a>.
                     </p>
                     <p className="aboutTitle">Privacy Policy</p>
                     <p className="aboutData">
-                        Please find our Privacy Policy <a href={privacyDoc} target="_blank">here</a>.
+                        Please find our Privacy Policy <a href={privacyDoc} target="_blank" rel="noreferrer">here</a>.
                     </p>
                     <div className="contactUsInfo">
                         <p className="contactUsTitle">Contact Us</p>
