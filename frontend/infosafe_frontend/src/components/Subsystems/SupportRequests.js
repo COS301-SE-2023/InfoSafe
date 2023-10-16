@@ -72,7 +72,7 @@ export const SupportRequests = () => {
             return (
                 <li key={allSupport.support_id}>
                     <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
-                        Support Request {allSupport.support_id}
+                        Support Request {allSupport.support_id} : {allSupport.support_description}
                         {viewSupportRequestOpen ? (
                             <ViewSupportRequest
                                 popupClose={() => setViewSupportRequestOpen(false)}
@@ -91,11 +91,10 @@ export const SupportRequests = () => {
 
     const ViewMySupport = ({ mySupport }) => {
         const [viewSupportRequestOpen, setViewSupportRequestOpen] = useState(false);
-        console.log(mySupport)
         return(
             <li key={mySupport.support_id}>
                 <p onClick={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}>
-                    Support Request {mySupport.support_id}
+                    Support Request {mySupport.support_id} : {mySupport.support_description}
                     {viewSupportRequestOpen ? (
                         <ViewSupportRequest
                             popupClose={() => setViewSupportRequestOpen(!viewSupportRequestOpen)}

@@ -49,7 +49,7 @@ export const AssetRequest = () => {
             return (
                 <li key={assetRequest.asset_request_id}>
                     <p onClick={() => setViewAssetRequestOpen(!viewAssetRequestOpen)}>
-                        Asset Request {assetRequest.asset_request_id}{/* : {assetRequest.asset.asset_name}*/}
+                        Asset Request {assetRequest.asset_request_id} : {assetRequest.asset.asset_name}
                         {viewAssetRequestOpen ? (
                             <ViewAssetRequest
                                 popupClose={() => setViewAssetRequestOpen(false)}
