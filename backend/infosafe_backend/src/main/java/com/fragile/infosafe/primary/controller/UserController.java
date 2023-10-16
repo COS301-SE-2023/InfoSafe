@@ -128,11 +128,11 @@ public class UserController {
     @PostMapping("/changePassword")
     public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
         try {
-            Optional<User> user = userService.getUserByEmail(encryptionService.encryptString(changePasswordRequest.getUserEmail()));
-            if (user.isPresent()) {
-                userService.changePassword(user.get(), changePasswordRequest.getNewPassword());
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+                userService.changePassword(authenticatedUser, changePasswordRequest.getNewPassword());
                 return ResponseEntity.ok(true);
-            } else {
+            }else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
             }
         } catch (Exception e) {

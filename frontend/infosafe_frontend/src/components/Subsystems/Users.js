@@ -162,11 +162,10 @@ export const Users = () => {
     };
 
     const userItems = filteredUsers.length > 0
-        ? filteredUsers.map((user) => <ViewUserItem user={user} key={user.user_id} />)
+        ? filteredUsers.map((user) => <ViewUserItem user={user} key={user.user_id}/>)
         : ["No Users found."];
 
     const [helpOpen, setHelpOpen] = useState(false);
-
 
 
     return (
