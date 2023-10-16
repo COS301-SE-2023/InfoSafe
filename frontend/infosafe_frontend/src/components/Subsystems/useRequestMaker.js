@@ -74,7 +74,10 @@ const useRequestMaker = () => {
             },
             body: JSON.stringify(requestBody)
         }).then(() => {
-            console.log("New request added")
+            console.log("New request added");
+        })
+        .catch((error) => {
+            window.alert("Error: Unable to create duplicate requests.");
         })
     };
 

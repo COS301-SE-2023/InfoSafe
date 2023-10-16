@@ -7,7 +7,7 @@ const TasksChart = () => {
     const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/taskCount', {
+        fetch('https://infosafe.live/api/user/taskCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

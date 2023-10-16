@@ -8,7 +8,9 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
     const [userEmail, setUserEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [reenteredPassword, setReenteredPassword] = useState(''); // Added state for re-entered password
+
     const change = {newPassword: newPassword };
+
     const handleClick = async (e) => {
         e.preventDefault();
 
@@ -17,7 +19,7 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
             return;
         }
         try {
-            await fetch('http://localhost:8080/api/user/changePassword', {
+            await fetch('https://infosafe.live/api/user/changePassword', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

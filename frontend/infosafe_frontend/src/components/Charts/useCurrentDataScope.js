@@ -6,7 +6,7 @@ export const useCurrentDataScope = () => {
     const [myDataScopeCount, setMyDataScopeCount] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/datascope/getTotal', {
+        fetch('https://infosafe.live/api/datascope/getTotal', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -22,7 +22,7 @@ export const useCurrentDataScope = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/dataScopeCount', {
+        fetch('https://infosafe.live/api/user/dataScopeCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -41,7 +41,7 @@ export const useCurrentDataScope = () => {
     const [myAssets, setMyAssets] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/countDevices', {
+        fetch('https://infosafe.live/api/user/countDevices', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -57,7 +57,7 @@ export const useCurrentDataScope = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getAllDevices', {
+        fetch('https://infosafe.live/api/user/getAllDevices', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -75,7 +75,7 @@ export const useCurrentDataScope = () => {
     const [totalAssets, setTotalAssets] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/asset/getTotalAssets', {
+        fetch('https://infosafe.live/api/asset/getTotalAssets', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),

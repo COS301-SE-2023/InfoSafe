@@ -6,7 +6,7 @@ export const useGetAssAR = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/assetrequest/getAr', {
+            const response = await fetch('https://infosafe.live/api/assetrequest/getAr', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
