@@ -112,7 +112,7 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 4.5%;
+    right: 8%;
     height: 70%;
     top: 15%;
     border-radius: 4px;
@@ -131,7 +131,7 @@
     width: 2.5%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     position: absolute;
-    right: 1%;
+    right: 4.5%;
     height: 70%;
     top: 15%;
     border-radius: 4px;
@@ -143,6 +143,20 @@
     color: #FFFFFF;
     width: 130%;
     outline: 2px black;
+}
+.filesButton{
+    background-color: #444040;
+    color: white;
+    width: 2.5%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    position: absolute;
+    right: 1%;
+    height: 70%;
+    top: 15%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .CreateDataScopeButton {
     background: #373737;

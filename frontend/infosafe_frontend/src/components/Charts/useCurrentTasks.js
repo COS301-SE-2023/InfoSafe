@@ -6,7 +6,7 @@ export const useCurrentTasks = () => {
     const [totalTasks, setTotalTasks] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/taskCount', {
+        fetch('https://infosafe.live/api/user/taskCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -22,7 +22,7 @@ export const useCurrentTasks = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user/getAllTasks', {
+        fetch('https://infosafe.live/api/user/getAllTasks', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -38,7 +38,7 @@ export const useCurrentTasks = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/task/totalTasks', {
+        fetch('https://infosafe.live/api/task/totalTasks', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),

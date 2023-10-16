@@ -13,6 +13,7 @@ export const ForgotPassword = () => {
     const handleClick = (e) => {
         e.preventDefault();
 
+
         if ( !emailRegex.test(email) ){
             setEmailError("Invalid email format");
             return;
@@ -24,6 +25,7 @@ export const ForgotPassword = () => {
             email: email
         };
         fetch("http://localhost:8080/api/forgot/request-reset", {
+
             method: "POST",
             body: JSON.stringify(forgot),
             headers: {
@@ -74,6 +76,7 @@ export const ForgotPassword = () => {
     }
 
     const handleSecondClick = (e) => {
+
         e.preventDefault();
 
         if (newPassword !== confirmPassword) {
@@ -82,6 +85,7 @@ export const ForgotPassword = () => {
         }
         const forgot = { email: email, otp: otp, newPassword: newPassword };
         fetch("http://localhost:8080/api/forgot/reset-password", {
+
             method: "POST",
             body: JSON.stringify(forgot),
             headers: {

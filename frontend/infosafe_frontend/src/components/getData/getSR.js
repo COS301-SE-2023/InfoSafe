@@ -7,7 +7,7 @@ export const useGetSR = () => {
 
     const fetchAllData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/supportrequest/getSr', {
+            const response = await fetch('https://infosafe.live/api/supportrequest/getSr', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -30,7 +30,7 @@ export const useGetSR = () => {
 
     const fetchMyData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/supportrequest/getSrById', {
+            const response = await fetch('https://infosafe.live/api/supportrequest/getSrById', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
