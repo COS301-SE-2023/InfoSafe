@@ -98,7 +98,7 @@ export const DataScopes = () => {
             return (
                 <li key={datascope.data_scope_id}>
                     <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                        Data Scope {datascope.data_scope_id}: {datascope.ds_name} {/*{datascope.data_custodian && datascope.data_custodian.first_name} {datascope.data_custodian && datascope.data_custodian.last_name}*/}
+                        Data Scope {datascope.data_scope_id} : {datascope.ds_name} {/*{datascope.data_custodian && datascope.data_custodian.first_name} {datascope.data_custodian && datascope.data_custodian.last_name}*/}
 
                         {viewDataScopeOpen && (
                             <ViewDataScope
