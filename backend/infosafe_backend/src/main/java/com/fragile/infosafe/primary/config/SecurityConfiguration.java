@@ -60,7 +60,7 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:3000", "https://infosafe.live")); //""
+        configuration.setAllowedOrigins(Arrays.asList("https://ec2-52-91-180-105.compute-1.amazonaws.com", "https://infosafe.live", "http://localhost:3000")); //""
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
