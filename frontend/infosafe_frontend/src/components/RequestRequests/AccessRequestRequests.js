@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 export const useAccessRequests = () => {
     const [datascopeData, setDatascopeData] = useState([]);
@@ -8,15 +8,12 @@ export const useAccessRequests = () => {
         fetch('https://infosafe.live/api/datascope/availableDatascopes', {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
-            },
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
         })
             .then((res) => res.json())
             .then((result) => {
                 setDatascopeData(result);
-            })
-            .catch((error) => {
-                console.error("Error fetching availableDatascopes:", error);
             });
     }, []);
 
@@ -24,20 +21,17 @@ export const useAccessRequests = () => {
         fetch('https://infosafe.live/api/datascope/getMyDatascopes', {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
-            },
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
         })
             .then((res) => res.json())
             .then((result) => {
                 setMyDatascopeData(result);
-            })
-            .catch((error) => {
-                console.error("Error fetching getMyDatascopes:", error);
             });
     }, []);
-
     return {
         myDatascopeData,
-        datascopeData,
-    };
-};
+        datascopeData
+    }
+
+}

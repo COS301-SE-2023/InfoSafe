@@ -1,16 +1,16 @@
 import Popup from 'reactjs-popup';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../styling/EditRisk.css';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
 import ViewDataScope from "../View/ViewDataScope";
-import { useAccessRequests } from "../RequestRequests/AccessRequestRequests";
+import {useAccessRequests} from "../RequestRequests/AccessRequestRequests";
 const PROBABILITY = ['Almost Certain', 'Likely', 'Moderate', 'Unlikely', 'Rare'];
 const IMPACT = ['Insignificant', 'Minor', 'Significant', 'Major', 'Severe'];
 const STATUS = ['Open', 'In Progress', 'Resolved'];
-export const EditRisk = ({ risk, popupClose, popupOpen, onRiskEdited }) => {
+export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
     const [datascope, setDataScope] = useState(risk.dataScope.ds_name);
-    const { myDatascopeData } = useAccessRequests();
+    const {myDatascopeData} = useAccessRequests();
     const [values, setValues] = useState({
         risk_name: '',
         impact_rating: '',
@@ -46,20 +46,12 @@ export const EditRisk = ({ risk, popupClose, popupOpen, onRiskEdited }) => {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
             body: JSON.stringify(values)
+        }).then(() => {
+            console.log("Updated Risk")
+            onRiskEdited()
         })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Updated Risk")
-                    onRiskEdited();
-                } else {
-                    throw new Error("Network response was not ok");
-                }
-            })
-            .catch(error => {
-                console.error("Error updating risk:", error);
-            });
-
-        popupClose();
+        //console.log(JSON.stringify(values))
+        popupClose()
     }
 
     return (

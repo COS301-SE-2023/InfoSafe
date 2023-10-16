@@ -58,7 +58,7 @@ Users will be assigned certain roles when their profile has been created on the 
 
 ### Supporting Documentation:
 - :cd: [Installation Guide](https://drive.google.com/file/d/125hVZvrzfT5g-fSAJtC2lvuoXEt2QXdl/view?usp=drive_link)
-- :scroll: [User Manual](https://drive.google.com/file/d/1I3YdViR5jbR4gqQQjGEcjIQmcQFEhaRv/view?usp=drive_link)
+- :scroll: [User Manual](documentation/document_files/Infosafe_User_Manual_V4.pdf)
 - :triangular_ruler: [System Architecture](https://drive.google.com/file/d/1imZXfUnqDkVMFoVG3KLTdezh4MdND6yX/view?usp=drive_link)
 - :test_tube: [Testing Policy](https://drive.google.com/file/d/1OaNACeGeoWsiuj7rx3519Z2q8MjpRZz5/view?usp=drive_link)
 - :floppy_disk: [Database Design](https://drive.google.com/file/d/1l1JDXrADDrWAG31QOSZ7N1B5cr5oR-vK/view?usp=drive_link)

@@ -59,7 +59,9 @@ public class DeleteService {
                 deleteSupportRequestAndSaveToSecondary(support.getSupport_id());
             }
             for(Asset asset : entityToDelete.getAssets()){
-                deleteAssetAndSaveToSecondary(asset.getAsset_id());
+                asset.setPrevious_assignee(asset.getCurrent_assignee());
+                asset.setCurrent_assignee(null);
+                asset.setAvailability("Yes");
             }
             deletedUserRepository.save(de);
             userRepository.delete(entityToDelete);
@@ -105,6 +107,9 @@ public class DeleteService {
             de.setDevice_type(entityToDelete.getDevice_type());
             //de.setCurrent_assignee(entityToDelete.getCurrent_assignee());
             //de.setPrevious_assignee(entityToDelete.getPrevious_assignee());
+            for(AssetRequests assetRequests : entityToDelete.getAssetRequestsList()){
+                deleteAssetRequestAndSaveToSecondary(assetRequests.getAsset_request_id());
+            }
             deletedAssetRepository.save(de);
             assetRepository.delete(entityToDelete);
         }

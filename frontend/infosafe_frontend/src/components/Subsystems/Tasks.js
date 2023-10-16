@@ -4,10 +4,7 @@ import {CreateTask} from "../Create/CreateTaskPopup";
 import {UpdateTask} from "../Edit/EditTaskPopup";
 import {TaskApproval} from "../TaskApprovalPopup";
 import "../../styling/Tasks.css";
-import {FaSearch} from "react-icons/fa";
 import {RiEditBoxFill} from "react-icons/ri";
-import EditDevice from "../Edit/EditDevice";
-import {ReviewRisk} from "../Reviews/ReviewRiskPopup";
 import {useGetPerms} from "../getData/getPerms";
 import {useGetTask} from "../getData/getTask";
 import {IoHelpCircle} from "react-icons/io5";
@@ -58,6 +55,7 @@ export const Tasks = () => {
                                 popupClose={() => setViewTaskOpen(false)}
                                 popupOpen={viewTaskOpen}
                                 task={task}
+                                onTaskView={fetchAllTasks}
                             />
                         ) : null}
                     </p>
@@ -151,15 +149,6 @@ export const Tasks = () => {
                     ) : null}
                 </button>
                 <div className="searchTasks">
-                    {/*<input
-                        // data-testid="userSearch"
-                        className="taskSearchInput"
-                        type="text"
-                        id="taskSearchInput"
-                        name="taskSearch"
-                        // onChange={}
-                    />
-                    <FaSearch className="userSearchIcon" />*/}
                 </div>
                 <div className="tasks">
                     {loading ? (

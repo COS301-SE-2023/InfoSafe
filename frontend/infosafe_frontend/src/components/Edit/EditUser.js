@@ -1,11 +1,11 @@
 import Popup from 'reactjs-popup';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import Dropdown from 'react-dropdown';
-import { customStyles } from "../CustomStyling";
+import {customStyles} from "../CustomStyling";
 import '../../styling/EditUser.css'
 
-const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
+const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
     const [selectedRole, setSelectedRole] = useState(user.role.role_name)
     const [roleNames, setRoleNames] = useState('')
     const [values, setValues] = useState({
@@ -14,10 +14,17 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
         last_name: user.last_name,
         email: user.email,
         password: user.password,
-        role: { role_name: selectedRole }
+        role: {role_name: selectedRole}
     });
 
+    // const handleRole = (selectedOptions) => {
+    //     console.log(selectedOptions)
+    //     setSelectedRole(selectedOptions);
+    //     console.log(selectedOptions)
+    // };
+
     useEffect(() => {
+        //console.log("this happened")
         if (user) {
             setValues({
                 user_id: user.user_id,
@@ -25,59 +32,48 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
                 last_name: user.last_name,
                 email: user.email,
                 password: user.password,
-                role: { role_name: user.role.role_name }
+                role: {role_name: user.role.role_name}
             });
         }
     }, [user]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        //console.log(values)
         fetch('https://infosafe.live/api/user/update/' + user.user_id, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
+            method:"PUT",
+            headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
-            body: JSON.stringify(values)
+            body:JSON.stringify(values)
+        }).then(()=>{
+            console.log("Updated User");
+            onUserEdited();
         })
-            .then((response) => {
-                if (response.ok) {
-                    console.log("Updated User");
-                    onUserEdited();
-                } else {
-                    throw new Error("Network response was not ok");
-                }
-            })
-            .catch((error) => {
-                console.error("Error updating user:", error);
-            });
         popupClose()
     }
 
     useEffect(() => {
         async function fetchRoles() {
-            try {
-                const response = await fetch("https://infosafe.live/api/role/getRoleNames", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                const roles = await response.json();
-                setRoleNames(roles);
-            } catch (error) {
-                console.error("Error fetching role names:", error);
-            }
+            const response = await fetch("https://infosafe.live/api/role/getRoleNames", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                },
+            });
+            // }).then((res) => res.json())
+            //     .then((result) => {
+            //         setRoleNames(result);
+            //     });
+            const roles = await response.json();
+            setRoleNames(roles);
         }
         fetchRoles();
     }, []);
 
     return (
-        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
+        <Popup open={popupOpen} closeOnDocumentClick={false} position="center center" >
             <div className="editUserOverlay" data-testid="editUserPopup">
                 <div className="popupBackground">
                     <div className="editUserBorder">
@@ -96,7 +92,7 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
                                         name="editusername"
                                         data-testid="firstNameEdit"
                                         defaultValue={user.first_name}
-                                        onChange={e => setValues({ ...values, first_name: e.target.value })}
+                                        onChange={e => setValues({...values, first_name: e.target.value})}
                                     />
                                 </div>
                                 <div className="surnameEdit">
@@ -107,7 +103,7 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
                                         id="editusersurname"
                                         name="editusersurname"
                                         defaultValue={user.last_name}
-                                        onChange={e => setValues({ ...values, last_name: e.target.value })}
+                                        onChange={e => setValues({...values, last_name: e.target.value})}
                                     />
                                 </div>
                                 <div className="emailEdit">
@@ -118,7 +114,7 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
                                         id="edituseremail"
                                         name="edituseremail"
                                         defaultValue={user.email}
-                                        onChange={e => setValues({ ...values, email: e.target.value })}
+                                        onChange={e => setValues({...values, email: e.target.value})}
                                         readOnly={true}
                                     />
                                 </div>
@@ -130,7 +126,7 @@ const EditUser = ({ user, popupClose, popupOpen, onUserEdited }) => {
                                             value={selectedRole}
                                             className="roleDropdown"
                                             name="roleDropdown"
-                                            onChange={roleNames => setValues({ ...values, role: { role_name: roleNames.value } })}
+                                            onChange={roleNames => setValues({...values, role: {role_name: roleNames.value}})}
                                         />
                                     ) : (
                                         <p className="editUserRolesLoading">Loading...</p>

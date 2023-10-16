@@ -32,7 +32,7 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .createDataScopeBorder::-webkit-scrollbar {
@@ -129,7 +129,7 @@
 }
 .dataScopeRoles{
     height: 2%;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .dataScopeRoles::-webkit-scrollbar {

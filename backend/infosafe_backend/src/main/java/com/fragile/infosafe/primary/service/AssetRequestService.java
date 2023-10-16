@@ -1,5 +1,6 @@
 package com.fragile.infosafe.primary.service;
 
+import com.fragile.infosafe.primary.model.AccessRequest;
 import com.fragile.infosafe.primary.model.Asset;
 import com.fragile.infosafe.primary.model.AssetRequests;
 import com.fragile.infosafe.primary.model.User;
@@ -32,6 +33,7 @@ public class AssetRequestService {
     private final DeleteService deleteService;
     private final EmailService emailService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
 
     public ResponseEntity<String> makeAR(AssetRequestRequest request, User authenticatedUser) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -43,21 +45,23 @@ public class AssetRequestService {
                 .user(authenticatedUser)
                 .build();
 
-        if (!isNumeric(request.getAsset_id())) {
-            System.out.println("here");
-            Optional<Asset> asset = assetRepository.findByAssetId(request.getAsset_id());
-            if (asset.isPresent()) {
-                assetRequests.setAsset(asset.get());
-            } else {
-                log.error("Asset with " + request.getAsset_id() + " not found");
-            }
+        Optional<Asset> asset = assetRepository.findByAssetId(request.getAsset_id());
+        if (asset.isPresent()) {
+            assetRequests.setAsset(asset.get());
+        } else {
+            log.error("Asset with " + request.getAsset_id() + " not found");
         }
         assetRequestRepository.save(assetRequests);
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
     public List<AssetRequests> getAllAssetRequests() {
-        return assetRequestRepository.findAll();
+        List<AssetRequests> ar = assetRequestRepository.findAll();
+        for (AssetRequests assetRequests : ar) {
+            assetRequests.getUser().setFirst_name(encryptionService.decryptString(assetRequests.getUser().getFirst_name()));
+            assetRequests.getUser().setLast_name(encryptionService.decryptString(assetRequests.getUser().getLast_name()));
+        }
+        return ar;
     }
 
     public AssetRequests updateAssetRequest(AssetRequests assetRequests) {
@@ -79,7 +83,7 @@ public class AssetRequestService {
                 asset.setAvailability("No");
                 asset.setCurrent_assignee(user);
                 assetRepository.save(asset);
-                emailUser(reviewRequest.getUser_email(), asset.getAsset_name(), "Approved");
+                emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), asset.getAsset_name(), "Approved");
                 notificationsService.makeNotification("Received Asset " + asset.getAsset_name(), user);
                 deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                 return ResponseEntity.ok("given to user");

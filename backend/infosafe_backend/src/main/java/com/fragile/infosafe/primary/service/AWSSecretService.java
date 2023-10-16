@@ -35,11 +35,13 @@ public class AWSSecretService {
     private final Gson gson = new Gson();
 
     public RDSLogin getRDSLogin() {
+        String region = "us-east-1";
         SecretsManagerClient client = SecretsManagerClient.builder()
                 .region(Region.of(region))
                 .credentialsProvider(createCredentialsProvider())
                 .build();
 
+        String secretName = "rds_login";
         GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
                 .secretId(secretName)
                 .build();
@@ -85,7 +87,8 @@ public class AWSSecretService {
         JsonNode jsonNode = objectMapper.readTree(secret);
         return jsonNode.get("IV").asText();
     }
-    private AwsCredentialsProvider createCredentialsProvider() {
+
+    public AwsCredentialsProvider createCredentialsProvider() {
         return new AwsCredentialsProvider() {
             @Override
             public AwsCredentials resolveCredentials() {

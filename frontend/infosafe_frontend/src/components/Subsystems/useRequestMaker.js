@@ -50,15 +50,15 @@ const useRequestMaker = () => {
 
         switch (selectedRequest) {
             case 'Support Request':
-                apiUrl = "https://infosafe.live/api/supportrequest/addSr";
+                apiUrl = "http://localhost:8080/api/supportrequest/addSr";
                 requestBody = support;
                 break;
             case 'Asset Request':
-                apiUrl = "https://infosafe.live/api/assetrequest/addAr";
+                apiUrl = "http://localhost:8080/api/assetrequest/addAr";
                 requestBody = asset;
                 break;
             case 'Access Request':
-                apiUrl = "https://infosafe.live/api/accessrequest/addAr";
+                apiUrl = "http://localhost:8080/api/accessrequest/addAr";
                 requestBody = access;
                 break;
             default:
@@ -74,12 +74,15 @@ const useRequestMaker = () => {
             },
             body: JSON.stringify(requestBody)
         }).then(() => {
-            console.log("New request added")
+            console.log("New request added");
+        })
+        .catch((error) => {
+            window.alert("Error: Unable to create duplicate requests.");
         })
     };
 
     useEffect(() => {
-        fetch('https://infosafe.live/api/user/getEmail', {
+        fetch('http://localhost:8080/api/user/getEmail', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

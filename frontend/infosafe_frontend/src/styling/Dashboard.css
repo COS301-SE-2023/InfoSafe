@@ -23,7 +23,7 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     /*margin-left: 2.5%;*/
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .dataScopesInfo::-webkit-scrollbar{
@@ -63,7 +63,7 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     margin-left: 6%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .currentTasksInfo::-webkit-scrollbar{
@@ -100,7 +100,7 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     margin-left: 6%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .currentDevicesInfo::-webkit-scrollbar{
@@ -137,7 +137,7 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     margin-left: 6%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .currentRequestsInfo::-webkit-scrollbar{
@@ -366,7 +366,7 @@
     margin: 0;
 }
 .myDevicesDisplay {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     height: 60%;
@@ -379,12 +379,12 @@
 }
 
 .inUseDevicesList {
-    list-style: none;
+    list-style-type: square;
     margin: 0;
     padding: 0;
     width: 94%;
     position: relative;
-    left: 3%;
+    left: 5.5%;
 }
 .inUseDevicesList li {
     position: relative;
@@ -432,7 +432,7 @@
     margin: 0;
 }
 .notificationsDisplay {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     height: 60%;
@@ -488,7 +488,7 @@
 }
 .deadlinesDiv{
     height: 64%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     position: relative;
