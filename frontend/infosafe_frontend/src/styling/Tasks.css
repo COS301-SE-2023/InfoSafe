@@ -9,7 +9,7 @@
 }
 .taskHelpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }
 .tasksBackground{
     background-color: #FFFFFF;
@@ -44,14 +44,14 @@
     font-size: 16px;
 }
 .taskSearchInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
 }
 .taskSearchIcon {
     position: absolute;
     right: 10px;
     top: 54%;
     transform: translateY(-50%);
-    color: #9E0000;
+    color: #00003E;
 }
 .tasks {
     background-color: transparent;
@@ -60,9 +60,19 @@
     height: 60%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
     box-sizing: content-box;
-    scrollbar-width: none;
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
+}
+.tasks::-webkit-scrollbar {
+    width: 8px;
+}
+.tasks::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
 }
 .taskList {
     list-style: none;
@@ -75,7 +85,8 @@
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #CECECE;
+    border: 3px solid #444040;
+    background-color: white;
     padding: 5px;
     border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
@@ -93,9 +104,6 @@
 .taskList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-.tasks::-webkit-scrollbar {
-    display: none;
 }
 .taskEditButton{
     background-color: #444040;
@@ -171,7 +179,7 @@
     margin: 0 auto;
     height: 8%;
     width: 30%;
-    border: 4px solid #9E0000;
+    border: 4px solid #00003E;
     border-radius: 20px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
 }

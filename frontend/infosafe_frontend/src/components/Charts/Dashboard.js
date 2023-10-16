@@ -148,7 +148,7 @@ export const Dashboard = () => {
                                 <ul className="inUseDevicesList">
                                     {myAssets.map((assets, index) => (
                                         <li key={index}>
-                                            <p>{assets.asset_name}</p>
+                                            <p>{assets.asset_name} ({assets.device_type})</p>
                                         </li>
                                     ))}
                                 </ul>

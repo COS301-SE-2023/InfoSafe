@@ -127,13 +127,7 @@ const NavBar = () => {
             displayMenu();
         }
         showSettings(!settings);
-        if (!settings) {
-            document.getElementById("userDisplay").style.right = "24%";
-            document.getElementById("avatar").style.right = "22%";
-        } else {
-            document.getElementById("userDisplay").style.right = "4%";
-            document.getElementById("avatar").style.right = "2%";
-        }
+
     };
 
     const displayMenu = () => {

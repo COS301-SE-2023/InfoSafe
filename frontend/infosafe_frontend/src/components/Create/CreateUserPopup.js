@@ -13,19 +13,26 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
     const[password,setPassword]=useState('')
     const [roleNames, setRoleNames] = useState('')
     const [selectedRole, setSelectedRole] = useState('');
-
+    const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    const [errMsg , setErrMsg] = useState("");
     const useHandleClick = (e) => {
         e.preventDefault();
-        popupClose();
-        const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
 
-        if ( document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '' ) {
-            document.getElementById("createUserError").style.display = "block";
+
+        if (document.getElementById("nameInput").value === '' || document.getElementById("surnameInput").value === '' || document.getElementById("emailInput").value === '' || selectedRole === '') {
+            setErrMsg("Please ensure that all fields are completed.");
+            return;
+        }else if ( !emailRegex.test(email) ){
+            setErrMsg("Invalid email format");
             return;
         }
 
-        fetch(`https://infosafe.live/api/user/checkEmail?email=${email}`, {
-            method: "GET",
+        popupClose();
+        const user = { first_name, last_name, email, password, role: { role_name: selectedRole } };
+
+
+        fetch("http://localhost:8080/api/user/add", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
@@ -139,8 +146,10 @@ export const CreateUserPopup = ({ popupOpen, popupClose, onUserAdded }) => {
                                 ) : (
                                     <p className="createUserLoadTitle">Loading...</p>
                                 )}
-                                <p className="createUserError" id="createUserError">Please ensure all fields are completed.</p>
-                                <button className="createUserFinish" data-testid="createuser_finish"  onClick={useHandleClick}>
+
+                                <p className="createUserError" id="createUserError">{errMsg}</p>
+                                <button className="createUserFinish" data-testid="createuser_finish" onClick={useHandleClick}>
+
                                     Submit
                                 </button>
                             </div>

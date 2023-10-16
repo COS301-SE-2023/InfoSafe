@@ -5,10 +5,12 @@ import com.fragile.infosafe.delete.deletemodel.*;
 import com.fragile.infosafe.delete.deleterepository.*;
 import com.fragile.infosafe.primary.model.*;
 import com.fragile.infosafe.primary.repository.*;
+import com.fragile.infosafe.primary.requests.AssetRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.Optional;
 
 @Service
@@ -47,6 +49,20 @@ public class DeleteService {
             de.setFirst_name(entityToDelete.getFirst_name());
             de.setLast_name(entityToDelete.getLast_name());
             de.setRole(entityToDelete.getRole().getRole_name());
+            for(AccessRequest access : entityToDelete.getAccessRequests()){
+                deleteAccessRequestAndSaveToSecondary(access.getRequest_id());
+            }
+            for(AssetRequests assetRequest : entityToDelete.getAssetRequests()){
+                deleteAssetRequestAndSaveToSecondary(assetRequest.getAsset_request_id());
+            }
+            for(SupportRequest support : entityToDelete.getSupportRequests()){
+                deleteSupportRequestAndSaveToSecondary(support.getSupport_id());
+            }
+            for(Asset asset : entityToDelete.getAssets()){
+                asset.setPrevious_assignee(asset.getCurrent_assignee());
+                asset.setCurrent_assignee(null);
+                asset.setAvailability("Yes");
+            }
             deletedUserRepository.save(de);
             userRepository.delete(entityToDelete);
         }
@@ -62,6 +78,15 @@ public class DeleteService {
             de.setDs_description(entityToDelete.getDs_description());
             de.setDs_status(entityToDelete.getDs_status());
             de.setDate_captured(entityToDelete.getDate_captured());
+            for(AccessRequest access : entityToDelete.getAccessRequests()){
+                deleteAccessRequestAndSaveToSecondary(access.getRequest_id());
+            }
+            for(Risk risk : entityToDelete.getRisks()){
+                deleteRiskAndSaveToSecondary(risk.getRisk_id());
+            }
+            for(Task task : entityToDelete.getTasks()){
+                deleteTaskAndSaveToSecondary(task.getTask_id(), "DatascopeDeleted");
+            }
             dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
             dataScopeRepository.delete(entityToDelete);
@@ -82,6 +107,9 @@ public class DeleteService {
             de.setDevice_type(entityToDelete.getDevice_type());
             //de.setCurrent_assignee(entityToDelete.getCurrent_assignee());
             //de.setPrevious_assignee(entityToDelete.getPrevious_assignee());
+            for(AssetRequests assetRequests : entityToDelete.getAssetRequestsList()){
+                deleteAssetRequestAndSaveToSecondary(assetRequests.getAsset_request_id());
+            }
             deletedAssetRepository.save(de);
             assetRepository.delete(entityToDelete);
         }
@@ -101,7 +129,6 @@ public class DeleteService {
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);
         }
-
     }
 
     public void deleteAccessRequestAndSaveToSecondary(int request_id){

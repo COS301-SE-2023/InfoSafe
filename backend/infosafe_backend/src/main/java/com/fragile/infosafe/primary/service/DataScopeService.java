@@ -46,7 +46,9 @@ public class DataScopeService {
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-    public List<DataScope> getAllDatascopes() {return dataScopeRepository.findAll();}
+    public List<DataScope> getAllDatascopes() {
+        return dataScopeRepository.findAll();
+    }
 
     public DataScope updateDataScope(DataScopeRequest request) {
         Optional<DataScope> entityOptional = dataScopeRepository.findByDataScopeId(request.getData_scope_id());

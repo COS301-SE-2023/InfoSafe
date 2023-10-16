@@ -23,7 +23,20 @@ public class AssetService {
     private final EmailService emailService;
     private final NotificationsService notificationsService;
     private final EncryptionService encryptionService;
-    public List<Asset> getAllAssets() {return assetRepository.findAll();}
+    public List<Asset> getAllAssets() {
+        List<Asset> ass = assetRepository.findAll();
+        for(Asset as : ass){
+            if(as.getCurrent_assignee() != null){
+                as.getCurrent_assignee().setFirst_name(encryptionService.decryptString(as.getCurrent_assignee().getFirst_name()));
+                as.getCurrent_assignee().setLast_name(encryptionService.decryptString(as.getCurrent_assignee().getLast_name()));
+            }
+            if(as.getPrevious_assignee() != null){
+                as.getPrevious_assignee().setFirst_name(encryptionService.decryptString(as.getPrevious_assignee().getFirst_name()));
+                as.getPrevious_assignee().setLast_name(encryptionService.decryptString(as.getPrevious_assignee().getLast_name()));
+            }
+        }
+        return ass;
+    }
 
     public Asset updateAsset(AssetRequest asset) {
         if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {
@@ -52,21 +65,19 @@ public class AssetService {
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
                 .used(request.getUsed())
+                .previous_assignee(null)
                 .build();
 
         if (request.getCurrent_assignee() != null) {
             User user = userRepository.findByEmail(encryptionService.encryptString(request.getCurrent_assignee())).orElse(null);
             if (user != null) {
                 asset.setCurrent_assignee(user);
-                emailUser(user.getEmail(), asset.getAsset_name());
+                emailUser(encryptionService.decryptString(user.getEmail()), asset.getAsset_name());
                 notificationsService.makeNotification("Assigned Asset " + asset.getAsset_name(), user);
             } else {
                 log.error("User with email " + request.getCurrent_assignee() + " not found");
             }
         }
-//        else{
-//            asset.setCurrent_assignee(request.getCurrent_assignee());
-//        }
 
         assetRepository.save(asset);
         return ResponseEntity.status(HttpStatus.OK).body("added");

@@ -51,12 +51,12 @@ public class UserService {
     }
 
     public Optional<User> getUserByEmail(String email) {
-        return repository.findByEmail(email);
+        return repository.findByEmail(encryptionService.encryptString(email));
     }
 
 
     public void changePassword(User user, String newPassword) {
-        user.setPassword(encryptionService.encryptString(passwordEncoder.encode(newPassword)));
+        user.setPassword(passwordEncoder.encode(newPassword));
         repository.save(user);
     }
 
@@ -67,11 +67,11 @@ public class UserService {
     }
 
     public boolean checkEmailExists(String email) {
-        return repository.existsByEmail(email);
+        return repository.existsByEmail(encryptionService.encryptString(email));
     }
 
     public void resetPassword(String email, String newPassword) {
-        Optional<User> userOptional = repository.findByEmail(email);
+        Optional<User> userOptional = repository.findByEmail(encryptionService.encryptString(email));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             user.setPassword(passwordEncoder.encode(newPassword));
@@ -83,13 +83,15 @@ public class UserService {
     }
 
     public void generateAndSaveOtp(String email) {
-        Optional<User> userOptional = repository.findByEmail(email);
+        Optional<User> userOptional = repository.findByEmail(encryptionService.encryptString(email));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             String otp = generateRandomOTP();
             user.setOtp(otp);
             repository.save(user);
-            emailService.sendEmail(user.getEmail(), "Forgot Password", "Your OTP is:\n" + otp);
+            emailService.sendEmail(email, "Forgot Password", "Your OTP is:\n" + otp);
+        }else{
+            log.info("Broke here" + email);
         }
     }
 
@@ -101,7 +103,7 @@ public class UserService {
     }
 
     public boolean verifyOTP(String email, String otp) {
-        Optional<User> userOptional = repository.findByEmail(email);
+        Optional<User> userOptional = repository.findByEmail(encryptionService.encryptString(email));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             return user.getOtp().equals(otp);

@@ -1,5 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
@@ -10,9 +12,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import software.amazon.awssdk.services.redshift.model.SupportedPlatform;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -38,6 +42,35 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "role_name")
     private Role role;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "current_assignee", fetch = FetchType.LAZY)
+    private List<Asset> assets;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<AssetRequests> assetRequests;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
+    private List<SupportRequest> supportRequests;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
+    private List<AccessRequest> accessRequests;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", otp='" + otp + '\'' +
+                ", role=" + (role != null ? role.getRole_name() : "null") +
+                '}';
+    }
 
     public int getUser_id() {
         return user_id;

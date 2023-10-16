@@ -177,6 +177,7 @@
 }
 .forgot:hover {
     color: #ffffff;
+    cursor: pointer;
 }
 .loginError{
     position: relative;
