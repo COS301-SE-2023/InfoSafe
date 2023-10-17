@@ -10,7 +10,7 @@ import {useGetFiles} from "./getData/getFiles";
     export const FilePopup = ({ popupOpen, popupClose, datascope }) => {
         const [selectedFile, setSelectedFile] = useState(null);
         const {showFile, loading, fetchAllFiles} = useGetFiles();
-        const FILES = [];
+        let FILES = [];
 
         useEffect(() => {
             fetchAllFiles();
@@ -21,6 +21,7 @@ import {useGetFiles} from "./getData/getFiles";
             FILES.push(data)
         );
 
+        let fileArray = [];
         for (let i=0; i<FILES.length; i++){
             let fileID = FILES[i].substring(23);
             fileID = fileID.slice(0, 2);
@@ -29,10 +30,11 @@ import {useGetFiles} from "./getData/getFiles";
                 fileID = fileID.substring(0, fileID.length-1);
             }
             const int = parseInt(fileID);
-            if(int !== datascope.data_scope_id){
-                
+            if(int === datascope.data_scope_id){
+                fileArray.push(FILES[i]);
             }
         }
+        FILES = fileArray;
 
         if (loading === true){
             FILES[0] = "Files Loading.....";
