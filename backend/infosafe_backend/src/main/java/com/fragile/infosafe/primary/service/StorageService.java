@@ -49,10 +49,10 @@ public class StorageService {
 
     public String uploadFile(MultipartFile file){
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String fileDate = formatter.format(date);
         File fileObj = convertMultiPartFiletoFile(file);
-        String fileName = fileDate + file.getOriginalFilename();
+        String fileName = fileDate + "-DatascopeID=" + file.getOriginalFilename();
         try {
             this.s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
         }
@@ -66,7 +66,7 @@ public class StorageService {
 
     public byte[] dowloadFile(String fileName){
 
-        S3Object s3Object = s3Client.getObject(bucketName, fileName);
+        S3Object s3Object = this.s3Client.getObject(bucketName, fileName);
         S3ObjectInputStream inputStream = s3Object.getObjectContent();
 
         try {
@@ -80,7 +80,7 @@ public class StorageService {
     }
 
     public String deleteFile(String fileName){
-        s3Client.deleteObject(bucketName, fileName);
+        this.s3Client.deleteObject(bucketName, fileName);
         return fileName + " removed from S3 ...";
     }
 
