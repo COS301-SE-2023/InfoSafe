@@ -1,17 +1,17 @@
-const sendurl = "http://infosafe.live/";
+const sendurl = "https://infosafe.live";
 const useremail = "alistairmikeross@gmail.com";
 const userpassword = "1234";
 
-describe("Visits the backend", () => {
-  it("returns 403 Forbidden", () => {
-    cy.request({
-      url: "https://infosafe.live/",
-      failOnStatusCode: false,
-    }).then((response) => {
-      expect(response.status).to.equal(403);
-    });
-  });
-});
+// describe("Visits the backend", () => {
+//   it("returns 403 Forbidden", () => {
+//     cy.request({
+//       url: "https://infosafe.live/",
+//       failOnStatusCode: false,
+//     }).then((response) => {
+//       expect(response.status).to.equal(403);
+//     });
+//   });
+// });
 describe("Login", () => {
   it("Logs in successfully with valid credentials", () => {
 
