@@ -48,18 +48,14 @@ import {useGetFiles} from "./getData/getFiles";
             .then((response) => {
                 if (response.ok) {
                     // Handle the response as needed
-                    return response.json();
+                    //console.log(response);
+                    return response.text();
+                    popupClose();
                 } else {
+                    //console.log(response);
                     throw new Error("File upload failed");
                 }
             })
-            .then((data) => {
-                console.log("File upload response: ", data);
-                popupClose();
-            })
-            .catch((error) => {
-                console.error("File upload error: ", error);
-            });
     };
 
     const handleFileDelete = () => {
