@@ -11,10 +11,10 @@
 [![codecov](https://codecov.io/gh/COS301-SE-2023/InfoSafe/branch/dev/graph/badge.svg?token=7T6WCYXEIO)](https://codecov.io/gh/COS301-SE-2023/infosafe)
 [![Languages](https://img.shields.io/github/languages/count/COS301-SE-2023/InfoSafe.svg)](https://github.com/COS301-SE-2023/InfoSafe)
 
-[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2045.1%25)](https://www.javascript.com)
-[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2035.2%25)](https://www.css3.com)
-[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%2019.3%25)](https://www.java.com)
-[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%200.4%25)](https://www.html5.org)
+[![Javascript](https://img.shields.io/badge/-Javascript-yellow?logo=javascript&logoColor=white&style=flat&label=%2050.5%25)](https://www.javascript.com)
+[![CSS](https://img.shields.io/badge/-css-lightblue?logo=css3&logoColor=white&style=flat&label=%2025.1%25)](https://www.css3.com)
+[![Java](https://img.shields.io/badge/-Java-blue?logo=java&logoColor=white&style=flat&label=%2024.2%25)](https://www.java.com)
+[![HTML](https://img.shields.io/badge/-html-orange?logo=html5&logoColor=white&style=flat&label=%200.2%25)](https://www.html5.org)
 
 <hr>
 
