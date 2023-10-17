@@ -129,7 +129,7 @@ export const Users = () => {
                     </p>
                     <EditUserDiv user={user}/>
                     {user.role.role_name !== "ADMIN" ? (
-                        <DeleteUser user={user}></DeleteUser>
+                        <DeleteUser user={user} data-testid='deleteUser'></DeleteUser>
                     ) : null}
                 </li>
             );
