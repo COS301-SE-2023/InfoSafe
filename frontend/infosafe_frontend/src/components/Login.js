@@ -47,7 +47,7 @@ function Login(){
         <div className='background'>
                     <div className='panelBack'>
                         <button  className="taskHelpButton" onClick={() => setHelpOpen(true)}>
-                            <IoHelpCircle className="taskHelpPopupIcon"></IoHelpCircle>
+                            <IoHelpCircle className="loginHelpPopupIcon"></IoHelpCircle>
                             {helpOpen ? (
                                 <HelpPopup
                                     popupClose={() => setHelpOpen(false)}
