@@ -23,11 +23,10 @@ const FILES = ['FILE1','FILE2','FILE3'];
 
         fetch("http://localhost:8080/api/storage/upload", {
             method: "POST",
-            body: formData,
             headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: "Bearer " + sessionStorage.getItem('accessToken'),
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
             },
+            body: formData,
         })
             .then((response) => {
                 if (response.ok) {
@@ -37,13 +36,13 @@ const FILES = ['FILE1','FILE2','FILE3'];
                     throw new Error("File upload failed");
                 }
             })
-            .then((data) => {
-                console.log("File upload response: ", data);
-                popupClose();
-            })
-            .catch((error) => {
-                console.error("File upload error: ", error);
-            });
+            // .then((data) => {
+            //     console.log("File upload response: ", data);
+            //     popupClose();
+            // })
+            // .catch((error) => {
+            //     console.error("File upload error: ", error);
+            // });
     };
 
         const handleFileDelete = () => {
