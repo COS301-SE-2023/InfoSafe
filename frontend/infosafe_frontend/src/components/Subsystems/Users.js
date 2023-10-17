@@ -97,14 +97,20 @@ export const Users = () => {
         if (roles.includes("user_delete")) {
             return (
                 <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDeleteUserOpen(true)}/>
-                    {deleteUserOpen ? (
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => {
+                        if (user.role.role_name === "ADMIN") {
+                            alert("Unable to delete an admin user.");
+                        } else {
+                            setDeleteUserOpen(true);
+                        }
+                    }} />
+                    {deleteUserOpen && user.role.role_name !== "ADMIN" && (
                         <ConfirmDelete
                             popupClose={() => setDeleteUserOpen(false)}
                             popupOpen={deleteUserOpen}
                             yesDelete={() => DeleteFunction(user.email)}
                         />
-                    ) : null}{' '}
+                    )}
                 </div>
             )
         } else {

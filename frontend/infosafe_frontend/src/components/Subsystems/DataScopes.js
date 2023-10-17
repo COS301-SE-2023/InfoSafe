@@ -1,7 +1,7 @@
 import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
 import React, {useEffect, useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaRegEdit, FaSearch, FaFileAlt} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import "../../styling/DataScopes.css";
@@ -110,15 +110,15 @@ export const DataScopes = () => {
                     </p>
                     <EditDataScope datascope={datascope}></EditDataScope>
                     <DeleteDataScope datascope={datascope}></DeleteDataScope>
-                    {/*<div className="viewFiles">*/}
-                    {/*    <button className="filesButton" onClick={() => setViewFilesOpen(true)}>Files</button>*/}
-                    {/*    {viewFilesOpen ? (*/}
-                    {/*        <FilePopup datascope={datascope}*/}
-                    {/*                   popupClose={() => setViewFilesOpen(false)}*/}
-                    {/*                   popupOpen={viewFilesOpen}*/}
-                    {/*        />*/}
-                    {/*    ) : null}{' '}*/}
-                    {/*</div>*/}
+                    <div className="viewFiles">
+                        <FaFileAlt className="filesButton" onClick={() => setViewFilesOpen(true)}></FaFileAlt>
+                        {viewFilesOpen ? (
+                            <FilePopup datascope={datascope}
+                                       popupClose={() => setViewFilesOpen(false)}
+                                       popupOpen={viewFilesOpen}
+                            />
+                        ) : null}{' '}
+                    </div>
                 </li>
             );
         } else {
