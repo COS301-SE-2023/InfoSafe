@@ -16,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +29,7 @@ public class AccessRequestService {
 
     private final EmailService emailService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
     public ResponseEntity<String> makeAR(AccessRequestRequest request, User authenticatedUser) {
         AccessRequest accessRequest = AccessRequest.builder()
                 .reason(request.getReason())
@@ -48,7 +46,12 @@ public class AccessRequestService {
     }
 
     public List<AccessRequest> getAllAccessRequests() {
-        return accessRequestRepository.findAll();
+        List<AccessRequest> ar = accessRequestRepository.findAll();
+        for(AccessRequest accessRequest : ar){
+            accessRequest.getUser_id().setFirst_name(encryptionService.decryptString(accessRequest.getUser_id().getFirst_name()));
+            accessRequest.getUser_id().setLast_name(encryptionService.decryptString(accessRequest.getUser_id().getLast_name()));
+        }
+        return ar;
     }
 
     public AccessRequest updateAccessRequest(AccessRequest accessRequest) {
@@ -69,7 +72,7 @@ public class AccessRequestService {
                     dataScope.getUsers().add(user);
                     dataScopeRepository.save(dataScope);
                     deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                    emailUser(reviewRequest.getUser_email(), dataScope.getDs_name(), "Approved");
+                    emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), dataScope.getDs_name(), "Approved");
                     notificationsService.makeNotification("Added to Datascope " + dataScope.getDs_name(), user);
                     return ResponseEntity.ok("given to user");
                 } else {

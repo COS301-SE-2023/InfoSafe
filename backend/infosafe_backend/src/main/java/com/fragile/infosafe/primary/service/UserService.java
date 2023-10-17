@@ -6,35 +6,52 @@ import com.fragile.infosafe.primary.model.User;
 import com.fragile.infosafe.primary.repository.RoleRepository;
 import com.fragile.infosafe.primary.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.Cipher;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
     private final UserRepository repository;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final EncryptionService encryptionService;
 
     public List<User> getAllUsers() {
-        return repository.findAll();
+        List<User> users = repository.findAll();
+        for (User user : users) {
+            user.setFirst_name(encryptionService.decryptString(user.getFirst_name()));
+            user.setLast_name(encryptionService.decryptString(user.getLast_name()));
+            user.setEmail(encryptionService.decryptString(user.getEmail()));
+        }
+        return users;
     }
 
-    public Optional<User> getUser(Integer user_id) {
-        return repository.findById(user_id);
+    public List<String> getAllUsersEmails() {
+        List<String> emails = repository.getAllEmails();
+        emails.replaceAll(encryptionService::decryptString);
+        return emails;
     }
 
     public User updateUser(User user) {
         user.setRole(roleRepository.findByRole_name(user.getRole().getRole_name()));
+        user.setFirst_name(encryptionService.decryptString(user.getFirst_name()));
+        user.setLast_name(encryptionService.decryptString(user.getLast_name()));
+        user.setEmail(encryptionService.decryptString(user.getEmail()));
+        user.setPassword(encryptionService.decryptString(user.getPassword()));
         return repository.save(user);
     }
 
     public Optional<User> getUserByEmail(String email) {
-        return repository.findByEmail(email);
+        return repository.findByEmail(encryptionService.encryptString(email));
     }
 
 
@@ -50,11 +67,11 @@ public class UserService {
     }
 
     public boolean checkEmailExists(String email) {
-        return repository.existsByEmail(email);
+        return repository.existsByEmail(encryptionService.encryptString(email));
     }
 
     public void resetPassword(String email, String newPassword) {
-        Optional<User> userOptional = repository.findByEmail(email);
+        Optional<User> userOptional = repository.findByEmail(encryptionService.encryptString(email));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             user.setPassword(passwordEncoder.encode(newPassword));
@@ -66,14 +83,15 @@ public class UserService {
     }
 
     public void generateAndSaveOtp(String email) {
-        Optional<User> userOptional = repository.findByEmail(email);
+        Optional<User> userOptional = repository.findByEmail(encryptionService.encryptString(email));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             String otp = generateRandomOTP();
             user.setOtp(otp);
             repository.save(user);
-            emailService.sendEmail(user.getEmail(), "Forgot Password", "Your OTP is:\n" + otp);
-        } else {
+            emailService.sendEmail(email, "Forgot Password", "Your OTP is:\n" + otp);
+        }else{
+            log.info("Broke here" + email);
         }
     }
 
@@ -85,7 +103,7 @@ public class UserService {
     }
 
     public boolean verifyOTP(String email, String otp) {
-        Optional<User> userOptional = repository.findByEmail(email);
+        Optional<User> userOptional = repository.findByEmail(encryptionService.encryptString(email));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             return user.getOtp().equals(otp);
@@ -93,8 +111,10 @@ public class UserService {
         return false;
     }
 
-    public List<User> findAllUsersNotInTask(int task_id) {
-        return repository.findUsersNotInTask(task_id);
+    public List<String> findAllUsersNotInTask(int task_id) {
+        List<String> userEmails = repository.findUsersNotInTask(task_id);
+        userEmails.replaceAll(encryptionService::decryptString);
+        return userEmails;
     }
 
     public List<String> findNotDataCustodian(User user){

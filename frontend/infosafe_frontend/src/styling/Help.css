@@ -14,14 +14,16 @@
     left: 5%;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .helpTitle{
-    font-size: 40px;
+    font-size: 45px;
+    color: black;
+    text-align: center;
 }
 .helpSubTitle{
-    font-size: 24px;
+    font-size: 26px;
 }
 .helpData{
-    font-size: 18px;
+    font-size: 20px;
 }

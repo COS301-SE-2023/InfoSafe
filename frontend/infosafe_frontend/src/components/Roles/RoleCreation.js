@@ -28,7 +28,7 @@ const RoleCreation = () => {
         const role = {role_name, permissions};
 
         // add check to make sure role doesn't exist
-        fetch(`http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/role/checkName?rolename=${role_name}`,{
+        fetch(`https://infosafe.live/api/role/checkName?rolename=${role_name}`,{
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const RoleCreation = () => {
                             console.log("role name already exists");
                         } else {
                             //console.log(role);
-                            fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/role/addRole", {
+                            fetch("https://infosafe.live/api/role/addRole", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const RoleCreation = () => {
     };
 
     useEffect(() => {
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/role/getRoleNames", {
+        fetch("https://infosafe.live/api/role/getRoleNames", {
             method:"GET",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -437,18 +437,6 @@ const RoleCreation = () => {
     {
         let roleName =document.querySelector('input.roleCreationRoleNameInput');
         roleName.value = null;
-
-        // for (let i = 0; i < 9; i++)
-        // {
-        //     if (checkboxState[i])
-        //     {
-        //         for (let j = 0; j < 9; j++)
-        //         {
-        //             handleCheckboxChecked(i, subsystems[j]);
-        //         }
-        //     }
-        //
-        // }
     }
 
     const submitInfo = () => {
@@ -716,7 +704,6 @@ const RoleCreation = () => {
             }
 
         }
-        //console.log(roleName, permissionsList)
     };
 
     const [helpOpen,setHelpOpen] = useState(false);

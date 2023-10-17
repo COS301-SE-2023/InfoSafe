@@ -32,7 +32,7 @@ const EditAccessRequest = ({ access, popupClose, popupOpen, onArEdited }) => {
         e.preventDefault();
         //console.log(values)
 
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/accessrequest/update/' + access.request_id, {
+        fetch('https://infosafe.live/api/accessrequest/update/' + access.request_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

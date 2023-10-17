@@ -26,6 +26,7 @@ public class SupportRequestService {
     private final DeleteService deleteService;
     private final EmailService emailService;
     private final NotificationsService notificationsService;
+    private final EncryptionService encryptionService;
     public ResponseEntity<String> makeSR(SupportRequestRequest request, User authenticatedUser){
         var supportrequest = SupportRequest.builder()
                 .support_id(request.getSupport_id())
@@ -62,7 +63,14 @@ public class SupportRequestService {
         return ResponseEntity.status(HttpStatus.OK).body("added");
     }
 
-    public List<SupportRequest> getAllSupportRequests() {return supportRequestRepository.findAll();}
+    public List<SupportRequest> getAllSupportRequests() {
+        List<SupportRequest> sr = supportRequestRepository.findAll();
+        for(SupportRequest supportRequest : sr){
+            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
+            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+        }
+        return sr;
+    }
 
     public SupportRequest updateSupportRequest(SupportRequestRequest supportRequest) {
         if(supportRequest.getSupport_status().equals("Resolved")){
@@ -80,7 +88,7 @@ public class SupportRequestService {
                     request.setTask_id(supportRequest.getTask_id());
                 }
             }
-            request.setUser_email(supportRequest.getUser_email());
+            request.setUser_email(encryptionService.encryptString(supportRequest.getUser_email()));
             request.setReview(true);
             reviewSupportRequest(request);
             return null;
@@ -89,7 +97,7 @@ public class SupportRequestService {
         updated.setSupport_description(supportRequest.getSupport_description());
         updated.setSupport_status(supportRequest.getSupport_status());
         updated.setSupport_type(supportRequest.getSupport_type());
-        updated.setUser_id(userRepository.findByEmail(supportRequest.getUser_email()).isPresent() ? userRepository.findByEmail(supportRequest.getUser_email()).get() :null);
+        updated.setUser_id(userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).isPresent() ? userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).get() :null);
         updated.setTask_id(taskRepository.findByTaskId(supportRequest.getTask_id()).isPresent() ? taskRepository.findByTaskId(supportRequest.getTask_id()).get() : null);
         updated.setAsset_id(assetRepository.findByAssetId(supportRequest.getAsset_id()).isPresent() ? assetRepository.findByAssetId(supportRequest.getAsset_id()).get() : null);
         updated.setDataScope_id(dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).isPresent() ? dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).get() : null);
@@ -97,7 +105,12 @@ public class SupportRequestService {
     }
 
     public List<SupportRequest> getUserSupportRequests(int user_id) {
-        return supportRequestRepository.findAllByUserId(user_id);
+        List<SupportRequest> sr = supportRequestRepository.findAllByUserId(user_id);
+        for(SupportRequest supportRequest : sr){
+            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
+            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+        }
+        return sr;
     }
 
     public ResponseEntity<String> reviewSupportRequest(ReviewRequest reviewRequest) {

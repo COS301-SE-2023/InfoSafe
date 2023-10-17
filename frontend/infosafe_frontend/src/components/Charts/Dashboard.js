@@ -22,25 +22,25 @@ export const Dashboard = () => {
                 const accessToken = sessionStorage.getItem('accessToken');
 
                 const fetchPromises = [
-                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/notifications/getNotifications', {
+                    await fetch('https://infosafe.live/api/notifications/getNotifications', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/supportrequest/getMyTotal', {
+           await fetch('https://infosafe.live/api/supportrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/accessrequest/getMyTotal', {
+                    await fetch('https://infosafe.live/api/accessrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
                         },
                     }),
-                    await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/assetrequest/getMyTotal', {
+                    await fetch('https://infosafe.live/api/assetrequest/getMyTotal', {
                         method: "GET",
                         headers: {
                             Authorization: "Bearer " + accessToken,
@@ -148,7 +148,7 @@ export const Dashboard = () => {
                                 <ul className="inUseDevicesList">
                                     {myAssets.map((assets, index) => (
                                         <li key={index}>
-                                            <p>{assets.asset_name}</p>
+                                            <p>{assets.asset_name} ({assets.device_type})</p>
                                         </li>
                                     ))}
                                 </ul>

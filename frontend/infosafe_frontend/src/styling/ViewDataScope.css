@@ -32,14 +32,14 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .borderDataScopeView::-webkit-scrollbar{
     display: none;
 }
 .viewDataScopeBackButton {
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;
@@ -90,7 +90,7 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     border-radius: 2px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
     background-color: #CECECE;
     padding: 1% 1%;
@@ -118,7 +118,7 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
     border-radius: 2px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
     background-color: #CECECE;
     padding: 1% 1%;
@@ -171,7 +171,7 @@
     height: 4%;
     border-radius: 2px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
     top: 1vh;
 }

@@ -32,7 +32,7 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .viewAccessRequestPopupBorder::-webkit-scrollbar {
@@ -46,7 +46,7 @@
     left: 15%;
 }
 .viewAccessRequestBackButton {
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;

@@ -32,14 +32,14 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .createDataScopeBorder::-webkit-scrollbar {
     display: none;
 }
 .createDataScopeBackButton {
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;
@@ -129,7 +129,7 @@
 }
 .dataScopeRoles{
     height: 2%;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .dataScopeRoles::-webkit-scrollbar {
@@ -194,7 +194,7 @@
 }
 .createDataScopeError{
     display: none;
-    color: #9E0000;
+    color: #00003E;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;

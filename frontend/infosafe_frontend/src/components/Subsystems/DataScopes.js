@@ -1,7 +1,7 @@
 import {CreateDataScopePopup} from "../Create/CreateDataScopePopup";
 import React, {useEffect, useState} from "react";
 import ViewDataScope from "../View/ViewDataScope";
-import {FaRegEdit, FaSearch} from "react-icons/fa";
+import {FaRegEdit, FaSearch, FaFileAlt} from "react-icons/fa";
 import {EditDataScopePopup} from "../Edit/EditDataScopePopup";
 import {RiDeleteBin6Fill, RiEditBoxFill} from "react-icons/ri";
 import "../../styling/DataScopes.css";
@@ -13,6 +13,7 @@ import {HelpPopup} from "../HelpPopup";
 import {useSupportRequests} from "../RequestRequests/SupportRequestRequests";
 import datascope_help from "../../images/datascope_help.png";
 import {ConfirmDelete} from "../ConfirmDelete";
+import {FilePopup} from "../FilePopup";
 
 export const DataScopes = () => {
 
@@ -49,7 +50,7 @@ export const DataScopes = () => {
 
     const DeleteFunction = async (data_scope_id) => {
         try {
-            const response = await fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/datascope/deleteDataScope/"+data_scope_id, {
+            const response = await fetch("https://infosafe.live/api/datascope/deleteDataScope/"+data_scope_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -74,8 +75,8 @@ export const DataScopes = () => {
         const [dataScopeDelete, setDataScopeDelete] = useState(false);
         if(roles.includes("data_scope_delete")) {
             return (
-                <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDataScopeDelete(true)}/>
+                <div className="dataScopesDeleteButton">
+                    <RiDeleteBin6Fill className="dataScopesDeleteIcon" onClick={() => setDataScopeDelete(true)}/>
                     {dataScopeDelete ? (
                         <ConfirmDelete
                             popupClose={() => setDataScopeDelete(false)}
@@ -92,11 +93,12 @@ export const DataScopes = () => {
 
     const ViewDataScopeItem = ({ datascope }) => {
         const [viewDataScopeOpen, setViewDataScopeOpen] = useState(false);
+        const [viewFilesOpen, setViewFilesOpen] = useState(false);
         if (roles.includes ("data_scope_create") || roles.includes ("data_scope_edit") || roles.includes ("data_scope_delete") || viewDatascope) {
             return (
                 <li key={datascope.data_scope_id}>
                     <p onClick={() => setViewDataScopeOpen(!viewDataScopeOpen)}>
-                        Data Scope {datascope.data_scope_id}: {datascope.ds_name} {/*{datascope.data_custodian && datascope.data_custodian.first_name} {datascope.data_custodian && datascope.data_custodian.last_name}*/}
+                        Data Scope {datascope.data_scope_id} : {datascope.ds_name} {/*{datascope.data_custodian && datascope.data_custodian.first_name} {datascope.data_custodian && datascope.data_custodian.last_name}*/}
 
                         {viewDataScopeOpen && (
                             <ViewDataScope
@@ -108,6 +110,15 @@ export const DataScopes = () => {
                     </p>
                     <EditDataScope datascope={datascope}></EditDataScope>
                     <DeleteDataScope datascope={datascope}></DeleteDataScope>
+                    <div className="viewFiles">
+                        <FaFileAlt className="filesButton" onClick={() => setViewFilesOpen(true)}></FaFileAlt>
+                        {viewFilesOpen ? (
+                            <FilePopup datascope={datascope}
+                                       popupClose={() => setViewFilesOpen(false)}
+                                       popupOpen={viewFilesOpen}
+                            />
+                        ) : null}{' '}
+                    </div>
                 </li>
             );
         } else {

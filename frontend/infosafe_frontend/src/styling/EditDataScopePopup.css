@@ -32,14 +32,14 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .editdatascopeBorder::-webkit-scrollbar{
     display: none;
 }
 .editDataScopeBackButton {
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;
@@ -298,7 +298,7 @@
 }
 .dataScopeRoles{
     height: 2%;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .dataScopeRoles::-webkit-scrollbar {

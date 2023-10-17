@@ -1,5 +1,7 @@
 package com.fragile.infosafe.primary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,11 +27,11 @@ public class Task {
     private String due_date;
     private String date_created;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "data_scope_id")
     private DataScope data_scope_id;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany
     @JoinTable(
             name = "task_users",
             joinColumns = @JoinColumn(name = "task_id"),
@@ -38,4 +40,19 @@ public class Task {
     private Set<User> users = new HashSet<>();
     @Column(nullable = true)
     private int daysUntilDue;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "task_id=" + task_id +
+                ", task_name='" + task_name + '\'' +
+                ", task_description='" + task_description + '\'' +
+                ", task_status='" + task_status + '\'' +
+                ", due_date='" + due_date + '\'' +
+                ", date_created='" + date_created + '\'' +
+                ", data_scope_id=" + data_scope_id +
+                ", users=" + users +
+                ", daysUntilDue=" + daysUntilDue +
+                '}';
+    }
 }

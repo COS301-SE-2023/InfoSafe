@@ -78,7 +78,7 @@ const NavBar = () => {
     useEffect(() => {
         const payload = {token: sessionStorage.getItem('accessToken')};
 
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/tokenValid', {
+        fetch('https://infosafe.live/api/user/tokenValid', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken'),
@@ -111,7 +111,7 @@ const NavBar = () => {
     const [left, setLeft] = useState(0);
 
     useEffect(() => {
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/getUserName', {
+        fetch('https://infosafe.live/api/user/getUserName', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -127,13 +127,7 @@ const NavBar = () => {
             displayMenu();
         }
         showSettings(!settings);
-        if (!settings) {
-            document.getElementById("userDisplay").style.right = "24%";
-            document.getElementById("avatar").style.right = "22%";
-        } else {
-            document.getElementById("userDisplay").style.right = "4%";
-            document.getElementById("avatar").style.right = "2%";
-        }
+
     };
 
     const displayMenu = () => {
@@ -160,7 +154,6 @@ const NavBar = () => {
     const displayPage = () => {
         return (
             <div className="navbar">
-
                 <div className="tabMenu" id="tabMenu">
                     <div className="navbarLogo">
                         <div className="navbarImage"></div>
@@ -172,7 +165,7 @@ const NavBar = () => {
                 <div className='shift' style={{width: `${width}%`, left: `${left}%`}}>
                     <div className="toolbar" id="toolbar" style={{width: `${width}%`}}>
                         <div className="toolbarLeft">
-                            <IoMenu className="menuIcon" id="menuIcon" data-testid="btnTest" onClick={displayMenu}/>
+                            <IoMenu className="menuIcon" id="menuIcon" data-testid="btnMenuTest" onClick={displayMenu}/>
                             <p className="tabTitle" id="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
                         </div>
                         <div className="toolbarRight">

@@ -7,7 +7,7 @@ const TasksChart = () => {
     const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/taskCount', {
+        fetch('https://infosafe.live/api/user/taskCount', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -36,7 +36,7 @@ const TasksChart = () => {
                     {
                         label: 'Tasks',
                         data: [15, taskCount],
-                        backgroundColor: ['#9E0000', '#444040'],
+                        backgroundColor: ['#00003E', '#444040'],
                     }
                 ]
             },

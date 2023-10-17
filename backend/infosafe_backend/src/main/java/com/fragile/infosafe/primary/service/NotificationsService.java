@@ -19,9 +19,8 @@ import java.util.List;
 public class NotificationsService {
 
     private final NotificationsRepository notificationsRepository;
-    private final UserRepository userRepository;
 
-    @Scheduled(cron = "0 0 */10 * * *")
+    @Scheduled(cron = "0 0 */5 * * *")
     public void deleteOldRecords() {
         LocalDateTime twelveHoursAgo = LocalDateTime.now().minusHours(12);
         notificationsRepository.deleteByCreatedAtBefore(twelveHoursAgo);

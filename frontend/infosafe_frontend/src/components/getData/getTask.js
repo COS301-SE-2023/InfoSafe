@@ -8,7 +8,7 @@ export const useGetTask = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/getTask', {
+            const response = await fetch('https://infosafe.live/api/task/getTask', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -28,7 +28,7 @@ export const useGetTask = () => {
     // useEffect(() => {
     //     async function getTasks() {
     //         try {
-    //             const data = await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/getTask', {
+    //             const data = await fetch('https://infosafe.live/api/task/getTask', {
     //                 method: "GET",
     //                 headers: {
     //                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

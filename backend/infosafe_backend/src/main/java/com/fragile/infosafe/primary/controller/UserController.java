@@ -20,8 +20,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.codec.Hex;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.Cipher;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.*;
 
@@ -38,14 +40,10 @@ public class UserController {
     private final AssetService assetService;
     private final DataScopeService dataScopeService;
     private final JwtService jwtService;
+    private final EncryptionService encryptionService;
 
     @GetMapping("/getAll")
     public List<User> userlist() { return userService.getAllUsers(); }
-
-    @GetMapping("/getUser/{id}")
-    public Optional<User> getUser(@PathVariable("id") int user_id, @RequestBody User user) {
-        return userService.getUser(user_id);
-    }
 
     @PostMapping("/add")
     public ResponseEntity<AuthenticationResponse> register(
@@ -111,16 +109,10 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
-            String userName = authenticatedUser.getFirst_name() + " " + authenticatedUser.getLast_name();
+            String userName = encryptionService.decryptString(authenticatedUser.getFirst_name()) + " " + encryptionService.decryptString(authenticatedUser.getLast_name());
             return ResponseEntity.ok("{\"username\": \"" + userName + "\"}");
         }
         return null;
-    }
-
-    @GetMapping("/checkEmail")
-    public ResponseEntity<Boolean> checkEmailExists(@RequestParam("email") String email) {
-        boolean emailExists = userService.checkEmailExists(email);
-        return ResponseEntity.ok(emailExists);
     }
 
     @PostMapping("/deleteUser")
@@ -136,12 +128,11 @@ public class UserController {
     @PostMapping("/changePassword")
     public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
         try {
-            Optional<User> user = userService.getUserByEmail(changePasswordRequest.getUserEmail());
-            log.info("Changing password for user with email: {}", changePasswordRequest.getUserEmail());
-            if (user.isPresent()) {
-                userService.changePassword(user.get(), changePasswordRequest.getNewPassword());
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+                userService.changePassword(authenticatedUser, changePasswordRequest.getNewPassword());
                 return ResponseEntity.ok(true);
-            } else {
+            }else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
             }
         } catch (Exception e) {
@@ -204,8 +195,13 @@ public class UserController {
         }
     }
 
+    @GetMapping("/getAllEmails")
+    public ResponseEntity<List<String>> getAllUserEmails() {
+        return ResponseEntity.ok(userService.getAllUsersEmails());
+    }
+
     @GetMapping("/findUsersNotInTask/{task_id}")
-    public ResponseEntity<List<User>> getAllUsersNotInTask(@PathVariable("task_id") int task_id) {
+    public ResponseEntity<List<String>> getAllUsersNotInTask(@PathVariable("task_id") int task_id) {
         return ResponseEntity.ok(userService.findAllUsersNotInTask(task_id));
     }
 
@@ -219,7 +215,11 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
             List<String> users = userService.findNotDataCustodian(authenticatedUser);
-            return ResponseEntity.ok(users);
+            List<String> finalUsers = new ArrayList<>();
+            for(String user : users){
+                finalUsers.add(encryptionService.decryptString(user));
+            }
+            return ResponseEntity.ok(finalUsers);
         }else {
             return ResponseEntity.notFound().build();
         }

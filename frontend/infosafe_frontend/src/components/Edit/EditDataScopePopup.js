@@ -16,7 +16,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     //const [users, setUsers] = useState([]);
     const [values, setValues] = useState({
         data_scope_id: datascope.data_scope_id,
-        data_custodian: datascope.data_custodian.user_id,
+        data_custodian: datascope.dataCustodian.user_id,
         date_captured: datascope.date_captured,
         ds_description: datascope.ds_description,
         ds_name: datascope.ds_name,
@@ -24,7 +24,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     });
 
     // useEffect(() => {
-    //     fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/findUsersNotInTask/" + task.task_id, {
+    //     fetch("https://infosafe.live/api/user/findUsersNotInTask/" + task.task_id, {
     //         method: "GET",
     //         headers: {
     //             Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -54,7 +54,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         //console.log(datascope);
         //console.log(values);
 
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/datascope/update/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/datascope/update/' + datascope.data_scope_id, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
@@ -69,7 +69,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
     };
 
     useEffect(() => {
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
+        fetch('https://infosafe.live/api/dataScopeRole/rolesByDataScopeId/' + datascope.data_scope_id, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -85,7 +85,7 @@ export const EditDataScopePopup = ({ datascope, popupOpen, popupClose, onDsEdite
         e.preventDefault();
         const newRoleData = { datascope: datascope.data_scope_id, role_description: newRole.roledescription, role_type: newRole.role };
 
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/dataScopeRole/addDataScopeRole', {
+        fetch('https://infosafe.live/api/dataScopeRole/addDataScopeRole', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

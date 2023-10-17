@@ -6,7 +6,7 @@ import ViewAccessRequest from "./ViewAccessRequest";
 import Select from "react-select";
 import {customStyles} from "../CustomStyling";
 
-export const ViewTask = ({task, popupClose, popupOpen}) => {
+export const ViewTask = ({task, popupClose, popupOpen, onTaskView}) => {
     const [currentUsers, setCurrentUsers] = useState([]);
     const [addUsers, setAddUsers] = useState([]);
         const[values, setValues]=useState({
@@ -19,7 +19,7 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
         });
 
         useEffect(() => {
-            fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/getUsersOfTask/" + task.task_id, {
+            fetch("https://infosafe.live/api/task/getUsersOfTask/" + task.task_id, {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -52,16 +52,17 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
     const handleCompleted = () => {
         console.log("Complete")
         const request = {completion: true, task_id: task.task_id};
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/completeTask", {
+        fetch("https://infosafe.live/api/task/completeTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
             body: JSON.stringify(request),
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((data) => {
                 console.log("Task marked as completed");
+                onTaskView();
                 popupClose();
             })
             .catch((error) => {
@@ -73,16 +74,17 @@ export const ViewTask = ({task, popupClose, popupOpen}) => {
     const handleIncomplete = () => {
         console.log("Incomplete")
         const request = {completion: false, task_id: task.task_id};
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/completeTask", {
+        fetch("https://infosafe.live/api/task/completeTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem("accessToken"),
             },
             body: JSON.stringify(request),
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((data) => {
                 console.log("Task marked as incomplete");
+                onTaskView();
                 popupClose();
             })
             .catch((error) => {

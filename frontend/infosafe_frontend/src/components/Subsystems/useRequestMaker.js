@@ -50,15 +50,15 @@ const useRequestMaker = () => {
 
         switch (selectedRequest) {
             case 'Support Request':
-                apiUrl = "http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/supportrequest/addSr";
+                apiUrl = "https://infosafe.live/api/supportrequest/addSr";
                 requestBody = support;
                 break;
             case 'Asset Request':
-                apiUrl = "http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/assetrequest/addAr";
+                apiUrl = "https://infosafe.live/api/assetrequest/addAr";
                 requestBody = asset;
                 break;
             case 'Access Request':
-                apiUrl = "http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/accessrequest/addAr";
+                apiUrl = "https://infosafe.live/api/accessrequest/addAr";
                 requestBody = access;
                 break;
             default:
@@ -74,12 +74,15 @@ const useRequestMaker = () => {
             },
             body: JSON.stringify(requestBody)
         }).then(() => {
-            console.log("New request added")
+            console.log("New request added");
+        })
+        .catch((error) => {
+            window.alert("Error: Unable to create duplicate requests.");
         })
     };
 
     useEffect(() => {
-        fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/getEmail', {
+        fetch('https://infosafe.live/api/user/getEmail', {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

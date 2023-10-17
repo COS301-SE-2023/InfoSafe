@@ -47,7 +47,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
         };
         //console.log(task)
 
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/addTask", {
+        fetch("https://infosafe.live/api/task/addTask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
     };
 
     useEffect(() => {
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/getAll", {
+        fetch("https://infosafe.live/api/user/getAll", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -107,14 +107,14 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
                     <form>
                         <p className="createTaskPageTitle">Create Task</p>
                         <div className="createTaskContent">
-                            <p className="createTaskInputTitle">Type Name</p>
+                            <p className="createTaskInputTitle">Task Name</p>
                             <textarea
                                 className="createTaskInputTextArea"
                                 onChange={handleTaskNameChange}
                                 value={task_name}
                                 id="taskNameIn"
                             />
-                            <p className="createTaskInputLabel">Type Description</p>
+                            <p className="createTaskInputLabel">Task Description</p>
                             <textarea
                                 className="createTaskDescriptionInputTextArea"
                                 onChange={handleDescriptionChange}

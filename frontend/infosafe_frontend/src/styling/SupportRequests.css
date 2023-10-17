@@ -31,14 +31,14 @@
     font-size: 16px;
 }
 .supportRequestSearchInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
 }
 .supportRequestSearchIcon {
     position: absolute;
     right: 10px;
     top: 54%;
     transform: translateY(-50%);
-    color: #9E0000;
+    color: #00003E;
 }
 .tables {
     background-color: transparent;
@@ -47,11 +47,18 @@
     height: 60%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
 }
-.tables::-webkit-scrollbar{
-    display: none;
+.tables::-webkit-scrollbar {
+    width: 8px;
+}
+.tables::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
 }
 .active_support_requests {
     background-color: transparent;
@@ -60,9 +67,18 @@
     height: 100%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    overflow-y: auto;
     display: none;
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
+}
+.active_support_requests::-webkit-scrollbar {
+    width: 8px;
+}
+.active_support_requests::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
 }
 .activeRequestsList {
     list-style: none;
@@ -75,7 +91,8 @@
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #CECECE;
+    border: 3px solid #444040;
+    background-color: white;
     padding: 5px;
     border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
@@ -98,9 +115,6 @@
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
 }
-.active_support_requests::-webkit-scrollbar {
-    display: none;
-}
 .my_support_requests {
     background-color: transparent;
     width: 100%;
@@ -108,8 +122,17 @@
     height: 100%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    overflow-y: auto;
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
+}
+.my_support_requests::-webkit-scrollbar {
+    width: 8px;
+}
+.my_support_requests::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
 }
 .myRequestsList {
     list-style: none;
@@ -122,7 +145,8 @@
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #CECECE;
+    border: 3px solid #444040;
+    background-color: white;
     padding: 5px;
     border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
@@ -144,9 +168,6 @@
 .myRequestsList li:hover {
     z-index: 4;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
-}
-.my_support_requests::-webkit-scrollbar {
-    display: none;
 }
 .supportRequestEditButton{
     background-color: #444040;
@@ -269,7 +290,7 @@
 }
 .helpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }
 .loadingScreen{
     background-color: #FFFFFF;
@@ -283,9 +304,9 @@
     margin: 0 auto;
     height: 8%;
     width: 30%;
-    border: 4px solid #9E0000;
+    border: 4px solid #00003E;
     border-radius: 20px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 .loadingDiv .loading{
     position: absolute;

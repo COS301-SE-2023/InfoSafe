@@ -10,9 +10,9 @@ describe("CreateTask Component", () => {
 
         // Ensure that the component renders with user data
         expect(screen.getByText("Create Task")).toBeInTheDocument();
-        expect(screen.getByText("Type Name")).toBeInTheDocument();
+        expect(screen.getByText("Task Name")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();
-        expect(screen.getByText("Type Description")).toBeInTheDocument();
+        expect(screen.getByText("Task Description")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();
         expect(screen.getByText("Task Status")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();

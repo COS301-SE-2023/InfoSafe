@@ -11,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,12 +22,38 @@ public class AssetService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final NotificationsService notificationsService;
-    public List<Asset> getAllAssets() {return assetRepository.findAll();}
+    private final EncryptionService encryptionService;
+
+    public List<Asset> getAllAssets() {
+        List<Asset> assets = assetRepository.findAll();
+        for (Asset asset : assets) {
+            if (asset.getCurrent_assignee() != null) {
+                User currentAssignee = asset.getCurrent_assignee();
+                User decryptedCurrentAssignee = new User();
+                decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+                decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+                decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+                decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+                asset.setCurrent_assignee(decryptedCurrentAssignee);
+            }
+            if (asset.getPrevious_assignee() != null) {
+                User previousAssignee = asset.getPrevious_assignee();
+                User decryptedPreviousAssignee = new User();
+                decryptedPreviousAssignee.setUser_id(previousAssignee.getUser_id());
+                decryptedPreviousAssignee.setFirst_name(encryptionService.decryptString(previousAssignee.getFirst_name()));
+                decryptedPreviousAssignee.setLast_name(encryptionService.decryptString(previousAssignee.getLast_name()));
+                decryptedPreviousAssignee.setRole(previousAssignee.getRole());
+                asset.setPrevious_assignee(decryptedPreviousAssignee);
+            }
+        }
+        return assets;
+    }
+
 
     public Asset updateAsset(AssetRequest asset) {
         if(assetRepository.findByAssetId(asset.getAsset_id()).isPresent()) {
             Asset editAsset = assetRepository.findByAssetId(asset.getAsset_id()).get();
-            User current = userRepository.findByEmail(asset.getCurrent_assignee()).get();
+            User current = userRepository.findByEmail(encryptionService.encryptString(asset.getCurrent_assignee())).get();
             Optional<User> previous = userRepository.findByEmail(asset.getPrevious_assignee());
             previous.ifPresent(editAsset::setPrevious_assignee);
             editAsset.setAsset_description(asset.getAsset_description());
@@ -53,23 +76,20 @@ public class AssetService {
                 .status(request.getStatus())
                 .availability(request.getAvailability())
                 .device_type(request.getDevice_type())
-                //.previous_assignee(request.getPrevious_assignee())
                 .used(request.getUsed())
+                .previous_assignee(null)
                 .build();
 
         if (request.getCurrent_assignee() != null) {
-            User user = userRepository.findByEmail(request.getCurrent_assignee()).orElse(null);
+            User user = userRepository.findByEmail(encryptionService.encryptString(request.getCurrent_assignee())).orElse(null);
             if (user != null) {
                 asset.setCurrent_assignee(user);
-                emailUser(user.getEmail(), asset.getAsset_name());
+                emailUser(encryptionService.decryptString(user.getEmail()), asset.getAsset_name());
                 notificationsService.makeNotification("Assigned Asset " + asset.getAsset_name(), user);
             } else {
                 log.error("User with email " + request.getCurrent_assignee() + " not found");
             }
         }
-//        else{
-//            asset.setCurrent_assignee(request.getCurrent_assignee());
-//        }
 
         assetRepository.save(asset);
         return ResponseEntity.status(HttpStatus.OK).body("added");
@@ -93,11 +113,13 @@ public class AssetService {
 
     public List<String> getUnassignedUserEmails(int assetId) {
         Asset asset = assetRepository.findByAssetId(assetId).get();
+        List<String> emails = new ArrayList<>();
         if(asset.getCurrent_assignee() == null){
-            return userRepository.getAllEmails();
+            emails = userRepository.getAllEmails();
         }else{
-            return assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(asset.getCurrent_assignee().getEmail()).get(), assetId);
-        }
+            emails = assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(asset.getCurrent_assignee().getEmail()).get(), assetId);
+        } emails.replaceAll(encryptionService::decryptString);
+        return emails;
     }
 
     private void emailUser(String email, String asset_name){

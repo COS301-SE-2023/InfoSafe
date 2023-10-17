@@ -1,5 +1,8 @@
 import "../styling/Login.css";
 import React, {useState} from "react";
+import {IoHelpCircle} from "react-icons/io5";
+import {HelpPopup} from "./HelpPopup";
+import task_help from "../images/login_help.png";
 
 function Login(){
     const[email,setEmail]=useState("")
@@ -7,7 +10,7 @@ function Login(){
     const handleLogin = (e) => {
         e.preventDefault()
         const login = {email, password}
-        fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/auth/login", {
+        fetch("https://infosafe.live/api/auth/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(login)
@@ -38,13 +41,21 @@ function Login(){
         window.location.href = "/ForgotPassword";
     }
 
+    const [helpOpen, setHelpOpen] = useState(false);
 
     return (
         <div className='background'>
-            {/*<div className='flipPanel'>*/}
-            {/*    <div className='panel'>*/}
-            {/*        <div className='panelFront'></div>*/}
                     <div className='panelBack'>
+                        <button  className="taskHelpButton" onClick={() => setHelpOpen(true)}>
+                            <IoHelpCircle className="loginHelpPopupIcon"></IoHelpCircle>
+                            {helpOpen ? (
+                                <HelpPopup
+                                    popupClose={() => setHelpOpen(false)}
+                                    popupOpen={helpOpen}
+                                    image={task_help}
+                                />
+                            ) : null}
+                        </button>
                         <div className='title'>
                             <p className='loginTitle'>Login</p>
                         </div>
@@ -75,7 +86,7 @@ function Login(){
                                 ></input>
                             </div>
                         </div>
-                        <href className='forgot' onClick={forgot} >Forgot Password?</href>
+                        <a className='forgot' onClick={forgot} >Forgot Password?</a>
                         <button data-testid='btnTest'  id='btnLogin' className='btnLogin' onClick={handleLogin}>
                             Login
                         </button>

@@ -69,7 +69,7 @@ export const Users = () => {
     const DeleteFunction = async (email) => {
         const deleteUser = {email}
         try {
-            const response = await fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/deleteUser", {
+            const response = await fetch("https://infosafe.live/api/user/deleteUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -97,14 +97,20 @@ export const Users = () => {
         if (roles.includes("user_delete")) {
             return (
                 <div className="usersDeleteButton">
-                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => setDeleteUserOpen(true)}/>
-                    {deleteUserOpen ? (
+                    <RiDeleteBin6Fill className="usersDeleteIcon" onClick={() => {
+                        if (user.role.role_name === "ADMIN") {
+                            alert("Unable to delete an admin user.");
+                        } else {
+                            setDeleteUserOpen(true);
+                        }
+                    }} />
+                    {deleteUserOpen && user.role.role_name !== "ADMIN" && (
                         <ConfirmDelete
                             popupClose={() => setDeleteUserOpen(false)}
                             popupOpen={deleteUserOpen}
                             yesDelete={() => DeleteFunction(user.email)}
                         />
-                    ) : null}{' '}
+                    )}
                 </div>
             )
         } else {
@@ -128,7 +134,9 @@ export const Users = () => {
                         )}
                     </p>
                     <EditUserDiv user={user}/>
+
                     <DeleteUser user={user}></DeleteUser>
+
                 </li>
             );
         } else {
@@ -162,11 +170,10 @@ export const Users = () => {
     };
 
     const userItems = filteredUsers.length > 0
-        ? filteredUsers.map((user) => <ViewUserItem user={user} key={user.user_id} />)
+        ? filteredUsers.map((user) => <ViewUserItem user={user} key={user.user_id}/>)
         : ["No Users found."];
 
     const [helpOpen, setHelpOpen] = useState(false);
-
 
 
     return (

@@ -11,61 +11,61 @@ const SystemAnalyticsChart = () => {
             const accessToken = sessionStorage.getItem('accessToken');
 
             const fetchPromises = [
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/datascope/getTotal', {
+                await fetch('https://infosafe.live/api/datascope/getTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/dataScopeCount', {
+                await fetch('https://infosafe.live/api/user/dataScopeCount', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/countDevices', {
+                await fetch('https://infosafe.live/api/user/countDevices', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/asset/getTotalAssets', {
+                await fetch('https://infosafe.live/api/asset/getTotalAssets', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/user/taskCount', {
+                await fetch('https://infosafe.live/api/user/taskCount', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/task/totalTasks', {
+                await fetch('https://infosafe.live/api/task/totalTasks', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/supportrequest/getTotal', {
+                await fetch('https://infosafe.live/api/supportrequest/getTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/supportrequest/getMyTotal', {
+                await fetch('https://infosafe.live/api/supportrequest/getMyTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/assetrequest/getTotal', {
+                await fetch('https://infosafe.live/api/assetrequest/getTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
-                await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/assetrequest/getMyTotal', {
+                await fetch('https://infosafe.live/api/assetrequest/getMyTotal', {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + accessToken,
@@ -106,13 +106,13 @@ const SystemAnalyticsChart = () => {
                     datasets: [
                         {
                             label: 'System Total',
-                            backgroundColor: '#49D4D0',
+                            backgroundColor: '#50C9CE',
                             barThickness: 20,
                             data: [dataScopeCount, totalTasks, totalAssets, suppTotal, assetTotal],
                         },
                         {
                             label: 'My Total',
-                            backgroundColor: '#9E0000',
+                            backgroundColor: '#00003E',
                             barThickness: 20,
                             data: [myDataScopeCount, myTotalTasks, assetCount, mySuppTotal, myAssetTotal],
                             pointStyle: 'circle',

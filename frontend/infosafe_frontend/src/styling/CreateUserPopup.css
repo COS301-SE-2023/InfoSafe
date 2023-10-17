@@ -32,7 +32,7 @@
     top: 4%;
     left: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
 }
 .createUserBorder::-webkit-scrollbar {
@@ -46,7 +46,7 @@
     left: 15%;
 }
 .createUserBackButton {
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;
@@ -234,11 +234,10 @@
 }
 
 .createUserOverlay input:focus{
-    border: 2px solid #49D4D0;
+    border: 2px solid #50C9CE;
 }
 .createUserError{
-    display: none;
-    color: #9E0000;
+    color: red;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;

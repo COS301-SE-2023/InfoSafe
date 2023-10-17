@@ -43,7 +43,7 @@ export const Devices = () => {
 
     const DeleteFunction = async (asset_id) => {
         try {
-            const response = await fetch("http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/asset/deleteAsset/"+asset_id, {
+            const response = await fetch("https://infosafe.live/api/asset/deleteAsset/"+asset_id, {
                 method: "DELETE",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -90,7 +90,7 @@ export const Devices = () => {
             return (
                 <li key={asset.asset_id}>
                     <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                        Asset {asset.asset_id}: {asset.asset_name}
+                        Asset {asset.asset_id} : {asset.asset_name}
                         {viewDeviceOpen ? (
                             <ViewDevice
                                 popupClose={() => setViewDeviceOpen(false)}

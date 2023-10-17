@@ -54,7 +54,7 @@
 }
 .tabMenu
 {
-    background-color: #9E0000;
+    background-color: #00003E;
     width: 12%;
     height: 100%;
     position: absolute;
@@ -175,10 +175,13 @@
     left: 8%;
 }
 .toolbarRight{
+
+    position: absolute;
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 20%;
     justify-content: right;
+    right: 0;
 }
 .userDisplay{
     color: #000000;
@@ -189,22 +192,23 @@
     height: fit-content;
     margin: 0;
     position: relative;
-    right: 4%;
+    right: 12%;
+    white-space: nowrap;
 }
 .avatar {
     height: 4%;
     fill: #383838;
     font-size: 2.4rem;
     position: relative;
-    right: 2%;
+    right: 6%;
+    margin-right: 0.5vw;
 }
 
 .settingsDiv
 {
-    position: absolute;
-    top: 1vh;
-    right: 0.5vw;
-    width: 12vw;
+    position: relative;
+    top: 0.7vh;
+    width: fit-content;
     text-align: center;
     font-family: "Roboto", sans-serif;
     display: flex;
@@ -223,19 +227,23 @@
     color: white;
     cursor: pointer;
     padding: 2%;
-    margin-left: 1vw;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
 }
 .changeLabel
 {
     z-index: 100;
     position: relative;
     height: 5%;
+    width: fit-content;
     background-color: rgb(65, 64, 64);
     border: 1px solid black;
     border-radius: 4px;
     color: white;
     cursor: pointer;
     padding: 2%;
+    white-space: nowrap;
+    margin-left: 0.5vw;
 }
 #tabTitle{
     animation: shake 1s forwards;

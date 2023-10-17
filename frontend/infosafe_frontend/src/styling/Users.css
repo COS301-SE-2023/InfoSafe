@@ -9,7 +9,7 @@
 }
 .userHelpPopupIcon {
     font-size: 2em;
-    color: #9E0000;
+    color: #00003E;
 }
 .searchUsers{
     display: flex;
@@ -36,7 +36,7 @@
     font-size: 16px;
 }
 .userSearchInput:focus{
-    border: 2px solid #9E0000;
+    border: 2px solid #00003E;
 }
 .userSearchIcon
 {
@@ -44,23 +44,29 @@
     right: 10px;
     top: 54%;
     transform: translateY(-50%);
-    color: #9E0000;
+    color: #00003E;
 }
 .users {
     background-color: transparent;
-    /*border: 2px solid #9E0000;*/
+    /*border: 2px solid #00003E;*/
     width: 90%;
     margin: 0 auto;
     height: 60%;
     position: relative;
     top: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     box-sizing: content-box;
-    scrollbar-width: none;
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);*/
+    scrollbar-width: auto;
+    scrollbar-color: #CECECE #CECECE;
+    padding-right: 1vw;
 }
 .users::-webkit-scrollbar {
-    display: none;
+    width: 8px;
+}
+.users::-webkit-scrollbar-track{
+    background-color: #CECECE;
+    border-radius: 12px;
 }
 .userList {
     list-style: none;
@@ -73,11 +79,12 @@
     color: #000000;
     width: 100%;
     text-transform: none;
-    background-color: #CECECE;
     padding: 5px;
     border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25) inset;
     margin-top: 4px;
+    border: 3px solid #444040;
+    background-color: white;
 }
 .userList li p {
     font-family: 'Roboto', sans-serif;
@@ -184,9 +191,9 @@
     margin: 0 auto;
     height: 8%;
     width: 30%;
-    border: 4px solid #9E0000;
+    border: 4px solid #00003E;
     border-radius: 20px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25)
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 .loadingDiv .loading{
     position: absolute;

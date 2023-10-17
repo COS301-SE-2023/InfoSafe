@@ -6,7 +6,7 @@ export const useGetAr = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://ec2-52-91-180-105.compute-1.amazonaws.com:8080/api/accessrequest/getAr', {
+            const response = await fetch('https://infosafe.live/api/accessrequest/getAr', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
