@@ -36,13 +36,13 @@ const FILES = ['FILE1','FILE2','FILE3'];
                     throw new Error("File upload failed");
                 }
             })
-            // .then((data) => {
-            //     console.log("File upload response: ", data);
-            //     popupClose();
-            // })
-            // .catch((error) => {
-            //     console.error("File upload error: ", error);
-            // });
+            .then((data) => {
+                console.log("File upload response: ", data);
+                popupClose();
+            })
+            .catch((error) => {
+                console.error("File upload error: ", error);
+            });
     };
 
         const handleFileDelete = () => {
@@ -57,6 +57,9 @@ const FILES = ['FILE1','FILE2','FILE3'];
 
             fetch(`api/storage/delete/${fileToDelete}`, {
                 method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+                },
             })
                 .then((response) => {
                     if (response.ok) {

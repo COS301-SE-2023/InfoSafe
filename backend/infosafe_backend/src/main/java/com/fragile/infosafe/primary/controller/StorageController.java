@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping("api/storage")
@@ -36,5 +38,10 @@ public class StorageController {
     @DeleteMapping("/delete/{fileName}")
     public ResponseEntity<String> deleteFile(@PathVariable String fileName){
         return new ResponseEntity<>(service.deleteFile(fileName), HttpStatus.OK);
+    }
+
+    @GetMapping("/list")
+    public List<String> getAllFileNames(){//@RequestParam String bucketName) {
+        return service.getAllFileNames();
     }
 }

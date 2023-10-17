@@ -4,10 +4,7 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +15,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -82,6 +81,26 @@ public class StorageService {
     public String deleteFile(String fileName){
         this.s3Client.deleteObject(bucketName, fileName);
         return fileName + " removed from S3 ...";
+    }
+
+    public List<String> getAllFileNames() {
+        List<String> fileNames = new ArrayList<>();
+
+        ObjectListing objectListing = s3Client.listObjects(bucketName);
+
+        for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+            fileNames.add(objectSummary.getKey());
+        }
+
+        // If the bucket contains more than 1000 objects, you may need to paginate through results.
+        while (objectListing.isTruncated()) {
+            objectListing = s3Client.listNextBatchOfObjects(objectListing);
+            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+                fileNames.add(objectSummary.getKey());
+            }
+        }
+
+        return fileNames;
     }
 
     //Converting multipart file to normal file
