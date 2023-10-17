@@ -9,7 +9,7 @@ import {useGetFiles} from "./getData/getFiles";
 
     export const FilePopup = ({ popupOpen, popupClose, datascope }) => {
         const [selectedFile, setSelectedFile] = useState(null);
-        const {showFile, fetchAllFiles} = useGetFiles();
+        const {showFile, loading, fetchAllFiles} = useGetFiles();
         const FILES = [];
 
         useEffect(() => {
@@ -20,7 +20,24 @@ import {useGetFiles} from "./getData/getFiles";
         showFile.map((data) =>
             FILES.push(data)
         );
-        if (FILES.length === 0)
+
+        for (let i=0; i<FILES.length; i++){
+            let fileID = FILES[i].substring(23);
+            fileID = fileID.slice(0, 2);
+
+            if(fileID[fileID.length-1] === "-"){
+                fileID = fileID.substring(0, fileID.length-1);
+            }
+            const int = parseInt(fileID);
+            if(int !== datascope.data_scope_id){
+                
+            }
+        }
+
+        if (loading === true){
+            FILES[0] = "Files Loading.....";
+        }
+        else if (FILES.length === 0)
         {
             FILES[0] = "No Files added yet.";
         }
@@ -36,9 +53,10 @@ import {useGetFiles} from "./getData/getFiles";
         }
 
         const formData = new FormData();
+        selectedFile.title = "help";
         formData.append("file", selectedFile);
 
-        fetch("http://localhost:8080/api/storage/upload", {
+        fetch(`http://localhost:8080/api/storage/upload/${datascope.data_scope_id}`, {
             method: "POST",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -48,9 +66,8 @@ import {useGetFiles} from "./getData/getFiles";
             .then((response) => {
                 if (response.ok) {
                     // Handle the response as needed
-                    //console.log(response);
-                    return response.text();
                     popupClose();
+                    return response.text();
                 } else {
                     //console.log(response);
                     throw new Error("File upload failed");

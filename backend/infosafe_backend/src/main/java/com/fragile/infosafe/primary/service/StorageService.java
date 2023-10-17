@@ -6,14 +6,11 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.utils.IoUtils;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,12 +43,16 @@ public class StorageService {
 
 
 
-    public String uploadFile(MultipartFile file){
+    public String uploadFile(MultipartFile file, String dsid) throws IOException {
+
         Date date = new Date();
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String fileDate = formatter.format(date);
         File fileObj = convertMultiPartFiletoFile(file);
-        String fileName = fileDate + "-DatascopeID=" + file.getOriginalFilename();
+        int id = Integer.parseInt(dsid);
+
+        String fileName = fileDate + "-DatascopeID=" + id + "-" + file.getOriginalFilename();
         try {
             this.s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
         }
