@@ -154,7 +154,6 @@ const NavBar = () => {
     const displayPage = () => {
         return (
             <div className="navbar">
-
                 <div className="tabMenu" id="tabMenu">
                     <div className="navbarLogo">
                         <div className="navbarImage"></div>
@@ -166,7 +165,7 @@ const NavBar = () => {
                 <div className='shift' style={{width: `${width}%`, left: `${left}%`}}>
                     <div className="toolbar" id="toolbar" style={{width: `${width}%`}}>
                         <div className="toolbarLeft">
-                            <IoMenu className="menuIcon" id="menuIcon" data-testid="btnTest" onClick={displayMenu}/>
+                            <IoMenu className="menuIcon" id="menuIcon" data-testid="btnMenuTest" onClick={displayMenu}/>
                             <p className="tabTitle" id="tabTitle">{TabNames[activeTab]}</p>  {/*Get this from the respective tabs*/}
                         </div>
                         <div className="toolbarRight">

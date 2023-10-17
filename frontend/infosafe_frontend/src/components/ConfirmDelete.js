@@ -17,7 +17,7 @@ export const ConfirmDelete = ({popupClose, popupOpen, yesDelete}) => {
                         <p className="deleteTitle">Confirm Delete</p>
                             <p className="deleteMessage">Are you sure?</p>
                             <div className="confirmationButtons">
-                                <button  className="yesButton" onClick={confirm}>Yes</button>
+                                <button  className="yesButton" data-testid="confirmDelete" onClick={confirm}>Yes</button>
                                 <button className="noButton" onClick={popupClose}>No</button>
                             </div>
                     </div>

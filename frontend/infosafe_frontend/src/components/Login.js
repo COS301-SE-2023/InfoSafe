@@ -86,7 +86,7 @@ function Login(){
                                 ></input>
                             </div>
                         </div>
-                        <href className='forgot' onClick={forgot} >Forgot Password?</href>
+                        <a className='forgot' onClick={forgot} >Forgot Password?</a>
                         <button data-testid='btnTest'  id='btnLogin' className='btnLogin' onClick={handleLogin}>
                             Login
                         </button>
