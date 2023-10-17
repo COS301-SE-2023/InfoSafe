@@ -123,7 +123,7 @@ const FILES = ['FILE1','FILE2','FILE3'];
                             </div>
                             <p className="uploadLabel">Upload File</p>
                             <input type="file" className="fileUpload" onChange={handleFileChange}/>
-                            <button className="fileUpload" onClick={handleFileUpload}>
+                            <button className="fileUploadButton" onClick={handleFileUpload}>
                                 Upload
                             </button>
                         </div>
