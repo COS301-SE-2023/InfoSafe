@@ -89,7 +89,7 @@ I am proficient in:
 
 
 #### Profiles:
-<a href="https://github.com/P3TROOS"><img src="documentation/images/GitHub.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.Linkedin.com/in/christof-steyn-631420218/"><img src="documentation/images/linkedin.png" alt="christof linkedin" width="30" height="30"></a>
+<a href="https://github.com/P3TROOS"><img src="documentation/images/GitHub.jpeg" alt="christof github" width="30" height="30"></a> &#8203; &#8203; <a href="https://www.Linkedin.com/in/christof-steyn-631420218/"><img src="documentation/images/Linkedin.png" alt="christof linkedin" width="30" height="30"></a>
 
 
 <hr>
