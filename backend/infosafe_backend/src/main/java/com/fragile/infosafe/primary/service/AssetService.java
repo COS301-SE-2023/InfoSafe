@@ -117,7 +117,7 @@ public class AssetService {
         if(asset.getCurrent_assignee() == null){
             emails = userRepository.getAllEmails();
         }else{
-            emails = assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(encryptionService.encryptString(asset.getCurrent_assignee().getEmail())).get(), assetId);
+            emails = assetRepository.findEmailsOfUsersNotAssignedToAsset(userRepository.findByEmail(asset.getCurrent_assignee().getEmail()).get(), assetId);
         } emails.replaceAll(encryptionService::decryptString);
         return emails;
     }
