@@ -90,7 +90,7 @@ export const Devices = () => {
             return (
                 <li key={asset.asset_id}>
                     <p onClick={() => setViewDeviceOpen(!viewDeviceOpen)}>
-                        Asset {asset.asset_id}: {asset.asset_name}
+                        Asset {asset.asset_id} : {asset.asset_name}
                         {viewDeviceOpen ? (
                             <ViewDevice
                                 popupClose={() => setViewDeviceOpen(false)}
