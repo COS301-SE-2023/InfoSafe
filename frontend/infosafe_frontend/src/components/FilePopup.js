@@ -1,13 +1,30 @@
 import "../styling/FilePopup.css"
 import Popup from "reactjs-popup";
 import {IoArrowBackOutline} from "react-icons/io5";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Dropdown from "react-dropdown";
+import {useGetFiles} from "./getData/getFiles";
 
-const FILES = ['FILE1','FILE2','FILE3'];
+// const FILES = [];
 
     export const FilePopup = ({ popupOpen, popupClose, datascope }) => {
         const [selectedFile, setSelectedFile] = useState(null);
+        const {showFile, fetchAllFiles} = useGetFiles();
+        const FILES = [];
+
+        useEffect(() => {
+            fetchAllFiles();
+        }, []);
+
+
+        showFile.map((data) =>
+            FILES.push(data)
+        );
+        if (FILES.length === 0)
+        {
+            FILES[0] = "No Files added yet.";
+        }
+
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
     };
@@ -45,57 +62,85 @@ const FILES = ['FILE1','FILE2','FILE3'];
             });
     };
 
-        const handleFileDelete = () => {
-            // Check if a file has been selected for deletion
-            if (!selectedFile) {
-                alert("Please select a file to delete.");
-                return;
-            }
+    const handleFileDelete = () => {
+        // Check if a file has been selected for deletion
+        if (!selectedFile) {
+            alert("Please select a file to delete.");
+            return;
+        }
 
-            // Determine the file name or identifier that you want to delete (you may need to pass it to the server).
-            const fileToDelete = selectedFile.name; // Adjust this based on your server's requirements
-
-            fetch(`api/storage/delete/${fileToDelete}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: "Bearer " + sessionStorage.getItem('accessToken')
-                },
+        // Determine the file name or identifier that you want to delete (you may need to pass it to the server).
+        const fileToDelete = selectedFile.value; // Adjust this based on your server's requirements
+        fetch(`http://localhost:8080/api/storage/delete/${fileToDelete}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    // Handle the success case (file deleted) as needed
+                    alert("File deleted successfully");
+                    setSelectedFile(null); // Clear the selected file
+                    popupClose();
+                    // You can also update your UI or perform other actions here
+                } else {
+                    throw new Error("File deletion failed");
+                }
             })
-                .then((response) => {
-                    if (response.ok) {
-                        // Handle the success case (file deleted) as needed
-                        alert("File deleted successfully");
-                        setSelectedFile(null); // Clear the selected file
-                        // You can also update your UI or perform other actions here
-                    } else {
-                        throw new Error("File deletion failed");
-                    }
-                })
-                .catch((error) => {
-                    // Handle any errors that occur during the deletion
-                    console.error("File deletion error: ", error);
-                });
-        };
+            .catch((error) => {
+                // Handle any errors that occur during the deletion
+                console.error("File deletion error: ", error);
+            });
+    };
 
-        const handleFileDownload = () => {
-            // Check if a file has been selected for download
-            if (!selectedFile) {
-                alert("Please select a file to download.");
-                return;
-            }
+    const handleFileDownload = () => {
+        // Check if a file has been selected for download
+        if (!selectedFile) {
+            alert("Please select a file to download.");
+            return;
+        }
+        const fileToDownload = selectedFile.value;
+        fetch(`http://localhost:8080/api/storage/download/${fileToDownload}`, {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            },
+        })
+            .then(async (response) => {
+                if (response.ok) {
+                    alert("File downloaded successfully");
 
-            // Assuming the server provides a direct download URL for the selected file
-            const downloadUrl = `api/storage/download/${selectedFile.name}`; // Adjust this URL based on your server's requirements
+                    // Get the response body as a blob
+                    const blob = await response.blob();
+                    // Create an object URL for the response body
+                    const objectUrl = URL.createObjectURL(blob);
 
-            // Create an invisible anchor element for the download
-            const anchor = document.createElement("a");
-            anchor.href = downloadUrl;
-            anchor.target = "_blank";
-            anchor.download = selectedFile.name;
+                    // Create an invisible anchor element for the download
+                    const anchor = document.createElement("a");
+                    anchor.href = objectUrl;
+                    anchor.target = "_blank";
+                    anchor.download = "Privacy_Policy.pdf";
 
-            // Trigger a click event on the anchor to start the download
-            anchor.click();
-        };
+                    // Trigger a click event on the anchor to start the download
+                    anchor.click();
+
+                    // Revoke the object URL after the download is complete
+                    URL.revokeObjectURL(objectUrl);
+
+                    setSelectedFile(null);
+                    console.log(response);
+
+                    popupClose();
+                } else {
+                    throw new Error("File deletion failed");
+                }
+            })
+            .catch((error) => {
+                // Handle any errors that occur during the deletion
+                console.error("File deletion error: ", error);
+            });
+    };
 
     return (
         <Popup open={popupOpen} closeOnDocumentClick={false} position="center center">
@@ -113,7 +158,7 @@ const FILES = ['FILE1','FILE2','FILE3'];
                                 value={FILES[0]}
                                 className="fileDropdown"
                                 name="createRiskProbabilityDropdown"
-                                //onChange={}
+                                onChange={(selectedOption) => setSelectedFile(selectedOption)}
                             />
                             <div className="fileButtonsDiv">
                                 <button className="fileDownload" onClick={handleFileDownload}>
