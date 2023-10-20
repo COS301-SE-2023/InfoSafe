@@ -6,9 +6,10 @@ export const ForgotPassword = () => {
     const [otp, setOtp] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [isOtpVerified, setIsOtpVerified] = useState(false);
+    const [setIsOtpVerified] = useState(false);
     const [otpError, setOTPError] = useState("");
     const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    const passwordRegex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/);
     const [emailError, setEmailError] = useState("");
     const handleClick = (e) => {
         e.preventDefault();
@@ -78,6 +79,11 @@ export const ForgotPassword = () => {
     const handleSecondClick = (e) => {
 
         e.preventDefault();
+
+        if (!passwordRegex.test(newPassword) || !passwordRegex.test(confirmPassword)) {
+            console.log("Passwords Need at least one uppercase character, one lowercase character, one number and one special character.");
+            return;
+        }
 
         if (newPassword !== confirmPassword) {
             console.log("Passwords do not match.");
