@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -125,6 +126,9 @@ public class DeleteService {
             de.setTask_description(entityToDelete.getTask_description());
             de.setDue_date(entityToDelete.getDue_date());
             de.setDate_created(entityToDelete.getDate_created());
+            for(User us : entityToDelete.getUsers()){
+                de.setUserIds(Collections.singleton(us.getUser_id()));
+            }
             de.setCompletionStatus(completion);
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);

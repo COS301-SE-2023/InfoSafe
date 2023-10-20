@@ -39,7 +39,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(values)
+        console.log(values)
         fetch('https://infosafe.live/api/user/update/' + user.user_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -62,10 +62,6 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
                 },
             });
-            // }).then((res) => res.json())
-            //     .then((result) => {
-            //         setRoleNames(result);
-            //     });
             const roles = await response.json();
             setRoleNames(roles);
         }
