@@ -120,7 +120,7 @@ return (
                         /> ) : (
                         <p className='viewTaskLoadLabel'>Loading...</p>
                     )}
-                    <p className="viewTaskDisplayLabel">Task Status</p>
+                    <p className="viewTaskDisplayLabel">Task Priority</p>
                     <p className="viewTaskDisplayStatus">{task.task_status}</p>
                     <p className="viewTaskDisplayCompletionDate">Completion Date</p>
                     <p className="viewTaskDisplayCompletionDateData">{task.due_date}</p>

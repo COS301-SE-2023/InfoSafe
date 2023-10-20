@@ -160,7 +160,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                                 /> ) : (
                                 <p className="editTaskLoading">Loading...</p>
                             )}
-                            <p className="editTaskLabels">Status</p>
+                            <p className="editTaskLabels">Priority</p>
                             <Dropdown
                                 options={statusOptions}
                                 value={statusOptions.find((option) => option.value === task.task_status)}
