@@ -77,7 +77,7 @@ public class AccessRequestService {
                     dataScope.getUsers().add(user);
                     dataScopeRepository.save(dataScope);
                     deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                    emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), dataScope.getDs_name(), "Approved");
+                    emailUser(reviewRequest.getUser_email(), dataScope.getDs_name(), "Approved");
                     notificationsService.makeNotification("Added to Datascope " + dataScope.getDs_name(), user);
                     return ResponseEntity.ok("given to user");
                 } else {
