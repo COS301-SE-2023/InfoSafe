@@ -54,7 +54,7 @@ public class AccessRequestService {
             decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
             decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
             decryptedCurrentAssignee.setRole(currentAssignee.getRole());
-            accessRequest.setUser_id(currentAssignee);
+            accessRequest.setUser_id(decryptedCurrentAssignee);
         }
         return ar;
     }

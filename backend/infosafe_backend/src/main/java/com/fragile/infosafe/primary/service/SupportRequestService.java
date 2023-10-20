@@ -72,7 +72,7 @@ public class SupportRequestService {
             decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
             decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
             decryptedCurrentAssignee.setRole(currentAssignee.getRole());
-            supportRequest.setUser_id(currentAssignee);
+            supportRequest.setUser_id(decryptedCurrentAssignee);
         }
         return sr;
     }
@@ -118,7 +118,7 @@ public class SupportRequestService {
             decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
             decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
             decryptedCurrentAssignee.setRole(currentAssignee.getRole());
-            supportRequest.setUser_id(currentAssignee);
+            supportRequest.setUser_id(decryptedCurrentAssignee);
         }
         return sr;
     }
