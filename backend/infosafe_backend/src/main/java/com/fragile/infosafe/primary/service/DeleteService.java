@@ -38,6 +38,7 @@ public class DeleteService {
     private final DeletedAccessRequestRepository deletedAccessRequestRepository;
     private final DeletedSupportRequestRepository deletedSupportRequestRepository;
     private final DeletedRiskRepository deletedRiskRepository;
+    private final NotificationsRepository notificationsRepository;
 
     public void deleteUserAndSaveToSecondary(String email) {
         Optional<User> entityOptional = userRepository.findByEmail(encryptionService.encryptString(email));
@@ -64,6 +65,22 @@ public class DeleteService {
                 asset.setCurrent_assignee(null);
                 asset.setAvailability("Yes");
             }
+            for(Task task : entityToDelete.getTasks()){
+                task.getUsers().remove(entityToDelete);
+                if(task.getUsers().size() == 0){
+                    deleteTaskAndSaveToSecondary(task.getTask_id(), "Users Deleted");
+                }else{
+                    taskRepository.save(task);
+                }
+            }
+            for(DataScope ds : entityToDelete.getDataScopes()){
+                if(entityToDelete != ds.getDataCustodian()){
+                    ds.getUsers().remove(entityToDelete);
+                }else{
+                    return;
+                }
+            }
+            notificationsRepository.deleteAll(entityToDelete.getNotifications());
             deletedUserRepository.save(de);
             userRepository.delete(entityToDelete);
         }

@@ -38,6 +38,7 @@ public class Task {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> users = new HashSet<>();
+
     @Column(nullable = true)
     private int daysUntilDue;
 
