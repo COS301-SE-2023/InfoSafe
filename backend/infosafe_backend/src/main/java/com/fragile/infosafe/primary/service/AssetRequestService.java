@@ -58,8 +58,13 @@ public class AssetRequestService {
     public List<AssetRequests> getAllAssetRequests() {
         List<AssetRequests> ar = assetRequestRepository.findAll();
         for (AssetRequests assetRequests : ar) {
-            assetRequests.getUser().setFirst_name(encryptionService.decryptString(assetRequests.getUser().getFirst_name()));
-            assetRequests.getUser().setLast_name(encryptionService.decryptString(assetRequests.getUser().getLast_name()));
+            User currentAssignee = assetRequests.getUser();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            assetRequests.setUser(currentAssignee);
         }
         return ar;
     }

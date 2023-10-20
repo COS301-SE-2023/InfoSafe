@@ -48,8 +48,13 @@ public class AccessRequestService {
     public List<AccessRequest> getAllAccessRequests() {
         List<AccessRequest> ar = accessRequestRepository.findAll();
         for(AccessRequest accessRequest : ar){
-            accessRequest.getUser_id().setFirst_name(encryptionService.decryptString(accessRequest.getUser_id().getFirst_name()));
-            accessRequest.getUser_id().setLast_name(encryptionService.decryptString(accessRequest.getUser_id().getLast_name()));
+            User currentAssignee = accessRequest.getUser_id();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            accessRequest.setUser_id(currentAssignee);
         }
         return ar;
     }
@@ -82,7 +87,7 @@ public class AccessRequestService {
             }
         } else {
             deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-            emailUser(reviewRequest.getUser_email(), "", "Denied");
+            emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), "", "Denied");
             String message = "rejected access";
             return ResponseEntity.ok(message);
         }

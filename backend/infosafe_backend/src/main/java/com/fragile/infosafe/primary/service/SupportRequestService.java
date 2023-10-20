@@ -66,8 +66,13 @@ public class SupportRequestService {
     public List<SupportRequest> getAllSupportRequests() {
         List<SupportRequest> sr = supportRequestRepository.findAll();
         for(SupportRequest supportRequest : sr){
-            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
-            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+            User currentAssignee = supportRequest.getUser_id();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            supportRequest.setUser_id(currentAssignee);
         }
         return sr;
     }
@@ -107,8 +112,13 @@ public class SupportRequestService {
     public List<SupportRequest> getUserSupportRequests(int user_id) {
         List<SupportRequest> sr = supportRequestRepository.findAllByUserId(user_id);
         for(SupportRequest supportRequest : sr){
-            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
-            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+            User currentAssignee = supportRequest.getUser_id();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            supportRequest.setUser_id(currentAssignee);
         }
         return sr;
     }
