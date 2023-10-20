@@ -63,6 +63,7 @@ public class AssetRequestService {
             decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
             decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
             decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setEmail(currentAssignee.getEmail());
             decryptedCurrentAssignee.setRole(currentAssignee.getRole());
             assetRequests.setUser(decryptedCurrentAssignee);
         }
@@ -88,14 +89,14 @@ public class AssetRequestService {
                 asset.setAvailability("No");
                 asset.setCurrent_assignee(user);
                 assetRepository.save(asset);
-                emailUser(reviewRequest.getUser_email(), asset.getAsset_name(), "Approved");
+                emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), asset.getAsset_name(), "Approved");
                 notificationsService.makeNotification("Received Asset " + asset.getAsset_name(), user);
                 deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
                 return ResponseEntity.ok("given to user");
             }
         } else {
             deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-            emailUser(reviewRequest.getUser_email(), "", "Denied");
+            emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), "", "Denied");
             notificationsService.makeNotification("Asset Request Denied", userRepository.findByEmail(reviewRequest.getUser_email()).get());
             return ResponseEntity.ok("rejected access");
         }

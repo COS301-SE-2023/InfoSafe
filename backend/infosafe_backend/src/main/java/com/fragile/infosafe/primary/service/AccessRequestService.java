@@ -53,6 +53,7 @@ public class AccessRequestService {
             decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
             decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
             decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setEmail(currentAssignee.getEmail());
             decryptedCurrentAssignee.setRole(currentAssignee.getRole());
             accessRequest.setUser_id(decryptedCurrentAssignee);
         }
@@ -77,7 +78,7 @@ public class AccessRequestService {
                     dataScope.getUsers().add(user);
                     dataScopeRepository.save(dataScope);
                     deleteService.deleteAccessRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                    emailUser(reviewRequest.getUser_email(), dataScope.getDs_name(), "Approved");
+                    emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), dataScope.getDs_name(), "Approved");
                     notificationsService.makeNotification("Added to Datascope " + dataScope.getDs_name(), user);
                     return ResponseEntity.ok("given to user");
                 } else {
