@@ -82,6 +82,7 @@ export const Users = () => {
                 throw new Error("Network response was not ok");
             } else {
                 console.log("user deleted");
+                fetchAllUsers();
             }
             return response.json();
 
