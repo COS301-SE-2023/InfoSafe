@@ -7,6 +7,7 @@ describe("ViewTaskPopup Component", () => {
         task_name: "Task 1",
         task_description: "Create new users",
         due_date: "2023-11-11",
+        task_status: "High",
         data_scope_id: {
             ds_name: "Data Scope A"
         }
@@ -25,6 +26,8 @@ describe("ViewTaskPopup Component", () => {
         expect(screen.getByText("Data Scope A")).toBeInTheDocument();
         expect(screen.getByText("Task Description")).toBeInTheDocument();
         expect(screen.getByText("Create new users")).toBeInTheDocument();
+        expect(screen.getByText("Task Priority")).toBeInTheDocument();
+        expect(screen.getByText("High")).toBeInTheDocument();
         expect(screen.getByText("Completion Date")).toBeInTheDocument();
         expect(screen.getByText("2023-11-11")).toBeInTheDocument();
     });
