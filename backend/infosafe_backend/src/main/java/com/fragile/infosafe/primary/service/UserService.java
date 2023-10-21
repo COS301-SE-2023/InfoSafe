@@ -43,10 +43,10 @@ public class UserService {
 
     public User updateUser(User user) {
         user.setRole(roleRepository.findByRole_name(user.getRole().getRole_name()));
-        user.setFirst_name(encryptionService.decryptString(user.getFirst_name()));
-        user.setLast_name(encryptionService.decryptString(user.getLast_name()));
-        user.setEmail(encryptionService.decryptString(user.getEmail()));
-        user.setPassword(encryptionService.decryptString(user.getPassword()));
+        user.setFirst_name(encryptionService.encryptString(user.getFirst_name()));
+        user.setLast_name(encryptionService.encryptString(user.getLast_name()));
+        user.setEmail(encryptionService.encryptString(user.getEmail()));
+        user.setPassword(user.getPassword());
         return repository.save(user);
     }
 

@@ -37,8 +37,7 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log(values)
+        //console.log(values)
         fetch('https://infosafe.live/api/risk/update/' + risk.risk_id, {
             method: "POST",
             headers: {
@@ -50,7 +49,6 @@ export const EditRisk = ({risk, popupClose, popupOpen, onRiskEdited}) => {
             console.log("Updated Risk")
             onRiskEdited()
         })
-        //console.log(JSON.stringify(values))
         popupClose()
     }
 

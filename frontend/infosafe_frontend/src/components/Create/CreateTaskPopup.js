@@ -121,7 +121,7 @@ export const CreateTask = ({popupClose, popupOpen, onTaskAdded}) => {
                                 value={task_description}
                                 id="taskDescIn"
                             />
-                            <p className="createTaskInputLabels">Task Status</p>
+                            <p className="createTaskInputLabels">Task Priority</p>
                             <Dropdown
                                 options={statusOptions}
                                 value={statusOptions.find((option) => option.value === task_status)}

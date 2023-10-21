@@ -59,6 +59,18 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
     private List<AccessRequest> accessRequests;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Notifications> notifications;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private List<Task> tasks;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private List<DataScope> dataScopes;
+
     @Override
     public String toString() {
         return "User{" +

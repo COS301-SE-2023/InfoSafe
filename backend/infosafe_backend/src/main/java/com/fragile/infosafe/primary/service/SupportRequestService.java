@@ -102,7 +102,7 @@ public class SupportRequestService {
         updated.setSupport_description(supportRequest.getSupport_description());
         updated.setSupport_status(supportRequest.getSupport_status());
         updated.setSupport_type(supportRequest.getSupport_type());
-        updated.setUser_id(userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).isPresent() ? userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).get() :null);
+        updated.setUser_id(userRepository.findByEmail(supportRequest.getUser_email()).isPresent() ? userRepository.findByEmail(supportRequest.getUser_email()).get() :null);
         updated.setTask_id(taskRepository.findByTaskId(supportRequest.getTask_id()).isPresent() ? taskRepository.findByTaskId(supportRequest.getTask_id()).get() : null);
         updated.setAsset_id(assetRepository.findByAssetId(supportRequest.getAsset_id()).isPresent() ? assetRepository.findByAssetId(supportRequest.getAsset_id()).get() : null);
         updated.setDataScope_id(dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).isPresent() ? dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).get() : null);
