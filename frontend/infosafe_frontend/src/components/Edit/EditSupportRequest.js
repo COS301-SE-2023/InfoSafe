@@ -29,8 +29,12 @@ const EditSupportRequest = ({ support, popupOpen, popupClose, editAllSupport, ed
             body:JSON.stringify(values)
         }).then(()=>{
             console.log("Updated AccessRequest")
-            editAllSupport()
-            editMySupport()
+            if(editAllSupport !== null){
+                editAllSupport();
+            }else{
+                editMySupport();
+            }
+
         })
         popupClose()
     }

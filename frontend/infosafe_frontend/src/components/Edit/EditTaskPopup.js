@@ -148,7 +148,7 @@ export const UpdateTask = ({ task, popupClose, popupOpen, onTaskEdited }) => {
                             <p className="editTaskLabels">Add More Assignees</p>
                             {users && users.length > 0 ? (
                                 <Select
-                                    options={users.map((data) => ({value: data.user_id, label: data.email}))}
+                                    options={users.map((email) => ({value: email, label: email}))}
                                     value={selectedUsers.map((email) => ({ label: email }))}
                                     className="editTaskAssignees"
                                     name="editTaskAssignees"

@@ -33,6 +33,7 @@ public class AssetService {
                 decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
                 decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
                 decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+                decryptedCurrentAssignee.setEmail(encryptionService.decryptString(currentAssignee.getEmail()));
                 decryptedCurrentAssignee.setRole(currentAssignee.getRole());
                 asset.setCurrent_assignee(decryptedCurrentAssignee);
             }
@@ -42,6 +43,7 @@ public class AssetService {
                 decryptedPreviousAssignee.setUser_id(previousAssignee.getUser_id());
                 decryptedPreviousAssignee.setFirst_name(encryptionService.decryptString(previousAssignee.getFirst_name()));
                 decryptedPreviousAssignee.setLast_name(encryptionService.decryptString(previousAssignee.getLast_name()));
+                decryptedPreviousAssignee.setEmail(encryptionService.decryptString(previousAssignee.getEmail()));
                 decryptedPreviousAssignee.setRole(previousAssignee.getRole());
                 asset.setPrevious_assignee(decryptedPreviousAssignee);
             }
