@@ -75,7 +75,6 @@ const useRequestMaker = () => {
             body: JSON.stringify(requestBody)
         }).then(() => {
             console.log("New request added");
-            console.log(requestBody);
             window.alert("Successfully created " + requestBody.support_type + " request.");
         })
         .catch((error) => {
