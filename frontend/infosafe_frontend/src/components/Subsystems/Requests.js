@@ -221,8 +221,7 @@ export const Requests = () => {
 
         const clearFormData = () => {
             setReason('');
-            setDesiredDate(null);
-            setSelectedDevice(null);
+            setDesiredDate('');
         };
         const handleDateChange = (date) => {
             setDesiredDate(date);
