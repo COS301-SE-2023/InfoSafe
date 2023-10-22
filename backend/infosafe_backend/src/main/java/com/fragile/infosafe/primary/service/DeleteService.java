@@ -105,6 +105,9 @@ public class DeleteService {
             for(Task task : entityToDelete.getTasks()){
                 deleteTaskAndSaveToSecondary(task.getTask_id(), "DatascopeDeleted");
             }
+            for(SupportRequest supportRequest : entityToDelete.getSupportRequests()){
+                deleteSupportRequestAndSaveToSecondary(supportRequest.getSupport_id());
+            }
             dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
             dataScopeRepository.delete(entityToDelete);
