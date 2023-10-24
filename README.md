@@ -26,7 +26,7 @@
 
 # Project Name
 
-[![InfoSafe](documentation/images/Infosafe.png)](https://www.infosafe.live)
+[![InfoSafe](documentation/images/Infosafe_light.png)](https://www.infosafe.live)
 
 <hr>
 
