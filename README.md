@@ -26,7 +26,7 @@
 
 # Project Name
 
-[![InfoSafe](documentation/images/Infosafe.png)](https://www.infosafe.live){:target="_blank"}
+[![InfoSafe](documentation/images/Infosafe.png)](https://www.infosafe.live)
 
 <hr>
 
@@ -43,7 +43,7 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Resources
 
 ### Website Link:
-- <a href="https://www.infosafe.live" target="_blank">infosafe.live</a>
+- :globe_with_meridians: <a href="https://www.infosafe.live" target="_blank">infosafe.live</a>
 
 ### Demo Videos:
 - :video_camera: All our demo videos and system advert can be found [here](https://github.com/COS301-SE-2023/InfoSafe/wiki/Demo-Videos).
@@ -63,7 +63,7 @@ Users will be assigned certain roles when their profile has been created on the 
 ## Meet the Team
 
 <details>
-<summary><b>:tv: Christof Steyn</b></summary>
+<summary><b>:microscope: Christof Steyn</b></summary>
 - Team Lead, Backend, Database and Hosting, Integration, Dev-ops, Testing
 
 <img src="documentation/images/cs.png" alt="Christof Steyn Profile Image" width="250" height="250">
@@ -84,7 +84,7 @@ I am proficient in:
 </details>
 
 <details>
-<summary><b>Chris Mittendorf</b></summary>
+<summary><b>:floppy_disk: Chris Mittendorf</b></summary>
 - Backend, Dev-ops, Integration, Database and Hosting, Documentation, Testing
 
 <img src="documentation/images/cm.png" alt="Chris Mittendorf Profile Image" width="250" height="250">
@@ -104,7 +104,7 @@ I am proficient in:
 </details>
 
 <details>
-<summary><b>Yané van der Westhuizen</b></summary>
+<summary><b>:art: Yané van der Westhuizen</b></summary>
 - Frontend, UI Designer, UI Engineer
 
 <img src="documentation/images/yvdw.png" alt="Yané van der Westhuizen Profile Image" width="250" height="250">
@@ -126,7 +126,7 @@ I am proficient in:
 </details>
 
 <details>
-<summary><b>Karel Smit</b></summary>
+<summary><b>:pencil2: Karel Smit</b></summary>
 - Frontend, UI Designer, UI Engineer
 
 <img src="documentation/images/ks.png" alt="Karel Smit Profile Image" width="250" height="250">
@@ -146,7 +146,7 @@ Karel Smit is an aspiring Software Engineer, who has a keen interest in problem-
 </details>
 
 <details>
-<summary><b>Alistair Ross</b></summary>
+<summary><b>:wrench: Alistair Ross</b></summary>
 - Backend, Database and Hosting, Security, Dev-ops, Integration, Testing
 
 <img src="documentation/images/ar.png" alt="Alistair Ross Profile Image" width="250" height="250">
