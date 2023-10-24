@@ -81,7 +81,7 @@ export const ForgotPassword = () => {
         e.preventDefault();
 
         if (!passwordRegex.test(newPassword) || !passwordRegex.test(confirmPassword)) {
-            console.log("Passwords Need at least one uppercase character, one lowercase character, one number and one special character.");
+            alert("Passwords Need at least one uppercase character, one lowercase character, one number and one special character.");
             return;
         }
 

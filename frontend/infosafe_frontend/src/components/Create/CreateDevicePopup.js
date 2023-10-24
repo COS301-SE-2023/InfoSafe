@@ -2,26 +2,33 @@ import React, {useEffect, useState} from 'react';
 import '../../styling/CreateDevicePopup.css';
 import '../../styling/CreateTask.css';
 import Popup from 'reactjs-popup';
-
+import infoPopup from "../View/InfoPopup";
 import {IoArrowBackOutline} from 'react-icons/io5';
 import Dropdown from "react-dropdown";
-import Select from "react-select";
-import {useGetAllUser} from "../getData/getAllUser";
+
 
 const STATUS_OPTIONS = ['Clean', 'Full', 'Broken'];
 const NEW_OPTIONS = ['New', 'Used'];
 const AVAILABILITY_OPTIONS = ['Yes', 'No'];
 export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) => {
-    const current = new Date();
-    const [asset_name, setAsset_name] = useState('')
-    const [asset_description, setAsset_description] = useState('')
-    const [availability, setAvailability] = useState('Yes')
-    const [used, setUsed] = useState('New')
-    const [current_assignee, setCurrent_assignee] = useState('')
-    const [status, setStatus] = useState('Clean')
-    const [device_type, setDevice_type] = useState('')
+    const [asset_name, setAsset_name] = useState('');
+    const [asset_description, setAsset_description] = useState('');
+    const [availability, setAvailability] = useState('Yes');
+    const [used, setUsed] = useState('New');
+    const [current_assignee, setCurrent_assignee] = useState('');
+    const [status, setStatus] = useState('Clean');
+    const [device_type, setDevice_type] = useState('');
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState(null);
+    const [showInfoPopup, setShowInfoPopup] = useState(false);
+
+    const openInfoPopup = () => {
+        setShowInfoPopup(true);
+    }
+
+    const closeInfoPopup = () => {
+        setShowInfoPopup(false);
+    }
 
 
     const handleSelect = (selectedOptions) => {
@@ -57,6 +64,7 @@ export const CreateDevicePopup = ({popupOpen, popupClose, onAssetCreated}) => {
             body: JSON.stringify(asset)
         }).then(() => {
             console.log("New Asset added")
+            openInfoPopup();
             onAssetCreated()
         })
     }

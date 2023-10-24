@@ -14,11 +14,11 @@ export const About = () => {
                     </p>
                     <p className="aboutSubTitle">Terms of Service and Use</p>
                     <p className="aboutData">
-                        To view the InfoSafe Terms of Service and User, please view them <a href="https://drive.google.com/file/d/1I3KmcxW_qtzVs0J8fjqhGffkhHxsRPwA/view?usp=share_link">here</a>.
+                        To view the InfoSafe Terms of Service and Use, please view them <a href="https://drive.google.com/file/d/1I3KmcxW_qtzVs0J8fjqhGffkhHxsRPwA/view?usp=share_link" target="_blank">here</a>.
                     </p>
                     <p className="aboutSubTitle">Privacy Policy</p>
                     <p className="aboutData">
-                        To learn more about the InfoSafe Privacy Policy, find it <a href="https://drive.google.com/file/d/1400_ANX0-QAWBGwH_OTkNLFqtcDfC0Z7/view?usp=share_link">here</a>.
+                        To learn more about the InfoSafe Privacy Policy, find it <a href="https://drive.google.com/file/d/1400_ANX0-QAWBGwH_OTkNLFqtcDfC0Z7/view?usp=share_link" target="_blank">here</a>.
                     </p>
                     <div className="contactUsInfo">
                         <p className="contactUsTitle">Contact Us</p>

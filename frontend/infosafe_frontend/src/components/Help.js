@@ -33,7 +33,7 @@ export const Help = () => {
                     <p className="helpTitle">User Manual</p>
                     <p className="helpData">
                         If none of the above tips are able to help you or you need a deeper understanding of the system you can find the
-                        user manual <a href="https://drive.google.com/file/d/1I3YdViR5jbR4gqQQjGEcjIQmcQFEhaRv/view?usp=drive_link">here</a>.
+                        user manual <a href="https://drive.google.com/file/d/1Dtm1cXLL7MKPjaFJtlooKkjFJaLcJveQ/view?usp=share_link" target="_blank">here</a>.
                         This will provide you with an in-depth breakdown of all the subsystems and how to utilise them to increase your
                         productivity and efficiency within the InfoSafe system.
                     </p>
