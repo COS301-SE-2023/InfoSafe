@@ -62,7 +62,6 @@ const useRequestMaker = () => {
                 requestBody = access;
                 break;
             default:
-                //console.log("this happened")
                 return;
         }
         //console.log(requestBody);
