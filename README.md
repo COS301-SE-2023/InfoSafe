@@ -29,7 +29,7 @@
 [![InfoSafe](documentation/images/Infosafe_light.png)](https://www.infosafe.live)
 
 
-https://github.com/COS301-SE-2023/InfoSafe/assets/64251227/d70e8edb-b2cd-4245-af20-d39d70030de9
+https://github.com/COS301-SE-2023/InfoSafe/assets/64251227/a3145e11-148b-41de-bbb7-2968ef78e699
 
 
 <hr>
@@ -46,8 +46,10 @@ Users will be assigned certain roles when their profile has been created on the 
 
 ## Resources
 
-### Website Link:
+### Quick Links:
 - :globe_with_meridians: <a href="https://www.infosafe.live" target="_blank">infosafe.live</a>
+- :tv: [Full System Video Demo](https://drive.google.com/file/d/1VtMQVrNqawDLWFae0EeRuhth4Xqqr58w/view?usp=share_link)
+- :pencil: [Project Day Presentation](https://drive.google.com/file/d/1NSEzvH-0TtPbk0U1B8Ei6wBnuAJHY6oC/view?usp=sharing)
 
 ### Demo Videos:
 - :video_camera: All our demo videos and system advert can be found [here](https://github.com/COS301-SE-2023/InfoSafe/wiki/Demo-Videos).
