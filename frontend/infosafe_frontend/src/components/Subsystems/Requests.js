@@ -62,6 +62,12 @@ export const Requests = () => {
         const handleDescriptionChange = (e) => {
             setSupportDescription(e.target.value);
         };
+
+        const clearFormData = () => {
+            setSupportType(SUPPORTOPTIONS[0]);
+            setSupportDescription('');
+        };
+
         return (<div className="createSupportRequestDiv">
             <form>
                 <p className="supportRequestTypeLabel">Support Type</p>
@@ -131,7 +137,10 @@ export const Requests = () => {
                 <button
                     className="createSupportRequestButton"
                     type="submit"
-                    onClick={(e) => handleClick(e, selectedRequest)}
+                    onClick={(e) => {
+                        handleClick(e, selectedRequest);
+                        clearFormData();
+                    }}
                 >Log Support Request
                 </button>
             </div>
@@ -148,6 +157,9 @@ export const Requests = () => {
             setReason(e.target.value);
         }
 
+        const clearFormData = () => {
+            setReason('');
+        };
         return (
             <div className="createAccessRequestDiv">
                 <form>
@@ -178,7 +190,10 @@ export const Requests = () => {
                         <button
                             className="createAccessRequestButton"
                             type="submit"
-                            onClick={(e) => handleClick(e, selectedRequest)}
+                            onClick={(e) => {
+                                handleClick(e, selectedRequest);
+                                clearFormData();
+                            }}
                         >
                             Log Access Request
                         </button>
@@ -203,6 +218,11 @@ export const Requests = () => {
         const handleReasonChange = (e) => {
             setReason(e.target.value);
         }
+
+        const clearFormData = () => {
+            setReason('');
+            setDesiredDate('');
+        };
         const handleDateChange = (date) => {
             setDesiredDate(date);
         };
@@ -234,7 +254,10 @@ export const Requests = () => {
                     <button
                         className="createAssetRequestButton"
                         type="submit"
-                        onClick={(e) => handleClick(e, selectedRequest)}>
+                        onClick={(e) => {
+                            handleClick(e, selectedRequest);
+                            clearFormData();
+                        }}>
                         Log Asset Request
                     </button>
                 </div>

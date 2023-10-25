@@ -2,6 +2,7 @@ package com.fragile.infosafe.primary.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fragile.infosafe.delete.deleterepository.DeletedTaskRepository;
 import com.fragile.infosafe.primary.model.DataScope;
 import com.fragile.infosafe.primary.model.Task;
 import com.fragile.infosafe.primary.model.User;
@@ -34,6 +35,7 @@ public class TaskService {
     private final DeleteService deleteService;
     private final NotificationsService notificationsService;
     private final EncryptionService encryptionService;
+    private final DeletedTaskRepository deletedTaskRepository;
     public ResponseEntity<String> createTask(TaskRequest request) {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -191,5 +193,9 @@ public class TaskService {
         List<String> userEmails = taskRepository.findUsersByTaskId(task_id);
         userEmails.replaceAll(encryptionService::decryptString);
         return userEmails;
+    }
+
+    public long getCompletedTasks(int user_id){
+        return deletedTaskRepository.countByUserId(user_id);
     }
 }

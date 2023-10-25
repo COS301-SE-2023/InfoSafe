@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -37,6 +38,7 @@ public class DeleteService {
     private final DeletedAccessRequestRepository deletedAccessRequestRepository;
     private final DeletedSupportRequestRepository deletedSupportRequestRepository;
     private final DeletedRiskRepository deletedRiskRepository;
+    private final NotificationsRepository notificationsRepository;
 
     public void deleteUserAndSaveToSecondary(String email) {
         Optional<User> entityOptional = userRepository.findByEmail(encryptionService.encryptString(email));
@@ -63,6 +65,22 @@ public class DeleteService {
                 asset.setCurrent_assignee(null);
                 asset.setAvailability("Yes");
             }
+            for(Task task : entityToDelete.getTasks()){
+                task.getUsers().remove(entityToDelete);
+                if(task.getUsers().size() == 0){
+                    deleteTaskAndSaveToSecondary(task.getTask_id(), "Users Deleted");
+                }else{
+                    taskRepository.save(task);
+                }
+            }
+            for(DataScope ds : entityToDelete.getDataScopes()){
+                if(entityToDelete != ds.getDataCustodian()){
+                    ds.getUsers().remove(entityToDelete);
+                }else{
+                    return;
+                }
+            }
+            notificationsRepository.deleteAll(entityToDelete.getNotifications());
             deletedUserRepository.save(de);
             userRepository.delete(entityToDelete);
         }
@@ -86,6 +104,9 @@ public class DeleteService {
             }
             for(Task task : entityToDelete.getTasks()){
                 deleteTaskAndSaveToSecondary(task.getTask_id(), "DatascopeDeleted");
+            }
+            for(SupportRequest supportRequest : entityToDelete.getSupportRequests()){
+                deleteSupportRequestAndSaveToSecondary(supportRequest.getSupport_id());
             }
             dataScopeRoleRepository.deleteAll(dataScopeRoleRepository.findAllByDataScopeDataScopeId(datascope_id));
             deletedDataScopeRepository.save(de);
@@ -125,6 +146,9 @@ public class DeleteService {
             de.setTask_description(entityToDelete.getTask_description());
             de.setDue_date(entityToDelete.getDue_date());
             de.setDate_created(entityToDelete.getDate_created());
+            for(User us : entityToDelete.getUsers()){
+                de.setUserIds(Collections.singleton(us.getUser_id()));
+            }
             de.setCompletionStatus(completion);
             deletedTaskRepository.save(de);
             taskRepository.delete(entityToDelete);

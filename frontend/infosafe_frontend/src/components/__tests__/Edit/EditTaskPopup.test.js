@@ -32,7 +32,7 @@ describe("EditTask Component", () => {
         expect(screen.getByText("description 1")).toBeInTheDocument();
         expect(screen.getByText("Assigned Users:")).toBeInTheDocument();
         expect(screen.getByText("Add More Assignees")).toBeInTheDocument();
-        expect(screen.getByText("Status")).toBeInTheDocument();
+        expect(screen.getByText("Priority")).toBeInTheDocument();
         expect(screen.getByText("High")).toBeInTheDocument();
         expect(screen.getByText("Completion Date")).toBeInTheDocument();
         //expect(screen.getByText("2023/10/10")).toBeInTheDocument();

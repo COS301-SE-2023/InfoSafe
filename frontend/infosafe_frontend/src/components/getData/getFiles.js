@@ -6,7 +6,7 @@ export const useGetFiles = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/storage/list', {
+            const response = await fetch('https://infosafe.live/api/storage/list', {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')

@@ -36,7 +36,7 @@
     scrollbar-width: none;
 }
 .fileBackButton {
-    background-color: #9E0000;
+    background-color: #00003E;
     border: none;
     position: relative;
     height: 6%;
@@ -72,6 +72,7 @@
     top: 8vh;
 }
 .fileLabel{
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     width: 70%;
     border: none;
@@ -81,6 +82,7 @@
     top: -1vh;
 }
 .uploadLabel{
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     width: 70%;
     border: none;

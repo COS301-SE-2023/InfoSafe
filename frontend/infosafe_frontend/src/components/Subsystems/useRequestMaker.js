@@ -62,7 +62,6 @@ const useRequestMaker = () => {
                 requestBody = access;
                 break;
             default:
-                //console.log("this happened")
                 return;
         }
         //console.log(requestBody);
@@ -75,9 +74,10 @@ const useRequestMaker = () => {
             body: JSON.stringify(requestBody)
         }).then(() => {
             console.log("New request added");
+            window.alert("Successfully created " + requestBody.support_type + " request.");
         })
         .catch((error) => {
-            window.alert("Error: Unable to create duplicate requests.");
+            window.alert("Couldn't created " + requestBody.support_type + " request. Possible duplicate request.");
         })
     };
 

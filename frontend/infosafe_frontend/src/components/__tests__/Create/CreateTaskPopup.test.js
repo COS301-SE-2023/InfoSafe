@@ -14,7 +14,7 @@ describe("CreateTask Component", () => {
         //expect(screen.getByText("")).toBeInTheDocument();
         expect(screen.getByText("Task Description")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();
-        expect(screen.getByText("Task Status")).toBeInTheDocument();
+        expect(screen.getByText("Task Priority")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();
         expect(screen.getByText("Assignees")).toBeInTheDocument();
         //expect(screen.getByText("")).toBeInTheDocument();

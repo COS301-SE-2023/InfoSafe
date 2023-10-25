@@ -76,15 +76,15 @@ public class RiskService {
     }
     public Risk updateRisk(RiskRequest riskRequest, int risk_id) {
         Risk risk = riskRepository.findRiskByRiskId(risk_id).get();
-        risk.setRisk_description(risk.getRisk_description());
-        risk.setRisk_name(risk.getRisk_name());
-        risk.setRisk_status(risk.getRisk_status());
-        risk.setImpact_rating(risk.getImpact_rating());
-        risk.setProbability_rating(risk.getProbability_rating());
-        risk.setSuggested_mitigation(risk.getSuggested_mitigation());
+        risk.setRisk_description(riskRequest.getRisk_description());
+        risk.setRisk_name(riskRequest.getRisk_name());
+        risk.setRisk_status(riskRequest.getRisk_status());
+        risk.setImpact_rating(riskRequest.getImpact_rating());
+        risk.setProbability_rating(riskRequest.getProbability_rating());
+        risk.setSuggested_mitigation(riskRequest.getSuggested_mitigation());
         risk.setDataScope(dataScopeRepository.findByDataScopeId(riskRequest.getDataScope_id()).get());
-
-        return riskRepository.save(risk);}
+        return riskRepository.save(risk);
+    }
 
     private void emailUser(String email, String risk_name, String ds_name){
         String subject = "New Risk Alert";

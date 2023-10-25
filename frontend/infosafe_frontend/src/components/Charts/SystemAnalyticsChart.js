@@ -71,6 +71,7 @@ const SystemAnalyticsChart = () => {
                         Authorization: "Bearer " + accessToken,
                     },
                 }),
+
             ];
 
             try {

@@ -66,8 +66,13 @@ public class SupportRequestService {
     public List<SupportRequest> getAllSupportRequests() {
         List<SupportRequest> sr = supportRequestRepository.findAll();
         for(SupportRequest supportRequest : sr){
-            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
-            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+            User currentAssignee = supportRequest.getUser_id();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            supportRequest.setUser_id(decryptedCurrentAssignee);
         }
         return sr;
     }
@@ -97,7 +102,7 @@ public class SupportRequestService {
         updated.setSupport_description(supportRequest.getSupport_description());
         updated.setSupport_status(supportRequest.getSupport_status());
         updated.setSupport_type(supportRequest.getSupport_type());
-        updated.setUser_id(userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).isPresent() ? userRepository.findByEmail(encryptionService.encryptString(supportRequest.getUser_email())).get() :null);
+        updated.setUser_id(userRepository.findByEmail(supportRequest.getUser_email()).isPresent() ? userRepository.findByEmail(supportRequest.getUser_email()).get() :null);
         updated.setTask_id(taskRepository.findByTaskId(supportRequest.getTask_id()).isPresent() ? taskRepository.findByTaskId(supportRequest.getTask_id()).get() : null);
         updated.setAsset_id(assetRepository.findByAssetId(supportRequest.getAsset_id()).isPresent() ? assetRepository.findByAssetId(supportRequest.getAsset_id()).get() : null);
         updated.setDataScope_id(dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).isPresent() ? dataScopeRepository.findByDataScopeId(supportRequest.getDataScope_id()).get() : null);
@@ -107,8 +112,14 @@ public class SupportRequestService {
     public List<SupportRequest> getUserSupportRequests(int user_id) {
         List<SupportRequest> sr = supportRequestRepository.findAllByUserId(user_id);
         for(SupportRequest supportRequest : sr){
-            supportRequest.getUser_id().setFirst_name(encryptionService.decryptString(supportRequest.getUser_id().getFirst_name()));
-            supportRequest.getUser_id().setLast_name(encryptionService.decryptString(supportRequest.getUser_id().getLast_name()));
+            User currentAssignee = supportRequest.getUser_id();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setEmail(currentAssignee.getEmail());
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            supportRequest.setUser_id(decryptedCurrentAssignee);
         }
         return sr;
     }
@@ -122,12 +133,12 @@ public class SupportRequestService {
                     if (dataScope.isPresent() && userOptional.isPresent()) {
                         dataScope.get().getUsers().add(userOptional.get());
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
+                        emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
                         notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Resolved", userOptional.get());
                         return ResponseEntity.ok("User given support to datascope");
                     } else {
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
+                        emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
                         notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Unsuccessful", userOptional.get());
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find datascope or user");
                     }
@@ -137,12 +148,12 @@ public class SupportRequestService {
                     if (asset.isPresent() && userOptional.isPresent()) {
                         asset.get().setCurrent_assignee(userOptional.get());
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
+                        emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
                         notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Resolved", userOptional.get());
                         return ResponseEntity.ok("User given support to Asset");
                     } else {
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
+                        emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
                         notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Unsuccessful", userOptional.get());
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find asset or user");
                     }
@@ -152,12 +163,12 @@ public class SupportRequestService {
                     if (task.isPresent() && userOptional.isPresent()) {
                         task.get().getUsers().add(userOptional.get());
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
+                        emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Resolved");
                         notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Resolved", userOptional.get());
                         return ResponseEntity.ok("User given support to Task");
                     } else {
                         deleteService.deleteSupportRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-                        emailUser(reviewRequest.getUser_email(), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
+                        emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), reviewRequest.getRequest_id(), supportRequestRepository.findById(reviewRequest.getRequest_id()).get().getSupport_description(), "Unsuccessful");
                         notificationsService.makeNotification("Support Request: ID " + reviewRequest.getRequest_id() + "Unsuccessful", userOptional.get());
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("couldn't find task or user");
                     }

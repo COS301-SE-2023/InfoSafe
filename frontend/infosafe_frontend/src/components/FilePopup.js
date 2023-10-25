@@ -58,7 +58,7 @@ import {useGetFiles} from "./getData/getFiles";
         selectedFile.title = "help";
         formData.append("file", selectedFile);
 
-        fetch(`http://localhost:8080/api/storage/upload/${datascope.data_scope_id}`, {
+        fetch(`https://infosafe.live/api/storage/upload/${datascope.data_scope_id}`, {
             method: "POST",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -86,7 +86,7 @@ import {useGetFiles} from "./getData/getFiles";
 
         // Determine the file name or identifier that you want to delete (you may need to pass it to the server).
         const fileToDelete = selectedFile.value; // Adjust this based on your server's requirements
-        fetch(`http://localhost:8080/api/storage/delete/${fileToDelete}`, {
+        fetch(`https://infosafe.live/api/storage/delete/${fileToDelete}`, {
             method: "DELETE",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')
@@ -116,7 +116,7 @@ import {useGetFiles} from "./getData/getFiles";
             return;
         }
         const fileToDownload = selectedFile.value;
-        fetch(`http://localhost:8080/api/storage/download/${fileToDownload}`, {
+        fetch(`https://infosafe.live/api/storage/download/${fileToDownload}`, {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + sessionStorage.getItem('accessToken')

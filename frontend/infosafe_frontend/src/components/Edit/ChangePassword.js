@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import Popup from "reactjs-popup";
 import { IoArrowBackOutline } from "react-icons/io5";
 import '../../styling/ChangePassword.css';
-import ViewDataScope from "../View/ViewDataScope";
+const passwordRegex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/);
+
 
 export const ChangePassword = ({ popupClose, popupOpen }) => {
     const [userEmail, setUserEmail] = useState('');
@@ -13,6 +14,11 @@ export const ChangePassword = ({ popupClose, popupOpen }) => {
 
     const handleClick = async (e) => {
         e.preventDefault();
+
+        if (!passwordRegex.test(newPassword) || !passwordRegex.test(reenteredPassword)) {
+            alert("Passwords Need at least one uppercase character, one lowercase character, one number and one special character.");
+            return;
+        }
 
         if (newPassword !== reenteredPassword) {
             alert("Passwords do not match. Please re-enter.");

@@ -39,7 +39,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(values)
+        console.log(values)
         fetch('https://infosafe.live/api/user/update/' + user.user_id, {
             method:"PUT",
             headers:{"Content-Type":"application/json",
@@ -62,10 +62,6 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
                     Authorization: "Bearer " + sessionStorage.getItem('accessToken')
                 },
             });
-            // }).then((res) => res.json())
-            //     .then((result) => {
-            //         setRoleNames(result);
-            //     });
             const roles = await response.json();
             setRoleNames(roles);
         }
@@ -118,6 +114,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
                                         readOnly={true}
                                     />
                                 </div>
+                                {user.role.role_name !== "ADMIN" ? (
                                 <div className="roleEdit">
                                     <p className="roleTitle">System Role</p>
                                     {roleNames && roleNames.length > 0 ? (
@@ -132,6 +129,7 @@ const EditUser = ({ user, popupClose, popupOpen , onUserEdited}) => {
                                         <p className="editUserRolesLoading">Loading...</p>
                                     )}
                                 </div>
+                                    ) : null}
                                 <button className="editUserFinishButton" data-testid="finish">
                                     Finish
                                 </button>

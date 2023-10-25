@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.sql.Delete;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,4 +52,16 @@ public class TaskController {
     public ResponseEntity<List<String>> getUsersOfTask(@PathVariable("id") int task_id){
         return ResponseEntity.ok(service.findUsersOfTask(task_id));
     }
+
+    @GetMapping("/getCompleted")
+    public ResponseEntity<Long> getCompletedTasks(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User authenticatedUser) {
+            long count = service.getCompletedTasks(authenticatedUser.getUser_id());
+            return ResponseEntity.ok(count);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

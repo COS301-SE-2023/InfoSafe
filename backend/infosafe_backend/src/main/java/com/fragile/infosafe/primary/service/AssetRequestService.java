@@ -58,8 +58,14 @@ public class AssetRequestService {
     public List<AssetRequests> getAllAssetRequests() {
         List<AssetRequests> ar = assetRequestRepository.findAll();
         for (AssetRequests assetRequests : ar) {
-            assetRequests.getUser().setFirst_name(encryptionService.decryptString(assetRequests.getUser().getFirst_name()));
-            assetRequests.getUser().setLast_name(encryptionService.decryptString(assetRequests.getUser().getLast_name()));
+            User currentAssignee = assetRequests.getUser();
+            User decryptedCurrentAssignee = new User();
+            decryptedCurrentAssignee.setUser_id(currentAssignee.getUser_id());
+            decryptedCurrentAssignee.setFirst_name(encryptionService.decryptString(currentAssignee.getFirst_name()));
+            decryptedCurrentAssignee.setLast_name(encryptionService.decryptString(currentAssignee.getLast_name()));
+            decryptedCurrentAssignee.setEmail(currentAssignee.getEmail());
+            decryptedCurrentAssignee.setRole(currentAssignee.getRole());
+            assetRequests.setUser(decryptedCurrentAssignee);
         }
         return ar;
     }
@@ -90,7 +96,7 @@ public class AssetRequestService {
             }
         } else {
             deleteService.deleteAssetRequestAndSaveToSecondary(reviewRequest.getRequest_id());
-            emailUser(reviewRequest.getUser_email(), "", "Denied");
+            emailUser(encryptionService.decryptString(reviewRequest.getUser_email()), "", "Denied");
             notificationsService.makeNotification("Asset Request Denied", userRepository.findByEmail(reviewRequest.getUser_email()).get());
             return ResponseEntity.ok("rejected access");
         }
