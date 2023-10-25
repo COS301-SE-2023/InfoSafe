@@ -29,7 +29,7 @@
 [![InfoSafe](documentation/images/Infosafe_light.png)](https://www.infosafe.live)
 
 
-https://github.com/COS301-SE-2023/InfoSafe/assets/64251227/d70e8edb-b2cd-4245-af20-d39d70030de9
+https://github.com/COS301-SE-2023/InfoSafe/assets/64251227/a3145e11-148b-41de-bbb7-2968ef78e699
 
 
 <hr>
