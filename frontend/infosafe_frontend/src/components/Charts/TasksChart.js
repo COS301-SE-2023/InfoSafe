@@ -4,6 +4,7 @@ import { Chart } from "chart.js/auto";
 const TasksChart = () => {
     const chartReference = useRef(null);
     const [taskCount, setTaskCount] = useState(0);
+    const [taskCompletedCount, setTaskCompletedCount] = useState(0);
     const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
@@ -23,6 +24,22 @@ const TasksChart = () => {
     }, []);
 
     useEffect(() => {
+        fetch('https://infosafe.live/api/task/getCompleted', {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem('accessToken')
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                setTaskCompletedCount(result);
+            })
+            .catch((error) => {
+                console.error("Error fetching taskCount:", error);
+            });
+    }, []);
+
+    useEffect(() => {
         if (chartInstance) {
             chartInstance.destroy();
         }
@@ -35,7 +52,7 @@ const TasksChart = () => {
                 datasets: [
                     {
                         label: 'Tasks',
-                        data: [15, taskCount],
+                        data: [taskCompletedCount, taskCount],
                         backgroundColor: ['#00003E', '#444040'],
                     }
                 ]
@@ -51,7 +68,7 @@ const TasksChart = () => {
         });
 
         setChartInstance(newChartInstance);
-    }, [taskCount]);
+    }, [taskCount, taskCompletedCount]);
 
     return (
         <div className="tasksChartDiv">
